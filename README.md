@@ -108,4 +108,10 @@ Pour que le serveur démarre tout seul dès l'allumage du PC sans ouvrir de term
 1. Appuyer sur `Windows + R`, taper `shell:startup` et valider par Entrée.
 2. Déposer un raccourci de `demarrer-serveur.bat` dans ce dossier.
 
+### 4. Sauvegarde et Synchronisation GitHub (`/sauvegarde`)
+Pour sauvegarder l'ensemble du système (code, données, documentation officielle des 23 chapitres) sur GitHub :
+- Double-cliquer sur `sauvegarder.bat` ou exécuter `python moteur/sauvegarder.py`.
+- Ou taper `/sauvegarde` dans le dialogue avec l'assistant IA.
+- Le protocole applique automatiquement un contrôle strict anti-fuite de secrets (`.env`), certifie la syntaxe et les tests d'intégrité, synchronise la documentation, crée le commit horodaté et pousse sur GitHub (`origin main`).
+
 
