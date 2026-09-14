@@ -10,6 +10,15 @@ C:\Users\user\Desktop\preparation-commande-dev
 
 ---
 
+
+---
+
+## 📚 Documentation de référence (23 chapitres)
+
+Pour toute question métier, algorithmique, technique ou déontologique, réfère-toi impérativement à la documentation officielle complète de l'application :
+👉 Documents/Documentation de l'application/index.html
+Elle regroupe 23 chapitres et 48 fiches exhaustives détaillant l'ensemble du fonctionnement du système.
+
 ## Mission
 
 Tu pilotes le logiciel de preparation de commande du rayon fruits et legumes Intermarche Carmaux.

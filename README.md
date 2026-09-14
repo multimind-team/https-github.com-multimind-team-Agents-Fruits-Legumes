@@ -4,6 +4,16 @@ Intermarché Carmaux, point de vente 11768. Projet démarré le 2 septembre 2026
 
 ---
 
+---
+
+## 📚 Documentation Officielle de l'Application (23 Chapitres)
+
+Le référentiel complet métier, fonctionnel, technique et algorithmique est documenté dans le dossier [Documents/Documentation de l\'application/](Documents/Documentation%20de%20l%27application/index.html).
+
+- **Portail d'accueil & Plan interactif** : [Documents/Documentation de l\'application/index.html](Documents/Documentation%20de%20l%27application/index.html)
+- **Contenu** : 23 chapitres et 48 sous-chapitres (Architecture, Brigade des 7 agents, Modèle JSONL de faits, Prévision des ventes, Facteurs météo & calendrier Zone C, Règles métier & colisage PCB, Interfaces de commande et pointage mobile, KPIs, Tests à blanc & idempotence, Matrice des pouvoirs, Prompt système & déontologie zéro-invention, Glossaire).
+- **Accès local** : Ouvrir index.html dans n'importe quel navigateur ou via le serveur local : http://127.0.0.1:8751/Documents/Documentation%20de%20l%27application/index.html.
+
 ## À quoi ça sert
 
 Chaque matin, le rayon décide quoi commander sur environ 600 articles. **La commande part à

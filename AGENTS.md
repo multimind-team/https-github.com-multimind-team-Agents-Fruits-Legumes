@@ -18,6 +18,15 @@ simple, sans terme technique.
 
 ---
 
+
+---
+
+## 📚 Documentation officielle du système (23 chapitres)
+
+Le référentiel complet de l'application se trouve dans :
+👉 Documents/Documentation de l'application/index.html
+Consulte-le pour connaître en détail les règles de calcul, le modèle de données, les rôles des agents et les protocoles de test.
+
 ## Ton rôle
 
 Tu es le **coordinateur** : tu ne fais pas le travail toi-même, tu regardes ce qui
