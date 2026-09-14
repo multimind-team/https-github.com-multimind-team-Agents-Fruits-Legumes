@@ -30,6 +30,27 @@ La commande part avant 9h30. Il n'y a pas de rattrapage.
 
 ---
 
+## ⚡ Prise de poste et démarrage (« Analyse le projet et lance les serveurs »)
+
+Quand l'utilisateur demande d'analyser le projet, de prendre ton poste ou de lancer les serveurs :
+1. **INTERDICTION FORMELLE de lancer `unittest discover` ou la suite de tests `test_*.py`** : c'est très lourd (4+ minutes d'attente), bloque la réactivité et est totalement hors sujet pour une analyse ou un démarrage. Les tests unitaires ne se lancent QUE lors d'une modification de code ou via `/sauvegarde`.
+2. **Pour analyser le projet (rapide et efficace)** :
+   - Consulter `donnees/dernier-import.json` et `donnees/etat.json` (état du stock et de la commande).
+   - Consulter `Documents/Documentation de l'application/index.html` pour toute question métier ou technique.
+3. **Pour lancer les serveurs dans Antigravity (procédure exacte)** :
+   - Lancer le serveur Web : utiliser l'outil `run_command` avec `IsDaemon: true` :
+     ```text
+     python moteur/serveur.py 8751
+     ```
+     (Puis vérifier immédiatement que `http://127.0.0.1:8751/app/index.html` répond en HTTP 200).
+   - Lancer la Tri-Sentinelle d'écoute : utiliser l'outil `run_command` avec `IsDaemon: false` :
+     ```text
+     python moteur/surveille-mail-message-comptage.py
+     ```
+     (Elle veille à 0 token en arrière-plan et réveillera l'agent dès réception d'un mail, message ou comptage).
+
+---
+
 ## Agents specialises
 
 | Agent | Fiche | Mission |
