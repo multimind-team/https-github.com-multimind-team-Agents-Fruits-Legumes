@@ -275,13 +275,14 @@ Cette préparation ponctuelle n'installe aucune surveillance Python de la boîte
 
 ## Sauvegarde et synchronisation GitHub (/sauvegarde)
 
-Sur commande `/sauvegarde` ou demande explicite, l'agent orchestrateur exécute le protocole de sauvegarde sécurisée :
-
-```bat
-sauvegarder.bat
-```
-ou `python moteur/sauvegarder.py`.
-Cette procédure vérifie l'absence de fuite de secrets (.env exclu, mot de passe vide dans courrier-config.json), valide la conformité syntaxique et les tests d'intégrité, synchronise la documentation vers l'espace miroir, crée le commit, pousse sur GitHub (`origin main`) et publie l'annonce dans l'application web. Voir `procedures/sauvegarde.md`.
+Sur commande `/sauvegarde` ou demande explicite, l'agent orchestrateur applique le protocole en deux temps :
+1. **Mise à jour documentaire préalable par l'IA :** Il identifie les évolutions ou correctifs récents du code et des règles métier, puis met à jour les documentations correspondantes (fichiers `.md` d'agents/procédures et fiches HTML de `Documents/Documentation de l'application/`).
+2. **Exécution de la chaîne technique :** Il lance :
+   ```bat
+   sauvegarder.bat
+   ```
+   ou `python moteur/sauvegarder.py`.
+   Ce script vérifie l'absence de fuite de secrets (.env exclu, mot de passe vide dans courrier-config.json), valide la conformité syntaxique et les tests d'intégrité, synchronise la documentation vers l'espace miroir, crée le commit, pousse sur GitHub (`origin main`) et publie l'annonce dans l'application web. Voir `procedures/sauvegarde.md`.
 
 ---
 

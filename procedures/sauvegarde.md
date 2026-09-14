@@ -17,21 +17,38 @@ La procédure est déclenchée :
 
 ---
 
-## 3. Rôle responsable
+## 3. Répartition des rôles : L'IA rédige, le script exécute
 
-- **Agent responsable :** `Agent Orchestrateur`.
-- **Outil d'exécution :**
-  ```bat
-  sauvegarder.bat
-  ```
-  ou directement :
-  ```bash
-  python moteur/sauvegarder.py
-  ```
+Un script Python ne peut pas « inventer » ou rédiger intelligemment de la documentation technique : il ne comprend pas le sens des règles métier ajoutées ni la portée des modifications de code.
+
+La commande `/sauvegarde` repose donc sur une collaboration stricte en deux phases :
+
+```
+[Utilisateur tape /sauvegarde]
+          │
+          ▼
+┌─────────────────────────────────────────────────────────────┐
+│ PHASE A : L'IA (Agent Orchestrateur / Rédacteur)            │
+│ 1. Analyse les modifications récentes (git status, diff).   │
+│ 2. Rédige et met à jour les fichiers .md (agents, proc).    │
+│ 3. Met à jour les fiches HTML de la Documentation officielle│
+│    (23 chapitres) selon les nouveautés fonctionnelles.      │
+└─────────────────────────────────────────────────────────────┘
+          │
+          ▼ (Une fois la doc rédigée par l'IA)
+┌─────────────────────────────────────────────────────────────┐
+│ PHASE B : Le script technique (moteur/sauvegarder.py)       │
+│ 1. Contrôle de sécurité (anti-fuite secrets .env).          │
+│ 2. Contrôle de conformité syntaxique et tests unitaires.    │
+│ 3. Synchronisation physique vers le miroir secondaire.      │
+│ 4. Git add, commit structuré et git push origin main.       │
+│ 5. Publication de la confirmation dans le chat web.         │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## 4. Étapes exécutées par la chaîne de sauvegarde
+## 4. Étapes exécutées par la chaîne technique (sauvegarder.py)
 
 Le script `moteur/sauvegarder.py` applique automatiquement un protocole rigoureux en 5 étapes successives :
 
