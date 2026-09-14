@@ -1,0 +1,18 @@
+{
+  "tests": 352,
+  "duree_secondes": 279.48,
+  "gate": {
+    "gate_exit": 0,
+    "sources_modifiees_pendant_gate": []
+  },
+  "hashes_avant_deploiement_toujours_exacts": {
+    "moteur/serveur.py": "5d0821211ed3bac5fdf9b5b799102e2dc2aa8a035b5346301448f5e490f01980",
+    "tests/test_recomptage_api_chaine.py": "c506243b412f76c5d51f650916f4282ca42d8733f60265c22c4e9c5e86ea90cc"
+  },
+  "source_log": "C:/Users/user/AppData/Local/Temp/controle-pousse-tests-finaux-v2.log",
+  "processus": "proc_a9ef4137cd2a",
+  "exit_code_processus_verifie": 0,
+  "remplace_pour_la_version_courante": "verification-gate-parent.json (ancien gate351 avant C01)",
+  "email_renouvele": false,
+  "AGENTS_md_modifie": false
+}

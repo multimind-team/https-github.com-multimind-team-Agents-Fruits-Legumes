@@ -1,0 +1,159 @@
+{
+  "schema": "controle-pousse-avis-fix/v2",
+  "auteur": "agent-controle indépendant, présente exécution subagent distincte du parent correcteur",
+  "reference_delegation": "Mandat courant C01 ; identifiant technique de délégation non fourni, à rattacher par Hermes",
+  "phase": "AVANT DEPLOIEMENT",
+  "avis": "SÛR POUR LE PÉRIMÈTRE C01",
+  "etat_execution": "NON DEPLOYE par ce contrôleur ; aucune intégration de production",
+  "perimetre": "Levée du seul blocage F01-controle-C01 ; pas de nouvelle certification du parent, du gate global ou de l’application entière.",
+  "racine": "C:/Users/user/Desktop/preparation-commande",
+  "periode_controle": {
+    "debut_mesures": "2026-09-10T21:07:15.814832+02:00",
+    "fin": "2026-09-10T21:10:32.336441+02:00"
+  },
+  "reference_premier_avis": {
+    "path": "C:/Users/user/AppData/Local/Temp/controle-pousse-avis-fix.json",
+    "sha256": "e3ecca5a45aea028d9eb0cb3e600a9fd47c1a182a6f404e02a1bd962fe845fce",
+    "constat": "BLOQUÉ : contradiction à un instant ancien classée deja_recus ; lot pouvait ajouter le nouveau relevé. Avis initial conservé, C01 seul levé ici."
+  },
+  "preuves_code": [
+    "moteur/serveur.py:789-800 : recherche de quantité contradictoire sur TOUS les comptages précédents du même article/date, au même instant, avant max et ignorance des anciens.",
+    "moteur/serveur.py:801-817 : renvoi ancien identique toujours acquitté sans nouveau fait ; nouvelle mesure seulement préparée en mémoire.",
+    "moteur/serveur.py:818-841 : append après validation des relevés du lot courant ; conflit lève avant append, journalisation et demande de recalcul.",
+    "tests/test_recomptage_api_chaine.py:187-199 : nouveau test couvre 30@08:30 puis20@19:20, conflit31@08:30 seul et avec22@20:00 dans les deux ordres ; carnet identique et position20 assertés.",
+    "tests/test_recomptage_api_chaine.py:264-276 : renvoi30@08:30 accepté comme deja_recus après20@19:20, sans modification du carnet ni de la position."
+  ],
+  "delta_borne_verifie": {
+    "methode": "Inversion du seul patch C01 et retrait du seul nouveau test EN MÉMOIRE : les deux SHA-256 reconstruits correspondent exactement aux sources du premier avis. Aucun ancien fichier réécrit ni exécuté.",
+    "reconstruction": {
+      "moteur/serveur.py": {
+        "sha256": "353f692588d1446431a320b1415baa589438c3a49d9001cd993d4daa70055750",
+        "correspond_avis_initial": true
+      },
+      "tests/test_recomptage_api_chaine.py": {
+        "sha256": "a4b88afb9c65a9f6838a9b6c5e6941ca8663ae09c8034f4cf2773870d5996f9e",
+        "correspond_avis_initial": true
+      }
+    },
+    "autres_sources_examinees_premier_avis_identiques": [
+      "moteur/calculer-position.py",
+      "moteur/faits.py",
+      "moteur/traiter-courrier.py",
+      "app/compter.html",
+      "app/commander.html",
+      "tests/test_traiter_courrier.py",
+      "tests/test_serveur_securite.py",
+      "tests/test_serveur_messages.py"
+    ]
+  },
+  "empreintes_courantes_sha256": {
+    "moteur/serveur.py": "5d0821211ed3bac5fdf9b5b799102e2dc2aa8a035b5346301448f5e490f01980",
+    "tests/test_recomptage_api_chaine.py": "c506243b412f76c5d51f650916f4282ca42d8733f60265c22c4e9c5e86ea90cc"
+  },
+  "execution_independante": {
+    "commande": "PYTHONDONTWRITEBYTECODE=1 py -3.14 -B -m unittest discover -s tests -p test_recomptage_api_chaine.py -v",
+    "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+    "tests": 14,
+    "resume_exact": "Ran 14 tests in 16.206s\nOK",
+    "exit_code": 0,
+    "chaine": "HTTP réel 127.0.0.1 port éphémère → carnet de copie OS Temp → vrai calculer-position.py de copie. Seul ordonnanceur asynchrone mocké.",
+    "probe_C01_complementaire": "Même fixture existante utilisée en mémoire, aucun nouveau test source ; contrôle de tous les fichiers donnees de la copie avant/après chaque POST, y compris carnet et journal.",
+    "cas": [
+      {
+        "cas": "conflit_seul",
+        "retour": {
+          "ok": false,
+          "erreur": "Deux valeurs différentes au même instant de comptage : conserve le relevé et fais vérifier la correction de saisie."
+        },
+        "donnees_copie_identiques": true,
+        "fichiers_surveille_copie": 6,
+        "recalcul_demande": false,
+        "position": 20.0
+      },
+      {
+        "cas": "conflit_puis_nouveau",
+        "retour": {
+          "ok": false,
+          "erreur": "Deux valeurs différentes au même instant de comptage : conserve le relevé et fais vérifier la correction de saisie."
+        },
+        "donnees_copie_identiques": true,
+        "fichiers_surveille_copie": 6,
+        "recalcul_demande": false,
+        "position": 20.0
+      },
+      {
+        "cas": "nouveau_puis_conflit",
+        "retour": {
+          "ok": false,
+          "erreur": "Deux valeurs différentes au même instant de comptage : conserve le relevé et fais vérifier la correction de saisie."
+        },
+        "donnees_copie_identiques": true,
+        "fichiers_surveille_copie": 6,
+        "recalcul_demande": false,
+        "position": 20.0
+      },
+      {
+        "cas": "ancien_renvoi_identique",
+        "retour": {
+          "ok": true,
+          "enregistres": 0,
+          "corrections": 0,
+          "deja_recus": 1
+        },
+        "donnees_copie_identiques": true,
+        "position": 20.0
+      }
+    ],
+    "fixture_probe_nettoyee": true
+  },
+  "traces_auteur_distinctes": {
+    "RED": {
+      "path": "C:/Users/user/AppData/Local/Temp/controle-pousse-conflit-RED.log",
+      "sha256": "4aa01fcfcc9086e36d053d62775d3a6468810178b2f71c6131d5a1295852fa73",
+      "resumes": [
+        "Ran 1 test in 0.845s",
+        "FAILED (failures=3)"
+      ],
+      "portee": "Trace relue : 1 test, 3 échecs assertion ok=True ; non réexécutée contre ancienne source par ce contrôleur."
+    },
+    "GREEN": "Trace auteur 14 tests OK relue ; le verdict repose sur les 14 tests et la probe réellement exécutés ici, pas sur cette seule déclaration."
+  },
+  "lecture_seule_verifiee": {
+    "donnees_json_jsonl_recursives_surveillees": 46,
+    "donnees_inchangees": true,
+    "sources_py_html_js_css_moteur_app_tests_surveillees": 99,
+    "sources_inchangees": true,
+    "premier_avis_inchange": true,
+    "ecritures": "Uniquement fixtures OS Temp nettoyées et présent rapport privé ; -B/PYTHONDONTWRITEBYTECODE=1. Aucun fichier projet modifié par cette revue."
+  },
+  "gate_global_separe": {
+    "non_execute_par_controle": true,
+    "ancien_gate": "351 vert déclaré au mandat mais périmé par C01 ; non utilisé pour valider ces hashes.",
+    "trace_parent": "C:/Users/user/AppData/Local/Temp/controle-pousse-tests-finaux-v2.log",
+    "lecture": "2026-09-10T21:10:32.336441+02:00",
+    "resumes_lus": [],
+    "conclusion": "352 non confirmé : aucun résumé final disponible à la lecture ; gate parent en cours, résultat et code retour à établir par le parent."
+  },
+  "limites_conservees": [
+    "Pas de garantie déploiement ou recalcul asynchrone terminé : parent garde gate global et activation séparés. Refaire hashes code/tests avant activation et contrôle read-only après.",
+    "14h demeure une convention technique et non une fermeture attestée. Comptages pendant ouverture, livraison après mesure même jour et totaux journaliers ambigus non certifiés. Aucun moteur horaire fin modifié.",
+    "Les anciens événements F01 restent volontairement faux selon leur sémantique historique ; aucun recalcul ou requalification production n’a été tenté. Un vrai nouveau relevé peut réparer la base actuelle, pas l’histoire.",
+    "Horodatages supposés exploitables et en convention locale UI. Date du jour imposée ; autre jour hors ligne refusé. Fuseaux représentés différemment/horloges clientes erronées non testés. Aucun horodatage historique inventé.",
+    "Le verrou protège threads du même serveur, pas autres processus importeurs : sérialisation opérationnelle requise. Aucun test multi-écrivains production.",
+    "L’API journale des faits et audit séparément ; une panne après append peut laisser audit incomplet malgré rejeu sans double fait. Les tests ne prouvent ni fsync, ni transaction durable multi-fichiers.",
+    "Le CLI corriger-conversion-comptage.py reste réservé aux anciens IDs:saisie (recherche callpath et rapport auteur) ; pas étendu aux nouveaux IDs. Ce mandat ne fournit pas de nouvelle route de correction historique.",
+    "Aucun test visuel UI, aucune publication chat/mail et aucune vérification live serveur. Les écritures production restent interdites.",
+    "Racine sans dépôt Git (exit128 not a git repository) : pas de commit/diff Git certifiable ; diff auteur + hashes source utilisés.",
+    "Contrôle technique F01 uniquement : pas de nouveaux mouvements/factures à rapprocher, ni certification des stocks réels ou de l’application entière."
+  ],
+  "exclusions_explicites": [
+    "Aucun POST, import, recalcul ou changement de service production ; aucun test navigateur/live, aucune activation ou migration historique.",
+    "Aucun mail/SMTP, chat, commande fournisseur ni skill modifié. Statuts documentaires ≠ activation mail ; contrôle mail non renouvelé faute d’approbation.",
+    "Matrice R01-R24 et conclusions hors C01 renvoyées au premier avis ; pas de nouvel audit initial ni de nouveau module analysé. R08/R17/R24 : seul contre-exemple C01 désormais refusé en copie.",
+    "L’avis ne vaut pas autorisation métier ni preuve de déploiement. Parent conserve gate global actualisé, comparaison des hashes avant activation et contrôle distinct après activation."
+  ],
+  "conclusion": "C01 levé sur les deux hashes courants : trois variantes refusées sans écriture de données ni recalcul demandé, position20 préservée ; ancien renvoi identique accepté sans nouvel événement. SÛR pour ce seul recontrôle AVANT, non-déploiement explicite.",
+  "rapport_seul_persistant": "C:/Users/user/AppData/Local/Temp/controle-pousse-avis-fix-v2.json",
+  "incidents": "Aucun incident bloquant dans ce recontrôle ; résumé final du gate parent non disponible à la lecture.",
+  "reference_delegation_rattachee_par_parent": "deleg_9e59a9fc / sa-0-ca9b62bc"
+}

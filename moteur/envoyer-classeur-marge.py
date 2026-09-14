@@ -13,22 +13,15 @@ RACINE = Path(__file__).resolve().parents[1]
 
 
 def lit_env_mail():
-    """Lit la configuration mail locale (courrier-config.json ou variables d'environnement), sans l'afficher."""
-    config_locale = RACINE / "donnees" / "courrier-config.json"
-    if config_locale.is_file():
-        import json
-        cfg = json.loads(config_locale.read_text(encoding="utf-8-sig"))
-        return {
-            "EMAIL_ADDRESS": cfg.get("utilisateur", ""),
-            "EMAIL_PASSWORD": cfg.get("mot_de_passe", ""),
-            "EMAIL_SMTP_HOST": cfg.get("smtp_host", "smtp.gmail.com"),
-            "EMAIL_SMTP_PORT": str(cfg.get("smtp_port", 587)),
-        }
+    """Lit la configuration mail locale (courrier-config.json et .env), sans l'afficher."""
+    sys.path.insert(0, str(RACINE / "moteur"))
+    from config_courrier import charger_config_courrier
+    cfg = charger_config_courrier()
     valeurs = {
-        "EMAIL_ADDRESS": os.environ.get("EMAIL_ADDRESS", ""),
-        "EMAIL_PASSWORD": os.environ.get("EMAIL_PASSWORD", ""),
-        "EMAIL_SMTP_HOST": os.environ.get("EMAIL_SMTP_HOST", "smtp.gmail.com"),
-        "EMAIL_SMTP_PORT": os.environ.get("EMAIL_SMTP_PORT", "587"),
+        "EMAIL_ADDRESS": cfg.get("utilisateur", ""),
+        "EMAIL_PASSWORD": cfg.get("mot_de_passe", ""),
+        "EMAIL_SMTP_HOST": cfg.get("smtp_host", "smtp.gmail.com"),
+        "EMAIL_SMTP_PORT": str(cfg.get("smtp_port", 587)),
     }
     requis = ("EMAIL_ADDRESS", "EMAIL_PASSWORD", "EMAIL_SMTP_HOST")
     manquants = [cle for cle in requis if not valeurs.get(cle)]

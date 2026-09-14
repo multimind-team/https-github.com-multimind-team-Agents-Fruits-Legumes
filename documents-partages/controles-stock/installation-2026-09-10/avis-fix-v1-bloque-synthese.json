@@ -1,0 +1,53 @@
+{
+  "source_complete": "C:\\Users\\user\\AppData\\Local\\Temp\\controle-pousse-avis-fix.json",
+  "sha256_source": "e3ecca5a45aea028d9eb0cb3e600a9fd47c1a182a6f404e02a1bd962fe845fce",
+  "delegation_verifiee_par_parent": "deleg_c06964b1 / sa-0-57278cff",
+  "phase": "AVANT DEPLOIEMENT",
+  "avis": "BLOQUÉ pour la validation complète du critère conflit même instant",
+  "etat_execution": "NON DEPLOYE par cette exécution ; aucune intégration de production",
+  "synthese": [
+    "F01 nominal corrigé : HTTP réel puis calculer-position inchangé produisent 20 le soir, et non 17, après 30 le matin et ventes J=3.",
+    "13 tests chaîne officiels verts ; 1 test serveur adapté vert ; 13 tests courrier verts.",
+    "Un contre-exemple supplémentaire réel en copie échoue : conflit sur un instant enregistré antérieur au dernier instant acquitté comme déjà reçu. Le lot peut poursuivre ses écritures.",
+    "Le défaut supplémentaire ne remplace pas la position récente par la valeur contradictoire ; il masque le conflit et permet à la file UI de supprimer le relevé litigieux.",
+    "46 fichiers JSON/JSONL production surveillés récursivement inchangés ; code/tests/UI surveillés inchangés. Aucun faux stock écrit en production."
+  ],
+  "bloquants": [
+    {
+      "id": "F01-controle-C01",
+      "criticite": "Bloquant pour signer le critère explicite de refus des valeurs différentes au même instant, pas une corruption démontrée de la dernière position.",
+      "constat": "La route compare la quantité uniquement au comptage le plus récent. Si une mesure plus récente existe, une valeur différente renvoyée pour un instant ancien déjà enregistré est classée deja_recus sans contrôle du conflit.",
+      "preuves_code": [
+        "moteur/serveur.py:789-811 (max puis comparaison uniquement au max)",
+        "tests/test_recomptage_api_chaine.py:154-161 (conflit testé uniquement contre le dernier instant)",
+        "tests/test_recomptage_api_chaine.py:250-262 (ancien inconnu testé, mais pas une contradiction au même instant historique)",
+        "procedures/comptage.md:33-37 (deux valeurs différentes au même instant exigent vérification)",
+        "app/compter.html:513-524 (ok suffit pour retirer les versions acquittées de la file)"
+      ],
+      "reproduction": "Dans la fixture actuelle : 30 à 08:30:00 puis 20 à 19:20:00 ; envoyer 31 à 08:30:00. Puis envoyer le lot [31 à 08:30:00, 22 à 20:00:00].",
+      "retour_conflit_seul": {
+        "ok": true,
+        "enregistres": 0,
+        "corrections": 0,
+        "deja_recus": 1
+      },
+      "retour_lot": {
+        "ok": true,
+        "enregistres": 1,
+        "corrections": 0,
+        "deja_recus": 1
+      },
+      "effet_reel": "Conflit seul : carnet inchangé. Lot : un comptage supplémentaire 22 à 20h ajouté, préfixe préservé, position finale 22. Aucun fait de correction implicite, mais aucun refus du conflit.",
+      "attendu": "Refuser la valeur contradictoire au même instant enregistré, sans effacer l’historique ni ajouter les autres faits du lot refusé.",
+      "action_minimale": "Faire ajouter par l’auteur un test RED visant une mesure ancienne déjà enregistrée après une mesure récente, puis contrôler les correspondances au même instant avant la règle qui ignore les anciens hors ligne. Ne pas élargir au moteur horaire ou à une migration historique.",
+      "probe_commande": "PYTHONDONTWRITEBYTECODE=1 py -3.14 -B -c 'import sys,json,unittest\nsys.path.insert(0,'\"'\"'tests'\"'\"')\nfrom test_recomptage_api_chaine import ReComptageAPIChaineTests,empreintes_production\navant_prod=empreintes_production()\nt=ReComptageAPIChaineTests('\"'\"'test_meme_instant_contradictoire_refuse_sans_correction_implicite'\"'\"')\ntry:\n t.setUp()\n init=t.envoyer(t.releve(30,'\"'\"'08:30:00'\"'\"'),t.releve(20,'\"'\"'19:20:00'\"'\"'))\n avant=t.carnet.read_bytes()\n seul=t.envoyer(t.releve(31,'\"'\"'08:30:00'\"'\"'))\n print(json.dumps({'\"'\"'retour_conflit_ancien_seul'\"'\"':seul,'\"'\"'carnet_identique_apres_conflit_seul'\"'\"':avant==t.carnet.read_bytes()},ensure_ascii=False))\n retour=t.envoyer(t.releve(31,'\"'\"'08:30:00'\"'\"'),t.releve(22,'\"'\"'20:00:00'\"'\"'))\n apres=t.carnet.read_bytes()\n print(json.dumps({'\"'\"'initial'\"'\"':init,'\"'\"'retour_lot_conflit_ancienne_mesure_plus_mesure_neuve'\"'\"':retour,'\"'\"'carnet_identique'\"'\"':avant==apres,'\"'\"'prefixe_preserve'\"'\"':apres.startswith(avant),'\"'\"'faits_ajoutes'\"'\"':[json.loads(l) for l in apres[len(avant):].splitlines()],'\"'\"'position'\"'\"':t.position()},ensure_ascii=False))\n t.assertFalse(retour['\"'\"'ok'\"'\"'], '\"'\"'Un conflit au meme instant historique doit refuser le lot, pas etre acquitte comme deja recu'\"'\"')\nfinally:\n t.doCleanups()\n print(json.dumps({'\"'\"'production_identique'\"'\"':avant_prod==empreintes_production()}))\n'",
+      "probe_source_en_memoire": "import sys,json,unittest\nsys.path.insert(0,'tests')\nfrom test_recomptage_api_chaine import ReComptageAPIChaineTests,empreintes_production\navant_prod=empreintes_production()\nt=ReComptageAPIChaineTests('test_meme_instant_contradictoire_refuse_sans_correction_implicite')\ntry:\n t.setUp()\n init=t.envoyer(t.releve(30,'08:30:00'),t.releve(20,'19:20:00'))\n avant=t.carnet.read_bytes()\n seul=t.envoyer(t.releve(31,'08:30:00'))\n print(json.dumps({'retour_conflit_ancien_seul':seul,'carnet_identique_apres_conflit_seul':avant==t.carnet.read_bytes()},ensure_ascii=False))\n retour=t.envoyer(t.releve(31,'08:30:00'),t.releve(22,'20:00:00'))\n apres=t.carnet.read_bytes()\n print(json.dumps({'initial':init,'retour_lot_conflit_ancienne_mesure_plus_mesure_neuve':retour,'carnet_identique':avant==apres,'prefixe_preserve':apres.startswith(avant),'faits_ajoutes':[json.loads(l) for l in apres[len(avant):].splitlines()],'position':t.position()},ensure_ascii=False))\n t.assertFalse(retour['ok'], 'Un conflit au meme instant historique doit refuser le lot, pas etre acquitte comme deja recu')\nfinally:\n t.doCleanups()\n print(json.dumps({'production_identique':avant_prod==empreintes_production()}))\n",
+      "resultat_exact": {
+        "output": "Traceback (most recent call last):\r\n  File \"<string>\", line 15, in <module>\r\n    t.assertFalse(retour['ok'], 'Un conflit au meme instant historique doit refuser le lot, pas etre acquitte comme deja recu')\r\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\unittest\\case.py\", line 756, in assertFalse\r\n    raise self.failureException(msg)\r\nAssertionError: True is not false : Un conflit au meme instant historique doit refuser le lot, pas etre acquitte comme deja recu\r\n{\"retour_conflit_ancien_seul\": {\"ok\": true, \"enregistres\": 0, \"corrections\": 0, \"deja_recus\": 1}, \"carnet_identique_apres_conflit_seul\": true}\r\n{\"initial\": {\"ok\": true, \"enregistres\": 2, \"corrections\": 0, \"deja_recus\": 0}, \"retour_lot_conflit_ancienne_mesure_plus_mesure_neuve\": {\"ok\": true, \"enregistres\": 1, \"corrections\": 0, \"deja_recus\": 1}, \"carnet_identique\": false, \"prefixe_preserve\": true, \"faits_ajoutes\": [{\"id\": \"comptage:2026-09-10:0000087001234:mesure:2026-09-10T20:00:00\", \"type\": \"comptage\", \"mesure\": \"position\", \"origine_mesure\": \"ecran-comptage\", \"date_source\": \"2026-09-10\", \"date_effet\": \"2026-09-10\", \"article\": \"0000087001234\", \"article_source\": \"0000087001234\", \"quantite\": 22.0, \"colis\": 22.0, \"conditionnement\": 1.0, \"unite\": \"Pièce\", \"libelle\": \"ARTICLE FICTIF F01\", \"horodatage\": \"2026-09-10T20:00:00\", \"motif\": \"Position relevée en chambre froide, rayon déjà rempli.\", \"source\": {\"origine\": \"app/compter.html\", \"saisi_le\": \"2026-09-10T20:00:00\"}, \"enregistre_le\": \"2026-09-10T23:00:00\"}], \"position\": {\"position\": 22.0, \"mesuree_le\": \"2026-09-10\", \"moment_mesure\": \"soir\", \"origine_mesure\": \"ecran-comptage\", \"mouvements_depuis\": 0, \"libelle\": \"ARTICLE FICTIF F01\"}}\r\n{\"production_identique\": true}",
+        "exit_code": 1,
+        "error": null
+      },
+      "limite": "Cas reproduit en HTTP réel sur copie ; effet de purge UI déduit du chemin JS relu, sans essai visuel navigateur."
+    }
+  ]
+}

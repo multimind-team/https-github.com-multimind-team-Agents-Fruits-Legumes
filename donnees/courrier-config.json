@@ -4,7 +4,7 @@
   "smtp_host": "smtp.gmail.com",
   "smtp_port": 587,
   "utilisateur": "multimind.team@gmail.com",
-  "mot_de_passe": "walfwxnlwgdbvfcu",
+  "mot_de_passe": "",
   "dossier": "INBOX",
   "expediteurs_autorises": [
     "multimind.team@gmail.com",

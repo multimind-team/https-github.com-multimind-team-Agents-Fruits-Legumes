@@ -85,3 +85,5 @@ Chaque flux suit un circuit de délégation immuable à 5 temps. L'orchestrateur
 3. **Traçabilité totale :** Chaque prise de poste ou annonce importante doit être publiée dans le fil de discussion avec :
    `python moteur/dire.py --auteur "Agent Orchestrateur" "<Message en français simple>"`
 4. **Gestion des blocages :** Si un agent spécialisé signale une erreur ou un doute, l'orchestrateur n'improvise pas : il consigne les faits et demande l'arbitrage du responsable de rayon.
+5. **Sauvegarde et synchronisation GitHub (/sauvegarde) :** Sur demande de l'utilisateur ou après un cycle majeur d'intégration, lancer le protocole de sauvegarde sécurisée :
+   `sauvegarder.bat` (ou `python moteur/sauvegarder.py`). Cette procédure vérifie l'absence de fuite de secrets (.env exclu, mot de passe vide dans courrier-config.json), certifie les carnets et tests, synchronise la documentation, committe et pousse sur GitHub `origin main`, puis publie la confirmation dans l'application web. Voir `procedures/sauvegarde.md`.

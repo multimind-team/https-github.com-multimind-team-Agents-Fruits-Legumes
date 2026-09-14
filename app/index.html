@@ -200,8 +200,14 @@ async function chargerNote() {
     if (!reponse.ok) throw new Error(reponse.status);
     const note = await reponse.json();
     if (!note.entrees || !note.entrees.length) return;
-    const jour = (note.date || "").slice(8, 10) + "/" + (note.date || "").slice(5, 7);
-    document.getElementById("note-date").textContent = "Données du " + jour + ".";
+    const jourVentes = (note.date || "").slice(8, 10) + "/" + (note.date || "").slice(5, 7);
+    let sousTitre = "Données du " + jourVentes + ".";
+    if (note.ecrite_le) {
+      const jourNote = note.ecrite_le.slice(8, 10) + "/" + note.ecrite_le.slice(5, 7);
+      const heureNote = note.ecrite_le.slice(11, 16).replace(":", "h");
+      sousTitre = "Générée le " + jourNote + " à " + heureNote + " (ventes du " + jourVentes + ")";
+    }
+    document.getElementById("note-date").textContent = sousTitre;
     // Le texte des constats utilise **gras** : on le rend lisible.
     const gras = (s) => texteSecurise(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
     const couleur = { grave: "var(--bad)", attention: "var(--warn)", info: "var(--text-faible)" };

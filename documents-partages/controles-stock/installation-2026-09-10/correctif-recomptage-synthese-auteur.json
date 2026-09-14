@@ -1,0 +1,233 @@
+{
+  "source_complete": "C:\\Users\\user\\Desktop\\preparation-commande\\Temp\\controle-pousse-fix-recomptage.json",
+  "sha256_source": "5bddf68a3effdf58901355fb4f59399d01cc9a01150391c7fc345d5a810f8cef",
+  "note": "Synthèse structurée ; sorties RED/GREEN complètes conservées dans le rapport source",
+  "finding": "F01",
+  "redige_le": "2026-09-10T20:55:41.839622+02:00",
+  "statut": "correctif code prêt pour contrôle indépendant et gate global parent ; non activé",
+  "resume": {
+    "reproduction_initiale": "30 à 08h30, sorties du jour 3, nouveau relevé 20 à 19h20 : RED réel 17 != 20 ; GREEN réel 20, moment soir, zéro mouvement après base.",
+    "regressions_finales": [
+      {
+        "phase": "GREEN-FINAL-1",
+        "tests": 74,
+        "exit_code": 0
+      },
+      {
+        "phase": "GREEN-FINAL-2",
+        "tests": 74,
+        "exit_code": 0
+      }
+    ],
+    "tests_chaine_F01": 13,
+    "donnees_surveillees": 38,
+    "hashes_production_inchanges": true,
+    "aucun_gate_global_lance": true,
+    "aucun_redemarrage_production": true,
+    "aucun_import_rejeu_recalcul_production": true,
+    "aucun_SMTP_ni_secret": true,
+    "docs_et_test_traiter_courrier_non_modifies_par_cette_execution": true
+  },
+  "inspection_avant_design": [
+    "AGENT.md, agents/agent-donnees.md, agents/agent-controle.md, donnees/pouvoirs.json et reference/contrat-echange.md lus. Skills TDD, systematic-debugging et append-only-data-maintenance chargés.",
+    "Ancien normaliser_comptage : ID article/jour ; ancien _recevoir_comptages : seconde saisie vers preparer_correction_comptage. Usages globaux inspectés : comptages_actifs seulement sur cette route, preparer_correction_comptage appelé par cette route et deux tests.",
+    "app/compter.html:372-389 et 506-524 ; app/commander.html:584-614 : mêmes champs date/itm8/colis/conditionnement/saisi_le et ancien ID article/jour. Les UI vérifient ok, pas corrections ; acquittement compteur et file locale conservés sans changer les pages.",
+    "calculer-position.py:137-158 : type comptage crée une base à son instant, correction-comptage modifie la valeur du comptage cible sans modifier date/heure ; nouvelle mesure gagne selon date/heure. Aucun changement lecteur.",
+    "Le CLI corriger-conversion-comptage.py:48-60 est volontairement limité aux anciens IDs :saisie ; il reste inchangé et ses tests historiques passent."
+  ],
+  "conception_et_compatibilite": [
+    "Nouvelle mesure : type=comptage, sans cible_id, ID reconstruit comptage:<jour>:<article>:mesure:<saisi_le ISO complet>, indépendant de la valeur. Ancien ID client ignoré comme avant ; charge utile des deux UI compatible.",
+    "Chronologie fondée sur les faits comptage bruts, pas sur les heures audit des corrections. La vue comptages_actifs reste disponible pour compatibilité mais ne pilote plus la chronologie API.",
+    "Rejeu exact/plus ancien : pas de nouvel événement physique ; même valeur plus tard : nouvelle base. Même instant et valeur contradictoire : refus, aucune correction implicite.",
+    "Reconnaissance des anciens renvois ecran-comptage-correction via leur source.saisi_le : ne pas rematérialiser un ancien relevé comme nouveau comptage lors du déploiement.",
+    "Une demande portant cible_id ou type autre que comptage est refusée par la route de nouvelles mesures ; aucune nouvelle route de correction historique ajoutée.",
+    "Réponse conserve ok/enregistres/corrections/deja_recus. Les nouvelles mesures, y compris recomptages, sont désormais dans enregistres ; corrections reste 0. Les deux UI n’utilisent pas la ventilation de ces compteurs.",
+    "Lecture-déduplication-ajout conservés sous le verrou thread existant. Journal de faits append-only ; carnet interrompu/non terminé refusé sans réparation. Audit technique lié aux IDs de faits, non répété lors du renvoi."
+  ],
+  "fichiers_modifies": [
+    {
+      "fichier": "moteur/serveur.py",
+      "sha256_avant": "be5ec3a0f756f6243fa75c43f8a62d63015b91feffed6cd627a1253d258a8cf8",
+      "sha256_apres": "353f692588d1446431a320b1415baa589438c3a49d9001cd993d4daa70055750",
+      "reperes": [
+        {
+          "fonction": "normaliser_comptage",
+          "debut": 237,
+          "fin": 317
+        },
+        {
+          "fonction": "lire_comptages",
+          "debut": 391,
+          "fin": 403
+        },
+        {
+          "fonction": "comptages_actifs",
+          "debut": 406,
+          "fin": 414
+        },
+        {
+          "fonction": "_recevoir_comptages",
+          "debut": 742,
+          "fin": 838
+        }
+      ]
+    },
+    {
+      "fichier": "tests/test_serveur_securite.py",
+      "sha256_avant": "39922766a7cec441f6601caeccb603b4e03c1be857ecb2706fa7aca21b6715fb",
+      "sha256_apres": "0a6a03884f6a41b8ddc959b8191e014d3b5a6143872f9b644e24e5deec8964ef",
+      "reperes": [
+        {
+          "fonction": "test_recomptage_identique_plus_tard_et_rejeu_ancien",
+          "debut": 164,
+          "fin": 187
+        }
+      ]
+    },
+    {
+      "fichier": "tests/test_recomptage_api_chaine.py",
+      "sha256_avant": null,
+      "sha256_apres": "a4b88afb9c65a9f6838a9b6c5e6941ca8663ae09c8034f4cf2773870d5996f9e",
+      "reperes": [
+        {
+          "fonction": "empreintes_production",
+          "debut": 24,
+          "fin": 29
+        },
+        {
+          "fonction": "setUpClass",
+          "debut": 34,
+          "fin": 35
+        },
+        {
+          "fonction": "tearDownClass",
+          "debut": 38,
+          "fin": 40
+        },
+        {
+          "fonction": "setUp",
+          "debut": 42,
+          "fin": 86
+        },
+        {
+          "fonction": "fermer",
+          "debut": 88,
+          "fin": 91
+        },
+        {
+          "fonction": "releve",
+          "debut": 93,
+          "fin": 97
+        },
+        {
+          "fonction": "envoyer",
+          "debut": 99,
+          "fin": 109
+        },
+        {
+          "fonction": "ajouter_faits",
+          "debut": 111,
+          "fin": 114
+        },
+        {
+          "fonction": "vente_du_jour",
+          "debut": 116,
+          "fin": 118
+        },
+        {
+          "fonction": "position",
+          "debut": 120,
+          "fin": 129
+        },
+        {
+          "fonction": "test_08h30_vers_19h20_sorties_j3_nouvelle_base_du_soir",
+          "debut": 131,
+          "fin": 152
+        },
+        {
+          "fonction": "test_meme_instant_contradictoire_refuse_sans_correction_implicite",
+          "debut": 154,
+          "fin": 161
+        },
+        {
+          "fonction": "test_correction_historique_tardive_garde_08h30_et_nouvelle_mesure_gagne",
+          "debut": 163,
+          "fin": 185
+        },
+        {
+          "fonction": "test_rejeu_ancienne_correction_ui_ne_reinterprete_pas_lhistorique",
+          "debut": 187,
+          "fin": 208
+        },
+        {
+          "fonction": "test_carnet_interrompu_refuse_lajout_sans_recoudre_la_source",
+          "debut": 210,
+          "fin": 217
+        },
+        {
+          "fonction": "test_api_de_releves_ne_transforme_pas_une_correction_explicite_en_mesure",
+          "debut": 219,
+          "fin": 227
+        },
+        {
+          "fonction": "test_rejeu_ne_duplique_pas_laudit_et_audit_reference_le_fait_durable",
+          "debut": 229,
+          "fin": 238
+        },
+        {
+          "fonction": "test_meme_valeur_plus_tard_rafraichit_la_base_sans_rajeunir_les_ventes",
+          "debut": 240,
+          "fin": 248
+        },
+        {
+          "fonction": "test_rejeu_et_ancien_offline_ne_remplacent_pas_la_mesure_recente",
+          "debut": 250,
+          "fin": 262
+        },
+        {
+          "fonction": "test_lot_inverse_et_precision_sous_seconde_restent_idempotents",
+          "debut": 264,
+          "fin": 274
+        },
+        {
+          "fonction": "test_mesures_concurrentes_selectionnent_linstant_recent_pas_lordre_http",
+          "debut": 276,
+          "fin": 293
+        },
+        {
+          "fonction": "test_correction_dun_jour_ancien_ne_change_pas_la_date_de_mesure",
+          "debut": 295,
+          "fin": 311
+        },
+        {
+          "fonction": "test_reprise_apres_echec_avant_ou_apres_append_najoute_quun_fait",
+          "debut": 313,
+          "fin": 340
+        },
+        {
+          "fonction": "envoyer",
+          "debut": 279,
+          "fin": 282
+        },
+        {
+          "fonction": "now",
+          "debut": 72,
+          "fin": 73
+        },
+        {
+          "fonction": "ouvrir_interrompu",
+          "debut": 319,
+          "fin": 326
+        }
+      ]
+    }
+  ],
+  "commandes_parent": {
+    "regressions_ciblees_reexecutees_deux_fois": "PYTHONPATH='moteur;tests' py -3.14 -B -m unittest test_recomptage_api_chaine test_serveur_securite test_serveur_messages test_colisage_api test_corrections_comptage test_correction_conversion_comptage test_audit_metier.RejeuComptagesTests -v",
+    "chaine_F01_seule": "py -3.14 -B -m unittest discover -s tests -p test_recomptage_api_chaine.py -v",
+    "gate_global": "Relancer le gate complet habituel du parent sur les fichiers post-patch ; aucune exécution globale faite ici.",
+    "activation_apres_avis_et_gate": "py -3.14 moteur/gerer-serveur.py demarrer --redemarrer",
+    "verification_activation": "py -3.14 moteur/gerer-serveur.py etat",
+    "metier": "Ensuite seulement recevoir le nouveau comptage réel du responsable ; ne pas rejouer automatiquement un ancien relevé ni recalculer pour réinterpréter les faits."
+  }
+}

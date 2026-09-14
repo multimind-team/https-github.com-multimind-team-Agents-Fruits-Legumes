@@ -1,0 +1,1313 @@
+{
+  "schema": "controle-pousse-audit-moteur/v1",
+  "auteur": "agent-controle",
+  "avis": "douteux-pour-import-automatique-sans-controle-agent",
+  "objet": "Audit contradictoire ciblé mouvements/comptages, déduplication, colisage et alertes ; pas un audit exhaustif de l'application.",
+  "racine_production": "C:/Users/user/Desktop/preparation-commande",
+  "mandat_et_limites": {
+    "autorise": [
+      "lecture des consignes, sources et tests",
+      "rapport privé dans TEMP",
+      "recette privée sur copie exacte du moteur avec articles fictifs"
+    ],
+    "interdit_et_non_execute": [
+      "import de production, même pour vérifier un refus",
+      "correction/réimport des anciennes livraisons ou positions",
+      "modification code/données/docs opérationnelles/pouvoirs",
+      "gate global",
+      "SMTP, secrets, surveillance, restart, commande fournisseur"
+    ],
+    "comptage_a_venir": "Le responsable refera le comptage. Aucun historique n'est réparé dans ce mandat. Le futur relevé doit être vérifié comme nouvelle mesure réelle ; le cas de plusieurs relevés le même jour est un défaut confirmé, pas une garantie acquise.",
+    "illustration_colis": "Le scénario 1 colis reçu de 12 pièces = 2 colis usuels de 6 est fictif et ne justifie aucune modification réelle. Les codes 1111111111111, 2222222222222 et 3333333333333 ne sont utilisés que dans la racine privée.",
+    "consignes_lues": [
+      "AGENT.md",
+      "agents/agent-controle.md",
+      "agents/agent-donnees.md",
+      "donnees/pouvoirs.json",
+      "procedures/courrier.md",
+      "procedures/comptage.md",
+      "reference/le-calcul.md"
+    ],
+    "competences_lues": [
+      "full-application-audit",
+      "append-only-data-maintenance",
+      "supplier-delivery-invoices"
+    ],
+    "portee_preservation": "Empreintes avant/après des fichiers hors __pycache__ sous moteur, app, donnees, documents-partages. Les documents de gouvernance que le parent modifie en parallèle sont hors certification d'immuabilité de cette recette. Les copies du moteur et leurs empreintes sont conservées dans la racine privée."
+  },
+  "synthese": [
+    "Le moteur rejoue correctement les mouvements datés avant/après une mesure distincte, sous convention matin/soir ; la date d'arrivée du mail n'est pas la date d'effet.",
+    "Défaut confirmé API → rejeu : un second comptage physique le même jour est écrit en correction, puis rejoué à l'instant du premier comptage. Une mesure matinale suivie d'une mesure vespérale peut subir les sorties deux fois.",
+    "Le dédoublonnage par ID n'est pas un dédoublonnage de livraison physique. Réordonner des lignes d'export, changer de numéro BL à facture, passer de manuel à facture ou de POMONA à TERREAZUR peut créer des nouveaux IDs pour une même réalité.",
+    "Colis reçu, quantité UF, poids/sachet et colis habituel sont des grandeurs différentes. Les conversions ne sont pas vérifiées sémantiquement par les importeurs ; le moteur de position additionne les nombres sans comparer les unités.",
+    "Un jour de ventes est marqué présent dès une vente retenue, même pour un fichier partiel. Une fraîcheur verte ou un code retour 0 ne prouve donc ni exhaustivité des lignes ni intégration des livraisons.",
+    "La recette reproduit volontairement garanties ET défauts courants : ses assertions réussies ne constituent pas une validation métier des comportements dangereux."
+  ],
+  "deja_assure": [
+    {
+      "id": "G01",
+      "comportement": "Position reconstruite depuis la mesure la plus récente selon date/heure, non selon ordre d'arrivée du mail ; livraison ajoute, vente/casse/don retirent. Aucun comptage = position inconnue, pas zéro.",
+      "preuves": [
+        "moteur/calculer-position.py:130-148",
+        "moteur/calculer-position.py:167-186"
+      ],
+      "cas_recette": [
+        "retard_dates_effet",
+        "sans_mesure_pas_zero"
+      ],
+      "limite": "Conditionné par la justesse des dates, unités et typages des faits ; exception défectueuse des recomptages API même jour en F01."
+    },
+    {
+      "id": "G02",
+      "comportement": "Le soir, tous les mouvements de J sont ignorés ; le matin, livraison de J ignorée et sorties de J retirées ; mouvement antérieur à la mesure ignoré.",
+      "preuves": [
+        "moteur/calculer-position.py:90-121"
+      ],
+      "cas_recette": [
+        "meme_jour_08",
+        "meme_jour_19",
+        "retard_dates_effet"
+      ],
+      "limite": "Ce n'est pas un moteur horaire générique : convention après rangement/avant ventes, seuil 14h, pas de traitement d'une livraison réellement postérieure dans la même journée."
+    },
+    {
+      "id": "G03",
+      "comportement": "Une vraie correction de saisie conserve la date/heure de la mesure cible ; corriger une ancienne mesure ne supplante pas une mesure distincte plus récente. Statistiques ventes indépendantes des comptages.",
+      "preuves": [
+        "moteur/calculer-position.py:145-158",
+        "moteur/calculer-commande.py:78-110",
+        "tests/test_audit_metier.py:38-70"
+      ],
+      "cas_recette": [
+        "statistiques_non_effacees_par_comptage"
+      ],
+      "limite": "Ne pas confondre correction d'une mesure ancienne avec nouveau relevé physique. Tests existants lus, non exécutés ici."
+    },
+    {
+      "id": "G04",
+      "comportement": "Copies du même ID dédupliquées en lecture ; différence métier hors source provoque conflit. Import magasin valide tout conflit d'ID du lot avant append. Provenance source peut différer.",
+      "preuves": [
+        "moteur/faits.py:11-43",
+        "moteur/integrer-fichiers.py:395-418",
+        "tests/test_faits_idempotents.py:79-113"
+      ],
+      "cas_recette": [
+        "copie_renommee_meme_ordre",
+        "fichier_corrige_meme_ordre_refuse"
+      ],
+      "limite": "Pas de fusion sans ID, ni de rapprochement entre IDs différents ; tout le contenu de source est exclu de la signature générale."
+    },
+    {
+      "id": "G05",
+      "comportement": "Import magasin refuse nombres absents/NaN/Inf/booléens, dates de ligne illisibles, période multijour sans date détaillée, colisage absent/non positif et quantité absolue au-delà de 5000 ; écarte le jour de génération et les jours suivants.",
+      "preuves": [
+        "moteur/integrer-fichiers.py:91-130",
+        "moteur/integrer-fichiers.py:271-276",
+        "moteur/integrer-fichiers.py:310-352",
+        "moteur/integrer-fichiers.py:378-391"
+      ],
+      "cas_recette": [
+        "periode_multi_sans_date_refusee",
+        "jour_generation_refuse",
+        "lot_partiel_inconnu_et_code_malforme"
+      ],
+      "limite": "Refus souvent par ligne, pas quarantaine transactionnelle du fichier entier ; codes malformés ignorés comme totaux et codes inconnus numériques conservés. Le seuil 5000 ne prouve pas la plausibilité d'une ligne."
+    },
+    {
+      "id": "G06",
+      "comportement": "La facture directe impose fournisseur POMONA/TERREAZUR, date civile, pages déclarées égales, code présent dans mapping et contrôle Decimal quantité UF × PU à 0,01 € près. Empreintes document/ligne protègent le rejeu exact et refusent une correction de même identité.",
+      "preuves": [
+        "moteur/facture_directe.py:75-149",
+        "moteur/facture_directe.py:177-199",
+        "moteur/facture_directe.py:311-375"
+      ],
+      "cas_recette": [
+        "facture_rejeu_identique",
+        "facture_corrigee_meme_identite_refusee"
+      ],
+      "limite": "Déclarations de pages/produits ne prouvent pas lecture ou concordance visuelle ; pas de rapprochement BL/facture ni de validation des UF source."
+    },
+    {
+      "id": "G07",
+      "comportement": "Marge préparée en mémoire puis sérialisée avant stock ; publication récupérable stock + Excel, pas transaction atomique. --classeur-seul ne consulte/écrit pas les faits ; A/C/F uniquement, pas de PV requis, formules/modèle conservés.",
+      "preuves": [
+        "moteur/facture_directe.py:202-270",
+        "moteur/facture_directe.py:273-295",
+        "moteur/facture_directe.py:400-450",
+        "tests/test_facture_directe_reprise.py:123-143",
+        "tests/test_facture_directe_reprise.py:479-545"
+      ],
+      "cas_recette": [],
+      "limite": "Garantie constatée par source et lecture de tests, pas essai Excel complet dans cette recette. La préparation A/C/F reste indépendante de l'autorisation de stock."
+    },
+    {
+      "id": "G08",
+      "comportement": "Le colis commandable et son offre sont sélectionnés ensemble : décision valide prioritaire, PCB cadencier ensuite, règles caissette limitées à PDT 65/8 et orange filet 90/9 ; replis et ambiguïtés signalés.",
+      "preuves": [
+        "moteur/conditionnements.py:21-80",
+        "moteur/conditionnements.py:90-107",
+        "moteur/generer-proposition.py:230-235",
+        "moteur/generer-proposition.py:303-309"
+      ],
+      "cas_recette": [],
+      "limite": "Avertissement, pas refus universel. Sélecteur de commande distinct du multiplicateur d'entrée : il ne vérifie ni ne répare les anciennes quantités."
+    },
+    {
+      "id": "G09",
+      "comportement": "Couverture calculée article par article depuis comptage et dates de ventes consécutives ; pas de franchissement d'un trou. Comptage frais peut couvrir le stock malgré statistiques anciennes. Articles non mesurés/mal rapprochés distingués ; casse et dons facultatifs.",
+      "preuves": [
+        "moteur/generer-proposition.py:338-398",
+        "moteur/filet-de-securite.py:115-154",
+        "moteur/integrer-fichiers.py:64-65",
+        "moteur/note-du-matin.py:30-35"
+      ],
+      "cas_recette": [
+        "couverture_ne_franchit_pas_trou",
+        "fraicheur_comptage_recent_stats_anciennes",
+        "fraicheur_trou_anterieur_stats_recentes"
+      ],
+      "limite": "Les dates de ventes présentes restent globales et ne prouvent pas intégralité d'un export. La complétude des livraisons n'est pas certifiée."
+    },
+    {
+      "id": "G10",
+      "comportement": "Le rangement compare SHA-256, conserve les versions, retrouve et revalide l'archive au rejeu ; un doublon reçu propose encore import/recalcul/note. Le filet arrête les dépendants après échec agrégats/position/proposition et conserve une dernière sortie avertie.",
+      "preuves": [
+        "moteur/courrier_pipeline.py:24-40",
+        "moteur/courrier_pipeline.py:114-190",
+        "moteur/traiter-courrier.py:43-57",
+        "moteur/filet-de-securite.py:212-237"
+      ],
+      "cas_recette": [
+        "archive_doublon_rejoue_outils"
+      ],
+      "limite": "Archivage ≠ intégration achevée, classification ≠ compréhension ; les scripts ne remplacent pas un avis d'agent et le pipeline peut viser tout un dossier."
+    }
+  ],
+  "constats_a_bloquer_ou_escalader": [
+    {
+      "id": "F01",
+      "gravite": "haute",
+      "titre": "Nouveau comptage physique le même jour confondu avec correction du premier",
+      "preuves": [
+        "moteur/serveur.py:295-308",
+        "moteur/serveur.py:315-327",
+        "moteur/serveur.py:758-783",
+        "moteur/calculer-position.py:149-158",
+        "tests/test_serveur_securite.py:164-184",
+        "tests/test_audit_metier.py:62-70"
+      ],
+      "reproduction": "API réelle appelée sans réseau sur fixture : 30 à 08h puis 20 à 19h, vente de J=3 ajoutée ensuite. API accepte le relevé de 19h en correction ; moteur rend 17 et moment=matin, pas 20. L'ancien renvoi de 08h est pourtant correctement ignoré par l'API.",
+      "cas_recette": [
+        "api_recomptage_soir_garde_matin"
+      ],
+      "decision_agent": "Bloquer la certification d'un second relevé physique même jour tant que son instant réel n'est pas correctement représenté dans le rejeu. Faire préciser nouvelle mesure vs correction de saisie ; contrôler la chaîne complète, pas seulement l'accusé API.",
+      "recommandation_future": "Mandat technique séparé : distinguer événement nouvelle mesure et correction de mesure ; test API → carnet → position avec matin puis soir et sorties tardives. Ne pas utiliser une nouvelle correction historique pour contourner aujourd'hui.",
+      "trou_tests": "Le test API vérifie l'horodatage du fait correction ; le test du moteur exige de conserver l'heure cible. Aucun des deux, isolément, ne vérifie le résultat stock de leur raccord."
+    },
+    {
+      "id": "F02",
+      "gravite": "haute",
+      "titre": "Chronologie intrajournalière non représentable par la règle matin/soir",
+      "preuves": [
+        "moteur/calculer-position.py:71-107",
+        "moteur/calculer-position.py:110-121",
+        "moteur/calculer-position.py:159-160"
+      ],
+      "cas_recette": [
+        "meme_jour_13",
+        "meme_jour_14",
+        "heure_absente_soir",
+        "livraison_apres_mesure_meme_jour_ignoree"
+      ],
+      "reproduction": "Une livraison horodatée 12h après comptage 08h n'est pas ajoutée le même jour : position 20 au lieu de 32 dans la fixture. Sans heure = soir ; 13h = matin et 14h = soir.",
+      "decision_agent": "Bloquer si mesure intercalaire, ventes déjà commencées avant comptage matinal, livraison non rangée, seconde livraison post-mesure ou phase ambiguë. Exiger heure de mesure, inclusion physique de chaque entrée et période des sorties. Ne pas dater artificiellement au lendemain."
+    },
+    {
+      "id": "F03",
+      "gravite": "haute",
+      "titre": "Réordonner ou découper un export contourne la déduplication par index de ligne",
+      "preuves": [
+        "moteur/integrer-fichiers.py:260-290",
+        "moteur/integrer-fichiers.py:328-365",
+        "moteur/integrer-fichiers.py:395-407"
+      ],
+      "cas_recette": [
+        "copie_renommee_meme_ordre",
+        "fichier_corrige_meme_ordre_refuse",
+        "fichier_reordonne_redouble"
+      ],
+      "reproduction": "A=3/B=4 importés, même fichier inversé B/A : deux nouveaux faits ; A totalise 6 au lieu de 3. Une correction A=5 à la même ligne est, elle, refusée avant écriture.",
+      "decision_agent": "Toute version corrigée, triée, filtrée, concaténée ou recouvrant une période reçue impose comparaison métier ligne par ligne avec archives/faits. Bloquer avant import si identités changées pour un fait déjà présent. Ne pas renommer/renuméroter pour lever un conflit ; pas de réécriture JSONL.",
+      "recommandation_future": "Identité source stable indépendante de la position, avec traitement explicite des versions/corrections et conservation des vrais doublons de lignes distinctes."
+    },
+    {
+      "id": "F04",
+      "gravite": "haute",
+      "titre": "Doublon physique BL + facture et chemins manuels non rapprochés",
+      "preuves": [
+        "moteur/facture_directe.py:177-199",
+        "moteur/facture_directe.py:329-375",
+        "moteur/enregistrer-livraison-directe.py:120-150"
+      ],
+      "cas_recette": [
+        "double_facture_autre_bordereau",
+        "double_facture_autre_fournisseur",
+        "double_manuel_et_facture"
+      ],
+      "reproduction": "La même ligne physique devient nouvelle avec un autre numéro de bordereau/facture, identité fournisseur POMONA vs TERREAZUR, ou si l'ancienne entrée vient du CLI manuel.",
+      "decision_agent": "Chercher tous canaux et variantes fournisseurs attestées en lecture, relier BL/facture/avoir à la même réception réelle et lignes. Un document financier ultérieur ne crée pas une seconde entrée. Plusieurs livraisons authentiques même jour restent distinctes avec preuve, jamais --forcer par commodité.",
+      "recommandation_future": "Référence métier de réception distincte des pièces justificatives et alias fournisseurs attestés ; ne pas migrer l'historique sans mandat."
+    },
+    {
+      "id": "F05",
+      "gravite": "haute",
+      "titre": "UF facture non contrôlée contre unité stock ; libellé et arithmétique ne suffisent pas",
+      "preuves": [
+        "moteur/facture_directe.py:110-149",
+        "moteur/facture_directe.py:340-363",
+        "moteur/calculer-position.py:175-181",
+        "moteur/catalogue.py:83-84"
+      ],
+      "cas_recette": [
+        "facture_unite_source_non_controlee"
+      ],
+      "reproduction": "Fixture : quantite_uf=12, unite_uf=kg, article catalogue en pièce ; validation accepte, oublie unite_uf de la ligne et prépare 12 Pièce. Aucun calcul de conversion dimensionalisé n'est fait.",
+      "decision_agent": "Bloquer stock si UF kg/pièce/SAC/filet et unité de suivi ne sont pas réconciliées par source attestée. Lire l'unité imprimée, poids net/brut, quantité facturée et colis séparément ; ne jamais multiplier une UF déjà totale ni convertir des sacs en pièces d'après libellé. La préparation A/C/F conserve les UF facturées sans autoriser stock."
+    },
+    {
+      "id": "F06",
+      "gravite": "haute",
+      "titre": "Colis livré différent du colis commandable : séparation mécanique, validation humaine indispensable",
+      "preuves": [
+        "moteur/integrer-fichiers.py:249-290",
+        "moteur/facture_directe.py:354-359",
+        "moteur/conditionnements.py:21-80",
+        "moteur/serveur.py:271-280"
+      ],
+      "cas_recette": [
+        "colis_livraison_12_colis_usuel_6",
+        "kg_cond_base_1_accepte_sans_verifier_pcb"
+      ],
+      "reproduction": "1×12 reçu donne 12 unités, soit 2 colis de référence de 6, sans modifier le colis habituel. Mais 2 colis × Cond. de base 1 kg donne 2 kg sans alerte même si le vrai poids d'un carton n'est pas prouvé.",
+      "decision_agent": "Imposer tableau quantité physique reçue / contenu du colis livré / UF / quantité stock / colis habituel / preuve par ligne. Ne pas changer le PCB usuel pour faire coller une livraison ; ne pas utiliser le PCB Webtelevente comme preuve d'une réception directe différente. Une simple base 1 n'est pas une preuve de colis de 1 kg."
+    },
+    {
+      "id": "F07",
+      "gravite": "haute",
+      "titre": "Fichier partiel ou ambigu peut être partiellement importé puis couvrir tout le jour",
+      "preuves": [
+        "moteur/integrer-fichiers.py:328-352",
+        "moteur/integrer-fichiers.py:378-391",
+        "moteur/integrer-fichiers.py:457-489",
+        "moteur/integrer-fichiers.py:522-522",
+        "moteur/agregats.py:91-98",
+        "moteur/generer-proposition.py:350-379"
+      ],
+      "cas_recette": [
+        "lot_partiel_inconnu_et_code_malforme",
+        "une_vente_suffit_a_marquer_jour_global",
+        "vente_partielle_couvre_tous_articles"
+      ],
+      "reproduction": "Une ligne numérique inconnue est conservée, un code ABC sauté sans alerte dédiée, NaN exclu. Une seule vente de A marque J présent ; le générateur couvre aussi B jusqu'à J, sans preuve que sa ligne n'a pas été rejetée/omise.",
+      "decision_agent": "Comparer feuille/période/nb lignes/totaux source, lignes acceptées/refusées/ignorées et faits attendus AVANT réel. Bloquer tout fragment non justifié. Absence de vente d'un article ne vaut zéro que si exhaustivité du fichier prouvée. Ne pas annoncer stock vérifié sur seule couverture verte.",
+      "recommandation_future": "Séparer jour présent et journée complète attestée par lot contrôlé ; conserver un état de complétude par document sans inventer de ventes nulles."
+    },
+    {
+      "id": "F08",
+      "gravite": "moyenne",
+      "titre": "Dates de réception et signes de mouvement reposent encore sur conventions ou défauts",
+      "preuves": [
+        "moteur/integrer-fichiers.py:82-88",
+        "moteur/integrer-fichiers.py:158-160",
+        "moteur/integrer-fichiers.py:234-247",
+        "moteur/integrer-fichiers.py:264-289",
+        "moteur/facture_directe.py:90-95",
+        "moteur/enregistrer-livraison-directe.py:82-100"
+      ],
+      "cas_recette": [
+        "date_samedi_lundi",
+        "livraison_negative_acceptee"
+      ],
+      "decision_agent": "Vérifier date document, commande, réception réelle, effet, période et arrivée séparément. Le magasin décale au lendemain hors dimanche, sans calendrier des retards/fermetures de réception ; facture/manuelle utilisent la date fournie. Bloquer date future de stock, date illisible ou historique non autorisé. Colis négatifs magasin acceptés : avoir/retour/annulation ≠ livraison reçue et requiert justification. Ne pas appliquer un correctif de signe par hypothèse."
+    },
+    {
+      "id": "F09",
+      "gravite": "moyenne",
+      "titre": "Comptage hors ligne d'hier refusé ; absence de PCB client reste acceptée",
+      "preuves": [
+        "moteur/serveur.py:245-280",
+        "moteur/serveur.py:284-308",
+        "app/compter.html:380-389",
+        "app/commander.html:598-605"
+      ],
+      "cas_recette": [
+        "comptage_pcb_different_refuse",
+        "comptage_pcb_client_absent_accepte",
+        "comptage_hors_ligne_veille_refuse"
+      ],
+      "decision_agent": "Conserver la mesure locale et son instant. Ne pas redater aujourd'hui un envoi d'hier et ne pas compléter après coup un PCB manquant par celui d'aujourd'hui. Le téléphone courant transmet son PCB, mais un ancien payload qui l'omet est accepté par compatibilité. Contrôler les relevés en attente avant changement d'emballage."
+    },
+    {
+      "id": "F10",
+      "gravite": "haute",
+      "titre": "Simulation du pipeline courrier ne simule pas réellement la conversion/import",
+      "preuves": [
+        "moteur/traiter-courrier.py:27-29",
+        "moteur/traiter-courrier.py:76-93",
+        "moteur/courrier_pipeline.py:43-60",
+        "moteur/integrer-fichiers.py:458-487"
+      ],
+      "cas_recette": [],
+      "decision_agent": "Ne jamais utiliser le statut simulation de traiter-courrier comme avis de validité des lignes : il liste les commandes sans les exécuter. Exiger simulation du fichier précis par integrer-fichiers, puis lecture humaine du résultat et recoupement avant import autorisé.",
+      "limite_supplementaire": "Le pipeline réel passe les dossiers parents à l'importeur, pas seulement les fichiers du lot. Il peut reprendre d'autres exports déjà présents dans le dossier ; inspecter la portée ou choisir reprise ciblée. Le code 0 de l'importeur subsiste malgré ses alertes."
+    },
+    {
+      "id": "F11",
+      "gravite": "moyenne",
+      "titre": "Append export fragilisé par fin de carnet sans saut de ligne et absence de verrou partagé",
+      "preuves": [
+        "moteur/integrer-fichiers.py:395-417",
+        "moteur/facture_directe.py:35-59",
+        "moteur/facture_directe.py:378-390",
+        "moteur/serveur.py:407-407",
+        "moteur/serveur.py:750-787",
+        "moteur/enregistrer-livraison-directe.py:120-150"
+      ],
+      "cas_recette": [
+        "append_export_sans_separateur"
+      ],
+      "reproduction": "Un JSON final valide sans newline est lu, puis l'append magasin colle le prochain JSON sur la même ligne ; le carnet fixture devient illisible. Le chemin facture gère ce séparateur et fsync, contrairement au chemin magasin.",
+      "decision_agent": "Avant import, valider chaque JSONL et le séparateur final en lecture ; bloquer si tronqué ou séparateur manquant, sans réparer l'historique dans ce mandat. Orchestrer un seul écrivain métier à la fois ; le verrou facture, verrou thread serveur et import magasin ne constituent pas un verrou commun interprocessus.",
+      "non_teste": "Concurrence réelle entre processus et panne électrique non provoquées."
+    },
+    {
+      "id": "F12",
+      "gravite": "moyenne",
+      "titre": "Alertes mécaniques ne certifient ni réception ni livraison complète ni approbation métier",
+      "preuves": [
+        "moteur/integrer-fichiers.py:168-191",
+        "moteur/integrer-fichiers.py:489-492",
+        "moteur/note-du-matin.py:66-85",
+        "moteur/note-du-matin.py:117-143",
+        "moteur/filet-de-securite.py:115-156",
+        "moteur/proposer-commande.py:170-185"
+      ],
+      "cas_recette": [
+        "fraicheur_comptage_recent_stats_anciennes",
+        "fraicheur_trou_anterieur_stats_recentes"
+      ],
+      "decision_agent": "Lire les preuves plutôt que recopier une alerte. L'alerte import vérifie types par nom de fichier du lot, pas l'historique intégré ; la note mesure les retards relativement aux statistiques et peut dire n'arrive plus sans examiner la boîte. La fraîcheur teste surtout sorties. Vérifier livraisons séparément. Casse/dons absents peuvent être normaux. Comparer seuil -10 avec même PCB : la note utilise base Mercalys/décision et pas le sélecteur d'offres, contrairement à la proposition.",
+      "limite_seuil": "Le calcul autorise l'exception de mesure récente malgré position <= -10 ; ne pas transformer automatiquement cette différence en correction de faits ni promettre uniformité de tous les écrans. Aucun navigateur de production testé ici."
+    },
+    {
+      "id": "F13",
+      "gravite": "haute",
+      "titre": "Autorisations déclaratives non imposées par tous les importeurs",
+      "preuves": [
+        "moteur/importer-facture-directe.py:24-54",
+        "moteur/integrer-fichiers.py:427-465",
+        "moteur/integrer-fichiers.py:508-518",
+        "moteur/enregistrer-livraison-directe.py:70-88",
+        "agents/agent-donnees.md:49-54",
+        "donnees/pouvoirs.json:77-81"
+      ],
+      "cas_recette": [],
+      "decision_agent": "Contrôle d'autorisation par Hermes puis agent-donnees avant chaque écriture ; facture stock uniquement après validation explicite des lignes et référence du message. --agent n'authentifie pas et ne suffit pas à contrôler plafond. Agent-controle ne lance aucun CLI d'écriture production. Les exports ordinaires ne demandent pas une permission nouvelle quand déjà autorisés, mais une anomalie ou réparation historique change le périmètre."
+    },
+    {
+      "id": "F14",
+      "gravite": "moyenne",
+      "titre": "Le moteur ne propose pas de correction générale de mouvements en remplacement append-only",
+      "preuves": [
+        "moteur/calculer-position.py:137-165",
+        "moteur/calculer-position.py:177-181",
+        "moteur/calculer-commande.py:85-110",
+        "moteur/faits.py:29-42"
+      ],
+      "cas_recette": [],
+      "decision_agent": "Un fichier corrigé n'autorise ni un nouvel ID arbitraire ni un type correction-livraison improvisé : le moteur traite les types hors comptage/correction-comptage comme mouvements, et toute catégorie non livraison est soustraite si elle arrive au calcul. Demander une procédure technique spécifique et validation métier pour de futures corrections ; ici conserver anciens faits et attendre le nouveau comptage."
+    }
+  ],
+  "scenarios_a_imposer_aux_agents": [
+    {
+      "id": "S01",
+      "situation": "Livraison ancienne arrivée après un recomptage plus récent",
+      "porteur": "agent-donnees",
+      "controle": "Date réception réelle, mesure article, mouvement déjà contenu ; calcul avant/après position attendu nul si réception avant mesure. Statistiques/dernière livraison peuvent néanmoins changer.",
+      "arbitrage": "Dans le mandat courant : aucun réimport historique ; consigner seulement. Pour futur mandat autorisé, pas de blocage pour seul retard si chronologie/identité/unités prouvées.",
+      "constats": [
+        "F01",
+        "F02",
+        "F04"
+      ]
+    },
+    {
+      "id": "S02",
+      "situation": "Livraison effectivement après dernier comptage, reçue par mail tardivement",
+      "porteur": "agent-donnees",
+      "controle": "Ajouter une fois la quantité en unité stock à sa date d'effet réelle ; ventes/casse/don postérieurs soustraits une fois.",
+      "arbitrage": "Bloquer si réception supposée, doublon physique ou unité inconnue.",
+      "constats": [
+        "F04",
+        "F05",
+        "F08"
+      ]
+    },
+    {
+      "id": "S03",
+      "situation": "Comptage intercalaire entre plusieurs journées d'un export détaillé",
+      "porteur": "agent-controle",
+      "controle": "Partition par article et date d'effet : avant mesure neutralisé pour position, après mesure rejoué ; ventes historiques restent statistiques.",
+      "arbitrage": "Pas de ventilation de cumul multijour sans dates individuelles.",
+      "constats": [
+        "F02",
+        "F07"
+      ]
+    },
+    {
+      "id": "S04",
+      "situation": "Comptage matinal après rangement et avant toutes sorties",
+      "porteur": "agent-controle",
+      "controle": "Livraison de J incluse, sorties J retirées à réception des fichiers ; exiger confirmation de la phase réelle.",
+      "arbitrage": "Bloquer dès qu'une livraison de J n'est pas encore dedans ou ventes déjà commencées.",
+      "constats": [
+        "F02"
+      ]
+    },
+    {
+      "id": "S05",
+      "situation": "Comptage du soir après clôture",
+      "porteur": "agent-controle",
+      "controle": "Ne réappliquer aucun mouvement de J ; vérifier si c'est un premier événement de mesure ou une correction API d'un matin.",
+      "arbitrage": "La seule heure 19h dans correction ne prouve pas rejeu en soir.",
+      "constats": [
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "id": "S06",
+      "situation": "Deux nouveaux relevés physiques le même jour, dont matin puis soir",
+      "porteur": "agent-controle",
+      "controle": "Recette API → journal → position, comparaison dernier instant réel ; vérifier baisse/hausse et valeur identique.",
+      "arbitrage": "Défaut confirmé : ne pas certifier ni compenser par ancien mouvement.",
+      "constats": [
+        "F01"
+      ]
+    },
+    {
+      "id": "S07",
+      "situation": "Mesure entre ventes, seconde livraison de la journée, heure absente ou timezone ambiguë",
+      "porteur": "agent-courrier",
+      "controle": "Obtenir chronologie explicite et quels mouvements sont dans la mesure ; ne pas se contenter du seuil 14h.",
+      "arbitrage": "Bloquer import stock si découpage horaire nécessaire mais absent ; pas de datation de complaisance.",
+      "constats": [
+        "F02",
+        "F08"
+      ]
+    },
+    {
+      "id": "S08",
+      "situation": "Erreur de saisie corrigée plus tard, distincte d'un nouveau relevé",
+      "porteur": "agent-rayon",
+      "controle": "Cible stable, instant de mesure original, quantité prouvée, mesure plus récente protégée.",
+      "arbitrage": "Validation explicite, append-only et mandat précis ; aucune correction ici.",
+      "constats": [
+        "F01",
+        "F14"
+      ]
+    },
+    {
+      "id": "S09",
+      "situation": "Relevé hors ligne reçu après minuit ou après changement de PCB",
+      "porteur": "agent-donnees",
+      "controle": "Date/heure de saisie et PCB du téléphone conservés ; refus API du jour ancien ou PCB différent restitué.",
+      "arbitrage": "Ne pas redater ni reconvertir silencieusement ; responsable tranche/recompte.",
+      "constats": [
+        "F09"
+      ]
+    },
+    {
+      "id": "S10",
+      "situation": "Colis fournisseur 12 pièces, référence habituelle 6",
+      "porteur": "agent-articles",
+      "controle": "12 unités stock, équivalent 2 colis usuels ; facture éventuelle conserve quantité UF. Provenance de chaque PCB distincte.",
+      "arbitrage": "Exemple privé seulement ; aucun changement réel demandé.",
+      "constats": [
+        "F06"
+      ]
+    },
+    {
+      "id": "S11",
+      "situation": "Cartons/kg, filet de poids nominal, SAC facturé à l'unité",
+      "porteur": "agent-articles",
+      "controle": "Séparer colis reçu, kg nets, sachets, unité vente, UF et unité stock. Exiger source de conversion, contrôler absence de double multiplication.",
+      "arbitrage": "Bloquer stock si dimension incertaine ; préparer A/C/F fidèles séparément si autorisé.",
+      "constats": [
+        "F05",
+        "F06"
+      ]
+    },
+    {
+      "id": "S12",
+      "situation": "Décision de colisage sans offre appariée, plusieurs PCB ou repli technique 1",
+      "porteur": "agent-articles",
+      "controle": "Prix et PCB de même offre ; exception caissette limitée aux paires attestées ; retrouver document primaire.",
+      "arbitrage": "Avertissement moteur = contrôle requis, pas quantité validée ; ne pas réparer anciens comptages.",
+      "constats": [
+        "F06",
+        "F12"
+      ]
+    },
+    {
+      "id": "S13",
+      "situation": "Même pièce jointe transmise deux fois ou copie renommée",
+      "porteur": "agent-courrier",
+      "controle": "SHA original/copie archivée puis IDs/signatures des faits ; état import, calcul et marge séparés.",
+      "arbitrage": "Doublon de réception ne vaut pas travail achevé ; pas de suppression index.",
+      "constats": [
+        "F03",
+        "F10"
+      ]
+    },
+    {
+      "id": "S14",
+      "situation": "Export corrigé à la même ligne",
+      "porteur": "agent-donnees",
+      "controle": "Conflit signature attendu, lot inchangé ; comparer prix/libellé/quantité/date aussi.",
+      "arbitrage": "Stop ; ne jamais attribuer de nouvel ID pour contourner.",
+      "constats": [
+        "F03",
+        "F14"
+      ]
+    },
+    {
+      "id": "S15",
+      "situation": "Export trié, filtré, scindé, lignes intercalées ou périodes recouvrantes",
+      "porteur": "agent-controle",
+      "controle": "Rapprochement métier indépendant du numéro de ligne ; distinguer vraies lignes répétées et duplications documentaires.",
+      "arbitrage": "Bloquer si une même réalité produit de nouveaux IDs sans preuve de nouveau mouvement.",
+      "constats": [
+        "F03"
+      ]
+    },
+    {
+      "id": "S16",
+      "situation": "BL puis facture, Pomona/TerreAzur, saisie manuelle puis facture",
+      "porteur": "agent-courrier",
+      "controle": "Relation entre documents, réception physique unique, tous canaux et références fournisseurs attestées.",
+      "arbitrage": "Ne créer aucune seconde entrée pour même livraison ; classeur distinct du stock.",
+      "constats": [
+        "F04"
+      ]
+    },
+    {
+      "id": "S17",
+      "situation": "Deux vraies livraisons même jour ou plusieurs lignes du même article",
+      "porteur": "agent-controle",
+      "controle": "Documents/réceptions et quantités réellement distincts, horaires vs comptage, absence de recouvrement.",
+      "arbitrage": "Ni fusion par ressemblance ni --forcer aveugle ; seconde entrée après mesure même jour non assurée.",
+      "constats": [
+        "F02",
+        "F04"
+      ]
+    },
+    {
+      "id": "S18",
+      "situation": "Pages manquantes, code inconnu, code malformé, unité manquante, NaN, montant discordant",
+      "porteur": "agent-courrier",
+      "controle": "Lire toutes pages/feuilles et totaliser lignes reçues, retenues, rejetées/ignorées ; code exact et unité vérifiés, calcul Decimal ; total document distingué des frais/TVA.",
+      "arbitrage": "Bloquer les lignes/lot ambigus avant réel, même si moteur accepte partiellement ; jamais inventer mapping ou prix de vente.",
+      "constats": [
+        "F05",
+        "F07"
+      ]
+    },
+    {
+      "id": "S19",
+      "situation": "Export généré le jour même, période multijour cumulée ou feuille active incorrecte",
+      "porteur": "agent-courrier",
+      "controle": "Métadonnées internes, période et clôture ; importeur lit première feuille XLS ou feuille active XLSX, pas toutes.",
+      "arbitrage": "Bloquer période sans dates individuelles, journée non close et omissions de feuilles ; pas de date déduite du seul mail.",
+      "constats": [
+        "F07",
+        "F08"
+      ]
+    },
+    {
+      "id": "S20",
+      "situation": "Recomptage frais, anciennes statistiques et journées manquantes",
+      "porteur": "agent-controle",
+      "controle": "Dates position/statistiques/couverture séparées, articles réellement mesurés, suites de journées complètes ; un comptage ne rajeunit pas le voisin.",
+      "arbitrage": "Ne pas rebloquer stock pour seule vieillesse statistique ; ne pas masquer une vraie journée manquante.",
+      "constats": [
+        "F07",
+        "F12"
+      ]
+    },
+    {
+      "id": "S21",
+      "situation": "Casse/dons absents, absence de livraison réelle ou attente justifiée",
+      "porteur": "agent-donnees",
+      "controle": "Distinguer aucune activité, fichier reçu mais non intégré, fichier réellement absent, livraison non attendue.",
+      "arbitrage": "Casse/dons facultatifs ; réclamer seulement fichier effectivement nécessaire après recherche limitée autorisée des sources.",
+      "constats": [
+        "F12"
+      ]
+    },
+    {
+      "id": "S22",
+      "situation": "Avoir, retour, annulation, quantité négative ou correction de mouvement",
+      "porteur": "agent-controle",
+      "controle": "Nature physique vs financière, signe et éventuel événement original ; effet position et statistiques séparé.",
+      "arbitrage": "Aucune livraison négative ou nouveau type inventé pour compenser un écart.",
+      "constats": [
+        "F08",
+        "F14"
+      ]
+    },
+    {
+      "id": "S23",
+      "situation": "Stock écrit, Excel échoué, import interrompu ou carnet sans newline",
+      "porteur": "agent-donnees",
+      "controle": "Photographie indépendante des faits/empreintes, feuille A/C/F et index ; JSONL valide complet ; capacité exacte du mécanisme de reprise.",
+      "arbitrage": "Ne pas relancer en aveugle ; exact rejeu seulement sous autorisation et absence conflit. Tronqué/séparateur manquant => arrêt manuel sans édition historique ici.",
+      "constats": [
+        "F10",
+        "F11"
+      ]
+    },
+    {
+      "id": "S24",
+      "situation": "Deux agents/serveur en écriture simultanée",
+      "porteur": "hermes",
+      "controle": "Un seul propriétaire de l'import, état des autres écrivains, périmètre et empreintes avant/après ; ne pas supposer verrou commun.",
+      "arbitrage": "Reporter import si concurrence non maîtrisée ; aucun restart requis par cet audit.",
+      "constats": [
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "S25",
+      "situation": "Simulation verte/code 0/alerte verte sans avis contradictoire",
+      "porteur": "hermes",
+      "controle": "Avis courrier + données + contrôle avec preuves ; simulation de l'importeur réel, nb faits/IDs exacts, sorties relues, portée des droits.",
+      "arbitrage": "Ne jamais qualifier l'application à jour ou le stock validé sur ce seul indicateur ; publier erreur seulement dans un mandat autorisé par son auteur réel.",
+      "constats": [
+        "F07",
+        "F10",
+        "F12",
+        "F13"
+      ]
+    }
+  ],
+  "contrat_de_handoff_recommande": {
+    "agent_courrier": [
+      "source mail réelle ou référence chat sans faux Message-ID",
+      "chemins, SHA, pages/feuilles et version",
+      "fournisseur/document/BL/facture liés",
+      "dates document, commande, réception, génération et périodes",
+      "lignes source avec unités/colis/quantités/preuves ; anomalie ou ambiguïté déclarée"
+    ],
+    "agent_articles": [
+      "correspondance exacte article source/article existant",
+      "UF/stock et colis livré/colis habituel prouvés séparément",
+      "avis unité certaine ou bloquée ; aucune modification de mapping"
+    ],
+    "agent_donnees_avant": [
+      "périmètre autorisé et plafond contrôlés selon procédure existante",
+      "IDs/signatures avant, déduplication physique interdocuments",
+      "dernier comptage par article et inclusion avant/après/même jour",
+      "simulation du fichier précis avec lignes rejetées/ignorées",
+      "delta position prévu par article, hors historique gelé"
+    ],
+    "agent_controle": [
+      "avis sûr/douteux/dangereux par ligne/scénario avec fichier:ligne",
+      "raison exacte des refus",
+      "limites du moteur opposées à la conclusion de l'exécutant",
+      "indépendance correction vs nouvelle mesure et preuve unités"
+    ],
+    "hermes": [
+      "arbitrage des avis, demande responsable si réalité non prouvée",
+      "facture stock : validation explicite ligne par ligne séparée de classeur A/C/F",
+      "pas de rôle responsable-rayon emprunté ni dérogation inventée"
+    ],
+    "agent_donnees_apres_si_import_autorise_ulterieurement": [
+      "faits exacts relus (IDs/nombres/quantités/unités/dates) et préfixe historique inchangé",
+      "état/proposition/couverture/statistiques comparés au delta attendu",
+      "classeur A/C/F relu séparément et B/D/E inchangés/vides pour nouvelles lignes",
+      "refus et étapes partielles restitués, pas d'annonce exhaustive"
+    ],
+    "nature": "Contrat humain/agents de contrôle recommandé au parent ; aucun gate global ou mécanisme de surveillance installé par cet audit."
+  },
+  "verification": {
+    "recette": "C:/Users/user/AppData/Local/Temp/controle-pousse-recette-privee.py",
+    "resultats": "C:/Users/user/AppData/Local/Temp/controle-pousse-recette-resultats.json",
+    "commande_reelle": "py -3.14 -B C:/Users/user/AppData/Local/Temp/controle-pousse-recette-privee.py",
+    "gate_global_execute": false,
+    "methode": "Copie exacte des .py moteur dans racine temporaire ; garde audit interdisant toute écriture production, subprocess et réseau ; imports privés et fonctions réelles ; classeurs d'exports fictifs réellement lus par openpyxl, carnets temporaires réellement écrits et relus, API comptages appelée sans serveur ni réseau ; générateur de couverture réel avec sources/calendrier/météo de fixture explicitement injectés.",
+    "interpretation": "Les cas reproduits sont des assertions du comportement actuel, y compris des défauts volontairement exposés. Ils ne valent pas recette générale de conformité métier. Les tests du dépôt sont lus pour leurs limites, pas lancés en suite.",
+    "execution_reelle": {
+      "racine_privee": "C:\\Users\\user\\AppData\\Local\\Temp\\controle-pousse-prive-8sryvaxy",
+      "recette": "C:\\Users\\user\\AppData\\Local\\Temp\\controle-pousse-recette-privee.py",
+      "interpreteur": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+      "mesure_le": "2026-09-10T19:28:13.708833+02:00",
+      "nombre_cas": 37,
+      "cas_reproduits": 37,
+      "cas": [
+        {
+          "id": "retard_dates_effet",
+          "obtenu": 29,
+          "attendu_comportement_courant": 29,
+          "reproduit": true,
+          "interpretation": "Entrée antérieure neutralisée, entrée postérieure ajoutée, vente postérieure retirée malgré ordre tardif du carnet."
+        },
+        {
+          "id": "statistiques_non_effacees_par_comptage",
+          "obtenu": 3.0,
+          "attendu_comportement_courant": 3,
+          "reproduit": true,
+          "interpretation": "Les statistiques relisent les ventes indépendamment des comptages."
+        },
+        {
+          "id": "meme_jour_08",
+          "obtenu": 14,
+          "attendu_comportement_courant": 14,
+          "reproduit": true,
+          "interpretation": "Règle binaire avant/après 14 h, pas chronologie des mouvements intrajournaliers."
+        },
+        {
+          "id": "meme_jour_19",
+          "obtenu": 20,
+          "attendu_comportement_courant": 20,
+          "reproduit": true,
+          "interpretation": "Règle binaire avant/après 14 h, pas chronologie des mouvements intrajournaliers."
+        },
+        {
+          "id": "meme_jour_13",
+          "obtenu": 14,
+          "attendu_comportement_courant": 14,
+          "reproduit": true,
+          "interpretation": "Règle binaire avant/après 14 h, pas chronologie des mouvements intrajournaliers."
+        },
+        {
+          "id": "meme_jour_14",
+          "obtenu": 20,
+          "attendu_comportement_courant": 20,
+          "reproduit": true,
+          "interpretation": "Règle binaire avant/après 14 h, pas chronologie des mouvements intrajournaliers."
+        },
+        {
+          "id": "heure_absente_soir",
+          "obtenu": 20,
+          "attendu_comportement_courant": 20,
+          "reproduit": true,
+          "interpretation": "Sans heure, le moteur suppose soir sans refus."
+        },
+        {
+          "id": "livraison_apres_mesure_meme_jour_ignoree",
+          "obtenu": 20,
+          "attendu_comportement_courant": 20,
+          "reproduit": true,
+          "interpretation": "Même avec horodatage de livraison postérieur, même jour = entrée ignorée ; 32 serait attendu pour une entrée réellement après mesure."
+        },
+        {
+          "id": "sans_mesure_pas_zero",
+          "obtenu": null,
+          "attendu_comportement_courant": null,
+          "reproduit": true,
+          "interpretation": "Une livraison seule ne crée pas de position mesurée."
+        },
+        {
+          "id": "api_recomptage_soir_garde_matin",
+          "obtenu": {
+            "position": 17.0,
+            "moment": "matin",
+            "corrections": 1,
+            "ancien_ignore": 1
+          },
+          "attendu_comportement_courant": {
+            "position": 17,
+            "moment": "matin",
+            "corrections": 1,
+            "ancien_ignore": 1
+          },
+          "reproduit": true,
+          "interpretation": "Défaut de raccord : API ajoute une correction à 19h ; rejeu conserve 08h et soustrait encore 3 déjà contenus dans le recomptage physique de 20."
+        },
+        {
+          "id": "comptage_pcb_different_refuse",
+          "obtenu": true,
+          "attendu_comportement_courant": true,
+          "reproduit": true,
+          "interpretation": "Un PCB client transmis différent bloque, aucune reconversion silencieuse."
+        },
+        {
+          "id": "comptage_pcb_client_absent_accepte",
+          "obtenu": 2.0,
+          "attendu_comportement_courant": 2,
+          "reproduit": true,
+          "interpretation": "Compatibilité : absence du PCB client acceptée, multiplicateur actuel employé."
+        },
+        {
+          "id": "comptage_hors_ligne_veille_refuse",
+          "obtenu": true,
+          "attendu_comportement_courant": true,
+          "reproduit": true,
+          "interpretation": "API limite aux relevés datés du jour courant : ne pas redater une mesure ancienne."
+        },
+        {
+          "id": "premier_import_prive",
+          "obtenu": 2,
+          "attendu_comportement_courant": 2,
+          "reproduit": true,
+          "interpretation": "Écriture réelle limitée au carnet temporaire."
+        },
+        {
+          "id": "copie_renommee_meme_ordre",
+          "obtenu": [
+            0,
+            2
+          ],
+          "attendu_comportement_courant": [
+            0,
+            2
+          ],
+          "reproduit": true,
+          "interpretation": "Nom de provenance ignoré dans signature ; IDs inchangés = rejeu idempotent."
+        },
+        {
+          "id": "fichier_corrige_meme_ordre_refuse",
+          "obtenu": [
+            true,
+            true
+          ],
+          "attendu_comportement_courant": [
+            true,
+            true
+          ],
+          "reproduit": true,
+          "interpretation": "Même ID avec quantité différente refuse tout le lot avant écriture."
+        },
+        {
+          "id": "fichier_reordonne_redouble",
+          "obtenu": [
+            2,
+            0,
+            6.0
+          ],
+          "attendu_comportement_courant": [
+            2,
+            0,
+            6
+          ],
+          "reproduit": true,
+          "interpretation": "Identité inclut index physique n : deux ventes déjà connues deviennent nouvelles si ordre change."
+        },
+        {
+          "id": "colis_livraison_12_colis_usuel_6",
+          "obtenu": [
+            12.0,
+            12.0,
+            2.0
+          ],
+          "attendu_comportement_courant": [
+            12,
+            12,
+            2
+          ],
+          "reproduit": true,
+          "interpretation": "Illustration fictive uniquement : multiplicateur reçu 12 distinct du diviseur usuel 6, aucune mutation de catalogue."
+        },
+        {
+          "id": "kg_cond_base_1_accepte_sans_verifier_pcb",
+          "obtenu": [
+            2.0,
+            "kg",
+            0
+          ],
+          "attendu_comportement_courant": [
+            2,
+            "kg",
+            0
+          ],
+          "reproduit": true,
+          "interpretation": "Aucune comparaison au PCB commandable ; 2 colis avec base 1 kg deviennent 2 kg même si colis physique non prouvé."
+        },
+        {
+          "id": "livraison_negative_acceptee",
+          "obtenu": [
+            -12.0,
+            0
+          ],
+          "attendu_comportement_courant": [
+            -12,
+            0
+          ],
+          "reproduit": true,
+          "interpretation": "Le convertisseur accepte le signe négatif de colis : doit être interprété/autorisé comme retour, jamais supposé."
+        },
+        {
+          "id": "lot_partiel_inconnu_et_code_malforme",
+          "obtenu": {
+            "retenus": 1,
+            "alertes": [
+              "quantite-illisible",
+              "article-inconnu"
+            ]
+          },
+          "attendu_comportement_courant": {
+            "retenus": 1,
+            "alertes": [
+              "quantite-illisible",
+              "article-inconnu"
+            ]
+          },
+          "reproduit": true,
+          "interpretation": "Code numérique inconnu conservé, code non numérique ignoré silencieusement, NaN rejeté : contrôle du fichier complet par agent obligatoire."
+        },
+        {
+          "id": "periode_multi_sans_date_refusee",
+          "obtenu": [
+            0,
+            "periode-non-detaillee"
+          ],
+          "attendu_comportement_courant": [
+            0,
+            "periode-non-detaillee"
+          ],
+          "reproduit": true,
+          "interpretation": "Pas de ventilation inventée entre jours et comptages."
+        },
+        {
+          "id": "jour_generation_refuse",
+          "obtenu": [
+            0,
+            "journee-incomplete"
+          ],
+          "attendu_comportement_courant": [
+            0,
+            "journee-incomplete"
+          ],
+          "reproduit": true,
+          "interpretation": "La journée de génération du fichier n’est pas réputée close."
+        },
+        {
+          "id": "date_samedi_lundi",
+          "obtenu": "2026-09-07",
+          "attendu_comportement_courant": "2026-09-07",
+          "reproduit": true,
+          "interpretation": "Décalage livraison magasin : lendemain, dimanche sauté ; pas une date de réception lue/attestée."
+        },
+        {
+          "id": "append_export_sans_separateur",
+          "obtenu": true,
+          "attendu_comportement_courant": true,
+          "reproduit": true,
+          "interpretation": "Un dernier JSON valide sans saut de ligne est accepté en lecture puis collé au suivant par ecrire : carnet temporaire devenu illisible."
+        },
+        {
+          "id": "facture_unite_source_non_controlee",
+          "obtenu": {
+            "source_uf_conservee": false,
+            "qte": 12.0,
+            "unite_fait": "Pièce"
+          },
+          "attendu_comportement_courant": {
+            "source_uf_conservee": false,
+            "qte": 12.0,
+            "unite_fait": "Pièce"
+          },
+          "reproduit": true,
+          "interpretation": "UF source kg ignorée par validateur de ligne ; quantite UF conservée numériquement puis étiquetée unité catalogue sans conversion contrôlée."
+        },
+        {
+          "id": "facture_rejeu_identique",
+          "obtenu": 0,
+          "attendu_comportement_courant": 0,
+          "reproduit": true,
+          "interpretation": "Empreintes fournisseur/bordereau/date/lignes protègent le rejeu exact."
+        },
+        {
+          "id": "facture_corrigee_meme_identite_refusee",
+          "obtenu": true,
+          "attendu_comportement_courant": true,
+          "reproduit": true,
+          "interpretation": "Facture corrigée même identité refusée ; ne pas contourner en renommant le bordereau."
+        },
+        {
+          "id": "double_facture_autre_bordereau",
+          "obtenu": 1,
+          "attendu_comportement_courant": 1,
+          "reproduit": true,
+          "interpretation": "Même livraison physique peut apparaître nouvelle lorsque BL devient numéro facture ou fournisseur Pomona devient TerreAzur."
+        },
+        {
+          "id": "double_facture_autre_fournisseur",
+          "obtenu": 1,
+          "attendu_comportement_courant": 1,
+          "reproduit": true,
+          "interpretation": "Même livraison physique peut apparaître nouvelle lorsque BL devient numéro facture ou fournisseur Pomona devient TerreAzur."
+        },
+        {
+          "id": "double_manuel_et_facture",
+          "obtenu": 1,
+          "attendu_comportement_courant": 1,
+          "reproduit": true,
+          "interpretation": "Identité manuelle sans numéro de ligne distincte de facture : pas de dédoublonnage intercanaux."
+        },
+        {
+          "id": "archive_doublon_rejoue_outils",
+          "obtenu": {
+            "nouveaux": 0,
+            "doublons": 1,
+            "actions": [
+              "integrer",
+              "recalculer",
+              "note"
+            ]
+          },
+          "attendu_comportement_courant": {
+            "nouveaux": 0,
+            "doublons": 1,
+            "actions": [
+              "integrer",
+              "recalculer",
+              "note"
+            ]
+          },
+          "reproduit": true,
+          "interpretation": "Réception dédupliquée ne vaut pas preuve d’import terminé ; les actions idempotentes sont proposées au rejeu."
+        },
+        {
+          "id": "une_vente_suffit_a_marquer_jour_global",
+          "obtenu": [
+            "2026-09-09"
+          ],
+          "attendu_comportement_courant": [
+            "2026-09-09"
+          ],
+          "reproduit": true,
+          "interpretation": "Une seule vente d’un article suffit à dater tout le jour global ; aucune preuve de complétude du fichier."
+        },
+        {
+          "id": "vente_partielle_couvre_tous_articles",
+          "obtenu": {
+            "1111111111111": "2026-09-09",
+            "2222222222222": "2026-09-09"
+          },
+          "attendu_comportement_courant": {
+            "1111111111111": "2026-09-09",
+            "2222222222222": "2026-09-09"
+          },
+          "reproduit": true,
+          "interpretation": "Le B sans vente dans le fichier est couvert aussi ; légitime si zéro vente attesté, dangereux si export partiel/rejet de sa ligne."
+        },
+        {
+          "id": "couverture_ne_franchit_pas_trou",
+          "obtenu": "2026-09-07",
+          "attendu_comportement_courant": "2026-09-07",
+          "reproduit": true,
+          "interpretation": "Le 09 présent ne comble pas le 08 absent : couverture consécutive effective."
+        },
+        {
+          "id": "fraicheur_comptage_recent_stats_anciennes",
+          "obtenu": "a-jour",
+          "attendu_comportement_courant": "a-jour",
+          "reproduit": true,
+          "interpretation": "La fraîcheur stock vérifiée prime sur date de ventes statistiques ancienne."
+        },
+        {
+          "id": "fraicheur_trou_anterieur_stats_recentes",
+          "obtenu": "donnees-en-retard",
+          "attendu_comportement_courant": "donnees-en-retard",
+          "reproduit": true,
+          "interpretation": "Statistiques récentes ne masquent pas un trou de couverture antérieur."
+        }
+      ],
+      "erreurs": [],
+      "garde_refus": [],
+      "production": {
+        "fichiers_empreintes": 466,
+        "octets_empreintes": 171589174,
+        "manifest_avant": "C:\\Users\\user\\AppData\\Local\\Temp\\controle-pousse-prive-8sryvaxy\\manifest-production-avant.json",
+        "modifications_observees": [],
+        "preservee": true
+      },
+      "gate_global_execute": false,
+      "source_copiee": {
+        "agregats.py": "1dacbd88ec03f85f83d1e169c1b9b0674fe927d4f7a0a4d4f723e614978f6c16",
+        "ajuster-commande.py": "07ca1ca5b20063d1c0dcbfe52439effe0aad4ca6540a4ce022aa51fe6c84f45c",
+        "annuler.py": "c2beaac87e281772fc8e261dcaeea177c255313475cfe20b679b89043d8fefe3",
+        "appliquer-decision.py": "053f169ecaa36465cfde99addd2d40a8f7234e8982b606fabc2bd6f79150a612",
+        "articles-masques-vendus.py": "ed03ea157b9bdfe0f03de804c3bbf1c0e8dc0f6d5c886d7f54b2a40639e4d48a",
+        "cadencier-du-jour.py": "a509d1ee58fe972ec2375f2530985bd8d5a8b77b7ef96306159f96f05d9ae589",
+        "calculer-commande.py": "407947d6f3777fdfc21b24db46d4602c99a1d7684a912efb9d1a1e8c2575ce5b",
+        "calculer-position.py": "b4b142143d65468bbc3a0ec50cd244fa76461d748a985a983803be267b5571f5",
+        "calendrier.py": "7b7e0f92b4887b3154a06acdbd8f4ef64ca974e2c66f28ec29faf5019a020371",
+        "calibrer-jour-semaine.py": "95533ca2e30332e73751d0135b6ae19efcdfa5cd49b8787be259c74049dcb2a4",
+        "calibrer-meteo.py": "2c5c09e4b0cca374fd1e993bb58f7406e2a78c256423013726e3855b14cc0cbc",
+        "calibrer-vacances.py": "429e8f02387b1ff599b603e55fbeaf560c249219a57e93bf5fa7a18de74feefe",
+        "catalogue.py": "6085d5ecf942825ff6d7bc72e5c201bec202a61e27ba8bc6c8573f0a2c000b73",
+        "conditionnements.py": "af495ab209eb13bd6f0c93822092ec76a72fbd918ef8580480f305af4de2509c",
+        "corriger-conversion-comptage.py": "5cbf2c8253002c9c275b8bd219c48276ef189540b5ed3841cba09552276571f3",
+        "courrier_pipeline.py": "08939a640aa963ef0b66ba6c74b42e9996e31ac9be9ecd06b43ebca60d6e2cfe",
+        "dire.py": "2a0a6c212d216df998ccd3f2b301e32643a9c9f07cc81e2c6f67868b2b734bb6",
+        "ecriture_derivee.py": "8aebea46a523c5692acfb40f2b0c4f796b1c28b7971a3aae42173d99b6b2995c",
+        "enregistrer-livraison-directe.py": "0e085804448a1d2c5af11c563d006313379c4751fa0b230ad7481900178d80ca",
+        "envoyer-classeur-marge.py": "6319a620d1702dea73a877566cdd030305f727a077ca4725579ba5ab273cf66a",
+        "evaluer-prevision.py": "0f7cb996d13f31374dd439c2bd50cbc1a447fc33cd0011745f7bc805c3649898",
+        "facture_directe.py": "face9c6e90ff824d5b25bec2c8bbbe17add2597f9d9f14b28be623178b211b3d",
+        "faits.py": "f5b890acddf0003096556921b729217bf06a3567f8c5d80a42e2bfb73b32be1a",
+        "filet-de-securite.py": "31094846f9d95d434fd8db32bbf4e85202a37fb928a5401ac822dfc44917dc0d",
+        "generer-proposition.py": "3dfcba0c80e70c1af16c074d8c3053ce858f260ae23f8eba97c6fd84ee8653b0",
+        "gerer-serveur.py": "206d7e0f9865ad796c0f0e8e9367a79b92601fa2977ecf55c988f2660db6f511",
+        "importer-facture-directe.py": "3e055eb75e30ce91b38f8ee715f8eb227a59ff893dd706836ad498bae85ccf72",
+        "integrer-fichiers.py": "21f95472dd676c3c81b01e41ae9e7ad68a340b9a2b9be02a086ea588d518aa87",
+        "journal_agents.py": "b037e45a843b9d222a76740b0173660c85fc8e0f4aabec32cc1ada828bc2c44c",
+        "note-du-matin.py": "7621bfc069e67dc85a1fe259032f6e7af7393c02d62bfd5203bc99b0aa23b5f5",
+        "ouverture-jours-feries.py": "2f55ced918107fba5dae3d9846d071d09ddfc85c1099e1e61d3f2f7c4a4c99f7",
+        "preparer-apercus-promotion.py": "fe0004c04e6f56d6ea5d218924b2dd6df62640dc59cf0afcf2903df42032fd85",
+        "preparer-liste-comptage.py": "3f4124d5a8ed8e20f3d4ece585a9785a337778c48be4ced557cc68d41045fb7a",
+        "preparer-photos-produits.py": "735c9ddb992a0dcea20557498837dac70a05669a2ab4a589af709e4af2bc5ad3",
+        "promotions.py": "7c52c49d3c5732ae3188547dfb93f2c62fa7f303c120225edd4e073dc71b267f",
+        "proposer-commande.py": "dc683c18e888c811b12332831160274405ce067f4029e01a6c75818950132d23",
+        "regles.py": "18b7640facf5087ea013260cae6d4b682e105168aa9a1a85bb421aeddf673cc8",
+        "repondre-message-rayon.py": "8793e18913680534c1c5af4763c679873000071ec83b842e918c7640d9392fc8",
+        "serveur.py": "be5ec3a0f756f6243fa75c43f8a62d63015b91feffed6cd627a1253d258a8cf8",
+        "surveiller-serveur.py": "fc0388f7790070e8ad42a4637baea32152244006afe7505b73b229950ca2d957",
+        "tendances.py": "9baba31fa731b2a0af6f88b15005092e8a425fe7427d307310e5bcea1b912613",
+        "traiter-courrier.py": "fdab0a91241957f4755836f6a391321a1c42b9d242e9810c2757f5a30c2adefe",
+        "trouver-codes-jumeaux.py": "06c650583299b54de3f1a8d4c6de9b4251dc8867fce4cf93839cf4fbb428b876"
+      }
+    },
+    "references_verifiees": {
+      "nombre_references_uniques": 94,
+      "toutes_existantes_et_plages_valides": true,
+      "references": [
+        "agents/agent-donnees.md:49-54",
+        "app/commander.html:598-605",
+        "app/compter.html:380-389",
+        "donnees/pouvoirs.json:77-81",
+        "moteur/agregats.py:91-98",
+        "moteur/calculer-commande.py:78-110",
+        "moteur/calculer-commande.py:85-110",
+        "moteur/calculer-position.py:110-121",
+        "moteur/calculer-position.py:130-148",
+        "moteur/calculer-position.py:137-165",
+        "moteur/calculer-position.py:145-158",
+        "moteur/calculer-position.py:149-158",
+        "moteur/calculer-position.py:159-160",
+        "moteur/calculer-position.py:167-186",
+        "moteur/calculer-position.py:175-181",
+        "moteur/calculer-position.py:177-181",
+        "moteur/calculer-position.py:71-107",
+        "moteur/calculer-position.py:90-121",
+        "moteur/catalogue.py:83-84",
+        "moteur/conditionnements.py:21-80",
+        "moteur/conditionnements.py:90-107",
+        "moteur/courrier_pipeline.py:114-190",
+        "moteur/courrier_pipeline.py:24-40",
+        "moteur/courrier_pipeline.py:43-60",
+        "moteur/enregistrer-livraison-directe.py:120-150",
+        "moteur/enregistrer-livraison-directe.py:70-88",
+        "moteur/enregistrer-livraison-directe.py:82-100",
+        "moteur/facture_directe.py:110-149",
+        "moteur/facture_directe.py:177-199",
+        "moteur/facture_directe.py:202-270",
+        "moteur/facture_directe.py:273-295",
+        "moteur/facture_directe.py:311-375",
+        "moteur/facture_directe.py:329-375",
+        "moteur/facture_directe.py:340-363",
+        "moteur/facture_directe.py:35-59",
+        "moteur/facture_directe.py:354-359",
+        "moteur/facture_directe.py:378-390",
+        "moteur/facture_directe.py:400-450",
+        "moteur/facture_directe.py:75-149",
+        "moteur/facture_directe.py:90-95",
+        "moteur/faits.py:11-43",
+        "moteur/faits.py:29-42",
+        "moteur/filet-de-securite.py:115-154",
+        "moteur/filet-de-securite.py:115-156",
+        "moteur/filet-de-securite.py:212-237",
+        "moteur/generer-proposition.py:230-235",
+        "moteur/generer-proposition.py:303-309",
+        "moteur/generer-proposition.py:338-398",
+        "moteur/generer-proposition.py:350-379",
+        "moteur/importer-facture-directe.py:24-54",
+        "moteur/integrer-fichiers.py:158-160",
+        "moteur/integrer-fichiers.py:168-191",
+        "moteur/integrer-fichiers.py:234-247",
+        "moteur/integrer-fichiers.py:249-290",
+        "moteur/integrer-fichiers.py:260-290",
+        "moteur/integrer-fichiers.py:264-289",
+        "moteur/integrer-fichiers.py:271-276",
+        "moteur/integrer-fichiers.py:310-352",
+        "moteur/integrer-fichiers.py:328-352",
+        "moteur/integrer-fichiers.py:328-365",
+        "moteur/integrer-fichiers.py:378-391",
+        "moteur/integrer-fichiers.py:395-407",
+        "moteur/integrer-fichiers.py:395-417",
+        "moteur/integrer-fichiers.py:395-418",
+        "moteur/integrer-fichiers.py:427-465",
+        "moteur/integrer-fichiers.py:457-489",
+        "moteur/integrer-fichiers.py:458-487",
+        "moteur/integrer-fichiers.py:489-492",
+        "moteur/integrer-fichiers.py:508-518",
+        "moteur/integrer-fichiers.py:522-522",
+        "moteur/integrer-fichiers.py:64-65",
+        "moteur/integrer-fichiers.py:82-88",
+        "moteur/integrer-fichiers.py:91-130",
+        "moteur/note-du-matin.py:117-143",
+        "moteur/note-du-matin.py:30-35",
+        "moteur/note-du-matin.py:66-85",
+        "moteur/proposer-commande.py:170-185",
+        "moteur/serveur.py:245-280",
+        "moteur/serveur.py:271-280",
+        "moteur/serveur.py:284-308",
+        "moteur/serveur.py:295-308",
+        "moteur/serveur.py:315-327",
+        "moteur/serveur.py:407-407",
+        "moteur/serveur.py:750-787",
+        "moteur/serveur.py:758-783",
+        "moteur/traiter-courrier.py:27-29",
+        "moteur/traiter-courrier.py:43-57",
+        "moteur/traiter-courrier.py:76-93",
+        "tests/test_audit_metier.py:38-70",
+        "tests/test_audit_metier.py:62-70",
+        "tests/test_facture_directe_reprise.py:123-143",
+        "tests/test_facture_directe_reprise.py:479-545",
+        "tests/test_faits_idempotents.py:79-113",
+        "tests/test_serveur_securite.py:164-184"
+      ]
+    },
+    "derniere_comparaison_manifest": {
+      "fichiers_comparés": 466,
+      "modifications": []
+    },
+    "comptes": {
+      "garanties_conditionnelles": 10,
+      "constats": 14,
+      "scenarios_agents": 25,
+      "cas_recette_executés": 37
+    }
+  },
+  "non_verifie": [
+    "Exhaustivité historique des livraisons/factures/exports de production : aucune ligne ancienne corrigée ou réimportée.",
+    "Véracité de chaque quantité, unité, date et correspondance déjà inscrite dans les carnets réels.",
+    "État de réception mail, connexion Gateway, envoi SMTP et destinataires ; aucun accès aux secrets.",
+    "Rendu navigateur/mobile, service vivant, tunnel, logs serveur, test réseau ou concurrence multiprocessus.",
+    "Reprise transactionnelle complète Excel + facts dans cette recette ; source et tests existants lus seulement.",
+    "Audit exhaustif de sécurité de tous les parseurs, routes et calculs ; absence de gate global demandée respectée."
+  ],
+  "fichiers_crees_ou_modifies": [
+    "C:/Users/user/AppData/Local/Temp/controle-pousse-audit-moteur.json",
+    "C:/Users/user/AppData/Local/Temp/controle-pousse-recette-privee.py",
+    "C:/Users/user/AppData/Local/Temp/controle-pousse-recette-resultats.json",
+    "Racines privées controle-pousse-prive-* sous TEMP : copies moteur, exports/JSONL fictifs et manifestes SHA ; aucun fichier du projet modifié."
+  ],
+  "recommandation_immediate_parent": "Renforcer les rôles/handoffs pour bloquer les ambiguïtés et imposer une contre-vérification agent. Ne pas annoncer que le moteur garantit déjà tout. Signaler particulièrement F01 avant de promettre qu'un nouveau relevé même jour est correctement rejoué. Conserver le gel explicite des anciens mouvements/positions et séparer toutes réparations techniques dans un futur mandat.",
+  "date_rapport": "2026-09-10T19:35:02.285570+02:00"
+}
+

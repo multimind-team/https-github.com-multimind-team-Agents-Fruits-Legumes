@@ -1,0 +1,290 @@
+{
+  "commence_le": "2026-09-09T18:18:21.811240",
+  "lecture_seule": false,
+  "tests": [
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\index-320.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\commander-320.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\compter-320.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\promo-320.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\maintenance-320.png"
+    },
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\index-360.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\commander-360.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\compter-360.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\promo-360.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\maintenance-360.png"
+    },
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\index-768.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\commander-768.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\compter-768.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\promo-768.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\maintenance-768.png"
+    },
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\index-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\commander-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\compter-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\promo-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\navigateur\\maintenance-1024.png"
+    },
+    {
+      "test": "comptage-hors-ligne",
+      "conserve": true,
+      "message": "Envoi non confirmé (réseau ou refus du serveur). Ton 1 comptage est toujours gardé sur le téléphone. Réessaie devant la porte."
+    },
+    {
+      "test": "comptage-et-deux-corrections-recalcules",
+      "article": "0000087004222",
+      "position": 90.0
+    },
+    {
+      "test": "commande-ajustement-detail-masquage",
+      "article": "0000087535011",
+      "ok": true
+    },
+    {
+      "test": "message-reception",
+      "ok": true,
+      "reponse_agent_exclue": true
+    }
+  ],
+  "copie_isolee": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-qa-na4_ukgp",
+  "ok": true,
+  "journaux_production_inchanges": true,
+  "termine_le": "2026-09-09T18:20:33.993982"
+}

@@ -1,0 +1,139 @@
+{
+  "schema": "controle-pousse-apres-activation/v1",
+  "auteur": "agent-controle indépendant ; exécution distincte du parent ayant activé le serveur",
+  "phase": "APRÈS ACTIVATION TECHNIQUE F01/C01 ; lecture seule",
+  "avis": "SÛR sur le périmètre opérationnel vérifié : serveur actif, HTTPS exact, conservation conforme.",
+  "periode": {
+    "debut": "2026-09-10T21:15:11.378561+02:00",
+    "fin": "2026-09-10T21:15:17.195500+02:00"
+  },
+  "references": {
+    "racine": "C:/Users/user/Desktop/preparation-commande",
+    "snapshot": {
+      "path": "C:/Users/user/AppData/Local/Temp/controle-pousse-avant-activation.json",
+      "sha256": "fd5eae09bf308e0043ce317b790e5ff0fdb0b88526f481cefb1b43b3af5cd1a6"
+    },
+    "avis_v2": {
+      "path": "C:/Users/user/AppData/Local/Temp/controle-pousse-avis-fix-v2.json",
+      "sha256": "7c2197ed450031099b6be5630e2f2be60e39b9bf223f8dfc6565b1eb96a285d5"
+    }
+  },
+  "sources_mesurees": [
+    {
+      "path": "moteur/serveur.py",
+      "sha256": "5d0821211ed3bac5fdf9b5b799102e2dc2aa8a035b5346301448f5e490f01980",
+      "conforme_avis_v2": true,
+      "conforme_snapshot": true,
+      "mtime": "2026-09-10T21:05:06.906744+02:00"
+    },
+    {
+      "path": "tests/test_recomptage_api_chaine.py",
+      "sha256": "c506243b412f76c5d51f650916f4282ca42d8733f60265c22c4e9c5e86ea90cc",
+      "conforme_avis_v2": true,
+      "mtime": "2026-09-10T21:04:31.282652+02:00"
+    }
+  ],
+  "gestionnaire": {
+    "commande_executee": "PYTHONDONTWRITEBYTECODE=1 py -3.14 -B moteur/gerer-serveur.py etat --port 8751 --silencieux",
+    "exit_code": 0,
+    "stdout_exact": "Serveur identifié : 1 ; HTTP applicatif : OK.\nSurveillance identifiée : 1 ; maintenance : non.\n",
+    "stderr": "",
+    "portee": "Consultation etat uniquement ; aucun arrêt, démarrage ou changement par ce contrôleur."
+  },
+  "https": {
+    "hote": "https://desktop-11kv59v.tail44b4ba.ts.net",
+    "methode": "GET ; validation TLS normale ; Cache-Control: no-cache ; Accept-Encoding: identity ; aucune redirection observée",
+    "comparaison": "Corps comparé octet par octet au fichier local ; sha256 ci-dessous commun aux deux contenus.",
+    "resultats": [
+      {
+        "path": "/app/index.html",
+        "http": 200,
+        "octets": 17485,
+        "contenu_exact": true,
+        "sha256": "b91210158f4536fedfadfe6d221cabac06d5d836e93af1fe9d77bb0b8165713b"
+      },
+      {
+        "path": "/app/compter.html",
+        "http": 200,
+        "octets": 26196,
+        "contenu_exact": true,
+        "sha256": "e6afa887888b85240f138af29e14fb361d385eff435c375067a9471b27d3fac0"
+      },
+      {
+        "path": "/app/commander.html",
+        "http": 200,
+        "octets": 49293,
+        "contenu_exact": true,
+        "sha256": "f1ae28b3838de60482b3f573fb0caebccb74617ea210c8ce7534f20d4c622a26"
+      },
+      {
+        "path": "/donnees/proposition.json",
+        "http": 200,
+        "octets": 370318,
+        "contenu_exact": true,
+        "sha256": "65926397e54fa6be4c2cf99ed02fce3cbb9d8d06007460de78adebf570979382"
+      },
+      {
+        "path": "/donnees/fraicheur.json",
+        "http": 200,
+        "octets": 431,
+        "contenu_exact": true,
+        "sha256": "ba194a6f322c7d3763cf05b2868a5dfc0ce792d8664544997310cd9d1abc59d5"
+      }
+    ]
+  },
+  "conservation": {
+    "fichiers_snapshot": 230,
+    "fichiers_verifies": 230,
+    "identiques_taille_et_sha256": 229,
+    "manquants": [],
+    "seule_difference": "donnees/journal.jsonl ; seule ligne de démarrage ci-dessous autorisée et effectivement retrouvée.",
+    "jsonl_controles": 24,
+    "prefixes_jsonl_intacts": true,
+    "methode_prefixe": "SHA-256 des premiers size octets actuels comparé au SHA-256 initial de chaque JSONL.",
+    "modifications_non_autorisees": [],
+    "modifies_pendant_controle": [],
+    "deux_sources_stables_pendant_controle": true,
+    "limite_inventaire": "Comparaison exhaustive des 230 entrées du snapshot, pas un inventaire des fichiers hors snapshot."
+  },
+  "exception_journal": {
+    "path": "donnees/journal.jsonl",
+    "taille_avant": 21519,
+    "taille_apres": 21674,
+    "sha256_initial_et_prefixe": "afd91b0c8b974d03adc5ee2c12700ce7b5e9ebee279432a0e58fd5527ef062fc",
+    "sha256_apres": "4c2eaedb478608334ba57a75739d016754c0a946bb8ef5a0e5436a82d6b42266",
+    "lignes_ajoutees": 1,
+    "octets_ajoutes": 155,
+    "sha256_ajout": "272d4ce277205eb3f782307cc6d179e1482827485a47656b550d963ab9daf824",
+    "ligne_exacte": "{\"horodatage\": \"2026-09-10T21:11:59\", \"agent\": \"serveur\", \"message\": \"Serveur preparation-commande démarré (port 8751)\", \"motif\": \"Démarrage normal.\"}\r\n",
+    "validation": "Préfixe complet intact, frontière de ligne préservée, un seul objet JSON égal à l’événement attendu et terminaison CRLF."
+  },
+  "gate_deja_execute": {
+    "trace": "C:/Users/user/AppData/Local/Temp/controle-pousse-tests-finaux-v2.log:501-504",
+    "sha256_trace": "cd798d2400116640f195356feab7dff37d6357c0a6f1064c46ea0ac6533b765a",
+    "resume_exact": "Ran 352 tests in 279.480s\n\nOK",
+    "metadata_lue": {
+      "gate_exit": 0,
+      "sources_modifiees_pendant_gate": []
+    },
+    "portee": "Trace finale relue, aucun test réexécuté ; les 14 tests de l’avis v2 sont antérieurs, pas de nouveaux tests ici."
+  },
+  "verdict_operationnel": {
+    "chargement": "Démarrage journalisé après les mtimes des sources conformes à l’avis v2 ; un serveur identifié répond et un watchdog est identifié. Prise en compte cohérente au niveau opérationnel, pas de hash du code en mémoire.",
+    "accessibilite": "Les cinq URL HTTPS répondent 200 depuis ce poste avec le contenu exact du disque, dont compter, proposition et fraicheur.",
+    "conservation": "Les 230 fichiers initiaux sont présents ; 229 identiques et un seul append de démarrage autorisé. Aucun autre delta ni altération de préfixe JSONL."
+  },
+  "limites": [
+    "GET direct ne prouve ni rendu navigateur ni saisie réelle ni écriture API en production ; tests API isolés déjà validés, non renouvelés ici.",
+    "Accès constaté depuis ce poste ; pas de preuve de réception ou de saisie sur le téléphone du responsable.",
+    "Email/Gateway non contrôlé de nouveau, contrôle non renouvelé ; aucune veille ou réception mail certifiée.",
+    "Aucun stock réel certifié, aucun historique corrigé ou requalifié ; aucun import ni recalcul de production.",
+    "Aucun audit supplémentaire du code ou de la documentation ; cet avis ne certifie pas toute l’application."
+  ],
+  "ecritures": [
+    "Uniquement le présent rapport privé ; aucun POST/API métier, mail, chat, redémarrage, changement de données, environnement, secrets ou skills."
+  ],
+  "incidents": [],
+  "rapport": "C:/Users/user/AppData/Local/Temp/controle-pousse-avis-apres-activation.json",
+  "reference_delegation_rattachee_par_parent": "deleg_18781103 / sa-0-9113a442"
+}

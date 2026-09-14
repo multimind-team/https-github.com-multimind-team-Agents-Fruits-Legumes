@@ -1,0 +1,1155 @@
+{
+  "observed_at": "2026-09-10T19:31:45.198161+02:00",
+  "scope": "Diagnostic lecture seule Gateway Email du profil default. Aucun agent mail lancé et aucun mail envoyé.",
+  "report_path": "C:\\Users\\user\\AppData\\Local\\Temp\\controle-pousse-activation-email.json",
+  "privacy": {
+    "env_files_read": false,
+    "credential_files_read": false,
+    "secrets_printed": false,
+    "mail_addresses_printed": false,
+    "mail_bodies_printed": false,
+    "bulk_logs_printed": false
+  },
+  "runtime": {
+    "pid": 7900,
+    "running": true,
+    "status": "running",
+    "started_at": "2026-09-10T17:22:06.118839+02:00",
+    "process_cwd": "C:\\Users\\user\\AppData\\Local\\hermes",
+    "exe": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\.hermes-runtime\\python\\cpython-3.11.16-windows-x86_64-none\\python.exe",
+    "gateway_run_module_in_command": false,
+    "safe_environment": {
+      "HERMES_HOME": "C:\\Users\\user\\AppData\\Local\\hermes",
+      "HERMES_PROFILE": null,
+      "TERMINAL_CWD": "C:\\Users\\user\\Desktop\\preparation-commande",
+      "TERMINAL_BACKEND": null
+    },
+    "lifecycle": {
+      "phase": "running",
+      "pid": 7900,
+      "started_at": "2026-09-10T15:22:16.725777+00:00",
+      "prior_unclean_exit": true
+    },
+    "heartbeat_mtime": "2026-09-10T19:31:23.208957+02:00",
+    "is_gateway_via_cli_main": true,
+    "email_events_since_current_process_start": [
+      {
+        "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+        "byte_offset": 503593,
+        "timestamp_as_logged": "2026-09-10 17:22:17,848",
+        "event": "imap_initial_connection_passed"
+      },
+      {
+        "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+        "byte_offset": 503729,
+        "timestamp_as_logged": "2026-09-10 17:22:18,787",
+        "event": "smtp_connection_passed"
+      },
+      {
+        "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+        "byte_offset": 504164,
+        "timestamp_as_logged": "2026-09-10 17:22:18,829",
+        "event": "email_connected"
+      }
+    ],
+    "email_errors_since_start_in_scanned_logs": 0,
+    "transport_limit": "IMAP/SMTP et connexion email confirmés au démarrage courant; aucune nouvelle connexion ni capacité du modèle ni réception utilisateur testées. Pas de nouveau mail observé après ce démarrage dans les preuves lues."
+  },
+  "configuration_selected": {
+    "home": "C:\\Users\\user\\AppData\\Local\\hermes",
+    "config_path": "C:\\Users\\user\\AppData\\Local\\hermes\\config.yaml",
+    "platforms.email.enabled": true,
+    "terminal": {
+      "cwd": "C:\\Users\\user\\Desktop\\preparation-commande",
+      "backend": "local"
+    },
+    "gateway.platforms.email.skip_context_files": false,
+    "platforms.email.extra.key_names": [],
+    "approvals.destructive_slash_confirm": true
+  },
+  "project_files": {
+    "HERMES.md": {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande\\HERMES.md",
+      "sha256": "b0a390a19c04e69d1902ea68f6b6eacb7541c952ec1ddba0270534981c1806ee",
+      "mtime": "2026-09-10T19:27:56.603199+02:00",
+      "bytes": 1085
+    },
+    "AGENT.md": {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande\\AGENT.md",
+      "sha256": "621fe3a646fb0eb95ade7f0bc631877869dd70a985760043ed713fccb59f999f",
+      "mtime": "2026-09-10T19:27:54.022128+02:00",
+      "bytes": 17665
+    },
+    "agents/agent-courrier.md": {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande\\agents\\agent-courrier.md",
+      "sha256": "5a8e139203aa8df759370bf579c15a0b42fd04bd2997e0cb440efc17e8a7be30",
+      "mtime": "2026-09-10T19:28:02.929016+02:00",
+      "bytes": 3659
+    },
+    "procedures/courrier.md": {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande\\procedures\\courrier.md",
+      "sha256": "3316d3f7d888ae51fd0247005e745736b62c762f39b65ae0c56a7e05101f656c",
+      "mtime": "2026-09-10T19:27:59.421626+02:00",
+      "bytes": 12457
+    }
+  },
+  "bootstrap_on_disk": "Lire AGENT.md. Pour chaque nouveau mail, relire les consignes actuelles de AGENT.md,\nprocedures/courrier.md et procedures/controle-stock.md.\nTout lot de mouvements exige de vraies délégations : courrier lit les sources, données simule,\nun agent-controle distinct vérifie AVANT import puis APRÈS écriture/recalcul. Pas de contrôle\nremplacé par un script ni d'import si cet avis manque. Vérifier dates, comptages intercalaires,\ndoublons et contenu réellement livré vs colisage habituel ; signaler les erreurs dans le chat\nde l'application et le fil d'origine. Aucun stock ni colisage à deviner.\n\nPour Pomona, relire documents-partages/calcul-marge-pomona/mode d'emploi.md : remplir uniquement\nA (produit), C (PU facturé), F (quantité facturée UF). B/D/E restent vides ; aucun PV à demander.\nLa préparation du classeur est distincte de l'autorisation d'importer le stock.\nRetourner le classeur contrôlé dans le fil e-mail avec MEDIA: suivi du chemin absolu Windows\nlittéral, espaces non encodés, sans slash avant C:. Une réponse texte seule ne livre pas le fichier.",
+  "sqlite": {
+    "path": "C:\\Users\\user\\AppData\\Local\\hermes\\state.db",
+    "mode": "ro",
+    "query_only": true,
+    "prompt_resolution": "COALESCE(system_prompts.prompt, sessions.system_prompt) via system_prompt_hash; ne pas assimiler la colonne sessions.system_prompt NULL à un prompt absent."
+  },
+  "email_sessions": [
+    {
+      "id": "20260906_112933_0847f1ab",
+      "source": "email",
+      "parent_session_id": null,
+      "started_at": 1788686973.8947966,
+      "ended_at": null,
+      "end_reason": null,
+      "message_count": 182,
+      "tool_call_count": 88,
+      "cwd": null,
+      "system_prompt_hash": "d7954955b97fce5e010b0d05a25c4e5379a7894bd24c1ff9b6ea3e4d087f7814",
+      "last_activity_at": 1789049006.5495477,
+      "profile_name": "default",
+      "started_at_iso": "2026-09-06T11:29:33.894797+02:00",
+      "ended_at_iso": null,
+      "last_activity_at_iso": "2026-09-10T16:03:26.549548+02:00"
+    }
+  ],
+  "canonical_email_routes": [
+    {
+      "route_sha256": "14469615b8aa416f0bc3cad9e21cf1ff671fa8a32c5098beb3c8c6f2288aeeaa",
+      "updated_at": "2026-09-10T16:04:08.795177+02:00",
+      "scope": "C:\\Users\\user\\AppData\\Local\\hermes\\sessions",
+      "entry": {
+        "session_id": "20260906_112933_0847f1ab",
+        "platform": "email",
+        "created_at": "2026-09-06T11:29:33.871933",
+        "updated_at": "2026-09-10T16:04:08.789887",
+        "suspended": false,
+        "resume_pending": false,
+        "active_turn_started_at": null,
+        "is_fresh_reset": false,
+        "prev_session_id": null
+      },
+      "has_active_turn_token": false
+    }
+  ],
+  "canonical_email_route_count": 1,
+  "email_delivery_states": [
+    {
+      "state": "delivered",
+      "count": 15
+    }
+  ],
+  "email_pending_delivery_count": 0,
+  "saved_email_prompt": {
+    "session_id": "20260906_112933_0847f1ab",
+    "characters": 22801,
+    "sha256": "d7954955b97fce5e010b0d05a25c4e5379a7894bd24c1ff9b6ea3e4d087f7814",
+    "project_context_only": "The following project context files have been loaded and should be followed:\n\n## HERMES.md\n\nLire AGENT.md.",
+    "current_bootstrap_exact_present": false,
+    "current_per_mail_reread_line_present": false,
+    "workspace_path_present": true,
+    "current_per_mail_bootstrap_line_present": false
+  },
+  "email_message_role_counts": {
+    "assistant": 78,
+    "session_meta": 1,
+    "tool": 88,
+    "user": 15
+  },
+  "email_tool_result_counts": {
+    "patch": 7,
+    "read_file": 24,
+    "search_files": 14,
+    "skill_view": 3,
+    "terminal": 27,
+    "vision_analyze": 9,
+    "write_file": 4
+  },
+  "email_last_message_at": "2026-09-10T16:04:08.708870+02:00",
+  "email_last_user_at": "2026-09-10T16:02:13.380809+02:00",
+  "email_history_digest": "db41ef7598ed8f1471ce2c771a3ad7103217f91744e5bddd3e22906d09953fe2",
+  "instruction_tool_argument_evidence": [
+    {
+      "message_id": 19,
+      "timestamp": "2026-09-06T11:39:34.839130+02:00",
+      "tool_name": "search_files",
+      "paths_mentioned_in_arguments": [
+        "AGENT.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": false
+    },
+    {
+      "message_id": 21,
+      "timestamp": "2026-09-06T11:39:40.958481+02:00",
+      "tool_name": "read_file",
+      "paths_mentioned_in_arguments": [
+        "AGENT.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": true
+    },
+    {
+      "message_id": 25,
+      "timestamp": "2026-09-06T11:41:16.463049+02:00",
+      "tool_name": "read_file",
+      "paths_mentioned_in_arguments": [
+        "AGENT.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": true
+    },
+    {
+      "message_id": 29,
+      "timestamp": "2026-09-06T11:49:59.812201+02:00",
+      "tool_name": "read_file",
+      "paths_mentioned_in_arguments": [
+        "AGENT.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": true
+    },
+    {
+      "message_id": 35,
+      "timestamp": "2026-09-06T11:56:46.505022+02:00",
+      "tool_name": "read_file",
+      "paths_mentioned_in_arguments": [
+        "AGENT.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": true
+    },
+    {
+      "message_id": 51,
+      "timestamp": "2026-09-06T12:03:13.520705+02:00",
+      "tool_name": "read_file",
+      "paths_mentioned_in_arguments": [
+        "AGENT.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": true
+    },
+    {
+      "message_id": 51,
+      "timestamp": "2026-09-06T12:03:13.520705+02:00",
+      "tool_name": "read_file",
+      "paths_mentioned_in_arguments": [
+        "agents/agent-courrier.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": true
+    },
+    {
+      "message_id": 51,
+      "timestamp": "2026-09-06T12:03:13.520705+02:00",
+      "tool_name": "read_file",
+      "paths_mentioned_in_arguments": [
+        "procedures/courrier.md"
+      ],
+      "matching_tool_result_count": 1,
+      "is_direct_read_file_call": true
+    }
+  ],
+  "instruction_tool_argument_evidence_limit": "Mentions de chemins dans appels réels; les appels terminal/execute_code peuvent être groupés. Leur présence ne prouve pas à elle seule une lecture complète ni la bonne interprétation.",
+  "log_scan_boundaries": [
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "size_bytes": 505279,
+      "start_offset": 0,
+      "max_bytes": 524288
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "size_bytes": 5717352,
+      "start_offset": 5193064,
+      "max_bytes": 524288
+    }
+  ],
+  "sanitized_email_log_events": [
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 485063,
+      "timestamp_as_logged": "2026-09-09 22:12:06,890",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 485247,
+      "timestamp_as_logged": "2026-09-09 22:34:11,100",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 485582,
+      "timestamp_as_logged": "2026-09-09 22:34:11,118",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 485876,
+      "timestamp_as_logged": "2026-09-09 22:34:12,695",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 486059,
+      "timestamp_as_logged": "2026-09-09 22:34:13,273",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 486243,
+      "timestamp_as_logged": "2026-09-09 22:43:08,790",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 486578,
+      "timestamp_as_logged": "2026-09-09 22:43:08,809",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 486872,
+      "timestamp_as_logged": "2026-09-09 22:43:11,488",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 487055,
+      "timestamp_as_logged": "2026-09-09 22:43:12,358",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 487239,
+      "timestamp_as_logged": "2026-09-09 23:50:20,278",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 487574,
+      "timestamp_as_logged": "2026-09-09 23:50:20,295",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 487868,
+      "timestamp_as_logged": "2026-09-09 23:50:38,130",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 488051,
+      "timestamp_as_logged": "2026-09-09 23:50:39,443",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 488235,
+      "timestamp_as_logged": "2026-09-10 00:23:07,731",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 488570,
+      "timestamp_as_logged": "2026-09-10 00:23:07,749",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 488864,
+      "timestamp_as_logged": "2026-09-10 00:23:08,892",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 489047,
+      "timestamp_as_logged": "2026-09-10 00:23:09,447",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 489231,
+      "timestamp_as_logged": "2026-09-10 00:28:40,273",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 489566,
+      "timestamp_as_logged": "2026-09-10 00:28:40,293",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 489860,
+      "timestamp_as_logged": "2026-09-10 00:28:41,192",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 490043,
+      "timestamp_as_logged": "2026-09-10 00:28:41,752",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 490227,
+      "timestamp_as_logged": "2026-09-10 01:05:51,062",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 490562,
+      "timestamp_as_logged": "2026-09-10 01:05:51,079",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 490856,
+      "timestamp_as_logged": "2026-09-10 01:05:52,624",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 491039,
+      "timestamp_as_logged": "2026-09-10 01:05:53,191",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 491223,
+      "timestamp_as_logged": "2026-09-10 01:11:23,037",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 491558,
+      "timestamp_as_logged": "2026-09-10 01:11:23,055",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 491852,
+      "timestamp_as_logged": "2026-09-10 01:11:25,095",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 492035,
+      "timestamp_as_logged": "2026-09-10 01:11:25,753",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 492219,
+      "timestamp_as_logged": "2026-09-10 01:38:41,641",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 492554,
+      "timestamp_as_logged": "2026-09-10 01:38:41,661",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 492848,
+      "timestamp_as_logged": "2026-09-10 01:38:43,065",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 493031,
+      "timestamp_as_logged": "2026-09-10 01:38:43,697",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 493215,
+      "timestamp_as_logged": "2026-09-10 01:44:31,021",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 493550,
+      "timestamp_as_logged": "2026-09-10 01:44:31,039",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 493844,
+      "timestamp_as_logged": "2026-09-10 01:44:33,507",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 494027,
+      "timestamp_as_logged": "2026-09-10 01:44:34,041",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 494572,
+      "timestamp_as_logged": "2026-09-10 09:25:55,124",
+      "event": "email_new_message"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 495001,
+      "timestamp_as_logged": "2026-09-10 09:28:57,875",
+      "event": "email_sent_reply"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 495715,
+      "timestamp_as_logged": "2026-09-10 09:31:13,916",
+      "event": "email_sent_reply"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 495848,
+      "timestamp_as_logged": "2026-09-10 09:40:45,362",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 496183,
+      "timestamp_as_logged": "2026-09-10 09:40:45,379",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 496477,
+      "timestamp_as_logged": "2026-09-10 09:40:46,764",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 496660,
+      "timestamp_as_logged": "2026-09-10 09:40:47,307",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 497068,
+      "timestamp_as_logged": "2026-09-10 15:06:13,184",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 497403,
+      "timestamp_as_logged": "2026-09-10 15:06:13,209",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 497697,
+      "timestamp_as_logged": "2026-09-10 15:06:14,305",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 497880,
+      "timestamp_as_logged": "2026-09-10 15:06:15,303",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 498064,
+      "timestamp_as_logged": "2026-09-10 15:28:31,254",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 498399,
+      "timestamp_as_logged": "2026-09-10 15:28:31,274",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 498693,
+      "timestamp_as_logged": "2026-09-10 15:28:32,705",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 498876,
+      "timestamp_as_logged": "2026-09-10 15:28:33,346",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 499060,
+      "timestamp_as_logged": "2026-09-10 16:02:13,380",
+      "event": "email_new_message"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 500091,
+      "timestamp_as_logged": "2026-09-10 16:04:10,205",
+      "event": "email_sent_reply"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 500224,
+      "timestamp_as_logged": "2026-09-10 16:12:22,321",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 500559,
+      "timestamp_as_logged": "2026-09-10 16:12:22,338",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 500853,
+      "timestamp_as_logged": "2026-09-10 16:12:27,443",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 501036,
+      "timestamp_as_logged": "2026-09-10 16:12:28,414",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 501220,
+      "timestamp_as_logged": "2026-09-10 16:25:15,468",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 501555,
+      "timestamp_as_logged": "2026-09-10 16:25:15,488",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 501849,
+      "timestamp_as_logged": "2026-09-10 16:25:17,290",
+      "event": "imap_reconnection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 502032,
+      "timestamp_as_logged": "2026-09-10 16:25:17,836",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 503593,
+      "timestamp_as_logged": "2026-09-10 17:22:17,848",
+      "event": "imap_initial_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 503729,
+      "timestamp_as_logged": "2026-09-10 17:22:18,787",
+      "event": "smtp_connection_passed"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway.log",
+      "byte_offset": 504164,
+      "timestamp_as_logged": "2026-09-10 17:22:18,829",
+      "event": "email_connected"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5295521,
+      "timestamp_as_logged": "2026-09-09 12:46:59,421",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5305419,
+      "timestamp_as_logged": "2026-09-09 12:51:51,815",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5313397,
+      "timestamp_as_logged": "2026-09-09 12:56:17,197",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5329055,
+      "timestamp_as_logged": "2026-09-09 13:04:21,944",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5352393,
+      "timestamp_as_logged": "2026-09-09 13:16:37,355",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5371891,
+      "timestamp_as_logged": "2026-09-09 13:26:29,410",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5404829,
+      "timestamp_as_logged": "2026-09-09 13:43:52,873",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5418567,
+      "timestamp_as_logged": "2026-09-09 13:50:55,806",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5441905,
+      "timestamp_as_logged": "2026-09-09 14:03:24,120",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5471003,
+      "timestamp_as_logged": "2026-09-09 14:18:02,381",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5519301,
+      "timestamp_as_logged": "2026-09-09 14:43:27,586",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5519552,
+      "timestamp_as_logged": "2026-09-09 14:43:58,028",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5537010,
+      "timestamp_as_logged": "2026-09-09 14:52:43,353",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5548828,
+      "timestamp_as_logged": "2026-09-09 14:59:09,421",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5562566,
+      "timestamp_as_logged": "2026-09-09 15:06:19,588",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5708661,
+      "timestamp_as_logged": "2026-09-09 19:43:23,583",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5708959,
+      "timestamp_as_logged": "2026-09-09 20:38:22,336",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5709257,
+      "timestamp_as_logged": "2026-09-09 21:03:58,225",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5709555,
+      "timestamp_as_logged": "2026-09-09 21:56:48,403",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5709853,
+      "timestamp_as_logged": "2026-09-09 22:08:32,079",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5710151,
+      "timestamp_as_logged": "2026-09-09 22:12:04,623",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5710449,
+      "timestamp_as_logged": "2026-09-09 22:34:11,100",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5710747,
+      "timestamp_as_logged": "2026-09-09 22:43:08,790",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5711045,
+      "timestamp_as_logged": "2026-09-09 23:50:20,278",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5711343,
+      "timestamp_as_logged": "2026-09-10 00:23:07,731",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5711641,
+      "timestamp_as_logged": "2026-09-10 00:28:40,273",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5711939,
+      "timestamp_as_logged": "2026-09-10 01:05:51,062",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5712237,
+      "timestamp_as_logged": "2026-09-10 01:11:23,037",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5712535,
+      "timestamp_as_logged": "2026-09-10 01:38:41,641",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5712833,
+      "timestamp_as_logged": "2026-09-10 01:44:31,021",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5715549,
+      "timestamp_as_logged": "2026-09-10 09:40:45,362",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5715847,
+      "timestamp_as_logged": "2026-09-10 15:06:13,184",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5716145,
+      "timestamp_as_logged": "2026-09-10 15:28:31,254",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5716756,
+      "timestamp_as_logged": "2026-09-10 16:12:22,321",
+      "event": "other_email_error_or_failure_no_payload"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\logs\\gateway-stdio.log",
+      "byte_offset": 5717054,
+      "timestamp_as_logged": "2026-09-10 16:25:15,468",
+      "event": "other_email_error_or_failure_no_payload"
+    }
+  ],
+  "sanitized_email_log_events_total_matched": 186,
+  "log_limit": "Aucune ligne brute, adresse, corps de mail ou erreur détaillée reproduite. Pas de connexion nouvelle IMAP/SMTP ni test fournisseur de modèle.",
+  "native_context_discovery_exercised": {
+    "function": "agent.prompt_builder.build_context_files_prompt",
+    "cwd": "C:\\Users\\user\\Desktop\\preparation-commande",
+    "skip_soul_for_isolated_diagnostic": true,
+    "HERMES_selected": true,
+    "AGENTS_selected": false,
+    "bootstrap_exact_present": true,
+    "blocked": false,
+    "characters": 1173,
+    "does_not_build_or_mutate_live_agent": true
+  },
+  "native_email_command_parser_exercised": [
+    {
+      "subject": "Re: Activation",
+      "body": "/new",
+      "event_text": "/new",
+      "parsed_command": "new",
+      "parsed_args": ""
+    },
+    {
+      "subject": "Activation",
+      "body": "/new",
+      "event_text": "[Subject: Activation]\n\n/new",
+      "parsed_command": null,
+      "parsed_args": "[Subject: Activation]\n\n/new"
+    },
+    {
+      "subject": "(no subject)",
+      "body": "/new",
+      "event_text": "[Subject: (no subject)]\n\n/new",
+      "parsed_command": null,
+      "parsed_args": "[Subject: (no subject)]\n\n/new"
+    }
+  ],
+  "native_reset_alias": "new",
+  "source_evidence_files": {
+    "agent/runtime_cwd.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\agent\\runtime_cwd.py",
+      "sha256": "4b72f7680b76f965325dd3555bbfc5ef328d99f312d19c057ec9cd1cc15ab71e",
+      "mtime": "2026-09-06T09:27:54.103764+02:00",
+      "bytes": 3614
+    },
+    "agent/prompt_builder.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\agent\\prompt_builder.py",
+      "sha256": "cb253fe5d6a68bb0623955d25af6e1b9fe1732d961043bf4c1f0fdc157ab1c6a",
+      "mtime": "2026-09-06T10:07:22.127534+02:00",
+      "bytes": 99251
+    },
+    "agent/system_prompt.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\agent\\system_prompt.py",
+      "sha256": "b1dfee1ecfdb3d6a04e5aa0bdedda4e88ab499722e71fb0ec14b45138cf23e91",
+      "mtime": "2026-09-06T09:27:54.154463+02:00",
+      "bytes": 38861
+    },
+    "agent/conversation_loop.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\agent\\conversation_loop.py",
+      "sha256": "86474bf782d9418c4203dd662c46227784698d53090f6664ddb3cdf6119d20df",
+      "mtime": "2026-09-06T09:27:53.829392+02:00",
+      "bytes": 80236
+    },
+    "gateway/run_turn_runner.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\gateway\\run_turn_runner.py",
+      "sha256": "c2473f80b43a6af54ce6da3d26bc811d0224991beb4853e7dc14ff6ad73be180",
+      "mtime": "2026-09-06T09:27:56.081136+02:00",
+      "bytes": 98590
+    },
+    "gateway/run_inbound.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\gateway\\run_inbound.py",
+      "sha256": "8b983ea50a991d5ec8512062f8baea73a3e4a9aec8a6093fe7b19004f0f7d45c",
+      "mtime": "2026-09-06T09:27:56.061837+02:00",
+      "bytes": 111650
+    },
+    "gateway/run_busy.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\gateway\\run_busy.py",
+      "sha256": "45e2a9e7d8a31fbbdf2130a6ed829084be6f3e2bba69e40965e85b02cc9f8f7c",
+      "mtime": "2026-09-06T09:27:56.052835+02:00",
+      "bytes": 63226
+    },
+    "gateway/slash_commands_session.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\gateway\\slash_commands_session.py",
+      "sha256": "e9a0a8287645f1e729964fc41cfd344b8caa340f94806d34c35d082741a8b516",
+      "mtime": "2026-09-06T09:27:56.130343+02:00",
+      "bytes": 63442
+    },
+    "gateway/session.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\gateway\\session.py",
+      "sha256": "2ec8b65ff55e7c25fa801b14e4f9e21fb95d79fb354bada7f2a6ac278f5be0ca",
+      "mtime": "2026-09-06T09:27:56.094093+02:00",
+      "bytes": 60377
+    },
+    "gateway/platforms/base.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\gateway\\platforms\\base.py",
+      "sha256": "4d6f9a1e4ae8b13f346fd89b1f7de82b1ec399ee5532253e7bb120681f88bc1d",
+      "mtime": "2026-09-09T16:11:56.090018+02:00",
+      "bytes": 232511
+    },
+    "plugins/platforms/email/adapter.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\plugins\\platforms\\email\\adapter.py",
+      "sha256": "283579426bc2e9f1ef44a9f1eda46fd0a80b0b0aea23e271a37773ec46a7454c",
+      "mtime": "2026-09-07T18:22:59.707817+02:00",
+      "bytes": 47505
+    },
+    "hermes_cli/commands.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\hermes_cli\\commands.py",
+      "sha256": "1a0375631f2be4235bada82f7bfa979afc3fb68f472c6a9d1437e7cf1a17e617",
+      "mtime": "2026-09-06T09:27:56.331322+02:00",
+      "bytes": 40519
+    },
+    "hermes_state_sessions.py": {
+      "path": "C:\\Users\\user\\AppData\\Local\\hermes\\hermes-agent\\hermes_state_sessions.py",
+      "sha256": "a2f35ae3c296a0beb2869b51d0a1761ae17c2e5163278c6298ee9a0ba9fae931",
+      "mtime": "2026-09-06T09:27:57.416701+02:00",
+      "bytes": 81960
+    }
+  },
+  "source_files_all_precede_gateway_start": true,
+  "official_documentation": [
+    "https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files",
+    "https://hermes-agent.nousresearch.com/docs/user-guide/features/context-references",
+    "https://hermes-agent.nousresearch.com/docs/user-guide/sessions",
+    "https://hermes-agent.nousresearch.com/docs/user-guide/messaging/email",
+    "https://hermes-agent.nousresearch.com/docs/reference/slash-commands"
+  ],
+  "evidence_references": {
+    "runtime_cwd_priority": "agent/runtime_cwd.py:69-94; agent/system_prompt.py:574-580",
+    "context_first_match": "agent/prompt_builder.py:1483-1490,1563-1596",
+    "saved_prompt_restored_not_file_watch": "agent/conversation_loop.py:640-707",
+    "live_agent_cached": "gateway/run_turn_runner.py:980-1010",
+    "deduplicated_prompt_resolution": "hermes_state_sessions.py:737-741",
+    "email_dm_route_and_subject_prefix": "plugins/platforms/email/adapter.py:614-633",
+    "slash_parser": "gateway/platforms/base.py:1575-1594",
+    "new_alias_and_reload_scope": "hermes_cli/commands.py:53-55,255-260",
+    "new_confirmation": "gateway/run_inbound.py:761-774; gateway/run_busy.py:1038-1075",
+    "approve_once_reply": "gateway/run_inbound.py:370-400",
+    "new_live_cache_eviction": "gateway/slash_commands_session.py:151-182",
+    "new_route_and_lineage": "gateway/session.py:1073-1107",
+    "restart_skips_existing_uids": "plugins/platforms/email/adapter.py:420-434"
+  },
+  "current_process_invocation_verified": "python -m hermes_cli.main gateway run (seuls les jetons non sensibles ont été examinés)",
+  "native_delegation": {
+    "delegate_task_in_persisted_tool_names": true,
+    "recorded_delegate_task_results_in_email_session": 0,
+    "direct_child_sessions": 0,
+    "interpretation": "Outil natif disponible dans le préfixe sauvegardé, mais aucune exécution de délégation n’est démontrée par une fiche de rôle ni par le seul bootstrap.",
+    "effective_current_config_verification": {
+      "native_resolver": "hermes_cli.tools_config._get_platform_tools(config,email)",
+      "include_default_mcp_servers": false,
+      "effective_email_toolsets": [
+        "browser",
+        "clarify",
+        "code_execution",
+        "computer_use",
+        "cronjob",
+        "delegation",
+        "file",
+        "image_gen",
+        "kanban",
+        "memory",
+        "session_search",
+        "skills",
+        "terminal",
+        "todo",
+        "tts",
+        "vision",
+        "web"
+      ],
+      "agent_disabled_toolsets": null,
+      "delegation_toolset_enabled": true,
+      "delegate_task_resolved": true,
+      "native_check_delegate_requirements": true,
+      "email_adapter_override": null,
+      "proof": "gateway/run_turn.py:2063-2086 + gateway/platforms/base.py:4132-4135; Email has no override; tools/delegate_tool.py:77-79,598-612",
+      "scope_limit": "No live AIAgent nor delegation launched. Configuration resolution and native requirement function exercised locally; persisted Email tool prefix independently contains delegate_task."
+    }
+  },
+  "bootstrap_changed_during_collection_by_other_actor": false,
+  "bootstrap_assessment": {
+    "fresh_native_discovery_sufficient_for_bootstrap_injection": true,
+    "existing_email_session_has_new_bootstrap": false,
+    "automatic_follow_links": false,
+    "explanation": "HERMES.md est le seul point d’entrée auto-injecté ici. AGENT.md (singulier), procedures/courrier.md et les fiches ne sont pas suivis comme des includes : leur relecture doit être faite par l’agent via read_file. Le bootstrap courant demande maintenant les relectures et les vraies délégations; il est adapté aux nouvelles sessions. Sa modification sur disque ne remplace pas le prompt déjà sauvegardé de la session Email.",
+    "current_saved_project_instruction": "Lire AGENT.md.",
+    "per_mail_mechanism": "Consigne stable demandant à chaque tour mail de lire les fichiers courants avec read_file, puis véritables delegate_task et contrôle des retours. Ce sont des actions du modèle dans le tour entrant natif, pas une surveillance Python ni un script qui simule les rôles.",
+    "no_hard_refresh_claim": "Aucun mécanisme sans configuration ni plugin validé ne réinjecte automatiquement le contenu de ces deux fichiers à chaque mail dans une session déjà figée. La lecture demandée par la consigne reste une obligation d’agent à vérifier dans les appels réels, pas une garantie déterministe du transport."
+  },
+  "minimal_missing_action": {
+    "status": "Décision utilisateur et preuve de prise en compte encore nécessaires; aucune activation exécutée.",
+    "without_reset_first_option": "Après autorisation explicite d’un message, envoyer dans la route Email existante une instruction courante demandant immédiatement et avant chaque nouveau mail la relecture intégrale des fichiers. Un nouveau message utilisateur peut être traité dans la session existante sans réécrire son prompt ni perdre son historique. Vérifier les appels read_file et delegate_task; le seul accusé textuel ne suffit pas. Cette variante n’a pas été testée en réel pendant le mandat lecture seule.",
+    "proposed_trusted_message_not_sent": "Avant de traiter ce mail et chacun des suivants, relis intégralement C:\\Users\\user\\Desktop\\preparation-commande\\HERMES.md, AGENT.md, procedures/courrier.md et procedures/controle-stock.md depuis le projet C:\\Users\\user\\Desktop\\preparation-commande. Applique leurs versions actuelles. Exécute les délégations réelles requises avec delegate_task, sans remplacer un agent par un script; vérifie les retours. Pour ce message d’activation uniquement, lis et rapporte les preuves, sans import, envoi de commande ni modification métier.",
+    "clean_bootstrap_option": "Si le responsable souhaite une frontière propre faisant injecter le bootstrap actuel, autoriser /new dans la route Email, puis /approve uniquement à la confirmation correspondante. Aucun redémarrage Gateway n’est nécessaire pour cette voie native. La nouvelle session est liée à l’ancienne; l’historique persiste en base mais sort du contexte courant.",
+    "user_decision_required": true,
+    "decisions_to_obtain": [
+      "Autoriser ou non un mail d’activation/test dans la session existante, sans reset.",
+      "Seulement si souhaité : autoriser explicitement le renouvellement ciblé /new et accepter la sortie de l’ancien historique du contexte courant."
+    ],
+    "no_restart_needed": true
+  },
+  "native_command_if_reset_authorized": {
+    "command": "/new",
+    "alias": "/reset",
+    "surface": "Corps texte d’un mail de l’expéditeur autorisé dans la même route Email, pas une commande terminal et pas un /new du chat Desktop.",
+    "subject_required_by_installed_email_adapter": "Répondre au fil avec un objet commençant exactement par Re: ; retirer citation et signature pour ne laisser que /new.",
+    "confirmation": "/approve",
+    "confirmation_surface": "Répondre au mail de confirmation correspondant, objet Re:, corps seulement /approve. Ne jamais employer /always, qui modifierait la configuration.",
+    "actual_confirmation_setting": true,
+    "verification_level": "Registre, handler natif et confirmation lus; expression native du sujet et parseur MessageEvent exécutés hors transport. Reset et confirmation NON exécutés.",
+    "parser_result": "Re: Activation + /new donne new; Activation + /new et objet absent donnent un préfixe [Subject:] et ne sont pas une commande.",
+    "not_recommended_shortcuts": [
+      "/reload recharge .env dans le CLI, pas ces consignes en Gateway.",
+      "/reload-skills concerne le catalogue des skills, pas AGENT.md/procedures.",
+      "@file: est une expansion CLI, pas une expansion Gateway.",
+      "Un redémarrage seul restaure encore la session et son prompt ancien.",
+      "Ne pas inventer hermes sessions reset : absent du --help installé."
+    ]
+  },
+  "historical_script_review": {
+    "path": "C:/Users/user/AppData/Local/Temp/pomona-demain-pret/renouveler-contexte-mail.py",
+    "executed": false,
+    "finding": "Le garde-fou des lignes 48-51 cherche un argument exactement égal à gateway.run. Le processus actuel démarre via -m hermes_cli.main gateway run : ce test ne détecte donc pas le Gateway vivant. Ne pas lancer --appliquer sur cette base. La voie /new native gère en plus éviction du cache et état de conversation dans le processus courant."
+  },
+  "verification_after_authorized_activation": [
+    "Recontrôler les traitements actifs et obligations de livraison juste avant toute action : l’instantané présent n’est pas une réservation.",
+    "Sans reset : conserver SID et route; constater les lectures intégrales des fichiers courants et leurs résultats après le nouveau mail. Ne pas conclure au chargement depuis le seul accusé.",
+    "Avec reset : relire la route canonique gateway_routing; exiger nouvel ID, parent ancien ID, historique ancien intact et autres routes inchangées.",
+    "Après le premier mail réel de la nouvelle session : résoudre system_prompt_hash via system_prompts et vérifier le bootstrap courant; vérifier read_file AGENT.md, courrier et contrôle-stock.",
+    "Sur un vrai lot autorisé : vérifier appels delegate_task, sessions enfants et retours de courrier/données/contrôle distincts, contrôle avant import puis après écriture/recalcul. Aucun script métier ne remplace ces preuves.",
+    "Contrôler aussi le mail suivant pour démontrer la relecture par nouveau tour. Une seule adoption ne prouve pas un comportement perpétuel."
+  ],
+  "limitations": [
+    "Aucun test mail, reset ou agent de traitement métier lancé : le mandat ne l’autorise pas.",
+    "Le diagnostic accède aux états persistés et aux événements transport, pas au heap interne du Gateway; le code installé explique le réemploi attendu du prompt.",
+    "Les fichiers sources Hermes examinés précèdent le démarrage courant; les consignes projet ont été modifiées par le parent pendant le diagnostic.",
+    "Les snapshots de messages et métadonnées ne prouvent ni la bonne compréhension future par le modèle, ni une garantie de délai avant 9h30.",
+    "La lecture initiale de sessions.system_prompt seule était vide : corrigée par la jointure native de déduplication; le prompt réel est ancien et non absent.",
+    "Le chemin historique Temp a été résolu dans C:/Users/user/AppData/Local/Temp, non dans le dépôt."
+  ],
+  "outcome": "Bootstrap disque apte aux prochaines injections mais pas adopté par la session Email actuelle; runtime natif connecté et délégation disponible. Action minimale à autoriser : message courant de relecture dans cette session, ou frontière native /new ciblée si souhaitée, puis preuves d’exécution. Ni plugin, ni polling, ni patch Hermes, ni redémarrage requis.",
+  "no_live_write_actions": {
+    "gateway_restart": false,
+    "session_reset": false,
+    "session_message_sent": false,
+    "config_change": false,
+    "plugin_change": false,
+    "hermes_source_change": false,
+    "mail_polling_created": false,
+    "business_data_change": false
+  },
+  "desktop_ui_reset_assessment": {
+    "verified_target_email_route_reset_available": false,
+    "finding": "Aucune action Desktop de renouvellement de la route Email nest validée. session.create crée un nouveau contexte Desktop/TUI; _reset_session_agent reconstruit cet agent local. Les chemins inspectés ne font pas reset_session sur gateway_routing Email. Ne pas assimiler le bouton Nouveau ou /new du Desktop au /new reçu par le connecteur Email.",
+    "evidence": [
+      "tui_gateway/methods_session.py:296-360",
+      "tui_gateway/agent_callbacks.py:359-386"
+    ],
+    "recommended_verified_native_route": "Mail entrant de lexpéditeur autorisé dans le fil Email: objet commençant Re:, corps seulement /new; répondre /approve à sa confirmation correspondante, après accord utilisateur. Aucun redémarrage Gateway requis.",
+    "not_executed": true
+  },
+  "sanitized_email_log_events_returned_count": 100,
+  "sanitized_email_log_events_omitted_count": 86,
+  "artifacts_created": [
+    "C:\\Users\\user\\AppData\\Local\\Temp\\controle-pousse-activation-email.json",
+    "C:/Users/user/AppData/Local/Temp/controle-pousse-activation-email-lecture.py"
+  ],
+  "procedural_memory_update": {
+    "skill": "hermes-email-workflows",
+    "change": "Ajout de précautions vérifiées: jointure prompts dédupliqués, /new Email Re: + confirmation, garde PID des scripts offline. Aucun changement config/plugin/session."
+  },
+  "final_verified_at": "2026-09-10T19:33:46.670542+02:00",
+  "final_runtime_readback": {
+    "pid_7900_running": true,
+    "email_route_count": 1,
+    "email_session_ids": [
+      "20260906_112933_0847f1ab"
+    ],
+    "pending_email_deliveries": 0
+  }
+}
+

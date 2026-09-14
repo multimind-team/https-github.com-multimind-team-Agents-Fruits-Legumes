@@ -1,0 +1,107 @@
+[
+  {
+    "fichier": "documents-partages/photos-produits/sources.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/ajustements.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/decisions.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journal.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 310
+  },
+  {
+    "fichier": "donnees/messages.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/reponses.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/travaux.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/courrier/a-voir.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/courrier/index.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/faits/2024.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/faits/2025.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/faits/2026.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journaux/agent-donnees.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 557
+  },
+  {
+    "fichier": "donnees/journaux/filet-de-securite.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 833
+  },
+  {
+    "fichier": "donnees/journaux/hermes-orchestrateur.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journaux/preparateur-auto.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journaux/preparateur.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journaux/responsable-rayon.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journaux/reveil.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journaux/sentinelle-mail.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 0
+  },
+  {
+    "fichier": "donnees/journaux/tout.jsonl",
+    "prefixe_preserve": true,
+    "ajout_octets": 1390
+  }
+]

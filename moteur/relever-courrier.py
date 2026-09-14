@@ -33,16 +33,34 @@ def decoder_entete(valeur):
 
 def assainir_nom(nom):
     """Nettoie un nom de fichier pour éviter les chemins malveillants."""
+    nom = re.sub(r'[\r\n\t]+', ' ', str(nom))
     nom = Path(nom).name
     return re.sub(r'[\\/*?:"<>|]', "_", nom).strip()
 
 
+def determiner_dossier_cible(expediteur, sujet):
+    exp_lower = expediteur.lower()
+    sujet_lower = sujet.lower()
+    if any(domain in exp_lower for domain in ['google', 'github', 'openai', 'kimi', 'vercel']):
+        return 'Notifications et Services'
+    if 'pdv11768' in exp_lower:
+        if any(w in sujet_lower for w in ['ne rien faire', 'ne fais rien']):
+            return 'Photos Produits'
+        return 'Flux Magasin'
+    if any(term in sujet_lower for term in ['pomona', 'facture', 'terreazur', 'livraison pomona']):
+        return 'Factures Directes'
+    if 'parraga.antoine' in exp_lower:
+        return 'Factures Directes'
+    return 'Flux Magasin'
+
+
 def charger_configuration(chemin):
-    with open(chemin, "r", encoding="utf-8-sig") as f:
-        return json.load(f)
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from config_courrier import charger_config_courrier
+    return charger_config_courrier(chemin)
 
 
-def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_taille_mo=50, uid_cible=None):
+def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_taille_mo=50, uid_cible=None, classer=True):
     host = config["imap_host"]
     port = config.get("imap_port", 993)
     user = config["utilisateur"]
@@ -168,7 +186,24 @@ def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_
             if marquer_lu:
                 client.uid("store", uid_bytes, "+FLAGS", "\\Seen")
 
+            if classer and not simuler:
+                dossier_cible = determiner_dossier_cible(email_expediteur, sujet)
+                nom_cible = f'"{dossier_cible}"'
+                try:
+                    typ_c, _ = client.uid("COPY", uid_bytes, nom_cible)
+                    if typ_c == "OK":
+                        client.uid("STORE", uid_bytes, "+FLAGS", "(\\Deleted)")
+                        info_msg["dossier_classe"] = dossier_cible
+                except Exception as err:
+                    info_msg["erreur_classement"] = str(err)
+
             resultat["messages_traites"].append(info_msg)
+
+        if classer and not simuler and resultat["messages_traites"]:
+            try:
+                client.expunge()
+            except Exception:
+                pass
 
     finally:
         try:
@@ -189,13 +224,14 @@ def main():
     parser.add_argument("--uid", type=str, default=None, help="UID spécifique du message à relever")
     parser.add_argument("--simuler", action="store_true", help="Lister les messages sans télécharger ni marquer comme lu")
     parser.add_argument("--marquer-lu", action="store_true", help="Marquer les messages téléchargés comme lus")
+    parser.add_argument("--sans-classement", action="store_true", help="Ne pas déplacer le courriel dans son dossier dédié")
     parser.add_argument("--tous", action="store_true", help="Rechercher tous les messages (pas seulement les non-lus)")
     parser.add_argument("--limite", type=int, default=10, help="Nombre maximal de messages à relever")
     parser.add_argument("--max-mo", type=int, default=50, help="Taille maximale d'un e-mail en Mo")
     args = parser.parse_args()
 
     config = charger_configuration(args.config)
-    res = relever(config, simuler=args.simuler, marquer_lu=args.marquer_lu, tous=args.tous, limite=args.limite, max_taille_mo=args.max_mo, uid_cible=args.uid)
+    res = relever(config, simuler=args.simuler, marquer_lu=args.marquer_lu, tous=args.tous, limite=args.limite, max_taille_mo=args.max_mo, uid_cible=args.uid, classer=not args.sans_classement)
     print(json.dumps(res, indent=2, ensure_ascii=False))
 
 

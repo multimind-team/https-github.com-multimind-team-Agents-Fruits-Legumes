@@ -234,6 +234,28 @@
         </p>
       </div>
 
+      <h3>2.1 Gestion des Secrets et Découplage des Identifiants (.env)</h3>
+      <p>
+        Afin de prémunir le système contre toute fuite d'identifiants lors des synchronisations de code, <strong>aucun mot de passe ni clé d'accès n'est consigné dans les fichiers de configuration versionnés</strong> (notamment <code>donnees/courrier-config.json</code>).
+      </p>
+      <div class="callout-box">
+        <div class="callout-title">RÈGLE DE SÉCURITÉ ABSOLUE : DÉCOUPLAGE DES SECRETS</div>
+        <p style="margin:0;">
+          Les identifiants d'accès sensibles (mot de passe d'application Google <code>MONRAYON_EMAIL_PASSWORD</code>, token GitHub <code>GITHUB_TOKEN</code>) sont stockés exclusivement dans le fichier local <code>.env</code>. Ce fichier est strictement exclu du suivi de versions par le fichier <code>.gitignore</code>. Le chargeur sécurisé <code>moteur/config_courrier.py</code> assure la lecture directe sans dépendance tierce.
+        </p>
+      </div>
+
+      <h3>2.2 Protocole Automatique de Sauvegarde et Synchronisation GitHub (/sauvegarde)</h3>
+      <p>
+        Le protocole de sauvegarde déclenché par la commande <code>/sauvegarde</code> (ou le script <code>sauvegarder.bat</code> / <code>moteur/sauvegarder.py</code>) applique une chaîne de contrôle rigoureuse avant tout envoi vers le dépôt distant :
+      </p>
+      <ul>
+        <li><strong>Contrôle anti-fuite de secrets :</strong> vérification systématique de l'exclusion de <code>.env</code> et de <code>donnees/courrier/</code> (pièces jointes brutes volumineuses), et vacuité confirmée du mot de passe dans les configurations JSON.</li>
+        <li><strong>Audit syntaxique et intégrité :</strong> certification de l'ensemble des scripts Python et des carnets JSONL via <code>tests/verifier_projet.py</code>.</li>
+        <li><strong>Validation des tests de non-régression :</strong> exécution des tests unitaires essentiels (photos, calculs de marges).</li>
+        <li><strong>Publication et notification :</strong> horodatage du commit Git, transmission vers la branche <code>main</code> et publication d'une annonce certifiée dans le journal de l'application web via <code>moteur/dire.py</code>.</li>
+      </ul>
+
 
       <div class="page-nav-bar">
         <div>

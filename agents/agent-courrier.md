@@ -50,6 +50,10 @@ L'agent courrier inspecte chaque document selon les règles suivantes (sans se f
 5. **Préparation du pipeline :**
    - Indiquer à l'orchestrateur la commande de classement recommandée :
      `python moteur/traiter-courrier.py --mail-id "<ID>" --date "<AAAA-MM-JJ>" --expediteur "<EXP>" "<pieces...>"`
+6. **Rangement et classement systématique de la boîte mail :**
+   - Dès qu'un courriel a été lu et ses pièces extraites, il doit obligatoirement être déplacé depuis la boîte de réception (`INBOX`) vers son dossier thématique dédié (`Flux Magasin`, `Factures Directes`, `Photos Produits` ou `Notifications et Services`).
+   - La boîte de réception (`INBOX`) doit être maintenue vide en permanence afin que la sentinelle passive puisse détecter immédiatement tout nouveau courriel arrivant.
+   - Les spams ou courriels inutiles (publicités, newsletters non sollicitées) doivent être purgés et supprimés sans délai.
 
 ---
 

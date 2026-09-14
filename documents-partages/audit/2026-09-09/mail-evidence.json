@@ -1,0 +1,110 @@
+[
+  {
+    "log": "agent.log",
+    "line": 11393,
+    "timestamp": "2026-09-09 06:28:56,852",
+    "tags": [
+      "smtp_accepted"
+    ]
+  },
+  {
+    "log": "agent.log",
+    "line": 11400,
+    "timestamp": "2026-09-09 06:29:27,991",
+    "tags": [
+      "warning"
+    ]
+  },
+  {
+    "log": "agent.log",
+    "line": 11402,
+    "timestamp": "2026-09-09 06:29:28,020",
+    "tags": [
+      "attachment_missing",
+      "encoded_space",
+      "warning",
+      "media_rejected"
+    ]
+  },
+  {
+    "log": "agent.log",
+    "line": 11404,
+    "timestamp": "2026-09-09 06:29:29,084",
+    "tags": [
+      "smtp_accepted"
+    ]
+  },
+  {
+    "log": "errors.log",
+    "line": 7651,
+    "timestamp": "2026-09-09 06:29:27,991",
+    "tags": [
+      "warning"
+    ]
+  },
+  {
+    "log": "errors.log",
+    "line": 7652,
+    "timestamp": "2026-09-09 06:29:28,020",
+    "tags": [
+      "attachment_missing",
+      "encoded_space",
+      "warning",
+      "media_rejected"
+    ]
+  },
+  {
+    "log": "gateway-stdio.log",
+    "line": 58939,
+    "timestamp": "2026-09-09 06:29:27,991",
+    "tags": [
+      "warning"
+    ]
+  },
+  {
+    "log": "gateway-stdio.log",
+    "line": 58940,
+    "timestamp": "2026-09-09 06:29:28,020",
+    "tags": [
+      "attachment_missing",
+      "encoded_space",
+      "warning",
+      "media_rejected"
+    ]
+  },
+  {
+    "log": "gateway.log.1",
+    "line": 59144,
+    "timestamp": "2026-09-09 06:28:56,852",
+    "tags": [
+      "smtp_accepted"
+    ]
+  },
+  {
+    "log": "gateway.log.1",
+    "line": 59145,
+    "timestamp": "2026-09-09 06:29:27,991",
+    "tags": [
+      "warning"
+    ]
+  },
+  {
+    "log": "gateway.log.1",
+    "line": 59147,
+    "timestamp": "2026-09-09 06:29:28,020",
+    "tags": [
+      "attachment_missing",
+      "encoded_space",
+      "warning",
+      "media_rejected"
+    ]
+  },
+  {
+    "log": "gateway.log.1",
+    "line": 59149,
+    "timestamp": "2026-09-09 06:29:29,084",
+    "tags": [
+      "smtp_accepted"
+    ]
+  }
+]

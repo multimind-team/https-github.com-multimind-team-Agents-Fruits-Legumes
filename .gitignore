@@ -5,3 +5,11 @@ __pycache__/
 *.pyc
 .vscode/
 .idea/
+
+# Courrier brut et pièces jointes volumineuses
+donnees/courrier/
+
+# Dossiers temporaires de travail / scratch
+scratch/
+*.tmp
+*.bak

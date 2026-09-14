@@ -98,6 +98,19 @@ def preparer(racine):
     for source in sources:
         empreinte = source['sha256']
         chemin = (racine / source['path']).resolve()
+        if not chemin.is_file():
+            for candidat in (dossier / 'originaux' / 'Fruits' / 'Fruits exotiques' / chemin.name,
+                             dossier / 'originaux' / 'Fruits' / 'Legumes exotiques' / chemin.name,
+                             dossier / 'originaux' / 'legumes' / chemin.name,
+                             dossier / 'originaux' / 'Fruits' / chemin.name,
+                             dossier / 'originaux' / chemin.name):
+                if candidat.is_file():
+                    chemin = candidat
+                    break
+            else:
+                candidats = [c for c in (dossier / 'originaux').rglob(chemin.name) if c.is_file()]
+                if candidats:
+                    chemin = candidats[0]
         if not re.fullmatch(r'[a-f0-9]{64}', empreinte) or not chemin.is_relative_to(dossier):
             raise ValueError('Source photo ou empreinte invalide')
         contenu = chemin.read_bytes()

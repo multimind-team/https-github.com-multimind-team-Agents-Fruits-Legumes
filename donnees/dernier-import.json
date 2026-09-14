@@ -1,27 +1,17 @@
 {
- "quand": "2026-09-12T09:25:30",
+ "quand": "2026-09-14T05:18:58",
  "simulation": false,
  "fichiers": [
   {
-   "fichier": "casse 12.09.2026.xlsx",
-   "mouvements": 32,
+   "fichier": "casse 14.09.2026.xlsx",
+   "mouvements": 16,
    "type": "casse"
-  },
-  {
-   "fichier": "livraison 12.09.2026.xlsx",
-   "mouvements": 73,
-   "type": "livraison"
-  },
-  {
-   "fichier": "vente 12.09.2026.xlsx",
-   "mouvements": 178,
-   "type": "vente"
   }
  ],
- "mouvements_nouveaux": 283,
+ "mouvements_nouveaux": 16,
  "mouvements_deja_connus": 0,
  "jours_couverts": [
-  "2026-09-11"
+  "2026-09-12"
  ],
  "a_verifier": []
 }

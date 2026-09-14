@@ -1,0 +1,17 @@
+[
+  {
+    "cas": "literal_windows",
+    "extraits": 1,
+    "acceptes": 1
+  },
+  {
+    "cas": "slash_prefixe",
+    "extraits": 1,
+    "acceptes": 0
+  },
+  {
+    "cas": "encode_matin",
+    "extraits": 1,
+    "acceptes": 0
+  }
+]

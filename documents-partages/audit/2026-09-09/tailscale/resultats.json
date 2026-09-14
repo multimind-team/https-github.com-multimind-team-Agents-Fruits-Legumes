@@ -1,0 +1,269 @@
+{
+  "commence_le": "2026-09-09T18:20:34.501468",
+  "lecture_seule": true,
+  "tests": [
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\index-320.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\commander-320.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\compter-320.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\promo-320.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 320,
+      "http": 200,
+      "dimensions": {
+        "ecran": 320,
+        "document": 320
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\maintenance-320.png"
+    },
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\index-360.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\commander-360.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\compter-360.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\promo-360.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 360,
+      "http": 200,
+      "dimensions": {
+        "ecran": 360,
+        "document": 360
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\maintenance-360.png"
+    },
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\index-768.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\commander-768.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\compter-768.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\promo-768.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 768,
+      "http": 200,
+      "dimensions": {
+        "ecran": 768,
+        "document": 768
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\maintenance-768.png"
+    },
+    {
+      "test": "page",
+      "page": "index",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\index-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "commander",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\commander-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "compter",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\compter-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "promo",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\promo-1024.png"
+    },
+    {
+      "test": "page",
+      "page": "maintenance",
+      "largeur": 1024,
+      "http": 200,
+      "dimensions": {
+        "ecran": 1024,
+        "document": 1024
+      },
+      "erreurs_js": [],
+      "erreurs_console": [],
+      "capture": "C:\\Users\\user\\AppData\\Local\\Temp\\preparation-audit\\tailscale\\maintenance-1024.png"
+    }
+  ],
+  "ok": true,
+  "journaux_production_inchanges": true,
+  "termine_le": "2026-09-09T18:21:01.181107"
+}

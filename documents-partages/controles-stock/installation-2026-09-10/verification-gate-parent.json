@@ -1,0 +1,10 @@
+{
+  "source_log": "C:/Users/user/AppData/Local/Temp/controle-pousse-tests-finaux.log",
+  "processus": "proc_668ba89dbf83",
+  "tests": 351,
+  "duree_secondes": 291.269,
+  "resultat": "OK",
+  "gate_exit": 0,
+  "sources_modifiees_pendant_gate": [],
+  "verification": "Code retour processus 0 et lignes 499 à 503 du log relues par le parent"
+}

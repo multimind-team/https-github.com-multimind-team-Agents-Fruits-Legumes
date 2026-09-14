@@ -66,6 +66,8 @@ l'agent orchestrateur déclenche les vraies délégations et archive les preuves
 9. L'agent données peut régénérer les constats avec `python moteur/note-du-matin.py`, puis
    l'agent orchestrateur relit la note. Cette commande réécrit une sortie dérivée : conserver les conclusions
    humaines durables dans `donnees/reponses.jsonl` via `moteur/dire.py`, pas seulement dans la note.
+10. **Classement et rangement dans la boîte mail (IMAP) :**
+    Après lecture et traitement d'un courriel (téléchargement des pièces et transmission), déplacer systématiquement le message depuis la boîte de réception (`INBOX`) vers le dossier IMAP correspondant (`Flux Magasin`, `Factures Directes`, `Photos Produits`, ou `Notifications et Services`). La boîte de réception doit rester vide (`Inbox Zero`) pour garantir la réactivité de la sentinelle de surveillance. Tout courriel inutile (spam, publicité, newsletter non sollicitée) doit être supprimé sans délai.
 
 ### Lot mixte, doublon ou reprise après erreur
 
@@ -142,7 +144,7 @@ dossier, sans écraser un original.
    explicitement confiée vérifie les performances et l'exposition HTTP, sans inférer prix ou stock.
 
 La relève du courrier est assurée mécaniquement par `python moteur/relever-courrier.py`
-selon les paramètres de `donnees/courrier-config.json`.
+selon les paramètres de `donnees/courrier-config.json` et le mot de passe secret stocké exclusivement dans le fichier local `.env` (chargé par `moteur/config_courrier.py`).
 
 Si le mail contient des fichiers magasin, ne t'arrete pas apres avoir explique ces etapes :
 execute-les et reponds seulement avec le resultat verifie.

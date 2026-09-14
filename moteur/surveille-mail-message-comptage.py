@@ -34,6 +34,9 @@ from pathlib import Path
 import sys
 import time
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from config_courrier import charger_config_courrier
+
 RACINE = Path(__file__).resolve().parent.parent
 DONNEES = RACINE / "donnees"
 DOSSIER_FAITS = DONNEES / "faits"
@@ -253,13 +256,7 @@ def verifier_nouveaux_comptages(chemin, connus_comptages):
 
 def surveiller(intervalle_mail=30.0, intervalle_rapide=2.0, timeout=None):
     """Boucle unifiée de surveillance passive tri-événements (0 token)."""
-    config_mail = None
-    if CONFIG_PATH.exists():
-        try:
-            with open(CONFIG_PATH, "r", encoding="utf-8-sig") as f:
-                config_mail = json.load(f)
-        except Exception as e:
-            print(f"SURVEILLE: Avertissement - impossible de charger {CONFIG_PATH} ({e})", file=sys.stderr)
+    config_mail = charger_config_courrier(CONFIG_PATH) if CONFIG_PATH.exists() else None
 
     connus_uids = charger_uids_connus() if config_mail else set()
     connus_messages = charger_identifiants_messages(MESSAGES_PATH)

@@ -273,6 +273,16 @@ Cette préparation ponctuelle n'installe aucune surveillance Python de la boîte
 8. Anonymat et discrétion des personnes : ne jamais faire apparaître de nom ou prénom de personne physique dans les messages, réponses ou notes publiques de l'application. On désigne toujours l'interlocuteur par sa fonction (« le responsable de rayon », « le magasin »).
 9. Envoi obligatoire du calcul de marge Pomona : le classeur de calcul de marge Pomona doit TOUJOURS être envoyé à `PDV11768@mousquetaires.com`, quelle que soit la personne ou l'adresse qui a transmis la photo de la facture Pomona.
 
+## Sauvegarde et synchronisation GitHub (/sauvegarde)
+
+Sur commande `/sauvegarde` ou demande explicite, l'agent orchestrateur exécute le protocole de sauvegarde sécurisée :
+
+```bat
+sauvegarder.bat
+```
+ou `python moteur/sauvegarder.py`.
+Cette procédure vérifie l'absence de fuite de secrets (.env exclu, mot de passe vide dans courrier-config.json), valide la conformité syntaxique et les tests d'intégrité, synchronise la documentation vers l'espace miroir, crée le commit, pousse sur GitHub (`origin main`) et publie l'annonce dans l'application web. Voir `procedures/sauvegarde.md`.
+
 ---
 
 ## Sources internes
@@ -285,6 +295,7 @@ Cette préparation ponctuelle n'installe aucune surveillance Python de la boîte
 | Dossier de preuve des agents avant/après import | `reference/modele-controle-stock.md` |
 | Carnets et droits | `reference/contrat-echange.md` |
 | Pouvoirs des agents | `donnees/pouvoirs.json` |
+| Sauvegarde et synchronisation GitHub | `procedures/sauvegarde.md` |
 
 Quand un document et le code se contredisent, verifie le code puis signale l'ecart.
 Ne pas « corriger » un fait pour faire disparaître une alerte. Une permission déclarative ou un

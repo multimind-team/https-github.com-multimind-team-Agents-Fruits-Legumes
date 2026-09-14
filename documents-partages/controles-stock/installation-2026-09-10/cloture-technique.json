@@ -1,0 +1,21 @@
+{
+  "statut_technique": "Contrôle par agents documenté et éprouvé ; correctif F01/C01 déployé et contrôlé avant/après par agents distincts",
+  "consignes": [
+    "AGENT.md",
+    "procedures/controle-stock.md",
+    "reference/modele-controle-stock.md"
+  ],
+  "risques_documentes": 24,
+  "scenarios_fictifs_revus": 16,
+  "tests_regression": 352,
+  "gate": "verification-gate-parent-v2.json",
+  "avis_avant": [
+    "avis-fix-v1-bloque-synthese.json",
+    "avis-fix-v2-valide.json"
+  ],
+  "avis_apres": "avis-apres-activation-valide.json",
+  "donnees": "Aucun mouvement/comptage modifié ou réimporté ; seul append technique de démarrage, préfixe intact",
+  "statut_email": "Activation non réalisée ni certifiée : confirmation de renouvellement non reçue",
+  "AGENTS_md": "Protégé et inchangé : approbation expirée, aucun contournement",
+  "limite_stock": "Aucune certification des positions physiques actuelles ; chronologie intrajournalière ambiguë à clarifier, jamais à inventer"
+}

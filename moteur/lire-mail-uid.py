@@ -6,6 +6,10 @@ import imaplib
 import json
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from config_courrier import charger_config_courrier
+
 RACINE = Path(__file__).resolve().parent.parent
 CONFIG_PATH = RACINE / "donnees" / "courrier-config.json"
 
@@ -28,8 +32,7 @@ def main():
     parser.add_argument("--telecharger", action="store_true", help="Telecharger les pieces jointes")
     args = parser.parse_args()
 
-    with open(CONFIG_PATH, "r", encoding="utf-8-sig") as f:
-        cfg = json.load(f)
+    cfg = charger_config_courrier(CONFIG_PATH)
 
     client = imaplib.IMAP4_SSL(cfg["imap_host"], cfg.get("imap_port", 993))
     try:
@@ -71,7 +74,10 @@ def main():
             "corps": corps.strip(),
             "pieces_jointes": pieces,
         }
-        print(json.dumps(resultat, indent=2, ensure_ascii=False))
+        try:
+            print(json.dumps(resultat, indent=2, ensure_ascii=False))
+        except UnicodeEncodeError:
+            print(json.dumps(resultat, indent=2, ensure_ascii=True))
     finally:
         try:
             client.logout()

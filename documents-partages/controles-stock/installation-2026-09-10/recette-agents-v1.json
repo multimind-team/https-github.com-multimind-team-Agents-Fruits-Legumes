@@ -1,0 +1,845 @@
+{
+  "schema_version": 1,
+  "titre": "Recette fictive et revue contradictoire — agent-controle distinct",
+  "racine": "C:/Users/user/Desktop/preparation-commande",
+  "nature": "rapport privé de recette documentaire, aucun import",
+  "auteur_reel": "agent-controle, présente exécution subagent distincte",
+  "reference_delegation": "Mandat fourni à cette exécution ; identifiant technique non fourni dans son contexte, à rattacher par Hermes au véritable appel parent. Aucun identifiant inventé.",
+  "phase": "avant toute opération réelle ; examen contradictoire fictif, pas un certificat après import",
+  "perimetre": {
+    "cas": "C01 à C16 fournis dans le mandat, sans lecture de corrigé attendu ni des rapports des autres agents",
+    "autres_prerequis": "Pour les cas simples, les autres prérequis sont réputés attestés dans le scénario, conformément au mandat. Cela ne prouve aucun prérequis réel.",
+    "ecritures_autorisees": [
+      "Temp/controle-pousse-recette-agents.json"
+    ],
+    "exclusions": [
+      "Aucun importeur ni recalcul métier exécuté",
+      "Aucun contenu fictif importé",
+      "Aucune écriture de faits, mapping, permissions, code ou documentation opérationnelle",
+      "Aucun mail ni message dans le chat métier",
+      "Aucune activation ou modification Gateway"
+    ],
+    "sens_delta": "Variation attendue de la position physique issue du comptage, pas nombre de faits ni prévision de commande. null = non démontrable avec le scénario. Un refus ne prouve pas un delta physique nul.",
+    "sens_decision": "sûre = raisonnement sûr pour le seul scénario ; historique_sans_effet = mouvement historique légitime non encore nécessairement intégré, sans nouvel effet position ; deja_integre = identité métier déjà intégrée attestée ; partielle = traitement non achevé, jamais succès stock ; bloquée = aucune publication sûre démontrée.",
+    "cas_partiels": "Une différence d’effet entre articles ne rend pas un lot partiel si toutes ses lignes sont comprises et traitables. C13 est sûr pour un effet ciblé B seulement, A conservant sa base."
+  },
+  "cas": [
+    {
+      "id": "C01",
+      "scenario": "Export ventes agrégé 05-06/09 sans dates par ligne.",
+      "decision": "bloquée",
+      "delta_physique": null,
+      "unite": null,
+      "pourquoi": "La période couvre plusieurs journées et ne permet pas de dater chaque quantité. Ni répartition égale, ni au prorata, ni date de nom de fichier ne constituent un fait. Impossible de déterminer l’inclusion de chaque sortie dans un comptage.",
+      "action_sure": "Ne rien importer de cet agrégat ; demander les quantités réellement datées par journée.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:77-78",
+          "repere": "R04-R05",
+          "extrait": "Utiliser la date d’effet prouvée ; ne pas répartir au prorata ou inventer des journées nulles."
+        },
+        {
+          "reference": "procedures/controle-stock.md:105-116",
+          "repere": "Chronologie",
+          "extrait": "La relation mouvement/comptage exige une date et une phase prouvées."
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "scenario": "Export nommé 08/09 contenant uniquement les ventes du 07/09, aucune déjà intégrée ; comptage du soir 08/09 confirmé couvrant ces ventes.",
+      "decision": "historique_sans_effet",
+      "delta_physique": 0,
+      "unite": "unité métier de chaque article",
+      "pourquoi": "La date interne 07/09 prime sur le nom 08/09. Les ventes sont antérieures au comptage confirmé du 08/09 et déjà comprises physiquement. Elles peuvent enrichir l’historique/statistiques sans être retirées une seconde fois. Aucune ligne déjà intégrée n’est attestée : ce n’est PAS deja_integre.",
+      "action_sure": "Prévoir uniquement l’intégration historique à la date réelle et vérifier ensuite le delta nul ; ne pas annoncer une intégration effectuée dans cette recette.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:77",
+          "repere": "R04",
+          "extrait": "Distinguer date source, événement physique, réception et import."
+        },
+        {
+          "reference": "procedures/controle-stock.md:105-106",
+          "repere": "Avant comptage",
+          "extrait": "conserver le mouvement historique valide (statistiques/audit) mais ne pas le réappliquer à la position issue de cette mesure."
+        },
+        {
+          "reference": "reference/modele-controle-stock.md:31-34",
+          "repere": "Historique ≠ doublon",
+          "extrait": "Une ligne « déjà comprise dans un comptage » peut rester à intégrer dans l’historique."
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "scenario": "Ventes du 09/09 de 7 pièces, base du soir 08/09 de 20 pièces ; aucun autre mouvement.",
+      "decision": "sûre",
+      "delta_physique": -7,
+      "unite": "pièce",
+      "position_apres": 13,
+      "calcul": "20 - 7 = 13 ; delta = -7",
+      "pourquoi": "Les ventes du 09/09 sont strictement après la base du soir 08/09. Elles se retirent une seule fois, à leur véritable date d’effet. Le nom du fichier ne déplace pas la vente.",
+      "action_sure": "Retirer 7 pièces dans le scénario ; conserver le comptage original de 20 et son instant.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:107-108",
+          "repere": "Après comptage",
+          "extrait": "ajouter une livraison ou retirer une sortie UNE fois, dans l’unité métier."
+        },
+        {
+          "reference": "procedures/controle-stock.md:96",
+          "repere": "R23",
+          "extrait": "Reproduire chaque delta expliqué par les faits, comparer position et projection séparément."
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "scenario": "Comptage matin 08/09 de 20 pièces après livraison de 18 et avant ventes ; renvoi du 10/09 livraison08=18 et ventes08=7.",
+      "decision": "sûre",
+      "delta_physique": -7,
+      "unite": "pièce",
+      "position_apres": 13,
+      "details": [
+        {
+          "mouvement": "livraison du 08/09",
+          "quantite_document": 18,
+          "delta_physique": 0,
+          "decision": "historique_sans_effet"
+        },
+        {
+          "mouvement": "ventes du 08/09 après mesure",
+          "quantite_document": 7,
+          "delta_physique": -7,
+          "decision": "sûre"
+        }
+      ],
+      "calcul": "20 + 0 - 7 = 13",
+      "pourquoi": "La phase est réellement prouvée : les 18 pièces livrées sont déjà dans les 20 mesurées, les 7 ventes ne le sont pas. Le renvoi le 10/09 ne rajeunit ni mouvement ni base. Réadditionner 18 serait une double entrée ; ignorer toutes les lignes du même jour ferait perdre les ventes après mesure.",
+      "action_sure": "Conserver la livraison dans l’historique sans nouvel effet et déduire les ventes ; aucune nouvelle mesure fictive.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:109-112",
+          "repere": "Même jour, phase prouvée",
+          "extrait": "ces livraisons sont déjà comptées ; les sorties après mesure restent à déduire."
+        },
+        {
+          "reference": "procedures/controle-stock.md:77",
+          "repere": "R04",
+          "extrait": "jamais la date de renvoi comme remplacement."
+        },
+        {
+          "reference": "procedures/comptage.md:21-25",
+          "repere": "Ordre réel du matin",
+          "extrait": "Le comptage du matin se fait après rangement de la livraison, avant les ventes."
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "scenario": "Comptage le 08/09 à 16 h ; ventes de toute la journée 7 ; ouverture et part déjà comprise inconnues.",
+      "decision": "bloquée",
+      "delta_physique": null,
+      "unite": "unité métier de l’article",
+      "pourquoi": "16 h ne prouve pas la clôture. La quantité de ventes postérieure à la mesure n’est pas connue : ni -7 ni 0 ne sont démontrés. Une heure après 14 h ne justifie pas l’hypothèse fin de journée du moteur.",
+      "action_sure": "Demander la phase réelle et le détail distinguant ce qui est déjà compris ; si le moteur ne peut pas représenter même l’ordre prouvé, garder le refus et proposer un nouveau comptage confirmé.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:113-126",
+          "repere": "Chronologie et limite 14 h",
+          "extrait": "ne pas répartir un total journalier ni assimiler automatiquement une heure à une clôture."
+        },
+        {
+          "reference": "agents/agent-controle.md:38-40",
+          "repere": "Refus de certification",
+          "extrait": "comptage pendant l’ouverture avec sorties seulement agrégées par journée"
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "scenario": "1 colis reçu, BL prouvant 12 pièces ; colis habituel 6 ; preuves, unité, mapping et autorisation complets, livraison après le jour du comptage.",
+      "decision": "sûre",
+      "delta_physique": 12,
+      "unite": "pièce",
+      "equivalent_colis_habituels": 2,
+      "calcul": "1 × 12 = 12 pièces ; 12 ÷ 6 = 2 colis habituels",
+      "pourquoi": "Le BL atteste le contenu de cette livraison. La quantité métier est 12 et le PCB habituel reste 6. Ni 6 pièces parce que le catalogue dit 6, ni changement automatique du PCB à 12.",
+      "action_sure": "Entrée de 12 pièces une fois, sans changement de conditionnement normal.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:130-142",
+          "repere": "Conversion livrée/habituelle",
+          "extrait": "entrée métier = colis reçus × contenu livré par colis ; équivalent en colis habituels = quantité métier reçue ÷ contenu du colis habituel."
+        },
+        {
+          "reference": "procedures/controle-stock.md:107-108",
+          "repere": "Après comptage",
+          "extrait": "ajouter une livraison [...] UNE fois, dans l’unité métier."
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "scenario": "3 colis reçus de 6, colis habituel 12 ; mêmes prérequis complets et livraison postérieure au jour du comptage.",
+      "decision": "sûre",
+      "delta_physique": 18,
+      "unite": "pièce",
+      "equivalent_colis_habituels": 1.5,
+      "calcul": "3 × 6 = 18 pièces ; 18 ÷ 12 = 1,5 colis habituel",
+      "pourquoi": "L’entrée provient des petits colis réellement reçus, pas du colis normal de commande. La fraction de colis habituel est valide ; aucune quantité d’entrée ne doit être arrondie au colis entier.",
+      "action_sure": "Entrée de 18 pièces et affichage équivalent 1,5 colis habituel, PCB normal conservé.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:133-142",
+          "repere": "Colis livré et fraction",
+          "extrait": "L’exemple inverse et les fractions sont possibles ; conserver les décimales sans arrondir l’entrée à un colis entier."
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "scenario": "3 sous « nombre de colis », conditionnement de base 1 kg, PCB normal 18 kg, sans BL interprétable.",
+      "decision": "bloquée",
+      "delta_physique": null,
+      "unite": "kg non quantifiables avec les preuves fournies",
+      "pourquoi": "L’en-tête colis et la base 1 kg ne suffisent pas à établir le contenu livré. Le PCB habituel de 18 kg décrit une autre donnée. Ni 3 kg ni 54 kg ne sont attestés, et un montant financier cohérent ne résout pas le sens physique.",
+      "action_sure": "Demander le BL détaillé ou une confirmation précise du nombre et contenu effectivement reçus ; ne pas substituer le PCB normal.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:85-86",
+          "repere": "R12-R13",
+          "extrait": "Prouver chaque facteur [...] Si ambigu, demander le BL ou une confirmation précise, jamais multiplier au jugé."
+        },
+        {
+          "reference": "procedures/controle-stock.md:144-146",
+          "repere": "Base 1 kg",
+          "extrait": "Une base « 1 kg » sous un en-tête « colis » reste ambiguë sans preuve du sens fournisseur ; le PCB du catalogue ne suffit pas."
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "scenario": "Facture 2 colis, Qté fact. UF 12 SAC, unité métier SAC et mapping validés, normal 6 SAC ; après comptage, autorisation de ligne acquise.",
+      "decision": "sûre",
+      "delta_physique": 12,
+      "unite": "SAC",
+      "equivalent_colis_habituels": 2,
+      "calcul": "UF totale = 12 SAC, utilisée une fois ; 12 ÷ 6 = 2 colis habituels",
+      "pourquoi": "La quantité UF totale compatible est directement attestée. Les 2 colis ne sont pas un second multiplicateur. Le scénario affirme que SAC est l’unité métier, donc aucun nombre de fruits individuels n’en est déduit.",
+      "action_sure": "Reconnaître +12 SAC comme effet métier du scénario ; ne pas certifier un écrivain réel qui remplacerait SAC par pièce sans sémantique et mapping démontrés.",
+      "reserve_documentaire": "D01 : reference/contrat-echange.md:91 limite encore toutes les quantités à kg ou pièces. Le scénario métier est sûr, mais le contrat général doit être clarifié et le chemin runtime SAC vérifié séparément. Cette recette n’atteste aucune compatibilité moteur réelle.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:85",
+          "repere": "R12",
+          "extrait": "Ne pas convertir un SAC en fruits individuels."
+        },
+        {
+          "reference": "procedures/controle-stock.md:136-137",
+          "repere": "UF totale",
+          "extrait": "si une quantité totale UF compatible est directement facturée, l’utiliser une seule fois ; ne pas la remultiplier par le nombre de colis."
+        },
+        {
+          "reference": "AGENT.md:119-120",
+          "repere": "Autorisation directe",
+          "extrait": "validation explicite du responsable sur chaque ligne"
+        }
+      ]
+    },
+    {
+      "id": "C10",
+      "scenario": "Même BL/facture qu’une livraison déjà intégrée par export ; identité métier exacte prouvée.",
+      "decision": "deja_integre",
+      "delta_physique": 0,
+      "unite": "unité métier de l’article",
+      "pourquoi": "Le même événement physique existe déjà. Une facture constitue ici une autre preuve de la même livraison, pas une nouvelle entrée. Le statut repose sur l’identité exacte attestée et les autres contrôles réputés acquis dans le scénario, pas sur un SHA ou un fichier rangé.",
+      "action_sure": "Aucun nouveau fait de livraison ; conserver le lien de provenance. En réel, relire aussi les faits et le calcul final avant la mention déjà intégré et vérifié.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:80-82",
+          "repere": "R07 et R09",
+          "extrait": "Comparer empreinte ET identité métier ET faits. [...] Pas de double entrée."
+        },
+        {
+          "reference": "procedures/controle-stock.md:64",
+          "repere": "Clôture vérifiée",
+          "extrait": "identité métier et calcul final relus, pas seulement fichier archivé."
+        },
+        {
+          "reference": "reference/modele-controle-stock.md:36-37",
+          "repere": "Provenance",
+          "extrait": "Relier les duplications BL/facture/export/manuel par leurs identités métier, pas seulement leur SHA."
+        }
+      ]
+    },
+    {
+      "id": "C11",
+      "scenario": "Fichier corrigé : même article/date, ancienne quantité 10, nouvelle 8, empreinte différente ; ancien fait présent, correcteur non confirmé.",
+      "decision": "bloquée",
+      "delta_physique": null,
+      "unite": "unité du mouvement non précisée",
+      "ecart_brut_versions": -2,
+      "calcul": "8 - 10 = -2, simple écart entre quantités source, non un delta de position autorisé",
+      "pourquoi": "Le nouveau SHA ne transforme pas un rectificatif en nouvelle livraison/vente. L’ancien fait ne peut pas être effacé. Le correcteur explicite et son rejeu ne sont pas démontrés ; le type du mouvement et sa relation au dernier comptage ne permettent pas non plus d’affirmer un delta physique -2.",
+      "action_sure": "Bloquer la nouvelle version tant qu’une correction explicite autorisée, comprise par tous les lecteurs et rattachée au fait stable n’est pas établie ; ne pas ajouter 8 à 10.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:81",
+          "repere": "R08",
+          "extrait": "ne pas ajouter les deux versions. Si le format/correcteur ne permet pas une correction explicite sûre, bloquer."
+        },
+        {
+          "reference": "reference/contrat-echange.md:111-115",
+          "repere": "Rejeu",
+          "extrait": "Tout nouveau type d’événement doit avoir une règle de rejeu dans chaque lecteur avant d’être utilisé."
+        },
+        {
+          "reference": "AGENT.md:251",
+          "repere": "Append-only",
+          "extrait": "Ne jamais effacer ni réécrire les carnets JSONL : correction par nouvel événement explicite."
+        }
+      ]
+    },
+    {
+      "id": "C12",
+      "scenario": "Ventes après mesure de 3 unités ; casse/don absents, aucune activité de ces types attestée ; unité, code et période corrects.",
+      "decision": "sûre",
+      "delta_physique": -3,
+      "unite": "unité métier attestée",
+      "position_apres": null,
+      "calcul": "position après = base mesurée - 3 ; quantité de base non fournie",
+      "pourquoi": "Les ventes prouvées postérieures à la mesure se déduisent une fois. L’absence de casse/dons n’est pas un fichier manquant bloquant sans activité attestée. Je ne fabrique ni sortie complémentaire, ni journée zéro, ni stock absolu.",
+      "action_sure": "Retirer 3 unités ; aucun blocage pour les seuls fichiers casse/dons absents.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:89",
+          "repere": "R16",
+          "extrait": "L’absence de casse/dons est normale sans activité attestée."
+        },
+        {
+          "reference": "procedures/controle-stock.md:107-108",
+          "repere": "Après mesure",
+          "extrait": "retirer une sortie UNE fois, dans l’unité métier."
+        },
+        {
+          "reference": "procedures/controle-stock.md:167",
+          "repere": "Absence normale",
+          "extrait": "ni exiger casse/dons sans activité."
+        }
+      ]
+    },
+    {
+      "id": "C13",
+      "scenario": "A recompté après l’ancienne livraison ; B non recompté, ancienne base antérieure à sa livraison de 6 unités ; renvoi A6+B6.",
+      "decision": "sûre",
+      "delta_physique": null,
+      "unite": "par article, pas une position fusionnée",
+      "delta_physique_par_article": {
+        "A": 0,
+        "B": 6
+      },
+      "details": [
+        {
+          "article": "A",
+          "decision": "historique_sans_effet",
+          "delta_physique": 0,
+          "motif": "Livraison antérieure à la nouvelle base de A, déjà comprise physiquement."
+        },
+        {
+          "article": "B",
+          "decision": "sûre",
+          "delta_physique": 6,
+          "motif": "Livraison postérieure à la dernière base propre à B ; le recomptage de A ne couvre pas B."
+        }
+      ],
+      "pourquoi": "Non, il ne faut pas ajouter 6 aux deux. La date de comptage n’est jamais globale : A conserve sa position, B reçoit +6. Le renvoi n’efface pas l’obligation de vérifier les doublons, réputée acquise ici. Ce n’est pas un lot partiel au sens d’un reste bloqué : les deux effets sont expliqués et aucun blocage n’est donné.",
+      "action_sure": "A : historique sans nouvelle entrée physique ; B : +6 unités une seule fois. Ne pas déclarer tous les stocks frais sur la seule mesure de A.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:90",
+          "repere": "R17",
+          "extrait": "Rechercher le dernier comptage effectif PAR article, pas une date globale."
+        },
+        {
+          "reference": "procedures/controle-stock.md:105-108",
+          "repere": "Ordre par article",
+          "extrait": "Mouvement strictement avant [...] ne pas le réappliquer ; strictement après [...] UNE fois."
+        },
+        {
+          "reference": "procedures/controle-stock.md:117-119",
+          "repere": "Comptage partiel",
+          "extrait": "seuls les articles mesurés ont une nouvelle base. Les autres conservent leur ancienne base et leurs éventuelles lacunes."
+        }
+      ]
+    },
+    {
+      "id": "C14",
+      "scenario": "Avis préimport sûr, puis nouveau comptage avant publication.",
+      "decision": "bloquée",
+      "delta_physique": null,
+      "unite": null,
+      "pourquoi": "L’avis est périmé : la base qu’il a vérifiée n’est plus celle de publication. L’effet peut devenir historique, changer ou rester identique, mais aucune de ces branches n’est démontrée sans nouvelle chronologie. Le contrôle après écriture ne dispense pas du renouvellement avant écriture.",
+      "action_sure": "Suspendre l’écriture, refaire le plan et la simulation puis le contrôle indépendant sur la nouvelle base ; sérialiser les écritures si la fenêtre de concurrence n’est pas maîtrisée.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:32-35",
+          "repere": "Préconditions",
+          "extrait": "si un nouveau comptage ou une autre intégration est intervenu, refaire le plan et son contrôle avant de continuer."
+        },
+        {
+          "reference": "procedures/controle-stock.md:95",
+          "repere": "R22",
+          "extrait": "Un verrou d’un script ne protège pas forcément un autre écrivain ; sérialiser les écritures incertaines."
+        },
+        {
+          "reference": "reference/modele-controle-stock.md:55-56",
+          "repere": "Version du périmètre",
+          "extrait": "Empreintes/IDs [...] Contrôle des préconditions à refaire immédiatement avant écriture."
+        }
+      ]
+    },
+    {
+      "id": "C15",
+      "scenario": "Code de facture seulement proche d’un BIO ; document nonBIO, aucun mapping.",
+      "decision": "bloquée",
+      "delta_physique": null,
+      "unite": null,
+      "pourquoi": "Proximité du code/libellé et opposition BIO/nonBIO ne constituent pas une correspondance. Ni conversion du code, ni perte de zéros, ni association vers le BIO pour faire passer l’import. L’article cible est indéterminé, donc même un total numérique de facture n’aurait pas d’affectation sûre.",
+      "action_sure": "Agent articles enquête ; exiger le mapping exact validé, conserver l’identifiant brut et le document nonBIO.",
+      "preuves": [
+        {
+          "reference": "procedures/controle-stock.md:83",
+          "repere": "R10",
+          "extrait": "BIO/non-BIO [...] vérifier le format avant recherche et le mapping exact [...] pas de rapprochement approximatif ni de nouveau code inventé."
+        },
+        {
+          "reference": "agents/agent-donnees.md:61",
+          "repere": "Mapping",
+          "extrait": "Ne pas changer un mapping fournisseur sans validation humaine."
+        }
+      ]
+    },
+    {
+      "id": "C16",
+      "scenario": "Simulation réussie puis récapitulatif « rangé, doublon » ; faits introuvables pour la pièce et aucun contrôle postimport.",
+      "decision": "partielle",
+      "delta_physique": null,
+      "unite": null,
+      "certification_integre": "bloquée",
+      "pourquoi": "Non, on ne peut pas annoncer intégré. Seuls réception/rangement et simulation sont rapportés ; ni faits ni effet final ni contrôle distinct après écriture ne sont établis. Faits introuvables ne justifie ni « déjà intégré » ni l’affirmation d’un delta physique nul.",
+      "action_sure": "Statut traitement incomplet, intégration non prouvée ; rechercher le périmètre exact dans index, faits et dérivés, puis reprendre sous nouveau contrôle sans effacer l’index. Signaler les étapes manquantes, jamais un succès métier.",
+      "reserve_documentaire": "D04 : partielle est choisi pour l’état du traitement conformément à l’étape 7 (toute étape/avis manquant). Le verdict de certification reste bloqué ; la définition stricte de PARTIEL ligne 63 devrait être harmonisée.",
+      "preuves": [
+        {
+          "reference": "AGENT.md:104-109",
+          "repere": "Rangé ≠ intégré",
+          "extrait": "Un fichier rangé ou reconnu comme doublon n’est pas une preuve d’intégration."
+        },
+        {
+          "reference": "procedures/controle-stock.md:36-43",
+          "repere": "Contrôle final",
+          "extrait": "Classer le traitement comme partiel tant qu’une étape ou un avis manque."
+        },
+        {
+          "reference": "procedures/courrier.md:83-91",
+          "repere": "Reprise",
+          "extrait": "Vérifier séparément l’index de rangement et les étapes d’intégration [...] Ne pas supprimer l’index pour forcer une reprise."
+        }
+      ]
+    }
+  ],
+  "constats_documentaires": [
+    {
+      "id": "D01",
+      "gravite": "élevée",
+      "type": "contradiction de contrat unité",
+      "preuves": [
+        "reference/contrat-echange.md:91",
+        "procedures/controle-stock.md:85,130-137",
+        "documents-partages/calcul-marge-pomona/mode d'emploi.md:58"
+      ],
+      "constat": "Le contrat affirme « quantite est toujours en kilos ou en pieces selon l’article ». La nouvelle procédure raisonne explicitement dans une unité métier pouvant être SAC et interdit d’en faire des fruits individuels. Le classeur accepte les sachets mais cela ne résout pas le schéma de faits.",
+      "consequence": "C09 vaut +12 SAC au plan métier, pas validation automatique d’un fait libellé piece. Une normalisation SAC→piece pourrait être une sémantique validée de sachet, ou une perte d’unité ; le contrat actuel ne la définit pas.",
+      "recommandation": "Documenter la relation exacte unité brute/unité métier/unité persistée et la compatibilité des lecteurs ; ne pas changer les anciens faits pour faire disparaître le désaccord. Faire arbitrer le chemin réel par l’agent moteur."
+    },
+    {
+      "id": "D02",
+      "gravite": "moyenne",
+      "type": "point d’entrée resté moins strict",
+      "preuves": [
+        "AGENTS.md:60-71,73-76,106",
+        "AGENT.md:94-109,124-137",
+        "HERMES.md:1-7"
+      ],
+      "constat": "AGENTS.md conserve un mode d’emploi direct « après lecture par Hermes », puis ranger/intégrer/recalculer, et une commande integrer-fichiers sans simulation ni agent explicite. Il ne rappelle pas le nouveau contrôle distinct avant/après. Son envoi séparé parle d’adresse déterminée sans rappeler destinataire explicitement fourni dans la demande courante.",
+      "consequence": "Le renvoi initial vers AGENT.md résout la priorité normative, donc ces lignes ne donnent pas un pouvoir de contournement. Mais cet ancien résumé est une source évitable d’adoption incomplète, surtout pour un autre outil lisant AGENTS.md.",
+      "recommandation": "Faire d’AGENTS.md un point d’entrée court aligné sur HERMES.md, ou actualiser toutes ses séquences et l’exemple SMTP ; ne pas affirmer que son état actuel active le circuit."
+    },
+    {
+      "id": "D03",
+      "gravite": "moyenne",
+      "type": "portée ambiguë des dates livraison",
+      "preuves": [
+        "reference/le-calcul.md:146-148",
+        "procedures/controle-stock.md:77,101-112",
+        "reference/contrat-echange.md:80-81"
+      ],
+      "constat": "Le calcul dit sans qualifier la source « Dans les fichiers, une livraison est datée de sa date de commande, pas de sa réception ». La nouvelle procédure exige de lire la date d’effet prouvée de chaque document, et traite aussi BL/factures directes. Une facture ne peut pas être décalée arbitrairement avec cette règle générale.",
+      "consequence": "Risque de déplacer à tort une livraison par rapport au comptage si l’agent applique une convention d’export à toutes les pièces. Je ne prétends pas que tous les importeurs ont ce défaut : revue du code confiée à l’autre agent.",
+      "recommandation": "Nommer précisément le format concerné et définir date_source/date_effet/date_reception mail ; exiger la preuve de la conversion de dates, sans généralisation à tous les fournisseurs."
+    },
+    {
+      "id": "D04",
+      "gravite": "moyenne",
+      "type": "vocabulaire de verdict et état partiel divergent",
+      "preuves": [
+        "agents/agent-controle.md:22-23",
+        "procedures/controle-stock.md:41-43,60-64",
+        "reference/modele-controle-stock.md:49,73"
+      ],
+      "constat": "La fiche demande sûr/douteux/dangereux ; la procédure et le modèle utilisent sûr/bloqué/partiel/déjà intégré. La procédure exige PARTIEL dès qu’une étape/avis manque (43), mais définit PARTIEL comme une partie indépendante déjà intégrée et vérifiée avec un reste bloqué (63). C16, où rien n’est prouvé intégré, tombe entre ces deux sens.",
+      "consequence": "Ambiguïté de synthèse : « partiel » pourrait être entendu comme une preuve de stock partiellement intégré alors qu’il ne décrit que le workflow. C13 n’est pas partiel simplement parce que A a un delta nul et B un delta positif.",
+      "recommandation": "Séparer verdict d’autorisation/certification (sûr ou bloqué) et état du traitement (non intégré, incomplet, partiellement intégré vérifié, complet, déjà intégré vérifié). Harmoniser la fiche et les deux sections de procédure."
+    },
+    {
+      "id": "D05",
+      "gravite": "moyenne",
+      "type": "chemins relatifs non ancrés",
+      "preuves": [
+        "procedures/controle-stock.md:80",
+        "procedures/courrier.md:73-75",
+        "Contrôle os/pathlib au 2026-09-10"
+      ],
+      "constat": "attachments/ et cache/documents/ n’existent pas sous la racine projet fournie. Ils existent sous le HERMES_HOME actif C:/Users/user/AppData/Local/hermes. Les consignes ne nomment pas cette racine ; appliquées littéralement depuis le projet, leurs recherches sont infructueuses.",
+      "consequence": "Risque de redemander à tort une pièce déjà reçue. Ce ne sont pas des pièces manquantes démontrées mais des références incomplètes.",
+      "recommandation": "Résoudre la racine du profil actif/HERMES_HOME, puis les sous-chemins ; ne pas coder un autre profil ni confondre archives projet et cache Gateway."
+    },
+    {
+      "id": "D06",
+      "gravite": "moyenne",
+      "type": "portée du contrôle des mesures humaines à préciser",
+      "preuves": [
+        "procedures/controle-stock.md:5-7,17-39",
+        "procedures/comptage.md:8-10,29-45"
+      ],
+      "constat": "La portée inclut un nouveau comptage, mais le circuit unique commence par un mail et agent-courrier, puis une écriture données après contrôle. La procédure comptage dit que le serveur enregistre directement la mesure humaine ; son renvoi au circuit indépendant concerne explicitement le fichier reçu après cette mesure.",
+      "consequence": "On ne sait pas à la seule lecture si le contrôle AVANT est censé bloquer une mesure directement validée par l’humain, ou seulement les imports/corrections d’agents. Ne pas promettre deux contrôles autour de chaque clic humain sans chemin effectif.",
+      "recommandation": "Distinguer mesure directe du responsable, correction d’agent et lot de mouvements ; préciser la revue post-mesure et l’invalidation des avis en cours. Conserver la capacité de recompter réellement, sans inventer un mail source."
+    },
+    {
+      "id": "D07",
+      "gravite": "élevée si présenté comme acquis",
+      "type": "limite runtime reconnue, non validation technique",
+      "preuves": [
+        "AGENT.md:65-68",
+        "procedures/controle-stock.md:56-58,174-180",
+        "agents/agent-donnees.md:64-65",
+        "https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files",
+        "https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation"
+      ],
+      "constat": "Les nouvelles consignes distinguent correctement rôle, vraie délégation et adoption. Leur simple existence ne bloque pas un CLI, ne prouve pas le chargement du contexte Email, ni le second passage après import. Un champ auteur n’est pas une preuve de second agent. HERMES.md est bien injecté dans le contexte de cette recette, ce qui ne prouve pas le contexte d’un futur Email.",
+      "consequence": "Aucune garantie runtime ni surveillance active ne peut être signée dans ce rapport. La preuve de cette exécution indépendante est à rattacher à la trace réelle du parent, pas à un identifiant fabriqué dans mon JSON.",
+      "recommandation": "Exiger du contrôle d’activation séparé la preuve du contexte Email courant, de vrais appels courrier/données/contrôle et du rattachement avant/après ; conserver blocage quand indisponible. Aucun redémarrage ou essai mail réalisé par ce contrôleur."
+    }
+  ],
+  "chemins": {
+    "controle_lexical": {
+      "references_comptees": 139,
+      "chemins_uniques_detectes": 54,
+      "methode": "Extraction de chemins sur les 11 documents de premier niveau, existence puis requalification par agent. Les espaces produisent des fragments ; ceux-ci ne sont pas des fichiers invalides."
+    },
+    "chemins_litteraux_valides": [
+      "C:/Users/user/Desktop/preparation-commande",
+      "documents-partages/calcul-marge-pomona/mode d'emploi.md",
+      "Documents/Promo intermarche/",
+      "AGENT.md",
+      "agents/hermes-orchestrateur.md",
+      "agents/agent-controle.md",
+      "agents/agent-courrier.md",
+      "agents/agent-donnees.md",
+      "procedures/controle-stock.md",
+      "reference/modele-controle-stock.md"
+    ],
+    "references_non_resolues_depuis_projet": [
+      "attachments/",
+      "cache/documents/"
+    ],
+    "resolution_reelle": "C:/Users/user/AppData/Local/hermes/attachments et C:/Users/user/AppData/Local/hermes/cache/documents existent ; HERMES_HOME actif confirmé par outil.",
+    "dossier_rapports_operationnels": "documents-partages/controles-stock/ absent au contrôle ; destination nouvelle à créer lors du premier rapport réel autorisé, pas une source manquante ni un chemin intrinsèquement invalide. Cette recette va exclusivement dans Temp/ comme demandé.",
+    "exemples_media": "Les variantes /C:/... et %20 sont présentées comme interdites, pas comme commandes à exécuter. Le chemin réel mode d’emploi avec espaces existe."
+  },
+  "adoption_runtime": {
+    "verdict": "non vérifiée par cette recette",
+    "constate": "HERMES.md fourni dans le contexte de ce subagent ; documents relus par outils ; jugement distinct présent.",
+    "non_constate": [
+      "Chargement de ces versions dans le contexte Gateway Email actif",
+      "Réception et traitement d’un nouveau mail",
+      "Chaîne complète courrier/données/contrôle avant et après sur une pièce réelle",
+      "Verrou commun à tous les écrivains",
+      "Compatibilité effective des unités SAC dans les lecteurs"
+    ],
+    "sources_officielles_consultees": [
+      "https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files",
+      "https://hermes-agent.nousresearch.com/docs/user-guide/features/delegation"
+    ],
+    "note_documentation_externe": "La référence locale de skill sur les context files est plus ancienne que la documentation officielle consultée (découverte AGENTS.md et plafonds). Ne pas déduire le comportement du runtime installé de cette seule skill ; aucune modification de skill dans le mandat limité au rapport."
+  },
+  "limites": [
+    "Aucun document de vente, BL ou facture réel ouvert pour ces cas, car les seuls intrants autorisés de recette sont les scénarios fictifs.",
+    "Aucun stock réel ou résultat d’import annoncé.",
+    "Revue documentaire ciblée des 18 fichiers listés, pas audit complet de tout le code ni de tous les Markdown du projet.",
+    "Le rapport ne confère aucune autorisation humaine et n’est pas un artefact d’approbation technique."
+  ],
+  "outils": {
+    "calculs": "py -3.14, arithmétique effectivement retournée par terminal ; décisions et recommandations rédigées par cet agent.",
+    "incident_git": "git status a répondu fatal: not a git repository. Aucun diff Git possible ; les instructions ont été relues directement et empreintes comparées.",
+    "incident_helper": "shell_quote annoncé disponible a levé NameError dans execute_code avant tout appel ; reprise avec shlex.quote standard, succès.",
+    "regles_preuves": "Les courts extraits sont parfois résumés/paraphrasés ; les références fichier:ligne et empreintes désignent les textes complets effectivement lus."
+  },
+  "synthese_comptee": {
+    "nombre_cas": 16,
+    "decisions": {
+      "bloquée": 6,
+      "historique_sans_effet": 1,
+      "sûre": 7,
+      "deja_integre": 1,
+      "partielle": 1
+    },
+    "nombre_constats_documentaires": 7
+  },
+  "preuves_de_verification": {
+    "horodatage_debut_empreintes": "2026-09-10T19:31:33.076614+02:00",
+    "horodatage_fin_empreintes": "2026-09-10T19:36:25.748216+02:00",
+    "documents_relus": {
+      "AGENT.md": "621fe3a646fb0eb95ade7f0bc631877869dd70a985760043ed713fccb59f999f",
+      "AGENTS.md": "35916a025600eb6896839a7669fc943827334676c3c4b49dff885a2c23354475",
+      "HERMES.md": "b0a390a19c04e69d1902ea68f6b6eacb7541c952ec1ddba0270534981c1806ee",
+      "IDEA.md": "766ed07734ea80c7bacb77bdf045fdb5befbcd6d208e61a286f1f8f7908777fa",
+      "agents/hermes-orchestrateur.md": "1856dee97bb7d8b24975f577339bfd87ffbd6227beb267f17890bcb90e65489b",
+      "agents/agent-controle.md": "56e0bfb0b18faca72f03c2ac5cd31e8926b71fa50d287a257a53642b384e3483",
+      "agents/agent-donnees.md": "30486f9c7c60a1478d3fd0930a5d9a6382accb81d8195009b2e18ec74f4ddd5c",
+      "agents/agent-courrier.md": "5a8e139203aa8df759370bf579c15a0b42fd04bd2997e0cb440efc17e8a7be30",
+      "procedures/controle-stock.md": "6c4586454515c05b36e47653b4656cf6e8bde862be31f55b159c6f2cb64479cc",
+      "procedures/courrier.md": "3316d3f7d888ae51fd0247005e745736b62c762f39b65ae0c56a7e05101f656c",
+      "reference/modele-controle-stock.md": "ea872366b62a0918e55eb52d86418577d6b4471df0a1a928f4ed4abe1f410837",
+      "reference/contrat-echange.md": "65b72ddbf23a381ac2334c05257859b475782a8435ff0b6fca3b08be0273cb0a",
+      "reference/le-calcul.md": "46f50076b0ed2dafcf06a84a8c82b59c0a89f8d864418955d97cab26a0118197",
+      "procedures/comptage.md": "fc7bc8546b37bfff4504ffbfa8889115dd524b6cac173e60c21e4e182ef36955",
+      "procedures/commande.md": "9c820f91da2cb9c512096cc0f0371a3178a00f2185c8b834011c0684a4160dce",
+      "procedures/anomalie.md": "651877b664bfd876bdc9194511d9b57b16d1bfc9da11f0723bd7de6658753c23",
+      "documents-partages/calcul-marge-pomona/mode d'emploi.md": "bb1dda351897290e7bd19c98d1ee71eccdfb518fb0eb6fa6f2c1c05e3ee2e2fd",
+      "donnees/pouvoirs.json": "64cbd7f60ed1aedd7c141a724eeaefda729ff72f5733a5734cf988bd1a1871d1"
+    },
+    "documents_stables_pendant_comparaison": true,
+    "fichiers_metier_json_jsonl_comptes": 46,
+    "perimetre_integrite": "Tous les .json et .jsonl présents sous donnees/, comparés par SHA-256, noms et contenu ; pas une affirmation de hash de tout le disque ni des classeurs.",
+    "manifestes_metier_sha256_debut": "f951c5abb7a3ec6f8b6d02a54b2375fad9c71ce00c806a72f17aa8f7845f4426",
+    "manifestes_metier_sha256_fin": "f951c5abb7a3ec6f8b6d02a54b2375fad9c71ce00c806a72f17aa8f7845f4426",
+    "changements_metier_detectes": [],
+    "changements_documents_detectes": [],
+    "garantie": "Constat valable pour ces versions. Toute modification ultérieure oblige à requalifier les constats concernés ; ce rapport fictif n’autorise aucun import."
+  },
+  "couverture_matrice": [
+    {
+      "repere": "R01",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Pas de fichier source réel : existence des chemins documentaires contrôlée séparément."
+    },
+    {
+      "repere": "R02",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Aucun cas de pagination/OCR/feuilles cachées fourni ; prérequis stipulés, non éprouvés."
+    },
+    {
+      "repere": "R03",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Identités autres que BIO/mapping réputées attestées, pas de test magasin/fournisseur réel."
+    },
+    {
+      "repere": "R04",
+      "cas": [
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Date interne/effective séparée du nom et renvoi."
+    },
+    {
+      "repere": "R05",
+      "cas": [
+        "C01"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Multi-jours sans détail rejeté."
+    },
+    {
+      "repere": "R06",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Complétude des autres mouvements stipulée pour les cas simples, non déduite d’une absence."
+    },
+    {
+      "repere": "R07",
+      "cas": [
+        "C02",
+        "C10",
+        "C16"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Archivage et identité métier distincts."
+    },
+    {
+      "repere": "R08",
+      "cas": [
+        "C11"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Rectificatif non additionné."
+    },
+    {
+      "repere": "R09",
+      "cas": [
+        "C10"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "BL/facture/export du même événement."
+    },
+    {
+      "repere": "R10",
+      "cas": [
+        "C15"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "BIO/nonBIO et rapprochement proche refusés."
+    },
+    {
+      "repere": "R11",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Calculs de quantités vérifiés, mais aucun test NaN/infini/signe/formule/cellule vide fourni."
+    },
+    {
+      "repere": "R12",
+      "cas": [
+        "C06",
+        "C07",
+        "C08",
+        "C09"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Quantités source et SAC préservés au niveau du raisonnement."
+    },
+    {
+      "repere": "R13",
+      "cas": [
+        "C06",
+        "C07",
+        "C08"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Colis livré vs normal et fraction."
+    },
+    {
+      "repere": "R14",
+      "cas": [
+        "C06",
+        "C07",
+        "C09"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Réception stipulée prouvée ; reliquat/avoir/retour non éprouvés."
+    },
+    {
+      "repere": "R15",
+      "cas": [
+        "C03",
+        "C04",
+        "C12"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Sorties nettes compatibles réputées attestées ; retours/annulations non éprouvés."
+    },
+    {
+      "repere": "R16",
+      "cas": [
+        "C12"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Casse/dons absents sans activité : non bloquants."
+    },
+    {
+      "repere": "R17",
+      "cas": [
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C13"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Chronologie et base par article."
+    },
+    {
+      "repere": "R18",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Aucun changement historique de PCB ni correction ancienne après nouvelle mesure testé directement."
+    },
+    {
+      "repere": "R19",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Transformation/jus/transfert non fourni."
+    },
+    {
+      "repere": "R20",
+      "cas": [],
+      "statut": "non éprouvé par les cas fournis",
+      "limite": "Aucune facture financière complète ni total réel fourni ; pas de certification de montants."
+    },
+    {
+      "repere": "R21",
+      "cas": [
+        "C14",
+        "C16"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Avis périmé, simulation, rangement et publication séparés."
+    },
+    {
+      "repere": "R22",
+      "cas": [
+        "C14"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Concurrence jugée sur scénario, pas essai de verrou."
+    },
+    {
+      "repere": "R23",
+      "cas": [
+        "C02",
+        "C03",
+        "C04",
+        "C12",
+        "C13"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Delta physique séparé de l’historique, de la couverture globale et de la prévision."
+    },
+    {
+      "repere": "R24",
+      "cas": [
+        "C16"
+      ],
+      "statut": "éprouvé par jugement fictif",
+      "limite": "Pas de succès annoncé sans preuves ; aucune notification réelle permise par le mandat."
+    }
+  ]
+}
+

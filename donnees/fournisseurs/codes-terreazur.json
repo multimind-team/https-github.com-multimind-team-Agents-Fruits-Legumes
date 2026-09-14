@@ -45,6 +45,8 @@
     "160811": {"itm8": "0000087004808", "libelle_magasin": "TOMATE COTELEE NOIRE VRAC", "verifie_le": "2026-09-10", "source": "Bordereau TerreAzur 7835382996 du 10/09/2026"},
     "189369": {"itm8": "0000087004076", "libelle_magasin": "LAITUE POMMEE BLONDE PIECE", "verifie_le": "2026-09-10", "source": "Bordereau TerreAzur 7835382996 du 10/09/2026"},
     "218663": {"itm8": "0000087004037", "libelle_magasin": "PECHE JAUNE VRAC", "verifie_le": "2026-09-10", "source": "Bordereau TerreAzur 7835382996 du 10/09/2026"},
-    "104321": {"itm8": "0000087003082", "libelle_magasin": "BROCOLI VRAC", "verifie_le": "2026-09-11", "source": "Bordereau TerreAzur 7835383845 du 11/09/2026"}
+    "104321": {"itm8": "0000087003082", "libelle_magasin": "BROCOLI VRAC", "verifie_le": "2026-09-11", "source": "Bordereau TerreAzur 7835383845 du 11/09/2026"},
+    "108046": {"itm8": "0000087004065", "libelle_magasin": "POIVRON DOUX ROUGE VRAC", "verifie_le": "2026-09-14", "source": "Bordereau TerreAzur 7835385131 du 14/09/2026 (meme produit que le code 107993, calibre NL)"},
+    "167698": {"itm8": "0000087004128", "libelle_magasin": "POMME PINK LADY VRAC", "verifie_le": "2026-09-14", "source": "Bordereau TerreAzur 7835385131 du 14/09/2026 (meme produit que le code 149179, calibre 190/220 7k)"}
   }
 }

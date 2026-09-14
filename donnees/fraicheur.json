@@ -1,9 +1,9 @@
 {
  "_lisez_moi": "Ce qu'il faut penser de la proposition affichée. Ecrit par filet-de-securite.py, lu par l'ecran de commande. Fichier separe expres : proposition.json est reecrit a chaque calcul.",
- "etat": "donnees-en-retard",
- "message": "Ventes du 12/09 non intégrées. Les dernières ventes intégrées sont celles du 11/09. Vérifie l'intégration du fichier des ventes du 12/09.",
- "verifie_le": "2026-09-13T09:47:11",
+ "etat": "a-jour",
+ "message": "Proposition du 2026-09-14, 316 articles.",
+ "verifie_le": "2026-09-14T05:19:39",
  "jour_de_commande_attendu": "2026-09-14",
- "proposition_generee_le": "2026-09-13T09:47:04",
+ "proposition_generee_le": "2026-09-14T05:19:30",
  "calculs_en_echec": []
 }
