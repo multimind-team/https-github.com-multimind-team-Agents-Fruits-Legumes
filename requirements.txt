@@ -1,0 +1,7 @@
+# Lecteurs des fichiers Excel envoyés par le magasin.
+openpyxl==3.1.5
+xlrd==2.0.2
+# Rendu contrôlé des pages de prospectus pour l'application.
+PyMuPDF==1.28.2
+# Vignettes produit légères, originaux conservés.
+Pillow==12.2.0

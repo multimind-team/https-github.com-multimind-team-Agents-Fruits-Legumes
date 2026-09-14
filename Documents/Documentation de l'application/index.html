@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agents Fruits & Légumes • Documentation Officielle</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <style>
+    .hero-banner {
+      background: linear-gradient(135deg, #1d1d1b 0%, #2a2a27 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+      border-radius: 6px;
+      border-left: 6px solid #e2001a;
+      margin-bottom: 28px;
+    }
+    .hero-badge-tag {
+      background: #e2001a;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: 24px;
+      font-weight: 900;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.3px;
+      color: #ffffff;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: #d1d5db;
+      margin: 0 0 16px 0;
+      max-width: 820px;
+      line-height: 1.5;
+    }
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #3f3f3a;
+    }
+    .hero-kpi-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+    .hero-kpi-val {
+      font-size: 20px;
+      font-weight: 900;
+      color: #e2001a;
+      line-height: 1.1;
+    }
+    .hero-kpi-lbl {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .chapter-card {
+      border: 1px solid var(--brand-border);
+      border-radius: 6px;
+      background: #ffffff;
+      margin-bottom: 22px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .chapter-header {
+      background: #f8f9fa;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--brand-border);
+      border-left: 4px solid #e2001a;
+    }
+    .chapter-header-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #1d1d1b;
+      margin: 0;
+    }
+    .chapter-header-sub {
+      font-size: 12px;
+      color: #64748b;
+      margin: 2px 0 0 0;
+    }
+    .subchap-table {
+      width: 100%;
+      margin: 0;
+    }
+    .subchap-table th {
+      background: #ffffff;
+      color: #64748b;
+      font-size: 11px;
+      border-bottom: 1px solid var(--brand-border);
+      padding: 8px 20px;
+    }
+    .subchap-table td {
+      padding: 12px 20px;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 13px;
+    }
+    .subchap-table tr:hover td {
+      background: #fff8f8;
+    }
+    .subchap-link {
+      font-weight: 700;
+      color: #1d1d1b;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .subchap-link:hover {
+      color: #e2001a;
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="./index.html"><picture><source srcset="./assets/logo.webp" type="image/webp"><img src="./assets/logo.gif" alt="Agents Fruits & Légumes" class="sidebar-brand-img"></picture></a>
+      <div class="project-tag">
+        <span class="project-tag-dot"></span> Référentiel Technique &amp; Métier
+      </div>
+      <div class="project-name-display">Agents Fruits & Légumes</div>
+    </div>
+
+    <div class="sidebar-search">
+      <input type="text" id="docSearch" placeholder="Filtrer les chapitres..." onkeyup="filterNav()">
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Portail Général</div>
+      <ul class="nav-list">
+        <li class="nav-item active"><a href="./index.html">🏠 Accueil &amp; Plan Général</a></li>
+      </ul>
+      <div class="nav-section-title">1 - Présenation generale</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./1 - Présenation generale/1.1 - Objectif de l'application.html">1.1 - Objectif de l'application</a></li>
+        <li class="nav-item"><a href="./1 - Présenation generale/1.2 - Périmètre et limites du système.html">1.2 - Périmètre et limites du système</a></li>
+        <li class="nav-item"><a href="./1 - Présenation generale/1.3 - Principes directeurs et fonctionnement général.html">1.3 - Principes directeurs et fonctionnement général</a></li>
+      </ul>
+      <div class="nav-section-title">2 - Utilisateurs et rôles</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./2 - Utilisateurs et roles/2.1 - Profils utilisateurs et permissions.html">2.1 - Profils utilisateurs et permissions</a></li>
+        <li class="nav-item"><a href="./2 - Utilisateurs et roles/2.2 - Brigade numérique et rôles des agents.html">2.2 - Brigade numérique et rôles des agents</a></li>
+      </ul>
+      <div class="nav-section-title">3 - Concepts métier fondamentaux</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./3 - Concepts metier fondamentaux/3.1 - Typologie des produits et référentiel article.html">3.1 - Typologie des produits et référentiel article</a></li>
+        <li class="nav-item"><a href="./3 - Concepts metier fondamentaux/3.2 - Flux de vente et canaux d'encaissement.html">3.2 - Flux de vente et canaux d'encaissement</a></li>
+        <li class="nav-item"><a href="./3 - Concepts metier fondamentaux/3.3 - Typologie des stocks et statuts physiques.html">3.3 - Typologie des stocks et statuts physiques</a></li>
+      </ul>
+      <div class="nav-section-title">4 - Architecture générale du système</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./4 - Architecture generale/4.1 - Chaîne de traitement et cycle quotidien.html">4.1 - Chaîne de traitement et cycle quotidien</a></li>
+        <li class="nav-item"><a href="./4 - Architecture generale/4.2 - Cartographie modulaire et composants logiciels.html">4.2 - Cartographie modulaire et composants logiciels</a></li>
+      </ul>
+      <div class="nav-section-title">5 - Sources de données et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./5 - Sources de donnees/5.1 - Sources internes (Mercalys, SCAFRUIT, comptage).html">5.1 - Sources internes (Mercalys, SCAFRUIT, comptage)</a></li>
+        <li class="nav-item"><a href="./5 - Sources de donnees/5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions).html">5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions)</a></li>
+      </ul>
+      <div class="nav-section-title">6 - Modèle de données et dictionnaire métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./6 - Modele de donnees et dictionnaire metier/6.1 - Format du carnet de faits et schéma JSONL.html">6.1 - Format du carnet de faits et schéma JSONL</a></li>
+        <li class="nav-item"><a href="./6 - Modele de donnees et dictionnaire metier/6.2 - Dictionnaire des champs et typologie des entités.html">6.2 - Dictionnaire des champs et typologie des entités</a></li>
+      </ul>
+      <div class="nav-section-title">7 - Qualité et préparation des données</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./7 - Qualite et preparation des donnees/7.1 - Contrôles d'intégrité et règles de cohérence.html">7.1 - Contrôles d'intégrité et règles de cohérence</a></li>
+        <li class="nav-item"><a href="./7 - Qualite et preparation des donnees/7.2 - Traitement des anomalies et valeurs manquantes.html">7.2 - Traitement des anomalies et valeurs manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">8 - Prévision des ventes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./8 - Prevision des ventes/8.1 - Modélisation statistique et fenêtre circulaire.html">8.1 - Modélisation statistique et fenêtre circulaire</a></li>
+        <li class="nav-item"><a href="./8 - Prevision des ventes/8.2 - Profils journaliers et saisonnalité.html">8.2 - Profils journaliers et saisonnalité</a></li>
+      </ul>
+      <div class="nav-section-title">9 - Météo, calendrier et événements</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./9 - Meteo calendrier et evenements/9.1 - Facteurs météo et corrélations locales.html">9.1 - Facteurs météo et corrélations locales</a></li>
+        <li class="nav-item"><a href="./9 - Meteo calendrier et evenements/9.2 - Calendrier commercial, jours fériés et vacances scolaires.html">9.2 - Calendrier commercial, jours fériés et vacances scolaires</a></li>
+      </ul>
+      <div class="nav-section-title">10 - Confiance et incertitude</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./10 - Confiance et incertitude/10.1 - Niveaux de confiance et score de fiabilité.html">10.1 - Niveaux de confiance et score de fiabilité</a></li>
+        <li class="nav-item"><a href="./10 - Confiance et incertitude/10.2 - Facteurs de risque et données manquantes.html">10.2 - Facteurs de risque et données manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">11 - Stock et livraisons</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./11 - Stock et livraisons/11.1 - Calcul du stock projeté et couverture.html">11.1 - Calcul du stock projeté et couverture</a></li>
+        <li class="nav-item"><a href="./11 - Stock et livraisons/11.2 - Gestion des livraisons attendues et reliquats.html">11.2 - Gestion des livraisons attendues et reliquats</a></li>
+      </ul>
+      <div class="nav-section-title">12 - Calcul du besoin de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./12 - Calcul du besoin de commande/12.1 - Algorithme du besoin net et horizon de réapprovisionnement.html">12.1 - Algorithme du besoin net et horizon de réapprovisionnement</a></li>
+        <li class="nav-item"><a href="./12 - Calcul du besoin de commande/12.2 - Stock de sécurité et ajustements dynamiques.html">12.2 - Stock de sécurité et ajustements dynamiques</a></li>
+      </ul>
+      <div class="nav-section-title">13 - Règles métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./13 - Regles metier/13.1 - Règles de colisage, PCB et arrondis.html">13.1 - Règles de colisage, PCB et arrondis</a></li>
+        <li class="nav-item"><a href="./13 - Regles metier/13.2 - Garde-fous anti-rupture et plafonds de baisse.html">13.2 - Garde-fous anti-rupture et plafonds de baisse</a></li>
+      </ul>
+      <div class="nav-section-title">14 - Proposition de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./14 - Proposition de commande/14.1 - Structure de la proposition et arbitrages.html">14.1 - Structure de la proposition et arbitrages</a></li>
+        <li class="nav-item"><a href="./14 - Proposition de commande/14.2 - Cycle de vie d'une ligne de commande.html">14.2 - Cycle de vie d'une ligne de commande</a></li>
+      </ul>
+      <div class="nav-section-title">15 - Gestion des exceptions</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./15 - Gestion des exceptions/15.1 - Typologie des alertes et niveaux de criticité.html">15.1 - Typologie des alertes et niveaux de criticité</a></li>
+        <li class="nav-item"><a href="./15 - Gestion des exceptions/15.2 - Procédures de résolution d'anomalies.html">15.2 - Procédures de résolution d'anomalies</a></li>
+      </ul>
+      <div class="nav-section-title">16 - Explicabilité pour les LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./16 - Explicabilite pour les LLM/16.1 - Distinction Faits, Calculs et Hypothèses.html">16.1 - Distinction Faits, Calculs et Hypothèses</a></li>
+        <li class="nav-item"><a href="./16 - Explicabilite pour les LLM/16.2 - Format d'échange et prompts structurés.html">16.2 - Format d'échange et prompts structurés</a></li>
+      </ul>
+      <div class="nav-section-title">17 - API et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./17 - API et integrations/17.1 - Endpoints locaux et protocoles d'échange.html">17.1 - Endpoints locaux et protocoles d'échange</a></li>
+        <li class="nav-item"><a href="./17 - API et integrations/17.2 - Connecteurs Webtelevente et export des ordres.html">17.2 - Connecteurs Webtelevente et export des ordres</a></li>
+      </ul>
+      <div class="nav-section-title">18 - Interface utilisateur</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./18 - Interface utilisateur/18.1 - Console de commande magasin.html">18.1 - Console de commande magasin</a></li>
+        <li class="nav-item"><a href="./18 - Interface utilisateur/18.2 - Interface mobile de pointage.html">18.2 - Interface mobile de pointage</a></li>
+      </ul>
+      <div class="nav-section-title">19 - Indicateurs et performance</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./19 - Indicateurs et performance/19.1 - KPIs métier (rupture, casse, marge).html">19.1 - KPIs métier (rupture, casse, marge)</a></li>
+        <li class="nav-item"><a href="./19 - Indicateurs et performance/19.2 - Métriques algorithmiques et taux d'adhésion.html">19.2 - Métriques algorithmiques et taux d'adhésion</a></li>
+      </ul>
+      <div class="nav-section-title">20 - Tests et validation</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./20 - Tests et validation/20.1 - Protocoles de test à blanc et non-régression.html">20.1 - Protocoles de test à blanc et non-régression</a></li>
+        <li class="nav-item"><a href="./20 - Tests et validation/20.2 - Scénarios de simulation et jeux d'essais.html">20.2 - Scénarios de simulation et jeux d'essais</a></li>
+      </ul>
+      <div class="nav-section-title">21 - Versionnement, audit et sécurité</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./21 - Versionnement audit et securite/21.1 - Immutabilité du journal d'audit et traçabilité.html">21.1 - Immutabilité du journal d'audit et traçabilité</a></li>
+        <li class="nav-item"><a href="./21 - Versionnement audit et securite/21.2 - Matrice des pouvoirs et sécurité locale.html">21.2 - Matrice des pouvoirs et sécurité locale</a></li>
+      </ul>
+      <div class="nav-section-title">22 - Prompt système du LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./22 - Prompt systeme du LLM/22.1 - Spécification formelle du rôle agentique.html">22.1 - Spécification formelle du rôle agentique</a></li>
+        <li class="nav-item"><a href="./22 - Prompt systeme du LLM/22.2 - Garde-fous déontologiques et zéro-invention.html">22.2 - Garde-fous déontologiques et zéro-invention</a></li>
+      </ul>
+      <div class="nav-section-title">23 - Glossaire et annexes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./23 - Glossaire et annexes/23.1 - Glossaire terminologique F&L et grande distribution.html">23.1 - Glossaire terminologique F&L et grande distribution</a></li>
+        <li class="nav-item"><a href="./23 - Glossaire et annexes/23.2 - Exemples chiffrés complets et tables de référence.html">23.2 - Exemples chiffrés complets et tables de référence</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div>Groupement Les Mousquetaires</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <div class="breadcrumb">
+          <span>Documentation Officielle</span>
+          <span class="breadcrumb-sep">&gt;</span>
+          <strong>Sommaire Général &amp; Index</strong>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <a href="./1 - Présenation generale/1.1 - Objectif de l'application.html" class="btn-action btn-red">Ouvrir le Chapitre 1.1 &rarr;</a>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <!-- Hero Banner avec Logo Grand Format -->
+      <div class="hero-banner">
+        <div style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap;">
+          <div style="flex-shrink: 0;">
+            <picture>
+              <source srcset="./assets/logo.webp" type="image/webp">
+              <img src="./assets/logo.gif" alt="Agents Fruits &amp; Légumes" style="width: 260px; max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); border: 2px solid rgba(226,0,26,0.6); display: block;">
+            </picture>
+          </div>
+          <div style="flex-grow: 1; min-width: 280px;">
+            <span class="hero-badge-tag">Système Opérationnel Intermarché &amp; Netto</span>
+            <h1 class="hero-title" style="font-size: 22px; line-height: 1.25;">Agents Fruits &amp; Légumes : Système Expert de Préparation de Commande F&amp;L</h1>
+            <p class="hero-sub" style="margin-bottom: 0;">
+              Portail documentaire exhaustif : ingénierie algorithmique, règles métier de l'ultra-frais, protocoles quotidiens en point de vente, modèles de données et gouvernance pour la commande Fruits &amp; Légumes.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-kpis" style="margin-top: 22px;">
+          <div class="hero-kpi-card">
+            <div class="hero-kpi-val">&lt; 1,5 %</div>
+            <div class="hero-kpi-lbl">Taux de rupture rayon</div>
+          </div>
+          <div class="hero-kpi-card">
+            <div class="hero-kpi-val">&lt; 2,8 %</div>
+            <div class="hero-kpi-lbl">Démarque connue (casse)</div>
+          </div>
+          <div class="hero-kpi-card">
+            <div class="hero-kpi-val">&gt; 90 %</div>
+            <div class="hero-kpi-lbl">Adhésion aux propositions</div>
+          </div>
+          <div class="hero-kpi-card">
+            <div class="hero-kpi-val">&gt; 45 min</div>
+            <div class="hero-kpi-lbl">Gain de temps quotidien</div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Sommaire Général</h2>
+
+      <!-- Chapitre 1 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">1 - Présenation generale</h3>
+          <p class="chapter-header-sub">Vision stratégique, cadrage des flux, garde-fous fondamentaux et runbook d'exploitation quotidienne</p>
+        </div>
+
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="./1 - Présenation generale/1.1 - Objectif de l'application.html" class="subchap-link">
+                  📄 1.1 - Objectif de l'application
+                </a>
+              </td>
+              <td>
+                Enjeux de l'ultra-frais (périssabilité, cours mercuriale, météo-sensibilité), 6 finalités opérationnelles, principe cardinal « Zéro Invention », formules fondamentales du besoin net, exemple chiffré complet (Tomate &amp; Salade) et règles métier <code>RULE-001</code> à <code>RULE-004</code>.
+              </td>
+              <td style="text-align: right;">
+                <a href="./1 - Présenation generale/1.1 - Objectif de l'application.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="./1 - Présenation generale/1.2 - Périmètre et limites du système.html" class="subchap-link">
+                  📄 1.2 - Périmètre et limites du système
+                </a>
+              </td>
+              <td>
+                Flux réels inclus (sorties caisse Mercalys, BL réels SCAFRUIT, cadencier du jour, comptage physique chambre froide, météo locale Open-Meteo), fonctions formellement exclues (négociation, comptabilité, modification de PVC, commande autonome) et matrice des responsabilités RACI.
+              </td>
+              <td style="text-align: right;">
+                <a href="./1 - Présenation generale/1.2 - Périmètre et limites du système.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="./1 - Présenation generale/1.3 - Principes directeurs et fonctionnement général.html" class="subchap-link">
+                  📄 1.3 - Principes directeurs et fonctionnement général
+                </a>
+              </td>
+              <td>
+                Les 5 principes inviolables (faits immuables, zéro hallucination, souveraineté exploitant, horodatage fin, vérité du cadencier), distinction tripartite FAITS / CALCULS / HYPOTHÈSES, chronologie matinale pas à pas (06h00–09h30) et cartographie des modules réels (<code>moteur/*.py</code>).
+              </td>
+              <td style="text-align: right;">
+                <a href="./1 - Présenation generale/1.3 - Principes directeurs et fonctionnement général.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 2 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">2 - Utilisateurs et rôles</h3>
+          <p class="chapter-header-sub">Chaîne de gouvernance magasin, matrice d'habilitations, brigade des 7 assistants spécialisés et protocoles de sécurité</p>
+        </div>
+
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href="./2 - Utilisateurs et roles/2.1 - Profils utilisateurs et permissions.html" class="subchap-link">
+                  📄 2.1 - Profils utilisateurs et permissions
+                </a>
+              </td>
+              <td>
+                Les 4 acteurs humains (Responsable Rayon, Adhérent / Direction, Employé réceptionnaire, Administrateur DSI), matrice complète RBAC, principe fondamental du <em>Human-in-the-Loop</em>, cut-off 09h30 et 3 scénarios opérationnels terrain.
+              </td>
+              <td style="text-align: right;">
+                <a href="./2 - Utilisateurs et roles/2.1 - Profils utilisateurs et permissions.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="./2 - Utilisateurs et roles/2.2 - Brigade numérique et rôles des agents.html" class="subchap-link">
+                  📄 2.2 - Brigade numérique et rôles des agents
+                </a>
+              </td>
+              <td>
+                Architecture des 7 assistants spécialisés (Orchestrateur, Contrôle, Courrier, Données, Rayon, Détective &amp; Tendances, Audit Stock), droit de veto absolu, séparation des pouvoirs, plafonds journaliers d'action et sentinelle passive 0 token.
+              </td>
+              <td style="text-align: right;">
+                <a href="./2 - Utilisateurs et roles/2.2 - Brigade numérique et rôles des agents.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 3 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">3 - Concepts métier fondamentaux</h3>
+          <p class="chapter-header-sub">Référentiel article ultra-frais, flux de vente, typologie des pertes et gestion physique des stocks</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./3 - Concepts metier fondamentaux/3.1 - Typologie des produits et référentiel article.html" class="subchap-link">📄 3.1 - Typologie des produits et référentiel article</a></td>
+              <td>Code ITM8, ordre Webtelevente (fruits, legumes, bio), PCB colisage, gestion des codes jumeaux (fusions) et conversion de la machine à jus.</td>
+              <td style="text-align: right;"><a href="./3 - Concepts metier fondamentaux/3.1 - Typologie des produits et référentiel article.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./3 - Concepts metier fondamentaux/3.2 - Flux de vente et canaux d'encaissement.html" class="subchap-link">📄 3.2 - Flux de vente et canaux d'encaissement</a></td>
+              <td>Sorties caisses Mercalys, picking Drive, démarque connue (casse), dons associations (Restos du Cœur), formule déterministe du taux de perte et neutralisation des biais.</td>
+              <td style="text-align: right;"><a href="./3 - Concepts metier fondamentaux/3.2 - Flux de vente et canaux d'encaissement.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./3 - Concepts metier fondamentaux/3.3 - Typologie des stocks et statuts physiques.html" class="subchap-link">📄 3.3 - Typologie des stocks et statuts physiques</a></td>
+              <td>Moteur de position (calculer-position.py), mouvements strictement postérieurs, distinction capitale de l'heure de comptage (matin vs soir) et statut inconnu.</td>
+              <td style="text-align: right;"><a href="./3 - Concepts metier fondamentaux/3.3 - Typologie des stocks et statuts physiques.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 4 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">4 - Architecture générale du système</h3>
+          <p class="chapter-header-sub">Cycle d'exploitation matinal (05h00-09h30), cartographie modulaire et composants logiciels Python</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./4 - Architecture generale/4.1 - Chaîne de traitement et cycle quotidien.html" class="subchap-link">📄 4.1 - Chaîne de traitement et cycle quotidien</a></td>
+              <td>Runbook chronologique pas à pas (réception quai, ingestion 06h00, pointage mobile 06h30, calcul 07h15, revue 07h45, cut-off Webtelevente 09h30).</td>
+              <td style="text-align: right;"><a href="./4 - Architecture generale/4.1 - Chaîne de traitement et cycle quotidien.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./4 - Architecture generale/4.2 - Cartographie modulaire et composants logiciels.html" class="subchap-link">📄 4.2 - Cartographie modulaire et composants logiciels</a></td>
+              <td>Rôles précis des scripts Python moteur/ (serveur.py, calculer-commande.py, generer-proposition.py, conditionnements.py, surveille-mail-*.py).</td>
+              <td style="text-align: right;"><a href="./4 - Architecture generale/4.2 - Cartographie modulaire et composants logiciels.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 5 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">5 - Sources de données et intégrations</h3>
+          <p class="chapter-header-sub">Sources internes magasin et variables exogènes prédictives (météo Open-Meteo, calendrier, promotions)</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./5 - Sources de donnees/5.1 - Sources internes (Mercalys, SCAFRUIT, comptage).html" class="subchap-link">📄 5.1 - Sources internes (Mercalys, SCAFRUIT, comptage)</a></td>
+              <td>Exports caisse Mercalys CSV, cadencier mercuriale SCAFRUIT, BL quai, saisie mobile comptage, factures directes et règle du zéro invention.</td>
+              <td style="text-align: right;"><a href="./5 - Sources de donnees/5.1 - Sources internes (Mercalys, SCAFRUIT, comptage).html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./5 - Sources de donnees/5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions).html" class="subchap-link">📄 5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions)</a></td>
+              <td>Paramétrage météo local Carmaux (pluie >= 10mm -> 0.901, chaleur >= 25°C -> 1.076), sensibilités par article et coefficients vacances Zone C.</td>
+              <td style="text-align: right;"><a href="./5 - Sources de donnees/5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions).html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 6 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">6 - Modèle de données et dictionnaire métier</h3>
+          <p class="chapter-header-sub">Architecture append-only du carnet de faits JSONL et référentiel des 6 types de faits et 7 types de décisions</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./6 - Modele de donnees et dictionnaire metier/6.1 - Format du carnet de faits et schéma JSONL.html" class="subchap-link">📄 6.1 - Format du carnet de faits et schéma JSONL</a></td>
+              <td>Structure réelle d'un enregistrement JSONL issu de 2026.jsonl, immutabilité stricte, gestion de l'historique et carnet de décisions.</td>
+              <td style="text-align: right;"><a href="./6 - Modele de donnees et dictionnaire metier/6.1 - Format du carnet de faits et schéma JSONL.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./6 - Modele de donnees et dictionnaire metier/6.2 - Dictionnaire des champs et typologie des entités.html" class="subchap-link">📄 6.2 - Dictionnaire des champs et typologie des entités</a></td>
+              <td>Les 6 types de faits physiques (vente, livraison, comptage, correction-comptage, casse, don) et les 7 types de décisions de gestion (fusion, conditionnement, etc.).</td>
+              <td style="text-align: right;"><a href="./6 - Modele de donnees et dictionnaire metier/6.2 - Dictionnaire des champs et typologie des entités.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 7 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">7 - Qualité et préparation des données</h3>
+          <p class="chapter-header-sub">Garde-fous pré-calcul, contrôle de cohérence physique et gestion des valeurs manquantes ou dégradées</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./7 - Qualite et preparation des donnees/7.1 - Contrôles d'intégrité et règles de cohérence.html" class="subchap-link">📄 7.1 - Contrôles d'intégrité et règles de cohérence</a></td>
+              <td>Contrôles d'ingestion (idempotence, dates, validité PCB > 0, seuil min 5 jours saisonniers, plafonds pouvoirs.json) et protocole de test à blanc.</td>
+              <td style="text-align: right;"><a href="./7 - Qualite et preparation des donnees/7.1 - Contrôles d'intégrité et règles de cohérence.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./7 - Qualite et preparation des donnees/7.2 - Traitement des anomalies et valeurs manquantes.html" class="subchap-link">📄 7.2 - Traitement des anomalies et valeurs manquantes</a></td>
+              <td>Résilience en mode dégradé (ventes Mercalys absentes, indisponibilité API météo, absence cadencier) et neutralisation des ventes atypiques (> 3.5 sigma).</td>
+              <td style="text-align: right;"><a href="./7 - Qualite et preparation des donnees/7.2 - Traitement des anomalies et valeurs manquantes.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 8 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">8 - Prévision des ventes</h3>
+          <p class="chapter-header-sub">Algorithme de la fenêtre circulaire (± 21 jours), règle des 5 jours d'observation et semainier normalisé</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./8 - Prevision des ventes/8.1 - Modélisation statistique et fenêtre circulaire.html" class="subchap-link">📄 8.1 - Modélisation statistique et fenêtre circulaire</a></td>
+              <td>Fenêtre glissante de ± 21 jours, boucle circulaire de fin d'année et garde-fou strict des 5 observations (sinon prévision 0, jamais de moyenne annuelle).</td>
+              <td style="text-align: right;"><a href="./8 - Prevision des ventes/8.1 - Modélisation statistique et fenêtre circulaire.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./8 - Prevision des ventes/8.2 - Profils journaliers et saisonnalité.html" class="subchap-link">📄 8.2 - Profils journaliers et saisonnalité</a></td>
+              <td>Table des coefficients du semainier CORRECTION_JS (Lundi 0.953 à Dimanche 1.047) et dynamique de consommation du magasin de Carmaux.</td>
+              <td style="text-align: right;"><a href="./8 - Prevision des ventes/8.2 - Profils journaliers et saisonnalité.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 9 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">9 - Météo, calendrier et événements</h3>
+          <p class="chapter-header-sub">Paramétrage météo local Carmaux (Open-Meteo), calendrier commercial et facteurs vacances scolaires Zone C</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./9 - Meteo calendrier et evenements/9.1 - Facteurs météo et corrélations locales.html" class="subchap-link">📄 9.1 - Facteurs météo et corrélations locales</a></td>
+              <td>Seuils de pluie (>= 10mm -> 0.901), de chaleur (>= 25°C -> 1.076) et profils de sensibilité empiriques par article bornés entre 0.4 et 2.5.</td>
+              <td style="text-align: right;"><a href="./9 - Meteo calendrier et evenements/9.1 - Facteurs météo et corrélations locales.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./9 - Meteo calendrier et evenements/9.2 - Calendrier commercial, jours fériés et vacances scolaires.html" class="subchap-link">📄 9.2 - Calendrier commercial, jours fériés et vacances scolaires</a></td>
+              <td>Fermetures fixes et variables confirmées fermées, coefficients vacances scolaires Zone C (Noël 1.162 à Ascension 0.901).</td>
+              <td style="text-align: right;"><a href="./9 - Meteo calendrier et evenements/9.2 - Calendrier commercial, jours fériés et vacances scolaires.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 10 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">10 - Confiance et incertitude</h3>
+          <p class="chapter-header-sub">Qualification déterministe de la fiabilité (Élevé, Moyen, Faible) et transparence sur les facteurs de risque</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./10 - Confiance et incertitude/10.1 - Niveaux de confiance et score de fiabilité.html" class="subchap-link">📄 10.1 - Niveaux de confiance et score de fiabilité</a></td>
+              <td>Critères d'attribution des 3 niveaux de confiance (vert, orange, rouge) et impact opérationnel sur la décision de validation.</td>
+              <td style="text-align: right;"><a href="./10 - Confiance et incertitude/10.1 - Niveaux de confiance et score de fiabilité.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./10 - Confiance et incertitude/10.2 - Facteurs de risque et données manquantes.html" class="subchap-link">📄 10.2 - Facteurs de risque et données manquantes</a></td>
+              <td>Diagnostic explicite des contradictions de colisage, fin de promotion avec facteur d'amortissement et données de caisse reconstituées.</td>
+              <td style="text-align: right;"><a href="./10 - Confiance et incertitude/10.2 - Facteurs de risque et données manquantes.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 11 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">11 - Stock et livraisons</h3>
+          <p class="chapter-header-sub">Calcul mathématique du stock projeté, gestion du statut inconnu et rapprochement des réceptions quai</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./11 - Stock et livraisons/11.1 - Calcul du stock projeté et couverture.html" class="subchap-link">📄 11.1 - Calcul du stock projeté et couverture</a></td>
+              <td>Formule exacte de projection, application des mouvements strictement postérieurs et refus du zéro fictif pour stock non mesuré.</td>
+              <td style="text-align: right;"><a href="./11 - Stock et livraisons/11.1 - Calcul du stock projeté et couverture.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./11 - Stock et livraisons/11.2 - Gestion des livraisons attendues et reliquats.html" class="subchap-link">📄 11.2 - Gestion des livraisons attendues et reliquats</a></td>
+              <td>Intégration des flux BL quai, détection des reliquats et réincorporation immédiate des manquants dans le besoin de réapprovisionnement.</td>
+              <td style="text-align: right;"><a href="./11 - Stock et livraisons/11.2 - Gestion des livraisons attendues et reliquats.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 12 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">12 - Calcul du besoin de commande</h3>
+          <p class="chapter-header-sub">Algorithme canonique du besoin net, dimensionnement du stock de sécurité et conversion en colis entiers</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./12 - Calcul du besoin de commande/12.1 - Algorithme du besoin net et horizon de réapprovisionnement.html" class="subchap-link">📄 12.1 - Algorithme du besoin net et horizon de réapprovisionnement</a></td>
+              <td>Formule exacte max(0, Demande + Sécurité - Projeté) et conversion au PCB supérieur avec tolérance fond de colis.</td>
+              <td style="text-align: right;"><a href="./12 - Calcul du besoin de commande/12.1 - Algorithme du besoin net et horizon de réapprovisionnement.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./12 - Calcul du besoin de commande/12.2 - Stock de sécurité et ajustements dynamiques.html" class="subchap-link">📄 12.2 - Stock de sécurité et ajustements dynamiques</a></td>
+              <td>Dimensionnement en pourcentage de la vente moyenne, protection contre les aléas de quai et plafonnement sur l'ultra-frais.</td>
+              <td style="text-align: right;"><a href="./12 - Calcul du besoin de commande/12.2 - Stock de sécurité et ajustements dynamiques.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 13 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">13 - Règles métier</h3>
+          <p class="chapter-header-sub">Sélection déterministe du colisage PCB, tolérances fond de colis et protocole anti-rupture absolu</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./13 - Regles metier/13.1 - Règles de colisage, PCB et arrondis.html" class="subchap-link">📄 13.1 - Règles de colisage, PCB et arrondis</a></td>
+              <td>Hiérarchie des 4 sources de PCB, rejet des valeurs invalides, gestion des contradictions de colisage et cas des caissettes vs box PDT.</td>
+              <td style="text-align: right;"><a href="./13 - Regles metier/13.1 - Règles de colisage, PCB et arrondis.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./13 - Regles metier/13.2 - Garde-fous anti-rupture et plafonds de baisse.html" class="subchap-link">📄 13.2 - Garde-fous anti-rupture et plafonds de baisse</a></td>
+              <td>Aucune baisse sur mévente isolée, vérification des 4 causes externes, bornage à -30% max et matelas de sécurité obligatoire de +25%.</td>
+              <td style="text-align: right;"><a href="./13 - Regles metier/13.2 - Garde-fous anti-rupture et plafonds de baisse.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 14 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">14 - Proposition de commande</h3>
+          <p class="chapter-header-sub">Structure JSON officielle de proposition.json, ordre Webtelevente et cycle de vie d'une ligne</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./14 - Proposition de commande/14.1 - Structure de la proposition et arbitrages.html" class="subchap-link">📄 14.1 - Structure de la proposition et arbitrages</a></td>
+              <td>Spécification détaillée du fichier proposition.json, calcul du montant d'achat, de la marge brute et tri officiel (Fruits, Légumes, Bio).</td>
+              <td style="text-align: right;"><a href="./14 - Proposition de commande/14.1 - Structure de la proposition et arbitrages.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./14 - Proposition de commande/14.2 - Cycle de vie d'une ligne de commande.html" class="subchap-link">📄 14.2 - Cycle de vie d'une ligne de commande</a></td>
+              <td>Les 5 étapes d'une ligne : calcul 07h15, audit à blanc 07h30, revue magasin 07h45, arbitrage exploitant et transmission 09h30.</td>
+              <td style="text-align: right;"><a href="./14 - Proposition de commande/14.2 - Cycle de vie d'une ligne de commande.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 15 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">15 - Gestion des exceptions</h3>
+          <p class="chapter-header-sub">Classification des anomalies par criticité et procédures de traitement direct sur console tactile</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./15 - Gestion des exceptions/15.1 - Typologie des alertes et niveaux de criticité.html" class="subchap-link">📄 15.1 - Typologie des alertes et niveaux de criticité</a></td>
+              <td>Alertes bloquantes rouges, alertes de vigilance orange (hausse mercuriale, fin de promo) et alertes informatives bleues.</td>
+              <td style="text-align: right;"><a href="./15 - Gestion des exceptions/15.1 - Typologie des alertes et niveaux de criticité.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./15 - Gestion des exceptions/15.2 - Procédures de résolution d'anomalies.html" class="subchap-link">📄 15.2 - Procédures de résolution d'anomalies</a></td>
+              <td>Ajustements rapides au doigt (+/- 1 colis), bouton « Suivre » des baisses suggérées et masquage d'urgence sur tablette.</td>
+              <td style="text-align: right;"><a href="./15 - Gestion des exceptions/15.2 - Procédures de résolution d'anomalies.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 16 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">16 - Explicabilité pour les LLM</h3>
+          <p class="chapter-header-sub">Déterminisme agentique, séparation Faits/Calculs/Hypothèses et schémas d'interrogation structurés</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./16 - Explicabilite pour les LLM/16.1 - Distinction Faits, Calculs et Hypothèses.html" class="subchap-link">📄 16.1 - Distinction Faits, Calculs et Hypothèses</a></td>
+              <td>Les 3 piliers d'intégrité cognitive, élimination des hallucinations et obligation de justification mathématique pour l'IA.</td>
+              <td style="text-align: right;"><a href="./16 - Explicabilite pour les LLM/16.1 - Distinction Faits, Calculs et Hypothèses.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./16 - Explicabilite pour les LLM/16.2 - Format d'échange et prompts structurés.html" class="subchap-link">📄 16.2 - Format d'échange et prompts structurés</a></td>
+              <td>Schéma d'échange JSON pour l'Agent Rayon et protocoles de formulation en langage naturel magasin sans jargon technique.</td>
+              <td style="text-align: right;"><a href="./16 - Explicabilite pour les LLM/16.2 - Format d'échange et prompts structurés.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 17 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">17 - API et intégrations</h3>
+          <p class="chapter-header-sub">Endpoints REST du serveur local (port 8751) et protocole d'export vers la centrale SCAFRUIT</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./17 - API et integrations/17.1 - Endpoints locaux et protocoles d'échange.html" class="subchap-link">📄 17.1 - Endpoints locaux et protocoles d'échange</a></td>
+              <td>Documentation technique des routes /api/proposition, /api/compter, /api/action et /api/messages sur serveur local sécurisé.</td>
+              <td style="text-align: right;"><a href="./17 - API et integrations/17.1 - Endpoints locaux et protocoles d'échange.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./17 - API et integrations/17.2 - Connecteurs Webtelevente et export des ordres.html" class="subchap-link">📄 17.2 - Connecteurs Webtelevente et export des ordres</a></td>
+              <td>Génération du panier de commande au cut-off de 09h30, conformité des lignes EDI SCAFRUIT et validation finale magasin.</td>
+              <td style="text-align: right;"><a href="./17 - API et integrations/17.2 - Connecteurs Webtelevente et export des ordres.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+    
+
+      <!-- Chapitre 18 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">18 - Interface utilisateur</h3>
+          <p class="chapter-header-sub">Console de commande tactile magasin, application mobile de pointage en chambre froide et ergonomie métier</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./18 - Interface utilisateur/18.1 - Console de commande magasin.html" class="subchap-link">📄 18.1 - Console de commande magasin</a></td>
+              <td>Ergonomie tactile tablette, filtres par familles (Fruits, Légumes, Bio) et alertes, boutons unitaire +/−, tiroir explicatif Agent Rayon.</td>
+              <td style="text-align: right;"><a href="./18 - Interface utilisateur/18.1 - Console de commande magasin.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./18 - Interface utilisateur/18.2 - Interface mobile de pointage.html" class="subchap-link">📄 18.2 - Interface mobile de pointage</a></td>
+              <td>Saisie rapide sur smartphone en réserve, gros boutons pour gants thermiques, règle des 17h (matin vs soir) et API POST /api/compter.</td>
+              <td style="text-align: right;"><a href="./18 - Interface utilisateur/18.2 - Interface mobile de pointage.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 19 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">19 - Indicateurs et performance</h3>
+          <p class="chapter-header-sub">KPIs métier grande distribution (disponibilité, casse, marge), métriques de prévision et gain de productivité</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./19 - Indicateurs et performance/19.1 - KPIs métier (rupture, casse, marge).html" class="subchap-link">📄 19.1 - KPIs métier (rupture, casse, marge)</a></td>
+              <td>Taux de disponibilité (&ge; 98,5%), démarque connue casse/dons (&le; 2,8% du CA), marge brute (&gt; 28%), démarque connue vs inconnue.</td>
+              <td style="text-align: right;"><a href="./19 - Indicateurs et performance/19.1 - KPIs métier (rupture, casse, marge).html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./19 - Indicateurs et performance/19.2 - Métriques algorithmiques et taux d'adhésion.html" class="subchap-link">📄 19.2 - Métriques algorithmiques et taux d'adhésion</a></td>
+              <td>Erreurs de prévision (MAE, WAPE), centrage du biais à zéro, taux d'adhésion (&gt; 90%) et réduction du temps de commande de 1h30 à 15-20 min.</td>
+              <td style="text-align: right;"><a href="./19 - Indicateurs et performance/19.2 - Métriques algorithmiques et taux d'adhésion.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 20 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">20 - Tests et validation</h3>
+          <p class="chapter-header-sub">Protocoles de test à blanc systématique, garantie d'idempotence, droit de veto et scénarios limites</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./20 - Tests et validation/20.1 - Protocoles de test à blanc et non-régression.html" class="subchap-link">📄 20.1 - Protocoles de test à blanc et non-régression</a></td>
+              <td>Mode simulation --simuler obligatoire, non-régression, vérification d'idempotence anti-doublons et validation par l'Agent Contrôle.</td>
+              <td style="text-align: right;"><a href="./20 - Tests et validation/20.1 - Protocoles de test à blanc et non-régression.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./20 - Tests et validation/20.2 - Scénarios de simulation et jeux d'essais.html" class="subchap-link">📄 20.2 - Scénarios de simulation et jeux d'essais</a></td>
+              <td>Cas d'école critiques (canicule &gt; 30°C, veille de jour férié/fermeture, rupture quai SCAFRUIT et reliquats, produit nouveau sans historique).</td>
+              <td style="text-align: right;"><a href="./20 - Tests et validation/20.2 - Scénarios de simulation et jeux d'essais.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 21 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">21 - Versionnement, audit et sécurité</h3>
+          <p class="chapter-header-sub">Immutabilité append-only du carnet de faits, matrice des pouvoirs (pouvoirs.json) et isolation locale</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./21 - Versionnement audit et securite/21.1 - Immutabilité du journal d'audit et traçabilité.html" class="subchap-link">📄 21.1 - Immutabilité du journal d'audit et traçabilité</a></td>
+              <td>Format append-only dans faits/AAAA.jsonl, faits correctifs, signature horodatée ISO-8601 et opposabilité comptable en audit.</td>
+              <td style="text-align: right;"><a href="./21 - Versionnement audit et securite/21.1 - Immutabilité du journal d'audit et traçabilité.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./21 - Versionnement audit et securite/21.2 - Matrice des pouvoirs et sécurité locale.html" class="subchap-link">📄 21.2 - Matrice des pouvoirs et sécurité locale</a></td>
+              <td>Plafonds journaliers (pouvoirs.json), Orchestrateur (0 écriture), Contrôle (lecture seule + veto), Données (8 actions max), souveraineté réseau local (127.0.0.1:8751).</td>
+              <td style="text-align: right;"><a href="./21 - Versionnement audit et securite/21.2 - Matrice des pouvoirs et sécurité locale.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 22 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">22 - Prompt système du LLM</h3>
+          <p class="chapter-header-sub">Spécification formelle du rôle agentique, interdiction absolue du jargon technique et règle cardinale du zéro-invention</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./22 - Prompt systeme du LLM/22.1 - Spécification formelle du rôle agentique.html" class="subchap-link">📄 22.1 - Spécification formelle du rôle agentique</a></td>
+              <td>Rôle de l'Agent Rayon auprès du chef de rayon, vocabulaire 100% grande distribution, schéma quadripartite des réponses opérationnelles.</td>
+              <td style="text-align: right;"><a href="./22 - Prompt systeme du LLM/22.1 - Spécification formelle du rôle agentique.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./22 - Prompt systeme du LLM/22.2 - Garde-fous déontologiques et zéro-invention.html" class="subchap-link">📄 22.2 - Garde-fous déontologiques et zéro-invention</a></td>
+              <td>Zéro invention de données, séparation formelle Faits vs Calculs vs Hypothèses, souveraineté décisionnelle exclusive du responsable humain.</td>
+              <td style="text-align: right;"><a href="./22 - Prompt systeme du LLM/22.2 - Garde-fous déontologiques et zéro-invention.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chapitre 23 -->
+      <div class="chapter-card">
+        <div class="chapter-header">
+          <h3 class="chapter-header-title">23 - Glossaire et annexes</h3>
+          <p class="chapter-header-sub">Répertoire terminologique officiel F&amp;L, exemples chiffrés complets de bout en bout et tables de référence</p>
+        </div>
+        <table class="subchap-table">
+          <thead>
+            <tr>
+              <th style="width: 35%;">Sous-chapitre</th>
+              <th style="width: 53%;">Thématiques traitées &amp; Points clés</th>
+              <th style="width: 12%; text-align: right;">Accès</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="./23 - Glossaire et annexes/23.1 - Glossaire terminologique F&L et grande distribution.html" class="subchap-link">📄 23.1 - Glossaire terminologique F&amp;L et grande distribution</a></td>
+              <td>Définitions canoniques : ITM8, PCB, UVC, cadencier, cut-off, démarque, stock projeté, FIFO, matelas de sécurité (+25%), machine à jus.</td>
+              <td style="text-align: right;"><a href="./23 - Glossaire et annexes/23.1 - Glossaire terminologique F&L et grande distribution.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+            <tr>
+              <td><a href="./23 - Glossaire et annexes/23.2 - Exemples chiffrés complets et tables de référence.html" class="subchap-link">📄 23.2 - Exemples chiffrés complets et tables de référence</a></td>
+              <td>Cas d'école chiffrés pas-à-pas (tomates au kg, batavia à la pièce avec tolérance fond de colis, oranges à jus), table des constantes et coefficients système.</td>
+              <td style="text-align: right;"><a href="./23 - Glossaire et annexes/23.2 - Exemples chiffrés complets et tables de référence.html" class="btn-action" style="padding: 3px 8px; font-size: 11.5px;">Ouvrir &rarr;</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+</div>
+  </main>
+
+  <script>
+    function filterNav() {
+      const q = document.getElementById('docSearch').value.toLowerCase();
+      const items = document.querySelectorAll('.nav-item');
+      items.forEach(function(item) {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <rect width="800" height="240" rx="16" fill="#fdfbf7" stroke="#e2d3bf" stroke-width="1.5"/>
+
+  <text x="40" y="38" font-family="'Proza Libre', Georgia, serif" font-size="18" font-weight="bold" fill="#511227">Déroulement type de la matinée au rayon Fruits &amp; Légumes</text>
+  <text x="40" y="58" font-family="'Red Hat Text', Arial, sans-serif" font-size="12" fill="#595959">De la livraison matinale jusqu'à la validation sans stress avant l'heure limite de 09h30.</text>
+
+  <!-- Ligne horizontale -->
+  <line x1="60" y1="120" x2="740" y2="120" stroke="#c8b39f" stroke-width="3" stroke-dasharray="6 6"/>
+
+  <!-- Étape 1 : 05h00 -->
+  <g transform="translate(70, 85)">
+    <circle cx="25" cy="35" r="22" fill="#511227" stroke="#ffffff" stroke-width="3"/>
+    <text x="25" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">05h00</text>
+    <text x="25" y="80" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#262626" text-anchor="middle">Livraison</text>
+    <text x="25" y="96" font-family="Arial, sans-serif" font-size="10" fill="#595959" text-anchor="middle">Réception sur quai</text>
+  </g>
+
+  <!-- Étape 2 : 06h30 -->
+  <g transform="translate(210, 85)">
+    <circle cx="25" cy="35" r="22" fill="#82072a" stroke="#ffffff" stroke-width="3"/>
+    <text x="25" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">06h30</text>
+    <text x="25" y="80" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#262626" text-anchor="middle">Mise en rayon</text>
+    <text x="25" y="96" font-family="Arial, sans-serif" font-size="10" fill="#595959" text-anchor="middle">Rangement réserve</text>
+  </g>
+
+  <!-- Étape 3 : 08h00 -->
+  <g transform="translate(360, 85)">
+    <circle cx="25" cy="35" r="22" fill="#e2001a" stroke="#ffffff" stroke-width="3"/>
+    <text x="25" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">08h00</text>
+    <text x="25" y="80" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#262626" text-anchor="middle">Note du matin</text>
+    <text x="25" y="96" font-family="Arial, sans-serif" font-size="10" fill="#595959" text-anchor="middle">Lecture des alertes</text>
+  </g>
+
+  <!-- Étape 4 : 08h30 -->
+  <g transform="translate(510, 85)">
+    <circle cx="25" cy="35" r="22" fill="#00674f" stroke="#ffffff" stroke-width="3"/>
+    <text x="25" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">08h30</text>
+    <text x="25" y="80" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#262626" text-anchor="middle">Ajustement</text>
+    <text x="25" y="96" font-family="Arial, sans-serif" font-size="10" fill="#595959" text-anchor="middle">Revue en 15 minutes</text>
+  </g>
+
+  <!-- Étape 5 : 09h20 -->
+  <g transform="translate(660, 85)">
+    <circle cx="25" cy="35" r="24" fill="#00674f" stroke="#8ec08c" stroke-width="3"/>
+    <text x="25" y="40" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">09h20</text>
+    <text x="25" y="80" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#00674f" text-anchor="middle">Envoi validé</text>
+    <text x="25" y="96" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#82072a" text-anchor="middle">Limite : 09h30 pile</text>
+  </g>
+</svg>

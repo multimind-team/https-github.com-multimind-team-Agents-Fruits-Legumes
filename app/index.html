@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rayon F&L — Carmaux</title>
+<meta name="theme-color" content="#15050a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#511227">
+<meta name="apple-mobile-web-app-title" content="Rayon F&L">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/icone-192.png">
+<link rel="stylesheet" href="css/charte.css?v=20260909-photos-mobile2">
+<style>
+  .alerte-comptages {
+    display: none;
+    background: var(--mousq-rouge-cavalier);
+    color: #fff;
+    padding: 14px;
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .alerte-comptages.visible { display: block; }
+  .alerte-comptages span { display: block; font-weight: 400; font-size: 14px; margin-top: 4px; }
+
+  .resume-commande { display: flex; gap: 16px; flex-wrap: wrap; margin: 10px 0 4px; }
+  .resume-commande div { flex: 1; min-width: 92px; }
+  .resume-commande .valeur { font-family: var(--police-titre); font-size: 25px; font-weight: 700; line-height: 1.1; }
+  .resume-commande .quoi { font-size: 12px; color: var(--text-faible); }
+
+  .note .entree { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; gap: 12px; }
+  .note .entree:last-child { border-bottom: 0; }
+  .note .heure { color: var(--text-faible); font-size: 13px; min-width: 46px; flex: 0 0 46px; }
+
+  .champ-message {
+    width: 100%; min-height: 78px; padding: 12px;
+    border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--bg-panel-alt); color: var(--text);
+    font-family: inherit; font-size: 16px; resize: vertical;
+  }
+  .champ-message::placeholder { color: var(--text-faible); }
+</style>
+</head>
+<body>
+
+<header class="barre">
+  <div class="marque">
+    <span class="pastille-logo" aria-hidden="true">🍎</span>
+    <span>Rayon F&amp;L</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span class="etat vide" id="etat">…</span>
+    <button class="bouton-theme" id="bouton-theme" title="Changer de thème">🌗</button>
+  </div>
+</header>
+
+<main class="contenu">
+
+  <div class="alerte-comptages" id="alerte-comptages" role="alert">
+    <span id="alerte-comptages-texte"></span>
+  </div>
+
+  <!-- LA COMMANDE DU JOUR — ce qu'on vient voir à 9h15 -->
+  <section class="panneau" id="bloc-commande">
+    <h2>🛒 La commande du jour</h2>
+    <p class="sous-titre" id="commande-dates">Chargement…</p>
+    <div class="resume-commande" id="commande-resume"></div>
+  </section>
+
+  <section class="grille-boutons">
+    <a class="bouton principal" href="commander.html">🛒 Préparer la commande</a>
+    <a class="bouton principal" href="compter.html">🧮 Compter la chambre froide</a>
+    <a class="bouton rouge" href="promo.html">🏷️ Voir les promotions</a>
+  </section>
+
+  <!-- PARLER À L'ASSISTANT -->
+  <section class="panneau" style="margin-top:14px">
+    <h2>💬 Dire quelque chose à l'assistant</h2>
+    <p class="sous-titre">Une correction, une question, un truc bizarre. Ça part même sans réseau.</p>
+    <textarea class="champ-message" id="champ-message" placeholder="Exemple : j'ai mis les melons en tête de gondole."></textarea>
+    <button class="bouton" style="margin-top:10px" id="bouton-envoyer">Envoyer</button>
+    <div id="retour-message" style="margin-top:10px"></div>
+    <div class="note" id="fil-messages" style="margin-top:14px"></div>
+  </section>
+
+  <!-- LA NOTE DU MATIN -->
+  <section class="panneau note" style="margin-top:14px">
+    <h2>📋 La note du matin</h2>
+    <p class="sous-titre" id="note-date">Ce qui s'est passé cette nuit.</p>
+    <div id="note-contenu">
+      <div class="vide">
+        <strong>Pas encore de note.</strong>
+        L'orchestrateur n'a pas encore préparé de note pour ce matin.
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCÈS ANALYSE DES VENTES -->
+  <div style="margin-top:14px">
+    <a class="bouton secondaire" href="analyse-historique.html" style="width:100%;text-align:center;display:block;">📊 Analyse des Ventes (2,5 ans)</a>
+  </div>
+
+
+  <footer class="pied">
+    <a class="bouton discret" href="maintenance.html" target="_blank" rel="noopener">Maintenance</a>
+    <p class="mention">Intermarché Carmaux — PDV11768<br>Charte Groupement Mousquetaires</p>
+  </footer>
+
+</main>
+
+<script>
+// ---------------------------------------------------------------------------
+// L'accueil ne calcule rien : il lit ce qui a déjà été préparé. Il doit
+// s'afficher instantanément, même si tout le reste est en panne.
+// ---------------------------------------------------------------------------
+
+const CLE_COMPTAGES = "rayon-fl.comptages-en-attente";
+const CLE_MESSAGES = "rayon-fl.messages-en-attente";
+const CLE_COCHES = "rayon-fl.commande-cochees";
+const CLE_THEME = "rayon-fl.theme";
+
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+try { if (localStorage.getItem(CLE_THEME) === "clair") document.body.classList.add("theme-clair"); } catch (e) {}
+document.getElementById("bouton-theme").addEventListener("click", () => {
+  document.body.classList.toggle("theme-clair");
+  try {
+    localStorage.setItem(CLE_THEME, document.body.classList.contains("theme-clair") ? "clair" : "sombre");
+  } catch (e) {}
+});
+
+function lire(cle, defaut) {
+  try { return JSON.parse(localStorage.getItem(cle)) ?? defaut; } catch (e) { return defaut; }
+}
+function ecrire(cle, v) {
+  try { localStorage.setItem(cle, JSON.stringify(v)); return true; } catch (e) { return false; }
+}
+function fr(n) { return String(Math.round(n * 100) / 100).replace(".", ","); }
+function texteSecurise(texte) {
+  return String(texte ?? "").replace(/[&<>"']/g, caractere => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[caractere]);
+}
+
+// --- Comptages faits en chambre froide et jamais remontés -------------------
+function majAlerteComptages() {
+  const enAttente = lire(CLE_COMPTAGES, []);
+  const boite = document.getElementById("alerte-comptages");
+  if (enAttente.length === 0) { boite.classList.remove("visible"); return; }
+  boite.classList.add("visible");
+  document.getElementById("alerte-comptages-texte").innerHTML =
+    enAttente.length + " comptage" + (enAttente.length > 1 ? "s" : "") + " pas encore envoyé"
+    + (enAttente.length > 1 ? "s" : "")
+    + "<span>La commande ne les prend pas en compte. Ouvre « Compter la chambre froide » et appuie sur le bouton d'envoi.</span>";
+  window.scrollTo(0, 0);
+}
+
+// --- La commande du jour ----------------------------------------------------
+async function chargerCommande() {
+  const etat = document.getElementById("etat");
+  try {
+    const reponse = await fetch("../donnees/proposition.json?t=" + Date.now(), { cache: "no-store" });
+    if (!reponse.ok) throw new Error(reponse.status);
+    const p = await reponse.json();
+    const d = (iso) => iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) : "?";
+    const t = p.totaux;
+
+    document.getElementById("commande-dates").innerHTML =
+      "Commande du <strong>" + d(p.date_commande) + "</strong> · livraison le <strong>"
+      + d(p.date_livraison) + "</strong>"
+      + (p.meteo_livraison ? " · " + fr(p.meteo_livraison.tmax) + "°" : "");
+
+    // Combien de lignes ont déjà été recopiées sur la tablette
+    const coches = lire(CLE_COCHES, {});
+    const faits = (coches.date === p.date_commande) ? Object.keys(coches.par_article || {}).length : 0;
+
+    document.getElementById("commande-resume").innerHTML =
+      '<div><div class="valeur">' + fr(t.articles_a_commander) + '</div><div class="quoi">articles</div></div>'
+      + '<div><div class="valeur">' + fr(t.colis) + '</div><div class="quoi">colis</div></div>'
+      + '<div><div class="valeur">' + fr(t.montant_achat) + ' €</div><div class="quoi">d\'achat</div></div>'
+      + '<div><div class="valeur">' + fr(t.marge_pct) + ' %</div><div class="quoi">de marge</div></div>'
+      + (faits ? '<div><div class="valeur" style="color:var(--accent)">' + faits + '</div><div class="quoi">recopiés</div></div>' : "");
+
+    etat.className = "etat ok";
+    etat.textContent = "Prête";
+  } catch (e) {
+    document.getElementById("commande-dates").textContent =
+      "Proposition indisponible — le serveur ne répond pas.";
+    etat.className = "etat bad";
+    etat.textContent = "Hors ligne";
+  }
+}
+
+
+// --- La note du matin -------------------------------------------------------
+async function chargerNote() {
+  try {
+    const reponse = await fetch("../donnees/note-du-matin.json?t=" + Date.now(), { cache: "no-store" });
+    if (!reponse.ok) throw new Error(reponse.status);
+    const note = await reponse.json();
+    if (!note.entrees || !note.entrees.length) return;
+    const jour = (note.date || "").slice(8, 10) + "/" + (note.date || "").slice(5, 7);
+    document.getElementById("note-date").textContent = "Données du " + jour + ".";
+    // Le texte des constats utilise **gras** : on le rend lisible.
+    const gras = (s) => texteSecurise(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    const couleur = { grave: "var(--bad)", attention: "var(--warn)", info: "var(--text-faible)" };
+    document.getElementById("note-contenu").innerHTML = note.entrees.map(e =>
+      '<div class="entree"><span class="heure" style="color:' + (couleur[e.gravite] || "")
+      + '">' + (e.gravite === "grave" ? "⚠" : e.gravite === "attention" ? "•" : "") + "</span>"
+      + "<span>" + gras(e.texte) + "</span></div>"
+    ).join("");
+  } catch (e) { /* pas de note : le bloc garde son message par défaut */ }
+}
+
+// --- Le fil : mes messages et les réponses de l'assistant -------------------
+async function lireJsonl(chemin) {
+  try {
+    const reponse = await fetch(chemin + "?t=" + Date.now(), { cache: "no-store" });
+    if (!reponse.ok) return [];
+    const texte = await reponse.text();
+    return texte.split("\n").filter(l => l.trim()).map(l => {
+      try { return JSON.parse(l); } catch (e) { return null; }
+    }).filter(l => l);
+  } catch (e) { return []; }
+}
+
+function heureCourte(iso) {
+  if (!iso) return "";
+  try {
+    const dt = new Date(iso);
+    if (!isNaN(dt.getTime())) {
+      const j = String(dt.getDate()).padStart(2, "0");
+      const m = String(dt.getMonth() + 1).padStart(2, "0");
+      const h = String(dt.getHours()).padStart(2, "0");
+      const min = String(dt.getMinutes()).padStart(2, "0");
+      return j + "/" + m + " " + h + ":" + min;
+    }
+  } catch (e) {}
+  const d = (iso || "").slice(8, 10) + "/" + (iso || "").slice(5, 7);
+  const h = (iso || "").slice(11, 16);
+  return d + (h ? " " + h : "");
+}
+
+async function chargerFil() {
+  const boite = document.getElementById("fil-messages");
+  const [messages, reponses] = await Promise.all([
+    lireJsonl("../donnees/messages.jsonl"),
+    lireJsonl("../donnees/reponses.jsonl"),
+  ]);
+  if (!messages.length && !reponses.length) {
+    boite.innerHTML = '<p class="sous-titre" style="margin:8px 0">Aucun message pour l’instant.</p>';
+    return;
+  }
+
+  // Trier les messages utilisateur par date chronologique
+  const messagesTries = [...messages].sort((a, b) => 
+    (a.ecrit_le || a.recu_le || "").localeCompare(b.ecrit_le || b.recu_le || "")
+  );
+
+  // Garder au maximum les 2 derniers messages
+  const derniersMessages = messagesTries.slice(-2);
+  const elements = [];
+
+  if (derniersMessages.length > 0) {
+    // Parcourir du plus récent au plus ancien pour avoir le plus récent en haut
+    const messagesInverses = [...derniersMessages].reverse();
+
+    for (let i = 0; i < messagesInverses.length; i++) {
+      const m = messagesInverses[i];
+      const dateMsg = m.ecrit_le || m.recu_le || "";
+
+      // Chercher les réponses directement associées à ce message
+      const repLiees = reponses.filter(r => r.en_reponse_a === m.id);
+
+      // Message de l'utilisateur
+      elements.push({
+        date: dateMsg,
+        auteur: "Moi",
+        texte: m.texte
+      });
+
+      // Sa réponse
+      if (repLiees.length > 0) {
+        const rep = repLiees[repLiees.length - 1];
+        elements.push({
+          date: rep.ecrit_le || "",
+          auteur: rep.auteur || "Assistant",
+          texte: rep.texte,
+          action: rep.action
+        });
+      } else {
+        elements.push({
+          date: "",
+          auteur: "Assistant",
+          texte: "En attente de réponse…",
+          enAttente: true
+        });
+      }
+    }
+  } else {
+    // Si aucun message utilisateur, afficher au plus les 2 dernières réponses
+    const dernieresRep = [...reponses]
+      .sort((a, b) => (b.ecrit_le || "").localeCompare(a.ecrit_le || ""))
+      .slice(0, 2);
+    dernieresRep.forEach(r => {
+      elements.push({
+        date: r.ecrit_le || "",
+        auteur: r.auteur || "Assistant",
+        texte: r.texte,
+        action: r.action
+      });
+    });
+  }
+
+  boite.innerHTML = elements.map(e => {
+    const badge = e.action ? ' <span class="etat ok" style="font-size:11px">' + texteSecurise(e.action) + '</span>' : "";
+    const styleTexte = (e.enAttente || (e.texte && e.texte.includes("en cours de traitement"))) ? 'style="color:var(--warn);font-style:italic"' : "";
+    return '<div class="entree"><span class="heure">' + texteSecurise(heureCourte(e.date)) + '</span>'
+      + '<span ' + styleTexte + '><strong>' + texteSecurise(e.auteur) + ' :</strong> ' + texteSecurise(e.texte) + badge + '</span></div>';
+  }).join("");
+}
+
+// --- Un mot à l'assistant ---------------------------------------------------
+let envoiMessagesEnCours = null;
+function envoyerMessages() {
+  if (envoiMessagesEnCours) return envoiMessagesEnCours;
+  envoiMessagesEnCours = transmettreMessages().finally(() => { envoiMessagesEnCours = null; });
+  return envoiMessagesEnCours;
+}
+async function transmettreMessages() {
+  const enAttente = lire(CLE_MESSAGES, []);
+  if (!enAttente.length) return { envoyes: 0, reste: 0 };
+  const controleur = new AbortController();
+  const minuteur = setTimeout(() => controleur.abort(), 10000);
+  try {
+    const reponse = await fetch("/api/messages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: enAttente }),
+      signal: controleur.signal,
+    });
+
+    if (!reponse.ok) throw new Error(reponse.status);
+    const retour = await reponse.json();
+    if (!retour.ok) throw new Error(retour.erreur || "refus du serveur");
+    const acquittes = new Set(enAttente.map(m => JSON.stringify(m)));
+    const restants = lire(CLE_MESSAGES, []).filter(m => !acquittes.has(JSON.stringify(m)));
+    if (!ecrire(CLE_MESSAGES, restants)) return {envoyes: enAttente.length, reste: lire(CLE_MESSAGES, []).length, stockage: true};
+    return { envoyes: enAttente.length, reste: restants.length };
+  } catch (e) {
+    // Sans reseau, le message reste sur le telephone et repartira plus tard.
+    return { envoyes: 0, reste: lire(CLE_MESSAGES, []).length };
+  } finally {
+    clearTimeout(minuteur);
+  }
+}
+
+document.getElementById("bouton-envoyer").addEventListener("click", async () => {
+  const champ = document.getElementById("champ-message");
+  const retour = document.getElementById("retour-message");
+  const bouton = document.getElementById("bouton-envoyer");
+  const texte = champ.value.trim();
+  if (!texte) return;
+
+  const messages = lire(CLE_MESSAGES, []);
+  messages.push({ texte: texte, ecrit_le: new Date().toISOString() });
+  if (!ecrire(CLE_MESSAGES, messages)) {
+    retour.innerHTML = '<span class="etat bad">Impossible d\'enregistrer sur cet appareil</span>';
+    return;
+  }
+  champ.value = "";
+  bouton.disabled = true;
+  retour.innerHTML = '<span class="etat warn">Envoi...</span>';
+
+  const r = await envoyerMessages();
+  bouton.disabled = false;
+  retour.innerHTML = r.envoyes
+    ? '<span class="etat ok">Envoyé - transmis à l\'assistant</span>'
+    : '<span class="etat warn">Garde sur le telephone (' + r.reste
+      + ' en attente) - repartira des que le reseau revient</span>';
+  chargerFil();
+});
+
+// Au chargement, on tente de faire partir ce qui attend depuis la derniere fois.
+envoyerMessages().then(function (r) {
+  if (r.envoyes) {
+    document.getElementById("retour-message").innerHTML =
+      '<span class="etat ok">' + r.envoyes + ' message' + (r.envoyes > 1 ? 's' : '')
+      + ' en attente ' + (r.envoyes > 1 ? 'ont' : 'a') + ' ete envoye'
+      + (r.envoyes > 1 ? 's' : '') + '</span>';
+  }
+});
+
+majAlerteComptages();
+chargerCommande();
+chargerNote();
+chargerFil();
+// La réponse de l'assistant peut arriver plusieurs minutes après l'envoi :
+// on revérifie régulièrement tant que la page reste ouverte.
+setInterval(chargerFil, 5000);
+</script>
+
+
+</body>
+</html>

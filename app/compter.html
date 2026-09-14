@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comptage — Rayon F&L</title>
+<meta name="theme-color" content="#15050a">
+
+
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/icone-192.png">
+<link rel="stylesheet" href="css/charte.css?v=20260909-photos-mobile2">
+<style>
+  /* Aucun champ de saisie dans cette page : le clavier du téléphone ne doit
+     JAMAIS s'ouvrir : il recouvrirait la ligne en cours de saisie et
+     le responsable de rayon ne voyait plus ce qu'il tapait. Les chiffres sont donc dans la page. */
+  body { overscroll-behavior: none; }
+  * { touch-action: manipulation; }   /* pas de zoom accidentel au double-appui */
+
+  .ecran {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    padding: 0 12px env(safe-area-inset-bottom) 12px;
+  }
+
+  .progression {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 2px;
+  }
+  .progression .compteur { font-size: 15px; color: var(--text-faible); font-weight: 500; }
+  .progression button {
+    background: none; border: 0; color: var(--text-dim);
+    font: inherit; font-size: 15px; padding: 10px 8px; cursor: pointer;
+  }
+  .barre-avancement { height: 4px; background: var(--bg-panel-alt); border-radius: 999px; overflow: hidden; }
+  .barre-avancement span { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+
+  .article { text-align: center; padding: 14px 4px 6px; }
+  .article-identite { display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .article-identite h1 { min-width: 0; }
+  #photo-comptage { flex: 0 0 auto; }
+  #photo-comptage:empty { display: none; }
+  .valeur { min-width: 0; flex: 1; max-width: 220px; }
+  .ligne-article > span { min-width: 0; }
+  .article h1 {
+    font-size: 25px; line-height: 1.15; margin: 0 0 8px;
+    font-family: var(--police-titre);
+  }
+  .article .repere { color: var(--text-faible); font-size: 15px; }
+  .article .repere strong { color: var(--text-dim); }
+
+  /* La valeur en cours : toujours visible, jamais recouverte. */
+  .valeur-bloc { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 10px 0 2px; }
+  .valeur {
+    min-width: 148px; padding: 10px 16px;
+    background: var(--bg-panel-alt); border: 2px solid var(--border);
+    border-radius: var(--radius); text-align: center;
+  }
+  .valeur .nombre { font-size: 46px; font-weight: 700; font-family: var(--police-titre); line-height: 1; }
+  /* Une valeur seulement ATTENDUE ne doit pas se confondre avec une valeur
+     que tu as toi-même saisie : bordure pointillée et chiffre atténué. */
+  .valeur.attendue { border-style: dashed; }
+  .valeur.attendue .nombre { color: var(--text-faible); }
+  /* Déjà compté aujourd'hui : trait plein vert, ce n'est plus une estimation. */
+  .valeur.attendue.compte { border-style: solid; border-color: var(--accent); }
+  .valeur.attendue.compte .nombre { color: var(--text); }
+  .valeur.attendue.compte .origine { color: var(--accent); }
+  .valeur .origine { font-size: 11px; color: var(--warn); text-transform: uppercase; letter-spacing: .06em; min-height: 13px; }
+  .valeur .unite { font-size: 14px; color: var(--text-faible); margin-top: 2px; }
+  .pas {
+    width: 62px; height: 62px; flex: 0 0 62px;
+    border-radius: 50%; border: 1px solid var(--border);
+    background: var(--bg-panel-alt); color: var(--text);
+    font-size: 30px; font-weight: 700; cursor: pointer;
+  }
+  .pas:active { transform: scale(.94); }
+  .equivalent { text-align: center; color: var(--text-faible); font-size: 14px; min-height: 20px; }
+
+  .pave { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+  .pave button {
+    height: 62px; font-size: 26px; font-weight: 700;
+    background: var(--bg-panel); color: var(--text);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-family: inherit; cursor: pointer;
+  }
+  .pave button:active { background: var(--bg-panel-alt); transform: scale(.97); }
+  .pave button.signe { font-size: 22px; color: var(--warn); }
+  .pave button.effacer { font-size: 22px; }
+
+  .bas { margin-top: auto; padding-bottom: 10px; }
+  .attente {
+    text-align: center; font-size: 14px; color: var(--text-faible);
+    padding: 8px 0 12px;
+  }
+  .attente strong { color: var(--accent); }
+
+  .progression .compteur .quoi { display: block; font-size: 12px; color: var(--accent); }
+
+  .liste { display: none; padding: 0 12px; }
+  .liste.visible { display: block; }
+  .ligne-article {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    width: 100%; padding: 13px 12px; margin-bottom: 6px;
+    background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--text);
+    font: inherit; font-size: 15px; text-align: left; cursor: pointer;
+  }
+  .ligne-article .val { font-weight: 700; white-space: nowrap; }
+  .ligne-article.fait { border-color: var(--accent); }
+  .ligne-article.fait .val { color: var(--accent); }
+
+  /* Écran de fin */
+  .fin { display: none; text-align: center; padding: 30px 10px; }
+  .fin.visible { display: block; }
+  .fin h2 { font-size: 24px; }
+  .resultat { margin: 16px 0; font-size: 15px; }
+  .resultat.ok { color: var(--accent); font-weight: 700; }
+  .resultat.rate { color: var(--bad); font-weight: 700; }
+  @media (max-height: 850px) {
+    .progression { padding: 4px 2px; }
+    .article { padding-top: 8px; padding-bottom: 2px; }
+    .article h1 { font-size: 23px; margin-bottom: 4px; }
+    .article .repere { margin: 6px 0; }
+    .pave { gap: 6px; margin: 8px 0; }
+    .pave button { height: 52px; }
+    .equivalent { margin: 6px 0; }
+    .bas .bouton.principal { min-height: 60px; }
+    .bas .resultat:empty { display: none; }
+    .attente { padding: 2px 0; margin: 4px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ecran" id="ecran-comptage">
+
+  <div class="progression">
+    <button id="precedent">← retour</button>
+    <span class="compteur" id="compteur">…</span>
+    <button id="passer">passer →</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <button class="bouton discret" id="ouvrir-liste" style="min-height:34px;font-size:13px;padding:2px;flex:1">
+      Revenir sur un article
+    </button>
+    <span id="statut-reseau" style="font-size:11px;padding:3px 6px;border-radius:10px;background:var(--bg-panel);border:1px solid var(--border);white-space:nowrap;">🟢 En ligne</span>
+    <button class="bouton-theme" id="bouton-theme" title="Changer de thème">🌗</button>
+  </div>
+  <div class="barre-avancement"><span id="avancement" style="width:0%"></span></div>
+
+  <div class="article">
+    <div class="article-identite"><div id="photo-comptage"></div><h1 id="libelle">Chargement…</h1></div>
+    <p class="repere" id="repere"></p>
+  </div>
+
+  <div class="valeur-bloc">
+    <button class="pas" id="moins" aria-label="un colis de moins">−</button>
+    <div class="valeur">
+      <div class="nombre" id="nombre">0</div>
+      <div class="unite">colis</div>
+      <div class="origine" id="origine"></div>
+    </div>
+    <button class="pas" id="plus" aria-label="un colis de plus">+</button>
+  </div>
+  <p class="equivalent" id="equivalent"></p>
+
+  <div class="pave" id="pave">
+    <button data-touche="1">1</button><button data-touche="2">2</button><button data-touche="3">3</button>
+    <button data-touche="4">4</button><button data-touche="5">5</button><button data-touche="6">6</button>
+    <button data-touche="7">7</button><button data-touche="8">8</button><button data-touche="9">9</button>
+    <button class="signe" data-touche="signe">+ / −</button>
+    <button data-touche="0">0</button>
+    <button class="effacer" data-touche="effacer">⌫</button>
+  </div>
+
+  <div class="bas">
+    <button class="bouton principal" id="valider">Valider et suivant</button>
+    <button class="bouton discret envoyer-comptages" id="envoyer">📤 Envoyer mes comptages</button>
+    <p class="attente" id="attente"></p>
+    <p class="resultat" id="resultat"></p>
+    <a class="bouton discret" href="index.html">Quitter le comptage</a>
+  </div>
+</div>
+
+<div class="liste" id="ecran-liste">
+  <div class="contenu" style="padding:12px 0">
+    <h2 style="text-align:center">Revenir sur un article</h2>
+    <p class="sous-titre" style="text-align:center" id="liste-resume"></p>
+    <input type="search" id="recherche" placeholder="Chercher un article..."
+           style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--bg-panel-alt);color:var(--text);font:inherit;font-size:16px">
+    <div id="liste-articles" style="margin-top:12px"></div>
+    <button class="bouton discret" id="fermer-liste" style="margin-top:10px">Reprendre ou j en etais</button>
+  </div>
+</div>
+
+<div class="fin" id="ecran-fin">
+  <h2>🧊 Comptage terminé</h2>
+  <p class="sous-titre" id="fin-resume"></p>
+  <div class="contenu" style="padding:0">
+    <div class="panneau">
+      <p style="margin-top:0">Le réseau est mauvais en chambre froide : <strong>rien n'a été envoyé pendant que tu comptais</strong>. Tout est gardé sur le téléphone.</p>
+      <p style="margin-bottom:0">Appuie sur le bouton <strong>devant la porte</strong>, là où ça capte.</p>
+    </div>
+    <button class="bouton principal envoyer-comptages" id="envoyer-fin">📤 Envoyer mes comptages</button>
+    <p class="resultat" id="resultat-fin"></p>
+    <a class="bouton discret" href="index.html">Revenir à l'accueil</a>
+  </div>
+</div>
+
+<script src="js/photos-produits.js?v=20260909-photos-mobile2"></script>
+<script>
+// ---------------------------------------------------------------------------
+// Règle absolue de cette page : en chambre froide, on n'essaie JAMAIS d'envoyer.
+// Le réseau y est faible et capricieux — pire que pas de réseau du tout, parce
+// que le téléphone attend sans savoir si c'est passé. Chaque chiffre est
+// enregistré sur l'appareil en un clin d'œil, et tout part d'un coup devant la
+// porte, sur un geste volontaire.
+// ---------------------------------------------------------------------------
+
+const CLE_COMPTAGES = "rayon-fl.comptages-en-attente";
+const CLE_AVANCEMENT = "rayon-fl.comptage-en-cours";
+// Tout ce qui a été compté aujourd'hui, y compris ce qui est DÉJÀ ENVOYÉ.
+// Sans cette mémoire, revenir sur un article après un envoi réafficherait la
+// valeur seulement attendue, et la valider écraserait un vrai comptage par une
+// estimation. Risque signalé par le responsable de rayon le 2026-09-02.
+const CLE_DU_JOUR = "rayon-fl.comptages-du-jour";
+const CLE_THEME = "rayon-fl.theme";
+
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+try { if (localStorage.getItem(CLE_THEME) === "clair") document.body.classList.add("theme-clair"); } catch (e) {}
+document.getElementById("bouton-theme").addEventListener("click", () => {
+  document.body.classList.toggle("theme-clair");
+  try {
+    localStorage.setItem(CLE_THEME, document.body.classList.contains("theme-clair") ? "clair" : "sombre");
+  } catch (e) {}
+});
+
+let articles = [];
+let index = 0;
+let saisie = "";          // ce qui est tapé, sous forme de texte
+let negatif = false;
+let attendu = 0;          // la position que le calcul prévoit pour cet article
+let touche = false;       // vrai dès que le responsable de rayon a modifié quelque chose
+
+function texteSecurise(texte) {
+  return String(texte ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"})[c]);
+}
+
+function lire(cle, defaut) {
+  try { return JSON.parse(localStorage.getItem(cle)) ?? defaut; }
+  catch (e) { return defaut; }
+}
+function ecrire(cle, valeur) {
+  try { localStorage.setItem(cle, JSON.stringify(valeur)); return true; }
+  catch (e) { return false; }
+}
+
+function comptagesDuJour() {
+  const tout = lire(CLE_DU_JOUR, {});
+  const comptes = (tout.date === aujourdhui()) ? (tout.par_article || {}) : {};
+  // La file durable fait foi même si le cache du jour n'a pas pu être écrit.
+  for (const c of lire(CLE_COMPTAGES, [])) {
+    if (c.date === aujourdhui()) comptes[c.itm8] = { colis: c.colis, heure: (c.saisi_le || "").slice(11, 16) };
+  }
+  return comptes;
+}
+
+function memoriserComptage(itm8, colis) {
+  const tout = lire(CLE_DU_JOUR, {});
+  const par_article = (tout.date === aujourdhui()) ? (tout.par_article || {}) : {};
+  par_article[itm8] = { colis: colis, heure: new Date().toTimeString().slice(0, 5) };
+  return ecrire(CLE_DU_JOUR, { date: aujourdhui(), par_article: par_article });
+}
+
+function aujourdhui() {
+  const d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+// L'heure de la montre du responsable de rayon, pas l'heure de Greenwich.
+// Elle decide si le comptage est "du matin" (livraison rangee, magasin pas
+// encore ouvert : il faudra soustraire les ventes du jour) ou "du soir"
+// (la journee entiere est deja dedans). Un decalage de deux heures suffirait
+// a se tromper de cas.
+function maintenantLocal() {
+  const d = new Date();
+  const n = (v) => String(v).padStart(2, "0");
+  return aujourdhui() + "T" + n(d.getHours()) + ":" + n(d.getMinutes()) + ":" + n(d.getSeconds());
+}
+
+function valeurCourante() {
+  // Tant qu'on n'a rien touché, c'est la position attendue qui fait foi :
+  // si le stock est conforme, il n'y a qu'à valider (demande du responsable de rayon,
+  // 2026-09-02). Dès qu'une touche est utilisée, c'est la saisie qui compte.
+  if (!touche) return attendu;
+  const n = saisie === "" ? 0 : Number(saisie);
+  return negatif ? -n : n;
+}
+
+function afficher() {
+  const a = articles[index];
+  if (!a) return terminer();
+  const dejaCompte = comptagesDuJour()[a.itm8];
+  if (!touche) {
+    // Ce qui a déjà été compté aujourd'hui prime toujours sur une estimation.
+    if (dejaCompte) attendu = dejaCompte.colis;
+    else {
+      const p = a.derniere_position_colis;
+      attendu = (p === null || p === undefined) ? 0 : p;
+    }
+  }
+
+  // La part du chiffre d'affaires deja couverte : c'est elle qui permet de
+  // decider quand s'arreter, pas le nombre d'articles restants. Les articles
+  // sont classes par importance, donc s'arreter en cours de route donne
+  // toujours les plus gros volumes (remarque du responsable de rayon, 2026-09-02).
+  const partPrecedente = index > 0 ? (articles[index - 1].part_ca_cumulee || 0) : 0;
+  document.getElementById("compteur").innerHTML =
+    (index + 1) + " / " + articles.length
+    + '<span class="quoi">' + texteSecurise(String(partPrecedente).replace(".", ",")) + " % du CA</span>";
+  document.getElementById("avancement").style.width = partPrecedente + "%";
+  document.getElementById("libelle").textContent = a.libelle;
+  document.getElementById("photo-comptage").innerHTML = window.PhotosProduits ? PhotosProduits.image(a.itm8, "comptage") : "";
+
+  const repere = document.getElementById("repere");
+  if (a.position_perdue) {
+    repere.innerHTML = "colis de " + texteSecurise(a.conditionnement) + " " + texteSecurise(a.unite)
+      + " · <span style=\"color:var(--warn)\">position perdue, à recompter</span>";
+  } else if (a.ventes_estimees_retirees) {
+    // On dit franchement que la valeur proposée tient compte d'une estimation :
+    // les ventes du jour ne sont connues que le lendemain matin.
+    repere.innerHTML = "colis de " + texteSecurise(a.conditionnement) + " " + texteSecurise(a.unite)
+      + " · <span style=\"color:var(--text-faible)\">ventes du jour estimées et déduites</span>";
+  } else {
+    repere.textContent = "colis de " + a.conditionnement + " " + a.unite;
+  }
+
+  const v = valeurCourante();
+  const boite = document.querySelector(".valeur");
+  boite.classList.toggle("attendue", !touche);
+  document.getElementById("origine").textContent =
+    touche ? ""
+    : dejaCompte ? "compté à " + dejaCompte.heure
+    : a.position_perdue ? "à compter"
+    : (a.derniere_position_colis === null || a.derniere_position_colis === undefined) ? "à compter"
+    : "attendu";
+  document.querySelector(".valeur").classList.toggle("compte", !touche && !!dejaCompte);
+  // Toujours la virgule française, jamais le point.
+  document.getElementById("nombre").textContent = touche
+    ? ((negatif ? "−" : "") + (saisie === "" ? "0" : saisie).replace(".", ","))
+    : String(v).replace(".", ",");
+  document.getElementById("equivalent").textContent =
+    v === 0 ? "réserve vide et rayon plein" :
+    v > 0 ? "= " + Math.round(v * a.conditionnement * 100) / 100 + " " + a.unite + " en réserve, rayon plein"
+          : "il manque " + Math.abs(v) + " colis pour remplir le rayon";
+
+  majAttente();
+}
+
+function majAttente() {
+  const n = lire(CLE_COMPTAGES, []).length;
+  document.getElementById("attente").innerHTML = n === 0
+    ? "rien en attente"
+    : "<strong>" + n + "</strong> comptage" + (n > 1 ? "s prêts" : " prêt") + " à partir";
+}
+
+function valider() {
+  const a = articles[index];
+  if (!a) return;
+  const colis = valeurCourante();
+  const liste = lire(CLE_COMPTAGES, []).filter(c => c.itm8 !== a.itm8 || c.date !== aujourdhui());
+  liste.push({
+    // Étiquette unique par article et par jour : recompter le même article
+    // remplace la valeur, et un envoi parti deux fois ne compte jamais double.
+    id: "comptage:" + aujourdhui() + ":" + a.itm8 + ":saisie",
+    itm8: a.itm8,
+    libelle: a.libelle,
+    date: aujourdhui(),
+    colis: colis,
+    unites: Math.round(colis * a.conditionnement * 1000) / 1000,
+    conditionnement: a.conditionnement,
+    unite: a.unite,
+    saisi_le: maintenantLocal(),
+  });
+  if (!ecrire(CLE_COMPTAGES, liste)) {
+    const resultat = document.getElementById("resultat");
+    resultat.className = "resultat rate";
+    resultat.textContent = "Stockage plein ou indisponible : comptage NON enregistré. Garde cet écran ouvert, envoie les comptages déjà gardés puis réessaie.";
+    return;
+  }
+  memoriserComptage(a.itm8, colis);
+  document.getElementById("resultat").textContent = "";
+  suivant();
+}
+
+function suivant() {
+  saisie = ""; negatif = false; touche = false;
+  index++;
+  ecrire(CLE_AVANCEMENT, { index: index, date: aujourdhui() });
+  if (index >= articles.length) return terminer();
+  afficher();
+}
+
+function terminer() {
+  document.getElementById("ecran-comptage").style.display = "none";
+  const fin = document.getElementById("ecran-fin");
+  fin.classList.add("visible");
+  const n = lire(CLE_COMPTAGES, []).length;
+  const part = index > 0 ? (articles[Math.min(index, articles.length) - 1].part_ca_cumulee || 0) : 0;
+  document.getElementById("fin-resume").textContent =
+    n + (n > 1 ? " comptages enregistrés" : " comptage enregistré") + " sur le téléphone · "
+    + String(part).replace(".", ",") + " % du chiffre d'affaires du rayon couvert.";
+}
+
+// --- Le pavé ---------------------------------------------------------------
+document.getElementById("pave").addEventListener("click", (e) => {
+  if (!e.target.closest("button")) return;
+  const t = e.target.closest("button").dataset.touche;
+  if (!touche) { touche = true; saisie = ""; negatif = false; }   // on repart de zéro
+  if (t === "signe") negatif = !negatif;
+  else if (t === "effacer") saisie = saisie.slice(0, -1);
+  else if (saisie.length < 4) saisie += t;
+  afficher();
+});
+
+function ajuster(pas) {
+  const v = Math.round((valeurCourante() + pas) * 10) / 10;
+  touche = true; negatif = v < 0; saisie = String(Math.abs(v));
+  afficher();
+}
+document.getElementById("plus").addEventListener("click", () => ajuster(1));
+document.getElementById("moins").addEventListener("click", () => ajuster(-1));
+
+document.getElementById("valider").addEventListener("click", valider);
+document.getElementById("passer").addEventListener("click", suivant);
+document.getElementById("precedent").addEventListener("click", () => {
+  if (index > 0) { index--; saisie = ""; negatif = false; touche = false; afficher(); }
+});
+
+// --- Revenir sur un article deja compte -------------------------------------
+function afficherListe(filtre) {
+  const comptes = comptagesDuJour();
+  const zone = document.getElementById("liste-articles");
+  const recherche = (filtre || "").trim().toLowerCase();
+  const visibles = articles.filter(a =>
+    !recherche || a.libelle.toLowerCase().includes(recherche) || a.itm8.includes(recherche));
+
+  document.getElementById("liste-resume").textContent =
+    Object.keys(comptes).length + " article(s) deja compte(s) aujourd hui";
+
+  zone.innerHTML = visibles.slice(0, 60).map(a => {
+    const c = comptes[a.itm8];
+    return '<button class="ligne-article' + (c ? " fait" : "") + '" data-index="'
+      + articles.indexOf(a) + '">'
+      + '<span>' + texteSecurise(a.libelle) + '</span>'
+      + '<span class="val">' + (c ? texteSecurise(String(c.colis).replace(".", ",")) + " colis - " + texteSecurise(c.heure) : "\u2014") + '</span>'
+      + '</button>';
+  }).join("") || '<p class="vide">Aucun article ne correspond.</p>';
+}
+
+document.getElementById("ouvrir-liste").addEventListener("click", () => {
+  document.getElementById("ecran-comptage").style.display = "none";
+  document.getElementById("ecran-liste").classList.add("visible");
+  document.getElementById("recherche").value = "";
+  afficherListe("");
+});
+document.getElementById("fermer-liste").addEventListener("click", () => {
+  document.getElementById("ecran-liste").classList.remove("visible");
+  document.getElementById("ecran-comptage").style.display = "";
+  afficher();
+});
+document.getElementById("recherche").addEventListener("input", (e) => afficherListe(e.target.value));
+document.getElementById("liste-articles").addEventListener("click", (e) => {
+  const ligne = e.target.closest(".ligne-article");
+  if (!ligne) return;
+  index = Number(ligne.dataset.index);
+  saisie = ""; negatif = false; touche = false;
+  ecrire(CLE_AVANCEMENT, { index: index, date: aujourdhui() });
+  document.getElementById("fermer-liste").click();
+});
+
+// --- L'envoi, devant la porte ----------------------------------------------
+let envoiEnCours = false;
+async function envoyerComptages(bouton) {
+  if (envoiEnCours) return;
+  const resultats = Array.from(document.querySelectorAll(".resultat"));
+  const afficherResultat = (classe, texte, html = false) => resultats.forEach(resultat => {
+    resultat.className = "resultat" + (classe ? " " + classe : "");
+    if (html) resultat.innerHTML = texte;
+    else resultat.textContent = texte;
+  });
+  const liste = lire(CLE_COMPTAGES, []);
+  if (liste.length === 0) { afficherResultat("", "Rien à envoyer."); return; }
+
+  envoiEnCours = true;
+  document.querySelectorAll(".envoyer-comptages").forEach(b => { b.disabled = true; });
+  afficherResultat("", "Envoi en cours…");
+  const controleur = new AbortController();
+  const minuteur = setTimeout(() => controleur.abort(), 12000);
+  try {
+    const reponse = await fetch("/api/comptages", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ comptages: liste }),
+      signal: controleur.signal,
+    });
+    if (!reponse.ok) throw new Error("réponse " + reponse.status);
+    const retour = await reponse.json();
+    if (!retour.ok) throw new Error(retour.erreur || "refus du serveur");
+    // Ne retirer que les versions réellement acquittées : un recomptage du
+    // même article ou un nouveau relevé pendant fetch doit rester à envoyer.
+    const acquittes = new Set(liste.map(c => JSON.stringify(c)));
+    const reste = lire(CLE_COMPTAGES, []).filter(c => !acquittes.has(JSON.stringify(c)));
+    const memoire = comptagesDuJour();
+    if (!ecrire(CLE_DU_JOUR, {date: aujourdhui(), par_article: memoire}) || !ecrire(CLE_COMPTAGES, reste)) {
+      afficherResultat("rate", "Envoi confirmé, mais stockage local indisponible. Les comptages restent sur le téléphone ; libère de la place avant de réessayer.");
+    } else {
+      afficherResultat("ok", "✓ " + liste.length + (liste.length > 1 ? " comptages envoyés." : " comptage envoyé.")
+        + (reste.length ? " " + reste.length + " encore en attente." : ""));
+    }
+  } catch (e) {
+    const pluriel = liste.length > 1;
+    afficherResultat("rate", "Envoi non confirmé (réseau ou refus du serveur). "
+      + (pluriel ? "Tes " : "Ton ") + liste.length + (pluriel ? " comptages sont" : " comptage est")
+      + " toujours gardé" + (pluriel ? "s" : "") + " sur le téléphone. Réessaie devant la porte.");
+  } finally {
+    clearTimeout(minuteur);
+    envoiEnCours = false;
+    document.querySelectorAll(".envoyer-comptages").forEach(b => { b.disabled = false; });
+    majAttente();
+  }
+}
+document.querySelectorAll(".envoyer-comptages").forEach(bouton => {
+  bouton.addEventListener("click", () => envoyerComptages(bouton));
+});
+
+// --- Démarrage et Cache Hors-Ligne Chambre Froide -------------------------
+const CLE_ARTICLES_CACHE = "rayon-fl.articles-cache";
+
+function majStatutReseau(enLigne, messagePerso = null) {
+  const el = document.getElementById("statut-reseau");
+  if (!el) return;
+  if (messagePerso) {
+    el.textContent = messagePerso;
+    el.style.borderColor = enLigne ? "var(--accent)" : "var(--warn)";
+    el.style.color = enLigne ? "var(--accent)" : "var(--warn)";
+  } else if (enLigne) {
+    el.textContent = "🟢 En ligne";
+    el.style.borderColor = "var(--border)";
+    el.style.color = "var(--accent)";
+  } else {
+    el.textContent = "🟠 Hors-ligne (chambre froide)";
+    el.style.borderColor = "var(--warn)";
+    el.style.color = "var(--warn)";
+  }
+}
+
+window.addEventListener("online", () => {
+  majStatutReseau(true);
+  chargerArticles(false);
+});
+window.addEventListener("offline", () => {
+  majStatutReseau(false);
+});
+
+async function chargerArticles(afficherErreurSiVide = true) {
+  const cache = lire(CLE_ARTICLES_CACHE, null);
+  if (cache && Array.isArray(cache.articles) && cache.articles.length > 0) {
+    articles = cache.articles;
+    const reprise = lire(CLE_AVANCEMENT, null);
+    if (reprise && reprise.date === aujourdhui() && reprise.index < articles.length) {
+      index = reprise.index;
+    }
+    afficher();
+    majStatutReseau(navigator.onLine);
+  }
+
+  try {
+    const controleur = new AbortController();
+    const min = setTimeout(() => controleur.abort(), 4000);
+    const reponse = await fetch("../donnees/articles.json?t=" + Date.now(), {
+      cache: "no-store",
+      signal: controleur.signal
+    });
+    clearTimeout(min);
+    if (reponse.ok) {
+      const donnees = await reponse.json();
+      if (donnees.articles && donnees.articles.length) {
+        const different = !cache || cache.genere_le !== donnees.genere_le || cache.articles.length !== donnees.articles.length;
+        if (different) {
+          articles = donnees.articles;
+          ecrire(CLE_ARTICLES_CACHE, { genere_le: donnees.genere_le, articles: donnees.articles });
+          const reprise = lire(CLE_AVANCEMENT, null);
+          if (reprise && reprise.date === aujourdhui() && reprise.index < articles.length) {
+            index = reprise.index;
+          }
+          if (!touche) afficher();
+        }
+        majStatutReseau(true);
+        if (window.PhotosProduits) PhotosProduits.charger().then(() => {
+          if (articles.length && index < articles.length) afficher();
+        }).catch(() => {});
+        return;
+      }
+    }
+  } catch (e) {
+    if (!cache || !cache.articles || !cache.articles.length) {
+      if (afficherErreurSiVide) {
+        document.getElementById("libelle").textContent = "Connexion requise";
+        document.getElementById("repere").textContent = "Connecte-toi devant la porte pour charger la liste du jour.";
+      }
+      majStatutReseau(false);
+      return;
+    }
+    majStatutReseau(false, "🟠 Hors-ligne (cache actif)");
+  }
+  if (window.PhotosProduits) PhotosProduits.charger().then(() => {
+    if (articles.length && index < articles.length) afficher();
+  }).catch(() => {});
+}
+
+chargerArticles(true);
+</script>
+
+</body>
+</html>

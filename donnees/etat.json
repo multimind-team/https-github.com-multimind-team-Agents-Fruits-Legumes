@@ -1,0 +1,6456 @@
+{
+ "calcule_jusquau": "2026-09-13",
+ "date_base_commande": "2026-09-12",
+ "date_reference": "2026-09-11",
+ "reconstruit_le": "2026-09-13T16:05:01",
+ "articles": {
+  "0000087695106": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KAKI BIO BARQUETTE 2 FRUITS"
+  },
+  "0000087004084": {
+   "position": -15.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ARTICHAUT BLANC PIECE"
+  },
+  "0000087004400": {
+   "position": 93.72,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "PECHE BLANCHE VRAC"
+  },
+  "0000087004427": {
+   "position": -35.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KAKI PIECE"
+  },
+  "0000087200001": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "AIL BLANC FILET 250G BIO MMP"
+  },
+  "nom:POMME JAUNE 6 FRUITS BIO ITM": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME JAUNE 6 FRUITS BIO ITM"
+  },
+  "0000087415006": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE FILET 1,5 KG"
+  },
+  "nom:POMME BIO BICOLORE 1,5KG": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME BIO BICOLORE 1,5KG"
+  },
+  "0000087010734": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 9,
+   "libelle": "ECHALOTE TRADI 250G BIO ITM"
+  },
+  "0000099016805": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GALA 3KG SACHET"
+  },
+  "nom:BETTERAVE BIO 500G": {
+   "position": -28.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BETTERAVE BIO 500G"
+  },
+  "0000087955013": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "PDT CONSO NON LAVEE FILET 5KG"
+  },
+  "0000087920012": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE 1,5KG MMP"
+  },
+  "nom:CHAMPIGNON PARIS BRUN VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHAMPIGNON PARIS BRUN VRAC"
+  },
+  "0000087935030": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AIL VIOLET FILET 3 TETES"
+  },
+  "nom:COURGE SPAGHETTI BIO PIECE": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:COURGE SPAGHETTI BIO PIECE"
+  },
+  "0000099029037": {
+   "position": -5.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "JUS DE POMME / KIWI 1L"
+  },
+  "0000087820014": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ASPERGE BLANC/VIOLET BT 500G F"
+  },
+  "0000087003311": {
+   "position": -23.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRUIT DE LA PASSION PIECE"
+  },
+  "0000087004447": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COING VRAC"
+  },
+  "nom:BRUNOISE DE LEGUMES 350 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BRUNOISE DE LEGUMES 350 G"
+  },
+  "0000000000012": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TRAITEUR FRAIS EMBALLE"
+  },
+  "nom:SALADE MACHE BIO 150G": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE MACHE BIO 150G"
+  },
+  "nom:RAISIN CHASSELAS AOP 500G ITM": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN CHASSELAS AOP 500G ITM"
+  },
+  "0000087695105": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LAITUE SUCRINE BIO X2 SACHET"
+  },
+  "0000087570012": {
+   "position": 4.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "RAISIN NOIR 750G PETIT PRIX"
+  },
+  "0000087200018": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE DES SABLES 1KG IDS"
+  },
+  "0000087004065": {
+   "position": 8.69,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "POIVRON DOUX ROUGE VRAC"
+  },
+  "0000087605011": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE BLANCHE 1KG PETIT PR"
+  },
+  "nom:EPINARD FEUILLE SACHET 400G": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:EPINARD FEUILLE SACHET 400G"
+  },
+  "0000087200244": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN MUSCAT VENTOUX AOP 500G"
+  },
+  "0000087003151": {
+   "position": -17.42,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "TOMATE RONDE VRAC"
+  },
+  "0000087545277": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME FUJI SACHET 3KG"
+  },
+  "0000087003042": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANGOUSTAN VRAC"
+  },
+  "0000087935013": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AIL ROSE 3 TETES"
+  },
+  "nom:TOMATE GRAPPE 500G BIO MMP": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:TOMATE GRAPPE 500G BIO MMP"
+  },
+  "0000087004924": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AMANDE VRAC"
+  },
+  "0000087003294": {
+   "position": -7,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POMME JAZZ VRAC"
+  },
+  "0000087945061": {
+   "position": 15.3,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "OIGNON JAUNE 1,5KG PETIT PRIX"
+  },
+  "0000087695167": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN ROSE BIO BARQUETTE 500G"
+  },
+  "0000099017357": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGE MUSQUEE"
+  },
+  "0000087535008": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AVOCAT FILET 3 FRUITS"
+  },
+  "0000087761004": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE GRAPPE 300G"
+  },
+  "0000087004128": {
+   "position": 4.499,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "POMME PINK LADY VRAC"
+  },
+  "0000087415024": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE FEUILLE COLIS 2,3KG"
+  },
+  "0000087003306": {
+   "position": 59.0,
+   "mesuree_le": "2026-09-11",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "MELON PIECE"
+  },
+  "0000087010597": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE FEUILLE BARQUETTE 1K"
+  },
+  "0000099015572": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "1/4 COURGE MUSQUEE"
+  },
+  "0000087010616": {
+   "position": -14.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRIMEUR NOIRMOUTIER IGP 1K"
+  },
+  "0000087855008": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON BLC 1KG"
+  },
+  "0000087004133": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GALA PETIT CALIBRE VRAC"
+  },
+  "0000087004083": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT BLONDE CONSO VRAC"
+  },
+  "0000087004165": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON DOUX VRAC"
+  },
+  "0000087400008": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE DESSERT FILET 2KG +20%"
+  },
+  "0000087755043": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "LAITUE SUCRINE X6 BARQUETTE"
+  },
+  "0000087004766": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGE MUSQUEE PROVENCE PIECE"
+  },
+  "nom:BOUQUET DE CHEF SEC VOLAILLE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BOUQUET DE CHEF SEC VOLAILLE"
+  },
+  "0000087400039": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE FILET 1,5KG PETIT PRIX"
+  },
+  "0000087004449": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE FEUILLE VRAC"
+  },
+  "0000087004052": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PAPAYE PIECE"
+  },
+  "0000087855059": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON PLEUROTE 200G"
+  },
+  "nom:BOUQUET DE CHEF SEC AGNEAU": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BOUQUET DE CHEF SEC AGNEAU"
+  },
+  "0000087010431": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE JAUNE 1,5KG PETIT PRIX"
+  },
+  "0000087004958": {
+   "position": 4.84,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "CITRON JAUNE VRAC MMP"
+  },
+  "0000087755102": {
+   "position": 3.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "SALADE MACHE BARQUETTE 125G"
+  },
+  "0000099040257": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LOT DE 3 KIWI JAUNE."
+  },
+  "0000087545167": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME PINK LADY BARQUETTE 6 FR"
+  },
+  "0000087004739": {
+   "position": 5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "RADIS NOIR PIECE"
+  },
+  "0000087650003": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAMBOISE BARQUETTE 250G"
+  },
+  "nom:OIGNON BLANC VRAC": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:OIGNON BLANC VRAC"
+  },
+  "0000099017427": {
+   "position": 1.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "JUS POMMES RAISINS 1L"
+  },
+  "nom:POIVRON DOUX CORNE DE BOEUF VRAC": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POIVRON DOUX CORNE DE BOEUF VRAC"
+  },
+  "0000087200192": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE GRAPPE 750G ZRP MMP"
+  },
+  "nom:CHOU FLEUR FLEURETTE 450 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHOU FLEUR FLEURETTE 450 G"
+  },
+  "0000087440002": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BANANE FRECINETTE BARQUETTE 33"
+  },
+  "0000087010334": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "SALADE MACHE BARQUETTE 125G +2"
+  },
+  "0000087200076": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LEGUMES RATATOUILLE 1,5KG MMP"
+  },
+  "0000087950043": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "PDT SALADE MICRO ONDE 500G"
+  },
+  "0000087003037": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ANANAS VICTORIA PIECE"
+  },
+  "0000087695249": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON ROUGE 350G BIO MMP"
+  },
+  "nom:MANGUE DES BARQUETTE 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MANGUE DES BARQUETTE 150 G"
+  },
+  "0000087004768": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGE JACK BE LITTLE VRAC"
+  },
+  "nom:CIBOULETTE BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CIBOULETTE BARQUETTE 20G"
+  },
+  "nom:RAISIN BLC SS PEPIN BIO 500G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN BLC SS PEPIN BIO 500G"
+  },
+  "0000087010177": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "PDT NOUVELLE CHAIR TENDRE 2KG"
+  },
+  "nom:MIX FRAMBOISE MYRTILLE 150G": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MIX FRAMBOISE MYRTILLE 150G"
+  },
+  "nom:CHOU BLANC EMINCE 200G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHOU BLANC EMINCE 200G"
+  },
+  "nom:COURGETTE SPAGHETTI 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:COURGETTE SPAGHETTI 250 G"
+  },
+  "0000087004583": {
+   "position": 6.25,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "CELERI BRANCHE VERT VRAC"
+  },
+  "nom:MELANGE JEUNES POUSSES 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MELANGE JEUNES POUSSES 150 G"
+  },
+  "0000087004662": {
+   "position": 11.13,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "ECHALOTE TRADITIONNELLE VRAC"
+  },
+  "0000087004901": {
+   "position": 37.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "PERSIL PLAT BOTTE"
+  },
+  "0000087010405": {
+   "position": -5.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "TOMATE CERISE ALLONGEE BQ 400G"
+  },
+  "0000087004564": {
+   "position": 12.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "CAROTTE FANE BOTTE"
+  },
+  "0000087010601": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ASPERGE SABLE LANDES IGP 500G"
+  },
+  "nom:POMME COEUR DE REINE VRAC": {
+   "position": -6.5,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME COEUR DE REINE VRAC"
+  },
+  "0000087200026": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHANTERELLE GRISE 200G MMP"
+  },
+  "nom:PRUNE QUETSCHE VRAC": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE QUETSCHE VRAC"
+  },
+  "0000087200075": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LEGUMES POT AU FEU 1KG MMP"
+  },
+  "0000087003435": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME NINA VRAC"
+  },
+  "nom:DUO MANGUE ANANAS 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:DUO MANGUE ANANAS 250 G"
+  },
+  "0000087760025": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE RONDE 250G FR"
+  },
+  "nom:BOUQUET CHEF SEC POT AU FEU": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BOUQUET CHEF SEC POT AU FEU"
+  },
+  "0000087760031": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE COCKTAIL GRAPPE 500G"
+  },
+  "0000087003017": {
+   "position": -10.15,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "POIRE CONFERENCE VRAC"
+  },
+  "0000087660002": {
+   "position": -21.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MYRTILLE BARQUETTE 250G"
+  },
+  "0000087003089": {
+   "position": 26.87,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "AUBERGINE VIOLETTE VRAC"
+  },
+  "nom:COEUR DE SCAROLE BARQ 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:COEUR DE SCAROLE BARQ 150 G"
+  },
+  "0000087660001": {
+   "position": 32.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "MYRTILLE BARQUETTE 125G"
+  },
+  "0000087625003": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CERISE BARQUETTE 500G"
+  },
+  "0000087004776": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGE SPAGHETTI VRAC"
+  },
+  "0000087010617": {
+   "position": -18.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRIMEUR NOIRMOUTIER IGP 75"
+  },
+  "0000087565006": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN BLANC SANS PEPINS BARQU"
+  },
+  "0000087765004": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGETTE FILET 1KG +20%"
+  },
+  "nom:COEUR DE FRISEE BARQ 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:COEUR DE FRISEE BARQ 150 G"
+  },
+  "0000087680001": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FIGUE NOIRE BARQUETTE 4 FRUITS"
+  },
+  "nom:FIGUE BIO BARQUETTE 250G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:FIGUE BIO BARQUETTE 250G"
+  },
+  "0000087004811": {
+   "position": -3.97,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "NAVET VIOLET VRAC"
+  },
+  "0000087010428": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE JAUNE 1,5KG PETIT PR"
+  },
+  "0000087695216": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LIME BIO FILET 3 FRUITS"
+  },
+  "0000087004030": {
+   "position": 1781.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "KIWI VERT PIECE"
+  },
+  "0000087605000": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE BLANCHE MINI PLATEAU"
+  },
+  "0000087010238": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE FEUILLE 1KG"
+  },
+  "0000087200135": {
+   "position": -12,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POMME BICOLORE X6 BIO MMP"
+  },
+  "0000087410004": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMELO ROUGE A JUS FILET 1.5KG"
+  },
+  "nom:POIVRONS TRIO BARQUETTE 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POIVRONS TRIO BARQUETTE 250 G"
+  },
+  "0000087875003": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POTIRON TRANCHE"
+  },
+  "0000087770014": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIVRON PANACHE 200G"
+  },
+  "0000000008112": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "JUS DE FRUIT FRAIS 1L"
+  },
+  "0000087575002": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MELON BIO PIECE"
+  },
+  "0000087545001": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME ARIANE SACHET 1,5KG"
+  },
+  "0000087010667": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 0,
+   "libelle": "MAIS DOUX 2 FRUITS ITM"
+  },
+  "0000087004435": {
+   "position": -1.42,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 3,
+   "libelle": "PRUNE VERTE VRAC"
+  },
+  "0000099040251": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LOT DE 3 KIWI JAUNE."
+  },
+  "nom:SALADE DE FRUITS PREMIU 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE DE FRUITS PREMIU 250 G"
+  },
+  "nom:ROMARIN BOTTE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ROMARIN BOTTE"
+  },
+  "0000087583027": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "DUO MELON PASTEQUE 250G"
+  },
+  "0000099035666": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LOT DE 5 KIWI VERT"
+  },
+  "0000087003321": {
+   "position": 1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CELERI RAVE FANE PIECE"
+  },
+  "0000087430008": {
+   "position": 145.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "BANANE RUBAN 5 FRUITS BIO MMP"
+  },
+  "0000087400006": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE A JUS FILET 1.5KG"
+  },
+  "0000087010658": {
+   "position": -35.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "OIGNON JAUNE FILET 1KG ITM"
+  },
+  "0000087010664": {
+   "position": 3.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "OIGNON ECHALION FILET 500G ITM"
+  },
+  "nom:PERSIL PLAT BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PERSIL PLAT BARQUETTE 20G"
+  },
+  "0000087945017": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON JAUNE FILET 2KG"
+  },
+  "0000087010619": {
+   "position": -51.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "PDT NR VAPEUR BLONDE 2KG ITM"
+  },
+  "0000087945025": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON ROUGE FILET 1KG"
+  },
+  "0000087200218": {
+   "position": -14.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRIMEUR ILE DE RE 1KG IDR"
+  },
+  "0000087010354": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE RONDE 200G PETIT"
+  },
+  "0000087415002": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE FEUILLE 1,5KG"
+  },
+  "0000087780009": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PIMENT PADRON BARQUETTE 200G"
+  },
+  "0000087950041": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "PDT GRENAILLE MICRO ONDE 500G"
+  },
+  "0000087004442": {
+   "position": 8.44,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "PRUNE JAUNE VRAC"
+  },
+  "0000087935051": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "AIL BLANC FILET 250G PETIT PRI"
+  },
+  "nom:FIGUE NOIRE 500G ITM": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:FIGUE NOIRE 500G ITM"
+  },
+  "nom:TOMATE CERISE RONDE BIO 250G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:TOMATE CERISE RONDE BIO 250G"
+  },
+  "nom:FRUITS ROUGES COUPELLE 200G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:FRUITS ROUGES COUPELLE 200G"
+  },
+  "0000087004012": {
+   "position": -8.31,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "ORANGE DESSERT VRAC"
+  },
+  "0000087004021": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GOLDEN PETIT CALIBRE VRA"
+  },
+  "nom:POIRE 4 FRUITS BIO ITM": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POIRE 4 FRUITS BIO ITM"
+  },
+  "0000087004388": {
+   "position": 27.16,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "ORANGE GROS CALIBRE VRAC"
+  },
+  "0000087950017": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRINCESSE AMANDINE 2.5KG"
+  },
+  "0000087420005": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE MINI PLATEAU 2,3KG"
+  },
+  "0000087004041": {
+   "position": 63.88,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "PRUNE ROUGE VRAC"
+  },
+  "0000087960004": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT NOUVELLE DE NOIRMOUTIER 50"
+  },
+  "nom:THYM BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:THYM BARQUETTE 20G"
+  },
+  "0000087935038": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AIL VIOLET CADOURS 3 TETES"
+  },
+  "0000087004085": {
+   "position": 9.55,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "CHAMPIGNON PARIS BLANC GEANT V"
+  },
+  "0000087810000": {
+   "position": 11.6,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "HARICOT VERT EBOUTE 400G"
+  },
+  "0000087400024": {
+   "position": -14.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE NON TRAITEE 4 FRUITS"
+  },
+  "0000087010741": {
+   "position": 7.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "CONCOMBRE PIECE BIO ITM"
+  },
+  "0000087635004": {
+   "position": -16.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE CIFLORETTE BARQUETTE 25"
+  },
+  "nom:AUBERGINE VIOLETTE BIO VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:AUBERGINE VIOLETTE BIO VRAC"
+  },
+  "0000087855021": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON BLOND BARQUETTE 250"
+  },
+  "0000087004562": {
+   "position": 9.19,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "CAROTTE NON LAVEE VRAC"
+  },
+  "0000087005019": {
+   "position": -1,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POMME CHANTECLER VRAC"
+  },
+  "nom:ANETH BIO POT": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANETH BIO POT"
+  },
+  "0000087004566": {
+   "position": -2.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "CHOU FLEUR PIECE"
+  },
+  "0000087010630": {
+   "position": 35.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "TOMATE CERISE MELANGEE 350G IT"
+  },
+  "nom:POUSSES DE HARICOT MUNGO 200G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POUSSES DE HARICOT MUNGO 200G"
+  },
+  "0000099040255": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LOT DE 3 KIWI JAUNE."
+  },
+  "0000087200101": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON JAUNE FILET 1KG MMP"
+  },
+  "0000087855052": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON SHITAKE 250G"
+  },
+  "0000087003331": {
+   "position": 23.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "OIGNON BLANC BOTTE"
+  },
+  "0000087003048": {
+   "position": -4.39,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "HARICOT COCO PLAT VRAC"
+  },
+  "0000087004377": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE PLATE VRAC"
+  },
+  "0000087010620": {
+   "position": -30.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "PDT NR VAPEUR ROUGE 2KG ITM"
+  },
+  "0000000000048": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRUITS FRAIS"
+  },
+  "0000099997001": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAICHE DECOUPE ANANAS"
+  },
+  "0000087005051": {
+   "position": -2.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PASTEQUE ALLONGEE VRAC"
+  },
+  "0000087004808": {
+   "position": 59.69,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "TOMATE COTELEE NOIRE VRAC"
+  },
+  "nom:POMME GALA BIO VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME GALA BIO VRAC"
+  },
+  "0000087004406": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NASHI VRAC"
+  },
+  "0000087200153": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POTIMARRON PIECE BIO MMP"
+  },
+  "0000087004819": {
+   "position": -0.44,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "MANIOC VRAC"
+  },
+  "0000087695005": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE BIO 750G"
+  },
+  "0000087400037": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE SANGUINE FILET 1,5KG"
+  },
+  "0000087003049": {
+   "position": 3.27,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "HARICOT VERT VRAC"
+  },
+  "nom:DATTE DEGLET NOUR BRANCHEE 1KG": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:DATTE DEGLET NOUR BRANCHEE 1KG"
+  },
+  "nom:TOMATE ALLONGEE COEUR VRAC": {
+   "position": -3.5,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:TOMATE ALLONGEE COEUR VRAC"
+  },
+  "0000087820005": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ASPERGE VERTE BOTTE IMPORT 500"
+  },
+  "0000087004759": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BUTTERNUT VRAC"
+  },
+  "0000087620010": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ABRICOT MMP MUR A POINT 400G"
+  },
+  "0000087935043": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "AIL BLANC FILET 3 TETES"
+  },
+  "0000087004515": {
+   "position": -3.23,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "FENOUIL VRAC"
+  },
+  "nom:SALADE PISSENLIT SACHET 250G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE PISSENLIT SACHET 250G"
+  },
+  "nom:OIGNON ROUGE 350G BIO ITM": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:OIGNON ROUGE 350G BIO ITM"
+  },
+  "0000087945040": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON JAUNE TUBE 500G"
+  },
+  "nom:PERSIL FRISE BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PERSIL FRISE BARQUETTE 20G"
+  },
+  "nom:PLATEAU DE FRUITS": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PLATEAU DE FRUITS"
+  },
+  "0000087010080": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRIMEUR FILET 2KG"
+  },
+  "0000087010661": {
+   "position": -15.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "OIGNON ROUGE TUBE 500G ITM"
+  },
+  "0000087003119": {
+   "position": 15.21,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "POIVRON DOUX VERT VRAC"
+  },
+  "0000087430010": {
+   "position": 460.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 21,
+   "libelle": "BANANE 3 FRUITS ANTILLES FRANC"
+  },
+  "0000087761009": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE PANACHEE BQ 400G"
+  },
+  "nom:POIVRON DOUX BIO 2 FRUITS": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POIVRON DOUX BIO 2 FRUITS"
+  },
+  "0000087855006": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON COLIS MIXTE 250G"
+  },
+  "0000087945013": {
+   "position": -10,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON SAUCIER JAUNE 500G"
+  },
+  "0000087930002": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LEGUMES POT AU FEU 2KG"
+  },
+  "0000087010116": {
+   "position": 19.5,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "PDT FILET 1KG PETIT PRIX"
+  },
+  "0000087535011": {
+   "position": 46.6,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "AVOCAT 3 FRUITS PETIT PRIX"
+  },
+  "0000087010201": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN BLANC 750G PETIT PRIX"
+  },
+  "0000087695021": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE JAUNE BIO BARQUETTE 500G"
+  },
+  "nom:ORANGE BIO 750G": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ORANGE BIO 750G"
+  },
+  "0000099017424": {
+   "position": -1.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "JUS DE POMME GRANNY SMITH1L"
+  },
+  "0000099005276": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "JUS DE RAISIN 1L"
+  },
+  "0000087755012": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ENDIVE 500G"
+  },
+  "0000087010430": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE BLANCHE 1,5KG PETIT"
+  },
+  "0000087003357": {
+   "position": -1,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CERISE VRAC"
+  },
+  "0000087010666": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ECHALOTE TRADI FILET 500G ITM"
+  },
+  "0000087415009": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE MINI PLATEAU 2,3KG"
+  },
+  "0000087635009": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE PLATEAU 1KG"
+  },
+  "0000087004339": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "MELON VERT PIECE"
+  },
+  "0000087004927": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MARRON VRAC"
+  },
+  "0000087004095": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NAVET JAUNE VRAC"
+  },
+  "0000087200170": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN MUSCAT 750G IDS"
+  },
+  "nom:CORIANDRE BIO POT": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CORIANDRE BIO POT"
+  },
+  "0000087003397": {
+   "position": 4.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "CHOU CHOUDOU PIECE"
+  },
+  "0000087695059": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE CORSE BIO 500G"
+  },
+  "0000087950047": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT VAPEUR RACLET ROUGE 2,5KG"
+  },
+  "0000087004674": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PETIT POIS VRAC"
+  },
+  "nom:RAISIN ROSE BARQUETTE 300G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN ROSE BARQUETTE 300G"
+  },
+  "0000087955050": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT CHAIR TENDRE 1,5KG PETIT P"
+  },
+  "0000087685002": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NOIX SACHET 500G"
+  },
+  "0000087950010": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT VAPEUR RACLETTE BLONDE 2,5"
+  },
+  "0000087695228": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT BIO VAPEUR RISSOLE 1,5KG M"
+  },
+  "0000087545221": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GOLDEN COLIS 4KG"
+  },
+  "0000087200241": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE SACHET 1,5KG BIO MMP"
+  },
+  "0000087010622": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PDT VAPEUR ROUGE 2.5KG ITM"
+  },
+  "0000087010656": {
+   "position": -30.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AIL BLANC FILET 3 TETES ITM"
+  },
+  "0000087695018": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE JAUNE BIO BARQUETTE"
+  },
+  "nom:RAISIN NOIR LAVALLEE VRAC": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN NOIR LAVALLEE VRAC"
+  },
+  "nom:AVOCAT BABY 4 FR": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:AVOCAT BABY 4 FR"
+  },
+  "0000087003401": {
+   "position": -3.29,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "AIL BLANC VRAC"
+  },
+  "0000000004429": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KIWANO PIECE"
+  },
+  "0000087950039": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT RACLETTE MICRO ONDE 500G"
+  },
+  "0000087415016": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE FILET 2KG"
+  },
+  "nom:NOIX BIO SACHET 500G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:NOIX BIO SACHET 500G"
+  },
+  "0000087003040": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PITAYA ROSE VRAC"
+  },
+  "nom:CAROTTE RAPEE BARQUETTE 200 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CAROTTE RAPEE BARQUETTE 200 G"
+  },
+  "nom:BOUQUET DE CHEF SEC POISSON": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BOUQUET DE CHEF SEC POISSON"
+  },
+  "0000087590014": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE TOP BUDGET BARQUETTE 1KG"
+  },
+  "nom:BASILIC BOTTE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BASILIC BOTTE"
+  },
+  "nom:SALICORNE BARQUETTE 150G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALICORNE BARQUETTE 150G"
+  },
+  "0000087400022": {
+   "position": 163.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "ORANGE DESSERT FILET 2KG"
+  },
+  "nom:CAROTTE SACHET 500G PRICEE": {
+   "position": -18.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CAROTTE SACHET 500G PRICEE"
+  },
+  "0000087004048": {
+   "position": 0.98,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "LIME VRAC"
+  },
+  "nom:CHICOREE ROUGE DE TREVISE VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHICOREE ROUGE DE TREVISE VRAC"
+  },
+  "0000087950008": {
+   "position": -55.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT SALADE RISSOLEE BLONDE 2,5"
+  },
+  "0000099031536": {
+   "position": -0.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "JUS POMMES BIB 3L"
+  },
+  "0000087005058": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE JAUNE GROS CALIBRE V"
+  },
+  "0000087003385": {
+   "position": -2.57,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "CLEMENTINE CORSE FEUILLE VRAC"
+  },
+  "0000087880010": {
+   "position": -20,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CHOU DE BRUXELLE SACHET 500G"
+  },
+  "0000087945044": {
+   "position": -20,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON ROUGE TUBE 500G"
+  },
+  "0000087415021": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE CORSE 1KG"
+  },
+  "0000087106331": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "PLANTE VERTE DUO P12 CM SAC"
+  },
+  "0000087590000": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE BLANCHE MINI PLATEAU 2KG"
+  },
+  "0000087003041": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAMBOUTAN VRAC"
+  },
+  "0000087200147": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GUST TENTATION X4 MMP"
+  },
+  "0000087200097": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON ECHALION 500G MMP"
+  },
+  "0000099017425": {
+   "position": 4.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "JUS DE POMME CHANTECLER"
+  },
+  "0000087405002": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CITRON JAUNE FILET 1KG"
+  },
+  "nom:PRUNE MIRABELLE 500G ITM": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE MIRABELLE 500G ITM"
+  },
+  "0000099024964": {
+   "position": -3.0,
+   "mesuree_le": "2026-08-31",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 2,
+   "libelle": "PUR JUS POMMES/COIN"
+  },
+  "0000000003315": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MAIN DE BOUDDHA"
+  },
+  "0000087200059": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ENDIVE 3/5 FRUITS BIO MMP"
+  },
+  "nom:PERSIL FRISE POT BIO ITM": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PERSIL FRISE POT BIO ITM"
+  },
+  "nom:PECHE BARQUETTE 1KG": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PECHE BARQUETTE 1KG"
+  },
+  "0000087755042": {
+   "position": -29.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "LAITUE SUCRINE X3 BARQUETTE"
+  },
+  "0000087004256": {
+   "position": -24.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CARAMBOLE PIECE"
+  },
+  "0000087760068": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE RONDE 1KG PETIT PRIX"
+  },
+  "nom:LAITUE ROUGE BARQUETTE 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:LAITUE ROUGE BARQUETTE 150 G"
+  },
+  "nom:POMME BICOLORE 6 FRUITS BIO ITM": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME BICOLORE 6 FRUITS BIO ITM"
+  },
+  "0000099038045": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 2,
+   "libelle": "RAISIN SS PEPIN CANDY"
+  },
+  "0000087920011": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE SACHET 1KG"
+  },
+  "nom:COURGE TRANCHEE ITM": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:COURGE TRANCHEE ITM"
+  },
+  "0000087625006": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CERISE SHAKER 250G"
+  },
+  "0000087535005": {
+   "position": 27.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "AVOCAT BIO BARQUETTE 2 FRUITS"
+  },
+  "nom:ENDIVE SACHET 400G BIO ITM": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ENDIVE SACHET 400G BIO ITM"
+  },
+  "0000087010644": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN MUSCAT VENTOUX AOP 500G"
+  },
+  "0000087004327": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PASTEQUE MINI PIECE"
+  },
+  "nom:SALADE DE SAISON 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE DE SAISON 150 G"
+  },
+  "0000087010600": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE GARIGUETTE LR 250G ITM"
+  },
+  "0000087004011": {
+   "position": 10.16,
+   "mesuree_le": "2026-09-11",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "BANANE VRAC"
+  },
+  "0000087415022": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE 1KG PETIT PRIX,"
+  },
+  "nom:RAISIN BLANC DANLAS VRAC": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN BLANC DANLAS VRAC"
+  },
+  "0000087925009": {
+   "position": 2.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "BLANC POIREAU 500G"
+  },
+  "0000087004773": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PATISSON VRAC"
+  },
+  "0000087945036": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON BLANC TUBE 500G"
+  },
+  "nom:NOIX DE COCO FRAICHE PIECE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:NOIX DE COCO FRAICHE PIECE"
+  },
+  "nom:ANANAS DES BARQUETTE 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANANAS DES BARQUETTE 250 G"
+  },
+  "0000087545185": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME CHANTECLER SACHET 2KG"
+  },
+  "0000087695138": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON BLANC BIO BARQUETTE"
+  },
+  "0000087695065": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "TOMATE RONDE GRAPPE BIO 500G"
+  },
+  "0000087200148": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME JAUNE 6 FRUITS BIO MMP"
+  },
+  "nom:MENTHE BOTTE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MENTHE BOTTE"
+  },
+  "0000087004067": {
+   "position": 63.31,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "COURGETTE VRAC"
+  },
+  "0000087583001": {
+   "position": -14.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PASTEQUE JAUNE TRANCHEE"
+  },
+  "nom:CHAMPIGNON SHIMEJI 150G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHAMPIGNON SHIMEJI 150G"
+  },
+  "0000087925000": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIREAU FILET 3KG"
+  },
+  "0000087610004": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PRUNE JAUNE BARQUETTE 1KG"
+  },
+  "0000087555012": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE MMP MURES A POINT 4 FR"
+  },
+  "0000099006307": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "1/2 PASTEQUE"
+  },
+  "nom:HARICOT BEURRE VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:HARICOT BEURRE VRAC"
+  },
+  "0000087004543": {
+   "position": 50.54,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 12,
+   "libelle": "ENDIVE VRAC"
+  },
+  "0000087010678": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE CORSE IGP 1KG ITM"
+  },
+  "0000087200065": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE GARIGUETTE 250G IDS"
+  },
+  "0000087545040": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GOLDEN SACHET 3KG"
+  },
+  "0000087010626": {
+   "position": -2.2,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GOLDEN 6 FRUITS ITM"
+  },
+  "0000087004024": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE WILLIAM ROUGE VRAC"
+  },
+  "nom:SALADE DE FRUITS 500 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE DE FRUITS 500 G"
+  },
+  "0000087200242": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON DOUX FILET 750G MMP"
+  },
+  "0000087200052": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "COURGETTE 1KG BIO MMP"
+  },
+  "0000087004035": {
+   "position": 65.66,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "NECTARINE JAUNE VRAC"
+  },
+  "0000087815009": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "HARICOT COCO PLAT SACHET 400G"
+  },
+  "nom:AIL VIOLET VRAC": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:AIL VIOLET VRAC"
+  },
+  "0000087010662": {
+   "position": 16.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "OIGNON JAUNE GRAPPE 1KG ITM"
+  },
+  "0000087755078": {
+   "position": 40.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "LAITUE ICEBERG EMBALLEE PIECE"
+  },
+  "0000087760004": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE EN GRAPPE 350G"
+  },
+  "0000087010652": {
+   "position": -12.28,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "CAROTTE SACHET 1KG ITM"
+  },
+  "0000087635001": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE BARQUETTE 500G IMPORT"
+  },
+  "0000087635019": {
+   "position": -16.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE MARIGUETTE 250G"
+  },
+  "0000087695131": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PASTEQUE BIO PIECE"
+  },
+  "0000087003495": {
+   "position": 2.21,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "POIRE QTEE VRAC"
+  },
+  "0000087200094": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON BLANC TUBE 500G MMP"
+  },
+  "0000087004430": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ANANAS PAIN DE SUCRE PIECE"
+  },
+  "nom:LAITUE SUCRINE ROUGE BARQUETTE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:LAITUE SUCRINE ROUGE BARQUETTE"
+  },
+  "0000087004039": {
+   "position": 2.06,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "PRUNE REINE CLAUDE VRAC"
+  },
+  "nom:ANANAS DES BARQUETTE 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANANAS DES BARQUETTE 150 G"
+  },
+  "0000087200246": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON BLANC 400G MMP"
+  },
+  "0000087695050": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "OIGNON JAUNE BIO FILET 1KG"
+  },
+  "0000087010633": {
+   "position": -14.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "ABRICOT MUR A POINT 400G ITM"
+  },
+  "nom:OSEILLE BOTTE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:OSEILLE BOTTE"
+  },
+  "0000099000041": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME CRIMSON BIO"
+  },
+  "0000087004029": {
+   "position": 23.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "ANANAS PIECE"
+  },
+  "0000087950045": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT RATTE BARQUETTE 1KG IDS"
+  },
+  "0000087004023": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN NOIR VRAC"
+  },
+  "0000099000965": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "DC-LEGUMES FRAIS"
+  },
+  "0000087635006": {
+   "position": -16.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE GARIGUETTE BARQUETTE 25"
+  },
+  "0000087695022": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "KIWI VERT BIO 6 FR"
+  },
+  "0000087004082": {
+   "position": 5.13,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "OIGNON ROUGE VRAC"
+  },
+  "0000087003281": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "PASTEQUE MMP NOIRE SANS PEPIN"
+  },
+  "0000087010665": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "ECHALOTE TRADI FILET 250G ITM"
+  },
+  "nom:COURGETTE BIO VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:COURGETTE BIO VRAC"
+  },
+  "nom:JUS DE POMME DE NOS VERGERS 1L": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:JUS DE POMME DE NOS VERGERS 1L"
+  },
+  "0000087945019": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON JAUNE GRAPPE 1KG"
+  },
+  "0000087775008": {
+   "position": -16,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "AUBERGINE FILET 500G PETIT PRI"
+  },
+  "0000087945020": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON ROSE 1KG"
+  },
+  "nom:KIWI VERT BARQUETTE 4 FRUITS": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:KIWI VERT BARQUETTE 4 FRUITS"
+  },
+  "nom:ANANAS TRANCHE BARQU 300 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANANAS TRANCHE BARQU 300 G"
+  },
+  "0000087880000": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COLIS DEMI CHOU BLC / ROUGE"
+  },
+  "0000087755030": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "SALADE MACHE BARQUETTE 150G"
+  },
+  "0000087760055": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE COCKTAIL 500G ZRP"
+  },
+  "0000087545041": {
+   "position": -34.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GALA SACHET 3KG"
+  },
+  "0000087760024": {
+   "position": -12,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE PANACHE BQ 350G"
+  },
+  "0000087950009": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRINCESSE AMANDINE 1KG"
+  },
+  "0000087947012": {
+   "position": -28.0,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 3,
+   "libelle": "OIGNON ROUGE 500G"
+  },
+  "0000087200243": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN CHASSELAS MOISSAC AOP 5"
+  },
+  "nom:MENTHE BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MENTHE BARQUETTE 20G"
+  },
+  "0000087010615": {
+   "position": -18.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRIMEUR ILE DE RE AOP 750G"
+  },
+  "0000087545020": {
+   "position": 21.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "POMME GOLDEN SACHET 2KG"
+  },
+  "0000087004631": {
+   "position": 15.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "CHICOREE FRISEE PIECE"
+  },
+  "0000099029038": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGE MUSQUEE"
+  },
+  "0000099029036": {
+   "position": -2.6,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "JUS DE POMME CANELLE 1L"
+  },
+  "0000087004943": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NOIX VRAC"
+  },
+  "0000087585000": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "PECHE JAUNE MINI PLATEAU 2KG"
+  },
+  "0000087585011": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE JAUNE 1KG PETIT PRIX"
+  },
+  "0000087420007": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE BARQUETTE 900G"
+  },
+  "nom:CHAMPIGNON PARIS BRUN 400G ITM": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHAMPIGNON PARIS BRUN 400G ITM"
+  },
+  "0000087760041": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE ALLONGEE 1KG"
+  },
+  "0000087545022": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GALA SACHET 2KG"
+  },
+  "nom:RAISIN NOIR BIO 500G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN NOIR BIO 500G"
+  },
+  "nom:PDT DELICATESSE DROME 750G ITM": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PDT DELICATESSE DROME 750G ITM"
+  },
+  "0000087820013": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ASPERGE VERTE BOTTE 500G IMPOR"
+  },
+  "0000087400023": {
+   "position": -60.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE DESSERT FILET 3KG"
+  },
+  "0000087003024": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE ROCHA VRAC"
+  },
+  "0000087010648": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 0,
+   "libelle": "JEUNE POUSSE EPINARD BQ 125G I"
+  },
+  "0000087635005": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE FRANCE BARQUETTE 250G"
+  },
+  "0000087920006": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE 3KG"
+  },
+  "0000087004529": {
+   "position": -14.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "HARICOT COCO PAIMPOLAIS VRAC"
+  },
+  "0000087200034": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHOU FLEUR PIECE BIO MMP"
+  },
+  "nom:SALADE DE FRUITS 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE DE FRUITS 150 G"
+  },
+  "0000087650000": {
+   "position": 46.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "FRAMBOISE BARQUETTE 125G"
+  },
+  "0000087200190": {
+   "position": -9,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "ENDIVE APERITIVE 6 PIECES ITM"
+  },
+  "0000087200054": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "ECHALOTE TRADI 250G BIO MMP"
+  },
+  "0000087760036": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE RONDE TOP BUDGET FILET"
+  },
+  "nom:THYM BIO POT": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:THYM BIO POT"
+  },
+  "0000087695032": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BROCOLI BIO PIECE"
+  },
+  "0000990900000": {
+   "position": 0.0,
+   "mesuree_le": "2026-08-31",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 0,
+   "libelle": "PDT NON LAVEE 5 KG FILET"
+  },
+  "0000087755099": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LAITUE SUCRINE X2 BARQUETTE"
+  },
+  "0000087003107": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE FEUILLE VRAC"
+  },
+  "0000087005008": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LITCHI BRANCHE VRAC"
+  },
+  "0000099002777": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE PASSE CRASSANE VRAC"
+  },
+  "0000087440037": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LIME FILET 500G + 20%"
+  },
+  "0000087540007": {
+   "position": -8.98,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "KIWI BARQUETTE 1KG"
+  },
+  "nom:THYM / LAURIER BARQUETTE 100G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:THYM / LAURIER BARQUETTE 100G"
+  },
+  "0000087685005": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "NOIX SACHET 750G"
+  },
+  "0000087875009": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGE SPAGHETTI PIECE"
+  },
+  "0000087755079": {
+   "position": -5.6,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "LAITUE COEUR DE ROMAINE X2 SAC"
+  },
+  "nom:PRUNE ROUGE 500G PETIT PRIX": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE ROUGE 500G PETIT PRIX"
+  },
+  "0000087545199": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME BICOLORE BIO 4 FRUITS"
+  },
+  "0000087400021": {
+   "position": -60.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE A JUS FILET 3KG"
+  },
+  "0000087004312": {
+   "position": -98.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "MANGUE AVION PIECE"
+  },
+  "0000087003369": {
+   "position": -1,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "NECTAVIGNE VRAC"
+  },
+  "0000087010650": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "BLANC DE POIREAU 500G ITM"
+  },
+  "0000087004608": {
+   "position": -2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "AIL ROSE VRAC"
+  },
+  "0000087004299": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "GOYAVE VRAC"
+  },
+  "nom:PRUNE ROUGE BARQUETTE 750G ITM": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE ROUGE BARQUETTE 750G ITM"
+  },
+  "0000087003009": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POMME CANADA VRAC"
+  },
+  "0000087200227": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON ROSCOFF GRAPPE 1KG IDR"
+  },
+  "nom:MANGUE MURE A POINT 2 FRUITS": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MANGUE MURE A POINT 2 FRUITS"
+  },
+  "0000087004532": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FEVE VRAC"
+  },
+  "nom:POMME COEUR REINE SAC 1,5KG": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME COEUR REINE SAC 1,5KG"
+  },
+  "0000087555025": {
+   "position": 7.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "POIRE BARQUETTE 1KG PETIT PRIX"
+  },
+  "0000087535006": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AVOCAT MMP MUR A POINT 2 FR"
+  },
+  "0000099080002": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CORBEILLE DE FRUITS 30€"
+  },
+  "0000087004928": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NOISETTE VRAC"
+  },
+  "0000087003082": {
+   "position": 4.19,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "BROCOLI VRAC"
+  },
+  "0000087004260": {
+   "position": 2.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "NOIX DE COCO PIECE"
+  },
+  "0000087010632": {
+   "position": -17.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "TOMATE CERISE GRAPPE 300G ITM"
+  },
+  "0000087004665": {
+   "position": -32.39,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "OIGNON JAUNE VRAC"
+  },
+  "0000087440009": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "LIME FILET 500 G"
+  },
+  "0000087004552": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "CHOUX CHINOIS PIECE"
+  },
+  "nom:AIL VIOLET CADOURS AOP 3 TETES ITM": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:AIL VIOLET CADOURS AOP 3 TETES ITM"
+  },
+  "nom:POMME GALA 6 FRUITS ITM": {
+   "position": -11.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME GALA 6 FRUITS ITM"
+  },
+  "0000087003145": {
+   "position": 11.52,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "TOMATE ALLONGEE VRAC"
+  },
+  "0000087004636": {
+   "position": -24.05,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "RAISIN ROSE VRAC"
+  },
+  "0000087004129": {
+   "position": -17.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "POMME FUJI VRAC"
+  },
+  "0000087635030": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE GARIGUETTE EN POT"
+  },
+  "0000087010338": {
+   "position": -18.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRIMEUR ILE DE RE 750G IDR"
+  },
+  "0000099080001": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CORBEILLE DE FRUITS 20€"
+  },
+  "0000087004230": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "BANANE PLANTAIN VRAC"
+  },
+  "0000087820189": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ASPERGE MICRO ONDABLE 250G"
+  },
+  "0000087875002": {
+   "position": -8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "BUTTERNUT PIECE PE"
+  },
+  "0000087004764": {
+   "position": -24,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POTIMARRON PIECE"
+  },
+  "0000087950046": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT GRENAILLE BARQUETTE 1KG MM"
+  },
+  "0000087004575": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CELERI BRANCHE DORE BOTTE"
+  },
+  "nom:PRUNE MIRABELLE BARQUETTE 500G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE MIRABELLE BARQUETTE 500G"
+  },
+  "0000087004593": {
+   "position": 172.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "CONCOMBRE PIECE"
+  },
+  "0000087003090": {
+   "position": -0.7,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "AUBERGINE TIGREE VRAC"
+  },
+  "nom:PDT GRENAILLE SACHET 1KG ITM": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PDT GRENAILLE SACHET 1KG ITM"
+  },
+  "0000087004303": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KUMQUAT VRAC"
+  },
+  "0000087760056": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE MIX 350G ZRP"
+  },
+  "0000087590017": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE BLANCHE 1KG PETIT PRIX"
+  },
+  "0000087952002": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT PRIMEUR NOIRMOUTIER 1KG ID"
+  },
+  "nom:CHAMPIGNON PARIS BLANC 200G BIO ITM": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHAMPIGNON PARIS BLANC 200G BIO ITM"
+  },
+  "nom:PRUNE PLUOT VRAC": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE PLUOT VRAC"
+  },
+  "0000087405008": {
+   "position": -15.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CITRON JAUNE NON TRAITE 4 FR"
+  },
+  "0000087800000": {
+   "position": 15.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "POIS GOURMAND BARQUETTE 250G"
+  },
+  "0000087004055": {
+   "position": -8.88,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "MANDARINE VRAC"
+  },
+  "0000087675000": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MARRON FILET 1KG"
+  },
+  "0000087945018": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON JAUNE FILET 5KG"
+  },
+  "0000087004409": {
+   "position": -7,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE WILLIAM VERTE VRAC"
+  },
+  "nom:POIVRON DOUX ORANGE VRAC": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POIVRON DOUX ORANGE VRAC"
+  },
+  "nom:PRUNE PRESIDENT VRAC": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE PRESIDENT VRAC"
+  },
+  "0000099032563": {
+   "position": -48.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BQT FRAISE 250G CABANES"
+  },
+  "0000087004317": {
+   "position": 3.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "MELON JAUNE PIECE"
+  },
+  "0000087010808": {
+   "position": -60.0,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON JAUNE FILET 1KG CQLP"
+  },
+  "nom:CHAMPIGNON EMINCE 180 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHAMPIGNON EMINCE 180 G"
+  },
+  "0000087785014": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OSEILLE BARQUETTE 20G"
+  },
+  "0000087004032": {
+   "position": 6.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "PASTEQUE TIGREE PIECE"
+  },
+  "0000087635015": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE CHARLOTTE BARQUETTE 400"
+  },
+  "0000087010605": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CERISE BARQUETTE 500G ITM"
+  },
+  "0000087200030": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TROMPETTE DE LA MORT 200G MMP"
+  },
+  "0000087004037": {
+   "position": 124.029,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "PECHE JAUNE VRAC"
+  },
+  "nom:RAISIN MUSCAT VENTOUX AOP 500G ITM": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN MUSCAT VENTOUX AOP 500G ITM"
+  },
+  "0000087765002": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGETTE FILET 2KG"
+  },
+  "nom:HARICOT VERT SACHET 500G ITM": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:HARICOT VERT SACHET 500G ITM"
+  },
+  "0000087950049": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT MICRO ONDABLE BLONDE 750G"
+  },
+  "0000087010657": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "OIGNON SAUCIER FILET 500G ITM"
+  },
+  "0000087425001": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE DESSERT 2KG"
+  },
+  "0000087620005": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ABRICOT MINI PLATEAU 2KG"
+  },
+  "0000087695227": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PDT BIO FOUR PUREE POTAGE 1,5K"
+  },
+  "0000087004649": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON CEPE VRAC"
+  },
+  "0000087695079": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KIWI JAUNE BIO 4 FRUITS"
+  },
+  "0000087420014": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE 1KG PETIT PRIX"
+  },
+  "0000087003169": {
+   "position": 102.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "LAITUE BATAVIA BLONDE PIECE"
+  },
+  "0000087004740": {
+   "position": 42.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "RADIS ROSE BOTTE"
+  },
+  "0000087004647": {
+   "position": -2.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON PLEUROTE VRAC"
+  },
+  "0000087010663": {
+   "position": 19.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "OIGNON JAUNE TUBE 500G ITM"
+  },
+  "0000087004445": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "GRENADE PIECE"
+  },
+  "0000087200000": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ABRICOT 500G BIO MMP"
+  },
+  "0000087755051": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ROQUETTE BARQUETTE 125G"
+  },
+  "nom:MELON DES BARQUETTE 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MELON DES BARQUETTE 250 G"
+  },
+  "0000087760059": {
+   "position": -12,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE 250G ZRP"
+  },
+  "0000087003329": {
+   "position": 70.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "LAITUE FEUILLE CHENE BDE PIECE"
+  },
+  "0000087755054": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "MELANGE JEUNES POUSSES 125G"
+  },
+  "nom:THYM/LAURIER BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:THYM/LAURIER BARQUETTE 20G"
+  },
+  "0000087695101": {
+   "position": -15.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BUTTERNUT BIO PIECE"
+  },
+  "0000099038044": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RAISIN SS PEPIN CANDY"
+  },
+  "0000087445002": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PIMENT OISEAU BARQUETTE 100G"
+  },
+  "0000087200125": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PERSIL PLAT POT BIO MMP"
+  },
+  "0000099017426": {
+   "position": -0.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "JUS DE POMME GALA 1L"
+  },
+  "0000087004612": {
+   "position": 3.11,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "GINGEMBRE VRAC"
+  },
+  "0000087545283": {
+   "position": 9.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "POMME BICOLORE 2KG PETIT PRIX"
+  },
+  "0000087405004": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CITRON JAUNE FILET 1KG + 20%"
+  },
+  "0000087010604": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE SABLE LABEL ROUGE 1K I"
+  },
+  "0000087005034": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE RONDE EN GRAPPE VRAC IM"
+  },
+  "0000087004701": {
+   "position": -0.98,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "PIMENT VERT VRAC"
+  },
+  "nom:CORIANDRE BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CORIANDRE BARQUETTE 20G"
+  },
+  "0000087620018": {
+   "position": -9,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "ABRICOT 1KG PETIT PRIX"
+  },
+  "nom:PERSIL PLAT POT BIO ITM": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PERSIL PLAT POT BIO ITM"
+  },
+  "nom:SALADE DE FRUITS 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE DE FRUITS 250 G"
+  },
+  "nom:BUTTERNUT TRANCHE ITM": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BUTTERNUT TRANCHE ITM"
+  },
+  "0000087955018": {
+   "position": -47.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT FRITE PUREE 2,5KG"
+  },
+  "0000099080003": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CORBEILLE DE FRUITS 25€"
+  },
+  "0000087820012": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ASPERGE VERTE BOTTE 500G FRANC"
+  },
+  "nom:ANANAS DES BARQUETTE 500 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANANAS DES BARQUETTE 500 G"
+  },
+  "0000087003113": {
+   "position": 39.11,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "PECHE PLATE VRAC"
+  },
+  "nom:CRESSON EMBALLE 125G": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CRESSON EMBALLE 125G"
+  },
+  "0000087200161": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PRUNE GUSTATIVE ROUGE 750G MMP"
+  },
+  "nom:POMME A CHAIR ROUGE VRAC": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME A CHAIR ROUGE VRAC"
+  },
+  "0000087003003": {
+   "position": -7,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POMME CHANTECLER VRAC"
+  },
+  "0000087010624": {
+   "position": 1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "PDT NR FRITE 2KG ITM"
+  },
+  "0000087535010": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AVOCAT BABY 4 FRUITS MMP"
+  },
+  "nom:NOIX FRAICHE VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:NOIX FRAICHE VRAC"
+  },
+  "nom:LAITUE ROUGE ET MACHE 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:LAITUE ROUGE ET MACHE 150 G"
+  },
+  "0000087200028": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "GIROLLE 200G MMP"
+  },
+  "0000087003204": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CORIANDRE BOTTE"
+  },
+  "0000087810008": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "HARICOT VERT EBOUTE BQ 400G +"
+  },
+  "0000087010687": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CERISE GROS CALIBRE BARQUETTE"
+  },
+  "0000087855000": {
+   "position": -2.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "CHAMPIGNON PARIS BLANC EMINCE"
+  },
+  "nom:BUTTERNUT PIECE BIO MMP": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BUTTERNUT PIECE BIO MMP"
+  },
+  "nom:PECHE SANGUINE VRAC": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PECHE SANGUINE VRAC"
+  },
+  "0000087440051": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANGUE AFFINEE MMP PIECE"
+  },
+  "0000087695257": {
+   "position": -9,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE ALLONG BIO 250G"
+  },
+  "0000087760027": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE DUO 250G"
+  },
+  "nom:MANGUE DES BARQUETTE 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MANGUE DES BARQUETTE 250 G"
+  },
+  "0000087003320": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CHOU ROMANESCO PIECE"
+  },
+  "0000087004664": {
+   "position": 71.19,
+   "mesuree_le": "2026-09-11",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "TOMATE RONDE EN GRAPPE VRAC FR"
+  },
+  "0000087010603": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "CAROTTE SACHET 1.5KG ITM"
+  },
+  "0000087004519": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ARTICHAUT VIOLET BOUQUET"
+  },
+  "0000087004086": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "COURGETTE JAUNE VRAC"
+  },
+  "0000087003150": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE ALLONGEE TORINO VRAC"
+  },
+  "nom:MIEL DE NOS VERGERS POT 375G": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MIEL DE NOS VERGERS POT 375G"
+  },
+  "0000087200209": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE CORSE 1KG IDR"
+  },
+  "0000087635003": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE BARQUETTE 250G IMPORT"
+  },
+  "0000087200240": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CITRON 4 FRUITS ZRP MMP"
+  },
+  "0000087785012": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MENTHE POIVREE BARQUETTE 20G"
+  },
+  "0000087200150": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME JULIET 4 FRUITS BIO MMP"
+  },
+  "0000099015571": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "1/2 COURGE MUSQUEE"
+  },
+  "0000087405012": {
+   "position": 54.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "CITRON FILET 1KG PETIT PRIX"
+  },
+  "0000087010799": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE COTELEE PANACHEE 750G I"
+  },
+  "0000087200172": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ROQUETTE BARQUETTE 125G MMP"
+  },
+  "0000087955044": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PDT 5KG 1ER PRIX"
+  },
+  "0000087940025": {
+   "position": 12.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "ECHALOTE TRADI 500G PETIT PRIX"
+  },
+  "0000000004428": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PITAYA ROUGE PIECE"
+  },
+  "0000087415011": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE BIO 750G"
+  },
+  "nom:AIL VERT VRAC": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:AIL VERT VRAC"
+  },
+  "nom:BANANE BIO VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BANANE BIO VRAC"
+  },
+  "0000087003933": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "THYM BOTTE"
+  },
+  "0000087004266": {
+   "position": -1.7,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FIGUE NOIRE VRAC"
+  },
+  "0000087004799": {
+   "position": -5.82,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "TOMATE RONDE CHARNUE VRAC"
+  },
+  "0000087003134": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COLOQUINTE VRAC"
+  },
+  "0000087004441": {
+   "position": 25.42,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "PRUNE MIRABELLE VRAC"
+  },
+  "0000087695054": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIREAU BIO BOTTE 750G"
+  },
+  "nom:PDT RATTE VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PDT RATTE VRAC"
+  },
+  "nom:NECTARINE SANGUINE VRAC": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:NECTARINE SANGUINE VRAC"
+  },
+  "0000087003392": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ASPERGE BLANCHE/VIOLETTE VRAC"
+  },
+  "0000087840000": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MAIS DOUX 2 FRUITS"
+  },
+  "0000087695092": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "AUBERGINE BIO 2 FRUITS"
+  },
+  "0000087004957": {
+   "position": 33.27,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "RAISIN NOIR MUSCAT VRAC"
+  },
+  "0000087400016": {
+   "position": -8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE BIO DESSERT 4 FRUITS"
+  },
+  "nom:PIMENT ROUGE VRAC": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PIMENT ROUGE VRAC"
+  },
+  "nom:ROMARIN BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ROMARIN BARQUETTE 20G"
+  },
+  "nom:OIGNON DOUX CEVENNES AOP 500G ITM": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:OIGNON DOUX CEVENNES AOP 500G ITM"
+  },
+  "0000087200217": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON ROSE ROSCOFF 1KG IDR"
+  },
+  "0000087695232": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE A JUS BIO 1,5KG"
+  },
+  "nom:ANETH BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANETH BARQUETTE 20G"
+  },
+  "nom:BOUQUET DE CHEF SEC LAPIN": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BOUQUET DE CHEF SEC LAPIN"
+  },
+  "nom:GINGEMBRE BIO FILET 200G,": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:GINGEMBRE BIO FILET 200G,"
+  },
+  "0000099024966": {
+   "position": 7.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PUR JUS DE POMMES/POIRES"
+  },
+  "0000087200050": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CORIANDRE POT BIO MMP"
+  },
+  "0000087200165": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "RADIS ROND ROUGE 250G BIO MMP"
+  },
+  "0000087003383": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE VRAC"
+  },
+  "0000087540022": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KIWI ROUGE BARQUETTE 4 FRUITS"
+  },
+  "0000087003053": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PANAIS VRAC"
+  },
+  "nom:DATTE MEDJOOL VRAC": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:DATTE MEDJOOL VRAC"
+  },
+  "0000087770006": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIVRON FILET 1 KG"
+  },
+  "nom:MENTHE POT BIO ITM": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MENTHE POT BIO ITM"
+  },
+  "0000087010760": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE RONDE GRAPPE 500G BIO I"
+  },
+  "0000087200143": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME GUST HONEY CRUNCH X4 MMP"
+  },
+  "nom:TOMATE COTELEE DUO BIO BQ 500G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:TOMATE COTELEE DUO BIO BQ 500G"
+  },
+  "0000087565012": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "RAISIN BLANC BARQUETTE 300G"
+  },
+  "0000087755006": {
+   "position": 119.14,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "ENDIVE SACHET 1KG"
+  },
+  "0000087004501": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BLETTE BOTTE"
+  },
+  "0000087695048": {
+   "position": -9.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "CAROTTE BIO 1KG"
+  },
+  "0000087760023": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE ALLONGEE 250G"
+  },
+  "0000087010176": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT NOUVELLE CHAIR FERME BLOND"
+  },
+  "0000087004294": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMELO EXOTIQUE/CHINOIS PIECE"
+  },
+  "nom:CHOU FLEUR ORANGE PIECE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHOU FLEUR ORANGE PIECE"
+  },
+  "nom:NECTARINE JAUNE BIO 500G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:NECTARINE JAUNE BIO 500G"
+  },
+  "0000087010611": {
+   "position": 12.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "PDT MICRO ONDABLE 750G ITM"
+  },
+  "0000087010672": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LEGUMES POT AU FEU 1KG ITM"
+  },
+  "0000087999003": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KIT PLV ANIMATION"
+  },
+  "0000087200056": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ECHALOTE TRADI FILET 500G MMP"
+  },
+  "nom:ANETH BOTTE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANETH BOTTE"
+  },
+  "0000087004414": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE COMICE VRAC"
+  },
+  "0000087590001": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE PLATE BARQUETTE 500G"
+  },
+  "0000087010680": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON PLEUROTE 200G ITM"
+  },
+  "nom:COCO MORCEAUX BARQUETTE 120 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:COCO MORCEAUX BARQUETTE 120 G"
+  },
+  "0000087010429": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE BLANCHE 1,5KG PETIT PRIX"
+  },
+  "0000087765016": {
+   "position": -72.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "COURGETTE FILET 1KG PETIT PRIX"
+  },
+  "0000087010608": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE BARQUETTE 400G ITM"
+  },
+  "nom:CITRON JAUNE BIO VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CITRON JAUNE BIO VRAC"
+  },
+  "0000087003330": {
+   "position": 73.8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "LAITUE FEUILLE CHENE RGE PIECE"
+  },
+  "0000099003063": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISES CLERY"
+  },
+  "nom:ENDIVE CARMINE BARQUETTE 300G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ENDIVE CARMINE BARQUETTE 300G"
+  },
+  "0000087010653": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "RAISIN BLANC SANS PEPINS 500G"
+  },
+  "nom:THYM SEC 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:THYM SEC 20G"
+  },
+  "0000087955004": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "correction-conversion-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "PDT CONSO LAVEE 10KG"
+  },
+  "0000087695134": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PECHE PLATE BIO 500G"
+  },
+  "0000087200025": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON BLOND 200G BIO MMP"
+  },
+  "0000087955030": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME DE TERRE FRITE 2,5KG (NO"
+  },
+  "0000087400020": {
+   "position": 212.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "ORANGE A JUS FILET 2KG"
+  },
+  "0000087625015": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CERISE MMP BARQUETTE 600G"
+  },
+  "nom:CHOU FLEUR VIOLET PIECE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHOU FLEUR VIOLET PIECE"
+  },
+  "nom:PDT BIO VAPEUR RISSOLE 1,5KG": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PDT BIO VAPEUR RISSOLE 1,5KG"
+  },
+  "nom:RAISIN BLANC SANS PEPINS 500G ITM": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN BLANC SANS PEPINS 500G ITM"
+  },
+  "0000087695219": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ORANGE A JUS BIO 1,5KG MMP"
+  },
+  "0000087755048": {
+   "position": 1.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "POUSSE EPINARD BARQUETTE 125G"
+  },
+  "0000087004761": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAYOTTE VRAC"
+  },
+  "0000087004218": {
+   "position": -19.42,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "ABRICOT VRAC"
+  },
+  "0000087620001": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ABRICOT PANIER 1KG"
+  },
+  "0000087010659": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON DOUX CEVENNES IGP 500G"
+  },
+  "nom:PRUNE JAUNE 500G PETIT PRIX": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE JAUNE 500G PETIT PRIX"
+  },
+  "0000087004274": {
+   "position": 601.59,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "RAISIN BLANC IMPORT VRAC"
+  },
+  "0000087955032": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POMME DE TERRE FRITE 5KG"
+  },
+  "0000087004689": {
+   "position": 13.95,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "POIVRON DOUX JAUNE VRAC"
+  },
+  "0000087695087": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE BIO BARQUETTE 4 FRUITS"
+  },
+  "0000000000049": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LEGUMES FRAIS"
+  },
+  "nom:ROQUETTE BARQUETTE 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ROQUETTE BARQUETTE 150 G"
+  },
+  "0000087695192": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON JAUNE BIO FILET 1KG+20%"
+  },
+  "0000087004803": {
+   "position": -16.71,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "TOMATE COTELEE AUMONIERE VRAC"
+  },
+  "0000087004326": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MELON GALIA PIECE"
+  },
+  "nom:OIGNON ROSE ROSCOFF 1KG": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:OIGNON ROSE ROSCOFF 1KG"
+  },
+  "0000087010621": {
+   "position": -34.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "PDT VAPEUR BLONDE 2.5KG ITM"
+  },
+  "nom:BETTERAVE ROUGE VRAC": {
+   "position": -4.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BETTERAVE ROUGE VRAC"
+  },
+  "0000087010726": {
+   "position": 14.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "CAROTTE SACHET 1KG BIO ITM"
+  },
+  "0000087003365": {
+   "position": 320.91,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "MANGUE AFFINEE PIECE"
+  },
+  "0000087003095": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "CHOU VERT FRISE PIECE"
+  },
+  "0000087200124": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PERSIL FRISE POT BIO MMP"
+  },
+  "0000099007376": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "1/4 DE PASTEQUE"
+  },
+  "0000087200203": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE PANACHEE 350G ZR"
+  },
+  "0000099007375": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "1/2 PASTEQUE"
+  },
+  "0000087955034": {
+   "position": -160.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "PDT FOUR PUREE POTAGE 2,5KG (N"
+  },
+  "0000087003021": {
+   "position": 25.41,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "POIRE GUYOT VRAC"
+  },
+  "0000087785094": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LAURIER SEC 20G"
+  },
+  "0000087010504": {
+   "position": 46.6,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "TOMATE CERISE 250G PETIT PRIX"
+  },
+  "0000087004554": {
+   "position": 5.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 3,
+   "libelle": "CHOU ROUGE PIECE"
+  },
+  "0000087761000": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "TOMATE CERISE RONDE 500G ZRP"
+  },
+  "0000087004236": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BANANE ROSE VRAC"
+  },
+  "nom:DUO ANANAS FRAMBOISE 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:DUO ANANAS FRAMBOISE 150 G"
+  },
+  "0000087200010": {
+   "position": 6.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "BASILIC POT BIO MMP"
+  },
+  "nom:CAROTTE RAPEE BARQUETTE 350G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CAROTTE RAPEE BARQUETTE 350G"
+  },
+  "nom:POIREAU BOTTE 750G BIO MMP": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POIREAU BOTTE 750G BIO MMP"
+  },
+  "nom:CHAMPIGNON EMINCE 300 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHAMPIGNON EMINCE 300 G"
+  },
+  "0000087200201": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT RATTE BARQUETTE 1KG IDR"
+  },
+  "0000087645001": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MURE BARQUETTE 125G"
+  },
+  "0000087004697": {
+   "position": -2.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PIMENT ANTILLAIS VRAC"
+  },
+  "nom:CHOU ROUGE EMINCE 200G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHOU ROUGE EMINCE 200G"
+  },
+  "0000087003418": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGETTE RONDE VRAC"
+  },
+  "0000087695266": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "COURGETTE BIO 500G"
+  },
+  "0000000008111": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "JUS DE FRUIT FRAIS 50CL"
+  },
+  "0000087765013": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "COURGETTE FILET 1KG"
+  },
+  "nom:KIWI JAUNE BARQUETTE 4 FRUITS": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:KIWI JAUNE BARQUETTE 4 FRUITS"
+  },
+  "0000087004282": {
+   "position": 18.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "POMELO ROUGE PIECE"
+  },
+  "0000087004386": {
+   "position": -68.8,
+   "mesuree_le": "2026-09-02",
+   "moment_mesure": "soir",
+   "origine_mesure": "saisie-app",
+   "mouvements_depuis": 18,
+   "libelle": "ORANGE PETIT CALIBRE MACHINE A"
+  },
+  "0000087200041": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CIBOULETTE POT BIO MMP"
+  },
+  "0000087004763": {
+   "position": 101.88,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "PATATE DOUCE VRAC"
+  },
+  "0000087004031": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PASTEQUE NOIRE SANS PEPINS PIE"
+  },
+  "0000099017428": {
+   "position": -4.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 2,
+   "libelle": "JUS DE POMME TRADITIONNEL"
+  },
+  "0000087005002": {
+   "position": 91.1,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "CAROTTE VRAC"
+  },
+  "0000087010623": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT FRITE 2.5KG ITM"
+  },
+  "0000087535009": {
+   "position": 5.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "AVOCAT MUR A POINT 2 FRUITS"
+  },
+  "nom:ANANAS ENTIER 500 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ANANAS ENTIER 500 G"
+  },
+  "nom:ROMARIN BIO POT": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:ROMARIN BIO POT"
+  },
+  "0000087760026": {
+   "position": -16.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE BQ 250G PRICEE"
+  },
+  "0000087003359": {
+   "position": 6.36,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "RAISIN BLANC CHASSELAS VRAC"
+  },
+  "nom:LAURIER BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:LAURIER BARQUETTE 20G"
+  },
+  "0000087815005": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "HARICOT COCO PLAT SACHET 500G"
+  },
+  "0000087200204": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AIL ROSE LAUTREC 3 TETES IDR"
+  },
+  "nom:CHAMPIGNON PARIS BRUN GEANT VRAC": {
+   "position": -2.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CHAMPIGNON PARIS BRUN GEANT VRAC"
+  },
+  "0000087010287": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ENDIVE SACHET 650G"
+  },
+  "0000098002380": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISES 400G"
+  },
+  "0000087925001": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIREAU BOTTE 1KG"
+  },
+  "nom:MELON DES BARQUETTE 450G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MELON DES BARQUETTE 450G"
+  },
+  "0000087600016": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE JAUNE 1KG PETIT PRIX"
+  },
+  "0000087004629": {
+   "position": 26.02,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "POIREAU VRAC"
+  },
+  "0000087200086": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MENTHE POT BIO MMP"
+  },
+  "0000087445008": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PACK CHOI EMBALLE"
+  },
+  "nom:POMME REINE DES REINETTES VRAC": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME REINE DES REINETTES VRAC"
+  },
+  "0000087695155": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE BIO MEL BQ 250G"
+  },
+  "0000087004767": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POTIMARRON VRAC"
+  },
+  "nom:GROSEILLE ROUGE 125G": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:GROSEILLE ROUGE 125G"
+  },
+  "0000087945054": {
+   "position": -11.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 1,
+   "libelle": "OIGNON JAUNE FILET 1KG"
+  },
+  "0000087635017": {
+   "position": -8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE MARA DES BOIS BQ 250G"
+  },
+  "nom:CIBOULETTE POT BIO ITM": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CIBOULETTE POT BIO ITM"
+  },
+  "0000099005047": {
+   "position": 6.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "KIT GUACAMOLE 330G"
+  },
+  "nom:PERSIL FRISE BOTTE": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PERSIL FRISE BOTTE"
+  },
+  "0000087010655": {
+   "position": 2.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "AIL ROSE LAUTREC LR IGP 3 TETE"
+  },
+  "0000087620011": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ABRICOT MMP BARQUETTE 650G"
+  },
+  "nom:PITAYA JAUNE VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PITAYA JAUNE VRAC"
+  },
+  "0000087770008": {
+   "position": 39.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "POIVRON DOUX TRICOLORE 500G"
+  },
+  "nom:RHUBARBE VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RHUBARBE VRAC"
+  },
+  "0000087405005": {
+   "position": 36.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "CITRON JAUNE BIO 4 FRUITS"
+  },
+  "0000087004561": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE BLANCHE VRAC"
+  },
+  "0000087005012": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE ANGYS VRAC"
+  },
+  "0000099080000": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CORBEILLE DE FRUITS 15E"
+  },
+  "0000087950042": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "correction-conversion-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "PDT PRINCESSE AMANDINE 2KG"
+  },
+  "nom:POMME GOLDEN ALPES IGP 1.5KG CQLP": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME GOLDEN ALPES IGP 1.5KG CQLP"
+  },
+  "0000087010606": {
+   "position": 25.6,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "CHAMPIGNON PARIS BLANC 400G IT"
+  },
+  "0000087004255": {
+   "position": -2.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FIGUE BARBARIE VRAC"
+  },
+  "0000087004223": {
+   "position": -8,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "AVOCAT TROPICAL PIECE"
+  },
+  "0000087760022": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE PANACHEE 1KG"
+  },
+  "nom:RAISIN NOIR BARQUETTE 500G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:RAISIN NOIR BARQUETTE 500G"
+  },
+  "nom:SALADE GOURMANDE 150 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:SALADE GOURMANDE 150 G"
+  },
+  "nom:HERBES BIO POT COLIS PANANCHE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:HERBES BIO POT COLIS PANANCHE"
+  },
+  "nom:DES DE PASTEQUE BARQ 250 G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:DES DE PASTEQUE BARQ 250 G"
+  },
+  "0000087835003": {
+   "position": 26.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "RADIS ROUGE SACHET 250G"
+  },
+  "0000087420002": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE FILET 1,5KG"
+  },
+  "0000087004807": {
+   "position": 48.35,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 10,
+   "libelle": "TOMATE COTELEE ROUGE VRAC"
+  },
+  "0000087555019": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE BARQUETTE 1KG"
+  },
+  "0000087010178": {
+   "position": -14.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PASTEQUE RAYEE TRANCHEE PIECE"
+  },
+  "0000087695265": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE BIO SACHET 1,5KG"
+  },
+  "0000087004791": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOPINAMBOUR VRAC"
+  },
+  "0000087100768": {
+   "position": null,
+   "mesuree_le": null,
+   "raison": "aucune position jamais mesurée pour cet article",
+   "libelle": "PLANTE VERTE POT 21 CM"
+  },
+  "0000087940013": {
+   "position": -20.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ECHALOTE TRADITIONNELLE FILET"
+  },
+  "nom:POIVRON DOUX MINI PANACHE 200G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POIVRON DOUX MINI PANACHE 200G"
+  },
+  "nom:BOUQUET DE CHEF SEC PORC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BOUQUET DE CHEF SEC PORC"
+  },
+  "nom:BASILIC BARQUETTE 20G": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BASILIC BARQUETTE 20G"
+  },
+  "nom:POMME DE TERRE GRENAILLE VRAC": {
+   "position": -15.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME DE TERRE GRENAILLE VRAC"
+  },
+  "nom:CIBOULETTE BOTTE": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:CIBOULETTE BOTTE"
+  },
+  "0000087010173": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "KIWI BARQUETTE 500G PETIT PRIX"
+  },
+  "0000087004135": {
+   "position": 123.98,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "POMME GALA VRAC"
+  },
+  "0000087855015": {
+   "position": -8.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON BLC 500G"
+  },
+  "0000087004812": {
+   "position": 3.68,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 5,
+   "libelle": "NAVET BLANC VRAC"
+  },
+  "0000087004778": {
+   "position": 17.58,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "TOMATE COTELEE JAUNE VRAC"
+  },
+  "0000087010324": {
+   "position": -50.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 6,
+   "libelle": "BANANE RUBAN 5 FRUITS PETIT PR"
+  },
+  "nom:AVOCAT FILET 800G": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:AVOCAT FILET 800G"
+  },
+  "0000087004076": {
+   "position": 13.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 12,
+   "libelle": "LAITUE POMMEE BLONDE PIECE"
+  },
+  "0000087004064": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE RONDE NOIRE VRAC"
+  },
+  "0000087600000": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "NECTARINE JAUNE MINI PLATEAU 2"
+  },
+  "0000087920035": {
+   "position": 3.05,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "CAROTTE SACHET 2KG PETIT PRIX"
+  },
+  "nom:POMME GOLDEN BIO VRAC": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:POMME GOLDEN BIO VRAC"
+  },
+  "0000087761001": {
+   "position": -15,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE ALLONGEE 500G ZR"
+  },
+  "0000087200003": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AIL BLANC FILET 350G MMP"
+  },
+  "nom:MELON PIECE BIO ITM": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:MELON PIECE BIO ITM"
+  },
+  "nom:BETTERAVE ROUGE CUITE SACHET 500G": {
+   "position": -26.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:BETTERAVE ROUGE CUITE SACHET 500G"
+  },
+  "nom:TOMATE ALLONGE TORINO 600G SP": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:TOMATE ALLONGE TORINO 600G SP"
+  },
+  "0000087005030": {
+   "position": 0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "PASTEQUE ALLONGEE PIECE"
+  },
+  "0000087955027": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT FOUR 5KG"
+  },
+  "0000087004770": {
+   "position": -14.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "AVOCAT AFFINE GROS CALIBRE PIE"
+  },
+  "0000099032562": {
+   "position": -30.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "BQT FRAISE 500G CABANES"
+  },
+  "0000087855020": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CHAMPIGNON PARIS BLANC 250G"
+  },
+  "0000099040252": {
+   "position": -3.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LOT 3 AVOCATS"
+  },
+  "0000087004018": {
+   "position": -3.14,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "POMME GRANNY VRAC"
+  },
+  "nom:AMANDE SACHET 500G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:AMANDE SACHET 500G"
+  },
+  "0000087200210": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "FRAISE GARIGUETTE 250G IDR"
+  },
+  "0000087004059": {
+   "position": 281.4,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "KIWI JAUNE PIECE"
+  },
+  "0000099012268": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENVILLA 1.5KG"
+  },
+  "nom:PRUNE JAUNE BARQUETTE 750G ITM": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PRUNE JAUNE BARQUETTE 750G ITM"
+  },
+  "0000099037827": {
+   "position": -12.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PUR JUS DE POMMES/CITRON"
+  },
+  "0000087425000": {
+   "position": -9.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "MANDARINE A JUS 2KG"
+  },
+  "0000087695053": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE RONDE BIO 500G"
+  },
+  "0000087200015": {
+   "position": -16.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CAROTTE SACHET 750G ZRP MMP"
+  },
+  "0000087003050": {
+   "position": 1.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "CHOU BLANC PIECE"
+  },
+  "0000087004188": {
+   "position": 108.08,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 7,
+   "libelle": "NECTARINE BLANCHE VRAC"
+  },
+  "0000087635002": {
+   "position": 0.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 4,
+   "libelle": "FRAISE FRANCE BARQUETTE 500G"
+  },
+  "0000087004222": {
+   "position": 228.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 13,
+   "libelle": "AVOCAT AFFINE PIECE"
+  },
+  "0000087950033": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "PDT GRENAILLE 1,5 KG"
+  },
+  "0000087855069": {
+   "position": 26.2,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 9,
+   "libelle": "CHAMPIGNON PARIS BL 200G PETIT"
+  },
+  "0000087004517": {
+   "position": -15.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "ARTICHAUT VIOLET PIECE"
+  },
+  "0000087010355": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "OIGNON DOUX FILET 750G"
+  },
+  "0000087003386": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "CLEMENTINE FEUILLE VRAC"
+  },
+  "0000087004513": {
+   "position": 100.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "CONCOMBRE NOA PIECE"
+  },
+  "nom:FIGUE BARBARIE BARQUETTE 500G": {
+   "position": -10.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:FIGUE BARBARIE BARQUETTE 500G"
+  },
+  "0000087770026": {
+   "position": -15,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "POIVRON MIXTE 500G"
+  },
+  "0000087200129": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIVRON 2 FRUITS BIO MMP"
+  },
+  "0000087003045": {
+   "position": -5.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "DATTE FRAICHE VRAC"
+  },
+  "0000087880001": {
+   "position": 18.0,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 8,
+   "libelle": "BROCOLI 500G"
+  },
+  "0000087930022": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LEGUMES MIXTE POTAGE 1KG"
+  },
+  "0000087004136": {
+   "position": 39.62,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 11,
+   "libelle": "POMME GOLDEN VRAC"
+  },
+  "nom:PATATE DOUCE BIO FILET 500G": {
+   "position": -6.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PATATE DOUCE BIO FILET 500G"
+  },
+  "0000087004309": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "LITCHI VRAC"
+  },
+  "nom:PDT RATTE TOUQUET SACHET 1KG ITM": {
+   "position": -1.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "nom:PDT RATTE TOUQUET SACHET 1KG ITM"
+  },
+  "0000087010700": {
+   "position": -10,
+   "mesuree_le": "2026-09-07",
+   "moment_mesure": "soir",
+   "origine_mesure": "ecran-comptage",
+   "mouvements_depuis": 0,
+   "libelle": "TOMATE CERISE GRAPPE LR 300G I"
+  },
+  "0000087003012": {
+   "position": -7.0,
+   "mesuree_le": "2026-09-13",
+   "moment_mesure": "matin",
+   "origine_mesure": "position-forcee",
+   "mouvements_depuis": 0,
+   "libelle": "POIRE ABATE VRAC"
+  }
+ }
+}

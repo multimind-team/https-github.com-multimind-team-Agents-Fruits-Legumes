@@ -1,0 +1,643 @@
+{
+ "version": 1,
+ "note": "Photos indicatives reçues par mail ; le libellé et le conditionnement font foi.",
+ "articles": {
+  "0000087004029": {
+   "libelle": "ANANAS PIECE",
+   "src": "app/img/produits/515ac25e3af8aec4969437339195835c5e027d713af10e27fe909bba3f058af1-240.webp",
+   "miniature": "app/img/produits/515ac25e3af8aec4969437339195835c5e027d713af10e27fe909bba3f058af1-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004222": {
+   "libelle": "AVOCAT AFFINE PIECE",
+   "src": "app/img/produits/36e77d74203ce08462fc4219b36976f10c1be9ddc55601364e85c74afd4114d9-240.webp",
+   "miniature": "app/img/produits/36e77d74203ce08462fc4219b36976f10c1be9ddc55601364e85c74afd4114d9-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:KIT GUACAMOLE": {
+   "libelle": "KIT GUACAMOLE",
+   "src": "app/img/produits/f8f77b67ee89ce40cfabd0965cc6028915705a751a8a418e4ef90e7d3fb492f4-240.webp",
+   "miniature": "app/img/produits/f8f77b67ee89ce40cfabd0965cc6028915705a751a8a418e4ef90e7d3fb492f4-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004011": {
+   "libelle": "BANANE VRAC",
+   "src": "app/img/produits/35cf7a360503fcb51c0ec9a2cdeed2ce199962392439dba5b1b93f62ac98485d-240.webp",
+   "miniature": "app/img/produits/35cf7a360503fcb51c0ec9a2cdeed2ce199962392439dba5b1b93f62ac98485d-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087430010": {
+   "libelle": "BANANE PIECE ANTILLES FRAN",
+   "src": "app/img/produits/15b132342c4057e6dd5743f8064c26ec0056fdae271fb3a7ff8f962c0fa88995-240.webp",
+   "miniature": "app/img/produits/15b132342c4057e6dd5743f8064c26ec0056fdae271fb3a7ff8f962c0fa88995-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087005028": {
+   "libelle": "CITRON JAUNE VRAC",
+   "src": "app/img/produits/a8560f01a6bd918cef68da57a17f48f53b44ae353b8d63249d1599b5e6a7a06b-240.webp",
+   "miniature": "app/img/produits/a8560f01a6bd918cef68da57a17f48f53b44ae353b8d63249d1599b5e6a7a06b-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004447": {
+   "libelle": "COING VRAC",
+   "src": "app/img/produits/922ab34c360e0099d01bd8eeff7cf0d57062546635fd9917ecaaf0f2a9363c9a-240.webp",
+   "miniature": "app/img/produits/922ab34c360e0099d01bd8eeff7cf0d57062546635fd9917ecaaf0f2a9363c9a-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004266": {
+   "libelle": "FIGUE NOIRE VRAC",
+   "src": "app/img/produits/be5a480f32d19b57492bf9882c87db53844bf23f43c0851e6784dc55f9bc5463-240.webp",
+   "miniature": "app/img/produits/be5a480f32d19b57492bf9882c87db53844bf23f43c0851e6784dc55f9bc5463-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087635005": {
+   "libelle": "FRAISE FRANCE BARQUETTE 250G",
+   "src": "app/img/produits/c7dce0cd9633818a8429c2bef8afa48a0c9f2704dba7f30c83546608c0ef4fb7-240.webp",
+   "miniature": "app/img/produits/c7dce0cd9633818a8429c2bef8afa48a0c9f2704dba7f30c83546608c0ef4fb7-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087635002": {
+   "libelle": "FRAISE FRANCE BARQUETTE 500G",
+   "src": "app/img/produits/7315c1e9cc917bb458bdb3afe695b8a3fd2089a3f801166121c6ab082a69f78b-240.webp",
+   "miniature": "app/img/produits/7315c1e9cc917bb458bdb3afe695b8a3fd2089a3f801166121c6ab082a69f78b-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087650000": {
+   "libelle": "FRAMBOISE BARQUETTE 125G",
+   "src": "app/img/produits/03b69926babaf93ee831fae634b5a9947788cb7333aa60b7ad8f2ff4d756ddb1-240.webp",
+   "miniature": "app/img/produits/03b69926babaf93ee831fae634b5a9947788cb7333aa60b7ad8f2ff4d756ddb1-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087440009": {
+   "libelle": "LIME FILET 500 G",
+   "src": "app/img/produits/735977575b593c4a57f3522284e0f54f7fa50efd372adc86ac88e595698d1aab-240.webp",
+   "miniature": "app/img/produits/735977575b593c4a57f3522284e0f54f7fa50efd372adc86ac88e595698d1aab-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004230": {
+   "libelle": "BANANE PLANTAIN VRAC",
+   "src": "app/img/produits/b528696e937a37a9eff71bbbfca4239e58509306d9adf1303a35bfd1b7d1a2f2-240.webp",
+   "miniature": "app/img/produits/b528696e937a37a9eff71bbbfca4239e58509306d9adf1303a35bfd1b7d1a2f2-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003311": {
+   "libelle": "FRUIT DE LA PASSION PIECE",
+   "src": "app/img/produits/e222b9fb39c56e872ee2153b4daa7f3ea1f04165f3bd1f7c00065fc24d0b46e7-240.webp",
+   "miniature": "app/img/produits/e222b9fb39c56e872ee2153b4daa7f3ea1f04165f3bd1f7c00065fc24d0b46e7-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004048": {
+   "libelle": "LIME VRAC",
+   "src": "app/img/produits/a45f7c2389f8352702dad2d857f21712b013c6e4113ba8b64d481c6713643369-240.webp",
+   "miniature": "app/img/produits/a45f7c2389f8352702dad2d857f21712b013c6e4113ba8b64d481c6713643369-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003365": {
+   "libelle": "MANGUE AFFINEE PIECE",
+   "src": "app/img/produits/fbe032bd38932380180d55ea1bdf6c91b20ae79222c7a54a3c2c807362d7ab06-240.webp",
+   "miniature": "app/img/produits/fbe032bd38932380180d55ea1bdf6c91b20ae79222c7a54a3c2c807362d7ab06-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004260": {
+   "libelle": "NOIX DE COCO PIECE",
+   "src": "app/img/produits/e1915a5a00731960900c3a82b495ace142b5016f03bca9dc1411b843f3a80ba2-240.webp",
+   "miniature": "app/img/produits/e1915a5a00731960900c3a82b495ace142b5016f03bca9dc1411b843f3a80ba2-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004030": {
+   "libelle": "KIWI VERT PIECE",
+   "src": "app/img/produits/ec269170378a1a85c2b3054994d762e6eb39262e678b7eab68f474c2dc772dee-240.webp",
+   "miniature": "app/img/produits/ec269170378a1a85c2b3054994d762e6eb39262e678b7eab68f474c2dc772dee-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:KIWI JAUNE BARQUETTE 4 FRUITS": {
+   "libelle": "KIWI JAUNE BARQUETTE 4 FRUITS",
+   "src": "app/img/produits/5748e5273fd0b7a43c74990c1cba9da0eca1a906bfc64ec5ef3429ace956dc0b-240.webp",
+   "miniature": "app/img/produits/5748e5273fd0b7a43c74990c1cba9da0eca1a906bfc64ec5ef3429ace956dc0b-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004059": {
+   "libelle": "KIWI JAUNE PIECE",
+   "src": "app/img/produits/34894b68c0979abfb338f98993a6e0bc6be4061d13f6b8704623a238b25d8429-240.webp",
+   "miniature": "app/img/produits/34894b68c0979abfb338f98993a6e0bc6be4061d13f6b8704623a238b25d8429-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004055": {
+   "libelle": "MANDARINE VRAC",
+   "src": "app/img/produits/c2fd481697ab38035f9e07d5203c1d7202ef09e4e842a767bdd33774a3b77aff-240.webp",
+   "miniature": "app/img/produits/c2fd481697ab38035f9e07d5203c1d7202ef09e4e842a767bdd33774a3b77aff-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087660001": {
+   "libelle": "MYRTILLE BARQUETTE 125G",
+   "src": "app/img/produits/1759b111ab2e39e6dce845c7a5440a11015f44e04e486c775ebac0d447c0c6f5-240.webp",
+   "miniature": "app/img/produits/1759b111ab2e39e6dce845c7a5440a11015f44e04e486c775ebac0d447c0c6f5-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087535011": {
+   "libelle": "AVOCAT 3 FRUITS PETIT PRIX",
+   "src": "app/img/produits/08f1fc5927de112cd0d68dbb01ef6c196094f938897076f490c236f21325266e-240.webp",
+   "miniature": "app/img/produits/08f1fc5927de112cd0d68dbb01ef6c196094f938897076f490c236f21325266e-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087010324": {
+   "libelle": "BANANE RUBAN 5 FRUITS PETIT PRIX",
+   "src": "app/img/produits/1422367d8f47cbd486f2581b571b06c16842613c8e9c0b084301b70d25075146-240.webp",
+   "miniature": "app/img/produits/1422367d8f47cbd486f2581b571b06c16842613c8e9c0b084301b70d25075146-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087405012": {
+   "libelle": "CITRON FILET 1KG PETIT PRIX",
+   "src": "app/img/produits/2e41432196ddf5662d36067e2bc292f7000558c65853e9a1e47835f6a4ba3088-240.webp",
+   "miniature": "app/img/produits/2e41432196ddf5662d36067e2bc292f7000558c65853e9a1e47835f6a4ba3088-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087540007": {
+   "libelle": "KIWI BARQUETTE 1KG PETIT PRIX",
+   "src": "app/img/produits/14f7cc1e88d7b11d57a8fa1090617bc1a1eae2c79b1ff5128f77b712f86213a7-240.webp",
+   "miniature": "app/img/produits/14f7cc1e88d7b11d57a8fa1090617bc1a1eae2c79b1ff5128f77b712f86213a7-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004612": {
+   "libelle": "GINGEMBRE VRAC",
+   "src": "app/img/produits/7eb16ea25773bab32b9f76fc2181bed1478bee0d864992b148472011976f10c1-240.webp",
+   "miniature": "app/img/produits/7eb16ea25773bab32b9f76fc2181bed1478bee0d864992b148472011976f10c1-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004819": {
+   "libelle": "MANIOC VRAC",
+   "src": "app/img/produits/e7b143147db5de6c93da54fb6888bdf673fd43a169eae52826e13579e85d1dda-240.webp",
+   "miniature": "app/img/produits/e7b143147db5de6c93da54fb6888bdf673fd43a169eae52826e13579e85d1dda-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004763": {
+   "libelle": "PATATE DOUCE VRAC",
+   "src": "app/img/produits/8e09c618ab342f883eb7e3aeb2dca4c279343822e95384da76eaeb90e5f17865-240.webp",
+   "miniature": "app/img/produits/8e09c618ab342f883eb7e3aeb2dca4c279343822e95384da76eaeb90e5f17865-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004697": {
+   "libelle": "PIMENT ANTILLAIS VRAC",
+   "src": "app/img/produits/7afbddb7c274a733834e369d1d55c29d62f808b7de5c05aa0c334a364fefe065-240.webp",
+   "miniature": "app/img/produits/7afbddb7c274a733834e369d1d55c29d62f808b7de5c05aa0c334a364fefe065-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004317": {
+   "libelle": "MELON JAUNE PIECE",
+   "src": "app/img/produits/90c068761fefe49663bf0010e8ec566ffd682af9bdbdcdc198a3eba53ea4a011-240.webp",
+   "miniature": "app/img/produits/90c068761fefe49663bf0010e8ec566ffd682af9bdbdcdc198a3eba53ea4a011-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003306": {
+   "libelle": "MELON PIECE",
+   "src": "app/img/produits/727b05d65af33f470bee48d6e45c6744519eb0c5ee0c26197fdf7356308de9e1-240.webp",
+   "miniature": "app/img/produits/727b05d65af33f470bee48d6e45c6744519eb0c5ee0c26197fdf7356308de9e1-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004339": {
+   "libelle": "MELON VERT PIECE",
+   "src": "app/img/produits/e9503e5529ce34c2613de2a2ce29eb00461221aea0e714853d6ddcd72c0df900-240.webp",
+   "miniature": "app/img/produits/e9503e5529ce34c2613de2a2ce29eb00461221aea0e714853d6ddcd72c0df900-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004188": {
+   "libelle": "NECTARINE BLANCHE VRAC",
+   "src": "app/img/produits/a21d326ef8bc7dd07acfb4a258bf12747f11575974cfd92898ebcedc7f19be25-240.webp",
+   "miniature": "app/img/produits/a21d326ef8bc7dd07acfb4a258bf12747f11575974cfd92898ebcedc7f19be25-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004377": {
+   "libelle": "NECTARINE PLATE VRAC",
+   "src": "app/img/produits/3d099e6b8ceb0f7b3dbfaad4e742b2242c07c7d22585faea6c43eff3bf7e1fcf-240.webp",
+   "miniature": "app/img/produits/3d099e6b8ceb0f7b3dbfaad4e742b2242c07c7d22585faea6c43eff3bf7e1fcf-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004035": {
+   "libelle": "NECTARINE JAUNE VRAC",
+   "src": "app/img/produits/12ed181600ca9b9b4052297e0248060797d0d1d18cc748f1cae740a8ba35b3a4-240.webp",
+   "miniature": "app/img/produits/12ed181600ca9b9b4052297e0248060797d0d1d18cc748f1cae740a8ba35b3a4-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004928": {
+   "libelle": "NOISETTE VRAC",
+   "src": "app/img/produits/72a5ced906a599940b4e78a240e81afbc700ec8ba4c67d62d647e7f6cc5b8b40-240.webp",
+   "miniature": "app/img/produits/72a5ced906a599940b4e78a240e81afbc700ec8ba4c67d62d647e7f6cc5b8b40-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087685005": {
+   "libelle": "NOIX SACHET 750G",
+   "src": "app/img/produits/159bd233cf645c6057ebeeab799552f3eb77056a02a24adf2fc1ec960272e1ad-240.webp",
+   "miniature": "app/img/produits/159bd233cf645c6057ebeeab799552f3eb77056a02a24adf2fc1ec960272e1ad-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004012": {
+   "libelle": "ORANGE DESSERT VRAC",
+   "src": "app/img/produits/6c35bd09c01ae62730ab49f76ef17311628fc3a9796577ccdad22f432a874a5c-240.webp",
+   "miniature": "app/img/produits/6c35bd09c01ae62730ab49f76ef17311628fc3a9796577ccdad22f432a874a5c-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087400022": {
+   "libelle": "ORANGE DESSERT FILET 2KG",
+   "src": "app/img/produits/2076a29a456c63c5b7eb0edaf3ea136a48f87712ad124af7f5fc03a50b796d73-240.webp",
+   "miniature": "app/img/produits/2076a29a456c63c5b7eb0edaf3ea136a48f87712ad124af7f5fc03a50b796d73-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087400020": {
+   "libelle": "ORANGE A JUS FILET 2KG",
+   "src": "app/img/produits/1ee8373e7a696a77de5e98d350da94d687abd75fe75e5f0ce0fafb7c3ca55537-240.webp",
+   "miniature": "app/img/produits/1ee8373e7a696a77de5e98d350da94d687abd75fe75e5f0ce0fafb7c3ca55537-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004386": {
+   "libelle": "ORANGE PETIT CALIBRE MACHINE A JUS",
+   "src": "app/img/produits/900e13d7c353644b1e4bec15b7983f68c231f0866802d426b476a9e8aaafd22d-240.webp",
+   "miniature": "app/img/produits/900e13d7c353644b1e4bec15b7983f68c231f0866802d426b476a9e8aaafd22d-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087605011": {
+   "libelle": "NECTARINE BLANCHE 1KG PETIT PRIX",
+   "src": "app/img/produits/0762a6ebe8fbb42f7637114aeacba773e8c49a76c520aa124e2843e3ed67aa0e-240.webp",
+   "miniature": "app/img/produits/0762a6ebe8fbb42f7637114aeacba773e8c49a76c520aa124e2843e3ed67aa0e-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087600016": {
+   "libelle": "NECTARINE JAUNE 1KG PETIT PRIX",
+   "src": "app/img/produits/b47e5060addd71de47a6846b0f0f89643967604a94d83976b58fe7af43d28971-240.webp",
+   "miniature": "app/img/produits/b47e5060addd71de47a6846b0f0f89643967604a94d83976b58fe7af43d28971-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087400039": {
+   "libelle": "ORANGE FILET 1,5KG PETIT PRIX",
+   "src": "app/img/produits/8dc2ad0df6e6aed29f1ca083289f9fda6a205727abce10b771c9b18a929ab801-240.webp",
+   "miniature": "app/img/produits/8dc2ad0df6e6aed29f1ca083289f9fda6a205727abce10b771c9b18a929ab801-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004327": {
+   "libelle": "PASTEQUE MINI PIECE",
+   "src": "app/img/produits/c521799c37cfe803e7d5ca5edfa4929859e382d2e962bdbfb739a8a138cbaee7-240.webp",
+   "miniature": "app/img/produits/c521799c37cfe803e7d5ca5edfa4929859e382d2e962bdbfb739a8a138cbaee7-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004032": {
+   "libelle": "PASTEQUE TIGREE PIECE",
+   "src": "app/img/produits/cd0698d9b14b4575624ad96c6f2d0b70cc4232999922a170ed02cb5f6b0e8ee4-240.webp",
+   "miniature": "app/img/produits/cd0698d9b14b4575624ad96c6f2d0b70cc4232999922a170ed02cb5f6b0e8ee4-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004031": {
+   "libelle": "PASTEQUE NOIRE SANS PEPINS PIECE",
+   "src": "app/img/produits/526ee50c80fd794e393b216fe5c58e5e07bbfa58cbca889a13b50b50477badaf-240.webp",
+   "miniature": "app/img/produits/526ee50c80fd794e393b216fe5c58e5e07bbfa58cbca889a13b50b50477badaf-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004400": {
+   "libelle": "PECHE BLANCHE VRAC",
+   "src": "app/img/produits/ceb105617d293832fe8299cd6d5bac7f3c9c0c0b27b6552ed724a6a4bb5aa86c-240.webp",
+   "miniature": "app/img/produits/ceb105617d293832fe8299cd6d5bac7f3c9c0c0b27b6552ed724a6a4bb5aa86c-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003113": {
+   "libelle": "PECHE PLATE VRAC",
+   "src": "app/img/produits/77189a74381cc62a7ee60f3bf86e4c346a8d0469dbaeddcc57a65643deaa94d5-240.webp",
+   "miniature": "app/img/produits/77189a74381cc62a7ee60f3bf86e4c346a8d0469dbaeddcc57a65643deaa94d5-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087590001": {
+   "libelle": "PECHE PLATE BARQUETTE 500G",
+   "src": "app/img/produits/27b6313b1f90a2238e706e2c88c86b98ed2cfabde42897605a10e270699d5128-240.webp",
+   "miniature": "app/img/produits/27b6313b1f90a2238e706e2c88c86b98ed2cfabde42897605a10e270699d5128-96.webp",
+   "largeur": 240,
+   "hauteur": 208
+  },
+  "0000087004037": {
+   "libelle": "PECHE JAUNE VRAC",
+   "src": "app/img/produits/17ba78f7d9772477286e5a446f21778b24d6936b3b3adbec9fa5fbdf9cd814bf-240.webp",
+   "miniature": "app/img/produits/17ba78f7d9772477286e5a446f21778b24d6936b3b3adbec9fa5fbdf9cd814bf-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:PECHE SANGUINE VRAC": {
+   "libelle": "PECHE SANGUINE VRAC",
+   "src": "app/img/produits/c384816d13bd3fd9be7263e40c1ea1aa41adb7aa35a1725c7df13bc49b0144a4-240.webp",
+   "miniature": "app/img/produits/c384816d13bd3fd9be7263e40c1ea1aa41adb7aa35a1725c7df13bc49b0144a4-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087590017": {
+   "libelle": "PECHE BLANCHE 1KG PETIT PRIX",
+   "src": "app/img/produits/15d522af78e88920169376467b5a28f3d9261d9c439a73808e95568b9550c1d5-240.webp",
+   "miniature": "app/img/produits/15d522af78e88920169376467b5a28f3d9261d9c439a73808e95568b9550c1d5-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087585011": {
+   "libelle": "PECHE JAUNE 1KG PETIT PRIX",
+   "src": "app/img/produits/fb24f1dc827e9dd2be28366603d0652eb2a673f0e3067bddfb58cc230ff12993-240.webp",
+   "miniature": "app/img/produits/fb24f1dc827e9dd2be28366603d0652eb2a673f0e3067bddfb58cc230ff12993-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087555025": {
+   "libelle": "POIRE BARQUETTE 1KG PETIT PRIX",
+   "src": "app/img/produits/bd336872d79b6c78aa27978fd324e590c8c751f29f9d2c988b6d2027224f3c5c-240.webp",
+   "miniature": "app/img/produits/bd336872d79b6c78aa27978fd324e590c8c751f29f9d2c988b6d2027224f3c5c-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087545283": {
+   "libelle": "POMME BICOLORE 2KG PETIT PRIX",
+   "src": "app/img/produits/35a52d639a26101459151c7aeca4f1c66fbfd16b79cc7c3ca7545cdcf02f3208-240.webp",
+   "miniature": "app/img/produits/35a52d639a26101459151c7aeca4f1c66fbfd16b79cc7c3ca7545cdcf02f3208-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:POMME GALA 6 FRUITS ITM": {
+   "libelle": "POMME GALA 6 FRUITS ITM",
+   "src": "app/img/produits/ba1c43d03eb41a70a126bf5258e54beffefa5e9c5d184881cebb8b94b4bf1987-240.webp",
+   "miniature": "app/img/produits/ba1c43d03eb41a70a126bf5258e54beffefa5e9c5d184881cebb8b94b4bf1987-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087010626": {
+   "libelle": "POMME GOLDEN 6 FRUITS ITM",
+   "src": "app/img/produits/8b58b2b5363d4e5f53fc5512d9a85e2290afb4ec1d6c9a2e6df9f5dfff6d6873-240.webp",
+   "miniature": "app/img/produits/8b58b2b5363d4e5f53fc5512d9a85e2290afb4ec1d6c9a2e6df9f5dfff6d6873-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003021": {
+   "libelle": "POIRE GUYOT VRAC",
+   "src": "app/img/produits/e4d4f9bf0a16e6f97e1a1e990730e376cafc67830f48ecf0175f58a28ff13026-240.webp",
+   "miniature": "app/img/produits/e4d4f9bf0a16e6f97e1a1e990730e376cafc67830f48ecf0175f58a28ff13026-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004409": {
+   "libelle": "POIRE WILLIAM VERTE VRAC",
+   "src": "app/img/produits/4fc7b91263ba323a37ecfe79ec01da06bb58e538361e21b615542e65181236fe-240.webp",
+   "miniature": "app/img/produits/4fc7b91263ba323a37ecfe79ec01da06bb58e538361e21b615542e65181236fe-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004282": {
+   "libelle": "POMELO ROUGE PIECE",
+   "src": "app/img/produits/13089a450eff959623137781ff31b44c88c2db30c2a4f53b792989df5c100800-240.webp",
+   "miniature": "app/img/produits/13089a450eff959623137781ff31b44c88c2db30c2a4f53b792989df5c100800-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087410004": {
+   "libelle": "POMELO ROUGE A JUS FILET 1.5KG",
+   "src": "app/img/produits/29b651e2eb2c80e1cae0a3e271d9acb4eed3ffaf535a8ea8bd5fde346e40711f-240.webp",
+   "miniature": "app/img/produits/29b651e2eb2c80e1cae0a3e271d9acb4eed3ffaf535a8ea8bd5fde346e40711f-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004135": {
+   "libelle": "POMME GALA VRAC",
+   "src": "app/img/produits/ae361934911a8eba34d583275262d62db460e29dc8bf9bc74b85daaf17f7d410-240.webp",
+   "miniature": "app/img/produits/ae361934911a8eba34d583275262d62db460e29dc8bf9bc74b85daaf17f7d410-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087545020": {
+   "libelle": "POMME GOLDEN SACHET 2KG",
+   "src": "app/img/produits/a80f775318132b63dc73a4382703387d41c0e09bf0b708ce85f2d70ee1cb0e1d-240.webp",
+   "miniature": "app/img/produits/a80f775318132b63dc73a4382703387d41c0e09bf0b708ce85f2d70ee1cb0e1d-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004136": {
+   "libelle": "POMME GOLDEN VRAC",
+   "src": "app/img/produits/f98a4209261d00ef98b5373090aa4c6773d6f177306566d1a6d7feb095195be9-240.webp",
+   "miniature": "app/img/produits/f98a4209261d00ef98b5373090aa4c6773d6f177306566d1a6d7feb095195be9-96.webp",
+   "largeur": 240,
+   "hauteur": 130
+  },
+  "0000087004018": {
+   "libelle": "POMME GRANNY VRAC",
+   "src": "app/img/produits/68b7228d0f023eaba3e103c8083b20fa4ebc3084fdfbf0ef7a45a6e0f3574e3b-240.webp",
+   "miniature": "app/img/produits/68b7228d0f023eaba3e103c8083b20fa4ebc3084fdfbf0ef7a45a6e0f3574e3b-96.webp",
+   "largeur": 240,
+   "hauteur": 183
+  },
+  "nom:POMME REINE DES REINETTES VRAC": {
+   "libelle": "POMME REINE DES REINETTES VRAC",
+   "src": "app/img/produits/f50f5254ac65fad41088d5a220c99babe35d80dff84af2d376875d8d590ff309-240.webp",
+   "miniature": "app/img/produits/f50f5254ac65fad41088d5a220c99babe35d80dff84af2d376875d8d590ff309-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003009": {
+   "libelle": "POMME CANADA VRAC",
+   "src": "app/img/produits/2b09449f97f09babd75426a80e396c4e4ce327432d34a79c5d5b769fe3243093-240.webp",
+   "miniature": "app/img/produits/2b09449f97f09babd75426a80e396c4e4ce327432d34a79c5d5b769fe3243093-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003294": {
+   "libelle": "POMME JAZZ VRAC",
+   "src": "app/img/produits/c038bc1986d2ab97ebe2d1cd1f401e7f8d0b1d2a0596a069383a4611c9256c41-240.webp",
+   "miniature": "app/img/produits/c038bc1986d2ab97ebe2d1cd1f401e7f8d0b1d2a0596a069383a4611c9256c41-96.webp",
+   "largeur": 196,
+   "hauteur": 147
+  },
+  "nom:PRUNE JAUNE 500G PETIT PRIX": {
+   "libelle": "PRUNE JAUNE 500G PETIT PRIX",
+   "src": "app/img/produits/81ba61547fd5486bfc2718a5a07ebe0af8c0917f95837cd0845ace7bfdec50ec-240.webp",
+   "miniature": "app/img/produits/81ba61547fd5486bfc2718a5a07ebe0af8c0917f95837cd0845ace7bfdec50ec-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:PRUNE ROUGE BARQUETTE 750G ITM": {
+   "libelle": "PRUNE ROUGE BARQUETTE 750G ITM",
+   "src": "app/img/produits/fa6f6d0b3a4abb34343ba8dad434ba729e24b786449b735e6707959e80ce612b-240.webp",
+   "miniature": "app/img/produits/fa6f6d0b3a4abb34343ba8dad434ba729e24b786449b735e6707959e80ce612b-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:PRUNE ROUGE 500G PETIT PRIX": {
+   "libelle": "PRUNE ROUGE 500G PETIT PRIX",
+   "src": "app/img/produits/46be0399b5e469d7a73935deabf84a9981595fabc66312bb9f779f28bc8f3c2e-240.webp",
+   "miniature": "app/img/produits/46be0399b5e469d7a73935deabf84a9981595fabc66312bb9f779f28bc8f3c2e-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN BLANC SANS PEPINS 500G ITM": {
+   "libelle": "RAISIN BLANC SANS PEPINS 500G ITM",
+   "src": "app/img/produits/4f3443e25edbc6307562123818cc563957805484bfe22951e9f03f7d354c3854-240.webp",
+   "miniature": "app/img/produits/4f3443e25edbc6307562123818cc563957805484bfe22951e9f03f7d354c3854-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN CHASSELAS AOP 500G ITM": {
+   "libelle": "RAISIN CHASSELAS AOP 500G ITM",
+   "src": "app/img/produits/e6cc88546d8ece07ff4d56f6d51299f56ca52fd0e3b553f3c321a94d2b8814c6-240.webp",
+   "miniature": "app/img/produits/e6cc88546d8ece07ff4d56f6d51299f56ca52fd0e3b553f3c321a94d2b8814c6-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087570012": {
+   "libelle": "RAISIN NOIR 750G PETIT PRIX",
+   "src": "app/img/produits/0b3fdd341272c7b26f7337162e2762265fc674c21fa835060c7ba63010a701ab-240.webp",
+   "miniature": "app/img/produits/0b3fdd341272c7b26f7337162e2762265fc674c21fa835060c7ba63010a701ab-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN NOIR BARQUETTE 500G": {
+   "libelle": "RAISIN NOIR BARQUETTE 500G",
+   "src": "app/img/produits/11ddb2108de7be4fa26f3fcf39c5d7fa71f8cacd80fca2712015c473e586aef4-240.webp",
+   "miniature": "app/img/produits/11ddb2108de7be4fa26f3fcf39c5d7fa71f8cacd80fca2712015c473e586aef4-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN MUSCAT VENTOUX AOP 500G ITM": {
+   "libelle": "RAISIN MUSCAT VENTOUX AOP 500G ITM",
+   "src": "app/img/produits/ab3a050fb532b980587207e8c2f37379afae30d3d66364084e20ba17a5053f85-240.webp",
+   "miniature": "app/img/produits/ab3a050fb532b980587207e8c2f37379afae30d3d66364084e20ba17a5053f85-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN ROSE BARQUETTE 500G": {
+   "libelle": "RAISIN ROSE BARQUETTE 500G",
+   "src": "app/img/produits/af27c34aad2a1e4adc586f6c1528782d55550f058eb2229da5e214c213aee235-240.webp",
+   "miniature": "app/img/produits/af27c34aad2a1e4adc586f6c1528782d55550f058eb2229da5e214c213aee235-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004441": {
+   "libelle": "PRUNE MIRABELLE VRAC",
+   "src": "app/img/produits/f39981337b28f19063c0f69714e820a961735da4f344856f49d24bd836f578cd-240.webp",
+   "miniature": "app/img/produits/f39981337b28f19063c0f69714e820a961735da4f344856f49d24bd836f578cd-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004039": {
+   "libelle": "PRUNE REINE CLAUDE VRAC",
+   "src": "app/img/produits/fc9a52c1c464e42020956a10b2ab3f9903d83dfddc447118815644b894d4eefb-240.webp",
+   "miniature": "app/img/produits/fc9a52c1c464e42020956a10b2ab3f9903d83dfddc447118815644b894d4eefb-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004442": {
+   "libelle": "PRUNE JAUNE VRAC",
+   "src": "app/img/produits/12266fd9586c53c40dd38589fbd46b449ce19f39a1556d11fa437a6a8e625072-240.webp",
+   "miniature": "app/img/produits/12266fd9586c53c40dd38589fbd46b449ce19f39a1556d11fa437a6a8e625072-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004041": {
+   "libelle": "PRUNE ROUGE VRAC",
+   "src": "app/img/produits/8d23933fcdc018c2ac5db71d44e919bf553442cc8b3b64b65778e2c784841fb3-240.webp",
+   "miniature": "app/img/produits/8d23933fcdc018c2ac5db71d44e919bf553442cc8b3b64b65778e2c784841fb3-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087003359": {
+   "libelle": "RAISIN BLANC CHASSELAS VRAC",
+   "src": "app/img/produits/1acfbaa2ef169fd8a0f8881fe6a029c02ec006b4a95c0bd32710661ec9303753-240.webp",
+   "miniature": "app/img/produits/1acfbaa2ef169fd8a0f8881fe6a029c02ec006b4a95c0bd32710661ec9303753-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087565012": {
+   "libelle": "RAISIN BLANC BARQUETTE 300G",
+   "src": "app/img/produits/32d463b98fe56830ae8bf682e551dfa8b434c01a8fd79dce1f78083657cc9951-240.webp",
+   "miniature": "app/img/produits/32d463b98fe56830ae8bf682e551dfa8b434c01a8fd79dce1f78083657cc9951-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN BLANC DANLAS VRAC": {
+   "libelle": "RAISIN BLANC DANLAS VRAC",
+   "src": "app/img/produits/89c5086611539d9e73bf1c32dc3aac40e05915ff340dfd9cba71b2901bf7d683-240.webp",
+   "miniature": "app/img/produits/89c5086611539d9e73bf1c32dc3aac40e05915ff340dfd9cba71b2901bf7d683-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004274": {
+   "libelle": "RAISIN BLANC ITALIA VRAC",
+   "src": "app/img/produits/c6755308cf862aaa20aae83f4fb6411ef664eb5c295485c6251bf12f83d1e020-240.webp",
+   "miniature": "app/img/produits/c6755308cf862aaa20aae83f4fb6411ef664eb5c295485c6251bf12f83d1e020-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN NOIR LAVALLEE VRAC": {
+   "libelle": "RAISIN NOIR LAVALLEE VRAC",
+   "src": "app/img/produits/d580ae2d70885d4ca4c4f5351820401876707524fff9b9f3a5498aa355ce0207-240.webp",
+   "miniature": "app/img/produits/d580ae2d70885d4ca4c4f5351820401876707524fff9b9f3a5498aa355ce0207-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004957": {
+   "libelle": "RAISIN NOIR MUSCAT VRAC",
+   "src": "app/img/produits/058a13a5c44da208181d4e75abdc872ff37127566b20425d5d8f74d041e26d9b-240.webp",
+   "miniature": "app/img/produits/058a13a5c44da208181d4e75abdc872ff37127566b20425d5d8f74d041e26d9b-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "nom:RAISIN ROSE BARQUETTE 300G": {
+   "libelle": "RAISIN ROSE BARQUETTE 300G",
+   "src": "app/img/produits/b9204d92d5fb8948362be83ac36e5017716a8b63ecc9667d9a6115c5370e8e8e-240.webp",
+   "miniature": "app/img/produits/b9204d92d5fb8948362be83ac36e5017716a8b63ecc9667d9a6115c5370e8e8e-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  },
+  "0000087004636": {
+   "libelle": "RAISIN ROSE VRAC",
+   "src": "app/img/produits/02b6f6816d1cc42ec29cf73c93392012a8a9921c8ac242c61017c989d465fe0b-240.webp",
+   "miniature": "app/img/produits/02b6f6816d1cc42ec29cf73c93392012a8a9921c8ac242c61017c989d465fe0b-96.webp",
+   "largeur": 240,
+   "hauteur": 240
+  }
+ }
+}

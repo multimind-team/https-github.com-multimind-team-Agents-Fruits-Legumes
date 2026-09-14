@@ -1,0 +1,321 @@
+/* ==========================================================================
+   Charte graphique Groupement Mousquetaires — application du rayon
+   Palette officielle du Groupement.
+   Deux thèmes : Sombre Violine Premium (par défaut) et Clair Terroir.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+  /* Interstate si installé ; aucun téléchargement nécessaire au rayon. */
+  --police-texte: Interstate, Arial, sans-serif;
+  --police-titre: Interstate, Arial, sans-serif;
+  /* --- Palette de marque officielle --- */
+  --mousq-rouge: #ff2822;
+  --mousq-rouge-cavalier: #82072a;
+  --mousq-violine-velours: #511227;
+  --mousq-ble: #e2d3bf;
+  --mousq-ble-45: #f5f1ec;
+  --mousq-sable: #c8b39f;
+  --mousq-sable-25: #f6f3ef;
+  --mousq-foret: #00674f;
+  --mousq-bourgeon: #8ec08c;
+  --mousq-acier: #d9d9d9;
+  --mousq-fer: #b1b1b1;
+  --mousq-blanc: #fafafa;
+
+  /* --- Thème Sombre Violine Premium (par défaut) ---
+     Choisi comme thème principal : le responsable de rayon travaille avant le lever du jour
+     et en chambre froide. Le thème clair reste disponible (classe .theme-clair). */
+  --bg: #15050a;
+  --bg-panel: rgba(81, 18, 39, 0.35);
+  --bg-panel-plein: #240a14;
+  --bg-panel-alt: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.10);
+  --text: var(--mousq-blanc);
+  --text-dim: #e9dfd2;
+  --text-faible: #b9a99b;
+  --accent: var(--mousq-bourgeon);
+  --accent-fort: var(--mousq-foret);
+  --warn: #fbbf24;
+  --bad: var(--mousq-rouge);
+
+  --radius: 12px;
+  --radius-lg: 18px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.15);
+
+  /* Hauteur maximale de la barre du haut : elle ne doit jamais manger l'écran.
+     Constat : un en-tête trop haut occupe près de la moitié de la hauteur du téléphone. */
+  --hauteur-barre: 52px;
+}
+
+body.theme-clair {
+  color-scheme: light;
+  --bg: var(--mousq-blanc);
+  --bg-panel: #ffffff;
+  --bg-panel-plein: #ffffff;
+  --bg-panel-alt: var(--mousq-ble-45);
+  --border: rgba(0, 0, 0, 0.10);
+  --text: #262626;
+  --text-dim: #595959;
+  --text-faible: #8a8a8a;
+  --accent: var(--mousq-foret);
+  --accent-fort: #004d3b;
+  --warn: #d97706;
+  --bad: var(--mousq-rouge-cavalier);
+  --shadow: 0 4px 12px rgba(81, 18, 39, 0.06), 0 1px 3px rgba(81, 18, 39, 0.04);
+}
+
+select {
+  color-scheme: dark;
+}
+
+body.theme-clair select {
+  color-scheme: light;
+}
+
+select option {
+  background-color: var(--bg-panel-plein);
+  color: var(--text);
+}
+
+body.theme-clair select option {
+  background-color: #ffffff;
+  color: #262626;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  max-width: 100%;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--police-texte);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3 {
+  font-family: var(--police-titre);
+  font-weight: 700;
+  margin: 0 0 .4em;
+  line-height: 1.2;
+}
+
+a { color: var(--accent); }
+
+/* --- Barre du haut : fine, toujours, sur les deux interfaces --- */
+.barre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: var(--hauteur-barre);
+  padding: 0 14px;
+  background: var(--bg-panel-plein);
+  border-bottom: 2px solid var(--mousq-rouge);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.barre .marque {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barre .marque .pastille-logo {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  border-radius: 50%;
+  background: var(--mousq-rouge);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+
+/* --- Étiquettes d'état --- */
+.etat {
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  background: var(--bg-panel-alt);
+  border: 1px solid var(--border);
+}
+.etat::before {
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--text-faible);
+}
+.etat.ok::before   { background: var(--accent); }
+.etat.warn::before { background: var(--warn); }
+.etat.bad::before  { background: var(--bad); }
+.etat.vide::before { background: var(--mousq-fer); }
+
+/* --- Bouton de thème (clair/sombre) — présent sur chaque écran --- */
+.bouton-theme {
+  width: 32px; height: 32px; border-radius: 50%; flex: 0 0 auto;
+  border: 1px solid var(--border); background: var(--bg-panel-alt);
+  color: var(--text); font-size: 15px; line-height: 1; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+
+/* --- Contenu --- */
+.contenu {
+  padding: 14px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.contenu.large { max-width: 1400px; }
+
+.panneau {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+}
+
+.panneau h2 {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sous-titre {
+  color: var(--text-faible);
+  font-size: 14px;
+  margin: -2px 0 12px;
+}
+
+/* --- Boutons : grandes cibles, utilisables avec les doigts froids --- */
+.bouton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 60px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-panel-alt);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .08s ease, background .15s ease;
+}
+.bouton:active { transform: scale(.985); }
+
+.bouton.principal {
+  background: var(--mousq-foret);
+  border-color: transparent;
+  color: #fff;
+  min-height: 72px;
+  font-size: 19px;
+}
+.bouton.rouge {
+  background: var(--mousq-rouge-cavalier);
+  border-color: transparent;
+  color: #fff;
+}
+.bouton.discret {
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-faible);
+  background: transparent;
+}
+
+.grille-boutons {
+  display: grid;
+  gap: 12px;
+}
+
+/* --- Message quand il n'y a encore rien à afficher --- */
+.vide {
+  text-align: center;
+  padding: 26px 16px;
+  color: var(--text-faible);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-panel-alt);
+}
+.vide strong { color: var(--text-dim); display: block; margin-bottom: 4px; }
+
+/* --- Pied de page : c'est ici, et seulement ici, qu'on quitte l'outil --- */
+.pied {
+  margin: 34px 0 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.pied .mention {
+  color: var(--text-faible);
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+/* --- Tableaux (interface PC uniquement) --- */
+.table-enveloppe { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--text-faible); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+tbody tr:hover { background: var(--bg-panel-alt); }
+
+code, .mono {
+  font-family: "Cascadia Mono", Consolas, "SF Mono", monospace;
+  font-size: 13px;
+}
+
+/* Les textes importés peuvent être longs : rétrécir les conteneurs, pas les
+   chiffres. Aucune règle overflow-x:hidden ne doit masquer un débordement. */
+.panneau, .note .entree > span, .colonnes > *, .journal-ligne > * { min-width: 0; }
+.contenu .etat { white-space: normal; }
+.etat::before { flex: 0 0 8px; }
+input, select, textarea { max-width: 100%; }
+button:disabled { cursor: not-allowed; opacity: .6; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+[hidden] { display: none !important; }
+
+/* Repères photo uniquement : même ordre et mêmes colonnes de quantité. */
+.photo-produit {
+  display: block; object-fit: contain; background: #fff;
+  border: 1px solid var(--border); border-radius: 8px;
+  max-width: 100%; flex-shrink: 0;
+}
+.photo-produit-liste { --photo-produit-taille: 48px; width: 48px; height: 48px; margin: 0 0 6px; }
+.photo-produit-comptage { --photo-produit-taille: 64px; width: 64px; height: 64px; }
+.photo-produit-detail { --photo-produit-taille: 180px; width: 180px; height: 180px; max-width: 200px; max-height: 200px; margin: 8px auto 12px; }
+@media (min-width: 600px) {
+  .photo-produit-liste { --photo-produit-taille: 80px; width: 80px; height: 80px; }
+  .photo-produit-comptage { --photo-produit-taille: 112px; width: 112px; height: 112px; }
+  .photo-produit-detail { --photo-produit-taille: 200px; width: 200px; height: 200px; }
+}

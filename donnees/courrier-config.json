@@ -1,0 +1,15 @@
+{
+  "imap_host": "imap.gmail.com",
+  "imap_port": 993,
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 587,
+  "utilisateur": "multimind.team@gmail.com",
+  "mot_de_passe": "walfwxnlwgdbvfcu",
+  "dossier": "INBOX",
+  "expediteurs_autorises": [
+    "multimind.team@gmail.com",
+    "parraga.antoine@gmail.com",
+    "pdv11768@mousquetaires.com"
+  ],
+  "dossier_destination": "donnees/courrier"
+}

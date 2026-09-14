@@ -1,0 +1,11 @@
+Voir reference/contrat-echange.md à la racine du projet pour l'inventaire complet.
+  faits/AAAA.jsonl  mouvements et corrections, append-only
+  decisions.jsonl   décisions sur les articles, append-only
+  etat.json         positions recalculées, dérivé remplaçable
+  journal.jsonl et journaux/  traces opérationnelles, append-only
+
+Les catalogues, correspondances et pièces sources ne se reconstruisent pas à partir
+des seuls mouvements. Conserver les originaux et les journaux. Ne jamais inventer
+une quantité ou supprimer une trace pour faire disparaître une alerte.
+Le partage d'un classeur ou d'un document suit les autorisations et vérifications
+d'AGENT.md ; aucune diffusion non autorisée des données du magasin.

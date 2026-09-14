@@ -1,0 +1,11 @@
+{
+  "_lisez_moi": [
+    "Reglages generaux du projet.",
+    "L'agent orchestrateur surveille la boite mail avec l'outil mecanique relever-courrier.py.",
+    "La distribution du travail est assuree vers les sous-agents specialises."
+  ],
+  "mode_orchestration": "agent-orchestrateur",
+  "surveillance_mail": "relever-courrier-mecanique",
+  "taches_planifiees_windows": false,
+  "surveillance_mail_python": false
+}

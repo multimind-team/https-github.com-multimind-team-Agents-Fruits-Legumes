@@ -1,0 +1,133 @@
+{
+  "source": {
+    "fichier": "Documents/Promo intermarche/15-09-2026_27-09-2026_Prospectus_TF_ANNIVERSAIRE_1_V2_FR2.pdf",
+    "pages_lues": [
+      6,
+      7
+    ],
+    "periode_prospectus": "du 15/09/2026 au 27/09/2026",
+    "note": "Les offres fruits et légumes relevées ci-dessous indiquent chacune leur propre période (du 15/09 au 19/09/2026). Les codes ITM8 ne figurent pas dans le prospectus : les rapprochements catalogue restent à confirmer avant toute action de commande.",
+    "apercus": [
+      "Documents/Promo intermarche/apercus/15-09-2026_27-09-2026_Prospectus_TF_ANNIVERSAIRE_1_V2_FR2/page-6.png",
+      "Documents/Promo intermarche/apercus/15-09-2026_27-09-2026_Prospectus_TF_ANNIVERSAIRE_1_V2_FR2/page-7.png"
+    ]
+  },
+  "avantage_carte_weekend": "Tous les samedis et dimanches, bénéficiez de 10% en avantage carte sur tous les Fruits et les Légumes frais (hors fruits et légumes secs, olives et épices, prêts à consommer, salades en sachet, herbes aromatiques, soupes froides, jus de fruits et surgelés). Avantage réservé aux porteurs de la carte de fidélité Intermarché.",
+  "offres": [
+    {
+      "nom": "Ananas Extra Sweet",
+      "details": "1,59 € la pièce ; 10 % en avantage carte le samedi et le dimanche.",
+      "periode": "du 15/09 au 19/09/2026",
+      "visible_a_partir": "2026-09-12",
+      "debut": "2026-09-15",
+      "fin": "2026-09-19",
+      "correspondances": [
+        {
+          "itm8": "0000087004029",
+          "libelle": "ANANAS PIECE",
+          "statut": "a_confirmer"
+        }
+      ]
+    },
+    {
+      "nom": "Banane Cavendish",
+      "details": "0,95 € le kg ; 10 % en avantage carte le samedi et le dimanche.",
+      "periode": "du 15/09 au 19/09/2026",
+      "visible_a_partir": "2026-09-12",
+      "debut": "2026-09-15",
+      "fin": "2026-09-19",
+      "correspondances": [
+        {
+          "itm8": "0000087004011",
+          "libelle": "BANANE VRAC",
+          "statut": "a_confirmer"
+        }
+      ]
+    },
+    {
+      "nom": "Tomate cerise allongée et/ou ronde",
+      "details": "2,49 € la barquette de 500 g (soit 4,98 € le kg) ; 10 % en avantage carte le samedi et le dimanche.",
+      "periode": "du 15/09 au 19/09/2026",
+      "visible_a_partir": "2026-09-12",
+      "debut": "2026-09-15",
+      "fin": "2026-09-19",
+      "correspondances": [
+        {
+          "itm8": "0000087761000",
+          "libelle": "TOMATE CERISE RONDE 500G ZRP",
+          "statut": "a_confirmer"
+        },
+        {
+          "itm8": "0000087761001",
+          "libelle": "TOMATE CERISE ALLONGEE 500G ZR",
+          "statut": "a_confirmer"
+        }
+      ]
+    },
+    {
+      "nom": "Tomate côtelée rouge, noire et/ou jaune",
+      "details": "2,99 € le kg prix payé en caisse ; 20 % en avantage carte, soit 2,39 € le kg avantage carte déduit (0,60 € crédités sur la carte).",
+      "periode": "du 15/09 au 19/09/2026",
+      "visible_a_partir": "2026-09-12",
+      "debut": "2026-09-15",
+      "fin": "2026-09-19",
+      "correspondances": [
+        {
+          "itm8": "0000087004807",
+          "libelle": "TOMATE COTELEE ROUGE VRAC",
+          "statut": "a_confirmer"
+        },
+        {
+          "itm8": "0000087004808",
+          "libelle": "TOMATE COTELEE NOIRE VRAC",
+          "statut": "a_confirmer"
+        },
+        {
+          "itm8": "0000087004778",
+          "libelle": "TOMATE COTELEE JAUNE VRAC",
+          "statut": "a_confirmer"
+        }
+      ]
+    },
+    {
+      "nom": "Concombre",
+      "details": "Les 2 pour 1,88 € au lieu de 2,38 € (soit 0,94 € la pièce au lot) ; unité annoncée à 1,19 €.",
+      "periode": "du 15/09 au 19/09/2026",
+      "visible_a_partir": "2026-09-12",
+      "debut": "2026-09-15",
+      "fin": "2026-09-19",
+      "correspondances": [
+        {
+          "itm8": "0000087004593",
+          "libelle": "CONCOMBRE PIECE",
+          "statut": "a_confirmer"
+        }
+      ]
+    },
+    {
+      "nom": "Pomme de terre de consommation Intermarché Terroirs",
+      "details": "2,49 € le filet de 2,5 kg prix payé en caisse (1 € le kg) ; 20 % en avantage carte, soit 1,99 € le filet avantage carte déduit (0,50 € crédités sur la carte).",
+      "periode": "du 15/09 au 19/09/2026",
+      "visible_a_partir": "2026-09-12",
+      "debut": "2026-09-15",
+      "fin": "2026-09-19",
+      "correspondances": [
+        {
+          "itm8": "0000087010621",
+          "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+          "statut": "a_confirmer"
+        },
+        {
+          "itm8": "0000087010609",
+          "libelle": "PDT FOUR PUREE POTAGE 2.5KG IT",
+          "statut": "a_confirmer"
+        },
+        {
+          "itm8": "0000087010623",
+          "libelle": "PDT FRITE 2.5KG ITM",
+          "statut": "a_confirmer"
+        }
+      ]
+    }
+  ]
+}

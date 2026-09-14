@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maintenance — Rayon F&L</title>
+<meta name="theme-color" content="#15050a">
+<!-- Jamais de mise en cache : cette page doit toujours montrer l'état réel,
+     jamais une copie d'hier. C'est un défaut classique de ce genre d'écran, qui
+     gardait ses dix pages en mémoire sans distinction. -->
+<meta http-equiv="Cache-Control" content="no-store">
+
+
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/icone-192.png">
+<link rel="stylesheet" href="css/charte.css?v=20260909-photos-mobile2">
+<style>
+  .grille-etat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .carte {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+  }
+  .carte h3 { font-size: 14px; color: var(--text-faible); font-family: var(--police-texte); font-weight: 500; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+  .carte .valeur { font-size: 26px; font-weight: 700; font-family: var(--police-titre); }
+  .carte .detail { font-size: 13px; color: var(--text-faible); margin-top: 4px; }
+
+  .colonnes { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 900px) { .colonnes { grid-template-columns: 1fr; } }
+
+  .journal-ligne { display: grid; grid-template-columns: 130px 130px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .journal-ligne:last-child { border-bottom: 0; }
+  .journal-ligne .quand { color: var(--text-faible); font-family: "Cascadia Mono", Consolas, monospace; }
+  .journal-ligne .quoi { color: var(--accent); }
+  .journal-ligne .motif { color: var(--text-faible); display: block; margin-top: 2px; }
+  @media (max-width: 600px) {
+    .barre { height: auto; min-height: var(--hauteur-barre); flex-wrap: wrap; padding: 8px 14px; gap: 6px; }
+    .barre .marque { white-space: normal; }
+    .barre .etat { white-space: normal; }
+    .journal-ligne { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .journal-ligne > span:last-child { grid-column: 1 / -1 !important; }
+    table { table-layout: fixed; }
+  }
+
+  .avertissement {
+    background: var(--bg-panel-alt);
+    border-left: 3px solid var(--warn);
+    padding: 12px 14px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+</style>
+</head>
+<body>
+
+<header class="barre">
+  <div class="marque">
+    <span class="pastille-logo" aria-hidden="true">🔧</span>
+    <span>Maintenance — Rayon F&amp;L</span>
+  </div>
+  <span class="etat vide" id="etat-global">Vérification…</span>
+</header>
+
+<main class="contenu large">
+
+  <div class="avertissement">
+    <strong>Consultation en ligne.</strong> Sur ordinateur, tablette ou téléphone : les informations ci-dessous ne sont vérifiées que si les carnets peuvent être lus.
+  </div>
+
+  <!-- ÉTAT DES QUATRE CARNETS -->
+  <h2>Les carnets de données</h2>
+  <p class="sous-titre">Voir <code>contrat-echange.md</code> pour ce que contient chacun.</p>
+  <section class="grille-etat" id="grille-carnets"></section>
+
+  <div class="colonnes">
+
+    <!-- LE JOURNAL COMPLET -->
+    <section class="panneau">
+      <h2>📜 Journal des actions</h2>
+      <p class="sous-titre" id="journal-resume">Les 200 dernières actions au maximum sont affichées ici.</p>
+      <p class="sous-titre"><a href="../donnees/journal.jsonl" target="_blank" rel="noopener">Ouvrir le carnet complet</a></p>
+      <div id="journal">
+        <div class="vide">
+          <strong>Journal vide.</strong>
+          Aucun agent n'a encore travaillé sur ce projet.
+        </div>
+      </div>
+    </section>
+
+    <div>
+      <!-- LES AGENTS -->
+      <section class="panneau">
+        <h2>🤖 Les agents</h2>
+        <table>
+          <thead><tr><th>Agent</th><th>Rôle</th></tr></thead>
+          <tbody>
+            <tr><td>Agent orchestrateur</td><td class="mono">chef d'orchestre</td></tr>
+            <tr><td>Agent courrier</td><td class="mono">mails</td></tr>
+            <tr><td>Agent données</td><td class="mono">calculs</td></tr>
+            <tr><td>Agent contrôle</td><td class="mono">lecture seule</td></tr>
+          </tbody>
+        </table>
+        <p class="sous-titre" style="margin:10px 0 0">L'agent orchestrateur coordonne. Les agents spécialisés signent les actions qu'ils ont le droit de faire.</p>
+      </section>
+
+      <!-- MESSAGES REÇUS DU RAYON -->
+      <section class="panneau">
+        <h2>💬 Messages du rayon</h2>
+        <p class="sous-titre">Ce que le responsable de rayon a écrit depuis son téléphone.</p>
+        <div id="messages">
+          <div class="vide"><strong>Aucun message.</strong></div>
+        </div>
+      </section>
+
+      <!-- OUTILS -->
+      <section class="panneau">
+        <h2>🛠️ Outils</h2>
+        <p class="sous-titre">Ces outils ne sont pas disponibles depuis cet écran.</p>
+        <div class="grille-boutons">
+          <button class="bouton" disabled>Rejouer tout depuis le début</button>
+          <button class="bouton" disabled>Voir l'état de l'orchestrateur</button>
+          <button class="bouton" disabled>Vérifier que l'état est reconstructible</button>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <footer class="pied">
+    <p class="mention">Intermarché Carmaux — PDV11768<br>Charte Groupement Mousquetaires</p>
+  </footer>
+
+</main>
+
+<script>
+// ---------------------------------------------------------------------------
+// La page lit les carnets s'ils existent. Tant que le socle n'est pas
+// construit, elle affiche honnêtement qu'il n'y a rien — jamais de fausse
+// donnée d'exemple, qui ferait croire que le projet tourne déjà.
+// ---------------------------------------------------------------------------
+
+// Les faits sont ranges par annee (voir contrat-echange.md) : on additionne
+// les annees connues plutot que de lire un seul gros fichier.
+const ANNEES_FAITS = ["2024", "2025", "2026"];
+
+const CARNETS = [
+  { fichier: "faits",           titre: "Faits",     detail: "livraisons, ventes, casse, dons, comptages", parAnnee: true },
+  { fichier: "decisions.jsonl", titre: "Décisions", detail: "rapprochements, fournisseurs, colis, articles cachés" },
+  { fichier: "etat.json",       titre: "Positions", detail: "articles avec une position connue", json: true },
+  { fichier: "journal.jsonl",   titre: "Journal",   detail: "le pourquoi de chaque changement" }
+];
+
+function texteSecurise(texte) {
+  return String(texte ?? "").replace(/[&<>"']/g, caractere => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[caractere]);
+}
+
+async function verifierCarnet(carnet) {
+  if (carnet.parAnnee) {
+    let total = 0, trouve = false, erreur = false;
+    for (const annee of ANNEES_FAITS) {
+      try {
+        const reponse = await fetch("../donnees/faits/" + annee + ".jsonl?t=" + Date.now(), { cache: "no-store" });
+        if (reponse.status === 404) continue;
+        if (!reponse.ok) throw new Error(reponse.status);
+        const texte = await reponse.text();
+        total += texte.split(String.fromCharCode(10)).filter(function (l) { return l.trim() !== ""; }).length;
+        trouve = true;
+      } catch (e) { erreur = true; }
+    }
+    return { existe: trouve, lignes: total, texte: "", erreur };
+  }
+  try {
+    const reponse = await fetch("../donnees/" + carnet.fichier + "?t=" + Date.now(), { cache: "no-store" });
+    if (reponse.status === 404) return {existe: false, lignes: 0, texte: "", erreur: false};
+    if (!reponse.ok) throw new Error(reponse.status);
+    const texte = await reponse.text();
+    if (carnet.json) {
+      // etat.json est un seul objet : ce qui compte, c'est le nombre d'articles
+      // qui ont une position, pas le nombre de lignes du fichier.
+      const donnees = JSON.parse(texte);
+      const avec = Object.values(donnees.articles || {}).filter(function (a) { return a.position !== null; }).length;
+      return { existe: true, lignes: avec, texte: "" };
+    }
+    const lignes = texte.split("\n").filter(function (l) { return l.trim() !== ""; });
+    return { existe: true, lignes: lignes.length, texte: texte };
+  } catch (e) {
+    return { existe: false, lignes: 0, texte: "", erreur: true };
+  }
+}
+
+async function chargerCarnets() {
+  const grille = document.getElementById("grille-carnets");
+  grille.innerHTML = "";
+  let auMoinsUn = false;
+  let indisponible = false;
+
+  for (const carnet of CARNETS) {
+    const resultat = await verifierCarnet(carnet);
+    if (resultat.erreur) indisponible = true;
+    if (resultat.existe) auMoinsUn = true;
+
+    const carte = document.createElement("div");
+    carte.className = "carte";
+    carte.innerHTML =
+      "<h3>" + carnet.titre + "</h3>" +
+      '<div class="valeur">' + (resultat.existe ? resultat.lignes : "—") + "</div>" +
+      '<div class="detail">' + (resultat.erreur ? "lecture indisponible ou incomplète" : resultat.existe ? "lignes · " + carnet.detail : "fichier absent") + "</div>";
+    grille.appendChild(carte);
+
+    if (carnet.fichier === "journal.jsonl") {
+      if (resultat.existe) afficherJournal(resultat.texte);
+      else document.getElementById("journal").textContent = resultat.erreur ? "Journal indisponible : lecture impossible." : "Carnet du journal absent.";
+    }
+  }
+
+  const etat = document.getElementById("etat-global");
+  if (indisponible) { etat.className = "etat bad"; etat.textContent = "Vérification indisponible ou incomplète"; }
+  else if (auMoinsUn) { etat.className = "etat ok"; etat.textContent = "Serveur actif — socle en place"; }
+  else { etat.className = "etat vide"; etat.textContent = "Serveur actif — données à initialiser"; }
+}
+
+function afficherJournal(texte) {
+  const zone = document.getElementById("journal");
+  const lignes = texte.split("\n").filter(function (l) { return l.trim() !== ""; });
+
+
+  // Les plus récentes en premier, 200 au maximum à l'écran.
+  const valides = lignes.map(function (l) {
+    try { return JSON.parse(l); } catch (e) { return null; }
+  }).filter(Boolean);
+  const evenements = valides.slice(-200).reverse();
+  document.getElementById("journal-resume").textContent = evenements.length + " sur " + valides.length + " actions affichées (les plus récentes)."
+    + (valides.length < lignes.length ? " Attention : " + (lignes.length - valides.length) + " ligne(s) illisible(s)." : "");
+
+  zone.innerHTML = evenements.map(function (e) {
+    return '<div class="journal-ligne">' +
+      '<span class="quand">' + texteSecurise(e.horodatage) + "</span>" +
+      '<span class="quoi">' + texteSecurise(e.agent || e.categorie) + "</span>" +
+      "<span>" + texteSecurise(e.message) +
+      (e.motif ? '<span class="motif">Pourquoi : ' + texteSecurise(e.motif) + "</span>" : "") +
+      "</span></div>";
+  }).join("");
+}
+
+async function chargerMessages() {
+  const zone = document.getElementById("messages");
+  try {
+    const reponse = await fetch("../donnees/messages.jsonl?t=" + Date.now(), { cache: "no-store" });
+    if (!reponse.ok) throw new Error(reponse.status);
+    const messages = (await reponse.text()).split("\n").filter(Boolean).map(function (ligne) {
+      try { return JSON.parse(ligne); } catch (e) { return null; }
+    }).filter(Boolean).slice(-20).reverse();
+    if (!messages.length) return;
+    zone.innerHTML = messages.map(function (message) {
+      return '<div class="journal-ligne"><span class="quand">'
+        + texteSecurise(message.ecrit_le || message.recu_le) + "</span>"
+        + '<span style="grid-column:2 / -1">' + texteSecurise(message.texte) + "</span></div>";
+    }).join("");
+  } catch (e) {
+    zone.innerHTML = '<div class="vide"><strong>Messages indisponibles.</strong>Le carnet ne peut pas être lu.</div>';
+  }
+}
+
+chargerCarnets();
+chargerMessages();
+</script>
+
+</body>
+</html>

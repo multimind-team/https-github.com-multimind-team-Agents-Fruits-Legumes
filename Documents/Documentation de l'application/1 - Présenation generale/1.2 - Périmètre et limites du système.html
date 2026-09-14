@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>1.2 Périmètre et limites du système • Documentation Les Mousquetaires</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html"><picture><source srcset="../assets/logo.webp" type="image/webp"><img src="../assets/logo.gif" alt="Agents Fruits & Légumes" class="sidebar-brand-img"></picture></a>
+      <div class="project-tag">
+        <span class="project-tag-dot"></span> Référentiel Technique &amp; Métier
+      </div>
+      <div class="project-name-display">Agents Fruits &amp; Légumes</div>
+    </div>
+
+    <div class="sidebar-search">
+      <input type="text" id="docSearch" placeholder="Rechercher..." onkeyup="filterNav()">
+    </div>
+
+        <nav class="sidebar-nav">
+      <div class="nav-section-title">Portail Général</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../index.html">🏠 Accueil &amp; Plan Général</a></li>
+      </ul>
+      <div class="nav-section-title">1 - Présenation generale</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./1.1 - Objectif de l'application.html">1.1 - Objectif de l'application</a></li>
+        <li class="nav-item active"><a href="./1.2 - Périmètre et limites du système.html">1.2 - Périmètre et limites du système</a></li>
+        <li class="nav-item"><a href="./1.3 - Principes directeurs et fonctionnement général.html">1.3 - Principes directeurs et fonctionnement général</a></li>
+      </ul>
+      <div class="nav-section-title">2 - Utilisateurs et rôles</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../2 - Utilisateurs et roles/2.1 - Profils utilisateurs et permissions.html">2.1 - Profils utilisateurs et permissions</a></li>
+        <li class="nav-item"><a href="../2 - Utilisateurs et roles/2.2 - Brigade numérique et rôles des agents.html">2.2 - Brigade numérique et rôles des agents</a></li>
+      </ul>
+      <div class="nav-section-title">3 - Concepts métier fondamentaux</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.1 - Typologie des produits et référentiel article.html">3.1 - Typologie des produits et référentiel article</a></li>
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.2 - Flux de vente et canaux d'encaissement.html">3.2 - Flux de vente et canaux d'encaissement</a></li>
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.3 - Typologie des stocks et statuts physiques.html">3.3 - Typologie des stocks et statuts physiques</a></li>
+      </ul>
+      <div class="nav-section-title">4 - Architecture générale du système</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../4 - Architecture generale/4.1 - Chaîne de traitement et cycle quotidien.html">4.1 - Chaîne de traitement et cycle quotidien</a></li>
+        <li class="nav-item"><a href="../4 - Architecture generale/4.2 - Cartographie modulaire et composants logiciels.html">4.2 - Cartographie modulaire et composants logiciels</a></li>
+      </ul>
+      <div class="nav-section-title">5 - Sources de données et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../5 - Sources de donnees/5.1 - Sources internes (Mercalys, SCAFRUIT, comptage).html">5.1 - Sources internes (Mercalys, SCAFRUIT, comptage)</a></li>
+        <li class="nav-item"><a href="../5 - Sources de donnees/5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions).html">5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions)</a></li>
+      </ul>
+      <div class="nav-section-title">6 - Modèle de données et dictionnaire métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../6 - Modele de donnees et dictionnaire metier/6.1 - Format du carnet de faits et schéma JSONL.html">6.1 - Format du carnet de faits et schéma JSONL</a></li>
+        <li class="nav-item"><a href="../6 - Modele de donnees et dictionnaire metier/6.2 - Dictionnaire des champs et typologie des entités.html">6.2 - Dictionnaire des champs et typologie des entités</a></li>
+      </ul>
+      <div class="nav-section-title">7 - Qualité et préparation des données</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../7 - Qualite et preparation des donnees/7.1 - Contrôles d'intégrité et règles de cohérence.html">7.1 - Contrôles d'intégrité et règles de cohérence</a></li>
+        <li class="nav-item"><a href="../7 - Qualite et preparation des donnees/7.2 - Traitement des anomalies et valeurs manquantes.html">7.2 - Traitement des anomalies et valeurs manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">8 - Prévision des ventes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../8 - Prevision des ventes/8.1 - Modélisation statistique et fenêtre circulaire.html">8.1 - Modélisation statistique et fenêtre circulaire</a></li>
+        <li class="nav-item"><a href="../8 - Prevision des ventes/8.2 - Profils journaliers et saisonnalité.html">8.2 - Profils journaliers et saisonnalité</a></li>
+      </ul>
+      <div class="nav-section-title">9 - Météo, calendrier et événements</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../9 - Meteo calendrier et evenements/9.1 - Facteurs météo et corrélations locales.html">9.1 - Facteurs météo et corrélations locales</a></li>
+        <li class="nav-item"><a href="../9 - Meteo calendrier et evenements/9.2 - Calendrier commercial, jours fériés et vacances scolaires.html">9.2 - Calendrier commercial, jours fériés et vacances scolaires</a></li>
+      </ul>
+      <div class="nav-section-title">10 - Confiance et incertitude</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../10 - Confiance et incertitude/10.1 - Niveaux de confiance et score de fiabilité.html">10.1 - Niveaux de confiance et score de fiabilité</a></li>
+        <li class="nav-item"><a href="../10 - Confiance et incertitude/10.2 - Facteurs de risque et données manquantes.html">10.2 - Facteurs de risque et données manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">11 - Stock et livraisons</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../11 - Stock et livraisons/11.1 - Calcul du stock projeté et couverture.html">11.1 - Calcul du stock projeté et couverture</a></li>
+        <li class="nav-item"><a href="../11 - Stock et livraisons/11.2 - Gestion des livraisons attendues et reliquats.html">11.2 - Gestion des livraisons attendues et reliquats</a></li>
+      </ul>
+      <div class="nav-section-title">12 - Calcul du besoin de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../12 - Calcul du besoin de commande/12.1 - Algorithme du besoin net et horizon de réapprovisionnement.html">12.1 - Algorithme du besoin net et horizon de réapprovisionnement</a></li>
+        <li class="nav-item"><a href="../12 - Calcul du besoin de commande/12.2 - Stock de sécurité et ajustements dynamiques.html">12.2 - Stock de sécurité et ajustements dynamiques</a></li>
+      </ul>
+      <div class="nav-section-title">13 - Règles métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../13 - Regles metier/13.1 - Règles de colisage, PCB et arrondis.html">13.1 - Règles de colisage, PCB et arrondis</a></li>
+        <li class="nav-item"><a href="../13 - Regles metier/13.2 - Garde-fous anti-rupture et plafonds de baisse.html">13.2 - Garde-fous anti-rupture et plafonds de baisse</a></li>
+      </ul>
+      <div class="nav-section-title">14 - Proposition de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../14 - Proposition de commande/14.1 - Structure de la proposition et arbitrages.html">14.1 - Structure de la proposition et arbitrages</a></li>
+        <li class="nav-item"><a href="../14 - Proposition de commande/14.2 - Cycle de vie d'une ligne de commande.html">14.2 - Cycle de vie d'une ligne de commande</a></li>
+      </ul>
+      <div class="nav-section-title">15 - Gestion des exceptions</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../15 - Gestion des exceptions/15.1 - Typologie des alertes et niveaux de criticité.html">15.1 - Typologie des alertes et niveaux de criticité</a></li>
+        <li class="nav-item"><a href="../15 - Gestion des exceptions/15.2 - Procédures de résolution d'anomalies.html">15.2 - Procédures de résolution d'anomalies</a></li>
+      </ul>
+      <div class="nav-section-title">16 - Explicabilité pour les LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../16 - Explicabilite pour les LLM/16.1 - Distinction Faits, Calculs et Hypothèses.html">16.1 - Distinction Faits, Calculs et Hypothèses</a></li>
+        <li class="nav-item"><a href="../16 - Explicabilite pour les LLM/16.2 - Format d'échange et prompts structurés.html">16.2 - Format d'échange et prompts structurés</a></li>
+      </ul>
+      <div class="nav-section-title">17 - API et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../17 - API et integrations/17.1 - Endpoints locaux et protocoles d'échange.html">17.1 - Endpoints locaux et protocoles d'échange</a></li>
+        <li class="nav-item"><a href="../17 - API et integrations/17.2 - Connecteurs Webtelevente et export des ordres.html">17.2 - Connecteurs Webtelevente et export des ordres</a></li>
+      </ul>
+      <div class="nav-section-title">18 - Interface utilisateur</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../18 - Interface utilisateur/18.1 - Console de commande magasin.html">18.1 - Console de commande magasin</a></li>
+        <li class="nav-item"><a href="../18 - Interface utilisateur/18.2 - Interface mobile de pointage.html">18.2 - Interface mobile de pointage</a></li>
+      </ul>
+      <div class="nav-section-title">19 - Indicateurs et performance</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../19 - Indicateurs et performance/19.1 - KPIs métier (rupture, casse, marge).html">19.1 - KPIs métier (rupture, casse, marge)</a></li>
+        <li class="nav-item"><a href="../19 - Indicateurs et performance/19.2 - Métriques algorithmiques et taux d'adhésion.html">19.2 - Métriques algorithmiques et taux d'adhésion</a></li>
+      </ul>
+      <div class="nav-section-title">20 - Tests et validation</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../20 - Tests et validation/20.1 - Protocoles de test à blanc et non-régression.html">20.1 - Protocoles de test à blanc et non-régression</a></li>
+        <li class="nav-item"><a href="../20 - Tests et validation/20.2 - Scénarios de simulation et jeux d'essais.html">20.2 - Scénarios de simulation et jeux d'essais</a></li>
+      </ul>
+      <div class="nav-section-title">21 - Versionnement, audit et sécurité</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../21 - Versionnement audit et securite/21.1 - Immutabilité du journal d'audit et traçabilité.html">21.1 - Immutabilité du journal d'audit et traçabilité</a></li>
+        <li class="nav-item"><a href="../21 - Versionnement audit et securite/21.2 - Matrice des pouvoirs et sécurité locale.html">21.2 - Matrice des pouvoirs et sécurité locale</a></li>
+      </ul>
+      <div class="nav-section-title">22 - Prompt système du LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../22 - Prompt systeme du LLM/22.1 - Spécification formelle du rôle agentique.html">22.1 - Spécification formelle du rôle agentique</a></li>
+        <li class="nav-item"><a href="../22 - Prompt systeme du LLM/22.2 - Garde-fous déontologiques et zéro-invention.html">22.2 - Garde-fous déontologiques et zéro-invention</a></li>
+      </ul>
+      <div class="nav-section-title">23 - Glossaire et annexes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../23 - Glossaire et annexes/23.1 - Glossaire terminologique F&L et grande distribution.html">23.1 - Glossaire terminologique F&L et grande distribution</a></li>
+        <li class="nav-item"><a href="../23 - Glossaire et annexes/23.2 - Exemples chiffrés complets et tables de référence.html">23.2 - Exemples chiffrés complets et tables de référence</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div><strong>Version :</strong> 2.5 (Production)</div>
+      <div>Groupement Les Mousquetaires</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <div class="breadcrumb">
+          <a href="../index.html">Accueil</a>
+          <span class="breadcrumb-sep">&gt;</span>
+          <span>1 - Présentation générale</span>
+          <span class="breadcrumb-sep">&gt;</span>
+          <strong>1.2 Périmètre et limites du système</strong>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <a href="../index.html" class="btn-action">🏠 Sommaire Général</a>
+        <button onclick="window.print()" class="btn-action btn-red">🖨️ Imprimer / PDF</button>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <div class="doc-page-header">
+        <div class="doc-top-red-line"></div>
+        <span class="doc-badge-chapter">Chapitre 1 — Présentation générale</span>
+        <h1 class="doc-main-title">1.2 Périmètre et limites du système</h1>
+        <p class="doc-subtitle-text">Délimitation rigoureuse des flux intégrés (In-Scope), fonctions formellement exclues et matrice RACI</p>
+
+        <div class="meta-grid">
+          <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-01.2</div>
+          <div class="meta-item"><strong>Version :</strong> 2.5 (Production)</div>
+          <div class="meta-item"><strong>Statut :</strong> Validé Métier &amp; Technique</div>
+          <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Adhérents, DSI</div>
+        </div>
+      </div>
+
+      
+  <h2>1. Périmètre Fonctionnel et Flux de Données Inclus (In-Scope)</h2>
+  <p>
+    L'application se concentre exclusivement sur le pilotage du réapprovisionnement ultra-frais du rayon Fruits &amp; Légumes. Elle traite de bout en bout l'ensemble des flux d'information opérationnels indispensables :
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Domaine de Données</th>
+        <th style="width: 48%;">Flux réels intégrés et format de traitement</th>
+        <th style="width: 30%;">Rôle &amp; Traitement dans le Moteur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Sorties Caisse Magasin (Mercalys)</strong></td>
+        <td>
+          &bull; Tickets réels par code ITM8 consolidés chaque soir.<br>
+          &bull; Ventilation en poids (kg) ou unités (pièces).<br>
+          &bull; Horodatage des ventes pour étalonnage du profil horaire.
+        </td>
+        <td>Alimentation de l'historique immuable (<code>faits/AAAA.jsonl</code>) pour le calcul des VMP (Ventes Moyennes Pondérées).</td>
+      </tr>
+      <tr>
+        <td><strong>Entrées Logistiques (SCAFRUIT)</strong></td>
+        <td>
+          &bull; Bons de livraison (BL) réels émargés en magasin.<br>
+          &bull; Quantités livrées par référence et par jour.<br>
+          &bull; Enregistrement des livraisons directes producteurs locaux.
+        </td>
+        <td>Recalibration exacte du stock physique disponible et détection des écarts de livraison amont.</td>
+      </tr>
+      <tr>
+        <td><strong>Relevés Physiques Terrain</strong></td>
+        <td>
+          &bull; Comptage physique matinal (ou vespéral) des colis restants.<br>
+          &bull; Saisie via interface responsive mobile (PWA port 8751) ou transmission à la sentinelle de surveillance e-mail.
+        </td>
+        <td>Point d'ancrage réel évitant la dérive cumulative des stocks théoriques d'ERP.</td>
+      </tr>
+      <tr>
+        <td><strong>Cadencier d'Approvisionnement</strong></td>
+        <td>
+          &bull; Extraction quotidienne du portail Webtelevente SCAFRUIT.<br>
+          &bull; Statut d'ouverture à la commande, PCB (colisage), prix d'achat mercuriale et promotions catalogue nationales.
+        </td>
+        <td>Délimitation stricte du catalogue commandable le jour J (règle <code>RULE-CADENCIER-PRESENT</code>).</td>
+      </tr>
+      <tr>
+        <td><strong>Facteurs Exogènes Automatisés</strong></td>
+        <td>
+          &bull; Données météo locales réelles et prévisions à J+3 (Open-Meteo).<br>
+          &bull; Calendrier scolaire officiel des trois zones (A, B, C).<br>
+          &bull; Jours fériés, veilles de fériés et ponts commerciaux.
+        </td>
+        <td>Calcul automatique des coefficients multiplicateurs de la demande prévisionnelle.</td>
+      </tr>
+      <tr>
+        <td><strong>Paramétrage &amp; Arbitrage Local</strong></td>
+        <td>
+          &bull; Surcharges de colisage magasin (<code>parametres/surcharges_colisage.json</code>).<br>
+          &bull; Fusions de codes satellites / jumeaux.<br>
+          &bull; Masquage de références obsolètes ou non commercialisées.
+        </td>
+        <td>Personnalisation immédiate sans altération du code source de l'application.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Fonctions Formellement Exclues du Système (Out-of-Scope)</h2>
+  <p>
+    Afin de préserver l'intégrité comptable du magasin, la conformité réglementaire et la stricte gouvernance des Mousquetaires, le système s'interdit formellement d'intervenir sur les domaines suivants :
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Domaine Exclu</th>
+        <th style="width: 15%;">Statut</th>
+        <th style="width: 60%;">Justification Réglementaire &amp; Système Propriétaire Exclusif</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Négociation Fournisseur &amp; Choix des Producteurs</strong></td>
+        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
+        <td>Les accords-cadres, la sélection des filières et la fixation des prix de cession relèvent exclusivement de la direction des achats SCAFRUIT et de la centrale nationale du Groupement.</td>
+      </tr>
+      <tr>
+        <td><strong>Comptabilité Générale &amp; Rapprochement Factures</strong></td>
+        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
+        <td>La facturation, le lettrage comptable, la gestion des litiges transporteur et les déclarations de TVA sont du ressort exclusif du progiciel de gestion intégrée du point de vente (Mercalys Compta / SAP).</td>
+      </tr>
+      <tr>
+        <td><strong>Modification Automatique des Prix de Vente Caisse (PVC)</strong></td>
+        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
+        <td><strong>Garde-fou inviolable :</strong> Le système calcule l'impact marge d'une hausse mercuriale et émet une alerte visuelle, mais ne modifie <strong>jamais</strong> unilatéralement les prix en caisse. La politique tarifaire reste la prérogative souveraine de l'adhérent.</td>
+      </tr>
+      <tr>
+        <td><strong>Transmission et Validation Autonome de Commande</strong></td>
+        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
+        <td><strong>Principe de responsabilité :</strong> Aucune commande ne peut être transmise à la centrale sans approbation visuelle et validation active du chef de rayon ou de son second. Le système propose, l'humain décide.</td>
+      </tr>
+      <tr>
+        <td><strong>Gestion des Autres Rayons Magasin</strong></td>
+        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
+        <td>Les modèles mathématiques (profils de rotation 48h, coefficients météo-fraîcheur) sont hyper-spécifiques aux fruits et légumes. Ils ne sont pas applicables à l'épicerie, au liquide ou au non-alimentaire.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Matrice des Responsabilités Opérationnelles (RACI)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 32%;">Activité / Décision Clé</th>
+        <th style="width: 17%;">Chef de Rayon</th>
+        <th style="width: 17%;">Système / Moteur</th>
+        <th style="width: 17%;">Adhérent / Dir.</th>
+        <th style="width: 17%;">Centrale SCAFRUIT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Relevé matinal des stocks en réserve</td>
+        <td><strong>R</strong> (Réalise)</td>
+        <td><strong>I</strong> (Intègre)</td>
+        <td><strong>I</strong> (Informé)</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Calcul des besoins bruts et prévisions</td>
+        <td><strong>A</strong> (Approuve)</td>
+        <td><strong>R</strong> (Réalise 100%)</td>
+        <td><strong>I</strong> (Informé)</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Ajustement manuel des colis proposés</td>
+        <td><strong>R / A</strong> (Arbitre)</td>
+        <td><strong>C</strong> (Conseille)</td>
+        <td><strong>I</strong> (Informé)</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Validation finale et signature commande</td>
+        <td><strong>A</strong> (Autorité finale)</td>
+        <td>-</td>
+        <td><strong>I</strong> (Contrôle)</td>
+        <td><strong>R</strong> (Réceptionne)</td>
+      </tr>
+      <tr>
+        <td>Saisie / Transmission Webtelevente</td>
+        <td><strong>R</strong> (Exécute)</td>
+        <td><strong>C</strong> (Assiste / Export)</td>
+        <td>-</td>
+        <td><strong>A</strong> (Valide cut-off)</td>
+      </tr>
+      <tr>
+        <td>Ajustement des PVC suite à alerte marge</td>
+        <td><strong>R</strong> (Propose)</td>
+        <td><strong>C</strong> (Alerte écart)</td>
+        <td><strong>A</strong> (Autorise)</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+      <div class="page-nav-bar">
+        <div>
+          <a href="./1.1 - Objectif de l'application.html" class="btn-action">&larr; 1.1 Objectif de l'application</a>
+        </div>
+        <div>
+          <a href="./1.3 - Principes directeurs et fonctionnement général.html" class="btn-action btn-red">1.3 Principes directeurs &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function filterNav() {
+      const q = document.getElementById('docSearch').value.toLowerCase();
+      const items = document.querySelectorAll('.nav-item');
+      items.forEach(function(item) {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

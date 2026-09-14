@@ -1,0 +1,3 @@
+-r requirements.txt
+# QA navigateur uniquement ; Edge installé utilisé via channel=msedge.
+playwright==1.62.0

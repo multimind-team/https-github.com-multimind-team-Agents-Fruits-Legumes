@@ -1,0 +1,173 @@
+{
+ "depuis": "2026-08-01",
+ "cas": [
+  {
+   "itm8": "0000087003043",
+   "libelle": "RAISIN BLANC IMPORT VRAC",
+   "vendu_depuis_aout": 2082.1,
+   "vendu_total": 15329.2,
+   "derniere_vente": "2026-09-02",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": true,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": {
+    "itm8": "0000087565012",
+    "libelle": "RAISIN BLANC BARQUETTE 300G",
+    "vendu_depuis_aout": 96.2,
+    "livre_colis": 5.0
+   },
+   "rang": 1
+  },
+  {
+   "itm8": "0000099034238",
+   "libelle": "BANANE ANTILLAISE 4F",
+   "vendu_depuis_aout": 688.0,
+   "vendu_total": 24309.0,
+   "derniere_vente": "2026-09-02",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": true,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": {
+    "itm8": "0000087004011",
+    "libelle": "BANANE VRAC",
+    "vendu_depuis_aout": 2449.7,
+    "livre_colis": 68.0
+   },
+   "rang": 2
+  },
+  {
+   "itm8": "0000000008112",
+   "libelle": "JUS DE FRUIT FRAIS 1L",
+   "vendu_depuis_aout": 132.0,
+   "vendu_total": 3228.0,
+   "derniere_vente": "2026-09-02",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": {
+    "itm8": "0000099017426",
+    "libelle": "JUS DE POMME GALA 1L",
+    "vendu_depuis_aout": 25.0,
+    "livre_colis": 0
+   },
+   "rang": 3
+  },
+  {
+   "itm8": "0000000000049",
+   "libelle": "LEGUMES FRAIS",
+   "vendu_depuis_aout": 120.0,
+   "vendu_total": 4455.0,
+   "derniere_vente": "2026-09-01",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "Divers",
+   "jumeau": null,
+   "rang": 4
+  },
+  {
+   "itm8": "0000000008111",
+   "libelle": "JUS DE FRUIT FRAIS 50CL",
+   "vendu_depuis_aout": 72.0,
+   "vendu_total": 1284.8,
+   "derniere_vente": "2026-09-02",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": {
+    "itm8": "0000099017428",
+    "libelle": "JUS DE POMME TRADITIONNEL",
+    "vendu_depuis_aout": 45.0,
+    "livre_colis": 0
+   },
+   "rang": 5
+  },
+  {
+   "itm8": "0000000000048",
+   "libelle": "FRUITS FRAIS",
+   "vendu_depuis_aout": 48.0,
+   "vendu_total": 3357.0,
+   "derniere_vente": "2026-09-02",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "Divers",
+   "jumeau": null,
+   "rang": 6
+  },
+  {
+   "itm8": "0000087004266",
+   "libelle": "FIGUE NOIRE VRAC",
+   "vendu_depuis_aout": 10.3,
+   "vendu_total": 158.3,
+   "derniere_vente": "2026-08-21",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": null,
+   "rang": 7
+  },
+  {
+   "itm8": "0000087004943",
+   "libelle": "NOIX VRAC",
+   "vendu_depuis_aout": 7.1,
+   "vendu_total": 535.2,
+   "derniere_vente": "2026-09-01",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": {
+    "itm8": "0000087685005",
+    "libelle": "NOIX SACHET 750G",
+    "vendu_depuis_aout": 28.0,
+    "livre_colis": 1.0
+   },
+   "rang": 8
+  },
+  {
+   "itm8": "0000087004928",
+   "libelle": "NOISETTE VRAC",
+   "vendu_depuis_aout": 1.9,
+   "vendu_total": 85.9,
+   "derniere_vente": "2026-08-31",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": null,
+   "rang": 9
+  },
+  {
+   "itm8": "0000087003311",
+   "libelle": "FRUIT DE LA PASSION PIECE",
+   "vendu_depuis_aout": 1.0,
+   "vendu_total": 2315.8,
+   "derniere_vente": "2026-09-02",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": null,
+   "rang": 10
+  },
+  {
+   "itm8": "0000087004447",
+   "libelle": "COING VRAC",
+   "vendu_depuis_aout": 0.4,
+   "vendu_total": 5.8,
+   "derniere_vente": "2026-08-12",
+   "livre_colis": 0,
+   "derniere_livraison": null,
+   "deja_relie": false,
+   "fournisseur": "SCAFRUIT",
+   "jumeau": null,
+   "rang": 11
+  }
+ ]
+}

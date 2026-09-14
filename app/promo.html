@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Promotions — Rayon F&L</title>
+  <link rel="stylesheet" href="css/charte.css?v=20260909-photos-mobile2">
+  <style>
+    .bandeau { border-left: 5px solid var(--mousq-rouge); }
+    .offre { border: 2px solid var(--mousq-rouge); }
+    .badge-promo { display:inline-block; padding:3px 8px; border-radius:999px; background:var(--mousq-rouge); color:#fff; font-size:12px; font-weight:700; letter-spacing:.04em; }
+    .periode { color:var(--mousq-rouge); font-weight:700; }
+    .prix { font-size:17px; font-weight:700; color:var(--text); margin:8px 0; }
+    .statut { color:var(--text-faible); font-size:13px; margin-top:8px; }
+    .sources { font-size:12px; color:var(--text-faible); }
+    .apercus-prospectus { display:grid; gap:12px; }
+    .apercu-prospectus { width:100%; height:auto; display:block; border:1px solid var(--border); border-radius:var(--radius); background:#fff; }
+  </style>
+</head>
+<body>
+  <header class="barre">
+    <div class="marque"><span class="pastille-logo" aria-hidden="true">🍎</span><span>Promotions F&amp;L</span></div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a class="bouton discret" href="index.html" style="width:auto;min-height:32px;padding:5px 9px">Accueil</a>
+      <button class="bouton-theme" id="bouton-theme" title="Changer de thème">🌗</button>
+    </div>
+  </header>
+  <main class="contenu">
+    <section class="panneau bandeau">
+      <h1>Promotions fruits &amp; légumes</h1>
+      <p class="sous-titre">Les offres sont visibles dès le samedi précédant leur début du mardi. Vérifier en rayon les conditions, l’approvisionnement et le code caisse.</p>
+      <p class="sources" id="source">Chargement de la source…</p>
+    </section>
+    <section class="panneau" id="prospectus" hidden>
+      <h2>Prospectus source</h2>
+      <p class="sous-titre">Les pages fruits et légumes lues sont affichées ici, sans téléchargement.</p>
+      <div class="apercus-prospectus" id="apercus-prospectus"></div>
+      <a class="bouton discret" id="ouvrir-prospectus" target="_blank" rel="noopener" style="min-height:40px;font-size:14px">Ouvrir le PDF complet</a>
+    </section>
+    <section id="avantage" class="panneau" hidden></section>
+    <section id="offres"></section>
+    <section class="panneau" id="vide" hidden>
+      <div class="vide"><strong>Aucune promotion à afficher aujourd’hui.</strong>Le catalogue affichera les prochaines offres dès le samedi précédant leur début.</div>
+    </section>
+    <a class="bouton discret" href="index.html">Retour à l’accueil</a>
+  </main>
+  <script>
+    const CLE_THEME = "rayon-fl.theme";
+    try { if (localStorage.getItem(CLE_THEME) === "clair") document.body.classList.add("theme-clair"); } catch (e) {}
+    document.getElementById("bouton-theme").addEventListener("click", () => {
+      document.body.classList.toggle("theme-clair");
+      try { localStorage.setItem(CLE_THEME, document.body.classList.contains("theme-clair") ? "clair" : "sombre"); } catch (e) {}
+    });
+
+    function echapper(texte) {
+      const n = document.createElement("span"); n.textContent = texte || ""; return n.innerHTML;
+    }
+    function jourLocal() {
+      const d = new Date();
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    }
+    function statut(offre, aujourdHui) {
+      if (aujourdHui < offre.debut) return "À venir — début mardi " + offre.debut.slice(8, 10) + "/" + offre.debut.slice(5, 7) + ".";
+      if (aujourdHui <= offre.fin) return "En cours jusqu’au " + offre.fin.slice(8, 10) + "/" + offre.fin.slice(5, 7) + ".";
+      return "Terminée.";
+    }
+    async function charger() {
+      try {
+        const reponse = await fetch("../donnees/promotions.json?t=" + Date.now(), { cache: "no-store" });
+        if (!reponse.ok) throw new Error(reponse.status);
+        const catalogue = await reponse.json();
+        const aujourdHui = jourLocal();
+        const visibles = (catalogue.offres || []).filter(o => o.visible_a_partir <= aujourdHui && aujourdHui <= o.fin);
+        document.getElementById("source").textContent = "Source : " + catalogue.source.fichier + " — pages lues : " + catalogue.source.pages_lues.join(", ") + ".";
+        const urlProspectus = encodeURI("../" + catalogue.source.fichier);
+        document.getElementById("prospectus").hidden = false;
+        document.getElementById("ouvrir-prospectus").href = urlProspectus;
+        const apercus = catalogue.source.apercus || [];
+        document.getElementById("apercus-prospectus").innerHTML = apercus.length
+          ? apercus.map((chemin, index) => '<img class="apercu-prospectus" loading="lazy" alt="Prospectus Intermarché — page ' + echapper(String((catalogue.source.pages_lues || [])[index] || index + 1)) + '" src="' + echapper(encodeURI("../" + chemin)) + '">').join("")
+          : '<p class="statut">Aperçus indisponibles : le PDF complet reste accessible avec le bouton ci-dessous.</p>';
+        document.getElementById("avantage").hidden = false;
+        document.getElementById("avantage").innerHTML = "<h2>Avantage carte du week-end</h2><p>" + echapper(catalogue.avantage_carte_weekend || "") + "</p>";
+        const zone = document.getElementById("offres");
+        zone.innerHTML = visibles.map(o => {
+          const correspondances = (o.correspondances || []).map(c => echapper(c.libelle) + " — rapprochement catalogue à confirmer").join("<br>");
+          return '<article class="panneau offre">'
+            + '<span class="badge-promo">PROMO</span><h2 style="margin-top:10px">' + echapper(o.nom) + '</h2>'
+            + '<div class="periode">' + echapper(o.periode) + '</div>'
+            + '<p class="prix">' + echapper(o.details) + '</p>'
+            + '<p class="statut">' + statut(o, aujourdHui) + (correspondances ? '<br>Repère commande : ' + correspondances : '') + '</p>'
+            + '</article>';
+        }).join("");
+        document.getElementById("vide").hidden = visibles.length > 0;
+      } catch (e) {
+        document.getElementById("offres").innerHTML = '<div class="panneau vide"><strong>Promotions indisponibles.</strong>Le fichier de promotions ne peut pas être lu.</div>';
+      }
+    }
+    charger();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Commande — Rayon F&L</title>
+<meta name="theme-color" content="#15050a">
+
+
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/icone-192.png">
+<link rel="stylesheet" href="css/charte.css?v=20260913-select-fix">
+<style>
+  * { touch-action: manipulation; }
+
+  select {
+    color-scheme: dark;
+  }
+  body.theme-clair select {
+    color-scheme: light;
+  }
+  select option {
+    background-color: #240a14;
+    color: #fafafa;
+  }
+  body.theme-clair select option {
+    background-color: #ffffff;
+    color: #262626;
+  }
+
+  /* En-tête : deux lignes maximum, jamais plus. À 9h15 chaque pixel compte. */
+  .entete {
+    position: sticky; top: 0; z-index: 30;
+    background: var(--bg-panel-plein);
+    border-bottom: 2px solid var(--mousq-rouge);
+    padding: 8px 12px;
+  }
+  .entete-barre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .entete-infos {
+    flex: 1;
+    min-width: 200px;
+  }
+  .entete .dates { font-size: 13px; color: var(--text-faible); }
+  .entete .dates strong { color: var(--text); }
+  .entete .totaux { display: flex; gap: 14px; margin-top: 4px; font-size: 13px; flex-wrap: wrap; }
+  .entete .totaux b { font-family: var(--police-titre); font-size: 16px; }
+
+  .alerte {
+    display: none; background: var(--mousq-rouge-cavalier); color: #fff;
+    padding: 12px 14px; font-weight: 700; font-size: 14px;
+  }
+  .alerte.visible { display: block; }
+
+  /* Une ligne = un article. Rien ne déborde jamais sur le côté. */
+  .article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .article.promo { border: 2px solid var(--mousq-rouge); border-radius: 10px; margin: 5px 8px; }
+  .badge-promo { display: inline-block; margin: 0 0 5px; padding: 2px 7px; border-radius: 999px; background: var(--mousq-rouge); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
+  .article.faite { opacity: .45; }
+  .article.faite .nom { text-decoration: line-through; }
+  .article .coche.masque-actif { border-color: var(--mousq-rouge); color: var(--mousq-rouge); }
+  .article .coche[disabled] { opacity: .4; cursor: wait; }
+  .article .nom { font-size: 15px; font-weight: 500; line-height: 1.2; cursor: pointer; }
+  .article .sous { font-size: 12px; color: var(--text-faible); margin-top: 2px; }
+  .article .qte {
+    display: flex; align-items: center; gap: 6px;
+  }
+  .article .qte button {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg-panel-alt);
+    color: var(--text); font-size: 20px; font-weight: 700; cursor: pointer;
+  }
+  .article .qte .val {
+    min-width: 44px; text-align: center;
+    font-family: var(--police-titre); font-size: 21px; font-weight: 700;
+  }
+  .article .qte .val small { display: block; font-size: 10px; color: var(--text-faible); font-family: inherit; font-weight: 400; }
+  .article .coche {
+    width: 44px; height: 44px; border-radius: 12px;
+    border: 2px solid var(--border); background: transparent;
+    font-size: 20px; cursor: pointer; color: var(--text-faible);
+  }
+  .article.faite .coche { border-color: var(--accent); color: var(--accent); }
+  .article .modifie { color: var(--warn); font-weight: 700; }
+
+  /* Ce que dit l'analyste sur une ligne : visible, mais jamais au point de
+     masquer l'article lui-même. Il occupe toute la largeur, sous les boutons. */
+  .mot-agent {
+    grid-column: 1 / -1; margin-top: 8px; padding: 8px 10px; border-radius: 8px;
+    background: rgba(142,192,140,.12); border-left: 3px solid var(--accent);
+    font-size: 13px; line-height: 1.4; color: var(--text-dim);
+  }
+  .mot-agent b { color: var(--accent); display: block; margin-bottom: 2px; }
+  .mot-agent.suggestion { background: rgba(255,40,34,.10); border-left-color: var(--mousq-rouge); }
+  .mot-agent.suggestion b { color: var(--mousq-rouge); }
+  .mot-agent.efface { opacity: .5; }
+  .btn-agent {
+    display: inline-block; margin-top: 8px; padding: 6px 16px; border-radius: 999px;
+    border: 1px solid var(--mousq-rouge); background: transparent;
+    color: var(--mousq-rouge); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+  }
+
+  .recherche { padding: 10px 12px 0; }
+  .recherche input {
+    width: 100%; box-sizing: border-box; padding: 10px 14px; border-radius: 999px;
+    border: 1px solid var(--border); background: var(--bg-panel-alt); color: var(--text);
+    font: inherit; font-size: 15px;
+  }
+  .recherche input::placeholder { color: var(--text-faible); }
+
+  .filtres { display: flex; gap: 6px; padding: 10px 12px; }
+  .filtres button {
+    flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    padding: 8px 6px; border-radius: 999px; text-align: center;
+    border: 1px solid var(--border); background: var(--bg-panel-alt);
+    color: var(--text-dim); font: inherit; font-size: 12.5px; cursor: pointer;
+  }
+  .filtres button.actif { background: var(--mousq-foret); color: #fff; border-color: transparent; }
+  .filtres select {
+    flex: 1; min-width: 0;
+    padding: 8px 6px; border-radius: 999px; text-align: center;
+    border: 1px solid var(--border); background: var(--bg-panel-alt);
+    color: var(--text-dim); font: inherit; font-size: 12.5px; cursor: pointer;
+  }
+  .filtres select.actif { border-color: var(--mousq-foret); color: var(--text); }
+
+  /* Détail d'un article : pourquoi ce chiffre */
+  .detail { display: none; position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; padding: 16px; }
+  .detail.visible { display: block; }
+  .detail-barre-haut {
+    position: sticky;
+    top: -16px;
+    z-index: 60;
+    background: var(--bg);
+    padding: 12px 16px;
+    margin: -16px -16px 14px -16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  .bouton-retour-liste {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    min-height: 42px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    background: var(--bg-panel-alt);
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.15s ease;
+    user-select: none;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  .bouton-retour-liste:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateX(-2px);
+  }
+  .bouton-retour-liste:active {
+    transform: scale(0.97);
+  }
+  .bouton-retour-liste .fleche-retour {
+    font-size: 19px;
+    line-height: 1;
+    font-weight: 900;
+  }
+  .bouton-retour-accueil {
+    min-height: 38px;
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+  .detail-titre-mini {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text-dim);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 55%;
+  }
+  .detail h2 { font-size: 22px; }
+  .detail .ligne-calcul { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+  .detail .ligne-calcul > span { min-width: 0; }
+  .detail select { max-width: 100%; }
+  .article .identite { min-width: 0; }
+  .detail .ligne-calcul span:last-child { font-weight: 700; }
+  .detail .resultat { font-size: 17px; }
+  .detail .resultat span:last-child { color: var(--accent); }
+  .colisage-saisie { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .colisage-saisie input {
+    font: inherit; font-size: 18px; width: 100px; min-height: 44px; padding: 6px 10px;
+    box-sizing: border-box; border: 1px solid var(--border); border-radius: 6px;
+    background: var(--bg-panel-alt); color: var(--text);
+  }
+  .colisage-saisie .bouton { width: auto; min-height: 44px; padding: 8px 16px; }
+
+  /* Encart Marge financière et Graphique haute précision */
+  .cartouche-marge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(251, 191, 36, 0.09);
+    border: 1px solid rgba(251, 191, 36, 0.35);
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .cartouche-marge .marge-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+  .cartouche-marge .marge-pct {
+    font-family: var(--police-titre);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--warn);
+  }
+  .cartouche-marge .marge-details {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .graphique-legendes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12.5px;
+    margin: 8px 0 10px;
+    padding: 8px 12px;
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .graphique-item-legende {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pastille-couleur {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+    flex: 0 0 12px;
+  }
+  .pastille-ligne {
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    display: inline-block;
+    flex: 0 0 16px;
+  }
+  :root {
+    --graph-moyenne-fill: rgba(142, 192, 140, 0.18);
+    --graph-moyenne-stroke: rgba(142, 192, 140, 0.55);
+    --graph-n1-stroke: #94a3b8;
+    --graph-actuel-stroke: #ffffff;
+    --graph-actuel-point: #ffffff;
+  }
+  body.theme-clair {
+    --graph-moyenne-fill: rgba(0, 103, 79, 0.09);
+    --graph-moyenne-stroke: rgba(0, 103, 79, 0.50);
+    --graph-n1-stroke: #64748b;
+    --graph-actuel-stroke: #0f172a;
+    --graph-actuel-point: #1e293b;
+  }
+  .svg-graphique {
+    width: 100%;
+    height: auto;
+    background: var(--bg-panel-alt);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: visible;
+    user-select: none;
+    touch-action: pan-y;
+  }
+  .infobulle-graphique {
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    margin-top: 8px;
+    min-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: var(--text-dim);
+  }
+  .infobulle-graphique strong { color: var(--text); }
+  .badge-saison {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .badge-saison.forte_hausse, .badge-saison.hausse {
+    background: rgba(142, 192, 140, 0.2);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .badge-saison.fin_saison, .badge-saison.forte_baisse {
+    background: rgba(255, 40, 34, 0.18);
+    color: var(--mousq-rouge);
+    border: 1px solid var(--mousq-rouge);
+  }
+  .badge-saison.baisse {
+    background: rgba(251, 191, 36, 0.18);
+    color: var(--warn);
+    border: 1px solid var(--warn);
+  }
+  .badge-saison.pleine_saison {
+    background: rgba(251, 191, 36, 0.25);
+    color: var(--warn);
+    border: 1px solid var(--warn);
+  }
+  .badge-saison.stable {
+    background: var(--bg-panel-alt);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+  .badge-saison.hors_saison {
+    background: rgba(147, 197, 253, 0.15);
+    color: #93c5fd;
+    border: 1px solid #93c5fd;
+  }
+  .grille-kpi-graph {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .kpi-carte {
+    background: var(--bg-panel-alt);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .kpi-carte small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-faible);
+    margin-bottom: 2px;
+  }
+  .kpi-carte strong {
+    font-size: 15px;
+    font-family: var(--police-titre);
+  }
+  .kpi-carte.vert strong { color: var(--accent); }
+  .kpi-carte.bleu strong { color: #38bdf8; }
+  .kpi-carte.jaune strong { color: var(--warn); }
+</style>
+</head>
+<body>
+
+<header class="entete">
+  <div class="entete-barre">
+    <a href="index.html" class="bouton-retour-liste bouton-retour-accueil" title="Retourner à l'accueil du rayon">
+      <span class="fleche-retour">←</span>
+      <span>Retour accueil</span>
+    </a>
+    <div class="entete-infos">
+      <div class="dates" id="dates">Chargement…</div>
+      <div class="totaux" id="totaux"></div>
+    </div>
+    <button class="bouton-theme" id="bouton-theme" title="Changer de thème">🌗</button>
+  </div>
+</header>
+
+<div class="alerte" id="alerte"></div>
+
+<div class="recherche">
+  <input type="search" id="recherche" placeholder="Chercher un article…" autocomplete="off">
+</div>
+
+<div class="filtres" id="filtres">
+  <button class="actif" id="bouton-etat" data-filtre="a-commander">À commander</button>
+  <button data-filtre="masques">Masqués</button>
+  <select id="filtre-fournisseur" title="Filtrer par fournisseur"></select>
+</div>
+
+<main id="liste"></main>
+
+<div class="contenu" style="margin-top:20px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+  <details id="details-donnees" hidden style="margin-bottom:8px;overflow-wrap:anywhere;width:100%">
+    <summary>Détails des données</summary>
+    <div id="details-donnees-contenu"></div>
+  </details>
+  <a class="bouton-retour-liste" href="index.html">
+    <span class="fleche-retour">←</span>
+    <span>Retour accueil</span>
+  </a>
+</div>
+
+<div class="detail" id="detail">
+  <div class="detail-barre-haut">
+    <button type="button" class="bouton-retour-liste" id="fermer-detail">
+      <span class="fleche-retour">←</span>
+      <span>Retour à la liste</span>
+    </button>
+    <div class="detail-titre-mini" id="detail-titre-mini"></div>
+  </div>
+  <h2 id="detail-nom"></h2>
+  <div id="detail-photo"></div>
+  <p class="sous-titre" id="detail-sous"></p>
+  <div class="panneau" id="detail-conditionnement"></div>
+  <div class="panneau" id="detail-stock"></div>
+  <div class="panneau" id="detail-calcul"></div>
+  <div class="panneau" id="detail-prix"></div>
+  <div class="panneau" id="detail-graphique"></div>
+</div>
+
+<script src="js/photos-produits.js?v=20260909-photos-mobile2"></script>
+<script>
+// ---------------------------------------------------------------------------
+// Cet écran ne commande rien : le responsable de rayon (ou son chef) recopie ensuite sur la
+// tablette Webtelevente, qui reste le système officiel. Les articles sont
+// rangés dans l'ordre de la tablette.
+//
+// Le bouton rond à droite de chaque ligne masque ou démasque l'article d'un
+// geste (décidé le 2026-09-04) : il appelle /api/masquer, qui passe par
+// appliquer-decision.py comme toute décision (motif, marche arrière), puis
+// régénère la proposition. L'état masqué/visible vient donc du serveur, pas
+// d'une mémoire locale au téléphone.
+// ---------------------------------------------------------------------------
+
+const CLE_AJUSTEMENTS = "rayon-fl.commande-ajustements";
+const CLE_COMPTAGES = "rayon-fl.comptages-en-attente";
+const CLE_THEME = "rayon-fl.theme";
+
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+try { if (localStorage.getItem(CLE_THEME) === "clair") document.body.classList.add("theme-clair"); } catch (e) {}
+
+document.getElementById("bouton-theme").addEventListener("click", () => {
+  document.body.classList.toggle("theme-clair");
+  try {
+    localStorage.setItem(CLE_THEME, document.body.classList.contains("theme-clair") ? "clair" : "sombre");
+  } catch (e) {}
+});
+
+let proposition = null;
+let fraicheur = null;
+let agentAjustements = {};      // ce que l'analyste a proposé ou appliqué
+let filtre = "a-commander";
+let recherche = "";
+let filtreFournisseur = "";
+let promotionsParItm8 = {};
+let analyseHistorique = null;
+
+async function chargerAnalyseHistorique() {
+  if (analyseHistorique) return analyseHistorique;
+  try {
+    const rep = await fetch("../donnees/analyse-ventes-annuelle-saisonniere.json");
+    if (rep.ok) analyseHistorique = await rep.json();
+  } catch (e) {
+    console.warn("Analyse historique non disponible :", e);
+  }
+  return analyseHistorique;
+}
+
+const FOURNISSEURS_CONNUS = ["SCAFRUIT", "POMONA", "GARRIGUES", "POUGET", "CABANES", "Divers"];
+
+// Le sélecteur propose tous les fournisseurs vus dans la proposition du jour,
+// pas une liste figée : si un nouveau fournisseur apparaît, il est là sans
+// rien à changer dans le code.
+function remplirFiltreFournisseur() {
+  // Toujours tous les fournisseurs connus, même ceux sans article commandable
+  // aujourd'hui (demandé par le responsable de rayon, 2026-09-04) — plus les fournisseurs
+  // rencontrés dans la proposition qui ne seraient pas dans la liste connue.
+  const vus = new Set();
+  for (const l of proposition.lignes) if (l.fournisseur) vus.add(l.fournisseur);
+  const liste = FOURNISSEURS_CONNUS
+    .concat([...vus].filter(f => !FOURNISSEURS_CONNUS.includes(f)).sort());
+  const select = document.getElementById("filtre-fournisseur");
+  select.innerHTML = '<option value="">Tous les fournisseurs</option>'
+    + liste.map(f => '<option value="' + texteSecurise(f) + '">' + texteSecurise(f) + '</option>').join("");
+}
+
+// Insensible aux accents : le responsable de rayon tape "figue" ou "fraise" vite, au rayon,
+// pas toujours avec les accents.
+function normalise(s) {
+  return (s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+}
+
+function lire(cle, defaut) {
+  try { return JSON.parse(localStorage.getItem(cle)) ?? defaut; } catch (e) { return defaut; }
+}
+function ecrire(cle, v) {
+  try {
+    localStorage.setItem(cle, JSON.stringify(v));
+    return true;
+  } catch (e) {
+    alert("Modification non enregistrée : le stockage du navigateur est indisponible ou plein. La quantité précédente est conservée.");
+    return false;
+  }
+}
+function memoireDuJour(cle) {
+  const t = lire(cle, {});
+  return (t.date === (proposition && proposition.date_commande)) ? (t.par_article || {}) : {};
+}
+function memoriser(cle, itm8, valeur) {
+  const t = lire(cle, {});
+  const par_article = (t.date === proposition.date_commande) ? (t.par_article || {}) : {};
+  if (valeur === null) delete par_article[itm8]; else par_article[itm8] = valeur;
+  return ecrire(cle, { date: proposition.date_commande, par_article: par_article });
+}
+
+function quantite(l) {
+  // Ce que le responsable de rayon a tapé lui-même gagne toujours sur tout le reste.
+  const sien = memoireDuJour(CLE_AJUSTEMENTS)[l.itm8];
+  if (sien !== undefined) return sien;
+  const agent = agentAjustements[l.itm8];
+  if (agent && agent.applique) return agent.apres;
+  return l.propose_colis;
+}
+
+function fr(n) { return String(Math.round(n * 100) / 100).replace(".", ","); }
+function d(iso) { return iso ? iso.slice(8, 10) + "/" + iso.slice(5, 7) : "?"; }
+function texteSecurise(texte) {
+  return String(texte ?? "").replace(/[&<>"']/g, caractere => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[caractere]);
+}
+
+function aujourdhui() {
+  const d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+// L'heure de la montre du responsable de rayon, pas l'heure de Greenwich — même règle que
+// app/compter.html (voir ce fichier pour le pourquoi).
+function maintenantLocal() {
+  const dt = new Date();
+  const n = (v) => String(v).padStart(2, "0");
+  return aujourdhui() + "T" + n(dt.getHours()) + ":" + n(dt.getMinutes()) + ":" + n(dt.getSeconds());
+}
+
+function dateLocaleIso(dt) {
+  const n = (v) => String(v).padStart(2, "0");
+  return dt.getFullYear() + "-" + n(dt.getMonth() + 1) + "-" + n(dt.getDate());
+}
+
+function jourAttenduActuel() {
+  // Même seuil que le filet de sécurité : un fichier de fraîcheur créé avant
+  // 9 h 30 ne doit pas continuer à parler de la commande déjà close.
+  const maintenant = new Date();
+  const jour = new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate());
+  if (maintenant.getHours() > 9 || (maintenant.getHours() === 9 && maintenant.getMinutes() >= 30)) {
+    jour.setDate(jour.getDate() + 1);
+  }
+  const fermetures = new Set(["01-01", "05-01", "12-25"]);
+  while (jour.getDay() === 0 || fermetures.has(String(jour.getMonth() + 1).padStart(2, "0") + "-" + String(jour.getDate()).padStart(2, "0"))) {
+    jour.setDate(jour.getDate() + 1);
+  }
+  const local = dateLocaleIso(jour);
+  const fourni = fraicheur && fraicheur.jour_de_commande_attendu;
+  // Le filet reste la source si son jour est au moins aussi récent : il peut
+  // connaître une fermeture exceptionnelle que l'écran ne connaît pas.
+  return fourni && fourni >= local ? fourni : local;
+}
+
+const ETATS_PANNE = ["calcul-incomplet", "illisible", "vide", "absente"];
+function fraicheurApplicable(jourAttendu) {
+  if (!fraicheur || !fraicheur.etat || fraicheur.etat === "a-jour") return null;
+  if (!ETATS_PANNE.includes(fraicheur.etat) && fraicheur.jour_de_commande_attendu && fraicheur.jour_de_commande_attendu < jourAttendu) return null;
+  if (fraicheur.proposition_generee_le && proposition && fraicheur.proposition_generee_le !== proposition.genere_le) return null;
+  return fraicheur;
+}
+
+// --- Alerte : des comptages jamais remontés fausseraient toute la commande ---
+// et : cette proposition, elle date de quand ?
+//
+// La commande part à 9h30, il n'y a pas de deuxième chance. Cet écran affiche
+// donc TOUJOURS quelque chose, même si aucun agent n'a tourné cette nuit — une
+// proposition d'hier vaut mieux que pas de proposition. Mais le responsable de rayon doit
+// savoir ce qu'il a sous les yeux : cacher l'âge serait pire que l'afficher.
+function diagnosticSorties() {
+  if (!proposition) return { message: "", lignes: [] };
+  const hier = new Date();
+  hier.setDate(hier.getDate() - 1);
+  const jusquau = dateLocaleIso(hier);
+  const lignes = (proposition.lignes || []).filter(l => !l.masque &&
+    l.sorties_couvertes_jusquau && l.sorties_couvertes_jusquau < jusquau);
+  const premiersJours = [...new Set(lignes.map(l => {
+    const jour = new Date(l.sorties_couvertes_jusquau + "T12:00:00");
+    jour.setDate(jour.getDate() + 1);
+    return dateLocaleIso(jour);
+  }))].sort();
+  const c = proposition.couverture_stock;
+  const verifie = c && c.articles_sorties_a_verifier === 0 && proposition.date_stock_verifiee >= jusquau && !lignes.length;
+  const ventes = proposition.date_reference;
+  if (lignes.length && ventes && ventes < jusquau) {
+    // Une date statistique ancienne n'alerte QUE si une position reste non couverte.
+    const lendemain = new Date(ventes + "T12:00:00");
+    lendemain.setDate(lendemain.getDate() + 1);
+    const debut = [premiersJours[0], dateLocaleIso(lendemain)].sort().pop();
+    const periode = d(debut) + (debut !== jusquau ? " au " + d(jusquau) : "");
+    return { lignes, verifie, titre: "Ventes du " + periode + " non intégrées",
+      message: "Les dernières ventes intégrées sont celles du " + d(ventes)
+        + ". Vérifie l'intégration du fichier des ventes du " + periode + "." };
+  }
+  return { lignes, verifie, titre: "Fichier des ventes à vérifier", message: premiersJours.length
+    ? "Certaines positions ne couvrent pas toutes les ventes depuis le " + d(premiersJours[0])
+      + ". Vérifie les journées couvertes par le fichier des ventes et son intégration."
+    : "" };
+}
+
+function majDetailsDonnees(diagnostic) {
+  const c = proposition && proposition.couverture_stock;
+  const boite = document.getElementById("details-donnees");
+  boite.hidden = !c;
+  if (!c) return;
+  const paragraphes = [];
+  if (c.dernier_comptage_le) paragraphes.push("Comptage du " + d(c.dernier_comptage_le)
+    + " reçu : " + c.articles_dernier_comptage + " articles. Les quantités sont prises en compte.");
+  paragraphes.push("Statistiques de ventes jusqu'au " + d(proposition.date_reference)
+    + ". Cette date ne remplace pas celle du comptage.");
+  if (diagnostic.message) paragraphes.push(diagnostic.message);
+  if (c.articles_sans_position_connus) paragraphes.push(c.articles_sans_position_connus
+    + " articles identifiés sans stock mesuré : les compter avant de se fier à une proposition automatique.");
+  if (c.articles_sans_mapping) paragraphes.push(c.articles_sans_mapping
+    + " articles sans correspondance confirmée : faire identifier le bon article avant un calcul automatique.");
+  document.getElementById("details-donnees-contenu").innerHTML = paragraphes.map(p => "<p>" + texteSecurise(p) + "</p>").join("")
+    + (diagnostic.lignes.length ? "<ul>" + diagnostic.lignes.map(l => {
+      const debut = new Date(l.sorties_couvertes_jusquau + "T12:00:00");
+      debut.setDate(debut.getDate() + 1);
+      return "<li>" + texteSecurise(l.libelle || l.itm8) + " : "
+        + (l.position_mesuree_le ? "comptage du " + texteSecurise(d(l.position_mesuree_le)) + " ; " : "")
+        + "ventes à vérifier depuis le " + texteSecurise(d(dateLocaleIso(debut))) + ".</li>";
+    }).join("") + "</ul>" : "");
+}
+
+function majAlerte() {
+  const messages = [];
+  const diagnostic = diagnosticSorties();
+  majDetailsDonnees(diagnostic);
+
+  const n = lire(CLE_COMPTAGES, []).length;
+  if (n) {
+    messages.push("⚠ " + n + " comptage" + (n > 1 ? "s" : "") + " pas encore envoyé"
+      + (n > 1 ? "s" : "") + "<br><span style='font-weight:400;font-size:13px'>"
+      + "Cette proposition ne les prend pas en compte. Envoie-les d'abord.</span>");
+  }
+
+  const jourAttendu = jourAttenduActuel();
+  const duJour = proposition && proposition.date_commande === jourAttendu;
+  const f = fraicheurApplicable(jourAttendu);
+  const panne = f && ETATS_PANNE.includes(f.etat);
+  if (panne) {
+    messages.push("⚠ Problème de calcul ou de lecture<br><span style='font-weight:400;font-size:13px'>"
+      + texteSecurise(f.message || "La proposition n'a pas pu être vérifiée.")
+      + "<br>Fais vérifier le calcul sur le PC ; ne te fie pas à une nouvelle date pour valider les quantités.</span>");
+  }
+
+  const retard = diagnostic.message || (!diagnostic.verifie && f && f.etat === "donnees-en-retard");
+  if (!panne && proposition && (!duJour || retard)) {
+    // Le filet de sécurité, s'il est passé, sait DIRE POURQUOI. Sinon on se
+    // contente du constat, qui suffit à alerter.
+    const titre = retard
+      ? "⚠ " + (diagnostic.titre || "Fichier des ventes à vérifier")
+      : "⚠ Proposition pour une autre date";
+    // Les anciens rapports contiennent un bilan chiffré, pas une consigne.
+    // Reprendre les preuves par article, sans réécrire le rapport ni la commande.
+    const detail = retard
+      ? (diagnostic.message || "Les dates des ventes prises en compte ne sont pas vérifiées. Vérifie les dates du fichier des ventes et son intégration.")
+      : "Proposition affichée : commande du " + d(proposition.date_commande)
+        + ". Prochaine commande attendue : " + d(jourAttendu) + " (avant 9h30). "
+        + "Après 9h30, la préparation passe au prochain jour de commande, hors dimanche et jours de fermeture. "
+        + "Pour la recalculer, lance verifier-avant-commande.bat sur le PC, puis recharge cette page.";
+    messages.push(titre + "<br><span style='font-weight:400;font-size:13px'>"
+      + texteSecurise(detail)
+      + (!duJour && retard
+        ? "<br>Proposition affichée : commande du " + texteSecurise(d(proposition.date_commande))
+          + ". Prochaine commande attendue : " + texteSecurise(d(jourAttendu))
+          + " (avant 9h30). Vérifie les quantités avant de recopier la prochaine commande sur Webtelevente."
+        : "")
+      + "</span>");
+  }
+
+  const boite = document.getElementById("alerte");
+  if (!messages.length) { boite.classList.remove("visible"); boite.textContent = ""; return; }
+  boite.classList.add("visible");
+  boite.innerHTML = messages.join("<hr style='border:none;border-top:1px solid rgba(0,0,0,.15);margin:10px 0'>");
+}
+
+function majTotaux() {
+  let colis = 0, achat = 0, vente = 0;
+  for (const l of proposition.lignes) {
+    if (l.masque) continue;
+    const q = quantite(l);
+    if (q > 0) {
+      colis += q;
+      achat += q * l.conditionnement * l.prix_achat;
+      vente += q * l.conditionnement * l.prix_vente;
+    }
+  }
+  const marge = vente ? 100 * (vente - achat) / vente : 0;
+  document.getElementById("totaux").innerHTML =
+    "<span><b>" + fr(colis) + "</b> colis</span>"
+    + "<span><b>" + fr(achat) + "</b> € d'achat</span>"
+    + "<span>marge <b>" + fr(marge) + "</b> %</span>";
+}
+
+// Ce que l'analyste dit de cette ligne : soit il a changé la quantité, soit il
+// en suggère une autre. Dans les deux cas la raison est affichée — sans raison,
+// le responsable de rayon n'a aucun moyen de juger en dix secondes.
+function motAgent(l) {
+  const a = agentAjustements[l.itm8];
+  if (a) {
+    const sien = memoireDuJour(CLE_AJUSTEMENTS)[l.itm8] !== undefined;
+    if (a.applique) {
+      return '<div class="mot-agent' + (sien ? " efface" : "") + '">'
+        + "<b>" + (sien ? "l'analyste avait mis " : "ajusté par l'analyste : ")
+        + fr(a.apres) + " au lieu de " + fr(a.avant) + "</b> " + texteSecurise(a.motif) + "</div>";
+    }
+    return '<div class="mot-agent suggestion">'
+      + "<b>l'analyste suggère " + fr(a.apres) + " colis</b> " + texteSecurise(a.motif)
+      + '<button class="btn-agent" data-role="suivre">Suivre</button></div>';
+  }
+  if (l.fin_promotion && l.motif_fin_promotion) {
+    return '<div class="mot-agent" style="background:rgba(224,102,102,0.12);border-color:#e06666">'
+      + "<b>Fin de promotion :</b> " + texteSecurise(l.motif_fin_promotion) + "</div>";
+  }
+  if (l.alerte_marge && l.alerte_marge.motifs) {
+    return '<div class="mot-agent" style="background:rgba(241,194,50,0.15);border-color:#f1c232">'
+      + "<b>Alerte Prix/Marge :</b> " + texteSecurise(l.alerte_marge.motifs.join(" · "))
+      + " <span style='font-size:12px;opacity:0.85'>(" + texteSecurise(l.alerte_marge.recommandation || "") + ")</span></div>";
+  }
+  return "";
+}
+
+function afficher() {
+  const ajustements = memoireDuJour(CLE_AJUSTEMENTS);
+  const zone = document.getElementById("liste");
+
+  const mot = normalise(recherche);
+  const visibles = proposition.lignes.filter(l => {
+    if (mot && !normalise(l.libelle).includes(mot)) return false;
+    if (filtreFournisseur && l.fournisseur !== filtreFournisseur) return false;
+    const q = quantite(l);
+    if (filtre === "a-commander") return q > 0 && !l.masque;
+    if (filtre === "ne-pas-commander") return q === 0 && !l.masque;
+    if (filtre === "masques") return l.masque;
+    return true;
+  });
+
+  zone.innerHTML = visibles.map(l => {
+    const q = quantite(l);
+    const ajuste = ajustements[l.itm8] !== undefined;
+    const pos = l.position_colis === null ? "position inconnue" : "position " + fr(l.position_colis) + " colis";
+    const promo = promotionsParItm8[l.itm8];
+    const etiquettePromo = promo ? '<div class="badge-promo">PROMO</div>' : "";
+    const etiquetteFinPromo = l.fin_promotion ? '<div class="badge-promo" style="background:#e06666;border-color:#cc0000">FIN PROMO</div>' : "";
+    const etiquetteAlerteMarge = l.alerte_marge ? '<div class="badge-promo" style="background:#f1c232;color:#222;font-weight:700">⚠ MARGE</div>' : "";
+    return '<div class="article' + (l.masque ? " faite" : "") + (promo ? " promo" : "") + '" data-itm8="' + texteSecurise(l.itm8) + '">'
+      + '<div class="identite">' + etiquettePromo + etiquetteFinPromo + etiquetteAlerteMarge + '<div class="nom" data-role="detail" role="button" tabindex="0">'
+      + (window.PhotosProduits ? PhotosProduits.image(l.itm8, "liste") : "") + texteSecurise(l.libelle) + "</div>"
+      + '<div class="sous">' + pos + " · colis de " + fr(l.conditionnement) + " " + texteSecurise(l.unite)
+      + " · marge " + fr(l.marge_pct) + " %"
+      + (l.fournisseur ? " · " + texteSecurise(l.fournisseur) : "") + "</div></div>"
+      + '<div class="qte"><button data-role="moins">−</button>'
+      + '<div class="val' + (ajuste ? " modifie" : "") + '">' + fr(q) + "<small>colis</small></div>"
+      + '<button data-role="plus">+</button></div>'
+      + '<button class="coche' + (l.masque ? " masque-actif" : "") + '" data-role="masquer" '
+      + 'title="' + (l.masque ? "Démasquer" : "Masquer") + '">' + (l.masque ? "⊘" : "○") + "</button>"
+      + motAgent(l)
+      + "</div>";
+  }).join("") || '<p class="vide" style="margin:20px">Rien à afficher avec ce filtre.</p>';
+
+  majTotaux();
+}
+
+// Masquer ou démasquer une ligne : appel au serveur, jamais d'écriture
+// locale — c'est lui qui tient l'état réel (voir appliquer-decision.py).
+async function basculerMasque(l, bouton) {
+  if (bouton) bouton.disabled = true;
+  try {
+    const reponse = await fetch("/api/masquer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ itm8: l.itm8, libelle: l.libelle, masquer: !l.masque }),
+    });
+    const resultat = await reponse.json();
+    if (!reponse.ok || !resultat.ok) {
+      alert("Ça n'a pas marché : " + (resultat.erreur || "erreur inconnue"));
+      if (bouton) bouton.disabled = false;
+      return;
+    }
+    const fraiche = await fetch("../donnees/proposition.json?t=" + Date.now(), { cache: "no-store" });
+    proposition = await fraiche.json();
+    afficher();
+  } catch (e) {
+    alert("Ça n'a pas marché : le serveur ne répond pas.");
+    if (bouton) bouton.disabled = false;
+  }
+}
+
+document.getElementById("liste").addEventListener("click", (e) => {
+  const bloc = e.target.closest(".article");
+  if (!bloc) return;
+  const itm8 = bloc.dataset.itm8;
+  const ligne = proposition.lignes.find(l => l.itm8 === itm8);
+  const role = e.target.closest("[data-role]") && e.target.closest("[data-role]").dataset.role;
+
+  if (role === "suivre") {
+    const a = agentAjustements[itm8];
+    if (a && memoriser(CLE_AJUSTEMENTS, itm8, a.apres)) afficher();
+    return;
+  }
+  if (role === "masquer") {
+    basculerMasque(ligne, e.target.closest("[data-role]"));
+  } else if (role === "plus" || role === "moins") {
+    const q = Math.max(0, quantite(ligne) + (role === "plus" ? 1 : -1));
+    if (memoriser(CLE_AJUSTEMENTS, itm8, q === ligne.propose_colis ? null : q)) afficher();
+  } else if (role === "detail") {
+    montrerDetail(ligne);
+  }
+});
+
+// --- Le stock, corrigeable sans quitter la commande -------------------------
+// Demandé par le responsable de rayon (2026-09-04) : s'il voit que la position est fausse en
+// préparant la commande, il ne veut pas quitter l'écran pour aller la
+// corriger ailleurs. Réutilise exactement le même carnet que l'écran de
+// comptage (/api/comptages) — un comptage ici n'est pas différent d'un
+// comptage fait en chambre froide, juste fait au même moment que la commande.
+function afficherStock(l) {
+  const panneau = document.getElementById("detail-stock");
+  const posActuelle = l.position_colis;
+  panneau.innerHTML = "<h2>Stock</h2>"
+    + '<div class="ligne-calcul"><span>Position actuelle</span><span>'
+    + (posActuelle === null ? "inconnue" : fr(posActuelle) + " colis")
+    + ' <button class="bouton discret" id="detail-stock-modifier" style="min-height:30px;font-size:13px;padding:2px 12px;display:inline-block;width:auto;margin-left:8px">Modifier</button></span></div>'
+    + '<div id="detail-stock-zone"></div>';
+
+  document.getElementById("detail-stock-modifier").addEventListener("click", () => {
+    const zone = document.getElementById("detail-stock-zone");
+    zone.innerHTML = '<div class="ligne-calcul">'
+      + '<input type="number" id="detail-stock-valeur" aria-label="Position en colis" step="any" value="' + texteSecurise(posActuelle ?? "") + '" '
+      + 'style="font:inherit;font-size:17px;width:90px;background:var(--bg-panel-alt);color:var(--text);'
+      + 'border:1px solid var(--border);border-radius:6px;padding:6px 10px" autofocus> colis'
+      + '<button class="bouton principal" id="detail-stock-valider" '
+      + 'style="min-height:38px;width:auto;font-size:14px;padding:6px 18px;margin-left:10px">Enregistrer</button>'
+      + '</div><p class="sous-titre" id="detail-stock-etat"></p>';
+
+    document.getElementById("detail-stock-valeur").focus();
+    document.getElementById("detail-stock-valider").addEventListener("click", async () => {
+      const champ = document.getElementById("detail-stock-valeur");
+      const bouton = document.getElementById("detail-stock-valider");
+      const etat = document.getElementById("detail-stock-etat");
+      const valeur = champ.value.trim().replace(",", ".");
+      const colis = Number(valeur);
+      if (!valeur || !Number.isFinite(colis)) { etat.textContent = "Saisis une quantité valide (0 si la position est nulle)."; return; }
+
+      bouton.disabled = true;
+      etat.textContent = "Enregistrement…";
+      const jour = aujourdhui();
+      const comptage = {
+        id: "comptage:" + jour + ":" + l.itm8 + ":saisie",
+        itm8: l.itm8,
+        libelle: l.libelle,
+        date: jour,
+        colis: colis,
+        unites: Math.round(colis * l.conditionnement * 1000) / 1000,
+        conditionnement: l.conditionnement,
+        unite: l.unite,
+        saisi_le: maintenantLocal(),
+      };
+      try {
+        const reponse = await fetch("/api/comptages", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ comptages: [comptage] }),
+        });
+        const resultat = await reponse.json();
+        if (!reponse.ok || !resultat.ok) {
+          etat.textContent = "";
+          alert("Ça n'a pas marché : " + (resultat.erreur || "erreur inconnue"));
+          bouton.disabled = false;
+          return;
+        }
+        etat.textContent = "✓ enregistré — recalcul en cours…";
+        // Le recalcul (position, puis toute la proposition) tourne en
+        // arrière-plan côté serveur : on relit jusqu'à voir un fichier plus
+        // récent que l'envoi, plutôt que de deviner un délai fixe.
+        const avant = proposition.genere_le;
+        const debut = Date.now();
+        let actualisee = false;
+        while (Date.now() - debut < 8000) {
+          await new Promise(r => setTimeout(r, 500));
+          try {
+            const fraiche = await fetch("../donnees/proposition.json?t=" + Date.now(), { cache: "no-store" });
+            if (!fraiche.ok) throw new Error("proposition indisponible");
+            const candidate = await fraiche.json();
+            if (candidate.genere_le && candidate.genere_le !== avant) {
+              proposition = candidate;
+              actualisee = true;
+              break;
+            }
+          } catch (e) { /* on retente */ }
+        }
+        if (!actualisee) {
+          etat.textContent = "✓ Comptage enregistré, mais proposition pas encore actualisée. Recharge la commande avant de recopier les quantités ; inutile de renvoyer ce comptage.";
+          return;
+        }
+        document.getElementById("detail").classList.remove("visible");
+        afficher();
+      } catch (e) {
+        etat.textContent = "";
+        alert("Ça n'a pas marché : le serveur ne répond pas.");
+        bouton.disabled = false;
+      }
+    });
+  });
+}
+
+// Le contenu d'un colis est un réglage, jamais un nouveau comptage.
+const suivisColisage = new Map();
+let sequenceLectureColisage = 0;
+let derniereLectureColisageAppliquee = 0;
+function noterColisage(itm8, message, actif = false) {
+  suivisColisage.set(itm8, { message, actif });
+  if (document.getElementById("detail-conditionnement").dataset.itm8 === itm8) {
+    document.getElementById("detail-conditionnement-etat").textContent = message;
+    document.getElementById("detail-conditionnement-valeur").disabled = actif;
+    document.getElementById("detail-conditionnement-valider").disabled = actif;
+  }
+}
+
+function afficherConditionnement(l) {
+  const panneau = document.getElementById("detail-conditionnement");
+  panneau.dataset.itm8 = l.itm8;
+  panneau.innerHTML = '<h2><label for="detail-conditionnement-valeur">Colisage</label></h2>'
+    + '<div class="colisage-saisie"><span>1 colis =</span>'
+    + '<input type="text" inputmode="decimal" id="detail-conditionnement-valeur" '
+    + 'autocomplete="off" aria-describedby="detail-conditionnement-unite detail-conditionnement-aide" '
+    + 'value="' + texteSecurise(l.conditionnement) + '">'
+    + '<span id="detail-conditionnement-unite">' + texteSecurise(l.unite) + '</span>'
+    + '<button class="bouton principal" id="detail-conditionnement-valider">Enregistrer</button></div>'
+    + '<p class="sous-titre" id="detail-conditionnement-aide">Contenu d’un colis, pas le nombre de colis à commander. '
+    + 'Les comptages déjà enregistrés ne sont pas modifiés.</p>'
+    + (l.avertissements_conditionnement || []).map(avis => '<p class="sous-titre" style="color:var(--warn)">⚠ '
+        + texteSecurise(avis) + '</p>').join('')
+    + '<p class="sous-titre" id="detail-conditionnement-etat" role="status" aria-live="polite"></p>';
+  const champ = document.getElementById("detail-conditionnement-valeur");
+  const bouton = document.getElementById("detail-conditionnement-valider");
+  const etat = document.getElementById("detail-conditionnement-etat");
+  const suivi = suivisColisage.get(l.itm8);
+  if (suivi) noterColisage(l.itm8, suivi.message, suivi.actif);
+  bouton.addEventListener("click", async () => {
+    if (bouton.disabled || suivisColisage.get(l.itm8)?.actif) return;
+    const saisie = champ.value.trim();
+    const valeur = Number(saisie.replace(",", "."));
+    if (!/^(?:\d+(?:[.,]\d*)?|[.,]\d+)$/.test(saisie) || !Number.isFinite(valeur) || valeur <= 0) {
+      etat.textContent = "Saisis un nombre positif pour le contenu d’un colis (exemple : 2,5).";
+      return;
+    }
+    if (valeur === l.conditionnement) {
+      etat.textContent = "Ce colisage est déjà affiché : aucune modification à enregistrer.";
+      return;
+    }
+    try {
+      const attente = JSON.parse(localStorage.getItem(CLE_COMPTAGES) || "[]");
+      if (!Array.isArray(attente)) throw new Error("file illisible");
+      if (attente.some(c => c.itm8 === l.itm8)) {
+        etat.textContent = "Un comptage de cet article attend sur ce téléphone. Envoie-le depuis Comptage avant de modifier le colisage.";
+        return;
+      }
+    } catch (e) {
+      etat.textContent = "Impossible de vérifier les comptages en attente. Le colisage n’a pas été envoyé ; conserve les données de ce navigateur.";
+      return;
+    }
+    noterColisage(l.itm8, "Enregistrement…", true);
+    let enregistre = false;
+    const controleur = new AbortController();
+    const minuteur = setTimeout(() => controleur.abort(), 30000);
+    try {
+      const reponse = await fetch("/api/conditionnement", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ itm8: l.itm8, conditionnement: valeur, ancien_conditionnement: l.conditionnement }),
+        signal: controleur.signal,
+      });
+      const resultat = await reponse.json();
+      clearTimeout(minuteur);
+      enregistre = resultat.enregistre === true;
+      if (!reponse.ok || !resultat.ok) throw new Error(resultat.erreur || "Enregistrement refusé.");
+      enregistre = true;
+      noterColisage(l.itm8, "Colisage enregistré — recalcul en cours…", true);
+      const debut = Date.now();
+      while (Date.now() - debut < 12000) {
+        await new Promise(r => setTimeout(r, 500));
+        let candidate;
+        const sequence = ++sequenceLectureColisage;
+        const lecture = new AbortController();
+        const limite = setTimeout(() => lecture.abort(), 3000);
+        try {
+          const fraiche = await fetch("../donnees/proposition.json?t=" + Date.now(), { cache: "no-store", signal: lecture.signal });
+          if (!fraiche.ok) continue;
+          candidate = await fraiche.json();
+        } catch (e) {
+          continue; // Une relecture ratée n'annule jamais l'accusé d'enregistrement.
+        } finally {
+          clearTimeout(limite);
+        }
+        const ligne = Array.isArray(candidate?.lignes) && candidate.lignes.find(a => a.itm8 === l.itm8);
+        if (!ligne || ligne.conditionnement !== valeur) continue;
+        // Une réponse ancienne ne doit pas annuler l'édition d'un autre article.
+        if (sequence < derniereLectureColisageAppliquee) continue;
+        derniereLectureColisageAppliquee = sequence;
+        proposition = candidate;
+        afficher();
+        noterColisage(l.itm8, "✓ Colisage enregistré, proposition recalculée. Vos quantités manuelles sont conservées : vérifiez-les avec ce nouveau colisage.");
+        if (panneau.dataset.itm8 === l.itm8 && document.getElementById("detail").classList.contains("visible")) {
+          montrerDetail(ligne);
+        }
+        return;
+      }
+      noterColisage(l.itm8, "Colisage enregistré, mais proposition pas encore actualisée. Recharge la commande avant de recopier les quantités.");
+    } catch (e) {
+      noterColisage(l.itm8, enregistre
+        ? "Colisage enregistré, mais actualisation non confirmée : " + e.message + " Recharge la commande avant de recopier les quantités."
+        : "Enregistrement non confirmé : " + e.message + " Recharge la commande pour vérifier le colisage avant de réessayer.");
+    } finally {
+      clearTimeout(minuteur);
+    }
+  });
+}
+
+// --- Pourquoi ce chiffre ---------------------------------------------------
+function montrerDetail(l) {
+  document.getElementById("detail").scrollTop = 0;
+  const titreMini = document.getElementById("detail-titre-mini");
+  if (titreMini) titreMini.textContent = l.libelle;
+  document.getElementById("detail-nom").textContent = l.libelle;
+  document.getElementById("detail-photo").dataset.itm8 = l.itm8;
+  document.getElementById("detail-photo").innerHTML = window.PhotosProduits ? PhotosProduits.image(l.itm8, "detail") : "";
+  document.getElementById("detail-sous").innerHTML =
+    "colis de " + fr(l.conditionnement) + " " + texteSecurise(l.unite) + " · fournisseur : "
+    + '<select id="detail-fournisseur" style="font:inherit;background:var(--bg-panel-alt);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:2px 4px">'
+    + FOURNISSEURS_CONNUS.concat(FOURNISSEURS_CONNUS.includes(l.fournisseur) ? [] : [l.fournisseur])
+        .filter(Boolean)
+        .map(f => '<option' + (f === l.fournisseur ? " selected" : "") + '>' + texteSecurise(f) + '</option>')
+        .join("")
+    + '<option value="__autre__">Autre…</option>'
+    + '</select> '
+    + '<button class="bouton principal" id="detail-fournisseur-valider" style="min-height:38px;width:auto;font-size:14px;padding:6px 18px;display:none;margin-top:8px">Enregistrer</button>'
+    + '<span id="detail-fournisseur-etat" style="font-size:12px"></span>';
+
+  const selecteur = document.getElementById("detail-fournisseur");
+  const bouton = document.getElementById("detail-fournisseur-valider");
+  const etat = document.getElementById("detail-fournisseur-etat");
+  const valeurDepart = l.fournisseur;
+  selecteur.addEventListener("change", () => {
+    bouton.style.display = selecteur.value !== valeurDepart ? "inline-block" : "none";
+  });
+  bouton.addEventListener("click", async () => {
+    let valeur = selecteur.value;
+    if (valeur === "__autre__") {
+      valeur = (prompt("Nom du fournisseur :", "") || "").trim();
+      if (!valeur) return;
+    }
+    bouton.disabled = true;
+    etat.textContent = "Enregistrement…";
+    try {
+      const reponse = await fetch("/api/fournisseur", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ itm8: l.itm8, libelle: l.libelle, fournisseur: valeur }),
+      });
+      const resultat = await reponse.json();
+      if (!reponse.ok || !resultat.ok) {
+        etat.textContent = "";
+        alert("Ça n'a pas marché : " + (resultat.erreur || "erreur inconnue"));
+        bouton.disabled = false;
+        return;
+      }
+      l.fournisseur = valeur;
+      const ligneProp = proposition.lignes.find(x => x.itm8 === l.itm8);
+      if (ligneProp) ligneProp.fournisseur = valeur;
+      etat.textContent = "✓ enregistré";
+      bouton.style.display = "none";
+      afficher();
+    } catch (e) {
+      etat.textContent = "";
+      alert("Ça n'a pas marché : le serveur ne répond pas.");
+      bouton.disabled = false;
+    }
+  });
+
+  afficherConditionnement(l);
+  afficherStock(l);
+
+  const f = proposition.facteurs || {};
+  const moy = l.vente_moyenne_jour;
+  const perte = l.taux_perte;
+  // Le moteur utilise deux moyennes saisonnières différentes, les vacances,
+  // les jours fériés et un arrondi métier. Ne pas refaire un faux calcul avec
+  // la seule moyenne livraison ni la position arrondie de l'écran.
+  const demande = l.demande;
+  const pos = l.position_unites;
+
+  let lignes = "";
+  const ajoute = (texte, valeur) => { lignes += '<div class="ligne-calcul"><span>' + texte + "</span><span>" + valeur + "</span></div>"; };
+  ajoute("Vente moyenne à cette période", fr(moy) + " " + texteSecurise(l.unite) + " / jour");
+  if (Number.isFinite(f.jour_semaine_livraison)) ajoute("Effet jour de livraison", "×" + fr(f.jour_semaine_livraison));
+  if (Number.isFinite(f.meteo) && f.meteo !== 1) ajoute("Effet météo", "×" + fr(f.meteo));
+  if (Number.isFinite(f.ferie) && f.ferie !== 1) ajoute("Effet jour férié", "×" + fr(f.ferie));
+  if (Number.isFinite(f.vacances) && f.vacances !== 1) ajoute("Effet vacances", "×" + fr(f.vacances));
+  if (perte > 0) ajoute("Pertes habituelles (casse + dons)", fr(perte * 100) + " %");
+  if (Number.isFinite(demande)) ajoute("Besoin calculé par le moteur", fr(demande) + " " + texteSecurise(l.unite));
+  else lignes += '<p class="sous-titre">Détail intermédiaire non disponible dans cette proposition. La quantité ci-dessous vient du moteur, sans recalcul approximatif à l’écran.</p>';
+  if (Number.isFinite(pos)) ajoute("Position utilisée par le moteur", fr(pos) + " " + texteSecurise(l.unite));
+  lignes += '<div class="ligne-calcul resultat"><span>Proposition du moteur</span><span>'
+    + fr(l.propose_colis) + " colis</span></div>";
+  if (quantite(l) !== l.propose_colis) ajoute("Quantité retenue après ajustement", fr(quantite(l)) + " colis");
+  if (l.promotion) lignes += '<p class="sous-titre">En promotion : précommandé par le chef de rayon, rien à commander en quotidien.</p>';
+  if (l.position_bloquee) lignes += '<p class="sous-titre">Position trop basse pour être crédible — un comptage est nécessaire.</p>';
+  document.getElementById("detail-calcul").innerHTML = "<h2>Pourquoi ce chiffre</h2>" + lignes;
+
+  const q = quantite(l);
+  document.getElementById("detail-prix").innerHTML = "<h2>Prix et marge</h2>"
+    + '<div class="ligne-calcul"><span>Prix d\'achat</span><span>' + fr(l.prix_achat) + " €</span></div>"
+    + '<div class="ligne-calcul"><span>Prix de vente</span><span>' + fr(l.prix_vente) + " €</span></div>"
+    + '<div class="ligne-calcul"><span>Marge</span><span>' + fr(l.marge_pct) + " %</span></div>"
+    + '<div class="ligne-calcul resultat"><span>Coût de cette ligne</span><span>'
+    + fr(q * l.conditionnement * l.prix_achat) + " €</span></div>";
+
+  afficherGraphiqueArticle(l);
+  document.getElementById("detail").classList.add("visible");
+  document.getElementById("detail").scrollTop = 0;
+}
+
+async function afficherGraphiqueArticle(l) {
+  const panneau = document.getElementById("detail-graphique");
+  if (!panneau) return;
+  panneau.innerHTML = "<h2>Historique et saisonnalité des ventes</h2>"
+    + '<p class="sous-titre">Chargement de l’historique des ventes…</p>';
+
+  const data = await chargerAnalyseHistorique();
+  const profil = data?.articles?.[l.itm8];
+
+  if (!profil || !profil.ventes_par_mois) {
+    panneau.innerHTML = "<h2>Historique et saisonnalité des ventes</h2>"
+      + '<p class="sous-titre">Cet article ne dispose pas d’un historique consolidé sur les 2,5 ans observés.</p>'
+      + '<div class="grille-kpi-graph">'
+      + '  <div class="kpi-carte bleu"><small>Vente retenue calcul</small><strong>' + fr(l.vente_moyenne_jour) + ' ' + texteSecurise(l.unite) + '/j</strong></div>'
+      + '  <div class="kpi-carte jaune"><small>Marge brute</small><strong>' + fr(l.marge_pct) + ' %</strong></div>'
+      + '</div>';
+    return;
+  }
+
+  const hebdo = profil.courbes_hebdo || {};
+  const y25Sem = hebdo["2025"] || [];
+  const v26Obj = profil.ventes_quotidiennes_2026 || {};
+  const dates26 = Object.keys(v26Obj).sort();
+
+  // 12 mois de l'année
+  const NOMS_MOIS = ["Jan", "Fév", "Mar", "Avr", "Mai", "Jui", "Juil", "Aoû", "Sep", "Oct", "Nov", "Déc"];
+  const JOURS_PAR_MOIS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  // Calcul du plafond max
+  let maxVal = Math.max(1, l.vente_moyenne_jour || 0);
+  for (let m = 1; m <= 12; m++) {
+    const moy = profil.ventes_par_mois?.[String(m)]?.moyenne_jour || 0;
+    if (moy > maxVal) maxVal = moy;
+  }
+  for (let s = 0; s < 52; s++) {
+    if (y25Sem[s] > maxVal) maxVal = y25Sem[s];
+  }
+  for (const d of dates26) {
+    if (v26Obj[d] > maxVal) maxVal = v26Obj[d];
+  }
+  maxVal = Math.ceil(maxVal * 1.12) || 1;
+
+  // Dimensions géométriques
+  const svgW = 560;
+  const svgH = 225;
+  const padL = 38;
+  const padR = 20;
+  const padT = 24;
+  const padB = 28;
+  const chartW = svgW - padL - padR;
+  const chartH = svgH - padT - padB;
+  const colW = chartW / 12;
+
+  const yVal = (v) => padT + chartH * (1 - Math.max(0, v) / maxVal);
+
+  const dateVersX = (dStr) => {
+    const m = parseInt(dStr.slice(5, 7), 10);
+    const j = parseInt(dStr.slice(8, 10), 10);
+    const lenM = JOURS_PAR_MOIS[m] || 30;
+    return padL + (m - 1 + (j - 0.5) / lenM) * colW;
+  };
+
+  const xSem = (s) => padL + ((s - 0.5) / 52) * chartW;
+
+  function pointsEnBezier(pts) {
+    if (!pts || pts.length === 0) return "";
+    if (pts.length === 1) return "M " + pts[0].x.toFixed(1) + "," + pts[0].y.toFixed(1);
+    let d = "M " + pts[0].x.toFixed(1) + "," + pts[0].y.toFixed(1);
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i === 0 ? i : i - 1];
+      const p1 = pts[i];
+      const p2 = pts[i + 1];
+      const p3 = pts[i + 2 < pts.length ? i + 2 : i + 1];
+      let cp1x = p1.x + (p2.x - p0.x) / 6;
+      let cp1y = p1.y + (p2.y - p0.y) / 6;
+      let cp2x = p2.x - (p3.x - p1.x) / 6;
+      let cp2y = p2.y - (p3.y - p1.y) / 6;
+
+      // Garde-fou anti-boucle absolu : monotonie stricte en X
+      cp1x = Math.max(p1.x, Math.min(p2.x, cp1x));
+      cp2x = Math.max(cp1x, Math.min(p2.x, cp2x));
+
+      d += " C " + cp1x.toFixed(1) + "," + cp1y.toFixed(1) + " " + cp2x.toFixed(1) + "," + cp2y.toFixed(1) + " " + p2.x.toFixed(1) + "," + p2.y.toFixed(1);
+    }
+    return d;
+  }
+
+  // 1. SÉRIE BÂTONNETS MENSUELS (Moyenne historique 2,5 ans)
+  let svgBatons = "";
+  for (let m = 1; m <= 12; m++) {
+    const moyM = profil.ventes_par_mois?.[String(m)]?.moyenne_jour || 0;
+    const xCol = padL + (m - 1) * colW;
+    const barW = Math.max(8, colW - 6);
+    const xBar = xCol + (colW - barW) / 2;
+    const yBar = yVal(moyM);
+    const hBar = Math.max(0, (padT + chartH) - yBar);
+
+    if (moyM > 0) {
+      svgBatons += '<rect x="' + xBar.toFixed(1) + '" y="' + yBar.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + hBar.toFixed(1) + '" rx="3" ry="3" fill="var(--graph-moyenne-fill)" stroke="var(--graph-moyenne-stroke)" stroke-width="0.75"><title>' + NOMS_MOIS[m - 1] + ' : ' + fr(moyM) + ' ' + l.unite + '/j (moyenne 2,5 ans)</title></rect>';
+    }
+  }
+
+  // 2. SÉRIE L'AN DERNIER 2025 (Pointillés à la semaine)
+  // Découpage en tronçons continus si interruption > 2 semaines
+  const troncons25 = [];
+  let tronconActuel = [];
+  for (let s = 1; s <= 52; s++) {
+    const v = y25Sem[s - 1];
+    if (v !== null && v !== undefined && v > 0) {
+      if (tronconActuel.length > 0) {
+        const dernier = tronconActuel[tronconActuel.length - 1];
+        if (s - dernier.s > 2) {
+          troncons25.push(tronconActuel);
+          tronconActuel = [];
+        }
+      }
+      tronconActuel.push({ x: xSem(s), y: yVal(v), v: v, s: s });
+    }
+  }
+  if (tronconActuel.length > 0) troncons25.push(tronconActuel);
+
+  let d25Line = "";
+  for (const tr of troncons25) {
+    const pathTr = pointsEnBezier(tr);
+    if (pathTr) {
+      d25Line += (d25Line ? " " : "") + pathTr;
+    }
+  }
+
+  // 3. SÉRIE CETTE ANNÉE 2026 (Quotidien, trait fin 1.1px, incidents/ruptures visibles)
+  const pts26 = [];
+  for (const dStr of dates26) {
+    const q = v26Obj[dStr];
+    pts26.push({
+      dStr: dStr,
+      q: q,
+      x: dateVersX(dStr),
+      y: yVal(q)
+    });
+  }
+
+  let d26Line = "";
+  if (pts26.length > 0) {
+    d26Line = "M " + pts26[0].x.toFixed(1) + "," + pts26[0].y.toFixed(1);
+    for (let i = 1; i < pts26.length; i++) {
+      d26Line += " L " + pts26[i].x.toFixed(1) + "," + pts26[i].y.toFixed(1);
+    }
+  }
+
+  // Projection Cap Octobre
+  const sais = profil.saisonnalite || {};
+  const couleurTendance = (sais.tendance === "forte_hausse" || sais.tendance === "hausse")
+    ? "var(--accent)"
+    : (sais.tendance === "fin_saison" || sais.tendance === "forte_baisse" ? "var(--mousq-rouge)" : "var(--warn)");
+
+  const derniereDate26 = dates26.length > 0 ? dates26[dates26.length - 1] : "2026-09-11";
+  const xNow = dateVersX(derniereDate26);
+  const vNow = Number.isFinite(l.vente_moyenne_jour) && l.vente_moyenne_jour > 0
+    ? l.vente_moyenne_jour
+    : (pts26.length > 0 ? pts26[pts26.length - 1].q : 0);
+  const yNow = yVal(vNow);
+
+  const moyOct = profil.ventes_par_mois?.["10"]?.moyenne_jour || 0;
+  const xOct = padL + (10 - 0.5) * colW;
+  const yOct = yVal(moyOct);
+
+  // Construction du SVG
+  let svg = '<svg class="svg-graphique" id="svg-ventes-annuel" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">';
+
+  // Grille horizontale
+  const niveaux = [0, maxVal * 0.5, maxVal];
+  for (const niv of niveaux) {
+    const y = yVal(niv);
+    svg += '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + chartW) + '" y2="' + y + '" stroke="var(--border)" stroke-width="1" stroke-dasharray="3,3" />';
+    svg += '<text x="' + (padL - 6) + '" y="' + (y + 4) + '" fill="var(--text-faible)" stroke="var(--bg-panel-alt)" stroke-width="3" paint-order="stroke fill" font-size="10" text-anchor="end">' + Math.round(niv) + '</text>';
+  }
+
+  // 1. Bâtonnets mensuels (Moyenne 2,5 ans)
+  svg += svgBatons;
+
+  // 2. Courbe 2025 en pointillé fin à la semaine
+  if (d25Line) {
+    svg += '<path d="' + d25Line + '" fill="none" stroke="var(--graph-n1-stroke)" stroke-width="0.95" stroke-dasharray="2.5,2" opacity="0.85" />';
+  }
+
+  // Cap Octobre (projection depuis la situation actuelle vers le niveau moyen d'octobre)
+  if (moyOct > 0 || vNow > 0) {
+    svg += '<line x1="' + xNow.toFixed(1) + '" y1="' + yNow.toFixed(1) + '" x2="' + xOct.toFixed(1) + '" y2="' + yOct.toFixed(1) + '" stroke="' + couleurTendance + '" stroke-width="1.2" stroke-dasharray="3,2" stroke-linecap="round" />';
+    svg += '<circle cx="' + xOct.toFixed(1) + '" cy="' + yOct.toFixed(1) + '" r="2.8" fill="' + couleurTendance + '" />';
+  }
+
+  // 3. Courbe 2026 : quotidienne, trait fin (1.1px) pour mettre en évidence les ruptures
+  if (d26Line) {
+    svg += '<path d="' + d26Line + '" fill="none" stroke="var(--graph-actuel-stroke)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round" />';
+  }
+
+  // Pastille vente retenue calcul moteur
+  if (Number.isFinite(l.vente_moyenne_jour) && l.vente_moyenne_jour > 0) {
+    svg += '<circle cx="' + xNow.toFixed(1) + '" cy="' + yNow.toFixed(1) + '" r="4" fill="var(--graph-actuel-point)" stroke="var(--bg-panel-alt)" stroke-width="2"><title>Vente journalière retenue actuelle : ' + fr(l.vente_moyenne_jour) + ' ' + l.unite + '/j</title></circle>';
+    svg += '<text x="' + xNow.toFixed(1) + '" y="' + Math.max(14, yNow - 8) + '" fill="var(--graph-actuel-stroke)" stroke="var(--bg-panel-alt)" stroke-width="3" paint-order="stroke fill" stroke-linejoin="round" font-size="11" font-weight="700" text-anchor="middle">' + fr(l.vente_moyenne_jour) + '</text>';
+  }
+
+  // Ligne verticale curseur interactif et point de survol
+  svg += '<line id="svg-guide-curseur" x1="' + xNow.toFixed(1) + '" y1="' + padT + '" x2="' + xNow.toFixed(1) + '" y2="' + (padT + chartH) + '" stroke="#ffffff" stroke-width="0.9" opacity="0" />';
+  svg += '<circle id="svg-point-curseur" cx="' + xNow.toFixed(1) + '" cy="' + yNow.toFixed(1) + '" r="3.5" fill="var(--graph-actuel-point)" stroke="#ffffff" stroke-width="1.2" opacity="0" />';
+
+  // Noms des mois sous l'axe X
+  for (let m = 1; m <= 12; m++) {
+    const xMid = padL + (m - 0.5) * colW;
+    const estSept = (m === 9);
+    svg += '<text x="' + xMid.toFixed(1) + '" y="' + (padT + chartH + 18) + '" fill="' + (estSept ? 'var(--text)' : 'var(--text-faible)') + '" font-size="' + (estSept ? '11' : '10') + '" font-weight="' + (estSept ? '700' : '500') + '" text-anchor="middle">' + NOMS_MOIS[m - 1] + '</text>';
+  }
+
+  svg += '</svg>';
+
+  // Cartouche de marge financière
+  const gainParColis = (l.prix_vente - l.prix_achat) * l.conditionnement;
+  const gainTexte = Number.isFinite(gainParColis) && gainParColis > 0 ? fr(gainParColis) + " € / colis" : "non renseigné";
+  const cartoucheMarge = '<div class="cartouche-marge">'
+    + '  <div class="marge-badge">'
+    + '    <span style="font-size:16px">🟡</span>'
+    + '    <span>Marge brute actuelle :</span>'
+    + '    <strong class="marge-pct">' + fr(l.marge_pct) + ' %</strong>'
+    + '  </div>'
+    + '  <div class="marge-details">'
+    + '    Gain brut : <strong>' + gainTexte + '</strong> · Achat : <strong>' + fr(l.prix_achat) + ' €</strong> · Vente : <strong>' + fr(l.prix_vente) + ' €</strong>'
+    + '  </div>'
+    + '</div>';
+
+  // Légende
+  const legendeHtml = '<div class="graphique-legendes">'
+    + '  <div class="graphique-item-legende"><span class="pastille-couleur" style="background:var(--graph-moyenne-fill);border:1px solid var(--graph-moyenne-stroke)"></span> <span><strong>Moyenne mensuelle</strong> (bâtonnets 2,5 ans)</span></div>'
+    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="border-top:1.5px dashed var(--graph-n1-stroke);background:transparent;height:0"></span> <span><strong>L\'an dernier 2025</strong> (hebdo)</span></div>'
+    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="background:var(--graph-actuel-stroke);height:2px"></span> <span><strong>Cette année 2026</strong> (quotidien, ruptures)</span></div>'
+    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="border-top:1.5px dashed ' + couleurTendance + ';background:transparent;height:0"></span> <span><strong>Cap Octobre</strong></span></div>'
+    + '</div>';
+
+  const infobulleHtml = '<div class="infobulle-graphique" id="graph-infobulle">'
+    + '  <span><strong>Survole le graphique</strong> pour explorer les jours et incidents</span>'
+    + '  <span>2026 (actuel) : <strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + '</strong> · Moyenne sept. : <strong style="color:var(--graph-moyenne-stroke)">' + fr(profil.ventes_par_mois?.["9"]?.moyenne_jour || 0) + ' ' + texteSecurise(l.unite) + '/j</strong></span>'
+    + '</div>';
+
+  const moySept = profil.ventes_par_mois?.["9"]?.moyenne_jour || 0;
+  const y24Sept = profil.historique_mensuel_par_annee?.["2024"]?.["9"]?.moyenne_jour || 0;
+  const y25Sept = profil.historique_mensuel_par_annee?.["2025"]?.["9"]?.moyenne_jour || 0;
+  const y26Sept = profil.historique_mensuel_par_annee?.["2026"]?.["9"]?.moyenne_jour || 0;
+
+  let html = "<h2>Historique et saisonnalité des ventes</h2>"
+    + '<p class="sous-titre">Bâtonnets mensuels (moyenne 2,5 ans), pointillé hebdo 2025 et courbe quotidienne 2026</p>'
+    + cartoucheMarge
+    + legendeHtml
+    + svg
+    + infobulleHtml
+    + '<div style="margin-top:12px;padding:12px;border-radius:10px;background:var(--bg-panel-alt);border:1px solid var(--border)">'
+    + '  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px">'
+    + '    <span class="badge-saison ' + texteSecurise(sais.tendance || "stable") + '">' + texteSecurise(sais.badge || "→ Tendance stable") + '</span>'
+    + '    <span style="font-size:12.5px;color:var(--text-faible)">Pic de consommation annuel : <strong>' + texteSecurise(profil.mois_pleine_saison || "Non défini") + '</strong></span>'
+    + '  </div>'
+    + '  <div style="font-size:13.5px;line-height:1.4;color:var(--text-dim)">' + texteSecurise(sais.diagnostic || "") + '</div>'
+    + '</div>'
+    + '<div class="grille-kpi-graph">'
+    + '  <div class="kpi-carte vert"><small>Moyenne sept. (2,5 ans)</small><strong>' + fr(moySept) + ' ' + texteSecurise(l.unite) + '/j</strong></div>'
+    + '  <div class="kpi-carte bleu"><small>Vente retenue calcul</small><strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + ' ' + texteSecurise(l.unite) + '/j</strong></div>'
+    + '  <div class="kpi-carte jaune"><small>Marge brute</small><strong>' + fr(l.marge_pct) + ' %</strong></div>'
+    + '</div>'
+    + '<div class="ligne-calcul" style="margin-top:10px;font-size:13px"><span>Rythme en septembre</span><span>2024 : <strong>' + fr(y24Sept) + '</strong> · 2025 : <strong>' + fr(y25Sept) + '</strong> · 2026 : <strong>' + fr(y26Sept) + ' ' + texteSecurise(l.unite) + '/j</strong></span></div>';
+
+  panneau.innerHTML = html;
+
+  // Gestion du survol / glisser tactile interactif
+  const svgEl = document.getElementById("svg-ventes-annuel");
+  const guideEl = document.getElementById("svg-guide-curseur");
+  const pointEl = document.getElementById("svg-point-curseur");
+  const infoEl = document.getElementById("graph-infobulle");
+
+  if (svgEl && guideEl && infoEl) {
+    const handleMove = (e) => {
+      const rect = svgEl.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const xRel = ((clientX - rect.left) / rect.width) * svgW;
+      if (xRel >= padL && xRel <= padL + chartW) {
+        // Recherche du point 2026 le plus proche
+        let closest = null;
+        let minDiff = Infinity;
+        for (const pt of pts26) {
+          const diff = Math.abs(pt.x - xRel);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closest = pt;
+          }
+        }
+
+        if (closest && minDiff < 16) {
+          guideEl.setAttribute("x1", closest.x.toFixed(1));
+          guideEl.setAttribute("x2", closest.x.toFixed(1));
+          guideEl.setAttribute("opacity", "0.7");
+          if (pointEl) {
+            pointEl.setAttribute("cx", closest.x.toFixed(1));
+            pointEl.setAttribute("cy", closest.y.toFixed(1));
+            pointEl.setAttribute("opacity", "1");
+          }
+
+          const dt = new Date(closest.dStr + "T12:00:00");
+          const dateTxt = dt.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" });
+          const m = parseInt(closest.dStr.slice(5, 7), 10);
+          const s = Math.min(52, Math.max(1, Math.round(((closest.x - padL) / chartW) * 52)));
+          const moyM = profil.ventes_par_mois?.[String(m)]?.moyenne_jour || 0;
+          const v25 = (y25Sem[s - 1] !== null && y25Sem[s - 1] !== undefined) ? fr(y25Sem[s - 1]) : "—";
+
+          const estChute = (closest.q <= 0) || (moyM > 5 && closest.q < moyM * 0.25);
+          const alerteTxt = estChute
+            ? ' <span style="color:var(--mousq-rouge);font-weight:700">⚠ incident/rupture</span>'
+            : '';
+
+          infoEl.innerHTML = '<span><strong>' + dateTxt + '</strong>' + alerteTxt + '</span>'
+            + '<span>2026 : <strong style="color:var(--graph-actuel-stroke)">' + fr(closest.q) + '</strong> · 2025 (S' + s + ') : <strong style="color:var(--graph-n1-stroke)">' + v25 + '</strong> · Moyenne ' + NOMS_MOIS[m - 1] + ' : <strong style="color:var(--graph-moyenne-stroke)">' + fr(moyM) + ' ' + texteSecurise(l.unite) + '/j</strong></span>';
+        } else {
+          const mCur = Math.min(12, Math.max(1, Math.floor((xRel - padL) / colW) + 1));
+          const moyMCur = profil.ventes_par_mois?.[String(mCur)]?.moyenne_jour || 0;
+          const sCur = Math.min(52, Math.max(1, Math.round(((xRel - padL) / chartW) * 52)));
+          const v25Cur = (y25Sem[sCur - 1] !== null && y25Sem[sCur - 1] !== undefined) ? fr(y25Sem[sCur - 1]) : "—";
+
+          guideEl.setAttribute("x1", xRel.toFixed(1));
+          guideEl.setAttribute("x2", xRel.toFixed(1));
+          guideEl.setAttribute("opacity", "0.5");
+          if (pointEl) pointEl.setAttribute("opacity", "0");
+
+          infoEl.innerHTML = '<span><strong>Projection · ' + NOMS_MOIS[mCur - 1] + '</strong></span>'
+            + '<span>Moyenne 2,5 ans : <strong style="color:var(--graph-moyenne-stroke)">' + fr(moyMCur) + ' ' + texteSecurise(l.unite) + '/j</strong> · 2025 (S' + sCur + ') : <strong style="color:var(--graph-n1-stroke)">' + v25Cur + '</strong></span>';
+        }
+      }
+    };
+
+    svgEl.addEventListener("mousemove", handleMove);
+    svgEl.addEventListener("touchmove", handleMove, { passive: true });
+    svgEl.addEventListener("mouseleave", () => {
+      guideEl.setAttribute("opacity", "0");
+      if (pointEl) pointEl.setAttribute("opacity", "0");
+      infoEl.innerHTML = '<span><strong>Survole le graphique</strong> pour explorer les jours et incidents</span>'
+        + '<span>2026 (actuel) : <strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + '</strong> · Moyenne sept. : <strong style="color:var(--graph-moyenne-stroke)">' + fr(profil.ventes_par_mois?.["9"]?.moyenne_jour || 0) + ' ' + texteSecurise(l.unite) + '/j</strong></span>';
+    });
+  }
+}
+
+document.getElementById("fermer-detail").addEventListener("click", () =>
+  document.getElementById("detail").classList.remove("visible"));
+
+// "À commander" et "Non commandés" sont les deux faces d'un seul bouton :
+// un appui bascule de l'une à l'autre (demandé par le responsable de rayon, 2026-09-04).
+document.getElementById("bouton-etat").addEventListener("click", () => {
+  filtre = filtre === "ne-pas-commander" ? "a-commander" : "ne-pas-commander";
+  const b = document.getElementById("bouton-etat");
+  b.textContent = filtre === "a-commander" ? "À commander" : "Non commandés";
+  b.classList.add("actif");
+  document.querySelector('#filtres button[data-filtre="masques"]').classList.remove("actif");
+  afficher();
+});
+
+document.querySelector('#filtres button[data-filtre="masques"]').addEventListener("click", (e) => {
+  filtre = "masques";
+  document.getElementById("bouton-etat").classList.remove("actif");
+  e.target.classList.add("actif");
+  afficher();
+});
+
+document.getElementById("filtre-fournisseur").addEventListener("change", (e) => {
+  filtreFournisseur = e.target.value;
+  e.target.classList.toggle("actif", !!filtreFournisseur);
+  afficher();
+});
+
+document.getElementById("recherche").addEventListener("input", (e) => {
+  recherche = e.target.value;
+  afficher();
+});
+
+// --- Démarrage --------------------------------------------------------------
+(async function () {
+  try {
+    const reponse = await fetch("../donnees/proposition.json?t=" + Date.now(), { cache: "no-store" });
+    proposition = await reponse.json();
+    // Optionnel : s'il manque, l'écran se débrouille avec la date.
+    try {
+      const r2 = await fetch("../donnees/fraicheur.json?t=" + Date.now(), { cache: "no-store" });
+      if (r2.ok) fraicheur = await r2.json();
+    } catch (e) { /* pas grave */ }
+    // Ce que l'analyste des tendances a proposé ou appliqué sur la commande.
+    // Fichier à part : proposition.json est réécrit à chaque calcul.
+    try {
+      const r3 = await fetch("../donnees/ajustements.jsonl?t=" + Date.now(), { cache: "no-store" });
+      if (r3.ok) {
+        for (const l of (await r3.text()).split("\n")) {
+          if (!l.trim()) continue;
+          const a = JSON.parse(l);
+          if (a.date_commande !== proposition.date_commande) continue;
+          if (a.retire) delete agentAjustements[a.article];
+          else agentAjustements[a.article] = a;
+        }
+      }
+    } catch (e) { /* pas grave */ }
+    // Repère visuel uniquement : ni quantité, ni prix, ni décision de commande
+    // ne sont modifiés. Le prospectus ne fournit pas les codes article caisse.
+    try {
+      const r4 = await fetch("../donnees/promotions.json?t=" + Date.now(), { cache: "no-store" });
+      if (r4.ok) {
+        const cataloguePromos = await r4.json();
+        const jour = aujourdhui();
+        for (const offre of (cataloguePromos.offres || [])) {
+          if (offre.visible_a_partir > jour || offre.fin < jour) continue;
+          for (const correspondance of (offre.correspondances || [])) {
+            if (correspondance.itm8 && correspondance.statut !== "sans_correspondance") {
+              promotionsParItm8[correspondance.itm8] = correspondance;
+            }
+          }
+        }
+      }
+    } catch (e) { /* le repère promo est optionnel */ }
+  } catch (e) {
+    // Le pire cas : plus rien à afficher. On ne laisse pas le responsable de rayon devant un
+    // écran muet à 9h25 — on lui dit quoi faire. La commande passe quand même,
+    // à l'ancienne.
+    document.getElementById("dates").textContent = "Proposition indisponible";
+    const boite = document.getElementById("alerte");
+    boite.classList.add("visible");
+    boite.innerHTML = "⚠ Pas de proposition ce matin"
+      + "<br><span style='font-weight:400;font-size:13px'>"
+      + "L'application ne répond pas. <strong>Passe ta commande directement sur la "
+      + "tablette Webtelevente</strong>, comme avant — la commande de 9h30 ne doit "
+      + "pas attendre.<br>Vérifie ensuite que le PC est allumé et que le serveur "
+      + "tourne (<em>demarrer-serveur.bat</em>).</span>";
+    return;
+  }
+  document.getElementById("dates").innerHTML =
+    "Commande du <strong>" + d(proposition.date_commande) + "</strong>"
+    + " · livraison le <strong>" + d(proposition.date_livraison) + "</strong>"
+    + (proposition.meteo_livraison
+        ? " · " + fr(proposition.meteo_livraison.tmax) + "°"
+        : " · météo indisponible");
+  majAlerte();
+  remplirFiltreFournisseur();
+  afficher();
+  chargerAnalyseHistorique();
+})();
+if (window.PhotosProduits) PhotosProduits.charger().then(() => {
+  if (proposition) afficher();
+  const photo = document.getElementById("detail-photo");
+  if (photo.dataset.itm8) photo.innerHTML = PhotosProduits.image(photo.dataset.itm8, "detail");
+}).catch(() => {});
+</script>
+
+</body>
+</html>

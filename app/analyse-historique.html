@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Analyse des Ventes sur 2,5 ans — Rayon F&amp;L</title>
+<meta name="theme-color" content="#15050a">
+<link rel="stylesheet" href="css/charte.css">
+<style>
+  .nav-onglets {
+    display: flex; gap: 8px; overflow-x: auto; padding: 6px 2px 14px;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .nav-onglets::-webkit-scrollbar { display: none; }
+  .onglet-btn {
+    padding: 10px 16px; border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--bg-panel); color: var(--text-faible); font-weight: 600;
+    font-size: 14px; cursor: pointer; white-space: nowrap; transition: all 0.2s;
+  }
+  .onglet-btn.actif {
+    background: var(--mousq-rouge-cavalier); color: #fff; border-color: var(--mousq-rouge-cavalier);
+  }
+  .vue-onglet { display: none; }
+  .vue-onglet.actif { display: block; }
+
+  .chiffres-cles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 16px;
+  }
+  .carte-cle {
+    background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px; text-align: center;
+  }
+  .carte-cle .valeur {
+    font-family: var(--police-titre); font-size: 24px; font-weight: 700; color: var(--text);
+  }
+  .carte-cle .label {
+    font-size: 12px; color: var(--text-faible); margin-top: 4px;
+  }
+
+  .tableau-scroll {
+    overflow-x: auto; margin-top: 10px; border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  table.data-table {
+    width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;
+  }
+  table.data-table th {
+    background: var(--bg-panel-alt); padding: 10px 12px; font-weight: 600;
+    color: var(--text); border-bottom: 2px solid var(--border);
+  }
+  table.data-table td {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+  }
+  table.data-table tr:hover { background: rgba(255,255,255,0.03); }
+
+  .barre-pct {
+    height: 8px; border-radius: 4px; background: var(--mousq-rouge-cavalier);
+    display: inline-block; vertical-align: middle; margin-right: 6px;
+  }
+  .badge-fam {
+    display: inline-block; padding: 3px 8px; border-radius: 12px;
+    font-size: 11px; font-weight: 600; background: var(--bg-panel-alt);
+    border: 1px solid var(--border);
+  }
+  .badge-hausse { color: #4ade80; font-weight: 700; }
+  .badge-baisse { color: #f87171; font-weight: 700; }
+
+  .recherche-box {
+    width: 100%; padding: 12px 16px; border-radius: var(--radius);
+    border: 1px solid var(--border); background: var(--bg-panel-alt);
+    color: var(--text); font-size: 15px; margin-bottom: 14px;
+  }
+  .fiche-article {
+    background: var(--bg-panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
+  }
+  .fiche-article h3 { margin: 0 0 6px; font-size: 16px; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="barre">
+  <div class="marque">
+    <a href="index.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:8px;">
+      <span class="pastille-logo" aria-hidden="true">⬅️</span>
+      <span>Rayon F&amp;L Carmaux</span>
+    </a>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <button class="bouton-theme" id="bouton-theme" title="Changer de thème">🌗</button>
+  </div>
+</header>
+
+<main class="contenu">
+
+  <section style="margin-bottom:16px;">
+    <h1 style="font-size:22px;margin:0 0 6px;">📊 Analyse Complète des Ventes sur 2,5 Ans</h1>
+    <p class="sous-titre" style="color:var(--text-faible);margin:0;">
+      Historique exhaustif des ventes réelles du magasin (mars 2024 à septembre 2026), météo Carmaux, calendrier scolaire et fériés.
+    </p>
+  </section>
+
+  <!-- CHIFFRES CLES DU RAYON -->
+  <div class="chiffres-cles">
+    <div class="carte-cle">
+      <div class="valeur" id="stat-total-ventes">2 019 332</div>
+      <div class="label">Unités vendues (2,5 ans)</div>
+    </div>
+    <div class="carte-cle">
+      <div class="valeur" id="stat-jours-ouverts">831</div>
+      <div class="label">Jours de vente analysés</div>
+    </div>
+    <div class="carte-cle">
+      <div class="valeur" id="stat-moyenne-jour">2 430 u/j</div>
+      <div class="label">Moyenne quotidienne</div>
+    </div>
+    <div class="carte-cle">
+      <div class="valeur" id="stat-total-articles">565</div>
+      <div class="label">Articles profilés</div>
+    </div>
+  </div>
+
+  <!-- ONGLETS DE NAVIGATION -->
+  <nav class="nav-onglets" role="tablist">
+    <button class="onglet-btn actif" data-cible="vue-mois">📅 12 Mois</button>
+    <button class="onglet-btn" data-cible="vue-semaines">📈 52 Semaines</button>
+    <button class="onglet-btn" data-cible="vue-jours">🗓️ Jours Semaine</button>
+    <button class="onglet-btn" data-cible="vue-meteo">☀️ Météo &amp; Températures</button>
+    <button class="onglet-btn" data-cible="vue-vacances">🏖️ Vacances &amp; Fériés</button>
+    <button class="onglet-btn" data-cible="vue-produits">🔍 Recherche Produit (565)</button>
+  </nav>
+
+  <!-- 1. VUE MOIS -->
+  <section class="vue-onglet actif" id="vue-mois">
+    <div class="panneau">
+      <h2>Saisonnalité par Mois (1 à 12) &amp; Comparaison Annuelle</h2>
+      <p style="color:var(--text-faible);font-size:13px;margin:4px 0 12px;">
+        Volume moyen vendu par jour ouvré et évolution entre 2024, 2025 et 2026.
+      </p>
+      <div class="tableau-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Mois</th>
+              <th>Moy. Globale</th>
+              <th>2024 (u/j)</th>
+              <th>2025 (u/j)</th>
+              <th>2026 (u/j)</th>
+              <th>Poids Annuel</th>
+              <th>Famille N°1</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-mois"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. VUE SEMAINES -->
+  <section class="vue-onglet" id="vue-semaines">
+    <div class="panneau">
+      <h2>Profil Annuel des 52 Semaines ISO &amp; Événements Clés</h2>
+      <p style="color:var(--text-faible);font-size:13px;margin:4px 0 12px;">
+        Identification des temps forts de consommation, des pics saisonniers et des semaines creuses.
+      </p>
+      <div class="tableau-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Semaine</th>
+              <th>Événement / Contexte</th>
+              <th>Moyenne (u/j)</th>
+              <th>Indice vs Moyenne</th>
+              <th>Total Unités</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-semaines"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. VUE JOURS -->
+  <section class="vue-onglet" id="vue-jours">
+    <div class="panneau">
+      <h2>Rythme Hebdomadaire d'Achat (Lundi au Dimanche)</h2>
+      <p style="color:var(--text-faible);font-size:13px;margin:4px 0 12px;">
+        Poids relatif de chaque jour dans la semaine commerciale du magasin.
+      </p>
+      <div class="tableau-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Jour</th>
+              <th>Moyenne Quotidienne</th>
+              <th>Part de la Semaine</th>
+              <th>Coefficient vs Lundi</th>
+              <th>Jours Observés</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-jours"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. VUE METEO -->
+  <section class="vue-onglet" id="vue-meteo">
+    <div class="panneau">
+      <h2>Impact Réel de la Météo Locale de Carmaux</h2>
+      <p style="color:var(--text-faible);font-size:13px;margin:4px 0 12px;">
+        Réaction des volumes de vente selon les températures maximales constatées et la pluie.
+      </p>
+      <div class="tableau-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Situation Météo</th>
+              <th>Jours</th>
+              <th>Moyenne (u/j)</th>
+              <th>Indice Global</th>
+              <th>Comportement des Familles</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-meteo"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. VUE VACANCES ET FERIES -->
+  <section class="vue-onglet" id="vue-vacances">
+    <div class="panneau">
+      <h2>Impact des Vacances Scolaires (Zone C Toulouse)</h2>
+      <div class="tableau-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Période</th>
+              <th>Jours</th>
+              <th>Moyenne (u/j)</th>
+              <th>Écart vs Scolaire</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-vacances"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panneau" style="margin-top:16px;">
+      <h2>Effet Veille de Férié (Anticipation des Courses)</h2>
+      <div class="tableau-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Type de Journée</th>
+              <th>Jours</th>
+              <th>Moyenne (u/j)</th>
+              <th>Écart vs Ordinaire</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-feries"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. VUE PRODUITS -->
+  <section class="vue-onglet" id="vue-produits">
+    <div class="panneau">
+      <h2>Fiches Individuelles des 565 Produits (Tous Articles)</h2>
+      <p style="color:var(--text-faible);font-size:13px;margin:4px 0 12px;">
+        Recherchez n'importe quel article vendu sur les 2,5 ans, même absent du cadencier du jour.
+      </p>
+      <input type="search" class="recherche-box" id="champ-recherche-produit" placeholder="🔍 Taper un nom d'article (ex: melon, poireau, chou, chasselas, potiron...)">
+      <div id="resultats-produits"></div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+let ANALYSE = null;
+
+// Gestion des onglets
+document.querySelectorAll('.onglet-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.onglet-btn').forEach(b => b.classList.remove('actif'));
+    document.querySelectorAll('.vue-onglet').forEach(v => v.classList.remove('actif'));
+    btn.classList.add('actif');
+    const cible = document.getElementById(btn.dataset.cible);
+    if (cible) cible.classList.add('actif');
+  });
+});
+
+// Thème
+const bTheme = document.getElementById('bouton-theme');
+bTheme?.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme') || 'sombre';
+  const nxt = cur === 'sombre' ? 'clair' : 'sombre';
+  document.documentElement.setAttribute('data-theme', nxt);
+  localStorage.setItem('theme', nxt);
+});
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+
+// Chargement des données d'analyse
+async function charger() {
+  try {
+    const rep = await fetch('../donnees/analyse-ventes-annuelle-saisonniere.json');
+    if (!rep.ok) throw new Error('Échec de chargement JSON');
+    ANALYSE = await rep.json();
+    afficherGlobal();
+    afficherMois();
+    afficherSemaines();
+    afficherJours();
+    afficherMeteo();
+    afficherVacances();
+    afficherFeries();
+    initRechercheProduits();
+  } catch (err) {
+    console.error(err);
+    document.querySelector('.contenu').innerHTML += `<div class="panneau" style="color:#f87171;">Erreur de chargement : ${err.message}</div>`;
+  }
+}
+
+function afficherGlobal() {
+  const p = ANALYSE.periode;
+  document.getElementById('stat-total-ventes').textContent = Math.round(p.total_unites_vendues).toLocaleString('fr-FR');
+  document.getElementById('stat-jours-ouverts').textContent = p.total_jours_ouverts;
+  document.getElementById('stat-moyenne-jour').textContent = Math.round(p.moyenne_quotidienne_globale).toLocaleString('fr-FR') + ' u/j';
+  document.getElementById('stat-total-articles').textContent = p.total_articles_analyses;
+}
+
+function afficherMois() {
+  const tb = document.getElementById('tbody-mois');
+  tb.innerHTML = '';
+  ANALYSE.mois.forEach(m => {
+    const tr = document.createElement('tr');
+    const m24 = m.par_annee['2024'] ? m.par_annee['2024'].moyenne_jour + ' u/j' : '—';
+    const m25 = m.par_annee['2025'] ? m.par_annee['2025'].moyenne_jour + ' u/j' : '—';
+    const m26 = m.par_annee['2026'] ? m.par_annee['2026'].moyenne_jour + ' u/j' : '—';
+    const barW = Math.max(8, Math.round(m.part_annuelle_pct * 8));
+
+    tr.innerHTML = `
+      <td><strong>${m.nom}</strong></td>
+      <td><strong>${m.moyenne_quotidienne.toLocaleString('fr-FR')} u/j</strong></td>
+      <td>${m24}</td>
+      <td>${m25}</td>
+      <td>${m26}</td>
+      <td><span class="barre-pct" style="width:${barW}px"></span>${m.part_annuelle_pct} %</td>
+      <td><span class="badge-fam">${formaterFamille(m.famille_dominante)}</span></td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function afficherSemaines() {
+  const tb = document.getElementById('tbody-semaines');
+  tb.innerHTML = '';
+  ANALYSE.semaines.forEach(s => {
+    const tr = document.createElement('tr');
+    const indClass = s.indice_relatif >= 1.10 ? 'badge-hausse' : (s.indice_relatif <= 0.90 ? 'badge-baisse' : '');
+    tr.innerHTML = `
+      <td><strong>S${String(s.semaine_iso).padStart(2, '0')}</strong></td>
+      <td>${s.evenement_cle ? '<strong>' + s.evenement_cle + '</strong>' : '<span style="color:var(--text-faible);">Semaine ordinaire</span>'}</td>
+      <td><strong>${s.moyenne_quotidienne.toLocaleString('fr-FR')} u/j</strong></td>
+      <td class="${indClass}">x${s.indice_relatif.toFixed(2)} (${s.indice_relatif >= 1 ? '+' : ''}${Math.round((s.indice_relatif - 1)*100)} %)</td>
+      <td>${Math.round(s.total_unites).toLocaleString('fr-FR')}</td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function afficherJours() {
+  const tb = document.getElementById('tbody-jours');
+  tb.innerHTML = '';
+  ANALYSE.jours_semaine.forEach(j => {
+    const tr = document.createElement('tr');
+    const barW = Math.max(10, Math.round(j.part_semaine_pct * 4));
+    tr.innerHTML = `
+      <td><strong>${j.nom}</strong></td>
+      <td><strong>${j.moyenne_quotidienne.toLocaleString('fr-FR')} u/j</strong></td>
+      <td><span class="barre-pct" style="width:${barW}px"></span>${j.part_semaine_pct} %</td>
+      <td><strong>x${j.ratio_vs_lundi.toFixed(2)}</strong> ${j.ratio_vs_lundi > 1 ? '<span class="badge-hausse">(+' + Math.round((j.ratio_vs_lundi-1)*100) + '%)</span>' : ''}</td>
+      <td>${j.jours_observes} jours</td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function afficherMeteo() {
+  const tb = document.getElementById('tbody-meteo');
+  tb.innerHTML = '';
+  ANALYSE.meteo.forEach(m => {
+    const tr = document.createElement('tr');
+    const indClass = m.indice_vs_moyenne >= 1.03 ? 'badge-hausse' : (m.indice_vs_moyenne <= 0.97 ? 'badge-baisse' : '');
+    tr.innerHTML = `
+      <td><strong>${m.label}</strong><br><small style="color:var(--text-faible);">${m.description}</small></td>
+      <td>${m.jours_observes} j</td>
+      <td><strong>${m.moyenne_quotidienne.toLocaleString('fr-FR')} u/j</strong></td>
+      <td class="${indClass}">x${m.indice_vs_moyenne.toFixed(2)}</td>
+      <td><small>${formaterElasticite(m.elasticite_familles)}</small></td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function afficherVacances() {
+  const tb = document.getElementById('tbody-vacances');
+  tb.innerHTML = '';
+  ANALYSE.vacances.forEach(v => {
+    const tr = document.createElement('tr');
+    const diffClass = v.ecart_vs_scolaire_pct > 0 ? 'badge-hausse' : (v.ecart_vs_scolaire_pct < 0 ? 'badge-baisse' : '');
+    tr.innerHTML = `
+      <td><strong>${v.periode}</strong></td>
+      <td>${v.jours_observes} j</td>
+      <td><strong>${v.moyenne_quotidienne.toLocaleString('fr-FR')} u/j</strong></td>
+      <td class="${diffClass}">${v.ecart_vs_scolaire_pct >= 0 ? '+' : ''}${v.ecart_vs_scolaire_pct} %</td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function afficherFeries() {
+  const tb = document.getElementById('tbody-feries');
+  tb.innerHTML = '';
+  ANALYSE.feries_et_veilles.forEach(f => {
+    const tr = document.createElement('tr');
+    const diffClass = f.ecart_vs_ordinaire_pct > 0 ? 'badge-hausse' : (f.ecart_vs_ordinaire_pct < 0 ? 'badge-baisse' : '');
+    tr.innerHTML = `
+      <td><strong>${f.label}</strong></td>
+      <td>${f.jours_observes} j</td>
+      <td><strong>${f.moyenne_quotidienne.toLocaleString('fr-FR')} u/j</strong></td>
+      <td class="${diffClass}">${f.ecart_vs_ordinaire_pct >= 0 ? '+' : ''}${f.ecart_vs_ordinaire_pct} %</td>
+    `;
+    tb.appendChild(tr);
+  });
+}
+
+function initRechercheProduits() {
+  const champ = document.getElementById('champ-recherche-produit');
+  const conteneur = document.getElementById('resultats-produits');
+  
+  function filtrer() {
+    const q = champ.value.trim().toLowerCase();
+    conteneur.innerHTML = '';
+    if (q.length < 2) {
+      conteneur.innerHTML = '<p style="color:var(--text-faible);padding:10px 0;">Tapez au moins 2 lettres pour chercher parmi les 565 produits...</p>';
+      return;
+    }
+    const arts = Object.values(ANALYSE.articles)
+      .filter(a => a.libelle.toLowerCase().includes(q) || a.itm8.includes(q))
+      .slice(0, 15);
+
+    if (!arts.length) {
+      conteneur.innerHTML = '<p style="color:var(--text-faible);padding:10px 0;">Aucun article trouvé pour cette recherche.</p>';
+      return;
+    }
+
+    arts.forEach(a => {
+      const card = document.createElement('div');
+      card.className = 'fiche-article';
+      const moisList = Object.entries(a.ventes_par_mois)
+        .sort((x, y) => parseInt(x[0]) - parseInt(y[0]))
+        .map(([m, data]) => {
+          const nm = ['','Jan','Fév','Mar','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'][parseInt(m)];
+          return `<span>${nm}: <strong>${Math.round(data.volume)}</strong> (${data.moyenne_jour} u/j)</span>`;
+        }).join(' · ');
+
+      const r = a.ratios_sensibilite || {};
+      const c30 = r.canicule_sup_30 ? 'x' + r.canicule_sup_30 : '—';
+      const f10 = r.froid_inf_10 ? 'x' + r.froid_inf_10 : '—';
+      const vf = r.veille_ferie ? 'x' + r.veille_ferie : '—';
+      const tou = r.vacances_toussaint ? 'x' + r.vacances_toussaint : '—';
+
+      card.innerHTML = `
+        <h3>
+          <span>${a.libelle}</span>
+          <span style="font-size:13px;color:var(--text-faible);font-family:monospace;">${a.itm8}</span>
+        </h3>
+        <div style="font-size:13px;margin-bottom:8px;">
+          <span class="badge-fam">${formaterFamille(a.famille)}</span>
+          <span style="margin-left:8px;">Total 2,5 ans : <strong>${Math.round(a.volume_total_2ans_demi).toLocaleString('fr-FR')} unités</strong> (${a.jours_observes} j)</span>
+          ${a.mois_pleine_saison ? ' · Pic saison : <strong>' + a.mois_pleine_saison + '</strong>' : ''}
+        </div>
+        <div style="font-size:12px;color:var(--text-faible);background:var(--bg-panel-alt);padding:8px 12px;border-radius:6px;margin-bottom:8px;">
+          <strong>Ventes par mois :</strong> ${moisList || 'Données saisonnières partielles'}
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;">
+          <div>☀️ Canicule &gt;30°C: <strong>${c30}</strong></div>
+          <div>❄️ Froid &lt;10°C: <strong>${f10}</strong></div>
+          <div>🎉 Veille de Férié: <strong>${vf}</strong></div>
+          <div>🍂 Toussaint: <strong>${tou}</strong></div>
+        </div>
+      `;
+      conteneur.appendChild(card);
+    });
+  }
+
+  champ.addEventListener('input', filtrer);
+  filtrer();
+}
+
+function formaterFamille(f) {
+  const maps = {
+    'fruits_ete': '🍉 Fruits d’été',
+    'salades_crudites': '🥗 Salades & Crudités',
+    'legumes_a_cuire': '🥔 Légumes à cuire',
+    'agrumes_fruits_hiver': '🍊 Agrumes & Hiver',
+    'bananes_exotiques': '🍌 Bananes & Exotiques',
+    'herbes_aromatiques': '🌿 Herbes',
+    'autres': '📦 Autres'
+  };
+  return maps[f] || f;
+}
+
+function formaterElasticite(ef) {
+  if (!ef) return '';
+  return Object.entries(ef).map(([fam, r]) => {
+    return `${formaterFamille(fam)}: <strong>x${r}</strong>`;
+  }).join(' | ');
+}
+
+charger();
+</script>
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>2.2 Brigade numérique et rôles des agents • Documentation Les Mousquetaires</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html"><picture><source srcset="../assets/logo.webp" type="image/webp"><img src="../assets/logo.gif" alt="Agents Fruits &amp; Légumes" class="sidebar-brand-img"></picture></a>
+      <div class="project-tag">
+        <span class="project-tag-dot"></span> Référentiel Technique &amp; Métier
+      </div>
+      <div class="project-name-display">Agents Fruits &amp; Légumes</div>
+    </div>
+
+    <div class="sidebar-search">
+      <input type="text" id="docSearch" placeholder="Filtrer les chapitres..." onkeyup="filterNav()">
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Portail Général</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../index.html">🏠 Accueil &amp; Plan Général</a></li>
+      </ul>
+      <div class="nav-section-title">1 - Présenation generale</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../1 - Présenation generale/1.1 - Objectif de l'application.html">1.1 - Objectif de l'application</a></li>
+        <li class="nav-item"><a href="../1 - Présenation generale/1.2 - Périmètre et limites du système.html">1.2 - Périmètre et limites du système</a></li>
+        <li class="nav-item"><a href="../1 - Présenation generale/1.3 - Principes directeurs et fonctionnement général.html">1.3 - Principes directeurs et fonctionnement général</a></li>
+      </ul>
+      <div class="nav-section-title">2 - Utilisateurs et rôles</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./2.1 - Profils utilisateurs et permissions.html">2.1 - Profils utilisateurs et permissions</a></li>
+        <li class="nav-item active"><a href="./2.2 - Brigade numérique et rôles des agents.html">2.2 - Brigade numérique et rôles des agents</a></li>
+      </ul>
+      <div class="nav-section-title">3 - Concepts métier fondamentaux</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.1 - Typologie des produits et référentiel article.html">3.1 - Typologie des produits et référentiel article</a></li>
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.2 - Flux de vente et canaux d'encaissement.html">3.2 - Flux de vente et canaux d'encaissement</a></li>
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.3 - Typologie des stocks et statuts physiques.html">3.3 - Typologie des stocks et statuts physiques</a></li>
+      </ul>
+      <div class="nav-section-title">4 - Architecture générale du système</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../4 - Architecture generale/4.1 - Chaîne de traitement et cycle quotidien.html">4.1 - Chaîne de traitement et cycle quotidien</a></li>
+        <li class="nav-item"><a href="../4 - Architecture generale/4.2 - Cartographie modulaire et composants logiciels.html">4.2 - Cartographie modulaire et composants logiciels</a></li>
+      </ul>
+      <div class="nav-section-title">5 - Sources de données et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../5 - Sources de donnees/5.1 - Sources internes (Mercalys, SCAFRUIT, comptage).html">5.1 - Sources internes (Mercalys, SCAFRUIT, comptage)</a></li>
+        <li class="nav-item"><a href="../5 - Sources de donnees/5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions).html">5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions)</a></li>
+      </ul>
+      <div class="nav-section-title">6 - Modèle de données et dictionnaire métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../6 - Modele de donnees et dictionnaire metier/6.1 - Format du carnet de faits et schéma JSONL.html">6.1 - Format du carnet de faits et schéma JSONL</a></li>
+        <li class="nav-item"><a href="../6 - Modele de donnees et dictionnaire metier/6.2 - Dictionnaire des champs et typologie des entités.html">6.2 - Dictionnaire des champs et typologie des entités</a></li>
+      </ul>
+      <div class="nav-section-title">7 - Qualité et préparation des données</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../7 - Qualite et preparation des donnees/7.1 - Contrôles d'intégrité et règles de cohérence.html">7.1 - Contrôles d'intégrité et règles de cohérence</a></li>
+        <li class="nav-item"><a href="../7 - Qualite et preparation des donnees/7.2 - Traitement des anomalies et valeurs manquantes.html">7.2 - Traitement des anomalies et valeurs manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">8 - Prévision des ventes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../8 - Prevision des ventes/8.1 - Modélisation statistique et fenêtre circulaire.html">8.1 - Modélisation statistique et fenêtre circulaire</a></li>
+        <li class="nav-item"><a href="../8 - Prevision des ventes/8.2 - Profils journaliers et saisonnalité.html">8.2 - Profils journaliers et saisonnalité</a></li>
+      </ul>
+      <div class="nav-section-title">9 - Météo, calendrier et événements</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../9 - Meteo calendrier et evenements/9.1 - Facteurs météo et corrélations locales.html">9.1 - Facteurs météo et corrélations locales</a></li>
+        <li class="nav-item"><a href="../9 - Meteo calendrier et evenements/9.2 - Calendrier commercial, jours fériés et vacances scolaires.html">9.2 - Calendrier commercial, jours fériés et vacances scolaires</a></li>
+      </ul>
+      <div class="nav-section-title">10 - Confiance et incertitude</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../10 - Confiance et incertitude/10.1 - Niveaux de confiance et score de fiabilité.html">10.1 - Niveaux de confiance et score de fiabilité</a></li>
+        <li class="nav-item"><a href="../10 - Confiance et incertitude/10.2 - Facteurs de risque et données manquantes.html">10.2 - Facteurs de risque et données manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">11 - Stock et livraisons</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../11 - Stock et livraisons/11.1 - Calcul du stock projeté et couverture.html">11.1 - Calcul du stock projeté et couverture</a></li>
+        <li class="nav-item"><a href="../11 - Stock et livraisons/11.2 - Gestion des livraisons attendues et reliquats.html">11.2 - Gestion des livraisons attendues et reliquats</a></li>
+      </ul>
+      <div class="nav-section-title">12 - Calcul du besoin de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../12 - Calcul du besoin de commande/12.1 - Algorithme du besoin net et horizon de réapprovisionnement.html">12.1 - Algorithme du besoin net et horizon de réapprovisionnement</a></li>
+        <li class="nav-item"><a href="../12 - Calcul du besoin de commande/12.2 - Stock de sécurité et ajustements dynamiques.html">12.2 - Stock de sécurité et ajustements dynamiques</a></li>
+      </ul>
+      <div class="nav-section-title">13 - Règles métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../13 - Regles metier/13.1 - Règles de colisage, PCB et arrondis.html">13.1 - Règles de colisage, PCB et arrondis</a></li>
+        <li class="nav-item"><a href="../13 - Regles metier/13.2 - Garde-fous anti-rupture et plafonds de baisse.html">13.2 - Garde-fous anti-rupture et plafonds de baisse</a></li>
+      </ul>
+      <div class="nav-section-title">14 - Proposition de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../14 - Proposition de commande/14.1 - Structure de la proposition et arbitrages.html">14.1 - Structure de la proposition et arbitrages</a></li>
+        <li class="nav-item"><a href="../14 - Proposition de commande/14.2 - Cycle de vie d'une ligne de commande.html">14.2 - Cycle de vie d'une ligne de commande</a></li>
+      </ul>
+      <div class="nav-section-title">15 - Gestion des exceptions</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../15 - Gestion des exceptions/15.1 - Typologie des alertes et niveaux de criticité.html">15.1 - Typologie des alertes et niveaux de criticité</a></li>
+        <li class="nav-item"><a href="../15 - Gestion des exceptions/15.2 - Procédures de résolution d'anomalies.html">15.2 - Procédures de résolution d'anomalies</a></li>
+      </ul>
+      <div class="nav-section-title">16 - Explicabilité pour les LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../16 - Explicabilite pour les LLM/16.1 - Distinction Faits, Calculs et Hypothèses.html">16.1 - Distinction Faits, Calculs et Hypothèses</a></li>
+        <li class="nav-item"><a href="../16 - Explicabilite pour les LLM/16.2 - Format d'échange et prompts structurés.html">16.2 - Format d'échange et prompts structurés</a></li>
+      </ul>
+      <div class="nav-section-title">17 - API et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../17 - API et integrations/17.1 - Endpoints locaux et protocoles d'échange.html">17.1 - Endpoints locaux et protocoles d'échange</a></li>
+        <li class="nav-item"><a href="../17 - API et integrations/17.2 - Connecteurs Webtelevente et export des ordres.html">17.2 - Connecteurs Webtelevente et export des ordres</a></li>
+      </ul>
+      <div class="nav-section-title">18 - Interface utilisateur</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../18 - Interface utilisateur/18.1 - Console de commande magasin.html">18.1 - Console de commande magasin</a></li>
+        <li class="nav-item"><a href="../18 - Interface utilisateur/18.2 - Interface mobile de pointage.html">18.2 - Interface mobile de pointage</a></li>
+      </ul>
+      <div class="nav-section-title">19 - Indicateurs et performance</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../19 - Indicateurs et performance/19.1 - KPIs métier (rupture, casse, marge).html">19.1 - KPIs métier (rupture, casse, marge)</a></li>
+        <li class="nav-item"><a href="../19 - Indicateurs et performance/19.2 - Métriques algorithmiques et taux d'adhésion.html">19.2 - Métriques algorithmiques et taux d'adhésion</a></li>
+      </ul>
+      <div class="nav-section-title">20 - Tests et validation</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../20 - Tests et validation/20.1 - Protocoles de test à blanc et non-régression.html">20.1 - Protocoles de test à blanc et non-régression</a></li>
+        <li class="nav-item"><a href="../20 - Tests et validation/20.2 - Scénarios de simulation et jeux d'essais.html">20.2 - Scénarios de simulation et jeux d'essais</a></li>
+      </ul>
+      <div class="nav-section-title">21 - Versionnement, audit et sécurité</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../21 - Versionnement audit et securite/21.1 - Immutabilité du journal d'audit et traçabilité.html">21.1 - Immutabilité du journal d'audit et traçabilité</a></li>
+        <li class="nav-item"><a href="../21 - Versionnement audit et securite/21.2 - Matrice des pouvoirs et sécurité locale.html">21.2 - Matrice des pouvoirs et sécurité locale</a></li>
+      </ul>
+      <div class="nav-section-title">22 - Prompt système du LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../22 - Prompt systeme du LLM/22.1 - Spécification formelle du rôle agentique.html">22.1 - Spécification formelle du rôle agentique</a></li>
+        <li class="nav-item"><a href="../22 - Prompt systeme du LLM/22.2 - Garde-fous déontologiques et zéro-invention.html">22.2 - Garde-fous déontologiques et zéro-invention</a></li>
+      </ul>
+      <div class="nav-section-title">23 - Glossaire et annexes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../23 - Glossaire et annexes/23.1 - Glossaire terminologique F&L et grande distribution.html">23.1 - Glossaire terminologique F&L et grande distribution</a></li>
+        <li class="nav-item"><a href="../23 - Glossaire et annexes/23.2 - Exemples chiffrés complets et tables de référence.html">23.2 - Exemples chiffrés complets et tables de référence</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div>Groupement Les Mousquetaires</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <div class="breadcrumb">
+          <a href="../index.html">Accueil</a>
+          <span class="breadcrumb-sep">&gt;</span>
+          <span>2 - Utilisateurs et rôles</span>
+          <span class="breadcrumb-sep">&gt;</span>
+          <strong>2.2 Brigade numérique et rôles des agents</strong>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <a href="../index.html" class="btn-action">🏠 Sommaire Général</a>
+        <button onclick="window.print()" class="btn-action btn-red">🖨️ Imprimer / PDF</button>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <div class="doc-page-header">
+        <div class="doc-top-red-line"></div>
+        <span class="doc-badge-chapter">Chapitre 2 — Utilisateurs et rôles</span>
+        <h1 class="doc-main-title">2.2 Brigade numérique et rôles des agents</h1>
+        <p class="doc-subtitle-text">Architecture des 7 assistants spécialisés, séparation stricte des pouvoirs, plafonds d'action et sécurité inter-agents</p>
+
+        <div class="meta-grid">
+          <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-02.2</div>
+          <div class="meta-item"><strong>Architecture :</strong> Multi-Agents Spécialisés</div>
+          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Gouvernance :</strong> Découplage Pouvoirs &amp; Veto</div>
+        </div>
+      </div>
+
+      <h2>1. Philosophie de Conception : La Spécialisation contre le Monolithe</h2>
+      <p>
+        Les systèmes traditionnels de gestion d'approvisionnement reposent fréquemment sur un programme unique et opaque effectuant simultanément la lecture des courriels, l'écriture en base de données et le calcul des commandes. Cette approche monolithique présente des risques critiques pour un rayon ultra-frais : un bug d'interprétation dans un bon de livraison peut corrompre l'ensemble des stocks et générer des ruptures massives ou des commandes aberrantes.
+      </p>
+      <p>
+        Le système <strong>Agents Fruits &amp; Légumes</strong> adopte une architecture modulaire fondée sur une <strong>Brigade de sept assistants numériques spécialisés</strong>. Chaque agent possède un mandat exclusif, des prérogatives rigoureusement bornées dans le fichier de sécurité <code>donnees/pouvoirs.json</code>, et des mécanismes de double contrôle mutuel.
+      </p>
+
+      <div class="callout-box">
+        <div class="callout-title">LE PRINCIPE FONDAMENTAL DE SÉPARATION DES POUVOIRS</div>
+        <p style="margin: 0;">
+          <strong>Qui lit n'écrit pas. Qui prépare ne valide pas. Qui contrôle ne modifie rien. Qui coordonne ne signe jamais.</strong><br>
+          Aucun agent ne détient l'ensemble des droits. Toute écriture sensible dans les stocks du magasin exige une simulation préalable par un premier agent, un audit de conformité indépendant par un second agent doté d'un droit de veto, et la signature exclusive de l'agent habilité.
+        </p>
+      </div>
+
+      <h2>2. Présentation Exhaustive des Sept Assistants Numériques</h2>
+
+      <!-- Agent 1 : Orchestrateur -->
+      <div class="card-panel" style="margin-bottom: 22px; border-left: 4px solid #1D1D1B;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="card-panel-title" style="font-size: 15px; margin: 0;">👔 1. L'Agent Orchestrateur (<code>agent-orchestrateur</code>)</div>
+          <span style="font-size: 11px; font-weight: 800; background: #f1f5f9; padding: 2px 8px; border-radius: 3px; color: #1D1D1B;">COORDINATION &amp; ARBITRAGE</span>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 10px 0;">
+          <strong>Mission :</strong> Chef d'orchestre de la brigade. Il surveille les flux d'entrée (boîte aux lettres, messages magasin, échéance matinale de 09h30), distribue le travail aux agents spécialisés selon un protocole strict à cinq temps, et restitue les conclusions au responsable de rayon en français simple via <code>moteur/dire.py</code>.
+        </p>
+        <div class="grid-2" style="margin: 8px 0; gap: 10px;">
+          <div style="background: #f8fafc; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px;">
+            <strong>Règle d'Indépendance Absolue :</strong> L'orchestrateur ne signe <strong>JAMAIS</strong> de modification métier dans les faits ou les stocks (<code>plafond_par_jour : 0</code>, <code>peut_seul : []</code>).
+          </div>
+          <div style="background: #f8fafc; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 4px; font-size: 12px;">
+            <strong>Garant du Cut-Off :</strong> Veille à ce que tous les flux soient intégrés et audités avant 09h00 pour permettre la validation humaine avant 09h30.
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent 2 : Contrôle -->
+      <div class="card-panel" style="margin-bottom: 22px; border-left: 4px solid var(--brand-red);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="card-panel-title" style="font-size: 15px; margin: 0; color: var(--brand-red);">🛡️ 2. L'Agent Contrôle (<code>agent-controle</code>)</div>
+          <span style="font-size: 11px; font-weight: 800; background: #fee2e2; padding: 2px 8px; border-radius: 3px; color: var(--brand-red);">VETO &amp; AUDIT QUALITÉ</span>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 10px 0;">
+          <strong>Mission :</strong> Le deuxième regard indépendant obligatoire. Il audite chaque proposition, simulation et mouvement de stock avant toute écriture définitive et après intégration. Il protège le rayon contre les surstocks, les ruptures induites et les anomalies de conversion.
+        </p>
+        <div style="background: #FFF5F5; border: 1px solid #FECDD3; padding: 10px 14px; border-radius: 4px; font-size: 12.5px; margin-bottom: 10px;">
+          <strong>Pouvoir Absolu de Veto :</strong> Lecture seule stricte (<strong>zéro droit d'écriture</strong>). L'agent contrôle ne modifie rien. Si un risque ou une incohérence est détecté, il émet un verdict immédiat <code>VERDICT : BLOQUÉ</code> qui suspend instantanément l'exécution de toute la chaîne.
+        </div>
+        <p style="font-size: 12.5px; font-weight: 700; margin: 0 0 6px 0;">La Grille de Contrôle Pré-Écriture (Règles C01 à C06) :</p>
+        <table style="margin: 0; font-size: 12px;">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Règle</th>
+              <th style="width: 35%;">Point de contrôle</th>
+              <th style="width: 40%;">Condition de rejet immédiat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>C01 Unicité</code></td>
+              <td>Le fichier ou les lignes ont-ils déjà été intégrés ?</td>
+              <td>Doublon détecté avec des faits existants (même BL, même date, mêmes lignes).</td>
+            </tr>
+            <tr>
+              <td><code>C02 Chronologie</code></td>
+              <td>Cohérence temporelle des flux : Ventes/Casse = J−1, Livraisons = J.</td>
+              <td>Date de vente future, date incohérente ou confusion entre livraison et vente.</td>
+            </tr>
+            <tr>
+              <td><code>C03 Colisage</code></td>
+              <td>Respect physique des unités (kg vs pièces vs colis).</td>
+              <td>Colisage supposé ou valeur aberrante (ex. 50 kg pour une barquette de fraises).</td>
+            </tr>
+            <tr>
+              <td><code>C04 Comptages</code></td>
+              <td>Un inventaire physique a-t-il été réalisé entre-temps ?</td>
+              <td>Écriture rétroactive venant écraser un stock physique certifié en rayon.</td>
+            </tr>
+            <tr>
+              <td><code>C05 Pouvoirs</code></td>
+              <td>L'opération est-elle autorisée dans <code>donnees/pouvoirs.json</code> ?</td>
+              <td>Dépassement de plafond journalier ou action non autorisée pour l'agent demandeur.</td>
+            </tr>
+            <tr>
+              <td><code>C06 Factures</code></td>
+              <td>Respect du format strict A/C/F sur factures directes.</td>
+              <td>Tentative de renseigner B/D/E ou prix de vente inventé sans cotation officielle.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Agent 3 : Courrier -->
+      <div class="card-panel" style="margin-bottom: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="card-panel-title" style="font-size: 15px; margin: 0;">📬 3. L'Agent Courrier (<code>agent-courrier</code>)</div>
+          <span style="font-size: 11px; font-weight: 800; background: #f1f5f9; padding: 2px 8px; border-radius: 3px; color: #1D1D1B;">RÉCEPTION &amp; CERTIFICATION DES SOURCES</span>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 10px 0;">
+          <strong>Mission :</strong> Spécialiste de la relève, de l'inspection documentaire et de la traçabilité de provenance. Il analyse les courriels reçus, identifie chaque pièce jointe sans jamais deviner, et dresse un inventaire formel transmis à l'Agent Orchestrateur.
+        </p>
+        <ul style="font-size: 12.5px; padding-left: 18px; margin: 0 0 10px 0;">
+          <li><strong>Règle d'or « Zéro Invention » :</strong> Si une pièce jointe est incomplète, illisible ou corrompue, l'agent stoppe l'instruction et alerte le magasin. Il n'extrapole aucun colisage manquant.</li>
+          <li><strong>Qualification des pièces jointes :</strong> Classement rigoureux entre Ventes J−1, Casse J−1, Dons J−1, Livraisons SCAFRUIT J, et Factures directes producteurs.</li>
+          <li><strong>Cas Particulier Pomona / TerreAzur :</strong> Déclenche le protocole double : (1) intégration des mouvements de livraison du jour, et (2) mise à jour obligatoire du classeur mensuel de calcul de marge (<code>0926 Calcul marge Pomona.xlsx</code>) avec renseignement exclusif des colonnes A (produit), C (PA unitaire direct) et F (quantité UF), puis réexpédition par courriel à <code>PDV11768@mousquetaires.com</code>.</li>
+        </ul>
+      </div>
+
+      <!-- Agent 4 : Données -->
+      <div class="card-panel" style="margin-bottom: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="card-panel-title" style="font-size: 15px; margin: 0;">⚙️ 4. L'Agent Données (<code>agent-donnees</code>)</div>
+          <span style="font-size: 11px; font-weight: 800; background: #f1f5f9; padding: 2px 8px; border-radius: 3px; color: #1D1D1B;">COMPTABILITÉ DES STOCKS &amp; CALCULS MOTEUR</span>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 10px 0;">
+          <strong>Mission :</strong> L'exécutant technique unique habilité à enregistrer les mouvements de stock et lancer les algorithmes de proposition. Il opère sous la contrainte d'un protocole obligatoire en deux temps distincts :
+        </p>
+        <div class="grid-2" style="gap: 12px; margin-bottom: 10px;">
+          <div style="background: #F4F5F7; border: 1px solid #E2E4E8; border-left: 3px solid #1D1D1B; padding: 10px; border-radius: 0 4px 4px 0; font-size: 12.5px;">
+            <strong>Temps 1 : La Simulation Préalable (Dry-Run)</strong><br>
+            Exécution avec l'option <code>--simuler</code> sans altérer les carnets de faits. Génération du rapport d'impact (nouveaux faits, doublons éliminés, anomalies de code) soumis à l'Agent Contrôle.
+          </div>
+          <div style="background: #F0FDF4; border: 1px solid #BBF7D0; border-left: 3px solid #15803D; padding: 10px; border-radius: 0 4px 4px 0; font-size: 12.5px;">
+            <strong>Temps 2 : L'Exécution Réelle (Après Visa)</strong><br>
+            Engagée UNIQUEMENT après accord formel <code>ACCORDÉ</code> de l'Agent Contrôle. Intégration réelle, recalcul du filet de sécurité, génération de la proposition et mise à jour de la note du matin.
+          </div>
+        </div>
+        <p style="font-size: 12.5px; margin: 0;">
+          <strong>Règle temporelle des 17h :</strong> Un inventaire saisi entre 17h00 la veille et le mail du matin n'inclut pas encore la livraison (celle-ci s'ajoutera au stock). Un inventaire saisi après le mail inclut déjà la livraison (la livraison ne doit pas être comptabilisée deux fois). Plafond journalier strict de 8 actions d'articles journalisées dans <code>agent-donnees.jsonl</code>.
+        </p>
+      </div>
+
+      <!-- Agent 5 : Rayon -->
+      <div class="card-panel" style="margin-bottom: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="card-panel-title" style="font-size: 15px; margin: 0;">📱 5. L'Agent Rayon (<code>agent-rayon</code>)</div>
+          <span style="font-size: 11px; font-weight: 800; background: #f1f5f9; padding: 2px 8px; border-radius: 3px; color: #1D1D1B;">ASSISTANT MAGASIN SUR TABLETTE &amp; EXPLICABILITÉ</span>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 10px 0;">
+          <strong>Mission :</strong> L'interlocuteur direct du chef de rayon sur son outil mobile en magasin. Il répond aux interrogations du commerçant, explicite le calcul des volumes prévus et enregistre les décisions d'arbitrage manuel ordonnées par le responsable.
+        </p>
+        <ul style="font-size: 12.5px; padding-left: 18px; margin: 0;">
+          <li><strong>Interdiction absolue du jargon informatique :</strong> Aucun terme tel que « JSON », « pipeline », « exception », « script » ou « base de données ». L'agent s'exprime exclusivement dans le langage du commerçant : cagettes, colis, barquettes, rythme de vente, stock de sécurité.</li>
+          <li><strong>Explicabilité totale :</strong> À la question <em>« Pourquoi 3 colis de courgettes ? »</em>, l'agent détaille le calcul arithmétique pas à pas : 25 kg prévus aujourd'hui, 30 kg demain, 10 kg en réserve, soit un besoin de 45 kg couvert par 3 colis de 15 kg.</li>
+          <li><strong>Exécution des décisions autorisées :</strong> Saisie des réglages du responsable (conditionnements, fournisseurs, masquage temporaire, promotion, rapprochement de codes) dans la limite d'un plafond de 15 actions par jour.</li>
+        </ul>
+      </div>
+
+      <!-- Agent 6 : Détective Articles & Analyste Tendances -->
+      <div class="card-panel" style="margin-bottom: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="card-panel-title" style="font-size: 15px; margin: 0;">🔍 6. Le Détective Articles &amp; Analyste Tendances (<code>agent-articles</code> &amp; <code>agent-tendances</code>)</div>
+          <span style="font-size: 11px; font-weight: 800; background: #f1f5f9; padding: 2px 8px; border-radius: 3px; color: #1D1D1B;">ENQUÊTES CATALOGUE &amp; PRÉVISIONS SÉCURISÉES</span>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 10px 0;">
+          <strong>Mission Conjointe :</strong> Surveillance de la cohérence du catalogue produits et modélisation des dynamiques prévisionnelles de vente avec un protocole de protection anti-rupture absolu.
+        </p>
+        <div class="grid-2" style="gap: 12px; margin-bottom: 10px;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 4px; font-size: 12.5px;">
+            <strong>Le Détective Articles (<code>agent-articles</code>)</strong><br>
+            • Traque les codes jumeaux (même produit sous deux codes-barres distincts créant de faux déficits).<br>
+            • Détecte les anomalies de colisage (ex. passage imprévu d'un colis de 6 kg à 10 kg).<br>
+            • Repère les articles masqués enregistrant encore des sorties de caisse.<br>
+            • Pouvoir : Lecture seule stricte (0 droit d'écriture, plafond 0).
+          </div>
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 4px; font-size: 12.5px;">
+            <strong>L'Analyste Tendances (<code>agent-tendances</code>)</strong><br>
+            • Modélise l'historique sur 2,5 ans, la météo locale et les vacances (Zone C).<br>
+            • Compare systématiquement volumes livrés vs sorties réelles en caisse.<br>
+            • Émet des suggestions prudentes (option <code>--proposer</code>).<br>
+            • Pouvoir : Aucun ajustement unilatéral d'office (bouton « Suivre » sur l'écran du chef de rayon).
+          </div>
+        </div>
+        <div style="background: #FFF5F5; border: 1px solid #FECDD3; padding: 10px 14px; border-radius: 4px; font-size: 12.5px;">
+          <strong>Le Protocole Anti-Rupture Absolu :</strong><br>
+          1. <em>Interdiction sur mévente isolée :</em> Une sous-consommation sur une seule livraison est classée en incident atypique ; la commande du lendemain est maintenue sans baisse pour garantir le stock.<br>
+          2. <em>Contrôle obligatoire des 4 causes externes :</em> Si la mévente persiste sur &ge; 2 livraisons consécutives, l'agent vérifie : fermeture magasin, météo défavorable (pluie &ge; 5 mm ou froid &le; 14°C), jour férié/pont, vacances scolaires. Si une cause externe est avérée, la baisse est <strong>formellement bloquée</strong>.<br>
+          3. <em>Matelas de sécurité &amp; Bornes de baisse :</em> En cas de mévente structurelle avérée sans cause externe, la baisse est plafonnée à <strong>−30 % maximum</strong> de la commande initiale, avec maintien obligatoire d'un <strong>matelas de sécurité d'au moins +25 % au-dessus du rythme de vente moyen réel</strong>.
+        </div>
+      </div>
+
+      <!-- Agent 7 : Auditeur Stock -->
+      <div class="card-panel" style="margin-bottom: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="card-panel-title" style="font-size: 15px; margin: 0;">📦 7. L'Auditeur de Stock Chambre Froide (<code>agent-audit-stock</code>)</div>
+          <span style="font-size: 11px; font-weight: 800; background: #f1f5f9; padding: 2px 8px; border-radius: 3px; color: #1D1D1B;">DIAGNOSTIC AUTOMATIQUE DES ÉCARTS D'INVENTAIRE</span>
+        </div>
+        <p style="font-size: 13px; margin: 0 0 10px 0;">
+          <strong>Mission :</strong> Réveillé instantanément par la sentinelle unifiée dès qu'un comptage physique est saisi sur smartphone (<code>app/compter.html</code>). Il analyse déterministement l'écart entre stock physique et stock théorique (&Delta; = Stock mesuré − Stock théorique) et publie son diagnostic dans le chat du rayon.
+        </p>
+        <p style="font-size: 12.5px; font-weight: 700; margin: 0 0 6px 0;">L'Arbre d'Enquête des 5 Hypothèses Fondamentales :</p>
+        <ol style="font-size: 12.5px; padding-left: 18px; margin: 0;">
+          <li><strong>Règle des 17h / Livraison sur quai :</strong> Si l'inventaire a été réalisé entre 17h00 la veille et la relève du BL matinal, la livraison est en cours de déchargement au quai et n'est pas encore en chambre froide. L'écart correspond exactement au volume du bon de livraison arrivant.</li>
+          <li><strong>Casse et Démarque Non Déclarées :</strong> Sur les denrées hautement périssables (fraises, salades, pêches, herbes), un déficit physique correspond à de la marchandise détériorée jetée sans saisie de démarque.</li>
+          <li><strong>Inversion de Scan en Caisse (Codes Jumeaux) :</strong> Articles très proches visuellement (Tomates rondes vs Tomates grappe, Courgettes standard vs Courgettes bio) scannés sous le mauvais code, provoquant un faux déficit sur l'un et un faux excédent symétrique sur l'autre.</li>
+          <li><strong>Anomalie de Livraison Fournisseur :</strong> Livraison directe locale non encore enregistrée, double livraison par inadvertance, ou confusion de colisage (carton vs unité).</li>
+          <li><strong>Vente Bloquée en Caisse :</strong> Code-barres dégradé sur une barquette saisi manuellement ou passé sous un code générique de caisse F&amp;L.</li>
+        </ol>
+      </div>
+
+      <h2>3. Matrice des Pouvoirs, Plafonds Journaliers et Sécurité Inter-Agents</h2>
+      <p>
+        Le fichier de gouvernance <code>donnees/pouvoirs.json</code> verrouille rigoureusement les attributions de chaque assistant numérique. Tout dépassement de quota journalier ou tentative d'action non homologuée interrompt immédiatement l'exécution :
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 22%;">Agent Numérique</th>
+            <th style="width: 22%;">Actions Autonomes (<code>peut_seul</code>)</th>
+            <th style="width: 24%;">Actions Soumises à Accord</th>
+            <th style="width: 14%; text-align: center;">Plafond / Jour</th>
+            <th style="width: 18%;">Délégation Possible</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><code>agent-orchestrateur</code></strong></td>
+            <td><em>Aucune (0 écriture)</em></td>
+            <td><em>Aucune</em></td>
+            <td style="text-align: center; font-weight: 700;">0</td>
+            <td>Vers les 7 agents spécialisés</td>
+          </tr>
+          <tr>
+            <td><strong><code>agent-controle</code></strong></td>
+            <td><em>Aucune (lecture seule)</em></td>
+            <td><em>Aucune</em></td>
+            <td style="text-align: center; font-weight: 700;">0</td>
+            <td>Aucune (auditeur indépendant)</td>
+          </tr>
+          <tr>
+            <td><strong><code>agent-courrier</code></strong></td>
+            <td>Conditionnement, Fournisseur, Démasquer</td>
+            <td>Rapprocher, Masquer, Promotion</td>
+            <td style="text-align: center; font-weight: 700;">8</td>
+            <td>Données, Contrôle, Articles</td>
+          </tr>
+          <tr>
+            <td><strong><code>agent-donnees</code></strong></td>
+            <td>Conditionnement, Fournisseur, Démasquer</td>
+            <td>Rapprocher, Masquer, Promotion</td>
+            <td style="text-align: center; font-weight: 700;">8</td>
+            <td>Contrôle, Articles</td>
+          </tr>
+          <tr>
+            <td><strong><code>agent-rayon</code></strong></td>
+            <td>Conditionnement, Fournisseur, Masquer, Démasquer, Promotion, Rapprocher</td>
+            <td><em>Aucune (mandat du chef de rayon)</em></td>
+            <td style="text-align: center; font-weight: 700;">15</td>
+            <td>Contrôle, Articles</td>
+          </tr>
+          <tr>
+            <td><strong><code>agent-articles</code></strong></td>
+            <td><em>Aucune (investigation)</em></td>
+            <td><em>Aucune</em></td>
+            <td style="text-align: center; font-weight: 700;">0</td>
+            <td>Aucune</td>
+          </tr>
+          <tr>
+            <td><strong><code>agent-tendances</code></strong></td>
+            <td>Proposer commande (<code>--proposer</code>)</td>
+            <td>Commander (souveraineté humaine)</td>
+            <td style="text-align: center; font-weight: 700;">10 suggestions</td>
+            <td>Aucune</td>
+          </tr>
+          <tr>
+            <td><strong><code>agent-audit-stock</code></strong></td>
+            <td><em>Aucune (diagnostic)</em></td>
+            <td><em>Aucune</em></td>
+            <td style="text-align: center; font-weight: 700;">0</td>
+            <td>Aucune</td>
+          </tr>
+          <tr style="background: #FFF5F5;">
+            <td><strong style="color: var(--brand-red);">Plafond Global Brigade</strong></td>
+            <td colspan="2"><strong>Cumul maximal d'actions sensibles autorisées par jour</strong></td>
+            <td style="text-align: center; font-weight: 900; color: var(--brand-red);">20 max</td>
+            <td>Verrou de sécurité absolu</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. La Sentinelle Passive Tri-Événements (0 Token en Veille)</h2>
+      <p>
+        Pour garantir une réactivité immédiate sans consommation de ressources, le système s'appuie sur une sentinelle passive locale (<code>moteur/surveille-mail-message-comptage.py</code>). Cette sentinelle opère en écoute permanente sans appel API externe :
+      </p>
+      <ul>
+        <li><strong>Événement 1 (Courrier entrant) :</strong> Détection instantanée d'un courriel avec pièces jointes sur la boîte IMAP du rayon. Réveil de l'Agent Courrier et de l'Agent Données.</li>
+        <li><strong>Événement 2 (Message du rayon) :</strong> Détection d'un nouveau message saisi par le chef de rayon dans <code>donnees/messages.jsonl</code>. Réveil immédiat de l'Agent Rayon pour analyse et réponse.</li>
+        <li><strong>Événement 3 (Comptage chambre froide) :</strong> Détection d'un inventaire transmis depuis <code>app/compter.html</code> dans <code>donnees/faits/AAAA.jsonl</code>. Réveil immédiat de l'Agent Audit Stock pour analyse des écarts.</li>
+      </ul>
+      <p>
+        Dès le traitement achevé et certifié par l'Agent Contrôle, la sentinelle se remet immédiatement en veille passive, assurant une disponibilité 24h/24 sans dérive de charge.
+      </p>
+
+      <div class="page-nav-bar">
+        <div>
+          <a href="./2.1 - Profils utilisateurs et permissions.html" class="btn-action">&larr; 2.1 Profils utilisateurs</a>
+        </div>
+        <div>
+          <a href="../3 - Concepts metier fondamentaux/3.1 - Typologie des produits et référentiel article.html" class="btn-action btn-red">3.1 Typologie produits &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function filterNav() {
+      const q = document.getElementById('docSearch').value.toLowerCase();
+      const items = document.querySelectorAll('.nav-item');
+      items.forEach(function(item) {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

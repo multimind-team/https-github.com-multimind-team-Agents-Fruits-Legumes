@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Plaquette de Présentation — L'Assistant Quotidien du Rayon Fruits & Légumes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600;700;800&family=Red+Hat+Text:wght@400;500;600;700&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Red Hat Text', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #262626;
+    background: #e5e5e5;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    background: #ffffff;
+    margin: 0 auto 10px auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12mm 15mm 10mm 15mm;
+  }
+
+  @media print {
+    body {
+      background: transparent;
+    }
+    .page {
+      margin: 0;
+    }
+  }
+
+  :root {
+    --mousq-violine: #511227;
+    --mousq-rouge-cavalier: #82072a;
+    --mousq-rouge-vif: #ff2822;
+    --mousq-foret: #00674f;
+    --mousq-bourgeon: #8ec08c;
+    --mousq-ble: #e2d3bf;
+    --mousq-ble-clair: #f5f1ec;
+    --mousq-sable: #c8b39f;
+    --mousq-sable-clair: #f6f3ef;
+    --mousq-blanc: #ffffff;
+    --mousq-texte: #262626;
+    --mousq-gris-moyen: #595959;
+    --mousq-gris-doux: #8a8a8a;
+    --radius-sm: 6px;
+    --radius: 10px;
+    --radius-lg: 14px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Proza Libre', Georgia, serif;
+    font-weight: 700;
+    margin: 0;
+    color: var(--mousq-violine);
+    line-height: 1.2;
+  }
+
+  .header-band {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--mousq-rouge-cavalier);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+  .header-band .rubrique {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--mousq-rouge-cavalier);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-band .titre-projet {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--mousq-gris-moyen);
+  }
+
+  .footer-band {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--mousq-ble);
+    padding-top: 8px;
+    font-size: 10px;
+    color: var(--mousq-gris-doux);
+    margin-top: 6px;
+  }
+  .footer-band strong {
+    color: var(--mousq-violine);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+  .badge-rouge { background: var(--mousq-rouge-cavalier); color: #ffffff; }
+  .badge-vert { background: var(--mousq-foret); color: #ffffff; }
+  .badge-sable { background: var(--mousq-ble-clair); color: var(--mousq-violine); border: 1px solid var(--mousq-ble); }
+
+  .card {
+    background: #ffffff;
+    border: 1px solid var(--mousq-ble);
+    border-radius: var(--radius);
+    padding: 11px 13px;
+  }
+  .card-creme {
+    background: var(--mousq-ble-clair);
+    border: 1px solid var(--mousq-ble);
+    border-radius: var(--radius);
+    padding: 11px 13px;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+  /* =========================================================================
+     PAGE 1 : COUVERTURE
+     ========================================================================= */
+  .hero-header {
+    border-left: 6px solid var(--mousq-rouge-vif);
+    padding-left: 14px;
+    margin-bottom: 14px;
+  }
+  .hero-sur-titre {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--mousq-rouge-cavalier);
+    margin-bottom: 4px;
+  }
+  .hero-titre {
+    font-size: 27px;
+    color: var(--mousq-violine);
+    font-family: 'Proza Libre', Georgia, serif;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .hero-sous-titre {
+    font-size: 14px;
+    color: var(--mousq-gris-moyen);
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .intro-direction {
+    background: var(--mousq-ble-clair);
+    border-left: 4px solid var(--mousq-rouge-cavalier);
+    padding: 13px 15px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin-bottom: 14px;
+  }
+  .intro-direction h3 {
+    font-size: 13.5px;
+    color: var(--mousq-violine);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .intro-direction p {
+    margin: 0;
+    font-size: 12px;
+    color: #333333;
+    line-height: 1.45;
+  }
+
+  .kpi-card {
+    background: #ffffff;
+    border: 1.5px solid var(--mousq-ble);
+    border-radius: var(--radius);
+    padding: 11px 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(81, 18, 39, 0.04);
+  }
+  .kpi-card .valeur {
+    font-family: 'Proza Libre', Georgia, serif;
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--mousq-violine);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-card .libelle {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--mousq-rouge-cavalier);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 3px;
+  }
+  .kpi-card .detail {
+    font-size: 10px;
+    color: var(--mousq-gris-moyen);
+    line-height: 1.25;
+  }
+
+  .pilier-card {
+    background: #ffffff;
+    border: 1px solid var(--mousq-ble);
+    border-radius: var(--radius);
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .pilier-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
+  .pilier-content h4 { font-size: 12.5px; color: var(--mousq-violine); margin-bottom: 3px; }
+  .pilier-content p { margin: 0; font-size: 11.5px; color: var(--mousq-gris-moyen); line-height: 1.35; }
+
+  /* =========================================================================
+     PAGE 2 : LE CASSE-TÊTE & LE CALCUL
+     ========================================================================= */
+  .schema-box {
+    width: 100%;
+    margin: 6px 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--mousq-ble);
+    background: #ffffff;
+  }
+  .schema-box img { width: 100%; display: block; }
+
+  /* =========================================================================
+     PAGE 3 : ERGONOMIE TERRAIN & CAPTURES
+     ========================================================================= */
+  .mockups-row {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    margin: 8px 0;
+  }
+  .mockup-item {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid var(--mousq-ble);
+    border-radius: var(--radius);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .mockup-item .screen-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--mousq-violine);
+    margin-bottom: 3px;
+    text-align: center;
+  }
+  .mockup-item .screen-desc {
+    font-size: 10px;
+    color: var(--mousq-gris-moyen);
+    line-height: 1.25;
+    margin-bottom: 6px;
+    text-align: center;
+    min-height: 25px;
+  }
+  .mockup-item .phone-frame {
+    flex: 1;
+    border-radius: 12px;
+    border: 3px solid #240a14;
+    background: #15050a;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.5);
+  }
+  .mockup-item .phone-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #15050a;
+  }
+
+  /* =========================================================================
+     PAGE 4 : MODE D'EMPLOI
+     ========================================================================= */
+  .etape-bloc {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    background: #ffffff;
+    border: 1px solid var(--mousq-ble);
+    margin-bottom: 7px;
+  }
+  .etape-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--mousq-violine);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .etape-corps { flex: 1; }
+  .etape-corps h4 {
+    font-size: 12.5px;
+    color: var(--mousq-violine);
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .etape-corps .heure {
+    font-size: 10.5px;
+    color: var(--mousq-rouge-cavalier);
+    font-weight: 700;
+  }
+  .etape-corps p {
+    margin: 0;
+    font-size: 11px;
+    color: var(--mousq-gris-moyen);
+    line-height: 1.35;
+  }
+
+  /* =========================================================================
+     PAGE 5 : SÉCURITÉ & BILAN
+     ========================================================================= */
+  .table-bilan {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    margin: 8px 0;
+  }
+  .table-bilan th {
+    background: var(--mousq-violine);
+    color: #ffffff;
+    text-align: left;
+    padding: 8px 10px;
+    font-family: 'Proza Libre', Georgia, serif;
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+  .table-bilan td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--mousq-ble);
+    color: var(--mousq-texte);
+  }
+  .table-bilan tr:nth-child(even) td { background: var(--mousq-sable-clair); }
+  .table-bilan .avant { color: var(--mousq-rouge-cavalier); font-weight: 500; }
+  .table-bilan .apres { color: var(--mousq-foret); font-weight: 700; }
+
+  .encart-conclusion {
+    background: linear-gradient(135deg, #fdfbf7 0%, var(--mousq-ble-clair) 100%);
+    border: 1.5px solid var(--mousq-ble);
+    border-left: 5px solid var(--mousq-rouge-cavalier);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-top: 6px;
+  }
+  .encart-conclusion h3 { font-size: 13.5px; color: var(--mousq-violine); margin-bottom: 4px; }
+  .encart-conclusion p { margin: 0 0 6px 0; font-size: 11.5px; color: #333333; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<!-- ======================================================================= -->
+<!-- PAGE 1 : COUVERTURE & SYNTHÈSE DIRECTION                                -->
+<!-- ======================================================================= -->
+<div class="page page-1">
+  <div>
+    <!-- Bandeau officiel supérieur -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size:22px;">🍎</span>
+        <span style="font-family:'Proza Libre',serif; font-weight:700; font-size:15px; color:var(--mousq-violine); letter-spacing:0.02em;">LE RAYON FRUITS & LÉGUMES</span>
+      </div>
+      <span class="badge badge-sable">DOSSIER OPÉRATIONNEL & STRATÉGIQUE</span>
+    </div>
+
+    <!-- Titre et sous-titre de couverture -->
+    <div class="hero-header">
+      <div class="hero-sur-titre">Application interne d'aide à la décision</div>
+      <h1 class="hero-titre">L'Assistant Quotidien de Commande</h1>
+      <div class="hero-sous-titre">
+        Anticiper la demande réelle, éliminer les ruptures et protéger nos marges chaque matin avant 9h30.
+      </div>
+    </div>
+
+    <!-- Le mot pour le chef d'entreprise / patron -->
+    <div class="intro-direction">
+      <h3>Pourquoi cette application a été créée pour notre magasin</h3>
+      <p>
+        <strong>Monsieur,</strong> le rayon Fruits & Légumes est le cœur vivant de notre magasin : c'est le premier rayon découvert par nos clients, celui qui forge l'image de fraîcheur de notre point de vente. Mais c'est aussi le rayon le plus risqué : avec des denrées ultra-périssables et une <strong>clôture d'envoi stricte à 9h30 sans aucun rattrapage</strong>, la moindre sur-commande génère de la casse (perte sèche), et le moindre manque vide les étals l'après-midi.
+      </p>
+      <p style="margin-top:6px;">
+        Pour sécuriser cette étape décisive sans dépendre de simples intuitions, <strong>j'ai conçu une application sur-mesure</strong>, parfaitement calquée sur nos méthodes et nos fournisseurs. Chaque nuit, elle traite nos ventes réelles, intègre la météo et le calendrier, et prépare une proposition rigoureuse que le responsable de rayon valide en quelques minutes.
+      </p>
+    </div>
+
+    <!-- Chiffres clés du rayon -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:var(--mousq-violine); margin-bottom:6px;">
+        Les chiffres clés gérés quotidiennement par l'outil
+      </div>
+      <div class="grid-4">
+        <div class="kpi-card">
+          <div class="valeur">~600</div>
+          <div class="libelle">Articles Actifs</div>
+          <div class="detail">Analysés article par article chaque nuit</div>
+        </div>
+        <div class="kpi-card">
+          <div class="valeur" style="color:var(--mousq-rouge-cavalier);">09h30</div>
+          <div class="libelle">Heure Limite</div>
+          <div class="detail">Commande prête dès 08h45 sans stress</div>
+        </div>
+        <div class="kpi-card">
+          <div class="valeur" style="color:var(--mousq-foret);">37,7 %</div>
+          <div class="libelle">Marge Brute</div>
+          <div class="detail">Calculée et suivie en direct ligne par ligne</div>
+        </div>
+        <div class="kpi-card">
+          <div class="valeur">> 1 h</div>
+          <div class="libelle">Temps Gagné</div>
+          <div class="detail">Réinvesti chaque matin en surface de vente</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Les 3 principes fondateurs -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em; color:var(--mousq-violine); margin-bottom:6px;">
+        Trois engagements qui font la force de la méthode
+      </div>
+      <div class="grid-3">
+        <div class="pilier-card">
+          <div class="pilier-icon">🌾</div>
+          <div class="pilier-content">
+            <h4>Le bon sens paysan</h4>
+            <p>Pas de théorie déconnectée : l'outil mesure le stock en réserve une fois le rayon garni, et ajuste selon la météo et la saison.</p>
+          </div>
+        </div>
+        <div class="pilier-card">
+          <div class="pilier-icon">👤</div>
+          <div class="pilier-content">
+            <h4>Le responsable décide</h4>
+            <p>L'ordinateur propose, l'humain tranche. Le responsable de rayon garde 100 % du contrôle et ajuste en un geste.</p>
+          </div>
+        </div>
+        <div class="pilier-card">
+          <div class="pilier-icon">🔒</div>
+          <div class="pilier-content">
+            <h4>Sécurité sans faille</h4>
+            <p>Rien ne s'efface, les doublons de promo sont bloqués, et un calcul de secours garantit une commande prête quoi qu'il arrive.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Encart de synthèse basse Page 1 -->
+    <div style="background:var(--mousq-ble-clair); border:1px solid var(--mousq-ble); border-radius:var(--radius); padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:18px;">💡</span>
+        <div style="font-size:11px; color:#333333;">
+          <strong>Une solution clé en main, prête à l'emploi :</strong> Développée en toute indépendance, opérationnelle sur notre matériel existant, sans coût récurrent de licence ni abonnement informatique.
+        </div>
+      </div>
+      <span class="badge badge-vert" style="white-space:nowrap; margin-left:12px;">OPÉRATIONNEL IMMÉDIAT</span>
+    </div>
+  </div>
+
+  <div class="footer-band">
+    <div><strong>Document de présentation interne</strong> · Projet d'optimisation du Rayon F&L</div>
+    <div>Page <strong>1</strong> / 5</div>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- PAGE 2 : LE DÉFI DU RAYON & LE MOTEUR DE CALCUL                         -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div>
+    <div class="header-band">
+      <div class="rubrique"><span>📊</span> Les Fondations Métier</div>
+      <div class="titre-projet">L'Assistant Rayon Fruits & Légumes</div>
+    </div>
+
+    <div style="margin-bottom:8px;">
+      <h2>Le Défi Quotidien & Le Moteur de Calcul</h2>
+      <p style="margin:2px 0 6px 0; color:var(--mousq-gris-moyen); font-size:11.5px;">
+        Comprendre pourquoi la commande de fruits et légumes ne ressemble à aucun autre rayon et comment l'outil sécurise chaque décision.
+      </p>
+    </div>
+
+    <!-- Le double risque -->
+    <div class="grid-2" style="margin-bottom:8px;">
+      <div class="card" style="border-left:4px solid var(--mousq-rouge-cavalier); background:#fffafb;">
+        <h4 style="color:var(--mousq-rouge-cavalier); font-size:12px; margin-bottom:3px;">⚠️ Le risque de la sur-commande</h4>
+        <p style="margin:0; font-size:11px; color:#404040;">
+          Commander 2 colis de trop sur des fraises ou des salades, c'est la certitude de jeter deux jours plus tard. La casse détruit directement la marge du magasin et décourage le personnel.
+        </p>
+      </div>
+      <div class="card" style="border-left:4px solid #d97706; background:#fffdfa;">
+        <h4 style="color:#b45309; font-size:12px; margin-bottom:3px;">⚠️ Le piège de la sous-commande</h4>
+        <p style="margin:0; font-size:11px; color:#404040;">
+          Sous-estimer une journée de forte chaleur, c'est se retrouver en rupture de pastèques et de melons dès 15h. Le client est mécontent et le chiffre d'affaires est définitivement perdu.
+        </p>
+      </div>
+    </div>
+
+    <!-- Schéma du calcul SVG -->
+    <div style="margin-bottom:8px;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--mousq-violine); margin-bottom:4px;">
+        1. Comment la juste quantité est calculée sans deviner
+      </div>
+      <div class="schema-box">
+        <img src="file:///C:/Users/user/Desktop/projets_IA/projets/preparation-commande/Documents/images/schema_calcul.svg" alt="Schéma du calcul quotidien">
+      </div>
+      <div class="grid-4" style="font-size:10px; color:var(--mousq-gris-moyen); margin-top:3px;">
+        <div><strong>Ventes réelles :</strong> moyenne sur ±21 jours à la même saison. Zéro prévision hors saison.</div>
+        <div><strong>Météo & calendrier :</strong> canicule (+7,6%), pluie (-9,9%), vacances de Noël (+16%), ponts fériés.</div>
+        <div><strong>Couverture casse :</strong> perte historique (~3%) intégrée pour tenir l'étal plein.</div>
+        <div><strong>Arrondi au colis :</strong> gestion automatique des conditionnements (pièces ou kg).</div>
+      </div>
+    </div>
+
+    <!-- La notion de Position SVG -->
+    <div>
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--mousq-violine); margin-bottom:4px;">
+        2. La notion de « Position » : la vraie mesure du terrain
+      </div>
+      <div class="schema-box">
+        <img src="file:///C:/Users/user/Desktop/projets_IA/projets/preparation-commande/Documents/images/schema_position.svg" alt="Comprendre la position">
+      </div>
+      <div style="background:var(--mousq-ble-clair); border-radius:var(--radius-sm); padding:7px 10px; font-size:10.5px; color:#333333; margin-top:3px;">
+        <strong>Pourquoi c'est infaillible :</strong> Les stocks théoriques informatiques sont toujours faux à cause de la casse et des oublis de caisse. Ici, on remplit d'abord l'étal à 100%. S'il reste de la marchandise au frais, la position est <strong>positive</strong> (+2). Si la réserve est vide et le rayon entamé, la position est <strong>négative</strong> (−3) : la commande augmente d'autant pour recompléter le rayon.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-band">
+    <div><strong>Document de présentation interne</strong> · Méthode & Calculs</div>
+    <div>Page <strong>2</strong> / 5</div>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- PAGE 3 : L'APPLICATION SUR LE TERRAIN (CAPTURES & ERGONOMIE)            -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div>
+    <div class="header-band">
+      <div class="rubrique"><span>📱</span> Ergonomie & Terrain</div>
+      <div class="titre-projet">L'Assistant Rayon Fruits & Légumes</div>
+    </div>
+
+    <div style="margin-bottom:6px;">
+      <h2>Un Outil Taillé pour le Terrain, pas pour un Bureau</h2>
+      <p style="margin:2px 0 6px 0; color:var(--mousq-gris-moyen); font-size:11.5px;">
+        Développé pour être utilisé debout sur smartphone, dans le froid de la réserve, avec les doigts mouillés ou des gants.
+      </p>
+    </div>
+
+    <!-- 3 colonnes avec les captures réelles de l'application -->
+    <div class="mockups-row">
+      <!-- Capture 1 : Commande -->
+      <div class="mockup-item">
+        <div class="screen-title">1. Préparer la commande</div>
+        <div class="screen-desc">Boutons géants + / −, fournisseur affiché, calcul de marge en direct.</div>
+        <div class="phone-frame">
+          <img src="file:///C:/Users/user/Desktop/projets_IA/projets/preparation-commande/Documents/images/ecran_commande.png" alt="Écran de commande">
+        </div>
+      </div>
+
+      <!-- Capture 2 : Comptage -->
+      <div class="mockup-item">
+        <div class="screen-title">2. Compter en chambre froide</div>
+        <div class="screen-desc">Pavé numérique tactile intégré : aucun clavier virtuel ne masque l'écran.</div>
+        <div class="phone-frame">
+          <img src="file:///C:/Users/user/Desktop/projets_IA/projets/preparation-commande/Documents/images/ecran_comptage.png" alt="Écran de comptage">
+        </div>
+      </div>
+
+      <!-- Capture 3 : Détail transparent -->
+      <div class="mockup-item">
+        <div class="screen-title">3. Transparence du calcul</div>
+        <div class="screen-desc">En 1 clic : historique réel, météo, stock déduit et marge commerciale.</div>
+        <div class="phone-frame">
+          <img src="file:///C:/Users/user/Desktop/projets_IA/projets/preparation-commande/Documents/images/ecran_detail.png" alt="Écran détail calcul">
+        </div>
+      </div>
+    </div>
+
+    <!-- Les points forts terrain -->
+    <div class="grid-3" style="margin-top:6px;">
+      <div class="card-creme">
+        <h4 style="font-size:11.5px; margin-bottom:2px; color:var(--mousq-violine);">🌙 Deux thèmes visuels</h4>
+        <p style="margin:0; font-size:10.5px; color:#404040;">
+          Un thème sombre adapté à la faible luminosité du matin en réserve pour éviter l'éblouissement, et un thème clair pour la journée.
+        </p>
+      </div>
+      <div class="card-creme">
+        <h4 style="font-size:11.5px; margin-bottom:2px; color:var(--mousq-violine);">📶 Fonctionne hors-réseau</h4>
+        <p style="margin:0; font-size:10.5px; color:#404040;">
+          Si le signal Wi-Fi ou 4G coupe dans la chambre froide, les comptages sont gardés en mémoire et synchronisés dès la sortie.
+        </p>
+      </div>
+      <div class="card-creme">
+        <h4 style="font-size:11.5px; margin-bottom:2px; color:var(--mousq-violine);">🔍 Zéro « boîte noire »</h4>
+        <p style="margin:0; font-size:10.5px; color:#404040;">
+          Chaque chiffre proposé est 100 % explicable. Le responsable de rayon comprend immédiatement le « pourquoi » de la quantité.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-band">
+    <div><strong>Document de présentation interne</strong> · Ergonomie & Écrans mobiles</div>
+    <div>Page <strong>3</strong> / 5</div>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- PAGE 4 : MODE D'EMPLOI QUOTIDIEN (PAS-À-PAS)                            -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div>
+    <div class="header-band">
+      <div class="rubrique"><span>📖</span> Guide Opératoire</div>
+      <div class="titre-projet">L'Assistant Rayon Fruits & Légumes</div>
+    </div>
+
+    <div style="margin-bottom:6px;">
+      <h2>Mode d'Emploi : La Matinée en 5 Étapes Simples</h2>
+      <p style="margin:2px 0 6px 0; color:var(--mousq-gris-moyen); font-size:11.5px;">
+        Un protocole fluide et naturel qui s'intègre parfaitement dans la routine matinale du magasin.
+      </p>
+    </div>
+
+    <!-- Timeline visuelle SVG -->
+    <div class="schema-box" style="margin-bottom:8px;">
+      <img src="file:///C:/Users/user/Desktop/projets_IA/projets/preparation-commande/Documents/images/schema_matinee.svg" alt="Timeline de la matinée">
+    </div>
+
+    <!-- Les 5 étapes détaillées -->
+    <div>
+      <div class="etape-bloc">
+        <div class="etape-num">1</div>
+        <div class="etape-corps">
+          <h4>06h30 — Rangement de la livraison & Remplissage du rayon <span class="heure">06h30 - 08h00</span></h4>
+          <p>
+            L'équipe réceptionne la livraison du jour et remplit les étals en priorité. Le surplus reste rangé au frais. Pendant ce temps, l'application a déjà intégré toute seule les ventes de la veille et les bordereaux de livraison reçus par mail.
+          </p>
+        </div>
+      </div>
+
+      <div class="etape-bloc">
+        <div class="etape-num">2</div>
+        <div class="etape-corps">
+          <h4>08h00 — Coup d'œil sur la « Note du Matin » <span class="heure">08h00 (2 minutes)</span></h4>
+          <p>
+            Sur son smartphone, le responsable ouvre l'accueil. Il lit le résumé rédigé en français simple : confirmation des flux reçus, alertes éventuelles sur les ruptures fournisseurs, ou rappel d'un jour férié approchant.
+          </p>
+        </div>
+      </div>
+
+      <div class="etape-bloc">
+        <div class="etape-num">3</div>
+        <div class="etape-corps">
+          <h4>08h20 — Pointage express des réserves sensibles <span class="heure">08h20 - 08h35 (5 à 10 min)</span></h4>
+          <p>
+            Dans la chambre froide, sur l'écran « Compter », l'application présente uniquement les articles nécessitant une vérification. Le responsable ajuste le chiffre au pavé tactile et valide. Aucun temps perdu à compter les articles évidents.
+          </p>
+        </div>
+      </div>
+
+      <div class="etape-bloc">
+        <div class="etape-num">4</div>
+        <div class="etape-corps">
+          <h4>08h45 — Revue de la proposition & Ajustement final <span class="heure">08h45 - 09h05 (15 min)</span></h4>
+          <p>
+            Sur l'écran « Préparer la commande », les quantités calculées s'affichent par famille. Le chef de rayon apporte sa touche commerciale : s'il souhaite monter une tête de gondole de concombres, il ajoute 2 colis d'un simple appui sur « + ».
+          </p>
+        </div>
+      </div>
+
+      <div class="etape-bloc">
+        <div class="etape-num">5</div>
+        <div class="etape-corps">
+          <h4>09h15 — Report et envoi officiel sans stress <span class="heure">09h15 - 09h25</span></h4>
+          <p>
+            Les quantités retenues sont reportées sur le terminal de commande habituel du magasin. À 9h20, la transmission est effectuée. La limite impérative de 9h30 est respectée avec une sérénité totale.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Traitement des cas particuliers -->
+    <div style="background:var(--mousq-ble-clair); border-radius:var(--radius); padding:8px 12px; margin-top:5px;">
+      <div style="font-weight:700; font-size:11px; color:var(--mousq-violine); margin-bottom:2px;">
+        💡 Gestion automatique des cas particuliers :
+      </div>
+      <div style="font-size:10.5px; color:#404040; line-height:1.35;">
+        • <strong>Promotions nationales :</strong> précommandées à l'avance, l'outil les bloque automatiquement à zéro pour éviter tout doublon.<br>
+        • <strong>Producteurs locaux directs :</strong> saisie guidée de la facture papier en 30 secondes pour mettre à jour les stocks réels.<br>
+        • <strong>Communication interne :</strong> une zone de message permet de consigner les événements du rayon (« melons mis en avant »).
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-band">
+    <div><strong>Document de présentation interne</strong> · Mode d'emploi pas-à-pas</div>
+    <div>Page <strong>4</strong> / 5</div>
+  </div>
+</div>
+
+
+<!-- ======================================================================= -->
+<!-- PAGE 5 : SÉCURITÉ, RENTABILITÉ & BILAN DIRECTION                        -->
+<!-- ======================================================================= -->
+<div class="page">
+  <div>
+    <div class="header-band">
+      <div class="rubrique"><span>🛡️</span> Sécurité & Rentabilité</div>
+      <div class="titre-projet">L'Assistant Rayon Fruits & Légumes</div>
+    </div>
+
+    <div style="margin-bottom:6px;">
+      <h2>Sécurité Infaillible & Bilan pour le Magasin</h2>
+      <p style="margin:2px 0 6px 0; color:var(--mousq-gris-moyen); font-size:11.5px;">
+        Une architecture pensée pour ne jamais bloquer le magasin et garantir un retour sur investissement immédiat.
+      </p>
+    </div>
+
+    <!-- Schéma comparatif SVG -->
+    <div class="schema-box" style="margin-bottom:8px;">
+      <img src="file:///C:/Users/user/Desktop/projets_IA/projets/preparation-commande/Documents/images/schema_comparatif.svg" alt="Comparatif Avant / Après">
+    </div>
+
+    <!-- Les 4 piliers de sécurité technique -->
+    <div class="grid-2" style="margin-bottom:8px;">
+      <div class="card">
+        <h4 style="font-size:11.5px; color:var(--mousq-violine); margin-bottom:2px;">🛡️ Filet de sécurité automatique</h4>
+        <p style="margin:0; font-size:10.5px; color:var(--mousq-gris-moyen);">
+          Même en cas de panne réseau ou d'imprévu, un calcul autonome tourne en tâche de fond. Une proposition sûre est toujours prête avant 9h30.
+        </p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:11.5px; color:var(--mousq-violine); margin-bottom:2px;">📜 Mémoire infalsifiable</h4>
+        <p style="margin:0; font-size:10.5px; color:var(--mousq-gris-moyen);">
+          Rien ne s'efface jamais. Chaque décision, livraison ou correction s'ajoute à l'historique sans supprimer le passé. Traçabilité totale.
+        </p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:11.5px; color:var(--mousq-violine); margin-bottom:2px;">🔎 Détecteur d'anomalies</h4>
+        <p style="margin:0; font-size:10.5px; color:var(--mousq-gris-moyen);">
+          Repère les codes jumeaux (produits livrés sous un code et vendus sous un autre), colisages anormaux et articles masqués qui continuent de se vendre.
+        </p>
+      </div>
+      <div class="card">
+        <h4 style="font-size:11.5px; color:var(--mousq-violine); margin-bottom:2px;">💼 Souveraineté & Légèreté</h4>
+        <p style="margin:0; font-size:10.5px; color:var(--mousq-gris-moyen);">
+          Tourne directement sur le matériel existant du magasin. Aucun abonnement externe, aucune dépendance logicielle coûteuse.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tableau de synthèse économique -->
+    <table class="table-bilan">
+      <thead>
+        <tr>
+          <th>Critère stratégique</th>
+          <th>Situation antérieure (manuelle)</th>
+          <th>Avec l'Assistant Rayon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Temps de commande</strong></td>
+          <td class="avant">1h30 à 2h d'estimation sous pression</td>
+          <td class="apres">15 à 20 minutes de relecture sereine</td>
+        </tr>
+        <tr>
+          <td><strong>Maîtrise de la casse</strong></td>
+          <td class="avant">Pertes aléatoires lors des à-coups météo</td>
+          <td class="apres">Taux de casse stabilisé autour de 3 %</td>
+        </tr>
+        <tr>
+          <td><strong>Ruptures en rayon</strong></td>
+          <td class="avant">Rayons dégarnis l'après-midi en période d'affluence</td>
+          <td class="apres">Anticipation continue : étals toujours marchands</td>
+        </tr>
+        <tr>
+          <td><strong>Protection de la marge</strong></td>
+          <td class="avant">Constatée a posteriori sur la facture</td>
+          <td class="apres">Calculée en direct dès la commande (~37,7 %)</td>
+        </tr>
+        <tr>
+          <td><strong>Continuité d'activité</strong></td>
+          <td class="avant">Savoir-faire fragile si le responsable est absent</td>
+          <td class="apres">Remplacement aisé : l'outil guide la décision</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Conclusion & Appel à l'action pour le patron -->
+    <div class="encart-conclusion">
+      <h3>Conclusion & Proposition à la Direction</h3>
+      <p>
+        Cette application démontre qu'avec des outils pragmatiques développés au plus près du terrain, notre magasin peut conjuguer <strong>excellence marchande, réduction du gaspillage et rentabilité financière</strong>.
+      </p>
+      <p style="margin:0; font-weight:600; color:var(--mousq-violine);">
+        👉 Je serais très heureux de vous faire une démonstration en direct sur le terrain dès demain matin pour vous faire constater son efficacité concrète.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-band">
+    <div><strong>Document de présentation interne</strong> · Bilan & Rentabilité</div>
+    <div>Page <strong>5</strong> / 5</div>
+  </div>
+</div>
+
+</body>
+</html>

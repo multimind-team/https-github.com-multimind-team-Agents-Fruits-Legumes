@@ -1,0 +1,32 @@
+{
+ "date": "2026-09-11",
+ "ecrite_le": "2026-09-13T16:05:16",
+ "ecrite_par": "constats automatiques (l'agent orchestrateur n'a pas encore relu)",
+ "entrees": [
+  {
+   "heure": "16h05",
+   "texte": "**4 article(s) masqués ont reçu une livraison** : PDT FRITE 2.5KG ITM (25 colis), TOMATE CERISE RONDE 250G SOUVE (12 colis), TOMATE CERISE DUO 250G (4 colis) et 1 autre(s).",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h05",
+   "texte": "5 article(s) actifs n'ont aucune position mesurée : CAROTTE SACHET 1.5KG ITM, ECHALOTE TRADI FILET 250G ITM, LAITUE SUCRINE X6 BARQUETTE, MELANGE JEUNES POUSSES 125G, PDT SALADE MICRO ONDE 500G. Leur commande part d'une estimation.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h05",
+   "texte": "**Sur-stockage récurrent détecté** sur 2 article(s) : CAROTTE SACHET 1.5KG ITM (8 -> 6 colis), OIGNON JAUNE FILET 1KG ITM (6 -> 5 colis). Des réductions prudentes sont suggérées sur l'écran de commande.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h05",
+   "texte": "**Hausse brutale du prix d'achat** sur 1 article(s) ce matin : MELON CHARENTAIS (+47%). Vérifier le prix de vente en caisse.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h05",
+   "texte": "Données du 11/09 intégrées : les ventes (178 lignes), la livraison (87 lignes), la casse (32 lignes).",
+   "gravite": "info"
+  }
+ ]
+}

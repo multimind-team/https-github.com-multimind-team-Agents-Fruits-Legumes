@@ -1,0 +1,285 @@
+{
+ "_lisez_moi": "Statut d'ouverture des jours feries variables (pas les 3 fermetures fixes, voir calendrier.py). null = pas encore confirme par le responsable de rayon. journee-complete / demi-journee / ferme. Ne jamais deviner : demander.",
+ "jours": {
+  "2026-04-06": {
+   "nom": "Lundi de Pâques",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2026-05-08": {
+   "nom": "Victoire 1945",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2026-05-14": {
+   "nom": "Ascension",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2026-05-25": {
+   "nom": "Lundi de Pentecôte",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2026-07-14": {
+   "nom": "Fête nationale",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2026-08-15": {
+   "nom": "Assomption",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2026-11-01": {
+   "nom": "Toussaint",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2026-11-11": {
+   "nom": "Armistice 1918",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-03-29": {
+   "nom": "Lundi de Pâques",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-05-08": {
+   "nom": "Victoire 1945",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-05-06": {
+   "nom": "Ascension",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-05-17": {
+   "nom": "Lundi de Pentecôte",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-07-14": {
+   "nom": "Fête nationale",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-08-15": {
+   "nom": "Assomption",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-11-01": {
+   "nom": "Toussaint",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2027-11-11": {
+   "nom": "Armistice 1918",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-04-17": {
+   "nom": "Lundi de Pâques",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-05-08": {
+   "nom": "Victoire 1945",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-05-25": {
+   "nom": "Ascension",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-06-05": {
+   "nom": "Lundi de Pentecôte",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-07-14": {
+   "nom": "Fête nationale",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-08-15": {
+   "nom": "Assomption",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-11-01": {
+   "nom": "Toussaint",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2028-11-11": {
+   "nom": "Armistice 1918",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-04-01": {
+   "nom": "Lundi de Pâques",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-05-08": {
+   "nom": "Victoire 1945",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-05-09": {
+   "nom": "Ascension",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-05-20": {
+   "nom": "Lundi de Pentecôte",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-07-14": {
+   "nom": "Fête nationale",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-08-15": {
+   "nom": "Assomption",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-11-01": {
+   "nom": "Toussaint",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2024-11-11": {
+   "nom": "Armistice 1918",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2025-04-21": {
+   "nom": "Lundi de Pâques",
+   "statut": "ferme",
+   "confirme_par": "responsable-rayon",
+   "confirme_le": "2026-09-04",
+   "motif": "Confirme par le responsable de rayon le 4 septembre 2026 : 2 unites vendues seulement sur toute la journee (calibrer-vacances.py l'avait deja repere et ecarte comme fermeture probable) - le magasin etait bien ferme ce jour-la."
+  },
+  "2025-05-08": {
+   "nom": "Victoire 1945",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2025-05-29": {
+   "nom": "Ascension",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2025-06-09": {
+   "nom": "Lundi de Pentecôte",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2025-07-14": {
+   "nom": "Fête nationale",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2025-08-15": {
+   "nom": "Assomption",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2025-11-01": {
+   "nom": "Toussaint",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  },
+  "2025-11-11": {
+   "nom": "Armistice 1918",
+   "statut": null,
+   "confirme_par": null,
+   "confirme_le": null,
+   "motif": null
+  }
+ }
+}

@@ -1,0 +1,184 @@
+{
+ "_lisez_moi": "Jours feries (calcules, jamais en panne) et vacances scolaires de la zone C (ministere). Sert a expliquer pourquoi une journee ne ressemble pas aux autres.",
+ "zone": "Zone C",
+ "academie": "Toulouse",
+ "mis_a_jour": "2026-09-03T13:46:04",
+ "feries": {
+  "2024-01-01": "Jour de l'an",
+  "2024-04-01": "Lundi de Pâques",
+  "2024-05-01": "Fête du travail",
+  "2024-05-08": "Victoire 1945",
+  "2024-05-09": "Ascension",
+  "2024-05-20": "Lundi de Pentecôte",
+  "2024-07-14": "Fête nationale",
+  "2024-08-15": "Assomption",
+  "2024-11-01": "Toussaint",
+  "2024-11-11": "Armistice 1918",
+  "2024-12-25": "Noël",
+  "2025-01-01": "Jour de l'an",
+  "2025-04-21": "Lundi de Pâques",
+  "2025-05-01": "Fête du travail",
+  "2025-05-08": "Victoire 1945",
+  "2025-05-29": "Ascension",
+  "2025-06-09": "Lundi de Pentecôte",
+  "2025-07-14": "Fête nationale",
+  "2025-08-15": "Assomption",
+  "2025-11-01": "Toussaint",
+  "2025-11-11": "Armistice 1918",
+  "2025-12-25": "Noël",
+  "2026-01-01": "Jour de l'an",
+  "2026-04-06": "Lundi de Pâques",
+  "2026-05-01": "Fête du travail",
+  "2026-05-08": "Victoire 1945",
+  "2026-05-14": "Ascension",
+  "2026-05-25": "Lundi de Pentecôte",
+  "2026-07-14": "Fête nationale",
+  "2026-08-15": "Assomption",
+  "2026-11-01": "Toussaint",
+  "2026-11-11": "Armistice 1918",
+  "2026-12-25": "Noël",
+  "2027-01-01": "Jour de l'an",
+  "2027-03-29": "Lundi de Pâques",
+  "2027-05-01": "Fête du travail",
+  "2027-05-06": "Ascension",
+  "2027-05-08": "Victoire 1945",
+  "2027-05-17": "Lundi de Pentecôte",
+  "2027-07-14": "Fête nationale",
+  "2027-08-15": "Assomption",
+  "2027-11-01": "Toussaint",
+  "2027-11-11": "Armistice 1918",
+  "2027-12-25": "Noël"
+ },
+ "jours_de_fermeture": [
+  "01-01",
+  "05-01",
+  "12-25"
+ ],
+ "vacances": [
+  {
+   "nom": "Vacances d'Hiver",
+   "debut": "2024-02-09",
+   "fin": "2024-02-25"
+  },
+  {
+   "nom": "Vacances de Printemps",
+   "debut": "2024-04-05",
+   "fin": "2024-04-21"
+  },
+  {
+   "nom": "Pont de l'Ascension",
+   "debut": "2024-05-08",
+   "fin": "2024-05-12"
+  },
+  {
+   "nom": "Vacances d'Été",
+   "debut": "2024-07-05",
+   "fin": "2024-09-01"
+  },
+  {
+   "nom": "Vacances d'Été",
+   "debut": "2024-07-05",
+   "fin": "2024-08-29"
+  },
+  {
+   "nom": "Vacances de la Toussaint",
+   "debut": "2024-10-18",
+   "fin": "2024-11-03"
+  },
+  {
+   "nom": "Vacances de Noël",
+   "debut": "2024-12-20",
+   "fin": "2025-01-05"
+  },
+  {
+   "nom": "Vacances d'Hiver",
+   "debut": "2025-02-14",
+   "fin": "2025-03-02"
+  },
+  {
+   "nom": "Vacances de Printemps",
+   "debut": "2025-04-11",
+   "fin": "2025-04-27"
+  },
+  {
+   "nom": "Pont de l'Ascension",
+   "debut": "2025-05-28",
+   "fin": "2025-06-01"
+  },
+  {
+   "nom": "Vacances d'Été",
+   "debut": "2025-07-04",
+   "fin": "2025-08-31"
+  },
+  {
+   "nom": "Vacances d'Été",
+   "debut": "2025-07-04",
+   "fin": "2025-08-28"
+  },
+  {
+   "nom": "Vacances de la Toussaint",
+   "debut": "2025-10-17",
+   "fin": "2025-11-02"
+  },
+  {
+   "nom": "Vacances de Noël",
+   "debut": "2025-12-19",
+   "fin": "2026-01-04"
+  },
+  {
+   "nom": "Vacances d'Hiver",
+   "debut": "2026-02-20",
+   "fin": "2026-03-08"
+  },
+  {
+   "nom": "Vacances de Printemps",
+   "debut": "2026-04-17",
+   "fin": "2026-05-03"
+  },
+  {
+   "nom": "Pont de l'Ascension",
+   "debut": "2026-05-13",
+   "fin": "2026-05-17"
+  },
+  {
+   "nom": "Vacances d'Été",
+   "debut": "2026-07-03",
+   "fin": "2026-08-30"
+  },
+  {
+   "nom": "Vacances d'Été",
+   "debut": "2026-07-03",
+   "fin": "2026-08-31"
+  },
+  {
+   "nom": "Vacances de la Toussaint",
+   "debut": "2026-10-16",
+   "fin": "2026-11-01"
+  },
+  {
+   "nom": "Vacances de Noël",
+   "debut": "2026-12-18",
+   "fin": "2027-01-03"
+  },
+  {
+   "nom": "Vacances d'Hiver",
+   "debut": "2027-02-05",
+   "fin": "2027-02-21"
+  },
+  {
+   "nom": "Vacances de Printemps",
+   "debut": "2027-04-02",
+   "fin": "2027-04-18"
+  },
+  {
+   "nom": "Pont de l'Ascension",
+   "debut": "2027-05-06",
+   "fin": "2027-05-06"
+  },
+  {
+   "nom": "Début des Vacances d'Été",
+   "debut": "2027-07-02",
+   "fin": "2027-07-02"
+  }
+ ]
+}

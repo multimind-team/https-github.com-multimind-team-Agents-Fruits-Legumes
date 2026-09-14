@@ -1,0 +1,4866 @@
+{
+ "_lisez_moi": "Ce qu'on peut commander AUJOURD'HUI, dans l'ordre de la tablette. Refait a chaque cadencier recu : un article absent aujourd'hui peut revenir demain, il n'est jamais masque pour autant.",
+ "date_cadencier": "2026-09-12",
+ "fichier": "cadencier webtelevente 12.09.2026.xls",
+ "lu_le": "2026-09-13T14:12:24",
+ "rapprochement": {
+  "surs": 224,
+  "ambigus": 1,
+  "inconnus": 91
+ },
+ "articles": [
+  {
+   "nom": "ANANAS PIECE",
+   "rang": 0,
+   "offres": [
+    {
+     "libelle": "ANANAS SWEET COSTA RICA A8 C 1 PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 1.850000023841858,
+     "prix_vente_conseille": 2.890000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004029",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AVOCAT 3 FRUITS PETIT PRIX",
+   "rang": 1,
+   "offres": [
+    {
+     "libelle": "PNM AVOCAT HASS KENYA 134/147G FILET 3 PIECES PRICE PETIT PRIX",
+     "par_colis": 12.0,
+     "prix_achat": 1.7999999523162842,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087535011",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AVOCAT AFFINE PIECE",
+   "rang": 2,
+   "offres": [
+    {
+     "libelle": "AVOCAT HASS KENYA 184/217G C 1 PIECE PRECONISE AFFINE",
+     "par_colis": 20.0,
+     "prix_achat": 0.9599999785423279,
+     "prix_vente_conseille": 1.3899999856948853
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004222",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AVOCAT BABY 4 FR",
+   "rang": 3,
+   "offres": [
+    {
+     "libelle": "AVOCAT HASS AFRIQUE DU SUD 123/137G C 1 BARQUETTE 2 PIECES",
+     "par_colis": 8.0,
+     "prix_achat": 2.1500000953674316,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "AVOCAT MUR A POINT 2 FRUITS",
+   "rang": 4,
+   "offres": [
+    {
+     "libelle": "AVOCAT HASS ZIMBABWE 184/217G C 1 BARQUETTE 2 PIECES PRECONISE",
+     "par_colis": 6.0,
+     "prix_achat": 2.5899999141693115,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087535009",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "KIT GUACAMOLE",
+   "rang": 5,
+   "offres": [
+    {
+     "libelle": "AVOCAT KIT GUACAMOLE C 1 BARQUETTE 400 g PRECONISE",
+     "par_colis": 6.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "BANANE PIECE ANTILLES FRAN",
+   "rang": 6,
+   "offres": [
+    {
+     "libelle": "BANANE CAVENDISH FRANCE 14/16CM C 1 PIECE",
+     "par_colis": 80.0,
+     "prix_achat": 0.3499999940395355,
+     "prix_vente_conseille": 0.5
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087430010",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BANANE RUBAN 5 FRUITS PETIT PRIX",
+   "rang": 7,
+   "offres": [
+    {
+     "libelle": "PNM BANANE CAVENDISH COLOMBIE 14/16CM C 1 SACHET 5 PIECES PRICE PETIT PRIX",
+     "par_colis": 26.0,
+     "prix_achat": 0.7599999904632568,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087010324",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BANANE VRAC",
+   "rang": 8,
+   "offres": [
+    {
+     "libelle": "BANANE CAVENDISH GHANA >20CM C 1 VRAC PRECONISE",
+     "par_colis": 18.5,
+     "prix_achat": 1.2899999618530273,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004011",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CITRON FILET 1KG PETIT PRIX",
+   "rang": 9,
+   "offres": [
+    {
+     "libelle": "PNM CITRON EUREKA AFRIQUE DU SUD 4/5 FILET 1 Kg PRECONISE PETIT PRIX",
+     "par_colis": 14.0,
+     "prix_achat": 1.649999976158142,
+     "prix_vente_conseille": 2.5799999237060547
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087405012",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CITRON JAUNE VRAC",
+   "rang": 10,
+   "offres": [
+    {
+     "libelle": "CITRON EUREKA AFRIQUE DU SUD CAL 4 VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 2.450000047683716,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087005028",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MANDARINE VRAC",
+   "rang": 11,
+   "offres": [
+    {
+     "libelle": "MANDARINE ORRI AFRIQUE DU SUD 1X C 1 VRAC",
+     "par_colis": 10.0,
+     "prix_achat": 2.3499999046325684,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004055",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "COING VRAC",
+   "rang": 12,
+   "offres": [
+    {
+     "libelle": "COING COING FRANCE VRAC",
+     "par_colis": 10.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004447",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "FIGUE BARBARIE VRAC",
+   "rang": 13,
+   "offres": [
+    {
+     "libelle": "FIGUE BARBARIE ITALIE CAL 18 VRAC",
+     "par_colis": 2.0,
+     "prix_achat": 2.049999952316284,
+     "prix_vente_conseille": 3.4000000953674316
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004255",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "FIGUE NOIRE 500G ITM",
+   "rang": 14,
+   "offres": [
+    {
+     "libelle": "PNM FIGUE FIGUE NOIRE FRANCE BARQUETTE 500 g ITM",
+     "par_colis": 10.0,
+     "prix_achat": 3.990000009536743,
+     "prix_vente_conseille": 5.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "FIGUE NOIRE VRAC",
+   "rang": 15,
+   "offres": [
+    {
+     "libelle": "FIGUE FIGUE NOIRE FRANCE 45/50 MM",
+     "par_colis": 1.7000000476837158,
+     "prix_achat": 6.889999866485596,
+     "prix_vente_conseille": 9.949999809265137
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004266",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "FRAISE FRANCE BARQUETTE 250G",
+   "rang": 16,
+   "offres": [
+    {
+     "libelle": "FRAISE - FRANCE C 1 BARQUETTE 250 g",
+     "par_colis": 8.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087635005",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BANANE PLANTAIN VRAC",
+   "rang": 17,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE BANANE PLANTIN EQUATEUR C 1 VRAC",
+     "par_colis": 10.0,
+     "prix_achat": 2.490000009536743,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004230",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "FRUIT DE LA PASSION PIECE",
+   "rang": 18,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE FRUIT DE LA PASSION VIETNAM C 1 PIECE PRECONISE",
+     "par_colis": 23.0,
+     "prix_achat": 1.090000033378601,
+     "prix_vente_conseille": 1.4900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003311",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LIME FILET 500 G",
+   "rang": 19,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE - ESPAGNE CAL 4 C 1 FILET 500 g",
+     "par_colis": 8.0,
+     "prix_achat": 1.8899999856948853,
+     "prix_vente_conseille": 2.890000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087440009",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LIME VRAC",
+   "rang": 20,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE LIME ESPAGNE CAL 3 C 1 VRAC",
+     "par_colis": 4.0,
+     "prix_achat": 3.990000009536743,
+     "prix_vente_conseille": 5.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004048",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MANGUE AFFINEE PIECE",
+   "rang": 21,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE MANGUE ESPAGNE CAL 8 C 1 PIECE AFFINE",
+     "par_colis": 8.0,
+     "prix_achat": 1.5499999523162842,
+     "prix_vente_conseille": 2.390000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003365",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MANGUE MURE A POINT 2 FRUITS",
+   "rang": 22,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE MANGUE EGYPTE CAL 9 C 1 BARQUETTE 2 PIECES",
+     "par_colis": 9.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "NOIX DE COCO PIECE",
+   "rang": 23,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE NOIX DE COCO COTE D'IVOIRE C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 1.190000057220459,
+     "prix_vente_conseille": 1.8899999856948853
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004260",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "FRAMBOISE BARQUETTE 125G",
+   "rang": 24,
+   "offres": [
+    {
+     "libelle": "FRAMBOISE . PORTUGAL C 1 BARQUETTE 125 g PRECONISE",
+     "par_colis": 12.0,
+     "prix_achat": 2.049999952316284,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087650000",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "GROSEILLE ROUGE 125G",
+   "rang": 25,
+   "offres": [
+    {
+     "libelle": "GROSEILLE ROUGE FRANCE C 1 BARQUETTE 125 g",
+     "par_colis": 12.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "MYRTILLE BARQUETTE 125G",
+   "rang": 26,
+   "offres": [
+    {
+     "libelle": "MYRTILLE MYRTILLE FRANCE C 1 BARQUETTE 125 g PRECONISE REGIONAL",
+     "par_colis": 12.0,
+     "prix_achat": 2.1500000953674316,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087660001",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MYRTILLE BARQUETTE 250G",
+   "rang": 27,
+   "offres": [
+    {
+     "libelle": "MYRTILLE AIRELLE FRANCE BARQUETTE 250 g",
+     "par_colis": 21.0,
+     "prix_achat": 3.700000047683716,
+     "prix_vente_conseille": 5.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087660002",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "KIWI BARQUETTE 1KG PETIT PRIX",
+   "rang": 28,
+   "offres": [
+    {
+     "libelle": "PNM KIWI HAYWARD CHILI 65/70G C 2 BARQUETTE 1 Kg PRICE PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 3.4000000953674316,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087540007",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "KIWI JAUNE BARQUETTE 4 FRUITS",
+   "rang": 29,
+   "offres": [
+    {
+     "libelle": "KIWI SUNGOLD NOUVELLE ZELAND88/103G C 1 BARQUETTE 4 PIECES",
+     "par_colis": 10.0,
+     "prix_achat": 3.1500000953674316,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "KIWI JAUNE PIECE",
+   "rang": 30,
+   "offres": [
+    {
+     "libelle": "KIWI SUNGOLD NOUVELLE ZELAND135/145G C 1 PIECE",
+     "par_colis": 41.0,
+     "prix_achat": 0.800000011920929,
+     "prix_vente_conseille": 1.190000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004059",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "KIWI VERT PIECE",
+   "rang": 31,
+   "offres": [
+    {
+     "libelle": "KIWI HAYWARD NOUVELLE ZELAND89/103G C 1 PIECE",
+     "par_colis": 104.0,
+     "prix_achat": 0.4399999976158142,
+     "prix_vente_conseille": 0.6899999976158142
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004030",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "GINGEMBRE VRAC",
+   "rang": 32,
+   "offres": [
+    {
+     "libelle": "LEGUME EXOTIQUE GINGEMBRE BRESIL VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 4.25,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004612",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MANIOC VRAC",
+   "rang": 33,
+   "offres": [
+    {
+     "libelle": "LEGUME EXOTIQUE MANIOC COSTA RICA C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 4.199999809265137,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004819",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PATATE DOUCE VRAC",
+   "rang": 34,
+   "offres": [
+    {
+     "libelle": "LEGUME EXOTIQUE PATATE DOUCE EGYPTE 300/600G C 1 VRAC PRECONISE",
+     "par_colis": 6.0,
+     "prix_achat": 1.7999999523162842,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004763",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MARRON VRAC",
+   "rang": 35,
+   "offres": [
+    {
+     "libelle": "MARRON MARRON BOUCHE BETIZAFRANCE 34/36MM VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 6.489999771118164,
+     "prix_vente_conseille": 8.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004927",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MELON JAUNE PIECE",
+   "rang": 36,
+   "offres": [
+    {
+     "libelle": "MELON JAUNE ESPAGNE CAL 8 C 1 PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 2.1700000762939453,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004317",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MELON PIECE",
+   "rang": 37,
+   "offres": [
+    {
+     "libelle": "MELON TYPE CHARENTAIS FRANCE 750/975G PIECE",
+     "par_colis": 12.0,
+     "prix_achat": 1.75,
+     "prix_vente_conseille": 2.690000057220459
+    },
+    {
+     "libelle": "MELON TYPE CHARENTAIS FRANCE 975/1250G PIECE",
+     "par_colis": 12.0,
+     "prix_achat": 1.75,
+     "prix_vente_conseille": 2.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003306",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MELON VERT PIECE",
+   "rang": 38,
+   "offres": [
+    {
+     "libelle": "MELON VERT ESPAGNE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 2.1700000762939453,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004339",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NECTARINE BLANCHE 1KG PETIT PRIX",
+   "rang": 39,
+   "offres": [
+    {
+     "libelle": "PNM NECTARINE NECTARINE FRANCE C-56/61MM BARQUETTE 1 Kg PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 2.25,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087605011",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NECTARINE BLANCHE VRAC",
+   "rang": 40,
+   "offres": [
+    {
+     "libelle": "NECTARINE BLANCHE . FRANCE A-67/73MM C 1 VRAC PRECONISE",
+     "par_colis": 7.0,
+     "prix_achat": 3.0,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004188",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NECTARINE JAUNE 1KG PETIT PRIX",
+   "rang": 41,
+   "offres": [
+    {
+     "libelle": "PNM NECTARINE NECTARINE FRANCE C-56/61MM BARQUETTE 1 Kg PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 2.25,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087600016",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NECTARINE JAUNE VRAC",
+   "rang": 42,
+   "offres": [
+    {
+     "libelle": "NECTARINE JAUNE . FRANCE A-67/73MM VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 3.0,
+     "prix_vente_conseille": 4.489999771118164
+    },
+    {
+     "libelle": "NECTARINE JAUNE . FRANCE B-61/67MM C 1 VRAC",
+     "par_colis": 6.5,
+     "prix_achat": 2.890000104904175,
+     "prix_vente_conseille": 4.289999961853027
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004035",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NECTARINE PLATE VRAC",
+   "rang": 43,
+   "offres": [
+    {
+     "libelle": "NECTARINE BLANCHE PLATE FRANCE B-61/67MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 3.390000104904175,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004377",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NECTARINE SANGUINE VRAC",
+   "rang": 44,
+   "offres": [
+    {
+     "libelle": "NECTARINE VIGNE VIGNE FRANCE B-61/67MM C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 3.4000000953674316,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "NOISETTE VRAC",
+   "rang": 45,
+   "offres": [
+    {
+     "libelle": "NOISETTE . FRANCE 22/24MM VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 5.489999771118164,
+     "prix_vente_conseille": 8.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004928",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NOIX SACHET 750G",
+   "rang": 46,
+   "offres": [
+    {
+     "libelle": "NOIX SECHES FRANCE 28/30MM C 1 SACHET 750 g",
+     "par_colis": 14.0,
+     "prix_achat": 3.2899999618530273,
+     "prix_vente_conseille": 4.789999961853027
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087685005",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NOIX VRAC",
+   "rang": 47,
+   "offres": [
+    {
+     "libelle": "NOIX PERIGORD SECHE FRANCE 32/34MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 4.25,
+     "prix_vente_conseille": 6.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004943",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ORANGE A JUS FILET 2KG",
+   "rang": 48,
+   "offres": [
+    {
+     "libelle": "ORANGE VALENCIALATE AFRIQUE DU SUD 6/7 C 1 FILET 2 Kg",
+     "par_colis": 9.0,
+     "prix_achat": 3.190000057220459,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087400020",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ORANGE DESSERT FILET 2KG",
+   "rang": 49,
+   "offres": [
+    {
+     "libelle": "ORANGE NAVELATE AFRIQUE DU SUD 5/6 C 1 FILET 2 Kg",
+     "par_colis": 9.0,
+     "prix_achat": 3.190000057220459,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087400022",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ORANGE DESSERT VRAC",
+   "rang": 50,
+   "offres": [
+    {
+     "libelle": "ORANGE BARBERINE ESPAGNE CAL 3 C 1 GAMIN",
+     "par_colis": 8.0,
+     "prix_achat": 1.7899999618530273,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004012",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ORANGE FILET 1,5KG PETIT PRIX",
+   "rang": 51,
+   "offres": [
+    {
+     "libelle": "PNM ORANGE VALENCIALATE ESPAGNE 7/8 FILET 1,5 Kg PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 1.6299999952316284,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087400039",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ORANGE PETIT CALIBRE MACHINE A JUS",
+   "rang": 52,
+   "offres": [
+    {
+     "libelle": "ORANGE VALENCIALATE ESPAGNE 7/8 C 2 VRAC",
+     "par_colis": 15.0,
+     "prix_achat": 0.9900000095367432,
+     "prix_vente_conseille": 1.4900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004386",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PASTEQUE MINI PIECE",
+   "rang": 53,
+   "offres": [
+    {
+     "libelle": "PASTEQUE MINI NOIRE FRANCE CAL 7 C 1 PIECE",
+     "par_colis": 7.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004327",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PASTEQUE NOIRE SANS PEPINS PIECE",
+   "rang": 54,
+   "offres": [
+    {
+     "libelle": "PASTEQUE SANS PEPIN ESPAGNE CAL 6 C 1 PIECE SANS PEPIN",
+     "par_colis": 6.0,
+     "prix_achat": 3.2899999618530273,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004031",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PASTEQUE TIGREE PIECE",
+   "rang": 55,
+   "offres": [
+    {
+     "libelle": "PASTEQUE RAYEE SANS PEPIN ESPAGNE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004032",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PECHE BLANCHE 1KG PETIT PRIX",
+   "rang": 56,
+   "offres": [
+    {
+     "libelle": "PNM PECHE PECHE FRANCE C-56/61MM BARQUETTE 1 Kg PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 2.1700000762939453,
+     "prix_vente_conseille": 2.890000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087590017",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PECHE BLANCHE VRAC",
+   "rang": 57,
+   "offres": [
+    {
+     "libelle": "PECHE BLANCHE . FRANCE A-67/73MM C 1 VRAC PRECONISE",
+     "par_colis": 7.0,
+     "prix_achat": 2.490000009536743,
+     "prix_vente_conseille": 3.890000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004400",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PECHE JAUNE 1KG PETIT PRIX",
+   "rang": 58,
+   "offres": [
+    {
+     "libelle": "PNM PECHE - FRANCE C-56/61MM C 2 BARQUETTE 1 Kg PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 2.25,
+     "prix_vente_conseille": 2.890000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087585011",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PECHE JAUNE VRAC",
+   "rang": 59,
+   "offres": [
+    {
+     "libelle": "PECHE JAUNE PêCHE FRANCE A-67/73MM VRAC PRECONISE",
+     "par_colis": 7.0,
+     "prix_achat": 2.490000009536743,
+     "prix_vente_conseille": 3.890000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004037",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PECHE PLATE BARQUETTE 500G",
+   "rang": 60,
+   "offres": [
+    {
+     "libelle": "PECHE BLANCHE PLATE ESPAGNE B-61/67MM C 1 BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.5,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087590001",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PECHE PLATE VRAC",
+   "rang": 61,
+   "offres": [
+    {
+     "libelle": "PECHE BLANCHE PLATE BLANCHE ESPAGNE A-67/73MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003113",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PECHE SANGUINE VRAC",
+   "rang": 62,
+   "offres": [
+    {
+     "libelle": "PECHE SANGUINE SANGUINE FRANCE B-61/67MM VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 3.299999952316284,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POIRE BARQUETTE 1KG PETIT PRIX",
+   "rang": 63,
+   "offres": [
+    {
+     "libelle": "PNM POIRE GUYOT FRANCE 50/60MM C 2 BARQUETTE 1 Kg",
+     "par_colis": 10.0,
+     "prix_achat": 1.5199999809265137,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087555025",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIRE GUYOT VRAC",
+   "rang": 64,
+   "offres": [
+    {
+     "libelle": "POIRE GUYOT FRANCE 65/70G VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 2.190000057220459,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003021",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIRE WILLIAM VERTE VRAC",
+   "rang": 65,
+   "offres": [
+    {
+     "libelle": "POIRE WILLIAM VERTE FRANCE 65/70G C 1 VRAC PRECONISE",
+     "par_colis": 7.0,
+     "prix_achat": 2.450000047683716,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004409",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMELO ROUGE A JUS FILET 1.5KG",
+   "rang": 66,
+   "offres": [
+    {
+     "libelle": "POMELO STAR RUBY AFRIQUE DU SUD CAL 5 FILET 1,5 Kg",
+     "par_colis": 8.0,
+     "prix_achat": 2.799999952316284,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087410004",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMELO ROUGE PIECE",
+   "rang": 67,
+   "offres": [
+    {
+     "libelle": "POMELO STAR RUBY AFRIQUE DU SUD CAL 4 C 1 PIECE PRECONISE",
+     "par_colis": 45.0,
+     "prix_achat": 0.5,
+     "prix_vente_conseille": 0.7900000214576721
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004282",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "JUS DE POMME DE NOS VERGERS 1L",
+   "rang": 68,
+   "offres": [
+    {
+     "libelle": "POMME JUS DE POMM DE NOS VFRANCE BOUTEILLE 1 L",
+     "par_colis": 4.0,
+     "prix_achat": 2.700000047683716,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "MIEL DE NOS VERGERS POT 375G",
+   "rang": 69,
+   "offres": [
+    {
+     "libelle": "POMME MIEL DE NOS VERGERS FRANCE POT 375 g",
+     "par_colis": 12.0,
+     "prix_achat": 5.949999809265137,
+     "prix_vente_conseille": 8.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME A CHAIR ROUGE VRAC",
+   "rang": 70,
+   "offres": [
+    {
+     "libelle": "POMME R202 FRANCE 190/220G C 1 VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.9000000953674316
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME BICOLORE 2KG PETIT PRIX",
+   "rang": 71,
+   "offres": [
+    {
+     "libelle": "PNM POMME GALA FRANCE 95/130G C 2 SACHET 2 Kg PRICE PETIT PRIX",
+     "par_colis": 8.0,
+     "prix_achat": 2.25,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087545283",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME CANADA VRAC",
+   "rang": 72,
+   "offres": [
+    {
+     "libelle": "POMME REINETTE GRISE DU CAFRANCE 190/220G C 1 VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 2.299999952316284,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003009",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME COEUR DE REINE VRAC",
+   "rang": 73,
+   "offres": [
+    {
+     "libelle": "POMME DALICLASS FRANCE 190/220G C 1 VRAC",
+     "par_colis": 6.5,
+     "prix_achat": 2.3499999046325684,
+     "prix_vente_conseille": 3.5899999141693115
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME COEUR REINE SAC 1,5KG",
+   "rang": 74,
+   "offres": [
+    {
+     "libelle": "POMME DALICLASS FRANCE 115/150G C 1 SACHET 1,5 Kg",
+     "par_colis": 8.0,
+     "prix_achat": 2.450000047683716,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME GALA 6 FRUITS ITM",
+   "rang": 75,
+   "offres": [
+    {
+     "libelle": "PNM POMME GALA FRANCE 150/180G BARQUETTE 6 PIECES PRICE ITM",
+     "par_colis": 11.0,
+     "prix_achat": 1.9500000476837158,
+     "prix_vente_conseille": 2.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME GALA VRAC",
+   "rang": 76,
+   "offres": [
+    {
+     "libelle": "POMME GALA FRANCE 190/220G C 1 VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 1.75,
+     "prix_vente_conseille": 2.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004135",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME GOLDEN 6 FRUITS ITM",
+   "rang": 77,
+   "offres": [
+    {
+     "libelle": "PNM POMME GOLDEN DELICIOUS FRANCE 150/180G BARQUETTE 6 PIECES PRICE ITM",
+     "par_colis": 11.0,
+     "prix_achat": 1.7799999713897705,
+     "prix_vente_conseille": 2.5899999141693115
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087010626",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME GOLDEN ALPES IGP 1.5KG CQLP",
+   "rang": 78,
+   "offres": [
+    {
+     "libelle": "POMME GOLDEN DELICIOUS FRANCE 95/130G C 2 SACHET 1,5 Kg PRICE IGP",
+     "par_colis": 8.0,
+     "prix_achat": 2.5999999046325684,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME GOLDEN SACHET 2KG",
+   "rang": 79,
+   "offres": [
+    {
+     "libelle": "POMME GOLDEN DELICIOUS FRANCE 115/150G SACHET 2 Kg",
+     "par_colis": 8.0,
+     "prix_achat": 2.3499999046325684,
+     "prix_vente_conseille": 3.5899999141693115
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087545020",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME GOLDEN VRAC",
+   "rang": 80,
+   "offres": [
+    {
+     "libelle": "POMME GOLDEN DELICIOUS FRANCE 190/220G C 1 VRAC PRECONISE",
+     "par_colis": 7.0,
+     "prix_achat": 1.7999999523162842,
+     "prix_vente_conseille": 2.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004136",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME GRANNY VRAC",
+   "rang": 81,
+   "offres": [
+    {
+     "libelle": "POMME GRANNY SMITH FRANCE 170/200G C 1 VRAC",
+     "par_colis": 6.5,
+     "prix_achat": 1.8899999856948853,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004018",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME REINE DES REINETTES VRAC",
+   "rang": 82,
+   "offres": [
+    {
+     "libelle": "POMME REINE DES REINETTES FRANCE 190/220G VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 2.890000104904175,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PRUNE JAUNE 500G PETIT PRIX",
+   "rang": 83,
+   "offres": [
+    {
+     "libelle": "PNM PRUNE JAUNE JAUNE FRANCE 35/45MM BARQUETTE 500 g PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 1.3700000047683716,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PRUNE JAUNE BARQUETTE 750G ITM",
+   "rang": 84,
+   "offres": [
+    {
+     "libelle": "PNM PRUNE JAUNE T.C.SUN FRANCE 40/50MM C 1 BARQUETTE 750 g ITM",
+     "par_colis": 12.0,
+     "prix_achat": 2.5899999141693115,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PRUNE JAUNE VRAC",
+   "rang": 85,
+   "offres": [
+    {
+     "libelle": "PRUNE JAUNE T.C.SUN FRANCE 50/55MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.75,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004442",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PRUNE MIRABELLE VRAC",
+   "rang": 86,
+   "offres": [
+    {
+     "libelle": "PRUNE JAUNE MIRABELLE FRANCE 22/32MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 4.650000095367432,
+     "prix_vente_conseille": 6.789999961853027
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004441",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PRUNE PRESIDENT VRAC",
+   "rang": 87,
+   "offres": [
+    {
+     "libelle": "PRUNE ROUGE PRESIDENT FRANCE 40/50MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.240000009536743,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PRUNE QUETSCHE VRAC",
+   "rang": 88,
+   "offres": [
+    {
+     "libelle": "PRUNE ROUGE QUETSCHE FRANCE 30/35MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.1600000858306885,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PRUNE REINE CLAUDE VRAC",
+   "rang": 89,
+   "offres": [
+    {
+     "libelle": "PRUNE JAUNE REINE CLAUDE BAVAY FRANCE 30/40MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 3.3499999046325684,
+     "prix_vente_conseille": 4.789999961853027
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004039",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PRUNE ROUGE 500G PETIT PRIX",
+   "rang": 90,
+   "offres": [
+    {
+     "libelle": "PNM PRUNE ROUGE ROUGE FRANCE 35/45MM BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.3700000047683716,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PRUNE ROUGE BARQUETTE 750G ITM",
+   "rang": 91,
+   "offres": [
+    {
+     "libelle": "PNM PRUNE HYBRIDE METIS FRANCE 40/50MM C 1 BARQUETTE 750 g ITM",
+     "par_colis": 12.0,
+     "prix_achat": 2.6500000953674316,
+     "prix_vente_conseille": 3.990000009536743
+    },
+    {
+     "libelle": "PNM PRUNE ROUGE GRENADINE FRANCE 40/50MM BARQUETTE 750 g ITM",
+     "par_colis": 12.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PRUNE ROUGE VRAC",
+   "rang": 92,
+   "offres": [
+    {
+     "libelle": "PRUNE ROUGE LOVITA FRANCE 45/55MM VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.989999771118164
+    },
+    {
+     "libelle": "PRUNE ROUGE DATILE FRANCE 22/24MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.990000009536743
+    },
+    {
+     "libelle": "PRUNE ROUGE RUBY CRUNCH FRANCE 40/50MM VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.25,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004041",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RAISIN BLANC BARQUETTE 300G",
+   "rang": 93,
+   "offres": [
+    {
+     "libelle": "RAISIN BLANC COTTON CANDY ESPAGNE C 1 BARQUETTE 300 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.649999976158142,
+     "prix_vente_conseille": 2.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087565012",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RAISIN BLANC CHASSELAS VRAC",
+   "rang": 94,
+   "offres": [
+    {
+     "libelle": "RAISIN BLANC CHASSELAS DE MOISSACFRANCE EXT VRAC AOP",
+     "par_colis": 4.0,
+     "prix_achat": 3.7899999618530273,
+     "prix_vente_conseille": 4.989999771118164
+    },
+    {
+     "libelle": "RAISIN BLANC CHASSELAS FRANCE C 1 VRAC",
+     "par_colis": 8.0,
+     "prix_achat": 1.850000023841858,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003359",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RAISIN BLANC DANLAS VRAC",
+   "rang": 95,
+   "offres": [
+    {
+     "libelle": "RAISIN BLANC DANLAS FRANCE C 1 VRAC",
+     "par_colis": 8.0,
+     "prix_achat": 1.649999976158142,
+     "prix_vente_conseille": 2.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "RAISIN BLANC ITALIA VRAC",
+   "rang": 96,
+   "offres": [
+    {
+     "libelle": "RAISIN BLANC ITALIA ITALIE C 1 VRAC PRECONISE",
+     "par_colis": 11.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 3.390000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004274",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RAISIN BLANC SANS PEPINS 500G ITM",
+   "rang": 97,
+   "offres": [
+    {
+     "libelle": "PNM RAISIN BLANC CENTENNIAL SEEDLESS FRANCE BARQUETTE 500 g SANS PEPIN ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "RAISIN CHASSELAS AOP 500G ITM",
+   "rang": 98,
+   "offres": [
+    {
+     "libelle": "PNM RAISIN BLANC CHASSELAS DE MOISSACFRANCE C 1 BARQUETTE 500 g AOP ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "RAISIN MUSCAT VENTOUX AOP 500G ITM",
+   "rang": 99,
+   "offres": [
+    {
+     "libelle": "PNM RAISIN NOIR MUSCAT DE HAMBOURG FRANCE BARQUETTE 500 g AOP ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "candidats": [
+    "0000087010644",
+    "0000087200244"
+   ],
+   "rapprochement": "ambigu"
+  },
+  {
+   "nom": "RAISIN NOIR 750G PETIT PRIX",
+   "rang": 100,
+   "offres": [
+    {
+     "libelle": "PNM RAISIN NOIR ALPHONSE LAVALLEE FRANCE C 1 BARQUETTE 750 g PETIT PRIX",
+     "par_colis": 10.0,
+     "prix_achat": 2.200000047683716,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087570012",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RAISIN NOIR BARQUETTE 500G",
+   "rang": 101,
+   "offres": [
+    {
+     "libelle": "PNM RAISIN NOIR ATIKI FRANCE C 1 BARQUETTE 500 g SANS PEPIN ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.6500000953674316,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "RAISIN NOIR LAVALLEE VRAC",
+   "rang": 102,
+   "offres": [
+    {
+     "libelle": "RAISIN NOIR ALPHONSE LAVALLEE FRANCE C 1 VRAC",
+     "par_colis": 8.0,
+     "prix_achat": 2.6500000953674316,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "RAISIN NOIR MUSCAT VRAC",
+   "rang": 103,
+   "offres": [
+    {
+     "libelle": "RAISIN NOIR MUSCAT DE HAMBOURG FRANCE C 1 VRAC",
+     "par_colis": 8.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004957",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RAISIN ROSE BARQUETTE 300G",
+   "rang": 104,
+   "offres": [
+    {
+     "libelle": "RAISIN ROSE SUFFOLK RED FRANCE C 1 BARQUETTE 300 g SANS PEPIN",
+     "par_colis": 10.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "RAISIN ROSE VRAC",
+   "rang": 105,
+   "offres": [
+    {
+     "libelle": "RAISIN ROSE RED GLOBE ITALIE C 1 VRAC",
+     "par_colis": 11.0,
+     "prix_achat": 2.2899999618530273,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004636",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL BLANC FILET 250G PETIT PRIX",
+   "rang": 106,
+   "offres": [
+    {
+     "libelle": "PNM AIL BLANCS FRANCE 40/60MM FILET 250 g PRICE PETIT PRIX",
+     "par_colis": 20.0,
+     "prix_achat": 1.4700000286102295,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087935051",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL BLANC FILET 3 TETES",
+   "rang": 107,
+   "offres": [
+    {
+     "libelle": "AIL BLANCS FRANCE 60/80MM C 1 FILET 3 TETES",
+     "par_colis": 30.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087935043",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL BLANC FILET 3 TETES ITM",
+   "rang": 108,
+   "offres": [
+    {
+     "libelle": "PNM AIL BLANCS FRANCE 70/90MM FILET 3 TETES ITM",
+     "par_colis": 30.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010656",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL BLANC VRAC",
+   "rang": 109,
+   "offres": [
+    {
+     "libelle": "AIL BLANCS FRANCE 60/80MM VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 8.489999771118164,
+     "prix_vente_conseille": 12.949999809265137
+    },
+    {
+     "libelle": "AIL BLANCS FRANCE 60/80MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 8.489999771118164,
+     "prix_vente_conseille": 12.949999809265137
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003401",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL VIOLET VRAC",
+   "rang": 110,
+   "offres": [
+    {
+     "libelle": "AIL VIOLETS FRANCE 60/80MM VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 8.489999771118164,
+     "prix_vente_conseille": 13.949999809265137
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PERSIL FRISE BOTTE",
+   "rang": 111,
+   "offres": [
+    {
+     "libelle": "AROMATIQUE PERSIL FRISE FRANCE BOTTE",
+     "par_colis": 12.0,
+     "prix_achat": 0.699999988079071,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PERSIL PLAT BOTTE",
+   "rang": 112,
+   "offres": [
+    {
+     "libelle": "AROMATIQUE PERSIL COMMUN ESPAGNE BOTTE",
+     "par_colis": 12.0,
+     "prix_achat": 0.699999988079071,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004901",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ARTICHAUT BLANC PIECE",
+   "rang": 113,
+   "offres": [
+    {
+     "libelle": "ARTICHAUT CAMUS FRANCE CAL 15 C 1 PIECE",
+     "par_colis": 15.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004084",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AUBERGINE VIOLETTE VRAC",
+   "rang": 114,
+   "offres": [
+    {
+     "libelle": "AUBERGINE VIOLETTE ESPAGNE 300/500G C 1 VRAC PRECONISE",
+     "par_colis": 5.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 3.990000009536743
+    },
+    {
+     "libelle": "AUBERGINE VIOLETTE FRANCE 300/400G C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.799999952316284,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003089",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BETTERAVE ROUGE VRAC",
+   "rang": 115,
+   "offres": [
+    {
+     "libelle": "BETTERAVE ROUGE FRANCE C 1 VRAC",
+     "par_colis": 4.0,
+     "prix_achat": 2.75,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CAROTTE NON LAVEE VRAC",
+   "rang": 116,
+   "offres": [
+    {
+     "libelle": "CAROTTE SABLE NON LAVE FRANCE 20/45MM C 1 VRAC NON LAVEE",
+     "par_colis": 5.0,
+     "prix_achat": 1.4900000095367432,
+     "prix_vente_conseille": 2.390000104904175
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004562",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CAROTTE SACHET 1.5KG ITM",
+   "rang": 117,
+   "offres": [
+    {
+     "libelle": "PNM CAROTTE CONSERVATION FRANCE 20/40MM SACHET 1,5 Kg ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.7899999618530273,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010603",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CAROTTE SACHET 2KG PETIT PRIX",
+   "rang": 118,
+   "offres": [
+    {
+     "libelle": "PNM CAROTTE CONSERVATION FRANCE 20/50MM C 2 SACHET 2 Kg PRICE PETIT PRIX",
+     "par_colis": 5.0,
+     "prix_achat": 1.850000023841858,
+     "prix_vente_conseille": 2.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087920035",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CAROTTE SACHET 500G PRICEE",
+   "rang": 119,
+   "offres": [
+    {
+     "libelle": "CAROTTE MINI CAROTTE FRANCE 10/20MM SACHET 500 g PRICE",
+     "par_colis": 18.0,
+     "prix_achat": 0.75,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CAROTTE VRAC",
+   "rang": 120,
+   "offres": [
+    {
+     "libelle": "CAROTTE CONSERVATION FRANCE 20/45MM VRAC PRECONISE",
+     "par_colis": 12.0,
+     "prix_achat": 1.1799999475479126,
+     "prix_vente_conseille": 1.8899999856948853
+    },
+    {
+     "libelle": "CAROTTE CONSERVATION FRANCE 20/50MM C 1 VRAC",
+     "par_colis": 10.0,
+     "prix_achat": 1.1799999475479126,
+     "prix_vente_conseille": 1.7899999618530273
+    },
+    {
+     "libelle": "CAROTTE CONSERVATION FRANCE 28/40MM VRAC",
+     "par_colis": 12.0,
+     "prix_achat": 1.350000023841858,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087005002",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CELERI BRANCHE VERT VRAC",
+   "rang": 121,
+   "offres": [
+    {
+     "libelle": "CELERI BRANCHE VERT ESPAGNE VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 1.3899999856948853,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004583",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CELERI RAVE PIECE",
+   "rang": 122,
+   "offres": [
+    {
+     "libelle": "CELERI RAVE FRANCE CAL 10 C 1 PIECE",
+     "par_colis": 10.0,
+     "prix_achat": 1.8799999952316284,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004576",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BL 200G PETIT PRIX",
+   "rang": 123,
+   "offres": [
+    {
+     "libelle": "PNM CHAMPIGNON BLANC PIED COUPE ESPAGNE MOYEN BARQUETTE 200 g PRICE PETIT PRIX",
+     "par_colis": 12.0,
+     "prix_achat": 0.75,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087855069",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BLANC 250G",
+   "rang": 124,
+   "offres": [
+    {
+     "libelle": "CHAMPIGNON PIED ENTIER FRANCE MOYEN C 1 BARQUETTE 250 g",
+     "par_colis": 12.0,
+     "prix_achat": 1.0499999523162842,
+     "prix_vente_conseille": 1.590000033378601
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087855020",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BLANC 400G ITM",
+   "rang": 125,
+   "offres": [
+    {
+     "libelle": "PNM CHAMPIGNON BLANC PIED COUPE FRANCE MOYEN C 1 BARQUETTE 400 g PRECONISE ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010606",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BLANC EMINCE 200G",
+   "rang": 126,
+   "offres": [
+    {
+     "libelle": "CHAMPIGNON BLANC EMINCE FRANCE C 1 BARQUETTE 200 g PRICE",
+     "par_colis": 8.0,
+     "prix_achat": 1.4800000190734863,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087855000",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BLANC GEANT VRAC",
+   "rang": 127,
+   "offres": [
+    {
+     "libelle": "CHAMPIGNON BLANC GEANT FRANCE GEANT C 1 VRAC",
+     "par_colis": 2.0,
+     "prix_achat": 3.890000104904175,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004085",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BRUN 400G ITM",
+   "rang": 128,
+   "offres": [
+    {
+     "libelle": "PNM CHAMPIGNON CREME FRANCE MOYEN C 1 BARQUETTE 400 g ITM",
+     "par_colis": 8.0,
+     "prix_achat": 2.0899999141693115,
+     "prix_vente_conseille": 3.390000104904175
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BRUN GEANT VRAC",
+   "rang": 129,
+   "offres": [
+    {
+     "libelle": "CHAMPIGNON BLOND GEANT FRANCE GEANT VRAC",
+     "par_colis": 2.0,
+     "prix_achat": 3.890000104904175,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CHAMPIGNON PLEUROTE VRAC",
+   "rang": 130,
+   "offres": [
+    {
+     "libelle": "CHAMPIGNON PLEUROTTE FRANCE C 1 VRAC",
+     "par_colis": 2.0,
+     "prix_achat": 5.989999771118164,
+     "prix_vente_conseille": 8.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004647",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BROCOLI 500G",
+   "rang": 131,
+   "offres": [
+    {
+     "libelle": "CHOU BROCOLI PAYS BAS C 1 CELLO 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.8899999856948853,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087880001",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BROCOLI VRAC",
+   "rang": 132,
+   "offres": [
+    {
+     "libelle": "CHOU BROCOLI FRANCE C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 4.25,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003082",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHOU BLANC PIECE",
+   "rang": 133,
+   "offres": [
+    {
+     "libelle": "CHOU BLANC FRANCE CAL 8 C 1 PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 2.190000057220459,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003050",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHOU DE BRUXELLE SACHET 500G",
+   "rang": 134,
+   "offres": [
+    {
+     "libelle": "CHOU BRUXELLE PAYS BAS 30/40MM SACHET 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.7999999523162842,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087880010",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHOU FLEUR PIECE",
+   "rang": 135,
+   "offres": [
+    {
+     "libelle": "CHOU FLEUR FRANCE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 1.7899999618530273,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004566",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHOU ROMANESCO PIECE",
+   "rang": 136,
+   "offres": [
+    {
+     "libelle": "CHOU ROMANESCO FRANCE CAL 8 C 1 PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 2.1500000953674316,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003320",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHOU ROUGE PIECE",
+   "rang": 137,
+   "offres": [
+    {
+     "libelle": "CHOU ROUGE FRANCE CAL 8 C 1 PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 2.190000057220459,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004554",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHOU VERT FRISE PIECE",
+   "rang": 138,
+   "offres": [
+    {
+     "libelle": "CHOU VERT FRISE FRANCE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003095",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHOUX CHINOIS PIECE",
+   "rang": 139,
+   "offres": [
+    {
+     "libelle": "CHOU CHOU CHINOIS PAYS BAS CAL 8 PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 2.190000057220459,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004552",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CONCOMBRE PIECE",
+   "rang": 140,
+   "offres": [
+    {
+     "libelle": "CONCOMBRE VERT FRANCE 300/400G PIECE",
+     "par_colis": 24.0,
+     "prix_achat": 1.0499999523162842,
+     "prix_vente_conseille": 1.590000033378601
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004593",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BUTTERNUT PIECE PE",
+   "rang": 141,
+   "offres": [
+    {
+     "libelle": "COURGE ALIMENTAIRE BUTTERNUT FRANCE PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087875002",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POTIMARRON PIECE",
+   "rang": 142,
+   "offres": [
+    {
+     "libelle": "COURGE ALIMENTAIRE POTIMARON FRANCE C 1 PIECE",
+     "par_colis": 8.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004764",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "COURGETTE FILET 1KG",
+   "rang": 143,
+   "offres": [
+    {
+     "libelle": "PNM COURGETTE COURGETTE ESPAGNE 14/21CM C 1 FILET 1 Kg PRICE",
+     "par_colis": 10.0,
+     "prix_achat": 2.450000047683716,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087765013",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "COURGETTE VRAC",
+   "rang": 144,
+   "offres": [
+    {
+     "libelle": "COURGETTE COURGETTE ESPAGNE 14/21CM C 1 VRAC",
+     "par_colis": 10.0,
+     "prix_achat": 2.6500000953674316,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004067",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ECHALOTE TRADI 500G PETIT PRIX",
+   "rang": 145,
+   "offres": [
+    {
+     "libelle": "PNM ECHALOTE LONGUE FRANCE 20/40MM C 1 FILET 500 g PRICE PETIT PRIX",
+     "par_colis": 20.0,
+     "prix_achat": 0.8600000143051147,
+     "prix_vente_conseille": 1.190000057220459
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087940025",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ECHALOTE TRADI FILET 250G ITM",
+   "rang": 146,
+   "offres": [
+    {
+     "libelle": "PNM ECHALOTE LONGUE FRANCE 20/40MM FILET 250 g ITM",
+     "par_colis": 20.0,
+     "prix_achat": 1.100000023841858,
+     "prix_vente_conseille": 1.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010665",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ECHALOTE TRADI FILET 500G ITM",
+   "rang": 147,
+   "offres": [
+    {
+     "libelle": "PNM ECHALOTE LONGUE FRANCE 30/50MM FILET 500 g ITM",
+     "par_colis": 20.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010666",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ECHALOTE TRADITIONNELLE 250G CQLP",
+   "rang": 148,
+   "offres": [
+    {
+     "libelle": "ECHALOTE LONGUE FRANCE 30/50MM FILET 250 g PRICE",
+     "par_colis": 20.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.3299999237060547
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "ECHALOTE TRADITIONNELLE VRAC",
+   "rang": 149,
+   "offres": [
+    {
+     "libelle": "ECHALOTE LONGUE FRANCE 30/50MM VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 2.5899999141693115,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004662",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ENDIVE APERITIVE 6 PIECES ITM",
+   "rang": 150,
+   "offres": [
+    {
+     "libelle": "PNM ENDIVE - FRANCE C 1 SACHET 6 PIECES ITM",
+     "par_colis": 8.0,
+     "prix_achat": 2.0799999237060547,
+     "prix_vente_conseille": 2.890000104904175
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087200190",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ENDIVE CARMINE BARQUETTE 300G",
+   "rang": 151,
+   "offres": [
+    {
+     "libelle": "ENDIVE CARMINE FRANCE C 1 BARQUETTE 300 g",
+     "par_colis": 10.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "ENDIVE SACHET 1KG",
+   "rang": 152,
+   "offres": [
+    {
+     "libelle": "ENDIVE ENDIVE FRANCE C 1 SACHET 1 Kg",
+     "par_colis": 12.0,
+     "prix_achat": 3.299999952316284,
+     "prix_vente_conseille": 5.289999961853027
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087755006",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ENDIVE SACHET 650G ITM",
+   "rang": 153,
+   "offres": [
+    {
+     "libelle": "ENDIVE ENDIVE FRANCE SACHET 650 g PRICE ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.399999976158142,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010287",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ENDIVE VRAC",
+   "rang": 154,
+   "offres": [
+    {
+     "libelle": "ENDIVE ENDIVE FRANCE C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 3.4000000953674316,
+     "prix_vente_conseille": 5.289999961853027
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004543",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "EPINARD FEUILLE SACHET 400G",
+   "rang": 155,
+   "offres": [
+    {
+     "libelle": "EPINARD FEUILLE FRANCE C 1 SACHET 400 g",
+     "par_colis": 8.0,
+     "prix_achat": 1.899999976158142,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "FENOUIL VRAC",
+   "rang": 156,
+   "offres": [
+    {
+     "libelle": "FENOUIL FENOUIL ITALIE 70/90MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004515",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LEGUMES POT AU FEU 1KG ITM",
+   "rang": 157,
+   "offres": [
+    {
+     "libelle": "LEGUMES MIXTES POT AU FEU FRANCE C 1 BARQUETTE 1 Kg ITM",
+     "par_colis": 6.0,
+     "prix_achat": 2.490000009536743,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010672",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON BLANC TUBE 500G",
+   "rang": 158,
+   "offres": [
+    {
+     "libelle": "OIGNON BLANC ESPAGNE 50/70MM FILET 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.5899999141693115
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087945036",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON BLANC VRAC",
+   "rang": 159,
+   "offres": [
+    {
+     "libelle": "OIGNON BLANC ESPAGNE 60/80MM VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 2.5899999141693115,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "OIGNON DOUX CEVENNES AOP 500G ITM",
+   "rang": 160,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON DOUX DES CEVENNES FRANCE 50/70MM FILET 500 g IGP ITM",
+     "par_colis": 20.0,
+     "prix_achat": 2.1459999084472656,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "OIGNON DOUX VRAC",
+   "rang": 161,
+   "offres": [
+    {
+     "libelle": "OIGNON DOUX DES CEVENNES FRANCE 60/80MM C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 3.2899999618530273,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004165",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON ECHALION FILET 500G ITM",
+   "rang": 162,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON ECHALION FRANCE 30/50MM FILET 500 g ITM",
+     "par_colis": 10.0,
+     "prix_achat": 1.3899999856948853,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010664",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON JAUNE 1,5KG PETIT PRIX",
+   "rang": 163,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON JAUNE FRANCE 40/60MM C 1 FILET 1,5 Kg PRICE PETIT PRIX",
+     "par_colis": 7.0,
+     "prix_achat": 1.0299999713897705,
+     "prix_vente_conseille": 1.690000057220459
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087945061",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON JAUNE FILET 1KG CQLP",
+   "rang": 164,
+   "offres": [
+    {
+     "libelle": "OIGNON JAUNE FRANCE 50/70MM FILET 1 Kg PRICE",
+     "par_colis": 12.0,
+     "prix_achat": 1.7000000476837158,
+     "prix_vente_conseille": 2.4700000286102295
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010808",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON JAUNE FILET 1KG ITM",
+   "rang": 165,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON JAUNE FRANCE 60/80MM FILET 1 Kg ITM",
+     "par_colis": 10.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.5899999141693115
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010658",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON JAUNE FILET 2KG",
+   "rang": 166,
+   "offres": [
+    {
+     "libelle": "OIGNON JAUNE FRANCE 40/60MM C 1 FILET 2 Kg",
+     "par_colis": 5.0,
+     "prix_achat": 1.2999999523162842,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087945017",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON JAUNE GRAPPE 1KG ITM",
+   "rang": 167,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON JAUNE FRANCE 50/70MM GRAPPE 1 Kg ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.789999961853027
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010662",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON JAUNE TUBE 500G ITM",
+   "rang": 168,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON JAUNE FRANCE 50/70MM FILET 500 g ITM",
+     "par_colis": 20.0,
+     "prix_achat": 1.3899999856948853,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010663",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON JAUNE VRAC",
+   "rang": 169,
+   "offres": [
+    {
+     "libelle": "OIGNON JAUNE FRANCE 60/80MM VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.5899999141693115
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004665",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON ROSE ROSCOFF 1KG",
+   "rang": 170,
+   "offres": [
+    {
+     "libelle": "OIGNON ROSE DE ROSCOFF FRANCE 50/70MM C 1 FILET 1 Kg AOP",
+     "par_colis": 10.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "OIGNON ROUGE 500G",
+   "rang": 171,
+   "offres": [
+    {
+     "libelle": "OIGNON ROUGE FRANCE 40/60MM C 1 FILET 500 g",
+     "par_colis": 20.0,
+     "prix_achat": 0.8500000238418579,
+     "prix_vente_conseille": 1.4900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087947012",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON ROUGE TUBE 500G ITM",
+   "rang": 172,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON ROUGE FRANCE 50/70MM FILET 500 g ITM",
+     "par_colis": 10.0,
+     "prix_achat": 1.4900000095367432,
+     "prix_vente_conseille": 2.5899999141693115
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010661",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON ROUGE VRAC",
+   "rang": 173,
+   "offres": [
+    {
+     "libelle": "OIGNON ROUGE FRANCE 60/80MM VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004082",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON SAUCIER FILET 500G ITM",
+   "rang": 174,
+   "offres": [
+    {
+     "libelle": "PNM OIGNON SAUCIER FRANCE 20/40MM FILET 500 g ITM",
+     "par_colis": 10.0,
+     "prix_achat": 1.3899999856948853,
+     "prix_vente_conseille": 2.190000057220459
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010657",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BLANC POIREAU 500G",
+   "rang": 175,
+   "offres": [
+    {
+     "libelle": "POIREAUX COUPE FRANCE SACHET 500 g",
+     "par_colis": 12.0,
+     "prix_achat": 3.3499999046325684,
+     "prix_vente_conseille": 4.889999866485596
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087925009",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIREAU VRAC",
+   "rang": 176,
+   "offres": [
+    {
+     "libelle": "POIREAUX POIREAU FRANCE 20/40MM VRAC PRECONISE",
+     "par_colis": 10.0,
+     "prix_achat": 2.8499999046325684,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004629",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "HARICOT COCO PAIMPOLAIS VRAC",
+   "rang": 177,
+   "offres": [
+    {
+     "libelle": "HARICOT GRAIN COCO PAIMPOLAIS FRANCE VRAC AOP",
+     "par_colis": 8.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004529",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "HARICOT VERT EBOUTE 400G",
+   "rang": 178,
+   "offres": [
+    {
+     "libelle": "HARICOT VERT VERT KENYA TRES FIN C 1 BARQUETTE 400 g PRICE",
+     "par_colis": 8.0,
+     "prix_achat": 2.700000047683716,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087810000",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "HARICOT VERT SACHET 500G ITM",
+   "rang": 179,
+   "offres": [
+    {
+     "libelle": "PNM HARICOT VERT VERT FRANCE MOYEN C 1 BARQUETTE 500 g PRICE ITM",
+     "par_colis": 12.0,
+     "prix_achat": 1.399999976158142,
+     "prix_vente_conseille": 2.0
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "HARICOT VERT VRAC",
+   "rang": 180,
+   "offres": [
+    {
+     "libelle": "HARICOT VERT VERT FRANCE FIN C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 1.9520000219345093,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003049",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIS GOURMAND BARQUETTE 250G",
+   "rang": 181,
+   "offres": [
+    {
+     "libelle": "POIS GOURMAND KENYA C 1 BARQUETTE 250 g",
+     "par_colis": 12.0,
+     "prix_achat": 2.490000009536743,
+     "prix_vente_conseille": 3.5899999141693115
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087800000",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PIMENT VERT VRAC",
+   "rang": 182,
+   "offres": [
+    {
+     "libelle": "PIMENT VERT FRANCE VRAC",
+     "par_colis": 3.0,
+     "prix_achat": 2.890000104904175,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004701",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIVRON DOUX CORNE DE BOEUF VRAC",
+   "rang": 183,
+   "offres": [
+    {
+     "libelle": "POIVRON CORNE DE BOEUF FRANCE C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POIVRON DOUX JAUNE VRAC",
+   "rang": 184,
+   "offres": [
+    {
+     "libelle": "POIVRON JAUNE PAYS BAS 80/100MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 4.489999771118164,
+     "prix_vente_conseille": 6.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004689",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIVRON DOUX MINI PANACHE 200G",
+   "rang": 185,
+   "offres": [
+    {
+     "libelle": "POIVRON MINI POIVRON PANACHEFRANCE C 2 BARQUETTE 200 g",
+     "par_colis": 10.0,
+     "prix_achat": 2.190000057220459,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POIVRON DOUX ROUGE VRAC",
+   "rang": 186,
+   "offres": [
+    {
+     "libelle": "POIVRON ROUGE PAYS BAS 80/100MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.789999961853027
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004065",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIVRON DOUX TRICOLORE 500G",
+   "rang": 187,
+   "offres": [
+    {
+     "libelle": "POIVRON CALIFORNIA ESPAGNE 70/90MM C 1 SACHET 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 2.0899999141693115,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087770008",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIVRON DOUX VERT VRAC",
+   "rang": 188,
+   "offres": [
+    {
+     "libelle": "POIVRON VERT CALIFORNIE ESPAGNE 80/100MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.950000047683716,
+     "prix_vente_conseille": 4.489999771118164
+    },
+    {
+     "libelle": "POIVRON VERT FRANCE 70/90MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003119",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT 5KG 1ER PRIX",
+   "rang": 189,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE DE COAGATA FRANCE 40/60MM C 1 FILET 5 Kg",
+     "par_colis": 1.0,
+     "prix_achat": 3.5899999141693115,
+     "prix_vente_conseille": 5.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087955044",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT BLONDE CONSO VRAC",
+   "rang": 190,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE DE COAGATA FRANCE 50/75MM C 1 VRAC",
+     "par_colis": 15.0,
+     "prix_achat": 0.8899999856948853,
+     "prix_vente_conseille": 1.4900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004083",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT CONSO LAVEE 10KG",
+   "rang": 191,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE DE COAGATA FRANCE 50/70MM C 1 FILET 10 Kg",
+     "par_colis": 1.0,
+     "prix_achat": 6.789999961853027,
+     "prix_vente_conseille": 9.949999809265137
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087955004",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT FILET 1KG PETIT PRIX",
+   "rang": 192,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE DE COAGATA FRANCE 40/60MM C 2 FILET 1 Kg PRICE PETIT PRIX",
+     "par_colis": 15.0,
+     "prix_achat": 0.7599999904632568,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010116",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT FOUR PUREE POTAGE 2.5KG ITM",
+   "rang": 193,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE DE COAGATA FRANCE 50/70MM C 1 FILET 2,5 Kg PRECONISE ITM",
+     "par_colis": 55.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.7899999618530273
+    },
+    {
+     "libelle": "PNM POMME DE TERRE DE COAGATA FRANCE 50/70MM C 1 FILET 2,5 Kg PRECONISE ITM",
+     "par_colis": 6.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010609",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT FRITE 2.5KG ITM",
+   "rang": 194,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE DE COCOLOMBA FRANCE 50/75MM FILET 2,5 Kg ITM",
+     "par_colis": 55.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.7899999618530273
+    },
+    {
+     "libelle": "PNM POMME DE TERRE DE COCOLOMBA FRANCE 50/75MM FILET 2,5 Kg ITM",
+     "par_colis": 6.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010623",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT GRENAILLE MICRO ONDE 500G",
+   "rang": 195,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE CONSOJAZZY FRANCE 17/32MM C 1 SACHET 500 g",
+     "par_colis": 8.0,
+     "prix_achat": 1.4900000095367432,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087950041",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT GRENAILLE SACHET 1KG ITM",
+   "rang": 196,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE CONSOJAZZY FRANCE 18/35MM C 1 SACHET 1 Kg NOUVELLE RECOLTE ITM",
+     "par_colis": 12.0,
+     "prix_achat": 2.5899999141693115,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PDT MICRO ONDABLE 750G ITM",
+   "rang": 197,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE CONSOJAZZY FRANCE 35/40MM SACHET 750 g NOUVELLE RECOLTE ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.890000104904175
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010611",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT PRINCESSE AMANDINE 1KG",
+   "rang": 198,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE CONSOAMANDINE FRANCE 35/42MM C 1 SACHET 1 Kg",
+     "par_colis": 12.0,
+     "prix_achat": 2.1500000953674316,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087950009",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT PRINCESSE AMANDINE 2KG",
+   "rang": 199,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE CONSOAMANDINE FRANCE 35/55MM FILET 2 Kg NOUVELLE RECOLTE",
+     "par_colis": 8.0,
+     "prix_achat": 3.390000104904175,
+     "prix_vente_conseille": 4.989999771118164
+    },
+    {
+     "libelle": "POMME DE TERRE CONSOAMANDINE FRANCE 35/55MM FILET 2 Kg NOUVELLE RECOLTE",
+     "par_colis": 65.0,
+     "prix_achat": 3.390000104904175,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087950042",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT SALADE MICRO ONDE 500G",
+   "rang": 200,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE CONSOJAZZY FRANCE 38/42MM C 1 SACHET 500 g",
+     "par_colis": 8.0,
+     "prix_achat": 1.4900000095367432,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087950043",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT VAPEUR BLONDE 2.5KG ITM",
+   "rang": 201,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE CONSOJAZZY FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+     "par_colis": 55.0,
+     "prix_achat": 2.302000045776367,
+     "prix_vente_conseille": 3.990000009536743
+    },
+    {
+     "libelle": "PNM POMME DE TERRE CONSOJAZZY FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+     "par_colis": 6.0,
+     "prix_achat": 2.382999897003174,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010621",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT VAPEUR ROUGE 2.5KG ITM",
+   "rang": 202,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE CONSOCHERIE FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+     "par_colis": 55.0,
+     "prix_achat": 2.700000047683716,
+     "prix_vente_conseille": 3.990000009536743
+    },
+    {
+     "libelle": "PNM POMME DE TERRE CONSOCHERIE FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+     "par_colis": 6.0,
+     "prix_achat": 2.700000047683716,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010622",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME DE TERRE GRENAILLE VRAC",
+   "rang": 203,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE CONSOJAZZY FRANCE 28/35MM C 1 VRAC",
+     "par_colis": 15.0,
+     "prix_achat": 1.5,
+     "prix_vente_conseille": 2.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CAROTTE FANE BOTTE",
+   "rang": 204,
+   "offres": [
+    {
+     "libelle": "RADIS ET LEGUMES FANCAROTTE BOTTE FRANCE C 1 BOTTE",
+     "par_colis": 12.0,
+     "prix_achat": 1.4900000095367432,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004564",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "OIGNON BLANC BOTTE",
+   "rang": 205,
+   "offres": [
+    {
+     "libelle": "RADIS ET LEGUMES FANOIGNON BLANC ITALIE C 1 BOTTE",
+     "par_colis": 8.0,
+     "prix_achat": 1.2899999618530273,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003331",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RADIS NOIR PIECE",
+   "rang": 206,
+   "offres": [
+    {
+     "libelle": "RADIS ET LEGUMES FANRADIS NOIR FRANCE C 1 PIECE",
+     "par_colis": 10.0,
+     "prix_achat": 1.2999999523162842,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004739",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RADIS ROSE BOTTE",
+   "rang": 207,
+   "offres": [
+    {
+     "libelle": "RADIS ET LEGUMES FANRADIS ROSE FRANCE C 1 BOTTE PRECONISE",
+     "par_colis": 12.0,
+     "prix_achat": 0.949999988079071,
+     "prix_vente_conseille": 1.3899999856948853
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004740",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RADIS ROUGE SACHET 250G",
+   "rang": 208,
+   "offres": [
+    {
+     "libelle": "RADIS ET LEGUMES FANRADIS ROUGE FRANCE C 1 SACHET 250 g",
+     "par_colis": 18.0,
+     "prix_achat": 0.6800000071525574,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087835003",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LAITUE BATAVIA BLONDE PIECE",
+   "rang": 209,
+   "offres": [
+    {
+     "libelle": "SALADE BATAVIA BLONDE FRANCE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 1.2799999713897705,
+     "prix_vente_conseille": 1.8899999856948853
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003169",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LAITUE FEUILLE CHENE BDE PIECE",
+   "rang": 210,
+   "offres": [
+    {
+     "libelle": "SALADE FEUILLE DE CHENE BLOFRANCE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 1.2899999618530273,
+     "prix_vente_conseille": 1.8899999856948853
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003329",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LAITUE FEUILLE CHENE RGE PIECE",
+   "rang": 211,
+   "offres": [
+    {
+     "libelle": "SALADE FEUILLE DE CHENE ROUFRANCE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 1.4500000476837158,
+     "prix_vente_conseille": 1.8899999856948853
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003330",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LAITUE POMMEE BLONDE PIECE",
+   "rang": 212,
+   "offres": [
+    {
+     "libelle": "SALADE LAITUE BLONDE FRANCE CAL 6 C 1 PIECE REGIONAL",
+     "par_colis": 6.0,
+     "prix_achat": 1.4500000476837158,
+     "prix_vente_conseille": 1.8899999856948853
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004076",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MELANGE JEUNES POUSSES 125G",
+   "rang": 213,
+   "offres": [
+    {
+     "libelle": "POUSSE SALADE MELANGE FRANCE BARQUETTE 125 g PRICE",
+     "par_colis": 6.0,
+     "prix_achat": 0.699999988079071,
+     "prix_vente_conseille": 1.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087755054",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MIX CHICOREE FRISEE/SCAROLE",
+   "rang": 214,
+   "offres": [
+    {
+     "libelle": "SALADE FRISEE ET SCAROLE FRANCE CAL 6 C 1 PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 2.25,
+     "prix_vente_conseille": 3.390000104904175
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087005049",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POUSSE EPINARD BARQUETTE 125G",
+   "rang": 215,
+   "offres": [
+    {
+     "libelle": "POUSSE SALADE EPINARD FRANCE C 1 BARQUETTE 125 g",
+     "par_colis": 6.0,
+     "prix_achat": 0.949999988079071,
+     "prix_vente_conseille": 1.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087755048",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POUSSES DE HARICOT MUNGO 200G",
+   "rang": 216,
+   "offres": [
+    {
+     "libelle": "SALADE POUSSE HARICOT MUNGOFRANCE SACHET 200 g",
+     "par_colis": 10.0,
+     "prix_achat": 0.6499999761581421,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "ROQUETTE BARQUETTE 125G",
+   "rang": 217,
+   "offres": [
+    {
+     "libelle": "POUSSE SALADE ROQUETTE. FRANCE BARQUETTE 125 g PRECONISE",
+     "par_colis": 6.0,
+     "prix_achat": 0.949999988079071,
+     "prix_vente_conseille": 1.2899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087755051",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "SALADE MACHE BARQUETTE 125G",
+   "rang": 218,
+   "offres": [
+    {
+     "libelle": "SALADE MACHE FRANCE BARQUETTE 125 g PRICE",
+     "par_colis": 12.0,
+     "prix_achat": 0.7900000214576721,
+     "prix_vente_conseille": 0.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087755102",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE ALLONGE TORINO 600G SP",
+   "rang": 219,
+   "offres": [
+    {
+     "libelle": "TOMATE ALLONGEE LATINE FRANCE 45/55MM C 1 BARQUETTE 600 g",
+     "par_colis": 10.0,
+     "prix_achat": 3.2899999618530273,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "TOMATE ALLONGEE COEUR VRAC",
+   "rang": 220,
+   "offres": [
+    {
+     "libelle": "TOMATE ALLONGEE COEUR FRANCE C 2 VRAC",
+     "par_colis": 3.5,
+     "prix_achat": 4.489999771118164,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "TOMATE ALLONGEE TORINO VRAC",
+   "rang": 221,
+   "offres": [
+    {
+     "libelle": "TOMATE ALLONGEE LATINE FRANCE 45/55MM C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 5.090000152587891,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003150",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE ALLONGEE VRAC",
+   "rang": 222,
+   "offres": [
+    {
+     "libelle": "TOMATE ALLONGEE FRANCE 47/57MM C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 4.150000095367432,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003145",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE COTELEE AUMONIERE VRAC",
+   "rang": 223,
+   "offres": [
+    {
+     "libelle": "TOMATE COTELEE AUMONIERE FRANCE 82/102MM C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 5.989999771118164,
+     "prix_vente_conseille": 7.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004803",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE COTELEE JAUNE VRAC",
+   "rang": 224,
+   "offres": [
+    {
+     "libelle": "TOMATE COTELEE JAUNE FRANCE C 2 VRAC",
+     "par_colis": 3.5,
+     "prix_achat": 4.400000095367432,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004778",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE COTELEE NOIRE VRAC",
+   "rang": 225,
+   "offres": [
+    {
+     "libelle": "TOMATE COTELEE NOIRE FRANCE C 2 VRAC",
+     "par_colis": 3.5,
+     "prix_achat": 4.400000095367432,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004808",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE COTELEE ROUGE VRAC",
+   "rang": 226,
+   "offres": [
+    {
+     "libelle": "TOMATE COTELEE ROUGEE FRANCE C 2 VRAC",
+     "par_colis": 3.5,
+     "prix_achat": 4.400000095367432,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004807",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE RONDE CHARNUE VRAC",
+   "rang": 227,
+   "offres": [
+    {
+     "libelle": "TOMATE RONDE CHARNUE FRANCE 82/102MM C 1 VRAC",
+     "par_colis": 7.0,
+     "prix_achat": 4.199999809265137,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004799",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE RONDE EN GRAPPE VRAC FRANCE",
+   "rang": 228,
+   "offres": [
+    {
+     "libelle": "TOMATE RONDE EN GRAPPE FRANCE EXT VRAC PRECONISE",
+     "par_colis": 10.0,
+     "prix_achat": 4.800000190734863,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004664",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE 250G ZRP",
+   "rang": 229,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT CERISE ALLONGEE FRANCE C 1 BARQUETTE 250 g",
+     "par_colis": 12.0,
+     "prix_achat": 1.8899999856948853,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087760059",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE ALLONGEE 1KG",
+   "rang": 230,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT CERISE ALLONGEE FRANCE C 1 COLIS 1 Kg",
+     "par_colis": 1.0,
+     "prix_achat": 5.489999771118164,
+     "prix_vente_conseille": 7.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087760041",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE ALLONGEE 500G ZRP",
+   "rang": 231,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT CERISE ALLONGEE FRANCE C 1 BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 3.700000047683716,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087761001",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE DUO 250G",
+   "rang": 232,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT CERISE ALLONGEE PANAFRANCE C 1 BARQUETTE 250 g",
+     "par_colis": 12.0,
+     "prix_achat": 2.190000057220459,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087760027",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE MELANGEE 350G ITM",
+   "rang": 233,
+   "offres": [
+    {
+     "libelle": "PNM TOMATE PETIT FRUIT CERISE PANACHEE FRANCE C 1 BARQUETTE 350 g ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.890000104904175,
+     "prix_vente_conseille": 4.289999961853027
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010630",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE PANACHEE 1KG",
+   "rang": 234,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT CERISE PANACHEE FRANCE C 1 COLIS 1 Kg",
+     "par_colis": 1.0,
+     "prix_achat": 5.489999771118164,
+     "prix_vente_conseille": 7.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087760022",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE RONDE 500G ZRP",
+   "rang": 235,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT CERISE ROUGE FRANCE C 1 BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 3.700000047683716,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087761000",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE RONDE EN GRAPPE VRAC",
+   "rang": 236,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT CERISE EN GRAPPE FRANCE C 1 VRAC",
+     "par_colis": 3.0,
+     "prix_achat": 8.199999809265137,
+     "prix_vente_conseille": 11.949999809265137
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "TOMATE COCKTAIL GRAPPE 500G",
+   "rang": 237,
+   "offres": [
+    {
+     "libelle": "TOMATE PETIT FRUIT COCKTAIL EN GRAPPE FRANCE C 1 BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 3.0,
+     "prix_vente_conseille": 4.590000152587891
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087760031",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NAVET BLANC VRAC",
+   "rang": 238,
+   "offres": [
+    {
+     "libelle": "NAVET BLANC FRANCE C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 1.8899999856948853,
+     "prix_vente_conseille": 2.990000009536743
+    },
+    {
+     "libelle": "NAVET BLANC ESPAGNE C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 2.0999999046325684,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004812",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NAVET VIOLET VRAC",
+   "rang": 239,
+   "offres": [
+    {
+     "libelle": "NAVET VIOLET FRANCE 60/80MM VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.2899999618530273,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004811",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PANAIS VRAC",
+   "rang": 240,
+   "offres": [
+    {
+     "libelle": "PANAIS PANAIS FRANCE C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 2.490000009536743,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003053",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL BLANC FILET 250G BIO MMP",
+   "rang": 241,
+   "offres": [
+    {
+     "libelle": "PNM BIO AIL BLANC FRANCE 40/60MM FILET 250 g MON MARCHE PLAISIR",
+     "par_colis": 20.0,
+     "prix_achat": 3.190000057220459,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087200001",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AUBERGINE BIO 2 FRUITS",
+   "rang": 242,
+   "offres": [
+    {
+     "libelle": "BIO AUBERGINE FRANCE C 2 FILET 2 PIECES",
+     "par_colis": 8.0,
+     "prix_achat": 2.5899999141693115,
+     "prix_vente_conseille": 3.890000104904175
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695092",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AVOCAT BIO BARQUETTE 2 FRUITS",
+   "rang": 243,
+   "offres": [
+    {
+     "libelle": "BIO AVOCATS HASS PEROU 165/196G BARQUETTE 2 PIECES PRICE",
+     "par_colis": 8.0,
+     "prix_achat": 2.4000000953674316,
+     "prix_vente_conseille": 3.5899999141693115
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087535005",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BANANE RUBAN 5 FRUITS BIO",
+   "rang": 244,
+   "offres": [
+    {
+     "libelle": "BIO BANANE CAVENDISH BIOREPUBLIQUE DOMI C 2 PIECE MAX HAVELAAR",
+     "par_colis": 22.0,
+     "prix_achat": 1.399999976158142,
+     "prix_vente_conseille": 2.190000057220459
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087430008",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BETTERAVE BIO 500G",
+   "rang": 245,
+   "offres": [
+    {
+     "libelle": "BIO BETTERAVE CUITE FRANCE SACHET 500 g",
+     "par_colis": 28.0,
+     "prix_achat": 1.149999976158142,
+     "prix_vente_conseille": 1.7899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "BUTTERNUT PIECE BIO MMP",
+   "rang": 246,
+   "offres": [
+    {
+     "libelle": "PNM BIO BUTTERNUT FRANCE C 2 PIECE MON MARCHE PLAISIR",
+     "par_colis": 10.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CAROTTE SACHET 1KG BIO ITM",
+   "rang": 247,
+   "offres": [
+    {
+     "libelle": "PNM BIO CAROTTE CONSERVATIONFRANCE 20/40MM SACHET 1 Kg ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.7899999618530273,
+     "prix_vente_conseille": 2.5899999141693115
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087010726",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CHAMPIGNON PARIS BLANC 200G BIO ITM",
+   "rang": 248,
+   "offres": [
+    {
+     "libelle": "PNM BIO CHAMPIGNON BLANC FRANCE MOYEN C 2 BARQUETTE 200 g BIO ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.690000057220459,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CITRON JAUNE BIO 4 FRUITS",
+   "rang": 249,
+   "offres": [
+    {
+     "libelle": "BIO CITRON EUREKA PEROU 4/5 C 2 FILET 4 PIECES",
+     "par_colis": 10.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087405005",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CONCOMBRE BIO PIECE PE",
+   "rang": 250,
+   "offres": [
+    {
+     "libelle": "BIO CONCOMBRE LONG ESPAGNE 300/400G C 2 PIECE MON MARCHE PLAISIR",
+     "par_colis": 12.0,
+     "prix_achat": 1.3899999856948853,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "COURGETTE 1KG BIO MMP",
+   "rang": 251,
+   "offres": [
+    {
+     "libelle": "PNM BIO COURGETTE FRANCE BARQUETTE 1 Kg",
+     "par_colis": 10.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087200052",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ECHALOTE TRADI 250G BIO ITM",
+   "rang": 252,
+   "offres": [
+    {
+     "libelle": "PNM BIO ECHALOTE LONGUE FRANCE 20/40MM C 2 FILET 250 g BIO ITM",
+     "par_colis": 20.0,
+     "prix_achat": 1.2899999618530273,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087010734",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "ENDIVE SACHET 400G BIO ITM",
+   "rang": 253,
+   "offres": [
+    {
+     "libelle": "PNM BIO ENDIVE FRANCE C 2 SACHET 400 g ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.75,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "KIWI JAUNE BIO 4 FRUITS",
+   "rang": 254,
+   "offres": [
+    {
+     "libelle": "BIO KIWI SUNGOLD NOUVELLE ZELAND88/103G BARQUETTE 4 PIECES",
+     "par_colis": 10.0,
+     "prix_achat": 3.490000009536743,
+     "prix_vente_conseille": 5.489999771118164
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695079",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "KIWI VERT BIO 6 FR",
+   "rang": 255,
+   "offres": [
+    {
+     "libelle": "BIO KIWI HAYWARD NOUVELLE ZELAND89/103G C 1 BARQUETTE 6 PIECES PRICE",
+     "par_colis": 10.0,
+     "prix_achat": 3.4000000953674316,
+     "prix_vente_conseille": 4.489999771118164
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695022",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "LAITUE SUCRINE BIO X2 SACHET",
+   "rang": 256,
+   "offres": [
+    {
+     "libelle": "BIO SUCRINE FRANCE SACHET 2 PIECES",
+     "par_colis": 6.0,
+     "prix_achat": 2.1500000953674316,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695105",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "NOIX BIO SACHET 500G",
+   "rang": 257,
+   "offres": [
+    {
+     "libelle": "BIO NOIX COQUES FRANCE 28/30MM SACHET 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 2.190000057220459,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "OIGNON JAUNE 1KG BIO MMP",
+   "rang": 258,
+   "offres": [
+    {
+     "libelle": "PNM BIO OIGNON JAUNE FRANCE 40/60MM C 2 FILET 1 Kg MON MARCHE PLAISIR",
+     "par_colis": 10.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "OIGNON ROUGE 350G BIO ITM",
+   "rang": 259,
+   "offres": [
+    {
+     "libelle": "PNM BIO OIGNON ROUGE FRANCE 40/60MM C 2 FILET 350 g BIO ITM",
+     "par_colis": 10.0,
+     "prix_achat": 1.4500000476837158,
+     "prix_vente_conseille": 2.2899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PATATE DOUCE BIO FILET 500G",
+   "rang": 260,
+   "offres": [
+    {
+     "libelle": "BIO PATATE DOUCE FRANCE FILET 500 g",
+     "par_colis": 6.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PDT BIO FOUR PUREE POTAGE 1,5KG",
+   "rang": 261,
+   "offres": [
+    {
+     "libelle": "BIO PDTCO MAIWEN FRANCE 50/70MM C 2 FILET 1,5 Kg PRICE NOUVELLE RECOLTE",
+     "par_colis": 10.0,
+     "prix_achat": 2.4000000953674316,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695227",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PDT BIO VAPEUR RISSOLE 1,5KG MMP",
+   "rang": 262,
+   "offres": [
+    {
+     "libelle": "BIO PDTCF ALLIANS FRANCE 35/55MM C 2 FILET 1,5 Kg PRICE MON MARCHE PLAISIR",
+     "par_colis": 10.0,
+     "prix_achat": 2.4000000953674316,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695228",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POIRE 4 FRUITS BIO ITM",
+   "rang": 263,
+   "offres": [
+    {
+     "libelle": "PNM BIO POIRE GUYOT FRANCE 60/65MM BARQUETTE 4 PIECES BIO ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.8899999856948853,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POIREAU BOTTE 750G BIO MMP",
+   "rang": 264,
+   "offres": [
+    {
+     "libelle": "PNM BIO POIREAU FRANCE 20/40MM C 2 BARQUETTE 750 g MON MARCHE PLAISIR",
+     "par_colis": 6.0,
+     "prix_achat": 2.549999952316284,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POIVRON DOUX BIO 2 FRUITS",
+   "rang": 265,
+   "offres": [
+    {
+     "libelle": "BIO POIVRON PANACHE FRANCE 70/90MM C 2",
+     "par_colis": 8.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.890000104904175
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME BICOLORE 6 FRUITS BIO ITM",
+   "rang": 266,
+   "offres": [
+    {
+     "libelle": "PNM BIO POMME ROYALE GALA FRANCE 115/135G BARQUETTE 6 PIECES PRICE BIO ITM",
+     "par_colis": 12.0,
+     "prix_achat": 2.130000114440918,
+     "prix_vente_conseille": 3.190000057220459
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME BIO BICOLORE 1,5KG",
+   "rang": 267,
+   "offres": [
+    {
+     "libelle": "BIO POMME ROYALE GALA FRANCE 95/130G SACHET 1,5 Kg PRICE",
+     "par_colis": 8.0,
+     "prix_achat": 2.450000047683716,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME JAUNE 6 FRUITS BIO ITM",
+   "rang": 268,
+   "offres": [
+    {
+     "libelle": "PNM BIO POMME GOLDEN DELICIOFRANCE 115/135G BARQUETTE 6 PIECES PRICE BIO ITM",
+     "par_colis": 12.0,
+     "prix_achat": 2.109999895095825,
+     "prix_vente_conseille": 3.190000057220459
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POTIMARRON PIECE BIO MMP",
+   "rang": 269,
+   "offres": [
+    {
+     "libelle": "PNM BIO POTIMARRON FRANCE C 2 PIECE MON MARCHE PLAISIR",
+     "par_colis": 10.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087200153",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "RAISIN BLC SS PEPIN BIO 500G",
+   "rang": 270,
+   "offres": [
+    {
+     "libelle": "BIO RAISIN BLANC SANS PEFRANCE C 2 BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "RAISIN NOIR BIO 500G",
+   "rang": 271,
+   "offres": [
+    {
+     "libelle": "PNM BIO RAISIN MUSCAT FRANCE BARQUETTE 500 g BIO ITM",
+     "par_colis": 10.0,
+     "prix_achat": 2.690000057220459,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "SALADE MACHE BIO 150G",
+   "rang": 272,
+   "offres": [
+    {
+     "libelle": "BIO MACHE FRANCE C 2 BARQUETTE 150 g",
+     "par_colis": 6.0,
+     "prix_achat": 1.649999976158142,
+     "prix_vente_conseille": 2.490000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "TOMATE CERISE ALLONG BIO 250G",
+   "rang": 273,
+   "offres": [
+    {
+     "libelle": "BIO TOMATE CERISE ALLONGFRANCE C 2 BARQUETTE 250 g",
+     "par_colis": 12.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695257",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE CERISE BIO MEL BQ 250G",
+   "rang": 274,
+   "offres": [
+    {
+     "libelle": "BIO TOMATE CERISE MELANGFRANCE C 2 BARQUETTE 250 g",
+     "par_colis": 12.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695155",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "TOMATE COTELEE DUO BIO BQ 500G",
+   "rang": 275,
+   "offres": [
+    {
+     "libelle": "BIO TOMATE COTELE DUO FRANCE C 2 BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 3.490000009536743,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "TOMATE GRAPPE 500G BIO MMP",
+   "rang": 276,
+   "offres": [
+    {
+     "libelle": "PNM BIO TOMATE GRAPPE FRANCE BARQUETTE 500 g MON MARCHE PLAISIR",
+     "par_colis": 8.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "AMANDE SACHET 500G",
+   "rang": 277,
+   "offres": [
+    {
+     "libelle": "AMANDE . FRANCE C 1 SACHET 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 2.990000009536743,
+     "prix_vente_conseille": 4.289999961853027
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "AVOCAT FILET 800G",
+   "rang": 278,
+   "offres": [
+    {
+     "libelle": "AVOCAT HASS PEROU 80/123G",
+     "par_colis": 6.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "FIGUE BARBARIE BARQUETTE 500G",
+   "rang": 279,
+   "offres": [
+    {
+     "libelle": "FIGUE BARBARIE ITALIE C 1 BARQUETTE 500 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.390000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "ANANAS VICTORIA PIECE",
+   "rang": 280,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE ANANAS VICTORIA FRANCE CAL 7 C 1 PIECE AVION",
+     "par_colis": 7.0,
+     "prix_achat": 4.289999961853027,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003037",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BANANE ROSE VRAC",
+   "rang": 281,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE BANANE ROSE EQUATEUR C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 3.2899999618530273,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004236",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "DATTE DEGLET NOUR BRANCHEE 1KG",
+   "rang": 282,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE DATTE FRAICHE ALGERIE C 1 GRAPPE 1 Kg",
+     "par_colis": 12.0,
+     "prix_achat": 4.150000095367432,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "DATTE FRAICHE VRAC",
+   "rang": 283,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE DATTE FRAICHE EGYPTE VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 5.489999771118164,
+     "prix_vente_conseille": 7.949999809265137
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003045",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "DATTE MEDJOOL VRAC",
+   "rang": 284,
+   "offres": [
+    {
+     "libelle": "FRUIT EXOTIQUE DATTE MEDJOUL ISRAEL C 1 VRAC",
+     "par_colis": 3.0,
+     "prix_achat": 10.6899995803833,
+     "prix_vente_conseille": 15.949999809265137
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "MIX FRAMBOISE MYRTILLE 150G",
+   "rang": 285,
+   "offres": [
+    {
+     "libelle": "FRAMBOISE PANACHE C 1 BARQUETTE 150 g",
+     "par_colis": 6.0,
+     "prix_achat": 4.590000152587891,
+     "prix_vente_conseille": 6.989999771118164
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "MURE BARQUETTE 125G",
+   "rang": 286,
+   "offres": [
+    {
+     "libelle": "MURES . PORTUGAL BARQUETTE 125 g",
+     "par_colis": 12.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087645001",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "KIWI VERT BARQUETTE 4 FRUITS",
+   "rang": 287,
+   "offres": [
+    {
+     "libelle": "KIWI HAYWARD NOUVELLE ZELAND89/103G C 1 BARQUETTE 4 PIECES",
+     "par_colis": 10.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.690000057220459
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PECHE BARQUETTE 1KG",
+   "rang": 288,
+   "offres": [
+    {
+     "libelle": "PECHE BLANCHE FRANCE C-56/61MM C 2 BARQUETTE 1 Kg",
+     "par_colis": 10.0,
+     "prix_achat": 2.1700000762939453,
+     "prix_vente_conseille": 2.890000104904175
+    },
+    {
+     "libelle": "PECHE JAUNE FRANCE C-56/61MM C 2 BARQUETTE 1 Kg",
+     "par_colis": 10.0,
+     "prix_achat": 2.1700000762939453,
+     "prix_vente_conseille": 2.890000104904175
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POMME GALA PETIT CALIBRE VRAC",
+   "rang": 289,
+   "offres": [
+    {
+     "libelle": "POMME GALA FRANCE 136/200G C 1 VRAC",
+     "par_colis": 13.0,
+     "prix_achat": 1.25,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087004133",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "POMME JOYA VRAC",
+   "rang": 290,
+   "offres": [
+    {
+     "libelle": "POMME CRIPPS RED FRANCE 170/200G C 1 VRAC",
+     "par_colis": 6.5,
+     "prix_achat": 1.7899999618530273,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "fruits",
+   "article": "0000087003010",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PRUNE PLUOT VRAC",
+   "rang": 291,
+   "offres": [
+    {
+     "libelle": "PRUNE HYBRIDE METIS FRANCE 50/60MM C 1 VRAC",
+     "par_colis": 6.0,
+     "prix_achat": 2.8499999046325684,
+     "prix_vente_conseille": 4.289999961853027
+    }
+   ],
+   "groupe": "fruits",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "AIL ROSE LAUTREC LR IGP 3 TETES ITM",
+   "rang": 292,
+   "offres": [
+    {
+     "libelle": "PNM AIL ROSES FRANCE 50/70MM FILET 3 TETES IGP ITM",
+     "par_colis": 20.0,
+     "prix_achat": 2.8499999046325684,
+     "prix_vente_conseille": 4.190000057220459
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087010655",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL VIOLET CADOURS AOP 3 TETES ITM",
+   "rang": 293,
+   "offres": [
+    {
+     "libelle": "PNM AIL VIOLETS FRANCE 60/80MM FILET 3 TETES AOP ITM",
+     "par_colis": 20.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "AUBERGINE TIGREE VRAC",
+   "rang": 294,
+   "offres": [
+    {
+     "libelle": "AUBERGINE STRIEE FRANCE 300/500G VRAC",
+     "par_colis": 2.5,
+     "prix_achat": 3.700000047683716,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087003090",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BETTERAVE ROUGE CUITE SACHET 500G",
+   "rang": 295,
+   "offres": [
+    {
+     "libelle": "BETTERAVE ROUGE FRANCE C 1 SACHET 500 g",
+     "par_colis": 26.0,
+     "prix_achat": 0.8899999856948853,
+     "prix_vente_conseille": 1.4900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "COLIS DEMI CHOU BLC / ROUGE",
+   "rang": 296,
+   "offres": [
+    {
+     "libelle": "CHOU BLANC ET ROUGE DEMI FRANCE PIECE",
+     "par_colis": 6.0,
+     "prix_achat": 1.590000033378601,
+     "prix_vente_conseille": 2.490000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087880000",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CONCOMBRE NOA PIECE",
+   "rang": 297,
+   "offres": [
+    {
+     "libelle": "CONCOMBRE NOA FRANCE C 1 PIECE",
+     "par_colis": 20.0,
+     "prix_achat": 1.100000023841858,
+     "prix_vente_conseille": 1.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087004513",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "BUTTERNUT TRANCHE ITM",
+   "rang": 298,
+   "offres": [
+    {
+     "libelle": "PNM COURGE ALIMENTAIRE BUTTERNUT FRANCE C 1 TRANCHE PRICE ITM",
+     "par_colis": 5.0,
+     "prix_achat": 1.850000023841858,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "COURGE TRANCHEE ITM",
+   "rang": 299,
+   "offres": [
+    {
+     "libelle": "PNM COURGE ALIMENTAIRE POTIRON FRANCE C 1 TRANCHE PRICE ITM",
+     "par_colis": 5.0,
+     "prix_achat": 1.850000023841858,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "OIGNON JAUNE FILET 5KG",
+   "rang": 300,
+   "offres": [
+    {
+     "libelle": "OIGNON JAUNE FRANCE 60/80MM C 1 FILET 5 Kg",
+     "par_colis": 1.0,
+     "prix_achat": 3.490000009536743,
+     "prix_vente_conseille": 4.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087945018",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "HARICOT COCO PAIMPOLAIS 1KG",
+   "rang": 301,
+   "offres": [
+    {
+     "libelle": "HARICOT GRAIN COCO PAIMPOLAIS FRANCE FILET 1 Kg AOP",
+     "par_colis": 10.0,
+     "prix_achat": 3.7899999618530273,
+     "prix_vente_conseille": 5.989999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000099803723",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PIMENT PADRON BARQUETTE 200G",
+   "rang": 302,
+   "offres": [
+    {
+     "libelle": "PIMENT PIMENT PADRON ESPAGNE C 1 BARQUETTE 200 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.4900000095367432,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087780009",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "PIMENT ROUGE VRAC",
+   "rang": 303,
+   "offres": [
+    {
+     "libelle": "PIMENT ROUGE MAROC VRAC",
+     "par_colis": 4.0,
+     "prix_achat": 4.949999809265137,
+     "prix_vente_conseille": 7.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "POIVRON DOUX ORANGE VRAC",
+   "rang": 304,
+   "offres": [
+    {
+     "libelle": "POIVRON ORANGE PAYS BAS 80/100MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 4.489999771118164,
+     "prix_vente_conseille": 6.489999771118164
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PDT DELICATESSE DROME 750G ITM",
+   "rang": 305,
+   "offres": [
+    {
+     "libelle": "PNM POMME DE TERRE CONSOLINZER DELICATESSE FRANCE 20/40MM C 1 BARQUETTE 750 g ITM",
+     "par_colis": 8.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "PDT GRENAILLE 1,5 KG",
+   "rang": 306,
+   "offres": [
+    {
+     "libelle": "POMME DE TERRE CONSOJAZZY FRANCE 28/38MM",
+     "par_colis": 10.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087950033",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "AIL VERT VRAC",
+   "rang": 307,
+   "offres": [
+    {
+     "libelle": "RADIS ET LEGUMES FANAIL FRAIS FRANCE 60/80MM C 1 VRAC",
+     "par_colis": 5.0,
+     "prix_achat": 6.590000152587891,
+     "prix_vente_conseille": 9.949999809265137
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "CHICOREE FRISEE FINE PIECE EMBALLEE",
+   "rang": 308,
+   "offres": [
+    {
+     "libelle": "SALADE FRISEE FINE COTE ESPAGNE C 1 BARQUETTE 300 g",
+     "par_colis": 10.0,
+     "prix_achat": 1.3899999856948853,
+     "prix_vente_conseille": 1.9900000095367432
+    }
+   ],
+   "groupe": "legumes",
+   "article": "0000087755035",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "CRESSON EMBALLE 125G",
+   "rang": 309,
+   "offres": [
+    {
+     "libelle": "SALADE CRESSON FRANCE C 1 BARQUETTE 125 g",
+     "par_colis": 6.0,
+     "prix_achat": 1.190000057220459,
+     "prix_vente_conseille": 1.7899999618530273
+    }
+   ],
+   "groupe": "legumes",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "COURGE SPAGHETTI BIO PIECE",
+   "rang": 310,
+   "offres": [
+    {
+     "libelle": "BIO COURGE SPAGHETTI FRANCE C 2 PIECE",
+     "par_colis": 10.0,
+     "prix_achat": 1.9900000095367432,
+     "prix_vente_conseille": 2.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "GINGEMBRE BIO FILET 200G,",
+   "rang": 311,
+   "offres": [
+    {
+     "libelle": "BIO GINGEMBRE BIO PEROU C 2 FILET 200G",
+     "par_colis": 10.0,
+     "prix_achat": 1.7899999618530273,
+     "prix_vente_conseille": 2.690000057220459
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "LIME BIO FILET 3 FRUITS",
+   "rang": 312,
+   "offres": [
+    {
+     "libelle": "BIO LIME ESPAGNE C 2 FILET 3 PIECES",
+     "par_colis": 12.0,
+     "prix_achat": 1.7899999618530273,
+     "prix_vente_conseille": 2.7899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087695216",
+   "rapprochement": "sûr"
+  },
+  {
+   "nom": "MELON PIECE BIO ITM",
+   "rang": 313,
+   "offres": [
+    {
+     "libelle": "PNM BIO MELON CHARENTAIS FRANCE 975/1250G C 2 PIECE BIO ITM",
+     "par_colis": 12.0,
+     "prix_achat": 2.2899999618530273,
+     "prix_vente_conseille": 3.2899999618530273
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "ORANGE BIO 750G",
+   "rang": 314,
+   "offres": [
+    {
+     "libelle": "BIO ORANGE VALENCI AFRIQUE DU SUD FILET 750 g",
+     "par_colis": 12.0,
+     "prix_achat": 2.7899999618530273,
+     "prix_vente_conseille": 3.990000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": null,
+   "rapprochement": "inconnu"
+  },
+  {
+   "nom": "TOMATE RONDE GRAPPE 500G BIO ITM",
+   "rang": 315,
+   "offres": [
+    {
+     "libelle": "PNM BIO TOMATE GRAPPE FRANCE BARQUETTE 500 g ITM",
+     "par_colis": 8.0,
+     "prix_achat": 2.390000104904175,
+     "prix_vente_conseille": 3.490000009536743
+    }
+   ],
+   "groupe": "bio",
+   "article": "0000087010760",
+   "rapprochement": "sûr"
+  }
+ ],
+ "indisponibles": []
+}
