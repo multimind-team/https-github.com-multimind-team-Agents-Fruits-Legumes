@@ -16,7 +16,6 @@ On n'efface jamais la ligne d'origine : annuler, c'est remettre les valeurs
 d'avant et écrire une nouvelle ligne qui dit ce qu'on a remis, et pourquoi.
 """
 import argparse
-import json
 import sys
 from datetime import date, datetime
 from pathlib import Path
@@ -25,6 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import journal_agents as journal
 import catalogue
 import regles
+from verrou_donnees import append_jsonl
 
 RACINE = Path(__file__).resolve().parent.parent
 DECISIONS = RACINE / "donnees" / "decisions.jsonl"
@@ -66,23 +66,6 @@ def valeur_actuelle(cfg, chg):
     if chg["champ"] == "groupes":
         return cfg.get("groupes", {}).get(chg["itm8"], ABSENT)
     return cfg.get("overrides", {}).get(chg["itm8"], {}).get(chg["champ"], ABSENT)
-
-
-def restaurer(cfg, chg):
-    """Remet la valeur d'avant dans un état de réglages en mémoire.
-    Sert à la vérification ; l'écriture, elle, passe par le carnet."""
-    avant = chg.get("avant")
-    if chg["champ"] == "groupes":
-        if avant in (None, [], ABSENT):
-            cfg.get("groupes", {}).pop(chg["itm8"], None)
-        else:
-            cfg.setdefault("groupes", {})[chg["itm8"]] = avant
-    else:
-        surcharge = cfg.setdefault("overrides", {}).setdefault(chg["itm8"], {})
-        if avant is None:
-            surcharge.pop(chg["champ"], None)
-        else:
-            surcharge[chg["champ"]] = avant
 
 
 # Champ de réglage -> type de décision à écrire pour revenir en arrière.
@@ -248,9 +231,7 @@ def executer(args):
     numero = journal.numero_action()
     lignes_inverses = decisions_inverses(cible, changements, numero, motif, args.par)
 
-    with open(DECISIONS, "a", encoding="utf-8") as f:
-        for ligne in lignes_inverses:
-            f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
+    append_jsonl(DECISIONS, lignes_inverses)
 
     # On vérifie que l'état reconstitué est bien celui d'avant : une annulation
     # qui se croit faite sans l'être serait pire que pas d'annulation du tout.

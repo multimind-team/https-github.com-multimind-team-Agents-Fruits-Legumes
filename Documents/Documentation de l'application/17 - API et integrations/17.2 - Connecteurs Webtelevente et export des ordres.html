@@ -178,19 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-17.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Injection Webtelevente & Cut-Off</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Chefs Rayon</div>
         </div>
       </div>
 
 
-      <h2>1. Connecteurs Webtelevente et Export SCAFRUIT</h2>
-      <p>
-        Au cut-off de 09h30, la commande validée est préparée pour l'injection dans le portail central SCAFRUIT. L'export respecte scrupuleusement les spécifications EDI des Mousquetaires : codes ITM8, numéros de ligne cadencier et quantités en colis entiers.
-      </p>
-
-
-      <div class="page-nav-bar">
+      <h2>Import du cadencier et transmission manuelle</h2>
+<p>Le cadencier Webtelevente reçu sous forme de fichier est importé pour produire les offres du jour. L’application prépare et affiche la commande dans l’ordre convenu. La transmission reste une recopie sur la tablette officielle du magasin : aucun connecteur d’export EDI, d’injection portail ou de validation automatique n’est implémenté.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/cadencier-du-jour.py">moteur/cadencier-du-jour.py</a></li><li><a href="../../../app/commander.html">app/commander.html</a></li><li><a href="../../../procedures/commande.md">procedures/commande.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./17.1 - Endpoints locaux et protocoles d'échange.html" class="btn-action">&larr; 17.1 Endpoints locaux</a>
         </div>

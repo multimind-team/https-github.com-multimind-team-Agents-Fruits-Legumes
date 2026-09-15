@@ -18,11 +18,13 @@ Le rayon est rempli d'abord. Ensuite seulement on mesure :
 - reste en chambre froide : position positive ;
 - chambre froide vide et rayon pas plein : position negative.
 
-Le comptage du matin se fait après rangement de la livraison, avant les ventes : cette livraison
-est déjà dans la mesure. Les ventes, casse et dons du même jour seront soustraits quand ils seront
-connus. Le soir, la mesure contient tous les mouvements de sa journée : ne rien réappliquer de
-ce jour. Sans heure connue, le moteur traite le comptage comme une mesure du soir ; signaler une
-heure douteuse plutôt que la deviner. Voir `reference/le-metier.md`.
+Le comptage matinal habituel se fait après rangement de la livraison et avant les ventes :
+quand ces conditions sont attestées, cette livraison est déjà dans la mesure. Les sorties
+postérieures seront soustraites quand elles seront connues. Une mesure réellement de fin de
+journée contient les mouvements antérieurs de cette journée. Le moteur applique une convention
+à la journée (soir à partir de 17h, « soir » sans heure) : elle ne prouve ni la fermeture ni le rangement.
+Si la situation réelle ne correspond pas, signaler la limite plutôt que supposer une inclusion.
+Voir `reference/le-metier.md` et `procedures/controle-stock.md`.
 
 ## Etapes
 
@@ -38,7 +40,7 @@ heure douteuse plutôt que la deviner. Voir `reference/le-metier.md`.
 4. Pour un fichier reçu ou renvoyé après cette mesure, appliquer `procedures/controle-stock.md` :
    rechercher le comptage de chaque article, distinguer mouvements déjà compris et postérieurs,
    faire contrôler indépendamment le plan puis le résultat. Un comptage partiel ne valide pas
-   les autres articles. La bascule technique à 14 h n'atteste pas une fermeture : comptage pendant
+   les autres articles. La phase technique du relevé n'atteste pas une fermeture : comptage pendant
    l'ouverture, phase incertaine ou livraison après mesure le même jour doivent être signalés,
    sans répartition inventée des ventes journalières. Recalcule les positions dans le périmètre sûr.
 5. Recalcule la proposition si la commande du jour peut changer.
@@ -46,6 +48,9 @@ heure douteuse plutôt que la deviner. Voir `reference/le-metier.md`.
 7. Vérifie le résultat relu dans l'état et la proposition ; le simple accusé de réception du
    téléphone ne prouve pas que le recalcul asynchrone est fini. L'envoi peut se faire avant la fin
    de la liste ; ne jamais obliger à parcourir les articles restants.
+8. Si la sentinelle a confié un événement, faire analyser l'ID exact du relevé/correction par
+   `agent-audit-stock`, vérifier le rapport et sa restitution puis acquitter avec la référence
+   de preuve selon `AGENTS.md`. Le CLI d'audit sans `--id` ne couvre pas nécessairement cet événement.
 
 ## Interdits
 

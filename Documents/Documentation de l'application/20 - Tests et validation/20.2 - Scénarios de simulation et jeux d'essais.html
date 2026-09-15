@@ -178,55 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-20.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Cas Limites & Simulations</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Développeurs, DSI</div>
         </div>
       </div>
 
 
-      <h2>1. Scénarios Critiques et Jeux d'Essais</h2>
-      <p>
-        Le banc de test automatique éprouve les réactions de l'algorithme face aux situations de tension opérationnelle caractéristiques de la grande distribution :
-      </p>
-
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Scénario 1 : Canicule Subite (&gt; 30°C)</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Hausse brutale de la demande sur les pastèques, melons et salades.<br>
-            • Application du coefficient chaleur (1.076 par palier).<br>
-            • <em>Vérification :</em> Le moteur augmente les propositions sans dépasser le plafond de capacité de stockage en chambre froide.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Scénario 2 : Veille de Jour Férié</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Magasin fermé le lendemain.<br>
-            • Doublement nécessaire de la commande sur les produits longue conservation (pommes de terre, oignons, agrumes).<br>
-            • <em>Vérification :</em> Modération stricte sur les produits ultra-périssables (champignons, fraises) pour éviter la casse le surlendemain.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid-2" style="margin-top:14px;">
-        <div class="card-panel">
-          <div class="card-panel-title">Scénario 3 : Rupture de Quai SCAFRUIT</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Livraison partielle avec reliquats non parvenus.<br>
-            • <em>Vérification :</em> L'algorithme ne doit pas interpréter le stock manquant comme une mévente et doit reproposer le réapprovisionnement sans commander en double les reliquats en cours d'acheminement.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Scénario 4 : Produit Nouveau (Cold Start)</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Référence introduite récemment avec moins de 5 jours d'historique.<br>
-            • <em>Vérification :</em> Repli automatique sur le profil moyen de la famille marchande avec niveau de confiance dégradé et alerte informative sur la console.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Scénarios de régression</h2>
+<p>Les cas importants couvrent le rejeu et le réordonnancement d’imports, les versions contradictoires, les unités ambiguës, la chronologie avant/après comptage, les corrections de relevés, les permissions, les échecs de recalcul et le hors connexion mobile. Les jeux d’essai utilisent des données synthétiques ou des copies protégées, sans modifier le stock réel.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../tests/test_interface_mobile.py">tests/test_interface_mobile.py</a></li><li><a href="../../../tests/test_regressions_courrier_audit.py">tests/test_regressions_courrier_audit.py</a></li><li><a href="../../../tests/e2e_application.py">tests/e2e_application.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./20.1 - Protocoles de test à blanc et non-régression.html" class="btn-action">&larr; 20.1 Protocoles tests</a>
         </div>

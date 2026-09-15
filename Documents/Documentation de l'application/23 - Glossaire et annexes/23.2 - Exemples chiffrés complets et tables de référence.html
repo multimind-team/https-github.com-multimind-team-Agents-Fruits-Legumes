@@ -178,88 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-23.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Cas d'École & Données Chiffrées</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Direction</div>
         </div>
       </div>
 
 
-      <h2>1. Exemple Chiffré Complet : Tomate Ronde Grappe (Vente au kg)</h2>
-      <div class="card-panel">
-        <div class="card-panel-title">Paramètres &amp; Données Mesurées</div>
-        <p style="font-size: 13px; margin: 0;">
-          • <strong>Article :</strong> Tomate Ronde Grappe Catégorie 1 (ITM8 : <code>0000081234567</code>).<br>
-          • <strong>Conditionnement (PCB) :</strong> Carton de 5,0 kg.<br>
-          • <strong>Vente moyenne constatée :</strong> 45,0 kg/jour.<br>
-          • <strong>Prévision météo J+1 :</strong> Ensoleillé, 26°C &rarr; Facteur météo chaleur appliqué : <code>1,076</code>.<br>
-          • <strong>Demande prévisionnelle brute :</strong> 45,0 &times; 1,076 = <strong>48,42 kg</strong>.<br>
-          • <strong>Stock physique compté en chambre froide :</strong> 15,0 kg.<br>
-          • <strong>Ventes prévues restant sur la journée en cours :</strong> 10,0 kg &rarr; Stock projeté net = 15,0 − 10,0 = <strong>5,0 kg</strong>.<br>
-          • <strong>Stock de sécurité (tampon 20%) :</strong> 10,0 kg.<br>
-          • <strong>Besoin net calculé :</strong> 48,42 + 10,0 − 5,0 = <strong>53,42 kg</strong>.<br>
-          • <strong>Arrondi colis PCB :</strong> 53,42 / 5,0 = 10,68 colis &rarr; <strong style="color:var(--brand-red);">11 colis (55,0 kg)</strong> proposés.
-        </p>
-      </div>
-
-      <h2>2. Exemple Chiffré Complet : Salade Batavia (Vente à la pièce)</h2>
-      <div class="card-panel" style="margin-top:14px;">
-        <div class="card-panel-title">Paramètres &amp; Règle Fond de Colis</div>
-        <p style="font-size: 13px; margin: 0;">
-          • <strong>Article :</strong> Batavia Plein Champ (ITM8 : <code>0000082345678</code>).<br>
-          • <strong>Conditionnement (PCB) :</strong> Caisse bois de 10 pièces.<br>
-          • <strong>Demande prévisionnelle (J+1) :</strong> 28 pièces.<br>
-          • <strong>Stock projeté net :</strong> 2 pièces.<br>
-          • <strong>Stock de sécurité :</strong> 5 pièces.<br>
-          • <strong>Besoin net calculé :</strong> 28 + 5 − 2 = <strong>31 pièces</strong>.<br>
-          • <strong>Arrondi avec tolérance fond de colis (30%) :</strong> 31 / 10 = 3,1 colis. Le reliquat (0,1 colis = 1 pièce) est inférieur au seuil de 30% d'un colis &rarr; <strong style="color:var(--brand-red);">3 colis (30 pièces)</strong> proposés, évitant ainsi 9 pièces de surstock hautement périssable.
-        </p>
-      </div>
-
-      <h2>3. Table Récapitulative des Constantes du Système</h2>
-      <table class="subchap-table" style="margin-top:14px;">
-        <thead>
-          <tr>
-            <th style="width: 30%;">Paramètre Système</th>
-            <th style="width: 25%;">Valeur Verrouillée</th>
-            <th style="width: 45%;">Comportement Associé</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Semainier Vente (Dimanche)</strong></td>
-            <td><code>1,047</code></td>
-            <td>Forte affluence dominicale matinale en magasin.</td>
-          </tr>
-          <tr>
-            <td><strong>Seuil Pluie Forte</strong></td>
-            <td><code>&ge; 10 mm &rarr; 0,901</code></td>
-            <td>Réduction de fréquentation piétonne et baisse des barbecues.</td>
-          </tr>
-          <tr>
-            <td><strong>Seuil Chaleur Estivale</strong></td>
-            <td><code>&ge; 25°C &rarr; 1,076</code></td>
-            <td>Surconsommation de fruits rafraîchissants et crudités.</td>
-          </tr>
-          <tr>
-            <td><strong>Vacances Noël (Zone C)</strong></td>
-            <td><code>1,162</code></td>
-            <td>Pic annuel sur les agrumes, fruits exotiques et corbeilles festives.</td>
-          </tr>
-          <tr>
-            <td><strong>Machine à jus (Ratio 1 L)</strong></td>
-            <td><code>2,0 kg d'oranges</code></td>
-            <td>Conversion directe des bouteilles 1 L scannées aux caisses Mercalys.</td>
-          </tr>
-          <tr>
-            <td><strong>Plafond Baisse de Commande</strong></td>
-            <td><code>-30 % max</code></td>
-            <td>Garde-fou interdisant toute chute brutale d'approvisionnement.</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <div class="page-nav-bar">
+      <h2>Exemples explicitement fictifs</h2>
+<p>Comptage : 3 colis de 6 kg représentent 18 kg ; si le colisage change ensuite, ce relevé reste à 18 kg et garde la preuve du colisage initial. Besoin : 59 unités avec un colisage de 18 donnent 4 colis avec arrondi supérieur. Plafond de baisse : depuis 2 colis, le plancher de −30 % arrondi au-dessus reste 2 colis ; passer à 1 ferait −50 %. Ces exemples ne décrivent aucun stock actuel.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../app/compter.html">app/compter.html</a></li><li><a href="../../../moteur/proposer-commande.py">moteur/proposer-commande.py</a></li><li><a href="../../../moteur/analyser-ventes-livraisons.py">moteur/analyser-ventes-livraisons.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./23.1 - Glossaire terminologique F&L et grande distribution.html" class="btn-action">&larr; 23.1 Glossaire F&L</a>
         </div>

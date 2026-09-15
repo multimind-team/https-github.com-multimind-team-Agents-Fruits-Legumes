@@ -10,6 +10,7 @@ import re
 import shutil
 from datetime import datetime
 from pathlib import Path
+from verrou_donnees import verrou_donnees
 
 
 EXTENSIONS_FACTURE = {".pdf", ".jpg", ".jpeg", ".png", ".webp", ".gif"}
@@ -40,19 +41,31 @@ def actions_a_executer(classes, nouveaux):
     return actions
 
 
-def commandes_a_lancer(racine, dossier, actions):
+def commandes_a_lancer(racine, dossier, actions, *, fichiers=None):
     """Construit les commandes autorisées, sans jamais lancer une facture directe."""
     racine = Path(racine)
     dossiers = [Path(dossier)] if isinstance(dossier, (str, Path)) else sorted(set(map(Path, dossier)))
     outils = racine / "moteur"
     commandes = []
+    fichiers = list(map(Path, fichiers or []))
+    mercalys = [f for f in fichiers if re.match(r"^cadencier[-_ ]+(?:mercalys|mecalys)",
+                                               nom_piece_jointe(f.name), re.I)]
+    webtelevente = [f for f in fichiers if re.match(r"^cadencier[-_ ]+webtelevente",
+                                                  nom_piece_jointe(f.name), re.I)]
+    if "cadencier" in actions and mercalys:
+        commandes.append(["py", "-3.14", str(outils / "importer-catalogue-mercalys.py"),
+                          *map(str, mercalys), "--agent", "agent-donnees", "--json"])
     for action in actions:
         if action == "integrer":
-            for cible in dossiers:
+            cibles = [f for f in fichiers if classer_fichier(f) == "mouvement"] or dossiers
+            for cible in cibles:
                 commandes.append(["py", "-3.14", str(outils / "integrer-fichiers.py"), str(cible),
-                                  "--agent", "agent-donnees"])
+                                  "--agent", "agent-donnees", "--json"])
         elif action == "cadencier":
-            commandes.append(["py", "-3.14", str(outils / "cadencier-du-jour.py")])
+            for cible in webtelevente:
+                commandes.append(["py", "-3.14", str(outils / "cadencier-du-jour.py"), str(cible)])
+            if webtelevente:
+                commandes.append(["py", "-3.14", str(outils / "analyser-marges-mercuriale.py")])
         elif action == "recalculer":
             commandes.append(["py", "-3.14", str(outils / "filet-de-securite.py"), "--forcer"])
         elif action == "note":
@@ -112,6 +125,13 @@ def _lire_index(chemin):
 
 
 def ranger_pieces_jointes(racine, identifiant_mail, date_reception, expediteur, chemins, simuler=False):
+    if simuler:
+        return _ranger_pieces_jointes(racine, identifiant_mail, date_reception, expediteur, chemins, True)
+    with verrou_donnees(Path(racine) / "donnees"):
+        return _ranger_pieces_jointes(racine, identifiant_mail, date_reception, expediteur, chemins)
+
+
+def _ranger_pieces_jointes(racine, identifiant_mail, date_reception, expediteur, chemins, simuler=False):
     """Copie les nouvelles pièces jointes sous ``donnees/courrier``.
 
     L'index append-only porte l'empreinte SHA-256 ; une empreinte déjà connue

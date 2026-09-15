@@ -172,13 +172,10 @@ def rapprocher(disponibles):
         if k:
             par_cle.setdefault(k, []).append(code)
 
-    try:
-        import regles
-        config = regles.charger()
-        groupes = config.get("groupes", {})
-        vers_principal = {m: p for p, ms in groupes.items() for m in ms}
-    except Exception:
-        vers_principal = {}
+    import regles
+    config = regles.charger()
+    groupes = config.get("groupes", {})
+    vers_principal = {m: p for p, ms in groupes.items() for m in ms}
 
     rapproches = ambigus = inconnus = 0
     for a in disponibles:

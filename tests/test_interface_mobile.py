@@ -4,7 +4,10 @@ Requires Playwright and Chromium (or installed Microsoft Edge).
 """
 import json
 import os
+import re
 import unittest
+from calendar import monthrange
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -92,6 +95,87 @@ class InterfaceMobileTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate("saisie"), "7")
         self.assertRegex(self.page.locator("#resultat").inner_text(), "[Ss]tockage|[Ee]nregistr")
         self.assertEqual(self.page.evaluate(f"localStorage.getItem('{PENDING}')"), None)
+
+    def test_refresh_keeps_visible_article_and_packaging_until_validation(self):
+        self.open("compter")
+        self.page.locator('[data-touche="3"]').click()
+        self.fixtures['/donnees/articles.json'] = {'genere_le': 'new', 'articles': [
+            dict(ARTICLE, itm8='0000000000002', libelle='CAROTTE', conditionnement=10),
+            dict(ARTICLE, conditionnement=12),
+        ]}
+        self.page.evaluate("chargerArticles(false)")
+        self.assertEqual(self.page.locator('#libelle').inner_text(), 'POMME TEST')
+        self.assertIn('6 kg', self.page.locator('#repere').inner_text())
+        self.page.locator('#valider').click()
+        pending = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+        self.assertEqual((pending[0]['itm8'], pending[0]['colis'], pending[0]['unites'], pending[0]['conditionnement']), (CODE, 3, 18, 6))
+        self.assertEqual(self.page.locator('#libelle').inner_text(), 'CAROTTE')
+        self.assertEqual(self.page.evaluate("JSON.parse(localStorage.getItem(CLE_AVANCEMENT)).itm8"), '0000000000002')
+
+    def test_overlapping_refresh_ignores_late_old_response(self):
+        self.open('compter')
+        result = self.page.evaluate('''async () => {
+          const old = articles[0]; const responses = [];
+          window.fetch = () => new Promise(resolve => responses.push(resolve));
+          const first = chargerArticles(false); const second = chargerArticles(false);
+          responses[1]({ok:true,json:async()=>({articles:[{...old,libelle:'RECENT'}]})});
+          await second;
+          responses[0]({ok:true,json:async()=>({articles:[{...old,libelle:'ANCIEN'}]})});
+          await first;
+          return listeEnAttente.articles[0].libelle;
+        }''')
+        self.assertEqual(result, 'RECENT')
+
+    def test_revisiting_count_after_packaging_change_requires_explicit_input(self):
+        self.open('compter')
+        self.page.locator('#valider').click()
+        before = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+        self.page.evaluate("articles[0].conditionnement=10; allerA(0)")
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '—')
+        self.page.locator('#valider').click()
+        self.assertEqual(self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))"), before)
+        self.assertIn('Colisage différent', self.page.locator('#resultat').inner_text())
+        self.page.locator('[data-touche="3"]').click()
+        self.page.locator('#valider').click()
+        after = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+        self.assertEqual((after[0]['conditionnement'], after[0]['unites']), (10, 30))
+
+    def test_http_failure_reports_cached_articles(self):
+        self.open('compter')
+        self.page.route('**/donnees/articles.json*', lambda route: route.fulfill(status=500, body='Erreur'))
+        self.page.evaluate('chargerArticles(false)')
+        self.assertIn('cache actif', self.page.locator('#statut-reseau').inner_text())
+        self.assertEqual(self.page.locator('#libelle').inner_text(), 'POMME TEST')
+
+    def test_failed_calculation_is_visible_and_old_version_is_not_certified(self):
+        self.fixtures['/donnees/recalcul.json'] = {'etat':'echec', 'operation_id':'a'*32}
+        self.open('commander')
+        self.page.wait_for_function("etatRecalcul?.etat === 'echec'")
+        self.assertIn('recalcul a échoué', self.page.locator('#alerte').inner_text())
+        self.fixtures['/donnees/recalcul.json'] = {'etat':'termine', 'operation_id':'b'*32}
+        self.page.evaluate('chargerEtatRecalcul()')
+        self.assertIn('ne correspond pas', self.page.locator('#alerte').inner_text())
+
+    def test_online_retries_pending_message_without_reload(self):
+        self.open('index')
+        self.api = lambda route: route.abort('failed')
+        self.page.locator('#champ-message').fill('Message hors connexion')
+        self.page.locator('#bouton-envoyer').click()
+        self.page.wait_for_function("!envoiMessagesEnCours")
+        self.assertEqual(len(self.page.evaluate(f"JSON.parse(localStorage.getItem('{MESSAGES}'))")), 1)
+        self.api = lambda route: route.fulfill(json={'ok': True})
+        self.page.evaluate("window.dispatchEvent(new Event('online'))")
+        self.page.wait_for_function("JSON.parse(localStorage.getItem(CLE_MESSAGES)).length === 0")
+        self.assertIn('Envoyé', self.page.locator('#retour-message').inner_text())
+
+    def test_maintenance_uses_summary_instead_of_downloading_years(self):
+        requests = []
+        self.page.on('request', lambda request: requests.append(urlsplit(request.url).path))
+        self.api = lambda route: route.fulfill(json={'ok': True, 'fichiers':[{'annee':'2030'}], 'total_lignes':150000})
+        self.open('maintenance')
+        self.assertIn('/api/carnets/resume', requests)
+        self.assertFalse(any('/donnees/faits/' in p for p in requests))
+        self.assertIn('150000', self.page.locator('#grille-carnets').inner_text())
 
     def test_storage_full_reports_failed_manual_order_adjustment(self):
         self.open("commander")
@@ -232,7 +316,9 @@ class InterfaceMobileTests(unittest.TestCase):
                 self.open('commander')
                 image = self.page.locator('#liste .photo-produit-liste')
                 self.assertEqual(image.count(), 1)
-                self.assertGreaterEqual(self.page.locator('.qte .val').evaluate('e=>parseFloat(getComputedStyle(e).fontSize)'), 21)
+                # La réponse des photos peut remplacer la liste pendant cette
+                # mesure ; lire un élément encore attaché au document courant.
+                self.page.wait_for_function("parseFloat(getComputedStyle(document.querySelector('.qte .val')).fontSize) >= 21")
                 self.page.evaluate('montrerDetail(proposition.lignes[0])')
                 self.assertLessEqual(self.page.locator('.photo-produit-detail').bounding_box()['width'], 200)
         self.assertEqual(self.posts, [])
@@ -300,6 +386,171 @@ class InterfaceMobileTests(unittest.TestCase):
         }""")
         self.assertEqual(result['calls'], 1)
         self.assertEqual([x['texte'] for x in result['pending']], ['new'])
+
+
+    def analyse_fixture(self):
+        return {
+            "calcule_le": "2028-01-10T08:00:00", "periode": {
+                "date_debut": "2027-01-01", "date_fin": "2028-01-09",
+                "total_unites_vendues": 20, "total_jours_ouverts": 2,
+                "moyenne_quotidienne_globale": 10, "total_articles_analyses": 1},
+            "mois": [{"nom": "Janvier", "moyenne_quotidienne": 10,
+                       "part_annuelle_pct": 100, "famille_dominante": "autres",
+                       "par_annee": {"2027": {"moyenne_jour": 8}, "2028": {"moyenne_jour": 12}}}],
+            "semaines": [], "jours_semaine": [], "meteo": [], "vacances": [],
+            "feries_et_veilles": [], "articles": {CODE: {
+                "itm8": CODE, "libelle": 'CÉLERI <img src=x onerror="window.injection=true">',
+                "famille": "autres", "volume_total_2ans_demi": 20, "jours_observes": 2,
+                "ventes_par_mois": {}, "ratios_sensibilite": {"canicule_sup_30": 0}}}}
+
+    def test_analysis_uses_loaded_dates_years_and_safe_product_text(self):
+        self.fixtures['/donnees/analyse-ventes-annuelle-saisonniere.json'] = self.analyse_fixture()
+        self.context.add_init_script("localStorage.setItem('rayon-fl.theme', 'clair')")
+        self.open('analyse-historique')
+        self.page.wait_for_function("document.getElementById('stat-total-ventes').textContent === '20'")
+        self.assertIn('01/01/2027 au 09/01/2028', self.page.locator('#periode-analyse').inner_text())
+        self.assertIn('2028 (u/j)', self.page.locator('#entete-mois').text_content())
+        self.assertNotIn('2024', self.page.locator('#entete-mois').text_content())
+        self.assertTrue(self.page.locator('body').evaluate("e => e.classList.contains('theme-clair')"))
+        self.page.click('#bouton-theme')
+        self.assertEqual(self.page.evaluate("localStorage.getItem('rayon-fl.theme')"), 'sombre')
+        self.page.click('[data-cible="vue-produits"]')
+        self.page.fill('#champ-recherche-produit', 'celeri')
+        self.assertEqual(self.page.locator('.fiche-article').count(), 1)
+        self.assertEqual(self.page.locator('.fiche-article img').count(), 0)
+        self.assertIn('x0', self.page.locator('.fiche-article').inner_text())
+        self.assertFalse(self.page.evaluate('Boolean(window.injection)'))
+        self.assertFalse(self.errors)
+
+    def test_analysis_unavailable_has_no_hardcoded_statistics(self):
+        self.context.add_init_script("Storage.prototype.getItem = () => { throw new Error('blocked') }")
+        self.open('analyse-historique')
+        self.page.wait_for_function("document.getElementById('periode-analyse').textContent.includes('indisponible')")
+        self.assertEqual(self.page.locator('#stat-total-ventes').inner_text(), '—')
+        self.page.click('#bouton-theme')
+        self.assertFalse(self.errors)
+
+    def test_standalone_backup_announcement_visible_alongside_reply(self):
+        message = dict(id='m1', texte='Question du rayon', ecrit_le='2026-09-15T08:00:00')
+        replies = [dict(en_reponse_a='m1', texte='Réponse ciblée', ecrit_le='2026-09-15T08:01:00'),
+                   dict(texte='Sauvegarde GitHub vérifiée abc123', ecrit_le='2026-09-15T08:02:00')]
+        self.context.route('**/donnees/messages.jsonl*', lambda r: r.fulfill(body=json.dumps(message)))
+        self.context.route('**/donnees/reponses.jsonl*', lambda r: r.fulfill(body='\n'.join(map(json.dumps, replies))))
+        self.open('index')
+        self.page.wait_for_function("document.getElementById('fil-messages').textContent.includes('abc123')")
+        self.assertIn('Réponse ciblée', self.page.locator('#fil-messages').inner_text())
+        self.assertFalse(self.errors)
+
+    def test_ambiguous_group_is_visible_and_manual_choice_preserved(self):
+        self.open('commander')
+        self.page.evaluate("""() => {
+            Object.assign(proposition.lignes[0], {propose_colis:0, article_stock:'principal',
+                commande_groupe_ambigue:true, motif_commande_groupe:'Choisir une offre pour ce stock.'});
+            afficher(); majAlerte();
+        }""")
+        self.assertIn('Choix d’offre nécessaire', self.page.locator('#alerte').inner_text())
+        self.page.click('#bouton-etat')
+        self.assertIn('Choisir une offre', self.page.locator('#liste').inner_text())
+        self.page.locator('#liste [data-role="plus"]').click()
+        self.page.click('#bouton-etat')
+        self.assertIn('1', self.page.locator('#liste .val').inner_text())
+        self.assertTrue(self.page.evaluate("proposition.lignes[0].commande_groupe_ambigue"))
+
+    def test_product_graph_uses_group_and_reference_year_instead_of_fixed_dates(self):
+        data = self.analyse_fixture()
+        profile = data['articles'].pop(CODE)
+        profile.update(ventes_par_mois={'1': {'moyenne_jour': 8}, '2': {'moyenne_jour': 10}},
+                       saisonnalite={'mois_actuel': 1}, courbes_hebdo={'2027': [1]*53},
+                       ventes_quotidiennes={'2028-01-09': 3},
+                       historique_mensuel_par_annee={'2027': {'1': {'moyenne_jour': 8}}})
+        data['articles']['principal'] = profile
+        data['annee_reference'] = 2028
+        self.fixtures['/donnees/analyse-ventes-annuelle-saisonniere.json'] = data
+        self.fixtures['/donnees/proposition.json'] = dict(PROPOSAL, lignes=[dict(LINE, article_stock='principal')])
+        self.open('commander')
+        self.page.locator('#liste [data-role="detail"]').first.click()
+        self.page.wait_for_selector('#svg-ventes-annuel')
+        detail = self.page.locator('#detail-graphique').inner_text()
+        self.assertIn('2027 / 2028', detail)
+        self.assertIn('Moyenne Fév', detail)
+        self.assertNotIn('2026', detail)
+        self.assertNotIn('rupture', detail)
+        self.assertFalse(self.errors)
+
+    def install_graph_calendar_fixture(self, day, weekly):
+        data = self.analyse_fixture()
+        data['annee_reference'] = day.year
+        data['periode']['date_fin'] = day.isoformat()
+        data['articles'][CODE].update(
+            ventes_par_mois={str(day.month): {'moyenne_jour': 8}},
+            saisonnalite={'mois_actuel': day.month}, courbes_hebdo=weekly,
+            ventes_quotidiennes={day.isoformat(): 11})
+        self.fixtures['/donnees/analyse-ventes-annuelle-saisonniere.json'] = data
+        self.open('commander')
+        self.page.locator('#liste [data-role="detail"]').first.click()
+        self.page.wait_for_selector('#svg-ventes-annuel')
+
+    @staticmethod
+    def graph_date_x(day):
+        return 38 + (day.month - 1 + (day.day - .5) / monthrange(day.year, day.month)[1]) * (502 / 12)
+
+    def hover_graph_date(self, day):
+        self.page.locator('#svg-ventes-annuel').evaluate('''(svg, x) => {
+            const rect = svg.getBoundingClientRect();
+            svg.dispatchEvent(new MouseEvent('mousemove', {
+                clientX: rect.left + x / 560 * rect.width, clientY: rect.top + 50
+            }));
+        }''', self.graph_date_x(day))
+        return self.page.locator('#graph-infobulle').inner_text()
+
+    def test_graph_weeks_follow_iso_dates_for_august_25_and_empty_area(self):
+        weekly = [None] * 53
+        weekly[31], weekly[33], weekly[34] = 132, 134, 135
+        self.install_graph_calendar_fixture(date(2026, 8, 25), {'2025': weekly})
+        # Le point de S35 est placé au jeudi 28 août, pas à 35/52 de l'année.
+        path = self.page.locator('path[stroke="var(--graph-n1-stroke)"]').get_attribute('d')
+        coordinates = [float(n) for n in re.findall(r'-?\d+(?:\.\d+)?', path)]
+        self.assertAlmostEqual(coordinates[-2], self.graph_date_x(date.fromisocalendar(2025, 35, 4)), delta=.06)
+        text = self.hover_graph_date(date(2026, 8, 25))
+        self.assertIn('2026 : 11', text)
+        self.assertIn('2025 (S35) : 135', text)
+        self.assertNotIn('2025 (S34)', text)
+        # La même chronologie vaut dans une zone sans point quotidien proche.
+        text = self.hover_graph_date(date(2025, 8, 5))
+        self.assertIn('2025 (S32) : 132', text)
+        self.assertFalse(self.errors)
+        self.assertEqual(self.posts, [])
+
+    def test_graph_keeps_real_week_53_and_its_iso_year_at_calendar_boundary(self):
+        weekly = [None] * 53
+        weekly[51], weekly[52] = 152, 153
+        self.install_graph_calendar_fixture(date(2021, 12, 31), {'2020': weekly})
+        path = self.page.locator('path[stroke="var(--graph-n1-stroke)"]').get_attribute('d')
+        coordinates = [float(n) for n in re.findall(r'-?\d+(?:\.\d+)?', path)]
+        self.assertAlmostEqual(coordinates[-2], self.graph_date_x(date.fromisocalendar(2020, 53, 4)), delta=.06)
+        self.assertIn('2020 (S53) : 153', self.hover_graph_date(date(2021, 12, 31)))
+        # Le 1er janvier 2021 appartient encore à 2020 S53 : conserver l'année ISO.
+        self.install_graph_calendar_fixture(date(2022, 1, 1), {'2020': weekly, '2021': [None] * 53})
+        self.assertIn('2020 (S53) : 153', self.hover_graph_date(date(2022, 1, 1)))
+        self.assertFalse(self.errors)
+        self.assertEqual(self.posts, [])
+
+    def test_graph_ignores_late_response_after_opening_another_article(self):
+        self.open('commander')
+        text = self.page.evaluate('''async () => {
+            let finish;
+            chargerAnalyseHistorique = () => new Promise(resolve => { finish = resolve; });
+            document.getElementById('detail-photo').dataset.itm8 = proposition.lignes[0].itm8;
+            const pending = afficherGraphiqueArticle(proposition.lignes[0]);
+            document.getElementById('detail-photo').dataset.itm8 = 'AUTRE';
+            document.getElementById('detail-graphique').textContent = 'Article suivant';
+            finish({articles:{}});
+            await pending;
+            return document.getElementById('detail-graphique').textContent;
+        }''')
+        self.assertEqual(text, 'Article suivant')
+        self.assertFalse(self.errors)
+        self.assertEqual(self.posts, [])
 
 
 if __name__ == "__main__":

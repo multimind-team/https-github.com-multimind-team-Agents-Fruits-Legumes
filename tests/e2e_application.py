@@ -1,6 +1,6 @@
 """QA navigateur : copie isolée par défaut, aucune écriture métier en production.
 
-py -3.14 tests/e2e_application.py
+py -3.14 -B tests/lancer_tests_isoles.py --navigateur
 py -3.14 tests/e2e_application.py --lecture-seule --url https://... --sortie <dossier>
 Installer les dépendances QA avec requirements-dev.txt ; utilise Edge installé.
 """
@@ -11,15 +11,16 @@ import importlib.util
 import json
 from pathlib import Path
 import shutil
-import sys
 import tempfile
 import threading
 import time
 from playwright.sync_api import sync_playwright
+from lancer_tests_isoles import ignorer_prives, neutraliser_courrier
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {'index': "#commande-resume", 'commander': "#liste .article",
-         'compter': "#libelle", 'promo': "#offres .offre", 'maintenance': "#grille-carnets .carte"}
+         'compter': "#libelle", 'promo': "#offres .offre", 'maintenance': "#grille-carnets .carte",
+         'analyse-historique': "#tbody-mois tr"}
 CLE = 'rayon-fl.comptages-en-attente'
 
 
@@ -188,7 +189,8 @@ def main():
             racine = Path(temp.name)
             for dossier in ['app', 'moteur', 'donnees', 'Documents']:
                 if (ROOT / dossier).exists():
-                    shutil.copytree(ROOT / dossier, racine / dossier, ignore=shutil.ignore_patterns('__pycache__'))
+                    shutil.copytree(ROOT / dossier, racine / dossier, ignore=ignorer_prives)
+            neutraliser_courrier(racine)
             spec = importlib.util.spec_from_file_location('serveur_qa', racine / 'moteur/serveur.py')
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)

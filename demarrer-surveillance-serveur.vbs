@@ -1,3 +1,8 @@
-' Démarre la surveillance silencieuse du serveur de préparation de commande.
+' Compatibilité : tous les démarrages automatiques passent par le gestionnaire.
+Option Explicit
+Dim shell, fso, cible, resultat
 Set shell = CreateObject("WScript.Shell")
-shell.Run """C:\Users\user\AppData\Local\Programs\Python\Python314\pythonw.exe"" ""C:\Users\user\Desktop\preparation-commande\moteur\surveiller-serveur.py"" --intervalle 30", 0, False
+Set fso = CreateObject("Scripting.FileSystemObject")
+cible = fso.GetParentFolderName(WScript.ScriptFullName) & "\moteur\demarrer-service-local.vbs"
+resultat = shell.Run("wscript.exe """ & cible & """", 0, True)
+WScript.Quit resultat

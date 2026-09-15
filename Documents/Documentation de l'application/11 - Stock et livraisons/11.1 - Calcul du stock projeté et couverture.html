@@ -178,28 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-11.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Projection Temporelle & Couverture</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Réceptionnaires</div>
         </div>
       </div>
 
 
-      <h2>1. Calcul du Stock Projeté et Horizon de Couverture</h2>
-      <p>
-        Le stock projeté au matin de la livraison cible est l'élément pivot de la commande :
-      </p>
-      <div class="callout-box">
-        <div class="callout-title">ÉQUATION EXACTE DE PROJECTION DE STOCK</div>
-        <p style="margin:0; font-size:15px; font-weight:700;">
-          Stock_Projeté = Stock_Mesuré + Livraisons_Postérieures − Ventes_Postérieures − Pertes_Postérieures
-        </p>
-      </div>
-      <p>
-        Si aucun comptage physique n'a jamais été enregistré pour l'article, la position est qualifiée d'<code>inconnue</code>. Le moteur refuse d'affirmer un stock zéro fictif.
-      </p>
-
-
-      <div class="page-nav-bar">
+      <h2>Reconstruction de la position</h2>
+<p>Le moteur part du dernier comptage applicable, puis ajoute les livraisons et retire ventes, casse et dons selon leur date d’effet et la phase du relevé. Les corrections, groupes d’articles et consommations d’oranges à jus sont pris en compte par le même calcul. L’audit des écarts réutilise ce calcul, borné à l’instant examiné.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/calculer-position.py">moteur/calculer-position.py</a></li><li><a href="../../../moteur/analyser-ecarts-comptage.py">moteur/analyser-ecarts-comptage.py</a></li><li><a href="../../../procedures/controle-stock.md">procedures/controle-stock.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../10 - Confiance et incertitude/10.2 - Facteurs de risque et données manquantes.html" class="btn-action">&larr; 10.2 Facteurs de risque</a>
         </div>

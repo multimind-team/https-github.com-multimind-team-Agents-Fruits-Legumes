@@ -9,6 +9,7 @@
       "code_fournisseur": "104798",
       "produit": "Poireau",
       "quantite_uf": 12,
+      "unite_uf": "kg",
       "pu": 2.5,
       "montant_ht": 30,
       "colis": 2,

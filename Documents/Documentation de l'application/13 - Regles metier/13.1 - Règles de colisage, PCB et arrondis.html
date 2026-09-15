@@ -178,36 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-13.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Colisage, PCB & Tolérances</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, DSI</div>
         </div>
       </div>
 
 
-      <h2>1. Sélection du PCB et Règle des Priorités (<code>moteur/conditionnements.py</code>)</h2>
-      <p>
-        La détermination du colisage commandable suit un ordre de priorité strict et déterministe :
-      </p>
-      <div class="callout-box">
-        <div class="callout-title">HIÉRARCHIE DES SOURCES DE COLISAGE</div>
-        <p style="margin:0;">
-          1. <strong>Décision Magasin Récente :</strong> Surcharge manuelle enregistrée par l'exploitant dans <code>donnees/decisions.jsonl</code> (type <code>conditionnement</code>).<br>
-          2. <strong>Cadencier SCAFRUIT du Jour :</strong> PCB annoncé dans l'offre officielle du fournisseur (colonne <code>par_colis</code>).<br>
-          3. <strong>Catalogue Mercalys :</strong> Valeur de secours issue du fichier d'encaissement.<br>
-          4. <strong>Repli Technique :</strong> Valeur <code>1.0</code> avec signalement de contradiction.
-        </p>
-      </div>
-
-      <h2>2. Détection des Contradictions et Cas Particuliers</h2>
-      <p>
-        Si l'exploitant a configuré un colisage magasin de 6 kg alors que la centrale livre en plateaux de 10 kg, le système utilise la valeur magasin mais émet un avertissement explicite : <em>« Contradiction de colisage : réglage magasin à 6 kg, fournisseur à 10 kg. Le calcul utilise votre valeur. »</em>
-      </p>
-      <p>
-        Cas réel des pommes de terre (PDT) : distinction automatique entre les caissettes de 8 kg pour le linéaire et les box palette de 65 kg pour les opérations fond de rayon.
-      </p>
-
-
-      <div class="page-nav-bar">
+      <h2>Colisage et arrondis</h2>
+<p>Le colisage exprime le contenu d’un colis. La quantité saisie en colis et son équivalent en unités sont conservés ensemble lors d’un comptage. Le responsable peut corriger le colisage via la fiche article ; le serveur journalise la décision et recalcule. Un comptage en attente garde son ancien colisage. Les règles d’arrondi dépendent de la livraison récente.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li><li><a href="../../../app/compter.html">app/compter.html</a></li><li><a href="../../../moteur/conditionnements.py">moteur/conditionnements.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../12 - Calcul du besoin de commande/12.2 - Stock de sécurité et ajustements dynamiques.html" class="btn-action">&larr; 12.2 Stock de sécurité</a>
         </div>

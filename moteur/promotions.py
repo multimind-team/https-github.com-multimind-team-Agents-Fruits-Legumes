@@ -54,7 +54,7 @@ def charger(chemin):
 def rendre_apercus(prospectus, pages, destination, zoom=1.5):
     """Rend les pages lues en PNG, lisibles sans lecteur PDF sur téléphone."""
     try:
-        import fitz
+        import pymupdf as fitz
     except ImportError as exc:
         raise RuntimeError("PyMuPDF est nécessaire pour créer les aperçus du prospectus.") from exc
 

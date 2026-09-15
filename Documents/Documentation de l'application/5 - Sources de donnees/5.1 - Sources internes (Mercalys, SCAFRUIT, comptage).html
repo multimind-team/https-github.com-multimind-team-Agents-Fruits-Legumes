@@ -178,64 +178,19 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-05.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Flux Internes & Formats d'Ingestion</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Chefs Rayon, Réceptionnaires</div>
         </div>
       </div>
 
 
-      <h2>1. Spécification Technique des Flux Internes</h2>
-      <p>
-        La fiabilité de la commande repose sur la synchronisation certifiée de trois flux internes fondamentaux :
-      </p>
-
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Flux de Données</th>
-            <th style="width: 22%;">Format &amp; Source</th>
-            <th style="width: 53%;">Règles d'Ingestion &amp; Traitement</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Sorties Caisse Mercalys</strong></td>
-            <td>Fichiers CSV journaliers</td>
-            <td>Contient code ITM8, libellé, quantités (kg ou pièces), montants HT/TTC et dates. Intégré chaque matin sous le type de fait <code>vente</code>.</td>
-          </tr>
-          <tr>
-            <td><strong>Cadencier SCAFRUIT</strong></td>
-            <td>Fichier mercuriale Webtelevente</td>
-            <td>Contient la liste officielle des produits commandables, prix d'achat du jour, PCB et groupe (fruits, legumes, bio). Vrai prix d'achat engageant.</td>
-          </tr>
-          <tr>
-            <td><strong>Bordereaux de Livraison (BL)</strong></td>
-            <td>Fichiers SCAFRUIT &amp; Quai</td>
-            <td>Colis réels déchargés le matin. Intégrés sous le type de fait <code>livraison</code>.</td>
-          </tr>
-          <tr>
-            <td><strong>Pointages Mobile</strong></td>
-            <td>JSON via <code>app/compter.html</code></td>
-            <td>Colis physiques mesurés en chambre froide. Horodaté et signé par l'exploitant. Type de fait : <code>comptage</code>.</td>
-          </tr>
-          <tr>
-            <td><strong>Factures TerreAzur / Pomona</strong></td>
-            <td>Classeur Excel de marge</td>
-            <td>Actualisation automatique des colonnes A, C, F du classeur mensuel magasin et réexpédition certifiée par mail.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>2. Règle d'Ingestion : Zéro Invention</h2>
-      <div class="callout-box danger">
-        <div class="callout-title">SÉCURITÉ D'INGESTION DES FLUX</div>
-        <p style="margin:0;">
-          Si un fichier est incomplet, tronqué ou corrompu, le système refuse catégoriquement d'extrapoler des données. La référence est signalée et sa proposition de commande est neutralisée à 0 colis avec alerte bloquante.
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Sources magasin</h2>
+<p>Mercalys apporte le référentiel et les flux exportés ; Webtelevente apporte le cadencier. Les comptages sont saisis sur téléphone et envoyés au serveur. Les pièces jointes sont conservées dans un espace privé avec une identité de message et une empreinte de contenu ; deux fichiers homonymes ne doivent pas se remplacer.</p>
+<p>Le pipeline reçoit chaque chemin de pièce jointe comme un argument séparé et transmet uniquement les fichiers revus aux importeurs. Mercalys passe par <code>importer-catalogue-mercalys.py</code>, Webtelevente par <code>cadencier-du-jour.py</code>. Le code 3 du pipeline signale des éléments à vérifier ; la simulation du pipeline décrit les étapes sans exécuter les simulations des importeurs.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../procedures/courrier.md">procedures/courrier.md</a></li><li><a href="../../../moteur/courrier_fichiers.py">moteur/courrier_fichiers.py</a></li><li><a href="../../../app/compter.html">app/compter.html</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../4 - Architecture generale/4.2 - Cartographie modulaire et composants logiciels.html" class="btn-action">&larr; 4.2 Cartographie logicielle</a>
         </div>

@@ -41,7 +41,7 @@ class AjustementsLimitesTests(unittest.TestCase):
         moteur.mkdir()
         donnees = self.racine / "donnees"
         donnees.mkdir()
-        for nom in ("ajuster-commande.py", "journal_agents.py"):
+        for nom in ("ajuster-commande.py", "journal_agents.py", "verrou_donnees.py"):
             (moteur / nom).write_bytes((RACINE / "moteur" / nom).read_bytes())
         (donnees / "pouvoirs.json").write_bytes((RACINE / "donnees/pouvoirs.json").read_bytes())
         journal = charger("journal_limites_fixture", moteur / "journal_agents.py")
@@ -65,7 +65,8 @@ class AjustementsLimitesTests(unittest.TestCase):
 
     def etat(self):
         return {str(p.relative_to(self.racine)): p.read_bytes()
-                for p in (self.racine / "donnees").rglob("*") if p.is_file()}
+                for p in (self.racine / "donnees").rglob("*")
+                if p.is_file() and p.name != ".operations.lock"}
 
     def test_verifier_refuse_quantites_non_finies_meme_sans_limite_de_role(self):
         for agent in ("agent-tendances", "responsable-rayon"):

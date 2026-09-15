@@ -138,7 +138,8 @@ class GenerationPropositionTests(unittest.TestCase):
                         with self.assertRaisesRegex(OSError, 'publication interrompue'):
                             GENERER.main()
                     self.assertEqual(cible.read_text(encoding="utf-8"), ancien)
-                    self.assertEqual(sorted(p.name for p in cible.parent.iterdir()), ['etat.json', 'proposition.json'])
+                    self.assertEqual(sorted(p.name for p in cible.parent.iterdir()
+                                            if p.name != '.operations.lock'), ['etat.json', 'proposition.json'])
                 else:
                     GENERER.main()
             return json.loads((racine / "donnees/proposition.json").read_text(encoding="utf-8"))
@@ -265,7 +266,7 @@ class EcritureImportsTests(unittest.TestCase):
             with patch.object(IMPORT, "DOSSIER_FAITS", dossier):
                 with self.assertRaisesRegex(ValueError, 'v1'):
                     IMPORT.ecrire([fait("v1", "vente", "2026-09-07", 3), fait("v1", "vente", "2026-09-07", 4)])
-                self.assertEqual(list(dossier.iterdir()), [])
+                self.assertEqual([p for p in dossier.iterdir() if p.name != ".operations.lock"], [])
 
     def test_un_doublon_dans_le_meme_lot_n_est_ajoute_qu_une_fois(self):
         with tempfile.TemporaryDirectory() as repertoire:

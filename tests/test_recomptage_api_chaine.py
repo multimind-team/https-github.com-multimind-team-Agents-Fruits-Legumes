@@ -329,17 +329,17 @@ class ReComptageAPIChaineTests(unittest.TestCase):
             with self.subTest(phase=phase):
                 self.carnet.write_bytes(b"")  # Réinitialisation de la fixture privée.
 
-                @contextmanager
-                def ouvrir_interrompu(chemin, mode, *args, **kwargs):
-                    cible = Path(chemin) == self.carnet and mode == "a"
+                ajout_reel = self.serveur.append_jsonl
+
+                def ajouter_interrompu(chemin, objets):
+                    cible = Path(chemin) == self.carnet
                     if cible and phase == "avant":
                         raise OSError("Interruption fictive avant append")
-                    with open(chemin, mode, *args, **kwargs) as flux:
-                        yield flux
+                    ajout_reel(chemin, objets)
                     if cible:
                         raise OSError("Interruption fictive après append durable")
 
-                with patch.object(self.serveur, "open", ouvrir_interrompu, create=True):
+                with patch.object(self.serveur, "append_jsonl", ajouter_interrompu):
                     retour = self.envoyer(self.releve(20, "19:20:00"))
                 self.assertFalse(retour["ok"], retour)
                 if phase == "avant":

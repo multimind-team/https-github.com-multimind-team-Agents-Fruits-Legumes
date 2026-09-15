@@ -26,7 +26,7 @@ class ColisageAPITests(unittest.TestCase):
         self.assertFalse(self.root.is_relative_to(MOTEUR.parent))
         moteur = self.root / "moteur"
         moteur.mkdir()
-        for nom in ("serveur.py", "appliquer-decision.py", "journal_agents.py", "regles.py", "catalogue.py"):
+        for nom in ("serveur.py", "appliquer-decision.py", "journal_agents.py", "verrou_donnees.py", "ecriture_derivee.py", "regles.py", "catalogue.py"):
             shutil.copy2(MOTEUR / nom, moteur / nom)
         spec = importlib.util.spec_from_file_location("serveur_colisage_isole", moteur / "serveur.py")
         self.module = importlib.util.module_from_spec(spec)

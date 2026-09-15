@@ -178,44 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-14.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Spécification JSON & Ordre Webtelevente</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, DSI</div>
         </div>
       </div>
 
 
-      <h2>1. Structure Complète de <code>donnees/proposition.json</code></h2>
-      <p>
-        Généré par <code>moteur/generer-proposition.py</code>, ce fichier alimente la console de commande du chef de rayon (<code>app/commander.html</code>).
-      </p>
-      <pre><code>{
-  "date_calcul": "2026-09-14",
-  "date_commande": "2026-09-15",
-  "date_livraison": "2026-09-16",
-  "total_colis": 342,
-  "montant_achat_ht": 4280.50,
-  "marge_moyenne_pct": 28.4,
-  "lignes": [
-    {
-      "itm8": "0000087004386",
-      "libelle": "ORANGE PETIT CALIBRE JUS",
-      "groupe": "fruits",
-      "ordre": 12,
-      "propose_colis": 6,
-      "conditionnement": 15.0,
-      "unite": "kg",
-      "position_colis": 2.0,
-      "demande": 90.0,
-      "prix_achat": 1.25,
-      "prix_vente": 2.10,
-      "marge_pct": 40.5,
-      "montant_achat": 112.50
-    }
-  ]
-}</code></pre>
-
-
-      <div class="page-nav-bar">
+      <h2>Structure réellement publiée</h2>
+<p>proposition.json contient les dates de commande et livraison, genere_le, facteurs, totaux et lignes, ainsi que les informations de couverture disponibles. Une ligne connue utilise itm8, libelle, propose_colis, conditionnement, unite, position_colis, position_unites, demande, prix_achat, prix_vente, marge_pct et des indicateurs comme connu et position_bloquee. Une position absente est null. Pour une ligne non rapprochée, certains champs de calcul comme demande et position_unites peuvent être absents.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li><li><a href="../../../app/commander.html">app/commander.html</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../13 - Regles metier/13.2 - Garde-fous anti-rupture et plafonds de baisse.html" class="btn-action">&larr; 13.2 Garde-fous anti-rupture</a>
         </div>

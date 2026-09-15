@@ -247,6 +247,31 @@ let saisie = "";          // ce qui est tapé, sous forme de texte
 let negatif = false;
 let attendu = 0;          // la position que le calcul prévoit pour cet article
 let touche = false;       // vrai dès que le responsable de rayon a modifié quelque chose
+let listeEnAttente = null;
+let chargementArticles = 0;
+
+function garderAvancement() {
+  ecrire(CLE_AVANCEMENT, {index, itm8: articles[index]?.itm8 || null, termine: index >= articles.length, date: aujourdhui()});
+}
+
+function adopterListe(donnees, itm8 = null) {
+  articles = donnees.articles;
+  const position = articles.findIndex(a => a.itm8 === itm8);
+  index = position >= 0 ? position : 0;
+  ecrire(CLE_ARTICLES_CACHE, donnees);
+  garderAvancement();
+}
+
+function allerA(position) {
+  const itm8 = articles[position]?.itm8;
+  saisie = ""; negatif = false; touche = false;
+  if (listeEnAttente && itm8) {
+    adopterListe(listeEnAttente, itm8);
+    listeEnAttente = null;
+  } else index = position;
+  garderAvancement();
+  afficher();
+}
 
 function texteSecurise(texte) {
   return String(texte ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"})[c]);
@@ -266,15 +291,16 @@ function comptagesDuJour() {
   const comptes = (tout.date === aujourdhui()) ? (tout.par_article || {}) : {};
   // La file durable fait foi même si le cache du jour n'a pas pu être écrit.
   for (const c of lire(CLE_COMPTAGES, [])) {
-    if (c.date === aujourdhui()) comptes[c.itm8] = { colis: c.colis, heure: (c.saisi_le || "").slice(11, 16) };
+    if (c.date === aujourdhui()) comptes[c.itm8] = { colis: c.colis, unites: c.unites, conditionnement: c.conditionnement, unite: c.unite, heure: (c.saisi_le || "").slice(11, 16) };
   }
   return comptes;
 }
 
-function memoriserComptage(itm8, colis) {
+function memoriserComptage(article, colis) {
   const tout = lire(CLE_DU_JOUR, {});
   const par_article = (tout.date === aujourdhui()) ? (tout.par_article || {}) : {};
-  par_article[itm8] = { colis: colis, heure: new Date().toTimeString().slice(0, 5) };
+  par_article[article.itm8] = { colis, conditionnement: article.conditionnement, unite: article.unite,
+    unites: Math.round(colis * article.conditionnement * 1000) / 1000, heure: new Date().toTimeString().slice(0, 5) };
   return ecrire(CLE_DU_JOUR, { date: aujourdhui(), par_article: par_article });
 }
 
@@ -303,13 +329,19 @@ function valeurCourante() {
   return negatif ? -n : n;
 }
 
+function colisageDuReleveDifferent(article, releve) {
+  return !!releve && (releve.conditionnement !== article.conditionnement || releve.unite !== article.unite);
+}
+
 function afficher() {
   const a = articles[index];
   if (!a) return terminer();
   const dejaCompte = comptagesDuJour()[a.itm8];
+  const doitRecompter = colisageDuReleveDifferent(a, dejaCompte) && !touche;
   if (!touche) {
     // Ce qui a déjà été compté aujourd'hui prime toujours sur une estimation.
-    if (dejaCompte) attendu = dejaCompte.colis;
+    if (doitRecompter) attendu = 0;
+    else if (dejaCompte) attendu = dejaCompte.colis;
     else {
       const p = a.derniere_position_colis;
       attendu = (p === null || p === undefined) ? 0 : p;
@@ -345,17 +377,19 @@ function afficher() {
   const boite = document.querySelector(".valeur");
   boite.classList.toggle("attendue", !touche);
   document.getElementById("origine").textContent =
-    touche ? ""
+    doitRecompter ? "colisage du précédent relevé différent ou non connu — à recompter"
+    : touche ? ""
     : dejaCompte ? "compté à " + dejaCompte.heure
     : a.position_perdue ? "à compter"
     : (a.derniere_position_colis === null || a.derniere_position_colis === undefined) ? "à compter"
     : "attendu";
   document.querySelector(".valeur").classList.toggle("compte", !touche && !!dejaCompte);
   // Toujours la virgule française, jamais le point.
-  document.getElementById("nombre").textContent = touche
+  document.getElementById("nombre").textContent = doitRecompter ? "—" : touche
     ? ((negatif ? "−" : "") + (saisie === "" ? "0" : saisie).replace(".", ","))
     : String(v).replace(".", ",");
   document.getElementById("equivalent").textContent =
+    doitRecompter ? "Saisis un nouveau comptage avec le colisage affiché. Le relevé précédent est conservé." :
     v === 0 ? "réserve vide et rayon plein" :
     v > 0 ? "= " + Math.round(v * a.conditionnement * 100) / 100 + " " + a.unite + " en réserve, rayon plein"
           : "il manque " + Math.abs(v) + " colis pour remplir le rayon";
@@ -373,6 +407,12 @@ function majAttente() {
 function valider() {
   const a = articles[index];
   if (!a) return;
+  if (!touche && colisageDuReleveDifferent(a, comptagesDuJour()[a.itm8])) {
+    const resultat = document.getElementById("resultat");
+    resultat.className = "resultat rate";
+    resultat.textContent = "Colisage différent ou ancien colisage inconnu : saisis un nouveau comptage avant de valider. Le relevé précédent reste conservé.";
+    return;
+  }
   const colis = valeurCourante();
   const liste = lire(CLE_COMPTAGES, []).filter(c => c.itm8 !== a.itm8 || c.date !== aujourdhui());
   liste.push({
@@ -394,17 +434,14 @@ function valider() {
     resultat.textContent = "Stockage plein ou indisponible : comptage NON enregistré. Garde cet écran ouvert, envoie les comptages déjà gardés puis réessaie.";
     return;
   }
-  memoriserComptage(a.itm8, colis);
+  memoriserComptage(a, colis);
   document.getElementById("resultat").textContent = "";
   suivant();
 }
 
 function suivant() {
-  saisie = ""; negatif = false; touche = false;
-  index++;
-  ecrire(CLE_AVANCEMENT, { index: index, date: aujourdhui() });
-  if (index >= articles.length) return terminer();
-  afficher();
+  if (!articles.length) return;
+  allerA(index + 1);
 }
 
 function terminer() {
@@ -412,7 +449,7 @@ function terminer() {
   const fin = document.getElementById("ecran-fin");
   fin.classList.add("visible");
   const n = lire(CLE_COMPTAGES, []).length;
-  const part = index > 0 ? (articles[Math.min(index, articles.length) - 1].part_ca_cumulee || 0) : 0;
+  const part = index > 0 ? (articles[Math.min(index, articles.length) - 1]?.part_ca_cumulee || 0) : 0;
   document.getElementById("fin-resume").textContent =
     n + (n > 1 ? " comptages enregistrés" : " comptage enregistré") + " sur le téléphone · "
     + String(part).replace(".", ",") + " % du chiffre d'affaires du rayon couvert.";
@@ -440,7 +477,7 @@ document.getElementById("moins").addEventListener("click", () => ajuster(-1));
 document.getElementById("valider").addEventListener("click", valider);
 document.getElementById("passer").addEventListener("click", suivant);
 document.getElementById("precedent").addEventListener("click", () => {
-  if (index > 0) { index--; saisie = ""; negatif = false; touche = false; afficher(); }
+  if (index > 0) allerA(index - 1);
 });
 
 // --- Revenir sur un article deja compte -------------------------------------
@@ -479,9 +516,7 @@ document.getElementById("recherche").addEventListener("input", (e) => afficherLi
 document.getElementById("liste-articles").addEventListener("click", (e) => {
   const ligne = e.target.closest(".ligne-article");
   if (!ligne) return;
-  index = Number(ligne.dataset.index);
-  saisie = ""; negatif = false; touche = false;
-  ecrire(CLE_AVANCEMENT, { index: index, date: aujourdhui() });
+  allerA(Number(ligne.dataset.index));
   document.getElementById("fermer-liste").click();
 });
 
@@ -570,37 +605,38 @@ window.addEventListener("offline", () => {
 });
 
 async function chargerArticles(afficherErreurSiVide = true) {
+  const generation = ++chargementArticles;
   const cache = lire(CLE_ARTICLES_CACHE, null);
-  if (cache && Array.isArray(cache.articles) && cache.articles.length > 0) {
+  if (!articles.length && cache && Array.isArray(cache.articles) && cache.articles.length > 0) {
     articles = cache.articles;
     const reprise = lire(CLE_AVANCEMENT, null);
-    if (reprise && reprise.date === aujourdhui() && reprise.index < articles.length) {
-      index = reprise.index;
+    if (reprise && reprise.date === aujourdhui()) {
+      const position = articles.findIndex(a => a.itm8 === reprise.itm8);
+      index = reprise.termine ? articles.length : position >= 0 ? position
+        : !reprise.itm8 && reprise.index < articles.length ? reprise.index : 0;
     }
     afficher();
     majStatutReseau(navigator.onLine);
   }
 
+  const controleur = new AbortController();
+  const min = setTimeout(() => controleur.abort(), 4000);
   try {
-    const controleur = new AbortController();
-    const min = setTimeout(() => controleur.abort(), 4000);
     const reponse = await fetch("../donnees/articles.json?t=" + Date.now(), {
       cache: "no-store",
       signal: controleur.signal
     });
-    clearTimeout(min);
     if (reponse.ok) {
       const donnees = await reponse.json();
+      if (generation !== chargementArticles) return;
       if (donnees.articles && donnees.articles.length) {
-        const different = !cache || cache.genere_le !== donnees.genere_le || cache.articles.length !== donnees.articles.length;
-        if (different) {
-          articles = donnees.articles;
-          ecrire(CLE_ARTICLES_CACHE, { genere_le: donnees.genere_le, articles: donnees.articles });
+        // La fiche visible garde son identité ET son colisage jusqu'à la
+        // navigation explicite, même si le réseau change l'ordre des articles.
+        if (articles.length) listeEnAttente = donnees;
+        else {
           const reprise = lire(CLE_AVANCEMENT, null);
-          if (reprise && reprise.date === aujourdhui() && reprise.index < articles.length) {
-            index = reprise.index;
-          }
-          if (!touche) afficher();
+          adopterListe(donnees, reprise?.date === aujourdhui() ? reprise.itm8 : null);
+          afficher();
         }
         majStatutReseau(true);
         if (window.PhotosProduits) PhotosProduits.charger().then(() => {
@@ -609,8 +645,10 @@ async function chargerArticles(afficherErreurSiVide = true) {
         return;
       }
     }
+    throw new Error("Liste des articles indisponible ou vide");
   } catch (e) {
-    if (!cache || !cache.articles || !cache.articles.length) {
+    if (generation !== chargementArticles) return;
+    if (!articles.length) {
       if (afficherErreurSiVide) {
         document.getElementById("libelle").textContent = "Connexion requise";
         document.getElementById("repere").textContent = "Connecte-toi devant la porte pour charger la liste du jour.";
@@ -619,6 +657,8 @@ async function chargerArticles(afficherErreurSiVide = true) {
       return;
     }
     majStatutReseau(false, "🟠 Hors-ligne (cache actif)");
+  } finally {
+    clearTimeout(min);
   }
   if (window.PhotosProduits) PhotosProduits.charger().then(() => {
     if (articles.length && index < articles.length) afficher();

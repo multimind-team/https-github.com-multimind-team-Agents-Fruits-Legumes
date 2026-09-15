@@ -2,9 +2,9 @@
 
 import argparse
 import json
-import os
 import smtplib
 import ssl
+import sys
 from email.message import EmailMessage
 from pathlib import Path
 

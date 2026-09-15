@@ -178,110 +178,20 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-06.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Typologie des Événements & Schémas</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Chefs Rayon, Auditeurs</div>
         </div>
       </div>
 
 
-      <h2>1. Référentiel Exhaustif des Types de Faits et Décisions</h2>
-      <p>
-        Le modèle de données distingue rigoureusement les faits physiques observables et les décisions de configuration :
-      </p>
-
-      <h2>2. Les 6 Types de Faits Physiques (<code>donnees/faits/AAAA.jsonl</code>)</h2>
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Type de Fait</th>
-            <th style="width: 20%;">Catégorie</th>
-            <th style="width: 55%;">Définition &amp; Règle dans le Moteur</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>vente</code></td>
-            <td>Sortie de caisse</td>
-            <td>Vente enregistrée en magasin ou au Drive. Décrémente le stock théorique.</td>
-          </tr>
-          <tr>
-            <td><code>livraison</code></td>
-            <td>Entrée quai</td>
-            <td>Marchandises réceptionnées de la SCAFRUIT ou de fournisseurs directs. Incrémente le stock.</td>
-          </tr>
-          <tr>
-            <td><code>comptage</code></td>
-            <td>Pointage physique</td>
-            <td>Inventaire ponctuel de chambre froide ou rayon. Réinitialise la position de stock.</td>
-          </tr>
-          <tr>
-            <td><code>correction-comptage</code></td>
-            <td>Rectification</td>
-            <td>Correction formelle d'une erreur de pointage constatée par l'exploitant.</td>
-          </tr>
-          <tr>
-            <td><code>casse</code></td>
-            <td>Perte constatée</td>
-            <td>Produits abîmés retirés du rayon. Sortie physique sans encaissement.</td>
-          </tr>
-          <tr>
-            <td><code>don</code></td>
-            <td>Solidarité / Sortie</td>
-            <td>Produits remis aux associations caritatives. Comptabilisé à parité avec la casse pour le taux de perte.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>3. Les 7 Types de Décisions de Gestion (<code>donnees/decisions.jsonl</code>)</h2>
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Type de Décision</th>
-            <th style="width: 20%;">Champ Clé</th>
-            <th style="width: 55%;">Effet Opérationnel sur le Calcul</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>fusion</code></td>
-            <td><code>principal</code>, <code>membres</code></td>
-            <td>Fusionne les historiques de ventes de codes ITM8 jumeaux sous un code unique de référence.</td>
-          </tr>
-          <tr>
-            <td><code>conditionnement</code></td>
-            <td><code>conditionnement</code></td>
-            <td>Fixe un PCB forcé par le chef de rayon si le cadencier annonce une valeur inadaptée.</td>
-          </tr>
-          <tr>
-            <td><code>fournisseur</code></td>
-            <td><code>fournisseur</code></td>
-            <td>Spécifie le fournisseur prioritaire pour la référence.</td>
-          </tr>
-          <tr>
-            <td><code>unite</code></td>
-            <td><code>unite</code></td>
-            <td>Force l'unité de commande (kg vs unité).</td>
-          </tr>
-          <tr>
-            <td><code>masquage</code></td>
-            <td><code>article</code></td>
-            <td>Masque un produit de la console de commande (article non reconduit).</td>
-          </tr>
-          <tr>
-            <td><code>demasquage</code></td>
-            <td><code>article</code></td>
-            <td>Rétablit un article précédemment masqué dans la proposition.</td>
-          </tr>
-          <tr>
-            <td><code>promotion</code></td>
-            <td><code>promotion</code></td>
-            <td>Déclare un statut promotionnel avec coefficient multiplicateur temporaire.</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <div class="page-nav-bar">
+      <h2>Champs et unités</h2>
+<p>Un fait identifie notamment id, type, article, date_source, date_effet, quantite et unite, avec la provenance disponible. date_effet détermine quand le mouvement agit sur la position. Les quantités sont exprimées en unités métier attestées, et les comptages conservent le colisage de saisie. Les corrections et décisions ont leurs propres champs décrits dans le contrat.</p>
+<p>Pour l’extraction JSON d’une facture Pomona/TerreAzur, l’en-tête comprend <code>fournisseur</code>, <code>date_reception</code>, <code>bordereau</code>, <code>pages_lues</code> et <code>pages_totales</code> (nombres de pages), puis la liste <code>lignes</code>. Chaque ligne porte <code>code_fournisseur</code>, <code>produit</code>, <code>quantite_uf</code>, <code>pu</code>, <code>montant_ht</code> et les <code>colis</code> lus. Le montant doit correspondre à quantité × PU à 0,01 € près.</p>
+<p>La preuve de l’unité physique facturée est enregistrée dans <code>unite_uf</code>. Elle est exigée pour toute nouvelle écriture de stock et doit être compatible avec l’unité du catalogue. Une absence d’unité ne bloque pas le mode <code>--classeur-seul</code>, qui recopie A/C/F sans écrire de stock. Aucun prix de vente n’est déduit pour cette préparation.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../reference/contrat-echange.md">reference/contrat-echange.md</a></li><li><a href="../../../moteur/faits.py">moteur/faits.py</a></li><li><a href="../../../moteur/facture_directe.py">moteur/facture_directe.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./6.1 - Format du carnet de faits et schéma JSONL.html" class="btn-action">&larr; 6.1 Carnet de faits JSONL</a>
         </div>

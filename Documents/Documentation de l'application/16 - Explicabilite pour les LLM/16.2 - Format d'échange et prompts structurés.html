@@ -178,30 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-16.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Schémas JSON pour Modèles IA</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Ingénieurs IA</div>
         </div>
       </div>
 
 
-      <h2>1. Format JSON d'Interrogation pour les LLMs</h2>
-      <p>
-        Les agents IA dialoguent via un format structuré standardisé :
-      </p>
-      <pre><code>{
-  "contexte": "demande_explication_ligne",
-  "article": "0000087004386",
-  "quantite_proposee_colis": 6,
-  "justification": {
-    "faits_utilises": ["stock_chambre_2_colis", "ventes_j_moins_1_18_litres"],
-    "calcul_applique": "besoin_brut_90kg_moins_stock_30kg_arrondi_pcb_15kg",
-    "hypothese_meteo": "chaleur_26C_facteur_1.076",
-    "confiance": "ELEVEE"
-  }
-}</code></pre>
-
-
-      <div class="page-nav-bar">
+      <h2>Transmissions entre agents</h2>
+<p>Toute délégation comprend la demande source, les fichiers ou identifiants précis, l’opération autorisée, ses limites et le résultat attendu. Le retour comprend les preuves, les écritures réellement faites, les refus et les points restants. Pour les flux sensibles, l’avis indépendant précède l’écriture et son résultat est relu après intégration.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../AGENTS.md">AGENTS.md</a></li><li><a href="../../../reference/modele-controle-stock.md">reference/modele-controle-stock.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./16.1 - Distinction Faits, Calculs et Hypothèses.html" class="btn-action">&larr; 16.1 Faits Calculs Hypothèses</a>
         </div>

@@ -1,9 +1,9 @@
 {
  "_lisez_moi": "Ce qu'il faut penser de la proposition affichée. Ecrit par filet-de-securite.py, lu par l'ecran de commande. Fichier separe expres : proposition.json est reecrit a chaque calcul.",
  "etat": "a-jour",
- "message": "Proposition du 2026-09-14, 316 articles.",
- "verifie_le": "2026-09-14T05:19:39",
- "jour_de_commande_attendu": "2026-09-14",
- "proposition_generee_le": "2026-09-14T05:19:30",
+ "message": "Proposition du 2026-09-16, 427 articles.",
+ "verifie_le": "2026-09-15T15:08:51",
+ "jour_de_commande_attendu": "2026-09-16",
+ "proposition_generee_le": "2026-09-15T15:08:44",
  "calculs_en_echec": []
 }

@@ -35,6 +35,7 @@ import agregats
 import calendrier
 import catalogue
 from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees, environnement_verrou
 
 RACINE = MOTEUR.parent
 DONNEES = RACINE / "donnees"
@@ -43,61 +44,71 @@ FICHIER_PROPOSITION = DONNEES / "proposition.json"
 FICHIER_RAPPORT = DONNEES / "analyse-ventes-livraisons.json"
 FICHIER_METEO = DONNEES / "meteo-historique.json"
 POUVOIRS_PATH = DONNEES / "pouvoirs.json"
+FICHIER_CALENDRIER = DONNEES / "calendrier.json"
+FICHIER_OUVERTURES = DONNEES / "ouverture-jours-feries.json"
 
 
-def qualifier_contexte_jour(d, cal=None, meteo=None):
-    """
-    Identifie les causes externes pouvant expliquer une sous-vente sur une journée :
-    - Magasin fermé (dimanche, fermeture exceptionnelle)
-    - Jour férié (ou pont)
-    - Météo défavorable (forte pluie >= 5mm, froid anormal en saison estivale <= 14°C)
-    - Vacances scolaires (Zone C - académie de Toulouse)
-    """
-    info = {
-        "date": d,
-        "ferme": False,
-        "ferie": None,
-        "vacances": None,
-        "pluie_mm": 0.0,
-        "temperature_max": None,
-        "causes": [],
-    }
-
+def qualifier_contexte_jour(d, cal=None, meteo=None, ouvertures=None):
+    """Sépare l'absence de cause et l'absence de vérification du contexte."""
+    info = {"date": d, "ferme": False, "ferie": None, "vacances": None,
+            "pluie_mm": None, "temperature_max": None, "causes": [],
+            "contexte_verifie": False, "verifications_manquantes": []}
+    manquantes = info["verifications_manquantes"]
     try:
+        if not isinstance(cal, dict) or not cal:
+            raise ValueError("calendrier absent")
         q = calendrier.ce_jour(d, cal)
-    except Exception:
+        periodes = cal.get("vacances", [])
+        if (cal.get("derniere_erreur") or not periodes
+                or not min(p["debut"] for p in periodes) <= d <= max(p["fin"] for p in periodes)):
+            manquantes.append("calendrier scolaire non couvert")
+    except (ValueError, TypeError, KeyError):
         q = {}
-
-    js = q.get("jour_semaine")
-    ferie = q.get("ferie")
-    ferme = q.get("ferme") or (js == "dimanche")
-    vacances = q.get("vacances")
-
-    info["ferme"] = bool(ferme)
-    info["ferie"] = ferie
-    info["vacances"] = vacances
-    info["jour_semaine"] = js
-
+        manquantes.append("calendrier indisponible")
+    js, ferie, vacances = q.get("jour_semaine"), q.get("ferie"), q.get("vacances")
+    # Les jours fériés sont calculables sans téléchargement, quelle que soit l'année.
+    ferie = ferie or calendrier.jours_feries(date.fromisoformat(d).year).get(date.fromisoformat(d))
+    statut = None
+    if isinstance(ouvertures, dict) and isinstance(ouvertures.get("jours"), dict):
+        statut = ouvertures["jours"].get(d, {}).get("statut")
+    else:
+        manquantes.append("ouvertures exceptionnelles non vérifiées")
+    ferme = q.get("ferme") or js == "dimanche" or statut == "ferme"
+    info.update(ferme=bool(ferme), ferie=ferie, vacances=vacances, jour_semaine=js)
     if ferme:
-        info["causes"].append(f"Magasin fermé ({js})" if js == "dimanche" else "Magasin fermé (fermeture exceptionnelle)")
+        info["causes"].append("Magasin fermé (dimanche)" if js == "dimanche" else "Magasin fermé (fermeture exceptionnelle)")
     elif ferie:
         info["causes"].append(f"Jour férié ({ferie})")
-
-    if meteo and d in meteo:
-        vals = meteo[d]
-        if isinstance(vals, (list, tuple)) and len(vals) >= 2:
-            tmax, pluie = vals[0], vals[1]
-            info["temperature_max"] = tmax
-            info["pluie_mm"] = pluie
-            if pluie is not None and pluie >= 5.0:
-                info["causes"].append(f"Intempéries / Pluie ({pluie:.0f} mm)")
-            if tmax is not None and tmax <= 14.0 and d[5:7] in ("06", "07", "08", "09"):
-                info["causes"].append(f"Fraîcheur inhabituelle ({tmax:.0f} °C)")
-
+    elif statut == "demi-journee":
+        info["causes"].append("Ouverture limitée à une demi-journée")
+    for delta in (-1, 1):
+        voisin = date.fromisoformat(d) + timedelta(days=delta)
+        if ((js == "vendredi" and delta == -1) or (js == "lundi" and delta == 1)) and voisin in calendrier.jours_feries(voisin.year):
+            info["causes"].append("Pont autour d'un jour férié")
+    valeurs = (meteo or {}).get(d)
+    if (isinstance(valeurs, (list, tuple)) and len(valeurs) >= 2
+            and all(isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(x) for x in valeurs[:2])):
+        tmax, pluie = valeurs[:2]
+        info.update(temperature_max=tmax, pluie_mm=pluie)
+        if pluie >= 5:
+            info["causes"].append(f"Intempéries / Pluie ({pluie:.0f} mm)")
+        if tmax <= 14 and d[5:7] in ("06", "07", "08", "09"):
+            info["causes"].append(f"Fraîcheur inhabituelle ({tmax:.0f} °C)")
+    else:
+        manquantes.append("météo absente ou incomplète")
     if vacances:
         info["causes"].append(f"Vacances scolaires ({vacances})")
-
+    info["contexte_verifie"] = not manquantes
     return info
+
+
+def lire_contexte(chemin):
+    """Lecture seule : un cache absent n'est ni créé ni téléchargé par l'analyse."""
+    try:
+        valeur = json.loads(chemin.read_text(encoding="utf-8"))
+        return valeur if isinstance(valeur, dict) else None
+    except (OSError, ValueError):
+        return None
 
 
 def decaler_date(iso_str, jours):
@@ -114,7 +125,8 @@ def charger_faits_recents(depuis):
     colisages_vus = {}
 
     for fait in faits.lire(DOSSIER_FAITS):
-        d = fait.get("date_source") or fait.get("date_effet") or ""
+        d = ((fait.get("date_effet") or fait.get("date_source")) if fait.get("type") == "livraison"
+             else (fait.get("date_source") or fait.get("date_effet"))) or ""
         if d < depuis:
             continue
         art = fait.get("article")
@@ -141,18 +153,9 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
     Renvoie un dictionnaire complet de diagnostic.
     """
     # 0. Charger le calendrier et la météo historique pour qualifier le contexte externe
-    cal = None
-    try:
-        cal = calendrier.charger()
-    except Exception:
-        pass
-
-    meteo = {}
-    if FICHIER_METEO.exists():
-        try:
-            meteo = json.loads(FICHIER_METEO.read_text(encoding="utf-8"))
-        except Exception:
-            pass
+    cal = lire_contexte(FICHIER_CALENDRIER)
+    meteo = lire_contexte(FICHIER_METEO) or {}
+    ouvertures = lire_contexte(FICHIER_OUVERTURES)
 
     # 1. Charger la proposition actuelle pour connaître les dates de référence
     prop = {}
@@ -163,7 +166,7 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
             pass
 
     date_commande = prop.get("date_commande", date.today().isoformat())
-    date_ref = prop.get("date_reference") or decaler_date(date_commande, -1)
+    date_ref = min(prop.get("date_reference") or decaler_date(date_commande, -1), decaler_date(date.today().isoformat(), -1))
     date_debut = decaler_date(date_ref, -(fenetre_jours - 1))
 
     lignes_prop = {l["itm8"]: l for l in prop.get("lignes", [])}
@@ -171,13 +174,17 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
 
     livraisons, livraisons_colis, ventes, colisages_vus = charger_faits_recents(date_debut)
 
-    articles_evalues = sorted(list(livraisons.keys()))
+    # Une journée absente du fichier des ventes n'est pas une vente nulle.
+    jours_ventes = {d for par_jour in ventes.values() for d in par_jour if d <= date_ref}
+    agr = lire_contexte(FICHIER_PROPOSITION.parent / "agregats.json") or {}
+    jours_ventes.update(d for d in agr.get("jours_ventes_integres", []) if d <= date_ref)
+    articles_evalues = sorted(a for a in livraisons if any(d <= date_ref for d in livraisons[a]))
     anomalies_isolees = []
     anomalies_recurrentes = []
     analyses_articles = []
 
     for itm8 in articles_evalues:
-        dates_livraisons = sorted(livraisons[itm8].keys())
+        dates_livraisons = sorted(d for d in livraisons[itm8] if d <= date_ref)
         if not dates_livraisons:
             continue
 
@@ -197,10 +204,14 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
         total_livre = 0.0
         total_vendu = 0.0
 
-        for d in dates_livraisons:
+        for rang, d in enumerate(dates_livraisons):
+            fin_periode = min(date_ref, decaler_date(dates_livraisons[rang + 1], -1)) if rang + 1 < len(dates_livraisons) else date_ref
+            jours_periode = [decaler_date(d, n) for n in range((date.fromisoformat(fin_periode) - date.fromisoformat(d)).days + 1)]
+            contextes = [qualifier_contexte_jour(j, cal, meteo, ouvertures) for j in jours_periode]
+            ventes_completes = all(j in jours_ventes or c["ferme"] for j, c in zip(jours_periode, contextes))
             q_livree = livraisons[itm8][d]
-            c_livres = livraisons_colis[itm8].get(d, q_livree / colisage)
-            q_vendue = ventes[itm8].get(d, 0.0)
+            c_livres = livraisons_colis[itm8].get(d) or q_livree / colisage
+            q_vendue = sum(ventes[itm8].get(j, 0.0) for j in jours_periode)
             c_vendus = q_vendue / colisage
 
             total_livre += q_livree
@@ -209,10 +220,13 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
             taux = (q_vendue / q_livree) if q_livree > 0 else 1.0
             reliquat_colis = max(0.0, c_livres - c_vendus)
 
-            ctx = qualifier_contexte_jour(d, cal, meteo)
 
             point = {
                 "date": d,
+                "fin_periode": fin_periode,
+                "ventes_completes": ventes_completes,
+                "contexte_verifie": ventes_completes and all(c["contexte_verifie"] for c in contextes),
+                "verifications_manquantes": sorted({m for c in contextes for m in c["verifications_manquantes"]} | ({"journées de vente manquantes"} if not ventes_completes else set())),
                 "quantite_livree": round(q_livree, 2),
                 "colis_livres": round(c_livres, 1),
                 "quantite_vendue": round(q_vendue, 2),
@@ -220,7 +234,7 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
                 "taux_ecoulement": round(taux, 2),
                 "reliquat_colis": round(reliquat_colis, 1),
                 "sous_ecoulement": (taux < seuil_ecoulement and c_livres >= 1.0),
-                "causes_externes": ctx["causes"],
+                "causes_externes": [f"{c['date']} : {cause}" for c in contextes for cause in c["causes"]],
             }
             historique_receptions.append(point)
 
@@ -231,8 +245,8 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
             else:
                 break
 
-        jours_avec_ventes = len([d for d, q in ventes[itm8].items() if q > 0])
-        somme_ventes = sum(ventes[itm8].values())
+        jours_avec_ventes = len([d for d, q in ventes[itm8].items() if date_debut <= d <= date_ref and q > 0])
+        somme_ventes = sum(q for d, q in ventes[itm8].items() if date_debut <= d <= date_ref)
         vitesse_vente_jour_unites = (somme_ventes / max(1, jours_avec_ventes)) if jours_avec_ventes else 0.0
         vitesse_vente_jour_colis = vitesse_vente_jour_unites / colisage
 
@@ -296,6 +310,13 @@ def analyser(fenetre_jours=7, seuil_ecoulement=0.50):
                     "ajustement_propose": None,
                     "motif_analyse": motif,
                 }
+                anomalies_recurrentes.append(diag)
+                analyses_articles.append(diag)
+            elif any(not pt["contexte_verifie"] for pt in receptions_faibles):
+                manquantes = sorted({m for pt in receptions_faibles for m in pt["verifications_manquantes"]})
+                diag = {**resume, "statut": "recurrent_contexte_incomplet", "causes_externes": [],
+                        "ajustement_propose": None, "verifications_manquantes": manquantes,
+                        "motif_analyse": "Commande maintenue : contexte non vérifié (" + ", ".join(manquantes) + "). Aucune baisse proposée."}
                 anomalies_recurrentes.append(diag)
                 analyses_articles.append(diag)
             else:
@@ -418,7 +439,7 @@ def soumettre_suggestions(rapport, max_ajustements=10):
             "--proposer",
             "--agent", "agent-tendances",
         ]
-        res = subprocess.run(cmd, capture_output=True, text=True)
+        res = subprocess.run(cmd, capture_output=True, text=True, env=environnement_verrou(DONNEES))
         ajustes.append({
             "article": art,
             "libelle": item["libelle"],
@@ -431,6 +452,7 @@ def soumettre_suggestions(rapport, max_ajustements=10):
     return ajustes
 
 
+@operation_donnees(lambda: DONNEES)
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--jours", type=int, default=7, help="Fenêtre d'observation en jours (défaut: 7)")
@@ -464,6 +486,8 @@ def main():
                     print(f"    Proposition : {p['avant']} -> {p['apres']} colis (-{p['baisse_pourcent']} %). Matelas anti-rupture : {p['buffer_anti_rupture']} colis.")
                 elif item.get("statut") == "recurrent_cause_externe":
                     print(f"    Proposition : 0 baisse (mévente expliquée par facteurs externes : magasin fermé, météo, férié ou vacances).")
+                elif item.get("statut") == "recurrent_contexte_incomplet":
+                    print("    Proposition : 0 baisse (contexte non vérifié).")
                 elif item.get("statut") == "recurrent_protege_anti_rupture":
                     print(f"    Proposition : 0 baisse (maintien à {item['propose_colis']} colis pour protéger contre la rupture).")
                 else:

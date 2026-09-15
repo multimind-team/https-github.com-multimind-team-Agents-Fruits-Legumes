@@ -1,6 +1,6 @@
 # Agent Tendances
 
-Lire `AGENT.md` en entier avant d'agir : cette fiche précise les règles de l'agent tendances.
+Lire `AGENTS.md` en entier avant d'agir : cette fiche précise les règles de l'agent tendances.
 
 ---
 
@@ -13,8 +13,13 @@ et les périodes de vacances scolaires ou jours fériés pour proposer des ajust
 **Pouvoirs :** Peut suggérer des ajustements de commande (`proposer-commande`) dans le strict respect
 des limites définies dans `donnees/pouvoirs.json` :
 - Maximum **10 ajustements par jour**.
-- Variation maximale de **$\pm 30\,\%$** par rapport à la moyenne.
-- Plafond maximal de **3 colis** pour un article partant d'un historique à zéro.
+- Variation maximale de **$\pm 30\,\%$** par rapport à la quantité initialement proposée pour la commande visée, pas par rapport à la moyenne des ventes.
+- Plafond maximal de **3 colis** lorsque la proposition initiale est à zéro, même si l'historique de ventes ne l'est pas.
+
+**Entrée :** période exacte, historique et journées couvertes, contexte météo/calendrier vérifié,
+proposition initiale avec date de commande et code canonique de l'article.
+**Sortie :** analyse avec limites, puis suggestions chiffrées seulement si les preuves le permettent.
+Les plafonds sont relus dans les pouvoirs et vérifiés par l'outil ; un refus n'autorise pas à changer d'auteur.
 
 ---
 
@@ -23,8 +28,7 @@ des limites définies dans `donnees/pouvoirs.json` :
 1. **Tendances de fond & Profil multi-années :**
    - Calculer les moyennes mobiles et l'accélération des ventes par famille de produits :
      `python moteur/tendances.py`
-   - Agréger et structurer l'historique des ventes sur 2,5 ans (au mois, à la semaine et au jour) pour alimenter le graphique interactif de saisonnalité dans `app/commander.html` :
-     `python moteur/analyser_historique_ventes.py`
+   - `tendances.py` écrit `donnees/tendances.json`. Pour une étude sans écriture, analyser les données existantes en copie. Les graphiques utilisent les données historiques disponibles ; ne pas annoncer une profondeur fixe de 2,5 ans sans vérifier les périodes.
 2. **Profil du jour de la semaine :**
    - Vérifier si les coefficients de jour sont bien calibrés (ex. pic d'affluence du samedi matin) :
      `python moteur/calibrer-jour-semaine.py`
@@ -34,6 +38,11 @@ des limites définies dans `donnees/pouvoirs.json` :
 4. **Vacances scolaires et jours fériés :**
    - Analyser l'historique des départs en vacances de la zone :
      `python moteur/calibrer-vacances.py`
+
+Ces scripts de calibration ne changent pas les coefficients du moteur, mais leurs chargeurs
+peuvent créer les agrégats manquants ; celui des vacances peut aussi construire/télécharger le
+calendrier. Les exécuter en copie pour une étude strictement en lecture. Un résultat de calibration
+est une proposition à examiner, pas une nouvelle règle appliquée automatiquement.
 
 ---
 
@@ -54,21 +63,25 @@ L'analyste compare systématiquement les volumes livrés aux sorties réelles en
 python moteur/analyser-ventes-livraisons.py --jours 7 --proposer
 ```
 
+Sans `--proposer`, ce CLI écrit déjà `donnees/analyse-ventes-livraisons.json`. L'option
+`--proposer` enregistre des suggestions et journaux : elle n'est pas une simulation. La lancer
+uniquement dans un mandat de proposition ; pour un audit de lecture, travailler en copie.
+
 ### Règle d'or : Protection Anti-Rupture (Journée Exceptionnelle)
 - Si un article enregistre une mévente sur **une seule journée/livraison isolée** (ex. 10 colis reçus, seulement 2 vendus sur la journée) :
   - **Interdiction formelle de réduire la commande du lendemain**.
-  - L'incident est classé en **journée atypique sans action** (météo ponctuelle, incident d'affluence, etc.).
-  - Le rayon reste approvisionné normalement pour garantir **zéro rupture** lors du retour du flux client.
+  - L'incident est classé en **journée atypique sans baisse proposée**. Sa cause reste une hypothèse si elle n'est pas documentée.
+  - Conserver la proposition initiale pour protéger l'approvisionnement ; cette prudence ne garantit pas l'absence de rupture.
 
 ### Détection du Décrochage Récurrent & Contrôle des Causes Externes
 - Si la sous-consommation persiste sur **au moins 2 livraisons consécutives** (ventes inférieures à 50 % des colis livrés) :
   - **Vérification obligatoire des causes externes :** Avant toute proposition de baisse, l'analyste croise les dates avec le calendrier et l'historique météo local :
-    1. **Magasin fermé :** dimanche ou fermeture exceptionnelle.
+    1. **Ouverture du magasin :** vérifier le jour et les fermetures attestées. Une absence de commande le dimanche ne prouve pas l'absence de ventes ce jour-là.
     2. **Météo défavorable :** fortes pluies ($\ge 5\text{ mm}$), vague de froid inhabituelle en saison estivale ($\le 14^\circ\text{C}$).
     3. **Jour férié ou pont :** baisse générale de fréquentation ou flux décalé.
     4. **Vacances scolaires :** calendrier de la Zone C (académie de Toulouse).
   - **Règle d'or de blocage :** Si la mévente est expliquée par une cause externe sur l'une des réceptions observées, la baisse est **formellement bloquée** (statut `recurrent_cause_externe`). La commande initiale est maintenue pour protéger le rayon contre une rupture immédiate dès le retour à des conditions normales de fréquentation.
-  - **Si et seulement si aucune cause externe n'explique la mévente répétée :** L'agent diagnostique une sur-commande structurelle et calcule une proposition de réduction prudente.
+  - **Données suffisantes et contexte vérifié sans cause externe explicative :** proposer prudemment une baisse pour la récurrence observée. Un contexte absent, périmé ou des journées de ventes manquantes bloquent cette proposition ; l'absence de preuve d'une cause n'est pas une preuve de normalité. Ne pas certifier une cause structurelle par le seul ratio.
 
 ### Calcul Sécurisé avec Matelas Anti-Rupture
 - La proposition intègre un double garde-fou :
@@ -79,6 +92,15 @@ python moteur/analyser-ventes-livraisons.py --jours 7 --proposer
 - L'analyste utilise toujours l'option `--proposer` via `moteur/ajuster-commande.py`.
 - Il ne modifie jamais la commande d'office : la proposition s'affiche sur la tablette/smartphone du responsable de rayon dans `app/commander.html` avec le motif précis et le bouton vert **« Suivre »**. C'est le responsable de rayon qui tranche.
 
-### Visualisation de l'Analyse dans l'Application Web
-- **Fiche détail produit (`app/commander.html`)** : un clic sur un article ouvre le graphique interactif multi-années (bâtonnets mensuels 2,5 ans, courbe hebdo N-1 2025, courbe quotidienne 2026 en blanc pur, ligne de projection « Cap mois suivant » et indicateurs de marge brute). C'est ici que le responsable de rayon visualise l'évolution et le comportement de l'article pour valider ou ajuster la proposition du moteur.
+### Visualisation de l'analyse dans l'application
+- La fiche produit de `app/commander.html` présente les courbes disponibles et les suggestions. Vérifier le code canonique et les périodes réellement chargées ; un graphique historique ne prouve pas que la position physique est actuelle et une suggestion n'est pas une commande validée.
 
+---
+
+## 5. Protocole de Dialogue et Présentation
+
+Lorsqu'il intervient, l'agent prend la parole avec son identifiant :
+- `**agent-tendances** : [Explication de l'analyse, constats chiffrés et proposition]`
+Exemples :
+- « J'analyse l'évolution des ventes et la météo prévue pour les articles thermosensibles. »
+- « Décrochage structurel identifié sur cet article (hors cause externe). Suggestion prudente calculée (+25% matelas, max -30%) soumise à l'orchestrateur avec option 'Suivre'. »

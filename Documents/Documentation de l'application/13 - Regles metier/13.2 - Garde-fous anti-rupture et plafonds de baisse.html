@@ -178,28 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-13.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Sécurités Anti-Rupture & Plafonds</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Direction</div>
         </div>
       </div>
 
 
-      <h2>1. Le Protocole Anti-Rupture Absolu de l'Agent Tendances</h2>
-      <p>
-        Pour protéger le rayon contre toute rupture involontaire, les propositions de baisse de commande sont encadrées par des règles strictes :
-      </p>
-      <div class="callout-box danger">
-        <div class="callout-title">GARDE-FOU ANTI-RUPTURE SUR LES BAISSES</div>
-        <p style="margin:0;">
-          1. <strong>Aucune baisse sur mévente isolée :</strong> Une chute ponctuelle de vente sur un seul jour n'entraîne jamais de baisse de commande.<br>
-          2. <strong>Contrôle des 4 causes externes :</strong> Avant toute suggestion de baisse, vérification obligatoire que la baisse n'est pas due à (a) une fermeture magasin, (b) des intempéries, (c) un jour férié/pont, (d) des vacances scolaires.<br>
-          3. <strong>Bornage strict de baisse :</strong> La réduction est plafonnée à <strong>-30 % maximum</strong> de la commande précédente.<br>
-          4. <strong>Matelas de sécurité obligatoire de +25 % :</strong> La commande ne descend jamais sous 1,25 fois la vitesse de vente moyenne réelle (<code>ceil(vitesse_vente * 1.25)</code>).
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Conditions des baisses</h2>
+<p>Les suggestions comparent les ventes postérieures aux réceptions et exigent une récurrence ainsi qu’un contexte externe renseigné. Une cause externe bloque la baisse. Le matelas de vente et le plancher de −30 % sont appliqués avec un arrondi qui respecte effectivement le plafond. Le responsable conserve l’arbitrage ; une fin de prospectus n’abaisse pas seule la proposition.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/analyser-ventes-livraisons.py">moteur/analyser-ventes-livraisons.py</a></li><li><a href="../../../moteur/amortissement_promotions.py">moteur/amortissement_promotions.py</a></li><li><a href="../../../donnees/pouvoirs.json">donnees/pouvoirs.json</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./13.1 - Règles de colisage, PCB et arrondis.html" class="btn-action">&larr; 13.1 Règles colisage</a>
         </div>

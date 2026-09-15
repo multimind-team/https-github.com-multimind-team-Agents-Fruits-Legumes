@@ -178,38 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-08.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Algorithmes Prévisionnels & Fenêtre Circulaire</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Chefs Rayon, Analystes</div>
         </div>
       </div>
 
 
-      <h2>1. Le Principe Fondamental de la Fenêtre Circulaire (± 21 Jours)</h2>
-      <p>
-        Dans <code>moteur/calculer-commande.py</code>, la demande moyenne d'un article pour un jour donné de l'année est estimée via une <strong>fenêtre glissante circulaire de ± 21 jours</strong> (soit un intervalle de 43 jours centré sur le jour cible) :
-      </p>
-
-      <div class="callout-box">
-        <div class="callout-title">ALGORITHME DE LA FENÊTRE CIRCULAIRE</div>
-        <p style="margin:0;">
-          Pour éviter l'effet de bord entre fin décembre et début janvier, les 366 jours de l'année sont triplés en mémoire (<code>triple = valeurs + valeurs + valeurs</code>). Ainsi, le calcul du 5 janvier intègre naturellement les ventes observées fin décembre de l'année précédente.
-        </p>
-      </div>
-
-      <h2>2. La Règle Inviolable des 5 Jours d'Observation (<code>MIN_JOURS_SAISON = 5</code>)</h2>
-      <p>
-        Pour chaque jour de l'année, le système calcule le nombre de journées distinctes où l'article a été effectivement proposé à la vente.
-      </p>
-      <div class="callout-box danger">
-        <div class="callout-title">GARDE-FOU ANTI-HALLUCINATION SAISONNIÈRE</div>
-        <p style="margin:0;">
-          Si le cumul d'observations sur la fenêtre est strictement inférieur à 5 jours (<code>somme_jours &lt; 5</code>), <strong>la prévision est obligatoirement fixée à 0.0</strong>.<br>
-          Il est formellement interdit d'utiliser une moyenne annuelle globale : un produit saisonnier (ex. cerises ou clémentines) ne doit jamais être commandé hors saison sous prétexte d'un volume annuel élevé.
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Fenêtre saisonnière circulaire</h2>
+<p>calculer-commande.py construit une moyenne sur ±21 jours autour du jour de l’année, toutes années disponibles, en comptant les journées distinctes observées. La fenêtre boucle autour du nouvel an. Avec moins de cinq jours de vente dans cette fenêtre, la prévision vaut zéro : aucun repli sur la moyenne annuelle ou la famille produit n’est implémenté.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/calculer-commande.py">moteur/calculer-commande.py</a></li><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../7 - Qualite et preparation des donnees/7.2 - Traitement des anomalies et valeurs manquantes.html" class="btn-action">&larr; 7.2 Traitement anomalies</a>
         </div>

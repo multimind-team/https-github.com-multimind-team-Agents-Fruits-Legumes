@@ -47,6 +47,26 @@ class TestAnalysteVentesLivraisons(unittest.TestCase):
         self.mod.FICHIER_PROPOSITION = self.donnees / "proposition.json"
         self.mod.FICHIER_RAPPORT = self.donnees / "analyse-ventes-livraisons.json"
         self.mod.POUVOIRS_PATH = self.donnees / "pouvoirs.json"
+        self.mod.FICHIER_METEO = self.donnees / "meteo-historique.json"
+        self.mod.FICHIER_CALENDRIER = self.donnees / "calendrier.json"
+        self.mod.FICHIER_OUVERTURES = self.donnees / "ouverture-jours-feries.json"
+        self.mod.FICHIER_METEO.write_text(json.dumps({f"2026-09-{j:02d}": [24, 0] for j in range(1, 16)}), encoding="utf-8")
+        self.mod.FICHIER_CALENDRIER.write_text(json.dumps({"feries": {}, "vacances": [
+            {"debut": "2026-01-01", "fin": "2026-01-02", "nom": "Hiver"},
+            {"debut": "2026-12-24", "fin": "2026-12-31", "nom": "Noël"}]}), encoding="utf-8")
+        self.mod.FICHIER_OUVERTURES.write_text('{"jours": {}}', encoding="utf-8")
+        (self.donnees / "agregats.json").write_text(json.dumps({
+            "jours_ventes_integres": [f"2026-09-{j:02d}" for j in range(1, 12)]}), encoding="utf-8")
+        self.catalogue_patch = patch.object(self.mod.catalogue, "articles", return_value={})
+        self.catalogue_patch.start()
+        self.addCleanup(self.catalogue_patch.stop)
+        class JourFige(date):
+            @classmethod
+            def today(cls):
+                return cls(2026, 9, 15)
+        date_patch = patch.object(self.mod, "date", JourFige)
+        date_patch.start()
+        self.addCleanup(date_patch.stop)
 
     def creer_faits(self, faits_liste):
         fichier = self.faits_dir / "2026.jsonl"
@@ -231,6 +251,42 @@ class TestAnalysteVentesLivraisons(unittest.TestCase):
         self.assertIn("Intempéries / Pluie (15 mm)", str(recurrent["causes_externes"]))
         self.assertIn("La mévente n'étant pas structurelle", recurrent["motif_analyse"])
         self.assertIn("commande actuelle de 10 colis maintenue pour garantir zéro rupture", recurrent["motif_analyse"])
+
+    def faits_recurrents(self):
+        return [{"type": "livraison", "article": "A", "date_source": jour, "colis": 10,
+                 "quantite": 10, "par_colis": 1} for jour in ("2026-09-08", "2026-09-10")] + [
+                {"type": "vente", "article": "A", "date_source": jour, "quantite": 2}
+                for jour in ("2026-09-08", "2026-09-10")]
+
+    def test_meteo_absente_suspend_baisse_recurrente(self):
+        self.creer_faits(self.faits_recurrents())
+        self.creer_proposition("A", 10)
+        self.mod.FICHIER_METEO.unlink()
+        resultat = self.mod.analyser()["anomalies_recurrentes"][0]
+        self.assertEqual(resultat["statut"], "recurrent_contexte_incomplet")
+        self.assertIsNone(resultat["ajustement_propose"])
+
+    def test_journee_de_ventes_absente_suspend_baisse_recurrente(self):
+        self.creer_faits(self.faits_recurrents())
+        self.creer_proposition("A", 10)
+        (self.donnees / "agregats.json").unlink()
+        resultat = self.mod.analyser()["anomalies_recurrentes"][0]
+        self.assertEqual(resultat["statut"], "recurrent_contexte_incomplet")
+        self.assertIsNone(resultat["ajustement_propose"])
+
+    def test_ventes_apres_reception_comptent_et_livraison_future_exclue(self):
+        mouvements = self.faits_recurrents()
+        # Entre deux réceptions, la vente du lendemain évite une fausse mévente.
+        mouvements.append({"type": "vente", "article": "A", "date_source": "2026-09-09", "quantite": 8})
+        # La réception du 15 ne doit jamais être comparée aux ventes du 14.
+        mouvements.append({"type": "livraison", "article": "A", "date_source": "2026-09-14", "date_effet": "2026-09-15", "quantite": 100, "colis": 100, "par_colis": 1})
+        self.creer_faits(mouvements)
+        self.creer_proposition("A", 10)
+        resultat = self.mod.analyser()
+        self.assertEqual(resultat["anomalies_recurrentes"], [])
+        isole = resultat["anomalies_isolees"][0]
+        self.assertEqual(isole["receptions_observees"], 2)
+        self.assertEqual(isole["derniere_reception"]["date"], "2026-09-10")
 
 
 if __name__ == "__main__":

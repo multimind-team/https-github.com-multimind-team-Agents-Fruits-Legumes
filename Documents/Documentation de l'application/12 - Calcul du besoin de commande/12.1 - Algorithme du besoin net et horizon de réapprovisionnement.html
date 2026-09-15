@@ -178,28 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-12.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Formule du Besoin Net & PCB</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Développeurs</div>
         </div>
       </div>
 
 
-      <h2>1. L'Algorithme Canonique du Besoin Net</h2>
-      <p>
-        Le calcul de la commande repose sur la formule métier certifiée :
-      </p>
-      <div class="callout-box">
-        <div class="callout-title">FORMULE DU BESOIN NET MAGASIN</div>
-        <p style="margin:0; font-size:15px; font-weight:700;">
-          Besoin_Net = max(0, Demande_Prévisionnelle + Stock_Sécurité − Stock_Projeté)
-        </p>
-        <p style="margin:8px 0 0 0; font-size:13px;">
-          Puis conversion en colis entiers : <code>Colis_Proposés = ceil(Besoin_Net / PCB)</code> (avec tolérance fond de colis).
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Besoin net exécuté</h2>
+<p>Le besoin couvre les demandes calculées pour le jour de commande et celui de livraison, corrigées des pertes, puis retire la position disponible. Le résultat est borné à zéro et arrondi en colis selon l’ancienneté de livraison. Une position inconnue reste signalée, même lorsque le besoin provisoire utilise zéro comme disponibilité.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/proposer-commande.py">moteur/proposer-commande.py</a></li><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../11 - Stock et livraisons/11.2 - Gestion des livraisons attendues et reliquats.html" class="btn-action">&larr; 11.2 Livraisons attendues</a>
         </div>

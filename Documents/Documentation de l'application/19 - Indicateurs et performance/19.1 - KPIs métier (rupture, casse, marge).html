@@ -178,62 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-19.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Pilotage Financier & Ratios</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Direction Magasin, Adhérents</div>
         </div>
       </div>
 
 
-      <h2>1. Les 3 KPIs Majeurs du Rayon Fruits &amp; Légumes</h2>
-      <p>
-        Le pilotage de la performance du rayon repose sur l'équilibre délicat entre la disponibilité permanente du linéaire et la minimisation des pertes sur des denrées hautement périssables :
-      </p>
-
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Indicateur Métier</th>
-            <th style="width: 20%;">Cible Enseigne</th>
-            <th style="width: 55%;">Formule de Calcul &amp; Impact Magasin</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Taux de Disponibilité Rayon</strong></td>
-            <td><code>&ge; 98,5 %</code><br>(Rupture &lt; 1,5 %)</td>
-            <td><code>(Réf. disponibles à 08h30 / Réf. actives au cadencier) &times; 100</code>.<br>Mesure la présence physique des produits dès l'ouverture des portes. La rupture entraîne une perte immédiate de chiffre d'affaires et fragilise la fidélité client.</td>
-          </tr>
-          <tr>
-            <td><strong>Taux de Casse (Démarque)</strong></td>
-            <td><code>&le; 2,8 %</code><br>du CA F&amp;L</td>
-            <td><code>(Valeur de casse connue HT / CA total F&amp;L HT) &times; 100</code>.<br>Chaque euro de casse non maîtrisé dégrade directement le résultat net du magasin. Le système intègre un taux de perte historique par article : <code>(casse + don) / (vente + casse + don)</code>.</td>
-          </tr>
-          <tr>
-            <td><strong>Taux de Marge Brute</strong></td>
-            <td><code>&ge; 28,0 %</code><br>selon mercuriale</td>
-            <td><code>((CA TTC / 1,055) − Achats HT) / (CA TTC / 1,055) &times; 100</code>.<br>Vérifie que les coefficients multiplicateurs couvrent les coûts d'exploitation et de personnel du rayon F&amp;L.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>2. Démarque Connue vs Démarque Inconnue</h2>
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Démarque Connue (Casse &amp; Dons)</div>
-          <p style="font-size: 13px; margin: 0;">
-            Marchandises invendables officiellement retirées du rayon et scannées au PDA (avaries, pourrissement, dons associations). Enregistrées comme faits de type <code>casse</code> ou <code>don</code> dans le carnet journalier.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Démarque Inconnue (Écarts d'Inventaire)</div>
-          <p style="font-size: 13px; margin: 0;">
-            Différence constatée entre le stock théorique calculé et le comptage physique. Provient principalement des erreurs de pesée en caisse (ex : variété de pomme confondue), des oublis de saisie ou de la freinte naturelle (perte en eau).
-          </p>
-        </div>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Indicateurs disponibles</h2>
+<p>La proposition présente notamment le nombre d’articles à commander, les colis, les montants estimés et la marge calculée. L’historique décrit ventes et pertes lorsqu’elles sont disponibles. Ces indicateurs ne mesurent pas automatiquement un taux réel de rupture en rayon et ne garantissent pas une cible commerciale. Comparer les données à des observations terrain avant de conclure.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li><li><a href="../../../moteur/analyser_marges_mercuriale.py">moteur/analyser_marges_mercuriale.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../18 - Interface utilisateur/18.2 - Interface mobile de pointage.html" class="btn-action">&larr; 18.2 Interface mobile</a>
         </div>

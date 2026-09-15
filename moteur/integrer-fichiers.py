@@ -33,12 +33,13 @@ Usage :
   ... avec --simuler pour voir sans rien écrire
 """
 import argparse
+import hashlib
 import json
 from ecriture_derivee import ecrire_json
 import math
 import re
 import sys
-from collections import defaultdict
+from collections import defaultdict, Counter
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
@@ -47,6 +48,7 @@ sys.path.insert(0, str(MOTEUR))
 import catalogue
 import journal_agents
 import regles
+from verrou_donnees import verrou_donnees, append_jsonl
 
 RACINE = MOTEUR.parent
 DONNEES = RACINE / "donnees"
@@ -191,48 +193,29 @@ def types_absents_par_jour(resume):
     }
 
 
-def etiquettes_connues():
-    """Tout ce qui est déjà dans les carnets : on n'écrit jamais deux fois le
-    même mouvement, même si le fichier est intégré dix fois."""
-    connues = set()
-    for chemin in DOSSIER_FAITS.glob("*.jsonl"):
-        with open(chemin, encoding="utf-8") as f:
-            for ligne in f:
-                if ligne.strip():
-                    try:
-                        connues.add(json.loads(ligne)["id"])
-                    except (json.JSONDecodeError, KeyError):
-                        continue
-    return connues
-
-
 def charger_colisages_vrac():
     """Charge les colisages des articles vrac : d'abord décisions magasin, puis cadencier."""
     colisages = {}
     fichier_cadencier = DONNEES / "cadencier-du-jour.json"
     if fichier_cadencier.exists():
-        try:
-            cad = json.loads(fichier_cadencier.read_text(encoding="utf-8"))
-            for a in cad.get("articles", []):
-                code = a.get("article")
-                if code and a.get("offres"):
-                    pcb = a["offres"][0].get("par_colis")
-                    if pcb and float(pcb) > 0:
-                        colisages[code] = float(pcb)
-        except Exception:
-            pass
-    try:
-        config = regles.charger()
-        for code, surch in config.get("overrides", {}).items():
-            if surch.get("conditionnement"):
-                try:
-                    c = float(surch["conditionnement"])
-                    if c > 0:
-                        colisages[code] = c
-                except (ValueError, TypeError):
-                    pass
-    except Exception:
-        pass
+        cad = json.loads(fichier_cadencier.read_text(encoding="utf-8"))
+        for a in cad.get("articles", []):
+            code = a.get("article")
+            if code and a.get("offres"):
+                pcb = a["offres"][0].get("par_colis")
+                if pcb and float(pcb) > 0:
+                    colisages[code] = float(pcb)
+    config = regles.charger()
+    for code, surch in config.get("overrides", {}).items():
+        if "conditionnement" in surch:
+            valeur = surch["conditionnement"]
+            try:
+                c = float(valeur)
+            except (ValueError, TypeError) as exc:
+                raise ValueError(f"Colisage de décision invalide pour {code} : import interrompu.") from exc
+            if isinstance(valeur, bool) or not math.isfinite(c) or c <= 0:
+                raise ValueError(f"Colisage de décision invalide pour {code} : import interrompu.")
+            colisages[code] = c
     return colisages
 
 
@@ -248,6 +231,22 @@ def est_article_vrac(libelle, unite):
     if u == "kg" and not any(mot in lib for mot in ("FILET", "SACHET", "BARQUETTE", "PIECE", "PIÈCE", "BTE", "BOITE")):
         return True
     return False
+
+
+def dimension_unite(unite, *, catalogue_source=False):
+    # Le préfixe du catalogue est un code de type (ex. « 2 kg »).
+    # Les exports de livraison attestent explicitement « kg » ou « Pièce ».
+    texte = str(unite or "").strip().casefold()
+    if catalogue_source:
+        texte = re.sub(r"^\d+\s+", "", texte)
+    if texte in {"kg", "kilogramme", "kilogrammes"}:
+        return "masse-kg"
+    if texte in {"pièce", "piece", "pièces", "pieces", "barquette", "boite", "boîte",
+                 "filet", "plateau", "sachet", "botte"}:
+        return "nombre"
+    if texte in {"l", "litre", "litres"}:
+        return "volume-l"
+    return None
 
 
 def convertir(chemin, vers_principal, noms_catalogue, signaler, colisages_vrac=None):
@@ -319,14 +318,23 @@ def convertir(chemin, vers_principal, noms_catalogue, signaler, colisages_vrac=N
             libelle = (str(ligne[i_lib]).strip() if i_lib is not None and ligne[i_lib] else "")
             unite = (str(ligne[i_unite]).strip() if i_unite is not None and ligne[i_unite] else "inconnue")
             principal = vers_principal.get(brut, brut)
+            unite_catalogue = catalogue.unite(principal) if principal in noms_catalogue else ""
+            dimension_source = dimension_unite(unite)
+            dimension_cible = dimension_unite(unite_catalogue, catalogue_source=True)
+            if not dimension_source or (unite_catalogue and dimension_source != dimension_cible):
+                signaler("unite-non-prouvee", brut,
+                         f"{chemin.name} ligne {n + 2} : unité source absente ou incompatible "
+                         f"avec le catalogue ({unite} / {unite_catalogue or 'non référencé'}). "
+                         "Livraison non intégrée.")
+                continue
 
-            # Dans les exports Mercalys, Cond. de base vaut 1 pour les articles vrac au kg
-            # (unité de facturation), et non le vrai poids du colis.
-            # On applique alors le vrai colisage (décision magasin en priorité, ou cadencier).
+            # Une base de facturation 1 ne prouve pas le poids du colis livré.
             if (par_colis == 1.0 or par_colis is None) and est_article_vrac(libelle, unite):
-                vrai_colisage = colisages_vrac.get(principal) or colisages_vrac.get(brut)
-                if vrai_colisage and vrai_colisage > 0:
-                    par_colis = vrai_colisage
+                signaler("conversion-non-prouvee", brut,
+                         f"{chemin.name} ligne {n + 2} : poids livré par colis non attesté "
+                         "(base absente ou égale à 1). Livraison non intégrée ; "
+                         "le colisage habituel ne prouve pas le colis livré.")
+                continue
 
             if par_colis is None or par_colis <= 0:
                 signaler("conditionnement-invalide", brut,
@@ -346,7 +354,9 @@ def convertir(chemin, vers_principal, noms_catalogue, signaler, colisages_vrac=N
                 "libelle": libelle,
                 "colis": colis,
                 "par_colis": par_colis,
-                "source": {"origine": f"mail/{chemin.name}", "ligne": n + 2},
+                "source": {"origine": f"mail/{chemin.name}", "ligne": n + 2,
+                           "unite_source": unite, "unite_catalogue": unite_catalogue,
+                           "conversion": "colis_source * conditionnement_source"},
             })
     else:
         i_code = col("ITM8 Prio")
@@ -448,21 +458,78 @@ def convertir(chemin, vers_principal, noms_catalogue, signaler, colisages_vrac=N
                      f"« {fait['libelle']} » n'est pas au catalogue. Le mouvement est "
                      "quand même enregistré, mais l'article ne pourra pas être commandé.")
         gardes.append(fait)
+    occurrences = Counter()
+    for fait in gardes:
+        empreinte = hashlib.sha256(signature_mouvement(fait).encode("utf-8")).hexdigest()
+        occurrences[empreinte] += 1
+        fait["id"] = f"import-v2:{empreinte}:{occurrences[empreinte]}"
     return gardes
+
+
+def cle_mouvement(fait):
+    return tuple(fait.get(cle) for cle in
+                 ("type", "date_source", "date_effet", "article_source"))
+
+
+def signature_mouvement(fait):
+    # Ni le rang, ni le nom du fichier, ni le libellé ne changent la mesure.
+    champs = ("type", "date_source", "date_effet", "article_source", "quantite",
+              "unite", "colis", "par_colis", "prix_vente_unitaire", "prix_achat_unitaire")
+    contenu = {cle: fait.get(cle) for cle in champs}
+    for cle, valeur in contenu.items():
+        if isinstance(valeur, (int, float)):
+            contenu[cle] = float(valeur)
+    return json.dumps(contenu, sort_keys=True, ensure_ascii=False, allow_nan=False)
 
 
 def ecrire(faits, simuler=False):
     """Ajoute aux carnets, un fichier par année, sans jamais compter deux fois."""
+    if simuler:
+        return _ecrire(faits, simuler=True)
+    dossier_donnees = DOSSIER_FAITS.parent if DOSSIER_FAITS.name == "faits" else DOSSIER_FAITS
+    with verrou_donnees(dossier_donnees):
+        return _ecrire(faits)
+
+
+def _ecrire(faits, simuler=False):
     import faits as carnet
-    connues = {f['id']: carnet.signature(f) for f in carnet.lire(DOSSIER_FAITS) if f.get('id')}
+    existants = list(carnet.lire(DOSSIER_FAITS))
+    connues = {f['id']: carnet.signature(f) for f in existants if f.get('id')}
+    # Reconnaître aussi les anciens identifiants à rang, sans réécrire les carnets.
+    anciens = defaultdict(Counter)
+    for fait in existants:
+        if (str(fait.get("id", "")).startswith("import-v2:") or
+                re.fullmatch(r"(?:vente|casse|don|livraison):\d{4}-\d{2}-\d{2}:\d+:\d+",
+                             str(fait.get("id", "")))):
+            anciens[cle_mouvement(fait)][signature_mouvement(fait)] += 1
+    consommes = Counter()
+    lot_ids = {}
     nouveaux = []
     for fait in faits:
+        if str(fait.get("id", "")).startswith("import-v2:"):
+            if fait["id"] in lot_ids:
+                if lot_ids[fait["id"]] != carnet.signature(fait):
+                    raise ValueError(f"Fait {fait['id']} en conflit dans le lot ; aucun ajout.")
+                continue
+            lot_ids[fait["id"]] = carnet.signature(fait)
+            cle, mesure = cle_mouvement(fait), signature_mouvement(fait)
+            if cle in anciens:
+                consommes[(cle, mesure)] += 1
+                if consommes[(cle, mesure)] > anciens[cle][mesure]:
+                    raise ValueError(f"Chevauchement d'import pour {cle} : contenu ou nombre de lignes "
+                                     "différent. Correction explicite requise ; aucun fait du lot ajouté.")
+                continue
         signature = carnet.signature(fait)
         if fait["id"] in connues and connues[fait["id"]] != signature:
             raise ValueError(f"Fait {fait['id']} en conflit avec une saisie existante ; aucun fait du lot ajouté.")
         if fait["id"] not in connues:
             nouveaux.append(fait)
             connues[fait["id"]] = signature
+    for cle in {cle for cle, mesure in consommes}:
+        recu = Counter({mesure: quantite for (groupe, mesure), quantite in consommes.items() if groupe == cle})
+        if recu != anciens[cle]:
+            raise ValueError(f"Chevauchement d'import pour {cle} : nombre de lignes différent. "
+                             "Correction explicite requise ; aucun fait du lot ajouté.")
     deja = len(faits) - len(nouveaux)
     if simuler:
         return nouveaux, deja
@@ -471,9 +538,7 @@ def ecrire(faits, simuler=False):
         par_annee[(fait["date_effet"] or fait["date_source"])[:4]].append(fait)
     DOSSIER_FAITS.mkdir(parents=True, exist_ok=True)
     for annee, lot in par_annee.items():
-        with open(DOSSIER_FAITS / f"{annee}.jsonl", "a", encoding="utf-8") as f:
-            for fait in lot:
-                f.write(json.dumps(fait, ensure_ascii=False) + "\n")
+        append_jsonl(DOSSIER_FAITS / f"{annee}.jsonl", lot)
     return nouveaux, deja
 
 
@@ -485,7 +550,25 @@ def main():
                    help="tout ce qui est arrivé par mail (donnees/courrier/)")
     p.add_argument("--simuler", action="store_true")
     p.add_argument("--agent", default="agent-donnees")
+    p.add_argument("--json", action="store_true", help="Résultat structuré uniquement")
     args = p.parse_args()
+    if args.json:
+        # Conserver les diagnostics existants sur stderr et un seul objet JSON stdout.
+        import contextlib
+        sortie_json = sys.stdout
+        with contextlib.redirect_stdout(sys.stderr):
+            return executer_import(args, sortie_json)
+    return executer_import(args)
+
+
+def executer_import(args, sortie_json=None):
+    if not args.simuler:
+        with verrou_donnees(DONNEES):
+            return _executer_import(args, sortie_json)
+    return _executer_import(args, sortie_json)
+
+
+def _executer_import(args, sortie_json=None):
 
     if args.courrier:
         fichiers = sorted((DONNEES / "courrier").rglob("*.xls*"))
@@ -495,15 +578,17 @@ def main():
             sys.exit(f"Introuvable : {cible}")
         fichiers = sorted(cible.rglob("*.xls*")) if cible.is_dir() else [cible]
     else:
-        p.print_help()
+        print("Indiquer un chemin ou --courrier.")
         return 1
 
     # Les cadenciers ne sont pas des mouvements : ils décrivent les articles.
     fichiers = [f for f in fichiers if not f.name.lower().startswith("cadencier")
                 and not f.name.startswith("~$")]
     if not fichiers:
-        print("Aucun fichier de mouvements à intégrer.")
-        return 0
+        resultat = {"statut": "a-verifier", "fichiers": [], "a_verifier": [
+            {"genre": "fichier-absent", "message": "Aucun fichier de mouvements à intégrer"}]}
+        print(json.dumps(resultat, ensure_ascii=False), file=sortie_json or sys.stdout)
+        return 3
 
     alertes = []
     def signaler(genre, quoi, message):
@@ -534,6 +619,7 @@ def main():
                          "Est-ce normal, ou manque-t-il un envoi ?")
 
     compte_rendu = {
+        "statut": "a-verifier" if alertes else "simulation" if args.simuler else "ok",
         "quand": datetime.now().isoformat(timespec="seconds"),
         "simulation": args.simuler,
         "fichiers": resume,
@@ -549,7 +635,7 @@ def main():
 
     if alertes and not args.simuler:
         import dire
-        dire.publier(message_alerte_chat(alertes, len(nouveaux)), auteur="Agent Orchestrateur",
+        dire.publier(message_alerte_chat(alertes, len(nouveaux)), auteur="Agent Données",
                      action="import-à-vérifier")
 
     print(f"\n  {len(nouveaux)} mouvements ajoutés, {deja} déjà connus"
@@ -580,7 +666,9 @@ def main():
         print("\n  Penser à relancer : agregats.py, calculer-position.py, "
               "generer-proposition.py")
         print("  (ou simplement verifier-avant-commande.bat)")
-    return 0
+    if sortie_json:
+        print(json.dumps(compte_rendu, ensure_ascii=False), file=sortie_json)
+    return 3 if alertes else 0
 
 
 if __name__ == "__main__":

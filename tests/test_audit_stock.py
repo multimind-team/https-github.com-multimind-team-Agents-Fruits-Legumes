@@ -214,7 +214,14 @@ class TestAuditStock(unittest.TestCase):
         self.assertIsNotNone(nouveaux)
         self.assertEqual(len(nouveaux), 1)
         self.assertEqual(nouveaux[0]["id"], "cpt-2")
-        self.assertIn("cpt-2", connus)
+        self.assertNotIn("cpt-2", connus)  # Détecter n'acquitte pas le traitement.
+        reprise, _ = self.mod_sentinelle.verifier_nouveaux_comptages(chemin_faits, connus)
+        self.assertEqual(reprise, nouveaux)
+        with patch.object(self.mod_sentinelle, "DONNEES", self.donnees):
+            self.mod_sentinelle.enregistrer_evenements([("COMPTAGE", nouveaux[0])])
+            self.assertIn("COMPTAGE:cpt-2", self.mod_sentinelle.charger_file()["en_attente"])
+            self.mod_sentinelle.acquitter("COMPTAGE", "cpt-2", "controle:fixture-verifiee")
+            self.assertIn("COMPTAGE:cpt-2", self.mod_sentinelle.charger_file()["acquittes"])
 
         # 2. Test détection nouveaux messages du rayon
         msg_file = self.donnees / "messages.jsonl"
@@ -232,6 +239,7 @@ class TestAuditStock(unittest.TestCase):
         self.assertIsNotNone(nouveaux_msg)
         self.assertEqual(len(nouveaux_msg), 1)
         self.assertEqual(nouveaux_msg[0]["id"], "msg-2")
+        self.assertNotIn("msg-2", connus_msg)
 
 
 if __name__ == "__main__":

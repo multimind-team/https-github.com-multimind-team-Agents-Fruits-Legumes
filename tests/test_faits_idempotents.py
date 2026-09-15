@@ -25,6 +25,17 @@ def mouvement(**champs):
 
 
 class FaitsIdempotentsTests(unittest.TestCase):
+    def test_fait_json_tronque_refuse_et_carnet_conserve(self):
+        import faits
+        with tempfile.TemporaryDirectory() as temporaire:
+            dossier = Path(temporaire)
+            fichier = dossier / "2026.jsonl"
+            avant = (json.dumps(mouvement()) + '\n{"id":"incomplet"').encode("utf-8")
+            fichier.write_bytes(avant)
+            with self.assertRaises(json.JSONDecodeError):
+                list(faits.lire(dossier))
+            self.assertEqual(fichier.read_bytes(), avant)
+
     def test_bilan_liste_les_copies_ignorees_sans_fusionner_les_faits_sans_id(self):
         import faits
         with tempfile.TemporaryDirectory() as temporaire:

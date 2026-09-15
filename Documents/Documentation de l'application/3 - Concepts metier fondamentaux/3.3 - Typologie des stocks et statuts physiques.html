@@ -178,53 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-03.3</div>
           <div class="meta-item"><strong>Domaine :</strong> Gestion Physique & Statuts de Stock</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Réceptionnaires, Direction</div>
         </div>
       </div>
 
 
-      <h2>1. La Réalité Physique des Stocks en Ultra-Frais</h2>
-      <p>
-        Dans un magasin Intermarché ou Netto, le stock d'un produit Fruits &amp; Légumes n'est jamais statique. Il se répartit entre deux zones aux conditions thermiques et opérationnelles radicalement différentes : la <strong>chambre froide de réserve</strong> (0 à 4°C ou 8 à 12°C selon la famille) et les <strong>étals du rayon de vente</strong> à température ambiante ou sous brumisation.
-      </p>
-
-      <h2>2. Les Rôles du Calcul de Position (<code>moteur/calculer-position.py</code>)</h2>
-      <p>
-        Le script <code>moteur/calculer-position.py</code> reconstruit chaque jour la position exacte de chaque article en appliquant une règle chronologique absolue :
-      </p>
-      <div class="callout-box">
-        <div class="callout-title">RÈGLE DE BASE DE POSITIONNEMENT</div>
-        <p style="margin:0;">
-          1. On part de la <strong>dernière position mesurée</strong> pour l'article (pointage physique).<br>
-          2. On applique ensuite les mouvements <strong>strictement postérieurs</strong> : les livraisons ajoutent (<code>AJOUTE = {"livraison"}</code>), les ventes, la casse et les dons retirent (<code>RETIRE = {"vente", "casse", "don"}</code>).<br>
-          3. Un article sans aucune position mesurée n'a <strong>PAS</strong> de position : on écrit <code>"inconnue"</code>, jamais <code>0</code> (car 0 voudrait dire « rayon plein, réserve vide », ce qui est une affirmation fausse).
-        </p>
-      </div>
-
-      <h2>3. La Règle Capitale de l'Heure de Comptage (Matin vs Soir)</h2>
-      <p>
-        Un comptage effectué le matin ne contient pas la même réalité qu'un comptage effectué le soir :
-      </p>
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Comptage Réalisé le Soir</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Tout le jour est déjà dedans : la livraison rangée le matin ET les ventes de la journée.<br>
-            • Règle moteur : on n'applique aucun mouvement supplémentaire de cette journée pour éviter les doubles déductions.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Comptage Réalisé le Matin</div>
-          <p style="font-size: 13px; margin: 0;">
-            • La livraison du jour vient d'être rangée en chambre froide, mais le magasin n'a pas encore vendu.<br>
-            • Règle moteur : on soustrait les ventes, casse et dons de ce jour-là quand ils arriveront, sans jamais rajouter la livraison déjà comptée.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Position relative au rayon plein</h2>
+<p>Une position de zéro signifie rayon plein et réserve vide. Une position positive représente la réserve ; une position négative représente ce qui manque pour remplir le rayon. Sans comptage de référence, la position est inconnue. Le seuil de position perdue est −10 colis, avec les règles de fraîcheur du comptage définies dans le calcul.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../reference/le-metier.md">reference/le-metier.md</a></li><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./3.2 - Flux de vente et canaux d'encaissement.html" class="btn-action">&larr; 3.2 Flux de vente</a>
         </div>

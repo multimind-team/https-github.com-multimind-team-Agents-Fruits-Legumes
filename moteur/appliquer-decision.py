@@ -34,7 +34,6 @@ n'en a pas. Utiliser "nom:<NOM EXACT DU CADENCIER>" comme <article> à la
 place — generer-proposition.py sait lire cette forme (décidé le 2026-09-04).
 """
 import argparse
-import json
 import sys
 from datetime import date, datetime
 from pathlib import Path
@@ -43,6 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import journal_agents as carnet_agents
 import catalogue
 import regles
+from verrou_donnees import append_jsonl
 
 RACINE = Path(__file__).resolve().parent.parent
 DECISIONS = RACINE / "donnees" / "decisions.jsonl"
@@ -61,9 +61,7 @@ def libelles():
 
 def ecrire_decision(ligne):
     """Le carnet vivant : on ajoute, on n'efface jamais, on ne réécrit jamais."""
-    DECISIONS.parent.mkdir(parents=True, exist_ok=True)
-    with open(DECISIONS, "a", encoding="utf-8") as f:
-        f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
+    append_jsonl(DECISIONS, [ligne])
 
 
 def main():

@@ -178,42 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-20.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Tests à Blanc & Idempotence</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Agent Contrôle</div>
         </div>
       </div>
 
 
-      <h2>1. Principe du Test à Blanc Systématique (<code>--simuler</code>)</h2>
-      <p>
-        Pour préserver l'intégrité absolue du carnet de faits comptable, aucune mise à jour n'est exécutée à l'aveugle. Tout traitement d'intégration de fichier (tickets Mercalys, livraisons SCAFRUIT, inventaires) est précédé d'une simulation :
-      </p>
-      <pre><code>python moteur/integrer-fichiers.py --simuler</code></pre>
-
-      <p>
-        Ce mode à blanc exécute l'intégralité du pipeline logique (parsing, typage, validation des dates et des montants), consigne les écarts potentiels dans un journal temporaire et ne réalise aucune écriture disque définitive sur <code>donnees/faits/AAAA.jsonl</code>.
-      </p>
-
-      <h2>2. Idempotence et Protection Anti-Doublons</h2>
-      <div class="card-panel">
-        <div class="card-panel-title">Garantie d'Idempotence Algorithmique</div>
-        <p style="font-size: 13px; margin: 0;">
-          L'exécution répétée de l'intégration sur un même fichier ou un même lot de données produit rigoureusement le même état final sans jamais insérer de doublons. L'Agent Données identifie chaque fait par sa clé unique (<code>sale_id</code>, numéro de BL ou couple <code>date + itm8 + heure</code>).
-        </p>
-      </div>
-
-      <h2>3. Rôle de Veto de l'Agent Contrôle</h2>
-      <p>
-        L'Agent Contrôle inspecte le rapport de simulation avant d'autoriser l'Agent Données à procéder à l'écriture réelle :
-      </p>
-      <ul>
-        <li>Vérification du volume d'enregistrements traités (rejet si volume anormalement bas ou disproportionné).</li>
-        <li>Vérification de la cohérence des dates (interdiction d'intégrer des faits datés dans le futur ou antérieurs à la période d'archive).</li>
-        <li>Exercice immédiat du droit de veto avec alerte bloquante en cas d'incohérence détectée.</li>
-      </ul>
-
-
-      <div class="page-nav-bar">
+      <h2>Tests en environnement isolé</h2>
+<p>tests/lancer_tests_isoles.py copie le projet dans un dossier jetable, neutralise la configuration courrier et protège le dossier original. Sans argument il lance la suite ; un chemin de test permet un lot ciblé. Les essais HTTP et métier ne doivent pas viser les données de production. Une autorisation explicite d’audit peut permettre la suite complète même lors d’une analyse.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../tests/lancer_tests_isoles.py">tests/lancer_tests_isoles.py</a></li><li><a href="../../../AGENTS.md">AGENTS.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../19 - Indicateurs et performance/19.2 - Métriques algorithmiques et taux d'adhésion.html" class="btn-action">&larr; 19.2 Métriques IA</a>
         </div>

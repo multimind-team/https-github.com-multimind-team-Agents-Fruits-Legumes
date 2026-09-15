@@ -178,89 +178,21 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-18.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Interface de Commande Tactile</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon</div>
         </div>
       </div>
 
 
-      <h2>1. Présentation de la Console Tactile (<code>app/commander.html</code>)</h2>
-      <p>
-        La console de commande magasin constitue le poste de pilotage quotidien du Responsable de Rayon Fruits &amp; Légumes. Conçue pour une utilisation intensive sur tablette tactile d'atelier ou terminal fixe, elle charge les propositions calculées dès 07h15 et permet une validation rapide avant le cut-off officiel de 09h30.
-      </p>
-
-      <h2>2. Ergonomie et Fonctionnalités Clés</h2>
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Barre de Filtres et Alertes</div>
-          <p style="font-size: 13px; margin: 0;">
-            • <strong>Filtres familles marchandes :</strong> « Tous », « Fruits », « Légumes », « Bio » calqués sur le cadencier SCAFRUIT.<br>
-            • <strong>Filtre d'urgence « Alertes uniquement » :</strong> Isole instantanément les lignes critiques (risques de rupture imminente, anomalies de surstock ou baisses de marge brute).<br>
-            • <strong>Indicateurs d'en-tête dynamiques :</strong> Nombre total de colis commandés, montant total d'achat HT (€) et taux de marge brute consolidé.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Ajustement Tactile Unitaire</div>
-          <p style="font-size: 13px; margin: 0;">
-            • <strong>Boutons à grand gabarit :</strong> Pas de ressaisie clavier nécessaire. Des touches <code>+</code> et <code>−</code> permettent d'ajouter ou de soustraire un colis en un geste.<br>
-            • <strong>Recalcul instantané :</strong> Chaque ajustement recalcule en temps réel le montant de la ligne et l'enveloppe globale.<br>
-            • <strong>Signalement d'écart :</strong> Toute modification par rapport à la proposition de l'IA est surlignée visuellement pour validation explicite.
-          </p>
-        </div>
-      </div>
-
-      <h2>3. Colonnes d'Affichage et Explicabilité Contextuelle</h2>
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 20%;">Champ Affiché</th>
-            <th style="width: 30%;">Origine de la Donnée</th>
-            <th style="width: 50%;">Usage Décisionnel par le Chef de Rayon</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>ITM8 &amp; Désignation</strong></td>
-            <td>Référentiel articles &amp; Cadencier SCAFRUIT</td>
-            <td>Identification univoque du produit et vérification du calibre / origine.</td>
-          </tr>
-          <tr>
-            <td><strong>Stock Disponible</strong></td>
-            <td>Moteur de position (comptage + reliquats)</td>
-            <td>Visualisation du stock physique restant en chambre froide et en rayon.</td>
-          </tr>
-          <tr>
-            <td><strong>Prévision &amp; Sécurité</strong></td>
-            <td>Algorithme de prévision (fenêtre glissante + météo)</td>
-            <td>Volume prévisionnel de vente attendu sur la période de couverture.</td>
-          </tr>
-          <tr>
-            <td><strong>Conditionnement (PCB)</strong></td>
-            <td>Mercuriale fournisseur ou décision magasin</td>
-            <td>Affichage de l'unité de colisage (ex : caisse 5 kg, plateau 10 barquettes).</td>
-          </tr>
-          <tr>
-            <td><strong>Proposition (Colis)</strong></td>
-            <td>Besoin net arrondi au multiple supérieur</td>
-            <td>Quantité recommandée par le moteur déterministe.</td>
-          </tr>
-          <tr>
-            <td><strong>Prix &amp; Marge Brute</strong></td>
-            <td>Cadencier SCAFRUIT &amp; Mercalys caisse</td>
-            <td>Vérification immédiate de la rentabilité de la référence (&gt; 28%).</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="callout-box" style="margin-top:16px;">
-        <div class="callout-title">TIROIR D'EXPLICATION CONTEXTUELLE DE L'AGENT RAYON</div>
-        <p style="margin:0;">
-          En cliquant sur n'importe quelle ligne de la console, un volet latéral s'ouvre pour détailler le raisonnement : météo retenue (température, pluie), tendance des ventes sur les 3 dernières semaines, stock physique mesuré lors du dernier comptage et matelas de sécurité appliqué. L'exploitant dispose d'une transparence absolue avant d'appuyer sur « Valider la commande ».
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Console de commande</h2>
+<p>L’écran liste fruits non bio, légumes non bio puis bio, avec l’ordre Webtelevente dans chaque groupe. Il permet recherche, ajustement de colis et ouverture du détail article. Le détail regroupe position, colisage, prix et historique. Les commandes visibles dans le code de la page constituent la référence ; les filtres ou exports absents ne sont pas des fonctions disponibles.</p>
+<h2>Références vérifiables</h2>
+<p>L’accueil affiche les dernières questions et leurs réponses, ainsi que les deux dernières annonces sans message parent (sauvegarde ou incident). La page d’analyse historique affiche la période, les années et les chiffres du fichier chargé, sans valeurs préremplies ; une lecture impossible est signalée. Son thème et sa recherche sans accents suivent les autres écrans.</p>
+<p>Les offres partageant un article de stock conservent leur identité et leurs réglages propres. Le motif fourni par le moteur explique sur quelle offre porte le besoin automatique et signale un choix encore nécessaire ; il ne remplace pas la décision du responsable.</p>
+<p>Le graphique compare les ventes quotidiennes de l’année de référence aux semaines de l’année précédente. Chaque point hebdomadaire est placé à son jeudi ISO réel ; l’infobulle utilise la semaine de la date comparée, avec son année ISO aux changements d’année. Le 29 février est comparé au dernier jour de février si l’année précédente n’est pas bissextile. Ces courbes décrivent les ventes et ne prouvent pas une cause de rupture.</p>
+<ul><li><a href="../../../app/commander.html">app/commander.html</a></li><li><a href="../../../AGENTS.md">AGENTS.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../17 - API et integrations/17.2 - Connecteurs Webtelevente et export des ordres.html" class="btn-action">&larr; 17.2 Connecteurs Webtelevente</a>
         </div>

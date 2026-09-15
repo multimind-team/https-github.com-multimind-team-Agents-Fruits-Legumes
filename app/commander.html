@@ -475,6 +475,21 @@ document.getElementById("bouton-theme").addEventListener("click", () => {
 
 let proposition = null;
 let fraicheur = null;
+let etatRecalcul = null;
+async function chargerEtatRecalcul() {
+  try {
+    const r = await fetch("../donnees/recalcul.json?t=" + Date.now(), {cache: "no-store"});
+    if (r.status === 404) etatRecalcul = null;
+    else {
+      if (!r.ok) throw new Error("Statut inaccessible");
+      const etat = await r.json();
+      if (etat.etat === "absent") { etatRecalcul = null; if (proposition) majAlerte(); return; }
+      if (!["en-cours", "termine", "echec"].includes(etat.etat) || !/^[a-f0-9]{32}$/.test(etat.operation_id || "")) throw new Error("Statut invalide");
+      etatRecalcul = etat;
+    }
+  } catch (e) { etatRecalcul = {etat: "indisponible"}; }
+  if (proposition) majAlerte();
+}
 let agentAjustements = {};      // ce que l'analyste a proposé ou appliqué
 let filtre = "a-commander";
 let recherche = "";
@@ -666,8 +681,20 @@ function majDetailsDonnees(diagnostic) {
 
 function majAlerte() {
   const messages = [];
+  if (etatRecalcul?.etat === "en-cours") messages.push("⚠ Recalcul en cours ou interrompu. Attends sa fin et recharge la proposition avant de recopier les quantités. Si cet état persiste, fais vérifier le calcul sur le PC.");
+  else if (etatRecalcul?.etat === "echec") messages.push("⚠ Le dernier recalcul a échoué. Fais vérifier et relancer le calcul sur le PC avant de te fier à ces quantités.");
+  else if (etatRecalcul?.etat === "indisponible") messages.push("⚠ L’état du recalcul ne peut pas être vérifié. Vérifie la connexion au PC puis recharge la page.");
+  else if (etatRecalcul?.etat === "termine" && proposition && etatRecalcul.operation_id !== proposition._operation_id) messages.push("⚠ Cette proposition ne correspond pas au dernier calcul vérifié. Recharge la page ; si ce message persiste, fais relancer le calcul sur le PC.");
   const diagnostic = diagnosticSorties();
   majDetailsDonnees(diagnostic);
+  const offresAmbigues = (proposition?.lignes || []).filter(l => !l.masque && l.commande_groupe_ambigue);
+  if (offresAmbigues.length) {
+    const groupes = new Set(offresAmbigues.map(l => l.article_stock || l.itm8));
+    messages.push("⚠ Choix d’offre nécessaire pour " + groupes.size + " produit" + (groupes.size > 1 ? "s" : "")
+      + "<br><span style='font-weight:400;font-size:13px'>Plusieurs offres partagent le même stock : "
+      + offresAmbigues.map(l => texteSecurise(l.libelle)).join(", ")
+      + ". Appuie sur « À commander » pour afficher les « Non commandés » et choisir la ligne à commander. Aucun besoin automatique n’est réparti entre ces offres.</span>");
+  }
 
   const n = lire(CLE_COMPTAGES, []).length;
   if (n) {
@@ -797,6 +824,7 @@ function afficher() {
       + '<button data-role="plus">+</button></div>'
       + '<button class="coche' + (l.masque ? " masque-actif" : "") + '" data-role="masquer" '
       + 'title="' + (l.masque ? "Démasquer" : "Masquer") + '">' + (l.masque ? "⊘" : "○") + "</button>"
+      + (l.motif_commande_groupe ? '<div class="mot-agent">' + texteSecurise(l.motif_commande_groupe) + '</div>' : '')
       + motAgent(l)
       + "</div>";
   }).join("") || '<p class="vide" style="margin:20px">Rien à afficher avec ce filtre.</p>';
@@ -1148,6 +1176,7 @@ function montrerDetail(l) {
   if (quantite(l) !== l.propose_colis) ajoute("Quantité retenue après ajustement", fr(quantite(l)) + " colis");
   if (l.promotion) lignes += '<p class="sous-titre">En promotion : précommandé par le chef de rayon, rien à commander en quotidien.</p>';
   if (l.position_bloquee) lignes += '<p class="sous-titre">Position trop basse pour être crédible — un comptage est nécessaire.</p>';
+  if (l.motif_commande_groupe) lignes += '<p class="sous-titre">' + texteSecurise(l.motif_commande_groupe) + '</p>';
   document.getElementById("detail-calcul").innerHTML = "<h2>Pourquoi ce chiffre</h2>" + lignes;
 
   const q = quantite(l);
@@ -1170,11 +1199,12 @@ async function afficherGraphiqueArticle(l) {
     + '<p class="sous-titre">Chargement de l’historique des ventes…</p>';
 
   const data = await chargerAnalyseHistorique();
-  const profil = data?.articles?.[l.itm8];
+  if (document.getElementById("detail-photo").dataset.itm8 !== l.itm8) return;
+  const profil = data?.articles?.[l.article_stock || l.itm8] || data?.articles?.[l.itm8];
 
   if (!profil || !profil.ventes_par_mois) {
     panneau.innerHTML = "<h2>Historique et saisonnalité des ventes</h2>"
-      + '<p class="sous-titre">Cet article ne dispose pas d’un historique consolidé sur les 2,5 ans observés.</p>'
+      + '<p class="sous-titre">Cet article ne dispose pas d’un historique consolidé sur la période observée.</p>'
       + '<div class="grille-kpi-graph">'
       + '  <div class="kpi-carte bleu"><small>Vente retenue calcul</small><strong>' + fr(l.vente_moyenne_jour) + ' ' + texteSecurise(l.unite) + '/j</strong></div>'
       + '  <div class="kpi-carte jaune"><small>Marge brute</small><strong>' + fr(l.marge_pct) + ' %</strong></div>'
@@ -1182,14 +1212,18 @@ async function afficherGraphiqueArticle(l) {
     return;
   }
 
+  const dateReference = data.periode?.date_fin || '';
+  const anneeReference = Number(data.annee_reference || dateReference.slice(0, 4));
+  const anneePrecedente = anneeReference - 1;
+  const moisReference = Number(profil.saisonnalite?.mois_actuel || dateReference.slice(5, 7));
+  const moisSuivant = moisReference % 12 + 1;
   const hebdo = profil.courbes_hebdo || {};
-  const y25Sem = hebdo["2025"] || [];
-  const v26Obj = profil.ventes_quotidiennes_2026 || {};
-  const dates26 = Object.keys(v26Obj).sort();
-
-  // 12 mois de l'année
-  const NOMS_MOIS = ["Jan", "Fév", "Mar", "Avr", "Mai", "Jui", "Juil", "Aoû", "Sep", "Oct", "Nov", "Déc"];
-  const JOURS_PAR_MOIS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const serieHebdo = hebdo[String(anneePrecedente)] || [];
+  // Relecture des sorties historiques déjà publiées, puis format sans année figée.
+  const ventesJour = profil.ventes_quotidiennes || profil['ventes_quotidiennes_' + anneeReference] || {};
+  const datesJour = Object.keys(ventesJour).filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d) && Number(d.slice(0, 4)) === anneeReference).sort();
+  const nombreSemaines = Math.max(52, serieHebdo.length);
+  const NOMS_MOIS = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"];
 
   // Calcul du plafond max
   let maxVal = Math.max(1, l.vente_moyenne_jour || 0);
@@ -1197,11 +1231,11 @@ async function afficherGraphiqueArticle(l) {
     const moy = profil.ventes_par_mois?.[String(m)]?.moyenne_jour || 0;
     if (moy > maxVal) maxVal = moy;
   }
-  for (let s = 0; s < 52; s++) {
-    if (y25Sem[s] > maxVal) maxVal = y25Sem[s];
+  for (let s = 0; s < nombreSemaines; s++) {
+    if (serieHebdo[s] > maxVal) maxVal = serieHebdo[s];
   }
-  for (const d of dates26) {
-    if (v26Obj[d] > maxVal) maxVal = v26Obj[d];
+  for (const d of datesJour) {
+    if (ventesJour[d] > maxVal) maxVal = ventesJour[d];
   }
   maxVal = Math.ceil(maxVal * 1.12) || 1;
 
@@ -1221,11 +1255,29 @@ async function afficherGraphiqueArticle(l) {
   const dateVersX = (dStr) => {
     const m = parseInt(dStr.slice(5, 7), 10);
     const j = parseInt(dStr.slice(8, 10), 10);
-    const lenM = JOURS_PAR_MOIS[m] || 30;
+    const lenM = new Date(Number(dStr.slice(0, 4)), m, 0).getDate();
     return padL + (m - 1 + (j - 0.5) / lenM) * colW;
   };
 
-  const xSem = (s) => padL + ((s - 0.5) / 52) * chartW;
+  // Le jeudi appartient toujours à l'année ISO de sa semaine. Les calculs
+  // UTC évitent qu'un changement d'heure décale la date sur l'axe calendaire.
+  const jeudiSemaineISO = (annee, semaine) => {
+    const janvier4 = new Date(Date.UTC(annee, 0, 4));
+    const jeudi = new Date(Date.UTC(annee, 0, 4 + 4 - (janvier4.getUTCDay() || 7) + 7 * (semaine - 1)));
+    return jeudi.getUTCFullYear() === annee ? jeudi : null;
+  };
+  const semainePourDate = (date) => {
+    const jeudi = new Date(date.getTime());
+    jeudi.setUTCDate(jeudi.getUTCDate() + 4 - (jeudi.getUTCDay() || 7));
+    const annee = jeudi.getUTCFullYear();
+    const semaine = 1 + Math.round((jeudi - jeudiSemaineISO(annee, 1)) / (7 * 86400000));
+    const valeur = hebdo[String(annee)]?.[semaine - 1];
+    return { annee, semaine, valeur: valeur !== null && valeur !== undefined ? fr(valeur) : "—" };
+  };
+  const dateComparaison = (mois, jour) => {
+    const joursMois = new Date(Date.UTC(anneePrecedente, mois, 0)).getUTCDate();
+    return new Date(Date.UTC(anneePrecedente, mois - 1, Math.min(joursMois, Math.max(1, jour))));
+  };
 
   function pointsEnBezier(pts) {
     if (!pts || pts.length === 0) return "";
@@ -1250,7 +1302,7 @@ async function afficherGraphiqueArticle(l) {
     return d;
   }
 
-  // 1. SÉRIE BÂTONNETS MENSUELS (Moyenne historique 2,5 ans)
+  // 1. SÉRIE BÂTONNETS MENSUELS (Moyenne historique)
   let svgBatons = "";
   for (let m = 1; m <= 12; m++) {
     const moyM = profil.ventes_par_mois?.[String(m)]?.moyenne_jour || 0;
@@ -1261,42 +1313,43 @@ async function afficherGraphiqueArticle(l) {
     const hBar = Math.max(0, (padT + chartH) - yBar);
 
     if (moyM > 0) {
-      svgBatons += '<rect x="' + xBar.toFixed(1) + '" y="' + yBar.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + hBar.toFixed(1) + '" rx="3" ry="3" fill="var(--graph-moyenne-fill)" stroke="var(--graph-moyenne-stroke)" stroke-width="0.75"><title>' + NOMS_MOIS[m - 1] + ' : ' + fr(moyM) + ' ' + l.unite + '/j (moyenne 2,5 ans)</title></rect>';
+      svgBatons += '<rect x="' + xBar.toFixed(1) + '" y="' + yBar.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + hBar.toFixed(1) + '" rx="3" ry="3" fill="var(--graph-moyenne-fill)" stroke="var(--graph-moyenne-stroke)" stroke-width="0.75"><title>' + NOMS_MOIS[m - 1] + ' : ' + fr(moyM) + ' ' + texteSecurise(l.unite) + '/j (moyenne historique)</title></rect>';
     }
   }
 
-  // 2. SÉRIE L'AN DERNIER 2025 (Pointillés à la semaine)
+  // 2. SÉRIE ANNÉE PRÉCÉDENTE (Pointillés à la semaine)
   // Découpage en tronçons continus si interruption > 2 semaines
-  const troncons25 = [];
+  const tronconsHebdo = [];
   let tronconActuel = [];
-  for (let s = 1; s <= 52; s++) {
-    const v = y25Sem[s - 1];
-    if (v !== null && v !== undefined && v > 0) {
+  for (let s = 1; s <= nombreSemaines; s++) {
+    const v = serieHebdo[s - 1];
+    const jeudi = jeudiSemaineISO(anneePrecedente, s);
+    if (jeudi && v !== null && v !== undefined && v > 0) {
       if (tronconActuel.length > 0) {
         const dernier = tronconActuel[tronconActuel.length - 1];
         if (s - dernier.s > 2) {
-          troncons25.push(tronconActuel);
+          tronconsHebdo.push(tronconActuel);
           tronconActuel = [];
         }
       }
-      tronconActuel.push({ x: xSem(s), y: yVal(v), v: v, s: s });
+      tronconActuel.push({ x: dateVersX(jeudi.toISOString().slice(0, 10)), y: yVal(v), v: v, s: s });
     }
   }
-  if (tronconActuel.length > 0) troncons25.push(tronconActuel);
+  if (tronconActuel.length > 0) tronconsHebdo.push(tronconActuel);
 
-  let d25Line = "";
-  for (const tr of troncons25) {
+  let ligneHebdo = "";
+  for (const tr of tronconsHebdo) {
     const pathTr = pointsEnBezier(tr);
     if (pathTr) {
-      d25Line += (d25Line ? " " : "") + pathTr;
+      ligneHebdo += (ligneHebdo ? " " : "") + pathTr;
     }
   }
 
-  // 3. SÉRIE CETTE ANNÉE 2026 (Quotidien, trait fin 1.1px, incidents/ruptures visibles)
-  const pts26 = [];
-  for (const dStr of dates26) {
-    const q = v26Obj[dStr];
-    pts26.push({
+  // 3. SÉRIE ANNÉE DE RÉFÉRENCE (Quotidien, trait fin 1.1px, incidents/ruptures visibles)
+  const pointsJour = [];
+  for (const dStr of datesJour) {
+    const q = ventesJour[dStr];
+    pointsJour.push({
       dStr: dStr,
       q: q,
       x: dateVersX(dStr),
@@ -1304,30 +1357,30 @@ async function afficherGraphiqueArticle(l) {
     });
   }
 
-  let d26Line = "";
-  if (pts26.length > 0) {
-    d26Line = "M " + pts26[0].x.toFixed(1) + "," + pts26[0].y.toFixed(1);
-    for (let i = 1; i < pts26.length; i++) {
-      d26Line += " L " + pts26[i].x.toFixed(1) + "," + pts26[i].y.toFixed(1);
+  let ligneJour = "";
+  if (pointsJour.length > 0) {
+    ligneJour = "M " + pointsJour[0].x.toFixed(1) + "," + pointsJour[0].y.toFixed(1);
+    for (let i = 1; i < pointsJour.length; i++) {
+      ligneJour += " L " + pointsJour[i].x.toFixed(1) + "," + pointsJour[i].y.toFixed(1);
     }
   }
 
-  // Projection Cap Octobre
+  // Comparaison avec la moyenne du mois suivant
   const sais = profil.saisonnalite || {};
   const couleurTendance = (sais.tendance === "forte_hausse" || sais.tendance === "hausse")
     ? "var(--accent)"
     : (sais.tendance === "fin_saison" || sais.tendance === "forte_baisse" ? "var(--mousq-rouge)" : "var(--warn)");
 
-  const derniereDate26 = dates26.length > 0 ? dates26[dates26.length - 1] : "2026-09-11";
-  const xNow = dateVersX(derniereDate26);
+  const derniereDate = datesJour.length > 0 ? datesJour[datesJour.length - 1] : dateReference;
+  const xNow = dateVersX(derniereDate);
   const vNow = Number.isFinite(l.vente_moyenne_jour) && l.vente_moyenne_jour > 0
     ? l.vente_moyenne_jour
-    : (pts26.length > 0 ? pts26[pts26.length - 1].q : 0);
+    : (pointsJour.length > 0 ? pointsJour[pointsJour.length - 1].q : 0);
   const yNow = yVal(vNow);
 
-  const moyOct = profil.ventes_par_mois?.["10"]?.moyenne_jour || 0;
-  const xOct = padL + (10 - 0.5) * colW;
-  const yOct = yVal(moyOct);
+  const moySuivante = profil.ventes_par_mois?.[String(moisSuivant)]?.moyenne_jour || 0;
+  const xSuivant = padL + (moisSuivant - 0.5) * colW;
+  const ySuivant = yVal(moySuivante);
 
   // Construction du SVG
   let svg = '<svg class="svg-graphique" id="svg-ventes-annuel" viewBox="0 0 ' + svgW + ' ' + svgH + '" xmlns="http://www.w3.org/2000/svg">';
@@ -1340,28 +1393,28 @@ async function afficherGraphiqueArticle(l) {
     svg += '<text x="' + (padL - 6) + '" y="' + (y + 4) + '" fill="var(--text-faible)" stroke="var(--bg-panel-alt)" stroke-width="3" paint-order="stroke fill" font-size="10" text-anchor="end">' + Math.round(niv) + '</text>';
   }
 
-  // 1. Bâtonnets mensuels (Moyenne 2,5 ans)
+  // 1. Bâtonnets mensuels (Moyenne historique)
   svg += svgBatons;
 
-  // 2. Courbe 2025 en pointillé fin à la semaine
-  if (d25Line) {
-    svg += '<path d="' + d25Line + '" fill="none" stroke="var(--graph-n1-stroke)" stroke-width="0.95" stroke-dasharray="2.5,2" opacity="0.85" />';
+  // 2. Courbe année précédente en pointillé fin à la semaine
+  if (ligneHebdo) {
+    svg += '<path d="' + ligneHebdo + '" fill="none" stroke="var(--graph-n1-stroke)" stroke-width="0.95" stroke-dasharray="2.5,2" opacity="0.85" />';
   }
 
-  // Cap Octobre (projection depuis la situation actuelle vers le niveau moyen d'octobre)
-  if (moyOct > 0 || vNow > 0) {
-    svg += '<line x1="' + xNow.toFixed(1) + '" y1="' + yNow.toFixed(1) + '" x2="' + xOct.toFixed(1) + '" y2="' + yOct.toFixed(1) + '" stroke="' + couleurTendance + '" stroke-width="1.2" stroke-dasharray="3,2" stroke-linecap="round" />';
-    svg += '<circle cx="' + xOct.toFixed(1) + '" cy="' + yOct.toFixed(1) + '" r="2.8" fill="' + couleurTendance + '" />';
+  // Comparaison mensuelle ; aucune prévision de stock ni preuve de rupture
+  if (moisSuivant > moisReference && (moySuivante > 0 || vNow > 0)) {
+    svg += '<line x1="' + xNow.toFixed(1) + '" y1="' + yNow.toFixed(1) + '" x2="' + xSuivant.toFixed(1) + '" y2="' + ySuivant.toFixed(1) + '" stroke="' + couleurTendance + '" stroke-width="1.2" stroke-dasharray="3,2" stroke-linecap="round" />';
+    svg += '<circle cx="' + xSuivant.toFixed(1) + '" cy="' + ySuivant.toFixed(1) + '" r="2.8" fill="' + couleurTendance + '" />';
   }
 
-  // 3. Courbe 2026 : quotidienne, trait fin (1.1px) pour mettre en évidence les ruptures
-  if (d26Line) {
-    svg += '<path d="' + d26Line + '" fill="none" stroke="var(--graph-actuel-stroke)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round" />';
+  // 3. Courbe année de référence : quotidienne, trait fin (1.1px) pour mettre en évidence les ruptures
+  if (ligneJour) {
+    svg += '<path d="' + ligneJour + '" fill="none" stroke="var(--graph-actuel-stroke)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round" />';
   }
 
   // Pastille vente retenue calcul moteur
   if (Number.isFinite(l.vente_moyenne_jour) && l.vente_moyenne_jour > 0) {
-    svg += '<circle cx="' + xNow.toFixed(1) + '" cy="' + yNow.toFixed(1) + '" r="4" fill="var(--graph-actuel-point)" stroke="var(--bg-panel-alt)" stroke-width="2"><title>Vente journalière retenue actuelle : ' + fr(l.vente_moyenne_jour) + ' ' + l.unite + '/j</title></circle>';
+    svg += '<circle cx="' + xNow.toFixed(1) + '" cy="' + yNow.toFixed(1) + '" r="4" fill="var(--graph-actuel-point)" stroke="var(--bg-panel-alt)" stroke-width="2"><title>Vente journalière retenue actuelle : ' + fr(l.vente_moyenne_jour) + ' ' + texteSecurise(l.unite) + '/j</title></circle>';
     svg += '<text x="' + xNow.toFixed(1) + '" y="' + Math.max(14, yNow - 8) + '" fill="var(--graph-actuel-stroke)" stroke="var(--bg-panel-alt)" stroke-width="3" paint-order="stroke fill" stroke-linejoin="round" font-size="11" font-weight="700" text-anchor="middle">' + fr(l.vente_moyenne_jour) + '</text>';
   }
 
@@ -1372,8 +1425,8 @@ async function afficherGraphiqueArticle(l) {
   // Noms des mois sous l'axe X
   for (let m = 1; m <= 12; m++) {
     const xMid = padL + (m - 0.5) * colW;
-    const estSept = (m === 9);
-    svg += '<text x="' + xMid.toFixed(1) + '" y="' + (padT + chartH + 18) + '" fill="' + (estSept ? 'var(--text)' : 'var(--text-faible)') + '" font-size="' + (estSept ? '11' : '10') + '" font-weight="' + (estSept ? '700' : '500') + '" text-anchor="middle">' + NOMS_MOIS[m - 1] + '</text>';
+    const estMoisReference = (m === moisReference);
+    svg += '<text x="' + xMid.toFixed(1) + '" y="' + (padT + chartH + 18) + '" fill="' + (estMoisReference ? 'var(--text)' : 'var(--text-faible)') + '" font-size="' + (estMoisReference ? '11' : '10') + '" font-weight="' + (estMoisReference ? '700' : '500') + '" text-anchor="middle">' + NOMS_MOIS[m - 1] + '</text>';
   }
 
   svg += '</svg>';
@@ -1394,24 +1447,23 @@ async function afficherGraphiqueArticle(l) {
 
   // Légende
   const legendeHtml = '<div class="graphique-legendes">'
-    + '  <div class="graphique-item-legende"><span class="pastille-couleur" style="background:var(--graph-moyenne-fill);border:1px solid var(--graph-moyenne-stroke)"></span> <span><strong>Moyenne mensuelle</strong> (bâtonnets 2,5 ans)</span></div>'
-    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="border-top:1.5px dashed var(--graph-n1-stroke);background:transparent;height:0"></span> <span><strong>L\'an dernier 2025</strong> (hebdo)</span></div>'
-    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="background:var(--graph-actuel-stroke);height:2px"></span> <span><strong>Cette année 2026</strong> (quotidien, ruptures)</span></div>'
-    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="border-top:1.5px dashed ' + couleurTendance + ';background:transparent;height:0"></span> <span><strong>Cap Octobre</strong></span></div>'
+    + '  <div class="graphique-item-legende"><span class="pastille-couleur" style="background:var(--graph-moyenne-fill);border:1px solid var(--graph-moyenne-stroke)"></span> <span><strong>Moyenne mensuelle</strong> (période analysée)</span></div>'
+    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="border-top:1.5px dashed var(--graph-n1-stroke);background:transparent;height:0"></span> <span><strong>' + anneePrecedente + '</strong> (hebdo)</span></div>'
+    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="background:var(--graph-actuel-stroke);height:2px"></span> <span><strong>' + anneeReference + '</strong> (quotidien)</span></div>'
+    + '  <div class="graphique-item-legende"><span class="pastille-ligne" style="border-top:1.5px dashed ' + couleurTendance + ';background:transparent;height:0"></span> <span><strong>Moyenne ' + NOMS_MOIS[moisSuivant - 1] + '</strong></span></div>'
     + '</div>';
 
   const infobulleHtml = '<div class="infobulle-graphique" id="graph-infobulle">'
-    + '  <span><strong>Survole le graphique</strong> pour explorer les jours et incidents</span>'
-    + '  <span>2026 (actuel) : <strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + '</strong> · Moyenne sept. : <strong style="color:var(--graph-moyenne-stroke)">' + fr(profil.ventes_par_mois?.["9"]?.moyenne_jour || 0) + ' ' + texteSecurise(l.unite) + '/j</strong></span>'
+    + '  <span><strong>Survole le graphique</strong> pour explorer les ventes observées</span>'
+    + '  <span>Vente retenue pour la commande : <strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + '</strong> · Moyenne ' + NOMS_MOIS[moisReference - 1] + ' : <strong style="color:var(--graph-moyenne-stroke)">' + fr(profil.ventes_par_mois?.[String(moisReference)]?.moyenne_jour || 0) + ' ' + texteSecurise(l.unite) + '/j</strong></span>'
     + '</div>';
 
-  const moySept = profil.ventes_par_mois?.["9"]?.moyenne_jour || 0;
-  const y24Sept = profil.historique_mensuel_par_annee?.["2024"]?.["9"]?.moyenne_jour || 0;
-  const y25Sept = profil.historique_mensuel_par_annee?.["2025"]?.["9"]?.moyenne_jour || 0;
-  const y26Sept = profil.historique_mensuel_par_annee?.["2026"]?.["9"]?.moyenne_jour || 0;
+  const moyReference = profil.ventes_par_mois?.[String(moisReference)]?.moyenne_jour || 0;
+  const comparaisonMois = Object.entries(profil.historique_mensuel_par_annee || {}).sort(([a], [b]) => a.localeCompare(b))
+    .map(([annee, mois]) => texteSecurise(annee) + ' : <strong>' + (Number.isFinite(mois?.[String(moisReference)]?.moyenne_jour) ? fr(mois[String(moisReference)].moyenne_jour) : '—') + '</strong>').join(' · ');
 
   let html = "<h2>Historique et saisonnalité des ventes</h2>"
-    + '<p class="sous-titre">Bâtonnets mensuels (moyenne 2,5 ans), pointillé hebdo 2025 et courbe quotidienne 2026</p>'
+    + '<p class="sous-titre">Moyennes historiques, comparaison ' + anneePrecedente + ' / ' + anneeReference + ' ; données jusqu’au ' + texteSecurise(d(dateReference)) + '.</p>'
     + cartoucheMarge
     + legendeHtml
     + svg
@@ -1424,11 +1476,11 @@ async function afficherGraphiqueArticle(l) {
     + '  <div style="font-size:13.5px;line-height:1.4;color:var(--text-dim)">' + texteSecurise(sais.diagnostic || "") + '</div>'
     + '</div>'
     + '<div class="grille-kpi-graph">'
-    + '  <div class="kpi-carte vert"><small>Moyenne sept. (2,5 ans)</small><strong>' + fr(moySept) + ' ' + texteSecurise(l.unite) + '/j</strong></div>'
+    + '  <div class="kpi-carte vert"><small>Moyenne ' + NOMS_MOIS[moisReference - 1] + ' (historique)</small><strong>' + fr(moyReference) + ' ' + texteSecurise(l.unite) + '/j</strong></div>'
     + '  <div class="kpi-carte bleu"><small>Vente retenue calcul</small><strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + ' ' + texteSecurise(l.unite) + '/j</strong></div>'
     + '  <div class="kpi-carte jaune"><small>Marge brute</small><strong>' + fr(l.marge_pct) + ' %</strong></div>'
     + '</div>'
-    + '<div class="ligne-calcul" style="margin-top:10px;font-size:13px"><span>Rythme en septembre</span><span>2024 : <strong>' + fr(y24Sept) + '</strong> · 2025 : <strong>' + fr(y25Sept) + '</strong> · 2026 : <strong>' + fr(y26Sept) + ' ' + texteSecurise(l.unite) + '/j</strong></span></div>';
+    + '<div class="ligne-calcul" style="margin-top:10px;font-size:13px"><span>Rythme en ' + NOMS_MOIS[moisReference - 1] + '</span><span>' + comparaisonMois + ' ' + texteSecurise(l.unite) + '/j</span></div>';
 
   panneau.innerHTML = html;
 
@@ -1444,10 +1496,10 @@ async function afficherGraphiqueArticle(l) {
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const xRel = ((clientX - rect.left) / rect.width) * svgW;
       if (xRel >= padL && xRel <= padL + chartW) {
-        // Recherche du point 2026 le plus proche
+        // Recherche du point quotidien le plus proche
         let closest = null;
         let minDiff = Infinity;
-        for (const pt of pts26) {
+        for (const pt of pointsJour) {
           const diff = Math.abs(pt.x - xRel);
           if (diff < minDiff) {
             minDiff = diff;
@@ -1468,22 +1520,22 @@ async function afficherGraphiqueArticle(l) {
           const dt = new Date(closest.dStr + "T12:00:00");
           const dateTxt = dt.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" });
           const m = parseInt(closest.dStr.slice(5, 7), 10);
-          const s = Math.min(52, Math.max(1, Math.round(((closest.x - padL) / chartW) * 52)));
+          const semaine = semainePourDate(dateComparaison(m, Number(closest.dStr.slice(8, 10))));
           const moyM = profil.ventes_par_mois?.[String(m)]?.moyenne_jour || 0;
-          const v25 = (y25Sem[s - 1] !== null && y25Sem[s - 1] !== undefined) ? fr(y25Sem[s - 1]) : "—";
 
           const estChute = (closest.q <= 0) || (moyM > 5 && closest.q < moyM * 0.25);
           const alerteTxt = estChute
-            ? ' <span style="color:var(--mousq-rouge);font-weight:700">⚠ incident/rupture</span>'
+            ? ' <span style="color:var(--mousq-rouge);font-weight:700">⚠ vente faible, cause à vérifier</span>'
             : '';
 
           infoEl.innerHTML = '<span><strong>' + dateTxt + '</strong>' + alerteTxt + '</span>'
-            + '<span>2026 : <strong style="color:var(--graph-actuel-stroke)">' + fr(closest.q) + '</strong> · 2025 (S' + s + ') : <strong style="color:var(--graph-n1-stroke)">' + v25 + '</strong> · Moyenne ' + NOMS_MOIS[m - 1] + ' : <strong style="color:var(--graph-moyenne-stroke)">' + fr(moyM) + ' ' + texteSecurise(l.unite) + '/j</strong></span>';
+            + '<span>' + anneeReference + ' : <strong style="color:var(--graph-actuel-stroke)">' + fr(closest.q) + '</strong> · ' + semaine.annee + ' (S' + semaine.semaine + ') : <strong style="color:var(--graph-n1-stroke)">' + semaine.valeur + '</strong> · Moyenne ' + NOMS_MOIS[m - 1] + ' : <strong style="color:var(--graph-moyenne-stroke)">' + fr(moyM) + ' ' + texteSecurise(l.unite) + '/j</strong></span>';
         } else {
           const mCur = Math.min(12, Math.max(1, Math.floor((xRel - padL) / colW) + 1));
           const moyMCur = profil.ventes_par_mois?.[String(mCur)]?.moyenne_jour || 0;
-          const sCur = Math.min(52, Math.max(1, Math.round(((xRel - padL) / chartW) * 52)));
-          const v25Cur = (y25Sem[sCur - 1] !== null && y25Sem[sCur - 1] !== undefined) ? fr(y25Sem[sCur - 1]) : "—";
+          const joursMois = new Date(Date.UTC(anneePrecedente, mCur, 0)).getUTCDate();
+          const jourCur = Math.floor(((xRel - padL) / colW - (mCur - 1)) * joursMois) + 1;
+          const semaine = semainePourDate(dateComparaison(mCur, jourCur));
 
           guideEl.setAttribute("x1", xRel.toFixed(1));
           guideEl.setAttribute("x2", xRel.toFixed(1));
@@ -1491,7 +1543,7 @@ async function afficherGraphiqueArticle(l) {
           if (pointEl) pointEl.setAttribute("opacity", "0");
 
           infoEl.innerHTML = '<span><strong>Projection · ' + NOMS_MOIS[mCur - 1] + '</strong></span>'
-            + '<span>Moyenne 2,5 ans : <strong style="color:var(--graph-moyenne-stroke)">' + fr(moyMCur) + ' ' + texteSecurise(l.unite) + '/j</strong> · 2025 (S' + sCur + ') : <strong style="color:var(--graph-n1-stroke)">' + v25Cur + '</strong></span>';
+            + '<span>Moyenne historique : <strong style="color:var(--graph-moyenne-stroke)">' + fr(moyMCur) + ' ' + texteSecurise(l.unite) + '/j</strong> · ' + semaine.annee + ' (S' + semaine.semaine + ') : <strong style="color:var(--graph-n1-stroke)">' + semaine.valeur + '</strong></span>';
         }
       }
     };
@@ -1501,8 +1553,8 @@ async function afficherGraphiqueArticle(l) {
     svgEl.addEventListener("mouseleave", () => {
       guideEl.setAttribute("opacity", "0");
       if (pointEl) pointEl.setAttribute("opacity", "0");
-      infoEl.innerHTML = '<span><strong>Survole le graphique</strong> pour explorer les jours et incidents</span>'
-        + '<span>2026 (actuel) : <strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + '</strong> · Moyenne sept. : <strong style="color:var(--graph-moyenne-stroke)">' + fr(profil.ventes_par_mois?.["9"]?.moyenne_jour || 0) + ' ' + texteSecurise(l.unite) + '/j</strong></span>';
+      infoEl.innerHTML = '<span><strong>Survole le graphique</strong> pour explorer les ventes observées</span>'
+        + '<span>Vente retenue pour la commande : <strong style="color:var(--graph-actuel-stroke)">' + fr(l.vente_moyenne_jour) + '</strong> · Moyenne ' + NOMS_MOIS[moisReference - 1] + ' : <strong style="color:var(--graph-moyenne-stroke)">' + fr(profil.ventes_par_mois?.[String(moisReference)]?.moyenne_jour || 0) + ' ' + texteSecurise(l.unite) + '/j</strong></span>';
     });
   }
 }
@@ -1602,6 +1654,7 @@ document.getElementById("recherche").addEventListener("input", (e) => {
         ? " · " + fr(proposition.meteo_livraison.tmax) + "°"
         : " · météo indisponible");
   majAlerte();
+  chargerEtatRecalcul();
   remplirFiltreFournisseur();
   afficher();
   chargerAnalyseHistorique();
@@ -1611,6 +1664,7 @@ if (window.PhotosProduits) PhotosProduits.charger().then(() => {
   const photo = document.getElementById("detail-photo");
   if (photo.dataset.itm8) photo.innerHTML = PhotosProduits.image(photo.dataset.itm8, "detail");
 }).catch(() => {});
+setInterval(chargerEtatRecalcul, 15000);
 </script>
 
 </body>

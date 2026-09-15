@@ -178,43 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-19.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Performance & Adoption IA</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Direction Magasin</div>
         </div>
       </div>
 
 
-      <h2>1. Métriques Algorithmiques d'Évaluation</h2>
-      <p>
-        Pour garantir la rigueur mathématique du modèle de prévision, le système suit en continu les écarts entre prévisions et ventes réelles :
-      </p>
-      <ul>
-        <li><strong>MAE (Mean Absolute Error) :</strong> Erreur absolue moyenne par référence, exprimée dans l'unité du produit (kg ou colis).</li>
-        <li><strong>WAPE (Weighted Absolute Percentage Error) :</strong> Erreur pondérée globale évitant de surpondérer les petites références marginales.</li>
-        <li><strong>Biais Prévisionnel Moyen :</strong> <code>&Sigma;(Prévision − Vente) / &Sigma;(Vente)</code>. Cet indicateur doit être strictement centré sur 0 pour éliminer tout sur-stockage structurel ou sous-commande chronique.</li>
-      </ul>
-
-      <h2>2. Taux d'Adhésion Magasin et Adoption Utilisateur</h2>
-      <div class="card-panel">
-        <div class="card-panel-title">Indicateur d'Adhésion Décisionnelle (&ge; 90 %)</div>
-        <p style="font-size: 13px; margin: 0;">
-          Le taux d'adhésion correspond au pourcentage de lignes de commande validées par le chef de rayon sans modification manuelle du nombre de colis. Un taux supérieur à 90 % atteste de la pertinence des prévisions et de la confiance établie entre le responsable de rayon et les assistants numériques.
-        </p>
-      </div>
-
-      <h2>3. Mesure du Gain Opérationnel</h2>
-      <p>
-        L'automatisation du rapprochement des stocks et du cadencier permet un gain de temps majeur lors de la vacation matinale :
-      </p>
-      <div class="callout-box">
-        <div class="callout-title">GAIN DE PRODUCTIVITÉ CONSTATÉ SUR LE TERRAIN</div>
-        <p style="margin:0;">
-          Le temps consacré à la passation de commande passe de <strong>1 heure 30 minutes</strong> (sur listing papier avec calculs manuels) à seulement <strong>15 à 20 minutes</strong> sur la console tactile, libérant plus d'une heure quotidienne pour le réassort, la théâtralisation de l'étal et l'accueil client.
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Évaluer les résultats</h2>
+<p>Les tests vérifient des comportements et les journaux retracent les actions. Un taux d’adhésion aux propositions ou un gain de performance nécessitent une méthode de mesure et des observations explicites ; aucun tableau universel de ces indicateurs n’est fourni par le logiciel. Les quantités validées dans l’outil officiel ne sont pas récupérées automatiquement ici.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../app/commander.html">app/commander.html</a></li><li><a href="../../../tests/e2e_application.py">tests/e2e_application.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./19.1 - KPIs métier (rupture, casse, marge).html" class="btn-action">&larr; 19.1 KPIs métier</a>
         </div>

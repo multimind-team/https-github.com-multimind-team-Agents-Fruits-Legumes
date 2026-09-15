@@ -24,7 +24,9 @@ GENERER = charger("generer_proposition", "generer-proposition.py")
 
 class FraicheurEtNoteTests(unittest.TestCase):
     def test_echec_amont_ne_publie_pas_une_nouvelle_proposition_ni_un_succes(self):
-        with patch.object(sys, 'argv', ['filet-de-securite.py', '--forcer']), \
+        with tempfile.TemporaryDirectory() as temporaire, \
+             patch.object(FILET, 'PROPOSITION', Path(temporaire) / 'proposition.json'), \
+             patch.object(sys, 'argv', ['filet-de-securite.py', '--forcer']), \
              patch.object(FILET, 'etat_proposition', return_value=('a-jour', 'ancienne proposition présentable', {})), \
              patch.object(FILET, 'lancer', return_value=(False, 'conflit de faits')) as lancer, \
              patch.object(FILET, 'marquer_fraicheur') as marquer, \

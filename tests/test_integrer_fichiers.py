@@ -1,7 +1,10 @@
 import importlib.util
 import sys
+import json
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 MOTEUR = Path(__file__).resolve().parents[1] / "moteur"
 sys.path.insert(0, str(MOTEUR))
@@ -11,6 +14,30 @@ SPEC.loader.exec_module(MODULE)
 
 
 class FichiersManquantsParJourTests(unittest.TestCase):
+    def test_colisages_refusent_un_carnet_de_decisions_illisible(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(MODULE, "DONNEES", Path(tmp)), \
+             patch.object(MODULE.regles, "charger", side_effect=ValueError("Carnet illisible")), \
+             self.assertRaisesRegex(ValueError, "Carnet illisible"):
+            MODULE.charger_colisages_vrac()
+
+    def test_colisages_refusent_un_cadencier_tronque_sans_le_modifier(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(MODULE, "DONNEES", Path(tmp)):
+            fichier = Path(tmp) / "cadencier-du-jour.json"
+            fichier.write_bytes(b'{"articles":')
+            with self.assertRaises(json.JSONDecodeError):
+                MODULE.charger_colisages_vrac()
+            self.assertEqual(fichier.read_bytes(), b'{"articles":')
+
+    def test_decision_colisage_invalide_ne_retombe_pas_sur_le_cadencier(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(MODULE, "DONNEES", Path(tmp)):
+            (Path(tmp) / "cadencier-du-jour.json").write_text(json.dumps(
+                {"articles": [{"article": "TEST", "offres": [{"par_colis": 12}]}]}), encoding="utf-8")
+            for valeur in ("illisible", -1, 0, True, float("nan"), float("inf")):
+                with self.subTest(valeur=valeur), patch.object(MODULE.regles, "charger", return_value={
+                        "overrides": {"TEST": {"conditionnement": valeur}}}), \
+                     self.assertRaisesRegex(ValueError, "Colisage de décision invalide"):
+                    MODULE.charger_colisages_vrac()
+
     def test_ne_signale_pas_l_absence_de_casse_ou_de_don(self):
         resume = [
             {"fichier": "Vente-06-09-2026.xlsx", "type": "vente"},

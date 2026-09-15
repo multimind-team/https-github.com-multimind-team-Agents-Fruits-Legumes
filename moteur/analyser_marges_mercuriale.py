@@ -14,6 +14,7 @@ Usage :
   python moteur/analyser-marges-mercuriale.py
 """
 from datetime import date, datetime, timedelta
+from copy import deepcopy
 import json
 import math
 from pathlib import Path
@@ -29,6 +30,7 @@ FICHIER_ALERTES = DONNEES / "alertes-marges.json"
 sys.path.insert(0, str(RACINE / "moteur"))
 import catalogue
 from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees
 
 
 SEUIL_HAUSSE_ALERTE = 15.0     # +15 % d'augmentation
@@ -44,15 +46,17 @@ def charger_historique_prix():
     return {}
 
 
+@operation_donnees(lambda: DONNEES)
 def analyser_cadencier(cadencier=None, historique=None):
-    cadencier = cadencier or (json.loads(FICHIER_CADENCIER.read_text(encoding="utf-8")) if FICHIER_CADENCIER.exists() else {})
+    if cadencier is None:
+        cadencier = json.loads(FICHIER_CADENCIER.read_text(encoding="utf-8")) if FICHIER_CADENCIER.exists() else {}
     historique = historique if historique is not None else charger_historique_prix()
 
     date_cadencier = cadencier.get("date_cadencier") or date.today().isoformat()
     articles_cadencier = cadencier.get("articles", [])
 
     alertes = []
-    prix_a_jour = dict(historique.get("prix_par_article", {}))
+    prix_a_jour = deepcopy(historique.get("prix_par_article", {}))
 
     for a in articles_cadencier:
         itm8 = a.get("article")

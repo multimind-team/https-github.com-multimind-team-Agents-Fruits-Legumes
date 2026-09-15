@@ -28,7 +28,6 @@ RACINE = Path(__file__).resolve().parent.parent
 FICHIER = RACINE / "donnees" / "catalogue.json"
 
 
-@lru_cache(maxsize=1)
 def charger():
     if not FICHIER.exists():
         raise SystemExit(
@@ -36,7 +35,16 @@ def charger():
             "C'est la fiche de tous les articles : sans lui, rien ne peut être "
             "nommé ni commandé. À reconstruire depuis le dernier cadencier Mercalys reçu, ou "
             "depuis le dernier cadencier reçu par mail.")
-    return json.loads(FICHIER.read_text(encoding="utf-8"))
+    stat = FICHIER.stat()
+    return _charger_version(str(FICHIER.resolve()), stat.st_mtime_ns, stat.st_size, stat.st_ino)
+
+
+@lru_cache(maxsize=1)
+def _charger_version(chemin, mtime_ns, taille, inode):
+    return json.loads(Path(chemin).read_text(encoding="utf-8"))
+
+
+charger.cache_clear = _charger_version.cache_clear
 
 
 def articles():
@@ -48,7 +56,6 @@ def fiche(code):
     return articles().get(str(code), {})
 
 
-@lru_cache(maxsize=1)
 def noms():
     """{code: nom lisible}. Le nom du cadencier, pas celui de la caisse."""
     return {code: (a.get("LIBELLE") or "").strip() for code, a in articles().items()}

@@ -178,76 +178,21 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-04.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Architecture Logicielle & Scripts Python</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Intégrateurs Techniques, Développeurs</div>
         </div>
       </div>
 
 
-      <h2>1. Cartographie Exhaustive des Scripts Moteur</h2>
-      <p>
-        Le répertoire <code>moteur/</code> regroupe l'ensemble de l'intelligence algorithmique et des interfaces d'exploitation du système :
-      </p>
-
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 28%;">Module / Script Python</th>
-            <th style="width: 22%;">Rôle Métier</th>
-            <th style="width: 50%;">Fonctionnement Technique &amp; Règles de Données</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>serveur.py</code></td>
-            <td>Serveur HTTP Local (Port 8751)</td>
-            <td>Sert l'interface web (<code>app/</code>), gère les endpoints REST de proposition, comptage et messagerie. Multithreadé et sécurisé en réseau local magasin.</td>
-          </tr>
-          <tr>
-            <td><code>calculer-commande.py</code></td>
-            <td>Cœur Arithmétique &amp; Saisonnalité</td>
-            <td>Applique la fenêtre circulaire de ± 21 jours, contrôle le minimum de 5 jours observés (sinon prévision 0), calcule le taux de perte réel et intègre la conversion de la machine à jus.</td>
-          </tr>
-          <tr>
-            <td><code>calculer-position.py</code></td>
-            <td>Moteur de Position de Stock</td>
-            <td>Recalcule <code>donnees/etat.json</code> à partir de la dernière mesure physique et applique les mouvements postérieurs en fonction de l'heure de comptage.</td>
-          </tr>
-          <tr>
-            <td><code>generer-proposition.py</code></td>
-            <td>Générateur de <code>proposition.json</code></td>
-            <td>Croise cadencier, état des stocks, météo Open-Meteo, calendrier fériés et vacances scolaires Zone C. Trie les lignes selon l'ordre officiel Webtelevente (Fruits, Légumes, Bio).</td>
-          </tr>
-          <tr>
-            <td><code>conditionnements.py</code></td>
-            <td>Sélectionneur de Colisage</td>
-            <td>Détermine le PCB commandable par priorité : décision manuelle magasin, cadencier SCAFRUIT du jour, Mercalys, repli technique. Signale les contradictions.</td>
-          </tr>
-          <tr>
-            <td><code>cadencier-du-jour.py</code></td>
-            <td>Extraction de la Mercuriale</td>
-            <td>Extrait les offres ouvertes à la commande ce jour et certifie les prix d'achat réels et les PCB.</td>
-          </tr>
-          <tr>
-            <td><code>integrer-fichiers.py</code></td>
-            <td>Ingestion des Flux Bruts</td>
-            <td>Parse les exports Mercalys, les BL dématérialisés et enrichit le carnet de faits (<code>donnees/faits/AAAA.jsonl</code>) en mode append-only.</td>
-          </tr>
-          <tr>
-            <td><code>note-du-matin.py</code></td>
-            <td>Synthèse Exécutive Quotidienne</td>
-            <td>Produit chaque matin <code>donnees/note-du-matin.json</code> résumant le montant total, les colis, les alertes majeures et le contexte météo.</td>
-          </tr>
-          <tr>
-            <td><code>surveille-mail-*.py</code></td>
-            <td>Sentinelle Passive Tri-Événements</td>
-            <td>Écoute permanente locale : réveille les agents uniquement à l'arrivée d'un courriel, d'un message ou d'un comptage. Consommation : 0 token en veille.</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <div class="page-nav-bar">
+      <h2>Composants présents</h2>
+<p>Le serveur Python sert les écrans HTML/JavaScript et les routes autorisées. Les importeurs alimentent les carnets ; calculer-position, proposer-commande et generer-proposition produisent les sorties. Le filet de sécurité coordonne les recalculs. La sentinelle détecte les entrées, les conserve en attente et attend un traitement externe.</p>
+<p>Chaque événement reste dans <code>donnees/.sentinelle-evenements.json</code> jusqu’à son acquittement explicite après traitement vérifié. Le démarrage reprend les événements en attente, y compris les corrections de comptage. L’ancienne liste d’UID connus ne prouve pas un traitement achevé.</p>
+<pre>python moteur/surveille-mail-message-comptage.py --acquitter MESSAGE "&lt;id-affiche&gt;" --preuve "&lt;id-reponse-verifiee&gt;"</pre>
+<p>Remplacer MESSAGE par MAIL ou COMPTAGE pour ces événements. Le script seul ne lance aucun agent : un superviseur externe doit transmettre les détections à l’agent. Une erreur ou une demande encore à clarifier reste en attente.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/serveur.py">moteur/serveur.py</a></li><li><a href="../../../moteur/filet-de-securite.py">moteur/filet-de-securite.py</a></li><li><a href="../../../moteur/surveille-mail-message-comptage.py">moteur/surveille-mail-message-comptage.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./4.1 - Chaîne de traitement et cycle quotidien.html" class="btn-action">&larr; 4.1 Chaîne de traitement</a>
         </div>

@@ -199,10 +199,12 @@ class ActionsCourrierTests(unittest.TestCase):
         racine = Path("C:/rayon")
         dossier = racine / "donnees/courrier/2026-09-07-pdv"
         self.assertEqual(
-            commandes_a_lancer(racine, dossier, ["integrer", "cadencier", "recalculer", "note"]),
+            commandes_a_lancer(racine, dossier, ["integrer", "cadencier", "recalculer", "note"],
+                              fichiers=[dossier / "cadencier webtelevente 07.09.2026.xls"]),
             [
-                ["py", "-3.14", str(racine / "moteur/integrer-fichiers.py"), str(dossier), "--agent", "agent-donnees"],
-                ["py", "-3.14", str(racine / "moteur/cadencier-du-jour.py")],
+                ["py", "-3.14", str(racine / "moteur/integrer-fichiers.py"), str(dossier), "--agent", "agent-donnees", "--json"],
+                ["py", "-3.14", str(racine / "moteur/cadencier-du-jour.py"), str(dossier / "cadencier webtelevente 07.09.2026.xls")],
+                ["py", "-3.14", str(racine / "moteur/analyser-marges-mercuriale.py")],
                 ["py", "-3.14", str(racine / "moteur/filet-de-securite.py"), "--forcer"],
                 ["py", "-3.14", str(racine / "moteur/note-du-matin.py")],
             ],

@@ -16,15 +16,20 @@ Usage :
 """
 import argparse
 import json
-import os
 import subprocess
 import sys
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 DOSSIER_DOCS = RACINE / "Documents" / "Documentation de l'application"
 DOSSIER_MIROIR = Path(r"c:\Users\user\Desktop\projets_IA\projets\preparation-commande")
+FICHIERS_PRIVES = {
+    "donnees/.sentinelle-evenements.json",
+    "donnees/.courrier_uids_connus.json",
+    "donnees/.operations-bail.lock",
+}
 
 
 def log(titre, message=""):
@@ -41,7 +46,7 @@ def executer(commande, cwd=RACINE, verifier=True, capture=True):
     resultat = subprocess.run(
         commande,
         cwd=cwd,
-        shell=True,
+        shell=isinstance(commande, str),
         capture_output=capture,
         text=True,
         encoding="utf-8",
@@ -77,11 +82,26 @@ def etape_1_controle_securite():
         raise ValueError("SÉCURITÉ VIOLÉE : .env n'est pas exclu par .gitignore !")
 
     # 3. Vérifier que donnees/courrier/ est bien ignoré
-    res_courrier = executer("git check-ignore donnees/courrier/test_ignore.tmp", verifier=False)
+    res_courrier = executer(["git", "check-ignore", "--no-index", "donnees/courrier/controle-confidentialite.eml"], verifier=False)
     if res_courrier.returncode != 0:
         raise ValueError("SÉCURITÉ VIOLÉE : donnees/courrier/ n'est pas exclu par .gitignore !")
 
-    log("Sécurité OK", "Aucun mot de passe détecté, .env et dossiers de courrier bruts protégés.")
+    for chemin in sorted(FICHIERS_PRIVES):
+        if executer(["git", "check-ignore", "--no-index", chemin], verifier=False).returncode != 0:
+            raise ValueError(f"SÉCURITÉ : trace privée non exclue de Git : {chemin}.")
+
+    verifier_index_prive()
+    log("Sécurité OK", "Mot de passe absent ; fichiers privés exclus de l'index Git courant.")
+
+
+def verifier_index_prive():
+    """L'exclusion d'un nouveau fichier ne protège pas les fichiers déjà suivis."""
+    suivis = executer(["git", "ls-files", "-z"]).stdout.split("\0")
+    prives = [nom for nom in suivis if nom.rsplit("/", 1)[-1] == ".env"
+              or nom.startswith("donnees/courrier/") or nom in FICHIERS_PRIVES]
+    if prives:
+        raise ValueError(f"SÉCURITÉ : {len(prives)} fichier(s) privé(s) restent suivis/indexés par Git. "
+                         "Retirer leur suivi en conservant les originaux locaux avant sauvegarde.")
 
 
 def etape_2_tests_integrite():
@@ -90,19 +110,19 @@ def etape_2_tests_integrite():
 
     # Exécution de verifier_projet.py
     script_audit = RACINE / "tests" / "verifier_projet.py"
-    if script_audit.is_file():
-        cmd = f'"{sys.executable}" "{script_audit}"'
-        res = executer(cmd, capture=True)
-        try:
-            bilan = json.loads(res.stdout)
-            erreurs = bilan.get("erreurs", [])
-            if erreurs:
-                msg_err = "\n".join(f"- {e.get('fichier')}: {e.get('erreur')}" for e in erreurs[:5])
-                raise ValueError(f"{len(erreurs)} erreurs détectées dans le projet :\n{msg_err}")
-            lignes = bilan.get("lignes_jsonl", 0)
-            log("Contrôle syntaxique", f"100% conforme ({lignes} lignes de faits et carnets certifiées).")
-        except json.JSONDecodeError:
-            pass
+    if not script_audit.is_file():
+        raise ValueError("Le programme de contrôle syntaxique est absent ; sauvegarde interrompue.")
+    res = executer([sys.executable, "-B", str(script_audit)], capture=True)
+    try:
+        bilan = json.loads(res.stdout)
+        erreurs = bilan.get("erreurs", [])
+        if erreurs:
+            msg_err = "\n".join(f"- {e.get('fichier')}: {e.get('erreur')}" for e in erreurs[:5])
+            raise ValueError(f"{len(erreurs)} erreurs détectées dans le projet :\n{msg_err}")
+        lignes = bilan.get("lignes_jsonl", 0)
+        log("Contrôle syntaxique", f"Aucune erreur de syntaxe ({lignes} lignes JSONL lues).")
+    except json.JSONDecodeError as exc:
+        raise ValueError("Le contrôle syntaxique n'a pas fourni de bilan JSON valide.") from exc
 
     # Exécution des tests unitaires clés
     log("Tests unitaires", "Lancement des tests de préparation photos et sécurité mail...")
@@ -110,9 +130,7 @@ def etape_2_tests_integrite():
         "tests/test_preparer_photos.py",
         "tests/test_envoyer_classeur_marge.py",
     ]
-    for test in tests_a_lancer:
-        cmd_test = f'"{sys.executable}" -m unittest {test}'
-        executer(cmd_test, verifier=True)
+    executer([sys.executable, "-B", str(RACINE / "tests" / "lancer_tests_isoles.py"), *tests_a_lancer], verifier=True)
 
     log("Tests OK", "Tous les tests de conformité ont réussi avec succès.")
 
@@ -135,7 +153,7 @@ def etape_3_synchronisation_documentation():
             log("Avertissement miroir", f"Code retour robocopy : {res.returncode}")
 
     # Synchroniser aussi AGENTS.md si présent
-    source_agents = RACINE / "AGENT.md"
+    source_agents = RACINE / "AGENTS.md"
     cible_agents = DOSSIER_MIROIR / "AGENTS.md"
     if source_agents.is_file() and cible_agents.parent.is_dir():
         cible_agents.write_text(source_agents.read_text(encoding="utf-8"), encoding="utf-8")
@@ -143,81 +161,56 @@ def etape_3_synchronisation_documentation():
 
 
 def etape_4_git_commit_push(message_personnalise=None, sans_push=False):
-    """Indexe, crée le commit et le pousse vers GitHub."""
-    log("Étape 4/5", "Indexation Git et préparation du commit...")
-
-    # Stage tous les fichiers respectant .gitignore
-    executer("git add -A")
-
-    # Vérifier s'il y a des changements à committer
-    res_status = executer("git status --porcelain")
-    lignes_status = [l.strip() for l in res_status.stdout.splitlines() if l.strip()]
-
-    if not lignes_status:
-        log("Git", "Aucune modification à committer. L'arbre de travail est propre.")
-        # Obtenir le dernier hash
-        res_hash = executer("git rev-parse --short HEAD")
-        commit_hash = res_hash.stdout.strip()
-        return commit_hash, False
-
-    maintenant_str = datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
-    if message_personnalise:
-        message_commit = f"{message_personnalise}\n\nSauvegarde automatique du {maintenant_str}"
-    else:
-        # Message automatique synthétique
-        nb_modifs = len(lignes_status)
-        message_commit = (
-            f"sauvegarde: synchronisation automatique du {maintenant_str}\n\n"
-            f"- {nb_modifs} fichier(s) mis à jour ou synchronisés\n"
-            f"- Tests de non-régression et audits syntaxiques validés\n"
-            f"- Secrets protégés (.env exclus, mots de passe déportés)"
-        )
-
-    # Écriture du message de commit dans un fichier temporaire pour éviter les problèmes d'échappement shell
-    fichier_msg = RACINE / ".commit_msg_tmp.txt"
-    try:
-        fichier_msg.write_text(message_commit, encoding="utf-8")
-        executer(f'git commit -F "{fichier_msg}"')
-    finally:
-        if fichier_msg.is_file():
-            fichier_msg.unlink()
-
-    res_hash = executer("git rev-parse --short HEAD")
-    commit_hash = res_hash.stdout.strip()
-    log("Commit créé", f"Identifiant : {commit_hash}")
-
-    if sans_push:
-        log("Push désactivé", "Option --sans-push active : le push n'est pas exécuté.")
-        return commit_hash, True
-
-    log("Étape 5/5", "Publication vers GitHub (git push origin main)...")
-    executer("git push origin main")
-    log("GitHub Push OK", f"Modifications publiées sur GitHub (branche main, commit {commit_hash}).")
-    return commit_hash, True
-
-
-def etape_5_annonce_web(commit_hash, nouveau_commit=True):
-    """Publie l'annonce dans l'application web via moteur/dire.py."""
-    try:
-        from dire import publier
-    except ImportError:
-        sys.path.insert(0, str(RACINE / "moteur"))
-        from dire import publier
-
+    """Distingue commit local et publication vérifiée de cette même branche."""
+    branche = executer(["git", "branch", "--show-current"]).stdout.strip()
+    if branche != "main":
+        raise ValueError("La sauvegarde automatique publie main : revenir explicitement sur main avant de sauvegarder.")
+    verifier_index_prive()
+    executer(["git", "add", "-A"])
+    verifier_index_prive()
+    statut = executer(["git", "diff", "--cached", "--quiet"], verifier=False)
+    if statut.returncode not in (0, 1):
+        raise RuntimeError("Impossible de vérifier les changements indexés.")
+    nouveau_commit = statut.returncode == 1
     if nouveau_commit:
-        message = (
-            f"📦 Sauvegarde complète réalisée avec succès sur GitHub. "
-            f"Tous les fichiers, la documentation officielle (23 chapitres) et les données "
-            f"sont synchronisés et protégés (commit `{commit_hash}`)."
-        )
-    else:
-        message = (
-            f"ℹ️ Sauvegarde vérifiée : le projet est déjà strictement à jour sur GitHub "
-            f"au commit `{commit_hash}` (zéro modification en attente)."
-        )
+        instant = datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
+        message = (message_personnalise or "sauvegarde: synchronisation du projet") + f"\n\nSauvegarde vérifiée du {instant}"
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", suffix=".txt", delete=False) as flux:
+            flux.write(message)
+            fichier_msg = Path(flux.name)
+        try:
+            executer(["git", "commit", "-F", str(fichier_msg)])
+        finally:
+            fichier_msg.unlink(missing_ok=True)
+    commit_complet = executer(["git", "rev-parse", "HEAD"]).stdout.strip()
+    resultat = {"commit": commit_complet[:12], "nouveau_commit": nouveau_commit,
+                "branche": branche, "publication_demandee": not sans_push,
+                "publication_confirmee": False}
+    if sans_push:
+        log("Sauvegarde locale", "Publication non demandée (--sans-push).")
+        return resultat
+    # Même sans nouveau commit, une sauvegarde précédente peut attendre son push.
+    executer(["git", "push", "origin", "HEAD:refs/heads/main"])
+    distant = executer(["git", "ls-remote", "origin", "refs/heads/main"]).stdout.split()
+    if not distant or distant[0] != commit_complet:
+        raise RuntimeError("Push exécuté, mais la branche distante ne confirme pas le commit local ; vérifier GitHub.")
+    resultat["publication_confirmee"] = True
+    log("Publication confirmée", f"Branche {branche}, commit {resultat['commit']}.")
+    return resultat
 
+
+def etape_5_annonce_web(resultat):
+    """Publie uniquement le niveau de sauvegarde réellement vérifié."""
+    sys.path.insert(0, str(RACINE / "moteur"))
+    from dire import publier
+    if resultat["publication_confirmee"]:
+        message = (f"📦 Sauvegarde publiée et vérifiée sur GitHub : branche {resultat['branche']}, "
+                   f"commit `{resultat['commit']}`. Le courrier privé et les secrets restent locaux.")
+    else:
+        message = (f"📦 Sauvegarde locale vérifiée : commit `{resultat['commit']}`. "
+                   "Publication GitHub non demandée ; aucune synchronisation distante confirmée.")
     publier(message, auteur="Agent Orchestrateur")
-    log("Annonce Web", "Message publié dans le flux de discussion de l'application.")
+    log("Annonce Web", "Message publié dans l'application.")
 
 
 def executer_sauvegarde_complete(message=None, sans_push=False):
@@ -230,10 +223,10 @@ def executer_sauvegarde_complete(message=None, sans_push=False):
         etape_1_controle_securite()
         etape_2_tests_integrite()
         etape_3_synchronisation_documentation()
-        commit_hash, a_committe = etape_4_git_commit_push(message_personnalise=message, sans_push=sans_push)
-        etape_5_annonce_web(commit_hash, nouveau_commit=a_committe)
+        resultat = etape_4_git_commit_push(message_personnalise=message, sans_push=sans_push)
+        etape_5_annonce_web(resultat)
         print("=" * 70)
-        print(f" SAUVEGARDE TERMINÉE AVEC SUCCÈS (Commit {commit_hash})")
+        print(f" SAUVEGARDE TERMINÉE AVEC SUCCÈS (Commit {resultat['commit']})")
         print("=" * 70)
         return True
     except Exception as exc:
@@ -242,9 +235,11 @@ def executer_sauvegarde_complete(message=None, sans_push=False):
         print("!" * 70)
         try:
             from dire import publier
-            publier(f"⚠️ Échec de la sauvegarde GitHub : {exc}", auteur="Agent Orchestrateur")
-        except Exception:
-            pass
+            publier(f"⚠️ Sauvegarde interrompue ({type(exc).__name__}). "
+                    "Consulter le compte rendu technique local avant de conclure sur sa publication.",
+                    auteur="Agent Orchestrateur")
+        except Exception as publication:
+            print(f"L'annonce d'échec n'a pas pu être publiée : {type(publication).__name__}", file=sys.stderr)
         return False
 
 

@@ -22,7 +22,7 @@ class CorrectionConversionTests(unittest.TestCase):
         self.racine = Path(self.temp.name)
         self.moteur = self.racine / "moteur"
         self.moteur.mkdir()
-        for nom in (OUTIL, "journal_agents.py"):
+        for nom in (OUTIL, "journal_agents.py", "verrou_donnees.py"):
             source = RACINE / "moteur" / nom
             if source.exists():
                 shutil.copy2(source, self.moteur / nom)
@@ -226,12 +226,17 @@ class CorrectionConversionTests(unittest.TestCase):
         cas = [("0000087950042", -4, 65, 8, -260, -32),
                ("0000087955044", -8, 5, 1, -40, -8),
                ("0000087955004", -5, 10, 1, -50, -5)]
+        # Ce scénario vérifie un relevé du soir : les ventes du 7 sont déjà
+        # comprises. La fixture générale reste à 16h58 pour les autres tests
+        # qui vérifient la conservation exacte de l'heure physique d'origine.
+        original_soir = {**self.original, "horodatage": "2026-09-07T17:00:00",
+                         "source": {**self.original["source"], "saisi_le": "2026-09-07T17:00:00"}}
         originaux = []
         for code, colis, ancien, nouveau, quantite, attendue in cas:
-            originaux.append({**self.original, "id": f"comptage:2026-09-07:{code}:saisie",
+            originaux.append({**original_soir, "id": f"comptage:2026-09-07:{code}:saisie",
                               "article": code, "article_source": code,
                               "quantite": quantite, "colis": colis, "conditionnement": ancien})
-        temoin = {**self.original, "id": "comptage:2026-09-07:0000000000001:saisie",
+        temoin = {**original_soir, "id": "comptage:2026-09-07:0000000000001:saisie",
                   "article": "0000000000001", "quantite": 17}
         mouvements = [{"id": f"vente:{code}:{jour}", "type": "vente", "article": code,
                        "date_source": jour, "date_effet": jour, "quantite": quantite}

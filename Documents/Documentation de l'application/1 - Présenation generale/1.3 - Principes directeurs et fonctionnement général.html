@@ -179,146 +179,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-01.3</div>
           <div class="meta-item"><strong>Version :</strong> 2.5 (Production)</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Adhérents, DSI</div>
         </div>
       </div>
 
       
-  <h2>1. Les 5 Principes Directeurs Inviolables du Système</h2>
-  <div class="grid-2">
-    <div class="card-panel">
-      <div class="card-panel-title">1. Primauté des faits &amp; Carnet immuable</div>
-      <p style="font-size: 13px; margin: 0;">
-        Le système distingue rigoureusement les données constatées (tickets caisse Mercalys, BL SCAFRUIT réels, pesées de comptage) des estimations. Les événements réels sont consignés dans un journal immuable (<code>faits/AAAA.jsonl</code>) en mode ajout exclusif (append-only). Aucun événement n'est écrasé.
-      </p>
-    </div>
-
-    <div class="card-panel">
-      <div class="card-panel-title">2. Zéro hallucination &amp; Non-extrapolation</div>
-      <p style="font-size: 13px; margin: 0;">
-        Si une information manque (nouvel article au cadencier sans historique, absence de colisage connu), le système s'interdit d'inventer une valeur médiane. Il applique la règle de prudence : proposition à 0 colis et génération d'une alerte visuelle requérant l'arbitrage de l'exploitant.
-      </p>
-    </div>
-
-    <div class="card-panel">
-      <div class="card-panel-title">3. Souveraineté de l'exploitant (Human-in-the-Loop)</div>
-      <p style="font-size: 13px; margin: 0;">
-        L'intelligence algorithmique agit en copilote et non en substitut. Le chef de rayon et l'adhérent conservent 100 % de la décision finale. Aucune commande ne peut être transmise à la centrale sans signature et validation humaine explicite.
-      </p>
-    </div>
-
-    <div class="card-panel">
-      <div class="card-panel-title">4. Primauté de l'horodatage et recalage dynamique</div>
-      <p style="font-size: 13px; margin: 0;">
-        Un stock physique relevé à 06h30 avant ouverture n'a pas la même signification qu'un inventaire de 18h30. Le moteur recalibre chaque mesure en déduisant les ventes intermédiaires estimées selon la courbe d'affluence horaire réelle constatée sur le point de vente.
-      </p>
-    </div>
-  </div>
-
-  <h2>2. Distinction Tripartite : Faits, Calculs et Hypothèses</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 18%;">Catégorie</th>
-        <th style="width: 42%;">Nature des données &amp; Exemples réels</th>
-        <th style="width: 40%;">Règle de gouvernance &amp; Auditabilité</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>1. FAITS</strong></td>
-        <td>
-          Données brutes, tangibles et horodatées :
-          <br>&bull; Tickets caisse consolidés par code ITM8.
-          <br>&bull; Bons de livraison SCAFRUIT émargés en réserve.
-          <br>&bull; Relevés de colis mesurés en chambre froide.
-        </td>
-        <td>
-          <span style="color: #15803d; font-weight:700;">Certitude 100% — Immuables</span>
-          <br>Ne peuvent faire l'objet d'aucune modification rétroactive. Toute correction passe par un nouveau fait horodaté justifié.
-        </td>
-      </tr>
-      <tr>
-        <td><strong>2. CALCULS</strong></td>
-        <td>
-          Transformations mathématiques déterministes :
-          <br>&bull; Stock projeté = Stock mesuré &plus; Livraisons attendues &minus; Ventes du jour.
-          <br>&bull; Besoin net = Demande couverte &plus; Sécurité &minus; Stock projeté.
-          <br>&bull; Arrondi supérieur au multiple de colisage (PCB).
-        </td>
-        <td>
-          <span style="font-weight:700;">Déterministe — 100% Reproductible</span>
-          <br>Pour un jeu d'entrées donné, le résultat est strictement constant et vérifiable par les équations documentées.
-        </td>
-      </tr>
-      <tr>
-        <td><strong>3. HYPOTHÈSES</strong></td>
-        <td>
-          Modélisations probabilistes et extrapolations :
-          <br>&bull; Multiplicateur d'impact thermique (&plus;30% si T&deg; &gt; 28&deg;C).
-          <br>&bull; Report de volume pour pont commercial ou jour férié.
-          <br>&bull; Ventes estimées perdues lors d'une rupture en rayon.
-        </td>
-        <td>
-          <span style="color: var(--brand-red); font-weight:700;">Probabiliste — Soumis à arbitrage</span>
-          <br>Chaque hypothèse affiche son score de confiance (Élevé / Moyen / Faible) et peut être surchargée par l'exploitant.
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>3. Le Cycle Quotidien de Préparation de Commande (06h00 – 09h30)</h2>
-  <div class="timeline-row">
-    <div class="timeline-time-badge">06h00 – 06h45</div>
-    <div class="timeline-detail">
-      <div class="timeline-step-title">1. Réception Navette SCAFRUIT &amp; Montage du Banc</div>
-      <p style="font-size: 13px; margin: 0;">Déchargement des palettes livrées par la navette du jour J. Contrôle qualitatif et quantitatif des colis. Pointage des bons de livraison (BL). Remplissage prioritaire des étals pour l'ouverture du point de vente à 08h30.</p>
-    </div>
-  </div>
-
-  <div class="timeline-row">
-    <div class="timeline-time-badge">06h45 – 07h15</div>
-    <div class="timeline-detail">
-      <div class="timeline-step-title">2. Comptage Mobile du Stock Résiduel (Réserve &amp; Chambre Froide)</div>
-      <p style="font-size: 13px; margin: 0;">L'opérateur relève les colis entiers non dépotés en réserve via l'interface mobile tactile responsive (serveur local port 8751) ou par transmission dictée/texte à la sentinelle de surveillance. L'opération prend moins de 10 minutes.</p>
-    </div>
-  </div>
-
-  <div class="timeline-row">
-    <div class="timeline-time-badge">07h15 – 07h30</div>
-    <div class="timeline-detail">
-      <div class="timeline-step-title">3. Synchronisation &amp; Intégration Automatisée des Flux</div>
-      <p style="font-size: 13px; margin: 0;">Le connecteur (<code>moteur/integrer-fichiers.py</code>) collecte le cadencier Webtelevente du jour, les sorties caisse Mercalys consolidées de la veille (J-1), la météo Open-Meteo et le calendrier scolaire de la zone magasin.</p>
-    </div>
-  </div>
-
-  <div class="timeline-row">
-    <div class="timeline-time-badge">07h30 – 08h15</div>
-    <div class="timeline-detail">
-      <div class="timeline-step-title">4. Exécution du Moteur de Calcul &amp; Génération de la Proposition</div>
-      <p style="font-size: 13px; margin: 0;">Le script central <code>moteur/calculer-commande.py</code> croise les ventes pondérées, le stock projeté et les délais de livraison. Il génère le panier optimisé en colis entiers (PCB) avec calcul du stock de sécurité et détection des alertes.</p>
-    </div>
-  </div>
-
-  <div class="timeline-row">
-    <div class="timeline-time-badge">08h15 – 09h00</div>
-    <div class="timeline-detail">
-      <div class="timeline-step-title">5. Revue Décisionnelle &amp; Arbitrage Métier par l'Exploitant</div>
-      <p style="font-size: 13px; margin: 0;">Le chef de rayon consulte la console de revue. Le moteur trie les lignes par criticité : (1) Risques de rupture, (2) Surstocks prévisibles, (3) Hausses mercuriale &gt; 15%. L'exploitant ajuste les colis si nécessaire d'un simple clic.</p>
-    </div>
-  </div>
-
-  <div class="timeline-row">
-    <div class="timeline-time-badge">09h00 – 09h30</div>
-    <div class="timeline-detail">
-      <div class="timeline-step-title">6. Export, Transmission Webtelevente &amp; Clôture (Cut-Off)</div>
-      <p style="font-size: 13px; margin: 0;">La commande validée est exportée ou saisie sur le portail Webtelevente SCAFRUIT avant l'heure limite de coupure (cut-off). La commande définitive et les écarts par rapport à la proposition sont archivés dans le carnet de faits.</p>
-    </div>
-  </div>
-
-
-      <div class="page-nav-bar">
+  <h2>Sources, calcul et arbitrage</h2>
+<p>Les faits attestés sont ajoutés aux carnets ; les corrections sont de nouveaux événements. Les sorties calculées peuvent être reconstruites. Les inconnues restent signalées et les décisions sensibles exigent les validations prévues par la consigne canonique. Le contrôle indépendant précède les imports autorisés.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../AGENTS.md">AGENTS.md</a></li><li><a href="../../../reference/contrat-echange.md">reference/contrat-echange.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./1.2 - Périmètre et limites du système.html" class="btn-action">&larr; 1.2 Périmètre et limites</a>
         </div>

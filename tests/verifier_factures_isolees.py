@@ -18,8 +18,11 @@ def garde(event, args):
         chemin, mode, flags = args
         if isinstance(chemin, (str, bytes, os.PathLike)):
             cible = Path(os.fsdecode(chemin))
-            if cible.name == ".env" or ("credentials" in cible.name.lower() and
-                                          cible.suffix.lower() not in (".py", ".pyc")):
+            # Une fixture peut créer un faux .env hors projet pour vérifier son
+            # exclusion des copies. Toute lecture (y compris r+/w+) reste refusée.
+            lecture = (flags & (os.O_WRONLY | os.O_RDWR)) != os.O_WRONLY
+            if lecture and (cible.name == ".env" or ("credentials" in cible.name.lower() and
+                                          cible.suffix.lower() not in (".py", ".pyc"))):
                 raise AssertionError("Lecture de secrets interdite pendant les tests")
         if ((mode and any(c in mode for c in "wax+")) or
                 flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC)):

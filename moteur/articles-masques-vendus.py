@@ -12,7 +12,6 @@ possible — pour que le responsable de rayon tranche article par article. Il ne
 
 LECTURE SEULE.
 """
-import json
 from ecriture_derivee import ecrire_json
 import sys
 import re

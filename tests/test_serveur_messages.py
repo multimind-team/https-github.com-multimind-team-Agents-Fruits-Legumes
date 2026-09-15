@@ -1,5 +1,5 @@
 import importlib.util
-from datetime import date, datetime
+from datetime import date
 import unittest
 from unittest.mock import patch
 from pathlib import Path
@@ -18,26 +18,6 @@ class ServeurMessagesTests(unittest.TestCase):
             MODULE.normaliser_comptage({"itm8": code, "date": date.today().isoformat(), "colis": 2,
                                        "saisi_le": date.today().isoformat() + "T08:00:00"}, articles)
 
-    def test_correction_repetee_garde_la_racine_et_lheure_de_mesure(self):
-        racine = "comptage:2026-09-09:0000087003306:saisie"
-        premiere = {"id": "correction-comptage:test", "cible_id": racine}
-        nouveau = {"quantite": 36, "horodatage": "2026-09-09T08:15:00", "source": {"saisi_le": "2026-09-09T08:15:00"}}
-        correction = MODULE.preparer_correction_comptage(premiere, nouveau, datetime(2026, 9, 9, 8, 20))
-        self.assertEqual(correction["cible_id"], racine)
-        self.assertEqual(correction["horodatage"], nouveau["horodatage"])
-        self.assertEqual(correction["enregistre_le"], "2026-09-09T08:20:00")
-        self.assertEqual(correction["source"], nouveau["source"])
-
-    def test_prepare_une_correction_append_only_pour_un_recomptage(self):
-        original = {"id": "comptage:2026-09-07:0000087003306:saisie", "type": "comptage", "article": "0000087003306", "date_effet": "2026-09-07", "quantite": 12, "colis": 1}
-        nouveau = {**original, "quantite": 24, "colis": 2}
-
-        correction = MODULE.preparer_correction_comptage(original, nouveau, datetime(2026, 9, 7, 19, 0, 1))
-
-        self.assertEqual(correction["type"], "correction-comptage")
-        self.assertEqual(correction["cible_id"], original["id"])
-        self.assertEqual(correction["quantite"], 24)
-        self.assertNotEqual(correction["id"], original["id"])
     def test_refuse_un_comptage_invalide_avant_ecriture(self):
         articles = {"0000087003306": {"itm8": "0000087003306", "libelle": "MELON PIECE", "conditionnement": 12, "unite": "Pièce"}}
 

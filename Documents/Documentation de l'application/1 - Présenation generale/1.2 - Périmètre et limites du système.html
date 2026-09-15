@@ -179,182 +179,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-01.2</div>
           <div class="meta-item"><strong>Version :</strong> 2.5 (Production)</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Adhérents, DSI</div>
         </div>
       </div>
 
       
-  <h2>1. Périmètre Fonctionnel et Flux de Données Inclus (In-Scope)</h2>
-  <p>
-    L'application se concentre exclusivement sur le pilotage du réapprovisionnement ultra-frais du rayon Fruits &amp; Légumes. Elle traite de bout en bout l'ensemble des flux d'information opérationnels indispensables :
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 22%;">Domaine de Données</th>
-        <th style="width: 48%;">Flux réels intégrés et format de traitement</th>
-        <th style="width: 30%;">Rôle &amp; Traitement dans le Moteur</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Sorties Caisse Magasin (Mercalys)</strong></td>
-        <td>
-          &bull; Tickets réels par code ITM8 consolidés chaque soir.<br>
-          &bull; Ventilation en poids (kg) ou unités (pièces).<br>
-          &bull; Horodatage des ventes pour étalonnage du profil horaire.
-        </td>
-        <td>Alimentation de l'historique immuable (<code>faits/AAAA.jsonl</code>) pour le calcul des VMP (Ventes Moyennes Pondérées).</td>
-      </tr>
-      <tr>
-        <td><strong>Entrées Logistiques (SCAFRUIT)</strong></td>
-        <td>
-          &bull; Bons de livraison (BL) réels émargés en magasin.<br>
-          &bull; Quantités livrées par référence et par jour.<br>
-          &bull; Enregistrement des livraisons directes producteurs locaux.
-        </td>
-        <td>Recalibration exacte du stock physique disponible et détection des écarts de livraison amont.</td>
-      </tr>
-      <tr>
-        <td><strong>Relevés Physiques Terrain</strong></td>
-        <td>
-          &bull; Comptage physique matinal (ou vespéral) des colis restants.<br>
-          &bull; Saisie via interface responsive mobile (PWA port 8751) ou transmission à la sentinelle de surveillance e-mail.
-        </td>
-        <td>Point d'ancrage réel évitant la dérive cumulative des stocks théoriques d'ERP.</td>
-      </tr>
-      <tr>
-        <td><strong>Cadencier d'Approvisionnement</strong></td>
-        <td>
-          &bull; Extraction quotidienne du portail Webtelevente SCAFRUIT.<br>
-          &bull; Statut d'ouverture à la commande, PCB (colisage), prix d'achat mercuriale et promotions catalogue nationales.
-        </td>
-        <td>Délimitation stricte du catalogue commandable le jour J (règle <code>RULE-CADENCIER-PRESENT</code>).</td>
-      </tr>
-      <tr>
-        <td><strong>Facteurs Exogènes Automatisés</strong></td>
-        <td>
-          &bull; Données météo locales réelles et prévisions à J+3 (Open-Meteo).<br>
-          &bull; Calendrier scolaire officiel des trois zones (A, B, C).<br>
-          &bull; Jours fériés, veilles de fériés et ponts commerciaux.
-        </td>
-        <td>Calcul automatique des coefficients multiplicateurs de la demande prévisionnelle.</td>
-      </tr>
-      <tr>
-        <td><strong>Paramétrage &amp; Arbitrage Local</strong></td>
-        <td>
-          &bull; Surcharges de colisage magasin (<code>parametres/surcharges_colisage.json</code>).<br>
-          &bull; Fusions de codes satellites / jumeaux.<br>
-          &bull; Masquage de références obsolètes ou non commercialisées.
-        </td>
-        <td>Personnalisation immédiate sans altération du code source de l'application.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>2. Fonctions Formellement Exclues du Système (Out-of-Scope)</h2>
-  <p>
-    Afin de préserver l'intégrité comptable du magasin, la conformité réglementaire et la stricte gouvernance des Mousquetaires, le système s'interdit formellement d'intervenir sur les domaines suivants :
-  </p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 25%;">Domaine Exclu</th>
-        <th style="width: 15%;">Statut</th>
-        <th style="width: 60%;">Justification Réglementaire &amp; Système Propriétaire Exclusif</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Négociation Fournisseur &amp; Choix des Producteurs</strong></td>
-        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
-        <td>Les accords-cadres, la sélection des filières et la fixation des prix de cession relèvent exclusivement de la direction des achats SCAFRUIT et de la centrale nationale du Groupement.</td>
-      </tr>
-      <tr>
-        <td><strong>Comptabilité Générale &amp; Rapprochement Factures</strong></td>
-        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
-        <td>La facturation, le lettrage comptable, la gestion des litiges transporteur et les déclarations de TVA sont du ressort exclusif du progiciel de gestion intégrée du point de vente (Mercalys Compta / SAP).</td>
-      </tr>
-      <tr>
-        <td><strong>Modification Automatique des Prix de Vente Caisse (PVC)</strong></td>
-        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
-        <td><strong>Garde-fou inviolable :</strong> Le système calcule l'impact marge d'une hausse mercuriale et émet une alerte visuelle, mais ne modifie <strong>jamais</strong> unilatéralement les prix en caisse. La politique tarifaire reste la prérogative souveraine de l'adhérent.</td>
-      </tr>
-      <tr>
-        <td><strong>Transmission et Validation Autonome de Commande</strong></td>
-        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
-        <td><strong>Principe de responsabilité :</strong> Aucune commande ne peut être transmise à la centrale sans approbation visuelle et validation active du chef de rayon ou de son second. Le système propose, l'humain décide.</td>
-      </tr>
-      <tr>
-        <td><strong>Gestion des Autres Rayons Magasin</strong></td>
-        <td><span style="color:var(--brand-red); font-weight:700;">EXCLU</span></td>
-        <td>Les modèles mathématiques (profils de rotation 48h, coefficients météo-fraîcheur) sont hyper-spécifiques aux fruits et légumes. Ils ne sont pas applicables à l'épicerie, au liquide ou au non-alimentaire.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>3. Matrice des Responsabilités Opérationnelles (RACI)</h2>
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 32%;">Activité / Décision Clé</th>
-        <th style="width: 17%;">Chef de Rayon</th>
-        <th style="width: 17%;">Système / Moteur</th>
-        <th style="width: 17%;">Adhérent / Dir.</th>
-        <th style="width: 17%;">Centrale SCAFRUIT</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Relevé matinal des stocks en réserve</td>
-        <td><strong>R</strong> (Réalise)</td>
-        <td><strong>I</strong> (Intègre)</td>
-        <td><strong>I</strong> (Informé)</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>Calcul des besoins bruts et prévisions</td>
-        <td><strong>A</strong> (Approuve)</td>
-        <td><strong>R</strong> (Réalise 100%)</td>
-        <td><strong>I</strong> (Informé)</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>Ajustement manuel des colis proposés</td>
-        <td><strong>R / A</strong> (Arbitre)</td>
-        <td><strong>C</strong> (Conseille)</td>
-        <td><strong>I</strong> (Informé)</td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>Validation finale et signature commande</td>
-        <td><strong>A</strong> (Autorité finale)</td>
-        <td>-</td>
-        <td><strong>I</strong> (Contrôle)</td>
-        <td><strong>R</strong> (Réceptionne)</td>
-      </tr>
-      <tr>
-        <td>Saisie / Transmission Webtelevente</td>
-        <td><strong>R</strong> (Exécute)</td>
-        <td><strong>C</strong> (Assiste / Export)</td>
-        <td>-</td>
-        <td><strong>A</strong> (Valide cut-off)</td>
-      </tr>
-      <tr>
-        <td>Ajustement des PVC suite à alerte marge</td>
-        <td><strong>R</strong> (Propose)</td>
-        <td><strong>C</strong> (Alerte écart)</td>
-        <td><strong>A</strong> (Autorise)</td>
-        <td>-</td>
-      </tr>
-    </tbody>
-  </table>
-
-
-      <div class="page-nav-bar">
+  <h2>Périmètre installé</h2>
+<p>Le périmètre comprend les imports magasin, le calcul, le comptage mobile, le chat, les promotions et le téléchargement des classeurs Pomona. Il ne comprend pas d’export EDI, d’envoi automatique de commande ni de service IA intégré au serveur. La surveillance nécessite un agent externe disponible pour traiter les événements.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../README.md">README.md</a></li><li><a href="../../../moteur/serveur.py">moteur/serveur.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./1.1 - Objectif de l'application.html" class="btn-action">&larr; 1.1 Objectif de l'application</a>
         </div>

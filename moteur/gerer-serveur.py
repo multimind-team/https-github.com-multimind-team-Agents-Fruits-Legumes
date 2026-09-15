@@ -316,11 +316,14 @@ def main(argv=None):
     parser.add_argument("--redemarrer", action="store_true", help="Maintenance : arrêt ciblé puis nouvelle version serveur et surveillance.")
     parser.add_argument("--port", type=int, default=8751)
     parser.add_argument("--silencieux", action="store_true", help="Option des lanceurs BAT : ne pas attendre une touche.")
+    parser.add_argument("--automatique", action="store_true", help="Démarrage Windows : respecter l'arrêt de maintenance.")
     args = parser.parse_args(argv)
     if not 1 <= args.port <= 65535:
         parser.error("Le port doit être compris entre 1 et 65535.")
     if args.redemarrer and args.action != "demarrer":
         parser.error("--redemarrer s'utilise seulement avec demarrer.")
+    if args.automatique and (args.action != "demarrer" or args.redemarrer):
+        parser.error("--automatique s'utilise avec demarrer sans --redemarrer.")
     service = GestionServeur(RACINE, args.port)
     journal = None
     logger = logging.getLogger("preparation.gestion")
@@ -347,7 +350,11 @@ def main(argv=None):
             print("Reprise explicite : demarrer-serveur.bat")
             logger.info(message)
             return 0
-        etat = service.demarrer(redemarrer=args.redemarrer)
+        etat = service.demarrer(redemarrer=args.redemarrer, automatique=args.automatique)
+        if etat == "maintenance":
+            logger.info("Démarrage automatique ignoré : maintenance demandée.")
+            print("Maintenance conservée ; reprise explicite avec demarrer-serveur.bat.")
+            return 0
         service.assurer_surveillance()
         message = "Serveur déjà sain, conservé." if etat == "actif" else "Serveur démarré ; identité et réponse HTTP vérifiées."
         print(message)

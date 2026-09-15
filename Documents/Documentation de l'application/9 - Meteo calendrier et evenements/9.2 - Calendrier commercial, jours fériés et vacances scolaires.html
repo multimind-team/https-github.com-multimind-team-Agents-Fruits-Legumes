@@ -178,29 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-09.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Calendrier & Facteurs Vacances Zone C</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Direction Magasin</div>
         </div>
       </div>
 
 
-      <h2>1. Prise en Compte du Calendrier Scolaire et des Jours Fériés</h2>
-      <p>
-        Le moteur traite de manière dissociée le jour de passation de commande et le jour de livraison effective pour éviter tout écrasement erroné.
-      </p>
-
-      <h2>2. Les Jours Fériés et Fermetures Magasin</h2>
-      <p>
-        Le module <code>ouverture-jours-feries.py</code> distingue les fermetures fixes (1er janvier, 1er mai, 25 décembre) et les jours fériés variables confirmés fermés par le responsable de rayon. Le moteur saute automatiquement ces dates dans le calcul de l'horizon de livraison.
-      </p>
-
-      <h2>3. Facteurs de Vacances Scolaires (Zone C)</h2>
-      <p>
-        Mesurés par <code>calibrer-vacances.py</code> : Noël (<code>1.162</code>), Toussaint (<code>1.045</code>), Été (<code>1.027</code>), Hiver (<code>1.002</code>), Printemps (<code>0.984</code>), Ascension (<code>0.901</code>).
-      </p>
-
-
-      <div class="page-nav-bar">
+      <h2>Dates commerciales</h2>
+<p>Le calendrier apporte jours fériés et vacances ; les ouvertures confirmées apportent le contexte magasin. La date de commande reste distincte de la date des statistiques et de celle des mouvements. Un comptage récent ne rajeunit pas les ventes. Les décalages de commande/livraison sont ceux de proposer-commande.py et non une règle déduite de l’horloge seule.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/calendrier.py">moteur/calendrier.py</a></li><li><a href="../../../moteur/proposer-commande.py">moteur/proposer-commande.py</a></li><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./9.1 - Facteurs météo et corrélations locales.html" class="btn-action">&larr; 9.1 Facteurs météo</a>
         </div>

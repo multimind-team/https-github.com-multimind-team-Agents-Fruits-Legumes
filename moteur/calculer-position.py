@@ -38,6 +38,7 @@ C'est pour ça qu'on regarde l'HEURE du comptage, et pas seulement sa date.
 """
 import json
 from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees
 import sys
 from collections import defaultdict
 from datetime import date, timedelta
@@ -129,8 +130,8 @@ def moment_du_comptage(fait, heures_mail=None):
     except (ValueError, IndexError):
         return "soir"
 
-    # Comptage de fin de journée / soir (dès 16h50 / 17h00) : toute la journée écoulée est dedans
-    if heure_str >= "16:50:00":
+    # La règle canonique fixe le début du soir à 17h00, sans avance implicite.
+    if heure_str >= HEURE_DEBUT_SOIR:
         return "soir"
 
     jour = fait.get("date_effet") or fait.get("date_source")
@@ -170,13 +171,27 @@ def a_appliquer(jour, type_fait, depart):
 def calculer(jusqua=None):
     heures_mail = charger_heures_reception_mail()
     config = regles.charger()
+    return calculer_depuis_faits(lire_faits(), config, heures_mail, jusqua)
+
+
+def heure_physique(fait):
+    """Heure de mesure, y compris si le téléphone l'a envoyée plus tard."""
+    horodatage = ((fait.get("source") or {}).get("saisi_le")
+                  or fait.get("horodatage")
+                  or (fait.get("source") or {}).get("horodatage")
+                  or fait.get("enregistre_le"))
+    return str(horodatage).split("T", 1)[-1][:8] if horodatage and "T" in str(horodatage) else "23:59:59"
+
+
+def calculer_depuis_faits(tous_faits, config, heures_mail, jusqua=None, details=False):
+    """Calcul pur partagé avec l'audit, sans lecture ni écriture implicite."""
     vers_principal = {m: p for p, membres in config.get("groupes", {}).items() for m in membres}
     derniere_position = {}
     comptages = {}
     mouvements = defaultdict(list)
     libelles = {}
 
-    for fait in lire_faits():
+    for fait in tous_faits:
         jour = fait.get("date_effet") or fait.get("date_source")
         if not jour or (jusqua and jour > jusqua):
             continue
@@ -184,12 +199,12 @@ def calculer(jusqua=None):
         if fait.get("libelle"):
             libelles.setdefault(article, fait["libelle"])
         if fait["type"] == "comptage":
-            horodatage = fait.get("horodatage") or (fait.get("source") or {}).get("horodatage")
-            heure = str(horodatage).split("T", 1)[-1][:8] if horodatage and "T" in str(horodatage) else "23:59:59"
+            heure = heure_physique(fait)
             position = {
                 "date": jour, "valeur": fait["quantite"],
                 "origine": fait.get("origine_mesure", "?"),
                 "moment": moment_du_comptage(fait, heures_mail), "heure": heure,
+                "id": fait.get("id"),
             }
             comptages[fait.get("id")] = (article, position)
             precedente = derniere_position.get(article)
@@ -205,13 +220,16 @@ def calculer(jusqua=None):
                     "valeur": fait["quantite"],
                     "origine": fait.get("origine_mesure", "correction-comptage"),
                 })
-        else:
-            mouvements[article].append((jour, fait["type"], fait["quantite"]))
+        elif fait["type"] in AJOUTE | RETIRE:
+            mouvements[article].append((jour, fait["type"], fait["quantite"], fait))
             if fait["type"] == "vente":
                 equivalent_kg = CONVERSION_JUS_VERS_ORANGE_KG.get(article)
                 if equivalent_kg:
                     mouvements[ORANGE_MACHINE_A_JUS].append(
-                        (jour, "vente", fait["quantite"] * equivalent_kg))
+                        (jour, "vente", fait["quantite"] * equivalent_kg,
+                         {**fait, "article": ORANGE_MACHINE_A_JUS,
+                          "quantite": fait["quantite"] * equivalent_kg,
+                          "article_source": article}))
 
     etat = {}
     for article in set(list(mouvements) + list(derniere_position)):
@@ -223,17 +241,59 @@ def calculer(jusqua=None):
             continue
         total = depart["valeur"]
         depuis = 0
-        for jour, type_fait, quantite in mouvements[article]:
+        appliques = []
+        for jour, type_fait, quantite, fait_source in mouvements[article]:
             if not a_appliquer(jour, type_fait, depart):
                 continue
             depuis += 1
+            appliques.append(fait_source)
             total += quantite if type_fait in AJOUTE else -quantite
         etat[article] = {"position": round(total, 3), "mesuree_le": depart["date"],
                          "moment_mesure": depart["moment"],
                          "origine_mesure": depart["origine"],
                          "mouvements_depuis": depuis,
                          "libelle": libelles.get(article, "")}
+        if details:
+            etat[article]["depart"] = dict(depart)
+            etat[article]["mouvements_appliques"] = appliques
     return etat
+
+
+def position_avant_comptage(comptage, tous_faits, config, heures_mail):
+    """Position au moment physique du relevé, avant de prendre ce relevé pour base.
+
+    Une correction garde l'instant du comptage qu'elle corrige. Les mouvements
+    journaliers ultérieurs au relevé (notamment les ventes après un comptage
+    matinal) sont exclus avec la même règle que le calcul de position.
+    """
+    tous_faits = list(tous_faits)
+    cible = comptage
+    if comptage.get("type") == "correction-comptage":
+        cible = next((f for f in tous_faits if f.get("id") == comptage.get("cible_id")
+                      and f.get("type") == "comptage"), None)
+        if cible is None:
+            return {"position": None, "raison": "comptage original de la correction introuvable"}
+    jour_cible = cible.get("date_effet") or cible.get("date_source")
+    borne = {"date": jour_cible, "moment": moment_du_comptage(cible, heures_mail)}
+    ordre_cible = (jour_cible, heure_physique(cible))
+    ids_anterieurs = {f.get("id") for f in tous_faits if f.get("type") == "comptage"
+                     and (f.get("date_effet") or f.get("date_source") or "", heure_physique(f)) < ordre_cible}
+    selection = []
+    for fait in tous_faits:
+        type_fait = fait.get("type")
+        jour = fait.get("date_effet") or fait.get("date_source") or ""
+        if type_fait == "comptage":
+            garder = fait.get("id") in ids_anterieurs
+        elif type_fait == "correction-comptage":
+            garder = fait.get("cible_id") in ids_anterieurs
+        else:
+            garder = type_fait in AJOUTE | RETIRE and not a_appliquer(jour, type_fait, borne)
+        if garder:
+            selection.append(fait)
+    groupes = {m: p for p, membres in config.get("groupes", {}).items() for m in membres}
+    article = groupes.get(cible["article"], cible["article"])
+    return calculer_depuis_faits(selection, config, heures_mail, details=True).get(
+        article, {"position": None, "raison": "aucune position antérieure mesurée"})
 
 
 def derniere_date_connue():
@@ -248,6 +308,7 @@ def derniere_date_connue():
     return derniere or None
 
 
+@operation_donnees(lambda: RACINE / "donnees")
 def main():
     date_reference = agregats.charger()["date_reference"]
     conditionnements = lire_conditionnements()

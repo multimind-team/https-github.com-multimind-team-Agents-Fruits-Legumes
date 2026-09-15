@@ -34,8 +34,7 @@ py -3.14 moteur/filet-de-securite.py --forcer
    - les lignes bloquees ou masquees.
    - fruits non bio, légumes non bio, bio, puis l'ordre Webtelevente dans chaque groupe, sans nouveau sous-groupe ;
    - la fraîcheur par article et les alertes ; une position perdue commence à -10 colis inclus.
-5. Lis aussi `donnees/fraicheur.json`, y compris les calculs en échec. Un code 0 ou la bonne date
-   ne prouve pas à lui seul que toutes les étapes ont réussi.
+5. Lis aussi `donnees/fraicheur.json`, y compris les calculs en échec et sa référence `proposition_generee_le`, puis `donnees/recalcul.json`. La référence doit correspondre à la proposition examinée et le recalcul être terminé. Une modification récente du fichier ou un code 0 ne prouve ni la couverture métier ni la réussite de toutes les étapes.
 6. Signale au responsable ce qui peut changer sa décision ; publie les anomalies dans le chat.
 
 Consulter aussi les avis et anomalies du circuit `procedures/controle-stock.md`. Une fraîcheur
@@ -43,8 +42,9 @@ Consulter aussi les avis et anomalies du circuit `procedures/controle-stock.md`.
 leurs colisages sont justes. Un lot de mouvements non contrôlé indépendamment reste non certifié ;
 conserver visibles les limites utiles sans invalider un nouveau comptage physique confirmé.
 
-`--verifier` est consultatif ; `--forcer` régénère des sorties et écrit des journaux. Ne pas lancer
-un recalcul destructif pour un simple audit de lecture. En cas d'échec, vérifier qu'une proposition
+`--verifier` ne recalcule pas de données métier, mais acquiert le verrou et son bail techniques.
+Pour une lecture sans aucune écriture, lire les JSON existants ou utiliser une copie isolée.
+`--forcer` régénère des sorties et écrit des journaux ; ne pas le lancer pour un simple audit de lecture. En cas d'échec, vérifier qu'une proposition
 précédente est réellement lisible avant d'affirmer qu'elle est conservée.
 
 ## Regle centrale

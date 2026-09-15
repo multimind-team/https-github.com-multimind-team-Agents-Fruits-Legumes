@@ -3,6 +3,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 MOTEUR = Path(__file__).resolve().parents[1] / "moteur"
 sys.path.insert(0, str(MOTEUR))
@@ -12,6 +13,12 @@ SPEC.loader.exec_module(MODULE)
 
 
 class DernierCadencierTests(unittest.TestCase):
+    def test_rapprochement_refuse_des_regles_illisibles(self):
+        with patch.object(MODULE.catalogue, "noms", return_value={}), \
+             patch("regles.charger", side_effect=ValueError("Carnet illisible")), \
+             self.assertRaisesRegex(ValueError, "Carnet illisible"):
+            MODULE.rapprocher([])
+
     def test_trouve_un_cadencier_webtelevente_avec_espaces_dans_le_nom(self):
         with tempfile.TemporaryDirectory() as tmp:
             dossier = Path(tmp)

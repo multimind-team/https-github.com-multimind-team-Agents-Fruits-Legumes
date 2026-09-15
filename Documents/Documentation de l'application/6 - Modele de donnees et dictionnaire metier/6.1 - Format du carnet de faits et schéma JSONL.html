@@ -178,59 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-06.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Modèle de Données & Persistance JSONL</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Administrateurs, Analystes Données</div>
         </div>
       </div>
 
 
-      <h2>1. Philosophie du Carnet de Faits Immuable (JSONL)</h2>
-      <p>
-        Le socle de données du système repose sur le format <strong>JSON Lines (JSONL)</strong> stocké par millésime dans <code>donnees/faits/AAAA.jsonl</code> (ex. <code>2026.jsonl</code>, plus de 15 Mo de faits certifiés). Chaque ligne du fichier est un objet JSON autonome et autosuffisant, représentant un événement physique réel survenu en magasin.
-      </p>
-
-      <div class="callout-box">
-        <div class="callout-title">RÈGLE CONSTITUTIONNELLE D'APPEND-ONLY (AJOUT STRICT)</div>
-        <p style="margin:0;">
-          Le carnet de faits est <strong>strictement en mode ajout (append-only)</strong>. Il est formellement interdit de réécrire, tronquer ou supprimer une ligne existante. Toute rectification s'opère par l'adjonction d'un nouveau fait horodaté de contre-passation.
-        </p>
-      </div>
-
-      <h2>2. Schéma Réel d'un Fait (Extrait de <code>donnees/faits/2026.jsonl</code>)</h2>
-      <p>Voici la structure exacte et complète d'un fait réel du carnet :</p>
-      <pre><code>{
-  "id": "vente:2026-01-02:0000000000048:0",
-  "type": "vente",
-  "date_source": "2026-01-02",
-  "date_effet": "2026-01-02",
-  "article": "0000000000048",
-  "article_source": "0000000000048",
-  "quantite": 4.0,
-  "unite": "inconnue",
-  "libelle": "FRUITS FRAIS",
-  "source": {
-    "origine": "historique.json",
-    "flux": "vente",
-    "jour": "2026-01-02",
-    "ligne": 0
-  }
-}</code></pre>
-
-      <h2>3. Le Carnet de Décisions (<code>donnees/decisions.jsonl</code>)</h2>
-      <p>
-        Parallèlement aux faits physiques, les arbitrages de gestion sont stockés dans <code>donnees/decisions.jsonl</code> :
-      </p>
-      <pre><code>{
-  "id": "fusion:0000087003306:fondation",
-  "type": "fusion",
-  "principal": "0000087003306",
-  "membres": ["0000087003034"],
-  "valide_a_partir_de": "2024-01-01",
-  "motif": "Codes differents pour un meme produit"
-}</code></pre>
-
-
-      <div class="page-nav-bar">
+      <h2>Carnets ajoutés ligne par ligne</h2>
+<p>Les faits sont rangés dans donnees/faits/AAAA.jsonl, une information JSON par ligne. L’identifiant sert à reconnaître un événement déjà reçu ; les importeurs vérifient également les équivalences de contenu et les versions contradictoires. Les carnets existants ne sont jamais réécrits pour les nettoyer. Une fin de fichier incomplète provoque un refus d’ajout.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../reference/contrat-echange.md">reference/contrat-echange.md</a></li><li><a href="../../../moteur/faits.py">moteur/faits.py</a></li><li><a href="../../../moteur/verrou_donnees.py">moteur/verrou_donnees.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../5 - Sources de donnees/5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions).html" class="btn-action">&larr; 5.2 Sources externes</a>
         </div>

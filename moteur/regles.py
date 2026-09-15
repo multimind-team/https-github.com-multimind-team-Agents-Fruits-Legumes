@@ -28,10 +28,12 @@ Usage :
     regles.expliquer("0000087010624", "conditionnement")
     -> la décision qui a produit cette valeur, avec son motif et son auteur.
 """
-import json
 import sys
 from pathlib import Path
 from datetime import date
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import journal_agents
 
 RACINE = Path(__file__).resolve().parent.parent
 DONNEES = RACINE / "donnees"
@@ -47,22 +49,6 @@ CHAMPS = {
     "demasquage": "masque",
     "promotion": "promotion",
 }
-
-
-def _lignes(fichier):
-    if not fichier.exists():
-        return []
-    lues = []
-    with open(fichier, encoding="utf-8") as f:
-        for ligne in f:
-            ligne = ligne.strip()
-            if not ligne:
-                continue
-            try:
-                lues.append(json.loads(ligne))
-            except json.JSONDecodeError:
-                continue
-    return lues
 
 
 def _date_calcul(valeur=None):
@@ -83,27 +69,22 @@ def _effective(decision, jour):
     return debut is None or _date_calcul(debut) <= jour
 
 
-def _annulations(jour):
+def _annulations(jour, toutes):
     """Deux façons d'annuler, on tient compte des deux : une ligne « annulation »
     dans le carnet, ou une action annulée dans le journal des agents."""
-    annules = {d["annule"] for d in _lignes(CARNET)
+    annules = {d["annule"] for d in toutes
                if d.get("type") == "annulation" and d.get("annule") and _effective(d, jour)}
-    try:
-        sys.path.insert(0, str(Path(__file__).resolve().parent))
-        import journal_agents
-        actions = journal_agents.actions_annulees(date_calcul=jour)
-    except Exception:
-        actions = set()
+    actions = journal_agents.actions_annulees(date_calcul=jour)
     return annules, actions
 
 
 def decisions(avec_annulees=False, date_calcul=None):
     """Toutes les décisions, de la plus ancienne à la plus récente."""
-    toutes = _lignes(CARNET)
+    toutes = journal_agents.lire_fichier(CARNET)
     if avec_annulees:
         return toutes
     jour = _date_calcul(date_calcul)
-    annules, actions = _annulations(jour)
+    annules, actions = _annulations(jour, toutes)
     return [d for d in toutes
             if _effective(d, jour) and d.get("type") != "annulation"
             and d.get("id") not in annules

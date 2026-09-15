@@ -3,7 +3,7 @@
 ## Portée et règle de décision
 
 Appliquer à chaque mail contenant des mouvements, à chaque reprise d'un ancien fichier, à un
-nouveau comptage et avant de déclarer une proposition fiable. Lire `AGENT.md`,
+nouveau comptage et avant de déclarer une proposition fiable. Lire `AGENTS.md`,
 `procedures/courrier.md` et `donnees/pouvoirs.json`. Cette procédure impose une revue par agents ;
 les scripts ne sont que des outils de lecture, de calcul et d'écriture. Un code retour 0,
 une simulation ou un bandeau absent ne constitue pas l'avis d'un agent contrôle.
@@ -65,8 +65,8 @@ couvert par chaque avis. Un champ `auteur` ou un booléen écrit dans un JSON ne
 second agent a été exécuté. Un rapport devenu périmé ne valide pas un nouveau lot ou une source modifiée.
 
 Séparer l'avis de contrôle de l'état d'exécution. Avis possibles :
-- **SÛR POUR LE PÉRIMÈTRE** : toutes les preuves utiles et autorisations existent ; indiquer les limites.
-- **BLOQUÉ** : source fausse/ambiguë, outil inadapté, autorisation absente ou contrôle incomplet.
+- **SÛR POUR LE PÉRIMÈTRE** : preuves techniques et métier cohérentes pour le périmètre identifié ; indiquer les limites et l'autorisation existante ou encore requise. Cet avis seul n'autorise pas l'écriture.
+- **BLOQUÉ** : source fausse/ambiguë, outil inadapté ou contrôle incomplet. Indiquer séparément l'autorisation : acquise, requise ou refusée. Même avec un avis technique sûr, une autorisation requise mais absente laisse l'exécution bloquée.
 
 États d'exécution distincts : **NON INTÉGRÉ**, **INCOMPLET / ÉCRITURE À ÉTABLIR**,
 **PARTIELLEMENT INTÉGRÉ ET VÉRIFIÉ** (sous-ensemble sûr identifié, reste bloqué),
@@ -83,19 +83,16 @@ Pour les recherches de pièces, inspecter directement les dossiers d'archives et
 
 Vigilances confirmées dans le moteur courant, à contrôler explicitement plutôt qu'à déléguer
 au seul statut du programme :
-- Un export retrié/découpé peut changer ses identifiants techniques de lignes. Comparer les faits
-  métier même si le simulateur annonce « nouveaux » ; ne pas redoubler un mouvement préexistant.
+- Les identifiants `import-v2` sont indépendants du rang et du nom du fichier ; les anciens IDs restent reconnus. Comparer néanmoins les faits métier et la multiplicité des lignes d'un renvoi : une différence n'autorise pas un second mouvement.
 - Le calcul de position additionne des quantités déjà normalisées : il ne vérifie pas leur
   compatibilité physique. Une UF facture en kg ne devient pas une pièce parce que le catalogue
   dit « pièce ». Vérifier le contenu effectivement préparé par l'importeur, pas seulement le JSON d'entrée.
 - Une journée contenant une seule vente peut être considérée présente : prouver l'exhaustivité
   de l'export avant de certifier la couverture des autres articles. Contrôler aussi les lignes
   ignorées sans alerte, y compris un code malformé pris pour une ligne de total.
-- Certains chemins d'import n'ont pas de verrou commun et attendent un saut de ligne en fin de
-  carnet. Vérifier intégrité JSONL et séparateur final avant append, et l'absence d'autre écrivain ;
-  si ces préconditions ne tiennent pas, bloquer, sans réparer ou réécrire l'historique au passage.
+- Les écrivains corrigés utilisent le verrou commun `donnees/.operations.lock` et refusent un carnet sans saut de ligne final. Vérifier l'intégrité JSONL et les chemins réellement lancés ; ce verrou ne rend pas tout le lot transactionnel. Une écriture manuelle ou un outil extérieur peut ne pas le respecter.
 - Aucun type général de correction de livraison/vente n'est à improviser : un nom de fait inconnu
-  peut être traité comme une sortie par un lecteur existant. Une rectification non supportée exige
+  n'a aucun effet métier garanti. Une rectification non supportée exige
   une correction technique dédiée, testée, et son autorisation métier ; pas de quantité négative de fortune.
 - La date de réception déduite par l'importeur de la date de commande est une convention :
   un retard, une fermeture ou une livraison décalée exige une preuve indépendante de la date réelle.
@@ -158,7 +155,7 @@ Un ancien envoi hors ligne ne doit pas supplanter un relevé plus récent. Conse
 locaux refusés sans les redater ni leur appliquer automatiquement un nouveau colisage.
 
 Limite technique à ne pas dissimuler : `moteur/calculer-position.py` utilise actuellement une
-bascule à 14 h et suppose « soir » sans heure ; les mouvements sont appliqués à la journée, pas
+phase « soir » à partir de 17h et suppose « soir » sans heure ; les mouvements sont appliqués à la journée, pas
 à leur heure fine. Ce n'est PAS une preuve que le magasin était fermé. L'agent doit vérifier
 la phase réelle et refuser de certifier les cas que cette règle ne représente pas. Un nouveau
 comptage confirmé peut résoudre la base actuelle sans autoriser la réécriture d'un ancien relevé.
@@ -213,6 +210,7 @@ métier ou une pièce déjà intégrée ne doit pas clore une autre anomalie enc
 
 Ces fichiers définissent ce que les agents doivent exécuter ; ils n'installent pas une surveillance,
 ne démarrent pas une délégation et ne bloquent pas techniquement un CLI lancé hors procédure.
-La surveillance reste native Gateway. Vérifier séparément que le contexte Email courant charge
-ces consignes et qu'une vraie délégation a lieu ; un redémarrage seul ne prouve pas leur adoption.
+La sentinelle détecte et conserve les événements, mais un superviseur externe doit transmettre
+sa sortie à l'agent. Vérifier séparément que le contexte courant charge ces consignes et qu'une
+vraie délégation a lieu ; un redémarrage seul ne prouve pas leur adoption.
 Ne pas annoncer une garantie sur les prochains mails sans preuve du chemin réel de traitement.

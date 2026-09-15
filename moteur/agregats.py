@@ -25,6 +25,7 @@ Usage :
 import importlib.util
 import json
 from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees
 import sys
 from datetime import date, datetime
 from pathlib import Path
@@ -168,6 +169,7 @@ def construire(jusqua=None):
     }
 
 
+@operation_donnees(lambda: FICHIER.parent)
 def ecrire(jusqua=None):
     contenu = construire(jusqua)
     ecrire_json(FICHIER, contenu, indent=None)

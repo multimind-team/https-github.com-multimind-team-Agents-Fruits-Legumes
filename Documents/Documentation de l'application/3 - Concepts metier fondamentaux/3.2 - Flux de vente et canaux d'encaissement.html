@@ -178,80 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-03.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Sorties de Caisse & Canaux de Vente</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Équipes Caisse, Direction</div>
         </div>
       </div>
 
 
-      <h2>1. Les Canaux de Sortie et d'Encaissement</h2>
-      <p>
-        La mesure précise de la demande client repose sur la captation intégrale des flux d'encaissement en point de vente. Dans un magasin Intermarché / Netto, ces flux transitent par les lignes de caisses traditionnelles, les caisses libre-service (SCO) et le terminal de préparation des commandes e-commerce (Drive / E-commerce alimentaire).
-      </p>
-
-      <h2>2. Typologie des Sorties de Stock en Point de Vente</h2>
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 22%;">Nature de Sortie</th>
-            <th style="width: 23%;">Source Système</th>
-            <th style="width: 55%;">Traitement &amp; Rôle dans le Moteur Prévisionnel</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Vente Caisse Magasin</strong></td>
-            <td>Tickets Mercalys (PosClient)</td>
-            <td>Flux majeur. Vente effective scannée ou pesée en caisse. Consolidée quotidiennement par référence. Type de fait : <code>vente</code>.</td>
-          </tr>
-          <tr>
-            <td><strong>Vente Préparée Drive</strong></td>
-            <td>Module Drive / Picking</td>
-            <td>Sortie de stock physique le matin pour les commandes clients remises en journée. Consolidée dans le flux de vente global.</td>
-          </tr>
-          <tr>
-            <td><strong>Démarque Connue (Casse)</strong></td>
-            <td>Saisie PDA Mercalys Démarque</td>
-            <td>Produits avariés ou invendables retirés du rayon et scannés. Type de fait : <code>casse</code>. <em>Comptabilisée dans les pertes pour réajuster le stock physique, mais exclue de la demande saine à réapprovisionner systématiquement.</em></td>
-          </tr>
-          <tr>
-            <td><strong>Dons aux Associations</strong></td>
-            <td>Bordereau de Don / Mercalys</td>
-            <td>Retrait d'articles sains remis à des associations caritatives (Restos du Cœur). Type de fait : <code>don</code>. Traité comptablement à parité avec la casse dans le calcul du taux de perte.</td>
-          </tr>
-          <tr>
-            <td><strong>Démarque Inconnue (Vol / Écarts)</strong></td>
-            <td>Inventaire / Audit Chambre</td>
-            <td>Différence constatée entre le stock théorique et le comptage physique. Élucidée automatiquement par l'Agent Audit Stock.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>3. Le Calcul du Taux de Perte Réel</h2>
-      <p>
-        Dans le moteur arithmétique (<code>moteur/calculer-commande.py</code>), les pertes réelles sont calculées par la formule :
-      </p>
-      <div class="callout-box">
-        <div class="callout-title">FORMULE DE PERTE DÉTERMINISTE</div>
-        <p style="margin:0; font-size:14.5px; font-weight:700;">
-          Taux_Perte = (Casse + Dons) / (Ventes + Casse + Dons)
-        </p>
-        <p style="margin:6px 0 0 0; font-size:12.5px; color:#575756;">
-          Si un article n'a aucun historique de pertes documenté, le système applique la constante de prudence <code>TAUX_PERTE_DEFAUT = 0.05</code> (5%).
-        </p>
-      </div>
-
-      <h2>4. Garde-fous contre les Biais d'Encaissement</h2>
-      <p>
-        L'analyse brute des sorties caisse présente des pièges classiques en grande distribution que le moteur neutralise automatiquement :
-      </p>
-      <ul>
-        <li><strong>Erreurs de pesée / Fraude caisse :</strong> Détection des ventes atypiques qui traduisent une commande exceptionnelle pour une collectivité ou une inversion de code touche en caisse.</li>
-        <li><strong>Rupture intrajournalière :</strong> Si un produit cesse d'être vendu en milieu de journée alors que le magasin enregistre une forte affluence, le système ne conclut pas à une chute de la demande mais à une <em>rupture de rayon</em>.</li>
-      </ul>
-
-
-      <div class="page-nav-bar">
+      <h2>Ventes et date d’effet</h2>
+<p>Les exports matinaux de ventes, casse et dons concernent J−1 ; les livraisons concernent J. Le moteur travaille sur les données réellement présentes, pas sur des tickets horaires inventés. Les codes source restent conservés lors d’un rapprochement. Les ventes de jus peuvent produire une consommation équivalente d’oranges selon les ratios explicitement codés.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/integrer-fichiers.py">moteur/integrer-fichiers.py</a></li><li><a href="../../../moteur/calculer-commande.py">moteur/calculer-commande.py</a></li><li><a href="../../../procedures/controle-stock.md">procedures/controle-stock.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./3.1 - Typologie des produits et référentiel article.html" class="btn-action">&larr; 3.1 Typologie produits</a>
         </div>

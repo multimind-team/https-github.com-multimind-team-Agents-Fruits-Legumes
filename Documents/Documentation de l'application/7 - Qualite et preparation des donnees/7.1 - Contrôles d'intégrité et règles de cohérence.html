@@ -178,61 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-07.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Qualité Données & Garde-Fous Pré-Calcul</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Agent Contrôle, Responsables Qualité</div>
         </div>
       </div>
 
 
-      <h2>1. Les Contrôles d'Intégrité Pré-Calcul</h2>
-      <p>
-        Avant d'injecter une donnée dans le moteur algorithmique, le système opère une batterie de tests d'intégrité déterministes :
-      </p>
-
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Contrôle</th>
-            <th style="width: 25%;">Critère de Validation</th>
-            <th style="width: 50%;">Action de Garde-Fou en Cas d'Anomalie</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Unicité &amp; Idempotence</strong></td>
-            <td>Clé unique de fait (<code>id</code>)</td>
-            <td>Rejet silencieux du doublon. Empêche d'intégrer deux fois le même fichier de vente ou BL.</td>
-          </tr>
-          <tr>
-            <td><strong>Chronologie Temporelle</strong></td>
-            <td>Date source &le; Date courante</td>
-            <td>Rejet de tout fait futur impossible.</td>
-          </tr>
-          <tr>
-            <td><strong>Validité de PCB</strong></td>
-            <td><code>_positif_fini(valeur)</code></td>
-            <td>Un booléen, NaN, infini ou valeur &le; 0 est immédiatement rejeté (<code>conditionnements.py</code>).</td>
-          </tr>
-          <tr>
-            <td><strong>Minimum de Données Saisonnières</strong></td>
-            <td><code>somme_jours &ge; 5</code></td>
-            <td>Si moins de 5 jours observés sur la période de ± 21 jours, prévision forcée à 0.0 (zéro extrapolation).</td>
-          </tr>
-          <tr>
-            <td><strong>Plafonds de Pouvoirs</strong></td>
-            <td><code>donnees/pouvoirs.json</code></td>
-            <td>Blocage formel de toute action dépassant le quota journalier de l'assistant numérique (max 20/jour).</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>2. Protocole de Test à Blanc de l'Agent Données</h2>
-      <p>
-        Toute modification des paramètres ou du carnet de faits est d'abord simulée via le paramètre <code>--simuler</code> sans toucher aux fichiers réels. Le rapport est vérifié par l'Agent Contrôle avant engagement définitif.
-      </p>
-
-
-      <div class="page-nav-bar">
+      <h2>Contrôles avant écriture</h2>
+<p>Vérifier toutes les lignes, les dates, les unités, les identités et les comptages intercalaires. Le contrôle indépendant relit les sources et le résultat prévu. Un lot partiel ou ambigu reste à vérifier ; son traitement ne doit pas annoncer un succès intégral. Une relance ne doit ni réappliquer un ancien mouvement ni absorber une rectification comme une livraison nouvelle.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../procedures/controle-stock.md">procedures/controle-stock.md</a></li><li><a href="../../../moteur/integrer-fichiers.py">moteur/integrer-fichiers.py</a></li><li><a href="../../../moteur/courrier_pipeline.py">moteur/courrier_pipeline.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../6 - Modele de donnees et dictionnaire metier/6.2 - Dictionnaire des champs et typologie des entités.html" class="btn-action">&larr; 6.2 Dictionnaire champs</a>
         </div>

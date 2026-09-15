@@ -57,12 +57,33 @@ sys.addaudithook(_garde_ecritures)
 def entree():
     return {"fournisseur": "POMONA", "date_reception": "2026-10-07", "bordereau": "TEST-01",
             "pages_lues": 1, "pages_totales": 1, "lignes": [
-                {"code_fournisseur": "F01", "produit": "Poireau", "quantite_uf": 12,
+                {"code_fournisseur": "F01", "produit": "Poireau", "quantite_uf": 12, "unite_uf": "kg",
                  "pu": 2.5, "montant_ht": 30, "colis": 2, "pv_magasin_ttc": 3.29,
                  "source_pv": "étiquette rayon 07/10/2026 validée par responsable"}]}
 
 
 class FactureRepriseTests(unittest.TestCase):
+    def test_unite_facture_absente_refuse_stock_mais_autorise_classeur_seul(self):
+        self.donnees["lignes"][0].pop("unite_uf")
+        marge = self.marge.read_bytes()
+        code, out, err = self.appeler()
+        self.assertEqual(code, 2, out)
+        self.assertIn("unité physique", err)
+        self.assertFalse(self.stock.exists())
+        self.assertEqual(self.marge.read_bytes(), marge)
+        code, out, err = self.appeler("--marge", self.marge, "--classeur-seul")
+        self.assertEqual(code, 0, err)
+        self.assertFalse(self.stock.exists())
+
+    def test_unite_source_incompatible_refuse_avant_stock_et_marge(self):
+        self.donnees["lignes"][0]["unite_uf"] = "pièce"
+        marge = self.marge.read_bytes()
+        code, out, err = self.appeler("--simuler")
+        self.assertEqual(code, 2, out)
+        self.assertIn("incompatible", err)
+        self.assertFalse(self.stock.exists())
+        self.assertEqual(self.marge.read_bytes(), marge)
+
     def setUp(self):
         global _WRITE_ROOT
         self.tmp = tempfile.TemporaryDirectory()
@@ -220,7 +241,7 @@ runpy.run_path(sys.argv[0], run_name="__main__")
             if self.root / relatif != cible:
                 self.assertEqual((self.root / relatif).read_bytes(), contenu, relatif)
         nouveaux = {str(p.relative_to(self.root)) for p in self.root.rglob("*") if p.is_file()} - avant.keys()
-        self.assertLessEqual(nouveaux, {str(Path("donnees/.factures-directes.lock"))})
+        self.assertLessEqual(nouveaux, {str(Path("donnees/.operations.lock"))})
 
     def test_octobre_selectionne_classeur_octobre_pas_septembre(self):
         septembre = self.marge.with_name("0926 Calcul marge Pomona.xlsx")
@@ -257,7 +278,9 @@ runpy.run_path(sys.argv[0], run_name="__main__")
         self.assertEqual(septembre.read_bytes(), avant)
 
     def test_pv_historique_prive_empreintes_inchangees_et_colonne_e_vide(self):
-        facture = fd.valider_facture(self.donnees, self.mapping)
+        historique = copy.deepcopy(self.donnees)
+        historique["lignes"][0].pop("unite_uf")  # Le payload v1 n'avait pas cette preuve physique.
+        facture = fd.valider_facture(historique, self.mapping)
         ligne = facture["lignes"][0]
         self.assertNotIn("pv_magasin_ttc", ligne)
         self.assertNotIn("source_pv", ligne)
@@ -589,16 +612,16 @@ runpy.run_path(sys.argv[0], run_name="__main__")
                 with self.assertRaisesRegex(fd.FactureInvalide, "source.*PV"):
                     fd.valider_facture(self.donnees, self.mapping)
 
-    def test_append_preserve_derniere_ligne_sans_retour(self):
+    def test_append_refuse_derniere_ligne_sans_retour_sans_modifier_stock_ni_marge(self):
         self.stock.parent.mkdir(parents=True)
         prefixe = b'{"id":"historique","source":{}}'
         self.stock.write_bytes(prefixe)
+        marge = self.marge.read_bytes()
         code, out, err = self.appeler()
-        self.assertEqual(code, 0, err)
-        self.assertTrue(self.stock.read_bytes().startswith(prefixe))
-        self.assertEqual(len(self.stock.read_bytes().splitlines()), 2)
-        for texte in self.stock.read_text(encoding="utf-8").splitlines():
-            json.loads(texte)
+        self.assertEqual(code, 2, out)
+        self.assertIn("non terminée", err)
+        self.assertEqual(self.stock.read_bytes(), prefixe)
+        self.assertEqual(self.marge.read_bytes(), marge)
 
     def test_repare_uniquement_ligne_marge_disparue(self):
         self.donnees["lignes"].append({**copy.deepcopy(self.donnees["lignes"][0]), "produit": "Deuxième lot"})

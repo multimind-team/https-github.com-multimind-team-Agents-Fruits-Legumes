@@ -178,50 +178,19 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-17.1</div>
           <div class="meta-item"><strong>Domaine :</strong> APIs REST Serveur Local Port 8751</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Développeurs</div>
         </div>
       </div>
 
 
-      <h2>1. Endpoints du Serveur Local (Port 8751)</h2>
-      <p>
-        Le serveur <code>moteur/serveur.py</code> expose les APIs REST pour le réseau interne magasin :
-      </p>
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Méthode &amp; Endpoint</th>
-            <th style="width: 25%;">Fonction Métier</th>
-            <th style="width: 50%;">Données Échangées &amp; Contrôles</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>GET /api/proposition</code></td>
-            <td>Lecture de la commande</td>
-            <td>Renvoie le JSON complet de la proposition du jour pour l'IHM.</td>
-          </tr>
-          <tr>
-            <td><code>POST /api/compter</code></td>
-            <td>Saisie du comptage mobile</td>
-            <td>Réception des mesures physiques saisies sur smartphone.</td>
-          </tr>
-          <tr>
-            <td><code>POST /api/action</code></td>
-            <td>Ajustement d'une ligne</td>
-            <td>Enregistre la modification de colis décidée par l'exploitant.</td>
-          </tr>
-          <tr>
-            <td><code>GET /api/messages</code></td>
-            <td>Fil de discussion agents</td>
-            <td>Historique des échanges et explications en langage naturel.</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <div class="page-nav-bar">
+      <h2>Routes installées</h2>
+<p>Lecture : GET /donnees/proposition.json, /donnees/articles.json, /donnees/messages.jsonl et /donnees/reponses.jsonl. Services : GET /api/marges-pomona et /api/carnets/resume. Écriture : POST /api/comptages, /api/messages, /api/masquer, /api/fournisseur et /api/conditionnement. Les charges et contrôles sont définis par serveur.py et les écrans appelants. Documents/ et les pièces jointes privées ne sont pas publiés.</p>
+<h2>Références vérifiables</h2>
+<p>Le serveur écoute sur <code>127.0.0.1:8751</code>. L’accès mobile configuré utilise Tailscale Serve en HTTPS vers ce port local : l’adresse Wi-Fi du PC ne suffit pas. Vérifier séparément la réponse HTTP locale, le relais Tailscale et l’ouverture sur le téléphone. Le lanceur démarre la surveillance du serveur, sans installer de service IA autonome.</p>
+<ul><li><a href="../../../moteur/serveur.py">moteur/serveur.py</a></li><li><a href="../../../app/index.html">app/index.html</a></li><li><a href="../../../app/compter.html">app/compter.html</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../16 - Explicabilite pour les LLM/16.2 - Format d'échange et prompts structurés.html" class="btn-action">&larr; 16.2 Format échange</a>
         </div>

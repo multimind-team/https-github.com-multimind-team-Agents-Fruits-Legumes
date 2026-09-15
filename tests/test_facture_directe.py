@@ -28,7 +28,7 @@ def facture_valide():
         "pages_lues": 2,
         "pages_totales": 2,
         "lignes": [{
-            "code_fournisseur": "104798", "produit": "Poireau", "quantite_uf": 12,
+            "code_fournisseur": "104798", "produit": "Poireau", "quantite_uf": 12, "unite_uf": "kg",
             "pu": 2.5, "montant_ht": 30, "colis": 2,
             "pv_magasin_ttc": 3.29, "source_pv": "prix rayon vérifié",
         }],

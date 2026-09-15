@@ -7,20 +7,24 @@ Usage :
   python moteur/dire.py --auteur "Agent donnees" "Les fichiers du matin sont integres."
 """
 import argparse
-import json
 import os
 import sys
 from datetime import datetime
 from pathlib import Path
+from verrou_donnees import append_jsonl, operation_donnees
 
 RACINE = Path(__file__).resolve().parent.parent
 DONNEES = RACINE / "donnees"
 REPONSES = DONNEES / "reponses.jsonl"
+JOURNAUX = DONNEES / "journaux"
+DIALOGUES = JOURNAUX / "dialogues.jsonl"
 
 
+@operation_donnees(lambda: REPONSES.parent)
 def publier(texte, auteur="Assistant", en_reponse_a=None, action=None):
-    """Enregistre un message de l'agent dans donnees/reponses.jsonl pour l'application web."""
+    """Enregistre un message de l'agent dans donnees/reponses.jsonl et donnees/journaux/dialogues.jsonl."""
     DONNEES.mkdir(parents=True, exist_ok=True)
+    JOURNAUX.mkdir(parents=True, exist_ok=True)
     maintenant = datetime.now().isoformat(timespec="seconds")
     identifiant = f"rep:{maintenant}:{os.urandom(3).hex()}"
 
@@ -34,10 +38,11 @@ def publier(texte, auteur="Assistant", en_reponse_a=None, action=None):
     if action:
         entree["action"] = action
 
-    with open(REPONSES, "a", encoding="utf-8") as f:
-        f.write(json.dumps(entree, ensure_ascii=False) + "\n")
-        f.flush()
-        os.fsync(f.fileno())
+    # Enregistrement pour l'application web
+    append_jsonl(REPONSES, [entree])
+
+    # Enregistrement dans le journal chronologique des dialogues inter-agents
+    append_jsonl(DIALOGUES, [entree])
 
     try:
         print(f"[{auteur}] {texte}")

@@ -178,38 +178,22 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-08.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Semainier Commercial & Saisonnalité</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Direction</div>
         </div>
       </div>
 
 
-      <h2>1. Le Profil Hebdomadaire Normalisé (Semainier)</h2>
-      <p>
-        La consommation en point de vente varie considérablement selon le jour de la semaine. Le moteur applique une table de coefficients empiriques de correction par jour de semaine (<code>CORRECTION_JS</code>) :
-      </p>
-
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Jour de Semaine</th>
-            <th style="width: 25%;">Indice Moteur</th>
-            <th style="width: 50%;">Coefficient &amp; Dynamique Magasin (Carmaux)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Lundi</strong></td><td>0</td><td><code>0.953</code> — Reprise calme, reconstitution progressive du rayon.</td></tr>
-          <tr><td><strong>Mardi</strong></td><td>1</td><td><code>0.932</code> — Activité régulière de proximité.</td></tr>
-          <tr><td><strong>Mercredi</strong></td><td>2</td><td><code>0.931</code> — Journée des familles et enfants.</td></tr>
-          <tr><td><strong>Jeudi</strong></td><td>3</td><td><code>0.934</code> — Préparation des approvisionnements de fin de semaine.</td></tr>
-          <tr><td><strong>Vendredi</strong></td><td>4</td><td><code>0.925</code> — Début des grosses courses de week-end.</td></tr>
-          <tr><td><strong>Samedi</strong></td><td>5</td><td><code>0.923</code> — Forte affluence magasin continue.</td></tr>
-          <tr><td><strong>Dimanche</strong></td><td>6</td><td><code>1.047</code> — Matinée d'achat intense avant fermeture hebdomadaire.</td></tr>
-        </tbody>
-      </table>
-
-
-      <div class="page-nav-bar">
+      <h2>Saisonnalité et profil hebdomadaire</h2>
+<p>Le moteur distingue la moyenne saisonnière et le profil par jour de semaine. Le détail d’article compare les historiques et les rythmes de vente disponibles ; une courbe n’est pas une observation de stock. Les moyennes et graphiques reposent sur les données présentes, avec les cas particuliers de conversion explicitement codés.</p>
+<h2>Période de référence des graphiques</h2>
+<p>Le générateur d’historique utilise les années civiles réellement présentes et la dernière date de vente positive retenue comme référence. Le quotidien porte sur cette année de référence ; les semaines utilisent le calendrier ISO, y compris la semaine 53 et les jours de janvier rattachés à l’année ISO précédente. La date du calcul ne rajeunit pas les ventes.</p>
+<p>La comparaison mensuelle prend le mois de cette dernière vente puis son suivant, y compris décembre vers janvier. Elle décrit les moyennes historiques des jours avec vente observée : ce n’est pas une prévision. Un mois sans observation reste inconnu et ne devient pas une baisse de 100 %. Les anciennes données enregistrées peuvent conserver leur ancien format ; l’interface affiche leur période explicite.</p>
+<p>Les tests du générateur reposent sur des ventes fictives en copie temporaire : années variables, frontière ISO, transition décembre–janvier, périodes manquantes, contexte météo/calendrier attesté et jeu vide. Aucun test ne régénère automatiquement l’historique réel parce qu’un fichier manque.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/calculer-commande.py">moteur/calculer-commande.py</a></li><li><a href="../../../moteur/analyser-historique-complet.py">moteur/analyser-historique-complet.py</a></li><li><a href="../../../app/commander.html">app/commander.html</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./8.1 - Modélisation statistique et fenêtre circulaire.html" class="btn-action">&larr; 8.1 Modélisation statistique</a>
         </div>

@@ -70,6 +70,29 @@ class SelectionTests(unittest.TestCase):
                 if conflit:
                     self.assertIn("contradiction", " ".join(resultat["avertissements"]).lower())
 
+    def test_precision_float32_ne_cree_pas_un_conflit_ni_un_nouveau_prix(self):
+        source = offre(1.7000000476837158, 6.889999866485596)
+        offres = [offre(8, 1), source]
+        resultat = self.selectionner({"nom": "FIGUE NOIRE VRAC", "offres": offres},
+                                    {"conditionnement": "1.7"})
+        self.assertEqual(resultat["conditionnement"], 1.7)
+        self.assertIs(resultat["offre"], source)
+        self.assertEqual(resultat["avertissements"], [])
+        self.assertEqual(source["par_colis"], 1.7000000476837158)
+        self.assertEqual(source["prix_achat"], 6.889999866485596)
+
+    def test_difference_metier_et_valeurs_invalides_ne_sont_pas_assimilees(self):
+        source = offre(1.7000000476837158)
+        resultat = self.selectionner({"nom": "FIGUE", "offres": [source]},
+                                    {"conditionnement": "1.71"})
+        self.assertEqual(resultat["conditionnement"], 1.71)
+        self.assertTrue(any("Contradiction" in a for a in resultat["avertissements"]))
+        meme = module("conditionnements.py")._meme_conditionnement
+        for invalide in (0, -1, True, False, float("nan"), float("inf"), float("-inf")):
+            with self.subTest(invalide=repr(invalide)):
+                self.assertFalse(meme(invalide, invalide))
+                self.assertFalse(meme(invalide, 1.7))
+
     def test_nombres_non_finis_non_positifs_et_booleens_refuses(self):
         invalides = [None, "", "inconnu", "8,5", 0, -8, True, False,
                      float("nan"), float("inf"), float("-inf"), "NaN", "Infinity", 10 ** 400]

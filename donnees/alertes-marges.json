@@ -1,36 +1,21 @@
 {
- "calcule_le": "2026-09-13T06:21:23.045666",
- "date_cadencier": "2026-09-12",
- "nombre_articles_analyses": 2,
- "nombre_alertes": 2,
+ "calcule_le": "2026-09-15T16:09:02.060991",
+ "date_cadencier": "2026-09-15",
+ "nombre_articles_analyses": 427,
+ "nombre_alertes": 1,
  "alertes": [
-  {
-   "itm8": "0000087003306",
-   "nom": "MELON CHARENTAIS",
-   "prix_achat_actuel": 2.2,
-   "prix_achat_precedent": 1.5,
-   "date_prix_precedent": "2026-09-11",
-   "hausse_pct": 46.7,
-   "prix_vente": 3.0,
-   "taux_marge": 26.7,
-   "gravite": "avertissement",
-   "motifs": [
-    "Hausse d'achat de +46.7% (2.20 € vs 1.50 € le 2026-09-11)"
-   ],
-   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
-  },
   {
    "itm8": "0000087765013",
    "nom": "COURGETTE FILET 1KG",
-   "prix_achat_actuel": 1.5,
-   "prix_achat_precedent": 1.45,
-   "date_prix_precedent": "2026-09-11",
-   "hausse_pct": 3.4,
-   "prix_vente": 1.7,
-   "taux_marge": 11.8,
+   "prix_achat_actuel": 1.93,
+   "prix_achat_precedent": 1.5,
+   "date_prix_precedent": "2026-09-12",
+   "hausse_pct": 28.7,
+   "prix_vente": 2.49,
+   "taux_marge": 22.5,
    "gravite": "avertissement",
    "motifs": [
-    "Marge brute faible (11.8% < seuil 20.0%)"
+    "Hausse d'achat de +28.7% (1.93 € vs 1.50 € le 2026-09-12)"
    ],
    "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
   }

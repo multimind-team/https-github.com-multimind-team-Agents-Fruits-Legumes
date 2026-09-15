@@ -14,6 +14,7 @@ LECTURE SEULE sur les carnets : ce programme n'en modifie aucun.
 """
 import json
 from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees
 import sys
 from collections import defaultdict
 from datetime import date, datetime, timedelta
@@ -49,6 +50,7 @@ def veille(iso, n=1):
     return (date(a, m, j) - timedelta(days=n)).isoformat()
 
 
+@operation_donnees(lambda: RACINE / "donnees")
 def main():
     aggregats = agregats.charger()
     config = regles.charger()

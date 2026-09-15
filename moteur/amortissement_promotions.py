@@ -1,22 +1,11 @@
-"""
-moteur/amortissement-promotions.py - Gestion de l'amortissement et de la désescalade en fin de promotion.
+"""Repères de fin de promotion, sans réduction automatique de commande.
 
-Règles métier :
-1. PENDANT LA PROMOTION (du début jusqu'à l'avant-dernier jour) :
-   L'offre prospectus stimule les ventes.
-2. À J-1 DU DERNIER JOUR (livraison le dernier jour de la promo) :
-   La commande ne doit couvrir strictement que la dernière journée de l'opération,
-   sans constituer de stock pour le lendemain.
-   -> Facteur d'amortissement : 0.80 sur la commande.
-3. LE DERNIER JOUR DE LA PROMOTION (livraison le lendemain, après la fin de l'offre) :
-   Le produit repasse au tarif normal. Les ventes chutent brutalement (« trou post-promo »).
-   La commande doit éviter tout sur-stockage post-catalogue.
-   -> Facteur d'amortissement : 0.70 sur la commande standard et neutralisation des volumes promo.
+Seules les correspondances confirmées portent le repère FIN PROMO. Le facteur
+reste neutre : une baisse exige la vérification des ventes et du contexte externe,
+puis le circuit de suggestion/validation de ajuster-commande.py.
 """
-from datetime import date, datetime, timedelta
 import json
 from pathlib import Path
-import re
 
 RACINE = Path(__file__).resolve().parent.parent
 DONNEES = RACINE / "donnees"
@@ -48,20 +37,20 @@ def index_promotions_par_itm8(offres):
                     "nom_offre": nom_offre,
                     "debut": debut,
                     "fin": fin,
-                    "statut_corresp": corresp.get("statut", "confirme")
+                    "statut_corresp": corresp.get("statut", "a_confirmer")
                 }
     return par_itm8
 
 
 def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
     """
-    Évalue si un article est concerné par une fin de promotion et quel facteur d'amortissement appliquer.
+    Évalue le repère de fin de promotion ; le facteur reste toujours neutre.
 
     Retourne :
     {
         "en_fin_promo": bool,
         "phase": "dernier_jour" | "post_promo" | "en_cours" | "hors_promo",
-        "facteur_amortissement": float (ex: 0.80, 0.70 ou 1.0),
+        "facteur_amortissement": 1.0,
         "motif": str ou None,
         "fin_promo": str ou None,
         "nom_offre": str ou None
@@ -81,6 +70,11 @@ def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
             "nom_offre": None
         }
 
+    if info["statut_corresp"] != "confirme":
+        return {"en_fin_promo": False, "phase": "a_confirmer",
+                "facteur_amortissement": 1.0, "motif": None,
+                "fin_promo": info["fin"], "nom_offre": info["nom_offre"]}
+
     debut = info["debut"]
     fin = info["fin"]
     nom = info["nom_offre"]
@@ -90,8 +84,8 @@ def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
         return {
             "en_fin_promo": True,
             "phase": "post_promo",
-            "facteur_amortissement": 0.70,
-            "motif": f"Fin de promo le {fin} ({nom}) : amortissement post-catalogue appliqué (-30%) pour éponger les stocks.",
+            "facteur_amortissement": 1.0,
+            "motif": f"Fin de promo le {fin} ({nom}). Quantité maintenue ; toute baisse nécessite une suggestion contrôlée puis votre validation.",
             "fin_promo": fin,
             "nom_offre": nom
         }
@@ -101,8 +95,8 @@ def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
         return {
             "en_fin_promo": True,
             "phase": "dernier_jour",
-            "facteur_amortissement": 0.80,
-            "motif": f"Dernier jour promo ({fin}) : commande limitée à la couverture du jour sans stock résiduel.",
+            "facteur_amortissement": 1.0,
+            "motif": f"Dernier jour promo ({fin}). Quantité maintenue ; vérifier l'écoulement avant toute suggestion de baisse.",
             "fin_promo": fin,
             "nom_offre": nom
         }

@@ -13,12 +13,13 @@ CONFIG_PATH = RACINE / "donnees" / "courrier-config.json"
 ENV_PATH = RACINE / ".env"
 
 
-def charger_env_local():
+def charger_env_local(chemin=None):
     """Charge les paires CLE=VALEUR du fichier .env sans bibliothèque externe."""
-    if not ENV_PATH.is_file():
+    fichier_env = Path(chemin) if chemin is not None else ENV_PATH
+    if not fichier_env.is_file():
         return {}
     vars_env = {}
-    for ligne in ENV_PATH.read_text(encoding="utf-8").splitlines():
+    for ligne in fichier_env.read_text(encoding="utf-8").splitlines():
         ligne = ligne.strip()
         if not ligne or ligne.startswith("#") or "=" not in ligne:
             continue
@@ -27,7 +28,7 @@ def charger_env_local():
     return vars_env
 
 
-def charger_config_courrier(chemin=None):
+def charger_config_courrier(chemin=None, *, chemin_env=None):
     """Charge la configuration et injecte le mot de passe depuis .env / variables d'env."""
     fichier = Path(chemin) if chemin else CONFIG_PATH
     config = {}
@@ -37,7 +38,10 @@ def charger_config_courrier(chemin=None):
         except Exception:
             pass
 
-    env_local = charger_env_local()
+    # Une configuration injectée appartient à son environnement, jamais à celui
+    # du module importé. Un autre emplacement .env doit être explicite.
+    env_local = charger_env_local(chemin_env if chemin_env is not None else
+                                 fichier.parent.parent / ".env" if chemin else None)
 
     # Priorité pour l'utilisateur
     utilisateur = (

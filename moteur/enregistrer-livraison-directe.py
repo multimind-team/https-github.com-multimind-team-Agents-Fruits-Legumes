@@ -45,6 +45,7 @@ from pathlib import Path
 MOTEUR = Path(__file__).resolve().parent
 sys.path.insert(0, str(MOTEUR))
 import catalogue
+from verrou_donnees import append_jsonl, operation_donnees
 
 RACINE = MOTEUR.parent
 DOSSIER_FAITS = RACINE / "donnees" / "faits"
@@ -67,6 +68,7 @@ def deja_enregistre(fichier, identifiant):
     return False
 
 
+@operation_donnees(lambda: DOSSIER_FAITS.parent)
 def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -146,8 +148,7 @@ def main():
     }
 
     DOSSIER_FAITS.mkdir(parents=True, exist_ok=True)
-    with open(fichier, "a", encoding="utf-8") as f:
-        f.write(json.dumps(fait, ensure_ascii=False, allow_nan=False) + "\n")
+    append_jsonl(fichier, [fait])
 
     print(f"OK : {libelle} — {args.quantite} {unite} ajoutés au stock "
           f"({args.fournisseur}, {jour}).")

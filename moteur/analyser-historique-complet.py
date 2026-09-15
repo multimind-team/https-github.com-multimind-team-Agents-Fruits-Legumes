@@ -1,9 +1,10 @@
 """
-moteur/analyser-historique-complet.py - Analyse exhaustive des ventes sur 2,5 ans (2024-2026).
+moteur/analyser-historique-complet.py - Analyse des ventes sur la période disponible.
 
-Ce module analyse les 137 558 faits de vente réels d'Intermarché Carmaux (mars 2024 à septembre 2026)
-pour l'ensemble des 566 produits vendus, y compris ceux absents du cadencier du jour :
-- Par Année (2024, 2025, 2026)
+Ce module décrit les ventes positives présentes dans les faits, y compris les articles
+absents du cadencier du jour. La dernière date retenue détermine l'année et le mois
+de référence ; les statistiques historiques ne sont pas une prévision de commande.
+- Par année civile réellement observée
 - Par Mois (1 à 12) : saisonnalité, mois de pic, part annuelle
 - Par Semaine ISO (1 à 52/53) : profil annuel semaine par semaine
 - Par Jour de la semaine (lundi à dimanche) : rythme d'achats hebdomadaire
@@ -21,7 +22,6 @@ from collections import defaultdict
 from datetime import date, datetime, timedelta
 import json
 from pathlib import Path
-import re
 import sys
 import unicodedata
 
@@ -67,35 +67,6 @@ FAMILLES_DEFINITIONS = {
 NOMS_MOIS = ["", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
 NOMS_JOURS = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
 
-EVENEMENTS_SEMAINES = {
-    1: "Nouvel An & Épiphanie",
-    2: "Semaine creuse post-fêtes",
-    7: "Saint-Valentin & Hiver",
-    8: "Vacances d'Hiver",
-    13: "Pâques / Début Printemps",
-    14: "Arrivée des premières fraises",
-    18: "Ponts de Mai / Fête du Travail (Pic Annuel)",
-    19: "Victoire 1945 & Primeurs",
-    21: "Ascension & Pentecôte",
-    22: "Fête des Mères",
-    25: "Fête de la Musique / Été",
-    26: "Fin d'année scolaire / Départs",
-    28: "Fête Nationale (14 Juillet)",
-    30: "Plein été / Pic canicule",
-    33: "Assomption (15 Août)",
-    35: "Retour de vacances",
-    36: "Rentrée scolaire",
-    37: "Mi-septembre / Raisins & Fin d'été",
-    38: "Automne / Début courges",
-    43: "Début Vacances Toussaint",
-    44: "Halloween & Toussaint",
-    45: "Armistice (11 Novembre)",
-    47: "Plats d'hiver mijotés",
-    50: "Préparation des fêtes",
-    51: "Semaine de Noël",
-    52: "Réveillon de la Saint-Sylvestre"
-}
-
 
 def sans_accent(t):
     return "".join(c for c in unicodedata.normalize("NFD", t or "")
@@ -119,7 +90,7 @@ def charger_donnees():
 
 
 def analyser():
-    print("Chargement des ventes réelles (137 000+ faits) et métadonnées...")
+    print("Chargement des ventes disponibles et métadonnées...")
     meteo, cal, noms, ventes = charger_donnees()
     feries_dict = cal.get("feries", {})
     vacances_list = cal.get("vacances", [])
@@ -174,7 +145,7 @@ def analyser():
     ventes_totales_date = defaultdict(float)
     ventes_par_famille_date = defaultdict(lambda: defaultdict(float))
     
-    # Structures par article pour TOUS les articles vendus (566 articles)
+    # Structures par article pour tous les articles avec ventes retenues
     ventes_art_date = defaultdict(float)
     ventes_art_total = defaultdict(float)
     jours_art_observes = defaultdict(set)
@@ -189,7 +160,7 @@ def analyser():
     jours_art_annee_semaine = defaultdict(lambda: defaultdict(lambda: defaultdict(set)))
     ventes_art_js = defaultdict(lambda: [0.0] * 7)
     jours_art_js = defaultdict(lambda: [0] * 7)
-    ventes_art_jour_2026 = defaultdict(lambda: defaultdict(float))
+    ventes_art_jour = defaultdict(lambda: defaultdict(float))
 
     # Accumulateurs météo et calendrier par article
     art_cond_stats = defaultdict(lambda: defaultdict(lambda: {"obs": 0.0, "att": 0.0, "nb": 0}))
@@ -205,7 +176,7 @@ def analyser():
             dt = date.fromisoformat(d)
             m = dt.month
             yr = str(dt.year)
-            s_iso = min(52, max(1, (dt.timetuple().tm_yday - 1) // 7 + 1))
+            annee_iso, s_iso, _ = dt.isocalendar()
             js = dt.weekday()
 
             ventes_totales_date[d] += q
@@ -220,17 +191,24 @@ def analyser():
             jours_art_annee_mois[art][yr][m].add(d)
             ventes_art_semaine[art][s_iso] += q
             jours_art_semaine[art][s_iso].add(d)
-            ventes_art_annee_semaine[art][yr][s_iso] += q
-            jours_art_annee_semaine[art][yr][s_iso].add(d)
+            ventes_art_annee_semaine[art][str(annee_iso)][s_iso] += q
+            jours_art_annee_semaine[art][str(annee_iso)][s_iso].add(d)
             ventes_art_js[art][js] += q
             jours_art_js[art][js] += 1
-            if yr == "2026":
-                ventes_art_jour_2026[art][d] += q
+            ventes_art_jour[art][d] += q
 
             fam = classifier_famille(noms.get(art, art))
             ventes_par_famille_date[d][fam] += q
 
-    dates_toutes = sorted(list(dates_toutes_set))
+    dates_toutes = sorted(dates_toutes_set)
+    date_reference = dates_toutes[-1] if dates_toutes else None
+    reference = date.fromisoformat(date_reference) if date_reference else None
+    annee_reference = reference.year if reference else None
+    annees_observees = sorted({d[:4] for d in dates_toutes})
+    annees_iso_observees = sorted({str(date.fromisoformat(d).isocalendar().year) for d in dates_toutes})
+    mois_reference = reference.month if reference else None
+    mois_suivant = mois_reference % 12 + 1 if reference else None
+    annee_suivante = annee_reference + (mois_reference == 12) if reference else None
     total_unites = sum(ventes_totales_date.values())
     total_jours = len(dates_toutes)
     moyenne_globale_jour = round(total_unites / total_jours, 1) if total_jours else 0.0
@@ -257,7 +235,8 @@ def analyser():
             "jour_semaine": dt.weekday(),
             "mois": dt.month,
             "annee": str(dt.year),
-            "semaine_iso": min(52, max(1, (dt.timetuple().tm_yday - 1) // 7 + 1)),
+            "semaine_iso": dt.isocalendar().week,
+            "annee_iso": str(dt.isocalendar().year),
             "tranche_meteo": m_info["tranche"],
             "pluvieux": m_info["pluvieux"],
             "tmax": tmax,
@@ -361,7 +340,7 @@ def analyser():
         part_pct = round((st["total"] / total_unites) * 100, 1) if total_unites else 0.0
 
         par_annee = {}
-        for yr in ["2024", "2025", "2026"]:
+        for yr in annees_observees:
             yst = st["annees"].get(yr)
             if yst and yst["jours"] > 0:
                 par_annee[yr] = {
@@ -398,12 +377,11 @@ def analyser():
     sem_raw = defaultdict(lambda: {"total": 0.0, "jours": 0, "annees": defaultdict(lambda: {"total": 0.0, "jours": 0})})
     for d, tot in ventes_totales_date.items():
         dt = date.fromisoformat(d)
-        s_iso = min(52, max(1, (dt.timetuple().tm_yday - 1) // 7 + 1))
-        yr = str(dt.year)
+        annee_iso, s_iso, _ = dt.isocalendar()
         sem_raw[s_iso]["total"] += tot
         sem_raw[s_iso]["jours"] += 1
-        sem_raw[s_iso]["annees"][yr]["total"] += tot
-        sem_raw[s_iso]["annees"][yr]["jours"] += 1
+        sem_raw[s_iso]["annees"][str(annee_iso)]["total"] += tot
+        sem_raw[s_iso]["annees"][str(annee_iso)]["jours"] += 1
 
     semaines = []
     for s in range(1, 54):
@@ -412,7 +390,7 @@ def analyser():
             moy_j = round(st["total"] / st["jours"], 1)
             indice = round(moy_j / moyenne_globale_jour, 3) if moyenne_globale_jour else 1.0
             par_annee = {}
-            for yr in ["2024", "2025", "2026"]:
+            for yr in annees_iso_observees:
                 yst = st["annees"].get(yr)
                 if yst and yst["jours"] > 0:
                     par_annee[yr] = {
@@ -425,7 +403,10 @@ def analyser():
 
             semaines.append({
                 "semaine_iso": s,
-                "evenement_cle": EVENEMENTS_SEMAINES.get(s, ""),
+                "evenement_cle": "; ".join(
+                    f"{d} : {feries_dict[d]}" for d in dates_toutes
+                    if contextes_dates[d]["semaine_iso"] == s and d in feries_dict
+                ),
                 "total_unites": round(st["total"], 1),
                 "jours_observes": st["jours"],
                 "moyenne_quotidienne": moy_j,
@@ -477,15 +458,15 @@ def analyser():
                 pluie_raw["pluie_5mm"]["familles"][fam] += q
 
     tranches_labels = [
-        ("canicule_sup_30", "Forte chaleur (>= 30°C)", "Fruits d'été, salades, melons dopés ; légumes chauds en repli"),
-        ("chaud_25_30", "Chaleur modérée (25°C à 30°C)", "Consommation estivale active"),
-        ("tempere_16_25", "Climat tempéré (16°C à 25°C)", "Équilibre classique du rayon"),
-        ("frais_10_16", "Temps frais (10°C à 16°C)", "Démarrage des légumes à cuire et potages"),
-        ("froid_inf_10", "Grand froid (< 10°C)", "Explosion poireaux, soupes, carottes, agrumes ; chute melons")
+        ("canicule_sup_30", "Forte chaleur (>= 30°C)"),
+        ("chaud_25_30", "Chaleur modérée (25°C à 30°C)"),
+        ("tempere_16_25", "Climat tempéré (16°C à 25°C)"),
+        ("frais_10_16", "Temps frais (10°C à 16°C)"),
+        ("froid_inf_10", "Grand froid (< 10°C)")
     ]
 
     meteo_synthese = []
-    for code, libelle, description in tranches_labels:
+    for code, libelle in tranches_labels:
         st = tranches_meteo_raw[code]
         if st["jours"] > 0:
             moy_j = round(st["total"] / st["jours"], 1)
@@ -499,7 +480,7 @@ def analyser():
             meteo_synthese.append({
                 "code": code,
                 "label": libelle,
-                "description": description,
+                "description": "Ventes observées dans cette tranche météo ; une comparaison ne démontre pas une cause.",
                 "jours_observes": st["jours"],
                 "moyenne_quotidienne": moy_j,
                 "indice_vs_moyenne": ind,
@@ -514,7 +495,7 @@ def analyser():
         meteo_synthese.append({
             "code": "pluie_5mm",
             "label": "Jours de pluie significative (>= 5 mm)",
-            "description": "Baisse des achats d'impulsion et pique-nique ; repli sur les plats chauds",
+            "description": "Ventes observées les jours avec au moins 5 mm de pluie ; aucune cause de variation n'est déduite.",
             "jours_observes": st_p["jours"],
             "moyenne_quotidienne": moy_jp,
             "indice_vs_moyenne": ind_p,
@@ -534,6 +515,8 @@ def analyser():
     moy_scolaire = (vac_raw["Période Scolaire Normale"]["total"] / vac_raw["Période Scolaire Normale"]["jours"]) if vac_raw["Période Scolaire Normale"]["jours"] else moyenne_globale_jour
 
     for vcat, st in sorted(vac_raw.items(), key=lambda x: x[1]["jours"], reverse=True):
+        if not st["jours"]:
+            continue
         moy_v = round(st["total"] / st["jours"], 1)
         diff_pct = round(((moy_v - moy_scolaire) / moy_scolaire) * 100, 1) if moy_scolaire else 0.0
         vacances_synthese.append({
@@ -547,7 +530,7 @@ def analyser():
     # 7. FERIES ET VEILLES DE FERIES
     ferie_raw = {
         "veilles_de_feries": {"label": "Veilles de jours fériés (J-1 & samedi avant lundi)", "jours": 0, "total": 0.0},
-        "jours_feries_ouverts": {"label": "Jours fériés ouverts (matinée uniquement)", "jours": 0, "total": 0.0},
+        "jours_feries_ouverts": {"label": "Jours fériés avec ventes observées", "jours": 0, "total": 0.0},
         "jours_ordinaires": {"label": "Jours d'ouverture ordinaires", "jours": 0, "total": 0.0}
     }
     for d, tot in ventes_totales_date.items():
@@ -575,7 +558,7 @@ def analyser():
         })
 
     print(f"Compilation des profils détaillés pour les {len(ventes_art_total)} articles vendus...")
-    # 8. ANALYSE INDIVIDUELLE DES 566 ARTICLES
+    # 8. Profils individuels des articles présents dans la période
     articles_profils = {}
     for art, vol_tot in sorted(ventes_art_total.items(), key=lambda x: x[1], reverse=True):
         lib = noms.get(art, art)
@@ -584,7 +567,7 @@ def analyser():
         moy_j_art = round(vol_tot / nb_j_obs, 2) if nb_j_obs else 0.0
 
         # Années
-        par_yr = {yr: round(ventes_art_annee[art][yr], 1) for yr in ["2024", "2025", "2026"] if yr in ventes_art_annee[art]}
+        par_yr = {yr: round(ventes_art_annee[art][yr], 1) for yr in annees_observees if yr in ventes_art_annee[art]}
 
         # Mois (1 à 12) avec historique annuel comparatif
         mois_art = {}
@@ -593,7 +576,7 @@ def analyser():
             j_m = len(jours_art_mois[art][m])
             if q_m > 0:
                 annees_m = {}
-                for yr in ["2024", "2025", "2026"]:
+                for yr in annees_observees:
                     q_ym = ventes_art_annee_mois[art][yr][m]
                     j_ym = len(jours_art_annee_mois[art][yr][m])
                     if j_ym > 0:
@@ -615,7 +598,7 @@ def analyser():
 
         # Historique complet 12 mois par année
         hist_annuel = {}
-        for yr in ["2024", "2025", "2026"]:
+        for yr in annees_observees:
             hist_annuel[yr] = {}
             for m in range(1, 13):
                 q_ym = ventes_art_annee_mois[art][yr][m]
@@ -630,55 +613,44 @@ def analyser():
         meilleur_mois = max(range(1, 13), key=lambda m: ventes_art_mois[art][m]) if vol_tot > 0 else None
         nom_meilleur_mois = NOMS_MOIS[meilleur_mois] if meilleur_mois else ""
 
-        # Diagnostic de saisonnalité à court terme (transition Septembre -> Octobre)
-        m_actuel = 9
-        m_suiv = 10
-        st_actuel = mois_art.get(str(m_actuel))
-        st_suiv = mois_art.get(str(m_suiv))
-        moy_act = st_actuel["moyenne_jour"] if st_actuel else 0.0
-        moy_nxt = st_suiv["moyenne_jour"] if st_suiv else 0.0
-
-        if moy_act > 0 and moy_nxt > 0:
-            diff_pct = round(((moy_nxt - moy_act) / moy_act) * 100, 1)
-        elif moy_act == 0 and moy_nxt > 0:
-            diff_pct = 100.0
-        elif moy_act > 0 and moy_nxt == 0:
-            diff_pct = -100.0
+        # Comparaison historique des mois, ancrée à la dernière vente du jeu.
+        # L'absence d'observation n'est ni une vente nulle ni une fin de saison.
+        m_actuel, m_suiv = mois_reference, mois_suivant
+        st_actuel, st_suiv = mois_art.get(str(m_actuel)), mois_art.get(str(m_suiv))
+        moy_act = st_actuel["moyenne_jour"] if st_actuel else None
+        moy_nxt = st_suiv["moyenne_jour"] if st_suiv else None
+        diff_pct = (round((moy_nxt - moy_act) / moy_act * 100, 1)
+                    if moy_act is not None and moy_act > 0 and moy_nxt is not None else None)
+        nom_actuel, nom_suivant = NOMS_MOIS[m_actuel], NOMS_MOIS[m_suiv]
+        if diff_pct is None:
+            tendance, badge = "donnees_insuffisantes", "Données insuffisantes"
+            diagnostic = (f"Comparaison historique {nom_actuel} / {nom_suivant} indisponible : "
+                          "au moins un mois n'a pas d'observation de vente positive.")
         else:
-            diff_pct = 0.0
-
-        if meilleur_mois == m_actuel:
-            tendance = "pleine_saison"
-            badge = "★ Pleine saison"
-            diagnostic = f"Plein pic de consommation de l'année en septembre ({moy_act} /jour en moyenne)."
-        elif diff_pct >= 25.0:
-            tendance = "forte_hausse"
-            badge = f"↗ Forte hausse à venir (+{diff_pct}%)"
-            diagnostic = f"Accélération automnale : les ventes passent en moyenne de {moy_act} en sept à {moy_nxt} en oct (+{diff_pct}%)."
-        elif diff_pct >= 8.0:
-            tendance = "hausse"
-            badge = f"↗ Hausse modérée (+{diff_pct}%)"
-            diagnostic = f"Demande en progression : +{diff_pct}% attendus en octobre ({moy_nxt} /jour vs {moy_act} /jour)."
-        elif diff_pct <= -35.0:
-            tendance = "fin_saison"
-            badge = f"↘ Fin de campagne ({diff_pct}%)"
-            diagnostic = f"Décrochage saisonnier : les ventes chutent de {abs(diff_pct)}% en octobre (fin de récolte/production)."
-        elif diff_pct <= -8.0:
-            tendance = "baisse"
-            badge = f"↘ Repli saisonnier ({diff_pct}%)"
-            diagnostic = f"Ralentissement d'automne : -{abs(diff_pct)}% attendus en octobre ({moy_nxt} /jour vs {moy_act} /jour)."
-        elif moy_act == 0 and moy_nxt == 0:
-            tendance = "hors_saison"
-            badge = "❄ Hors saison"
-            diagnostic = f"Article peu ou pas consommé en automne (mois de prédilection : {nom_meilleur_mois})."
-        else:
-            tendance = "stable"
-            badge = "→ Demande stable"
-            diagnostic = f"Rythme de vente régulier entre septembre et octobre (~{moy_act} /jour)."
+            if meilleur_mois == m_actuel:
+                tendance, badge = "pleine_saison", "★ Mois au volume historique maximal"
+            elif diff_pct >= 25.0:
+                tendance, badge = "forte_hausse", f"↗ Écart historique (+{diff_pct}%)"
+            elif diff_pct >= 8.0:
+                tendance, badge = "hausse", f"↗ Écart historique (+{diff_pct}%)"
+            elif diff_pct <= -35.0:
+                tendance, badge = "fin_saison", f"↘ Écart historique ({diff_pct}%)"
+            elif diff_pct <= -8.0:
+                tendance, badge = "baisse", f"↘ Écart historique ({diff_pct}%)"
+            else:
+                tendance, badge = "stable", "→ Moyennes historiques proches"
+            diagnostic = (f"Sur les jours avec vente observée : {moy_act} /jour en {nom_actuel}, "
+                          f"{moy_nxt} /jour en {nom_suivant} ({diff_pct:+g} %). "
+                          "Comparaison historique, sans prévision ni cause démontrée.")
 
         saisonnalite_art = {
+            "date_reference": date_reference,
+            "annee_reference": annee_reference,
+            "annee_mois_suivant": annee_suivante,
             "mois_actuel": m_actuel,
             "mois_suivant": m_suiv,
+            "moyenne_mois_actuel": moy_act,
+            "moyenne_mois_suivant": moy_nxt,
             "evolution_pct": diff_pct,
             "tendance": tendance,
             "badge": badge,
@@ -703,19 +675,14 @@ def analyser():
             else:
                 ratios_art[c] = familles_ratios.get(fam, {}).get(c, 1.0)
 
-        # Courbes hebdomadaires (52 semaines) pour tracé fluide haute précision
-        courbes_hebdo = {
-            "moyenne": [0.0] * 52,
-            "2024": [None] * 52,
-            "2025": [None] * 52,
-            "2026": [None] * 52,
-        }
-        for s in range(1, 53):
+        # Semaines ISO : la semaine 53 et son année ISO restent distinctes.
+        courbes_hebdo = {"moyenne": [None] * 53,
+                         **{yr: [None] * 53 for yr in annees_iso_observees}}
+        for s in range(1, 54):
             j_s = len(jours_art_semaine[art][s])
             if j_s > 0:
                 courbes_hebdo["moyenne"][s - 1] = round(ventes_art_semaine[art][s] / j_s, 2)
-
-            for yr in ["2024", "2025", "2026"]:
+            for yr in annees_iso_observees:
                 j_ys = len(jours_art_annee_semaine[art][yr][s])
                 if j_ys > 0:
                     courbes_hebdo[yr][s - 1] = round(ventes_art_annee_semaine[art][yr][s] / j_ys, 2)
@@ -724,7 +691,12 @@ def analyser():
             "itm8": art,
             "libelle": lib,
             "famille": fam,
+            "volume_total_periode": round(vol_tot, 1),
+            # Alias de lecture historique : seule periode décrit la durée réelle.
             "volume_total_2ans_demi": round(vol_tot, 1),
+            "date_reference": date_reference,
+            "annee_reference": annee_reference,
+            "annees_semaines_iso": [int(yr) for yr in annees_iso_observees],
             "jours_observes": nb_j_obs,
             "moyenne_par_jour_actif": moy_j_art,
             "mois_pleine_saison": nom_meilleur_mois,
@@ -733,38 +705,52 @@ def analyser():
             "ventes_par_mois": mois_art,
             "historique_mensuel_par_annee": hist_annuel,
             "courbes_hebdo": courbes_hebdo,
-            "ventes_quotidiennes_2026": {d: round(q, 1) for d, q in sorted(ventes_art_jour_2026[art].items())},
+            "ventes_quotidiennes": {d: round(q, 1) for d, q in sorted(ventes_art_jour[art].items())
+                                     if int(d[:4]) == annee_reference},
             "moyenne_par_jour_semaine": js_art,
             "ratios_sensibilite": ratios_art
         }
 
-    # Focus mi-septembre
-    sept_dates = [d for d in dates_toutes if d[5:7] == "09"]
-    sept_ventes = sum(ventes_totales_date[d] for d in sept_dates)
-    sept_moy = round(sept_ventes / len(sept_dates), 1) if sept_dates else 0.0
-    sept_chaud_dates = [d for d in sept_dates if contextes_dates[d]["chaud_25"]]
-    sept_chaud_moy = round(sum(ventes_totales_date[d] for d in sept_chaud_dates) / len(sept_chaud_dates), 1) if sept_chaud_dates else 0.0
-
-    focus_septembre = {
-        "jours_septembre_observes": len(sept_dates),
-        "moyenne_quotidienne_septembre": sept_moy,
-        "jours_chauds_septembre_sup_25": len(sept_chaud_dates),
-        "moyenne_jours_chauds_septembre": sept_chaud_moy,
-        "ecart_chaleur_septembre_pct": round(((sept_chaud_moy - sept_moy) / sept_moy) * 100, 1) if sept_moy else 0.0,
-        "explication_metier": "Septembre est un mois charnière : le volume global baisse après la rentrée (-11 % vs moyenne annuelle), mais les vagues de chaleur tardives (comme les 33°C de mi-septembre 2026) maintiennent un niveau très élevé sur les melons, pastèques, raisins et tomates, tout en gelant les commandes de poireaux et courges."
+    # Focus du mois de la dernière vente, sur les mêmes mois historiques disponibles.
+    focus_dates = [d for d in dates_toutes if int(d[5:7]) == mois_reference]
+    focus_moy = (round(sum(ventes_totales_date[d] for d in focus_dates) / len(focus_dates), 1)
+                 if focus_dates else None)
+    focus_chaud_dates = [d for d in focus_dates if contextes_dates[d]["chaud_25"]]
+    focus_chaud_moy = (round(sum(ventes_totales_date[d] for d in focus_chaud_dates) / len(focus_chaud_dates), 1)
+                       if focus_chaud_dates else None)
+    focus_mois = {
+        "date_reference": date_reference,
+        "mois_numero": mois_reference,
+        "annees_observees": sorted({int(d[:4]) for d in focus_dates}),
+        "jours_observes": len(focus_dates),
+        "moyenne_quotidienne": focus_moy,
+        "jours_chauds_sup_25": len(focus_chaud_dates),
+        "moyenne_jours_chauds": focus_chaud_moy,
+        "ecart_jours_chauds_pct": (round((focus_chaud_moy - focus_moy) / focus_moy * 100, 1)
+                                   if focus_moy and focus_chaud_moy is not None else None),
+        "explication_metier": (
+            f"{NOMS_MOIS[mois_reference]} : {len(focus_dates)} jours avec ventes observées, "
+            f"moyenne {focus_moy} unités par jour actif. "
+            "Les comparaisons historiques ne démontrent pas une cause météo ou une prévision."
+            if focus_dates else "Aucune vente positive disponible : aucun mois de référence."
+        )
     }
 
     # Consolidated JSON
     resultat = {
         "calcule_le": datetime.now().isoformat(),
-        "description": "Analyse multidimensionnelle des ventes sur 2.5 ans pour tous les produits (y compris hors cadencier)",
+        "description": "Analyse descriptive des ventes positives sur la période réellement disponible, y compris hors cadencier",
+        "date_reference": date_reference,
+        "annee_reference": annee_reference,
+        "annees_semaines_iso": [int(yr) for yr in annees_iso_observees],
         "periode": {
             "date_debut": dates_toutes[0] if dates_toutes else "",
             "date_fin": dates_toutes[-1] if dates_toutes else "",
             "total_unites_vendues": round(total_unites, 1),
             "total_lignes_faits": len(ventes),
             "total_articles_analyses": len(articles_profils),
-            "total_jours_ouverts": total_jours,
+            "total_jours_avec_ventes": total_jours,
+            "total_jours_ouverts": total_jours,  # Alias historique : aucune ouverture n’est déduite.
             "moyenne_quotidienne_globale": moyenne_globale_jour
         },
         "familles_ratios": familles_ratios,
@@ -775,13 +761,13 @@ def analyser():
         "meteo": meteo_synthese,
         "vacances": vacances_synthese,
         "feries_et_veilles": feries_synthese,
-        "focus_septembre_automne": focus_septembre,
+        "focus_mois_reference": focus_mois,
         "articles": articles_profils
     }
 
     ecrire_json(FICHIER_SORTIE, resultat)
     print(f"\n[SUCCÈS] Analyse terminée et sauvegardée dans : {FICHIER_SORTIE}")
-    print(f"Total articles profilés : {len(articles_profils)} (100% de l'historique)")
+    print(f"Articles avec ventes positives profilés : {len(articles_profils)}")
     print(f"Volume total analysé : {int(total_unites):,} unités sur {total_jours} jours de vente")
     return resultat
 

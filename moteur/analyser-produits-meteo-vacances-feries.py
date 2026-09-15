@@ -20,7 +20,6 @@ Usage :
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 import json
-import math
 from pathlib import Path
 import re
 import sys

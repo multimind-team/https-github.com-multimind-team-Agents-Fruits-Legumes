@@ -24,6 +24,7 @@ import catalogue
 import conditionnements
 import regles
 from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees
 
 RACINE = Path(__file__).resolve().parent.parent
 CARMAUX = (44.052, 2.158)
@@ -38,7 +39,6 @@ def _charger(nom, fichier):
 
 
 calc = _charger("calc", "calculer-commande.py")
-pos = _charger("pos", "calculer-position.py")
 prop = _charger("prop", "proposer-commande.py")
 ferie = _charger("ferie", "ouverture-jours-feries.py")
 
@@ -154,10 +154,8 @@ def calculer_profils_meteo_articles(prevision, date_cmd, date_liv):
 def ligne_connue(itm8, calcul, mercalys, config, etat, article, offre, agr=None, eval_promo=None, alerte_marge=None):
     """Un article du cadencier qu'on sait rattacher : quantité calculée.
 
-    Les prix ne viennent PAS de catalogue.json : c'est une photo figée du
-    3 septembre, jamais remise à jour depuis (trouvé le 2026-09-04). Le vrai
-    prix d'achat vient du cadencier Webtelevente du jour ; le vrai prix de
-    vente, du dernier fichier de vente reçu (agregats.py le calcule depuis les
+    Le prix d'achat prioritaire vient du cadencier Webtelevente du jour ; le
+    prix de vente, du dernier fichier de vente reçu (agregats.py le calcule depuis les
     colonnes "Valeur prix achat"/"Valeur prix vente"). catalogue.json ne sert
     plus que de dernier recours, si aucune des deux sources n'a de valeur.
     """
@@ -174,7 +172,7 @@ def ligne_connue(itm8, calcul, mercalys, config, etat, article, offre, agr=None,
         vente = agr["dernierPrixVente"]
     # Le prix d'achat du jour vient du cadencier : c'est celui qu'on paiera.
     # À défaut (article pas dans le cadencier aujourd'hui), le dernier prix
-    # d'achat vu dans le fichier de vente vaut mieux que la photo du 3/09.
+    # d'achat vu dans le fichier de vente précède le référentiel.
     if offre.get("prix_achat"):
         try:
             achat = float(offre["prix_achat"])
@@ -185,12 +183,11 @@ def ligne_connue(itm8, calcul, mercalys, config, etat, article, offre, agr=None,
     marge = (100 * (vente - achat) / vente) if vente else 0.0
     colis = calcul["propose_colis"]
 
-    # Amortissement et désescalade en fin de promotion
+    # Une fin de prospectus est un repère, jamais une autorisation de baisse.
+    # Toute réduction passe par les suggestions contrôlées et le bouton Suivre.
     fin_promo_appliquee = False
     motif_fin_promo = None
-    if eval_promo and eval_promo.get("en_fin_promo") and colis and colis > 0:
-        f_amort = eval_promo.get("facteur_amortissement", 1.0)
-        colis = max(1, math.floor(colis * f_amort)) if colis > 1 else colis
+    if eval_promo and eval_promo.get("en_fin_promo"):
         fin_promo_appliquee = True
         motif_fin_promo = eval_promo.get("motif")
 
@@ -281,11 +278,71 @@ def ligne_inconnue(article, offre, alerte_marge=None, etat=None):
     }
 
 
+def groupes_du_cadencier(cadencier, config):
+    """Source physique et ligne porteuse du besoin, sans changer les identifiants.
 
+    Une fusion est déjà une décision métier : ses ventes et comptages sont
+    calculés sous le principal. Les offres gardent chacune leur code/PCB/prix.
+    Le besoin automatique porte sur le principal actif s'il est présent,
+    sinon sur un unique alias actif. Plusieurs alias sans principal actif
+    exigent un choix du responsable : aucune priorité commerciale inventée.
+    """
+    vers_principal = {m: p for p, membres in config.get("groupes", {}).items() for m in membres}
+    candidats = {}
+    overrides = config.get("overrides", {})
+    for index, article in enumerate((cadencier or {}).get("articles", [])):
+        code = article.get("article")
+        if not code or overrides.get(code, {}).get("masque"):
+            continue
+        principal = vers_principal.get(code, code)
+        candidats.setdefault(principal, []).append((index, code))
+    porteurs = {}
+    for principal, offres in candidats.items():
+        propre = [o for o in offres if o[1] == principal]
+        porteurs[principal] = (propre[0] if len(propre) == 1 else
+                               offres[0] if len(offres) == 1 else None)
+    return vers_principal, porteurs
+
+
+def rattacher_donnees_groupes(cadencier, config, mercalys, selections, moyennes,
+                             positions, livraisons, profils):
+    """Projette en mémoire les calculs du principal vers les codes commandables.
+
+    Aucun carnet ni dictionnaire reçu n'est modifié. Le PCB, l'unité et le
+    fournisseur restent ceux du code de l'offre. Seule la promotion déjà
+    précommandée du groupe se partage ; son masquage reste strictement local.
+    """
+    vers_principal, porteurs = groupes_du_cadencier(cadencier, config)
+    config = {**config, "overrides": {c: dict(v) for c, v in config.get("overrides", {}).items()}}
+    selections, moyennes = dict(selections), dict(moyennes)
+    positions, livraisons, profils = dict(positions), dict(livraisons), dict(profils)
+    for article in (cadencier or {}).get("articles", []):
+        code = article.get("article")
+        principal = vers_principal.get(code)
+        if not principal or code == principal:
+            continue
+        propres = config["overrides"].get(code, {})
+        partages = {k: v for k, v in config["overrides"].get(principal, {}).items() if k == "promotion"}
+        config["overrides"][code] = {**partages, **propres}
+        selections[code] = conditionnements.selectionner(
+            article, config["overrides"][code], mercalys.get(code) or mercalys.get(principal))
+        for destination in (moyennes, positions, livraisons, profils):
+            if principal in destination:
+                destination[code] = destination[principal]
+            else:
+                destination.pop(code, None)
+    return config, selections, moyennes, positions, livraisons, profils, vers_principal, porteurs
+
+
+
+@operation_donnees(lambda: RACINE / "donnees")
 def main():
     aggregats = agregats.charger()
     config = regles.charger()
     etat = json.loads((RACINE / "donnees" / "etat.json").read_text(encoding="utf-8"))
+    fichier_cadencier = RACINE / "donnees" / "cadencier-du-jour.json"
+    cadencier = (json.loads(fichier_cadencier.read_text(encoding="utf-8"))
+                 if fichier_cadencier.exists() else None)
 
     date_reference = aggregats["date_reference"]
     date_calcul = date_de_calcul(etat, date_reference)
@@ -317,7 +374,7 @@ def main():
     # Chargement des alertes de marge et des offres de promotion
     try:
         import amortissement_promotions as ap
-        offres_promos = ap.charger_promotions()
+        offres_promos = ap.charger_promotions(RACINE / "donnees" / "promotions.json")
     except ImportError:
         ap = None
         offres_promos = []
@@ -334,10 +391,14 @@ def main():
 
     moyennes = calc.construire_moyennes()
     positions = etat["articles"]  # conserve notamment mesuree_le pour l'exception de comptage récent
+    config, selections, moyennes, positions, dernieres_livraisons, profils_meteo, vers_principal, porteurs = rattacher_donnees_groupes(
+        cadencier, config, mercalys, selections, moyennes, positions,
+        aggregats.get("dernieres_livraisons", {}), profils_meteo)
+    etat_affichage = {**etat, "articles": positions}
 
     resultat = prop.proposer(
         date_calcul, moyennes, positions, config, mercalys,
-        aggregats.get("dernieres_livraisons", {}), aggregats.get("profil_hebdomadaire"),
+        dernieres_livraisons, aggregats.get("profil_hebdomadaire"),
         {
             "meteo": f_meteo_liv,
             "meteo_cmd": f_meteo_cmd,
@@ -361,17 +422,13 @@ def main():
     # On part donc de lui, dans son ordre, et on va chercher ensuite ce qu'on
     # sait de chaque article. Un article qu'on ne sait pas rattacher reste dans
     # la liste, sans quantité calculée : il est commandable, c'est ce qui compte.
-    fichier_cadencier = RACINE / "donnees" / "cadencier-du-jour.json"
-    cadencier = (json.loads(fichier_cadencier.read_text(encoding="utf-8"))
-                 if fichier_cadencier.exists() else None)
-
     lignes = []
     total_achat = total_vente = total_colis = 0.0
 
     if cadencier:
-        vus = set()
-        for article in cadencier["articles"]:
+        for index, article in enumerate(cadencier["articles"]):
             itm8 = article.get("article")
+            principal = vers_principal.get(itm8, itm8)
             selection = selections.get(itm8) or conditionnements.selectionner(
                 article, config["overrides"].get(itm8 or ("nom:" + article["nom"])))
             offre = selection["offre"]
@@ -386,25 +443,44 @@ def main():
             eval_p = ap.evaluer_amortissement(itm8, date_commande, date_livraison, offres_promos) if (ap and itm8) else None
             alerte_m = alertes_marges.get(str(itm8)) if itm8 else None
             if itm8 and itm8 in resultat["lignes"]:
-                vus.add(itm8)
-                ligne = ligne_connue(itm8, resultat["lignes"][itm8], mercalys,
-                                     config, etat, article, offre,
-                                     aggregats.get("articles", {}).get(itm8),
+                calcul = resultat["lignes"][itm8]
+                porteur = porteurs.get(principal)
+                if principal in porteurs and (porteur is None or index != porteur[0]):
+                    calcul = {**calcul, "propose_colis": 0.0, "propose_unites": 0.0}
+                ligne = ligne_connue(itm8, calcul, mercalys,
+                                     config, etat_affichage, article, offre,
+                                     aggregats.get("articles", {}).get(principal),
                                      eval_promo=eval_p, alerte_marge=alerte_m)
             else:
-                ligne = ligne_inconnue(article, offre, alerte_marge=alerte_m, etat=etat)
+                ligne = ligne_inconnue(article, offre, alerte_marge=alerte_m, etat=etat_affichage)
                 # Les décisions par nom s'appliquent aussi sans historique/mapping.
                 # Le prix reste celui de l'offre sélectionnée et son éventuel
                 # défaut d'appariement est déclaré juste après.
                 ligne["conditionnement"] = selection["conditionnement"]
                 code_etat = article.get("article") or ("nom:" + article["nom"])
-                pos_info = (etat or {}).get("articles", {}).get(code_etat) or {}
+                pos_info = positions.get(code_etat) or {}
                 if pos_info.get("position") is not None and ligne["conditionnement"]:
                     ligne["position_colis"] = round(pos_info["position"] / ligne["conditionnement"], 1)
                     ligne["position_mesuree_le"] = pos_info.get("mesuree_le")
             ligne["source_conditionnement"] = selection["source_conditionnement"]
             ligne["avertissements_conditionnement"] = selection["avertissements"]
             ligne["masque"] = est_masque
+            if itm8 and (itm8 in vers_principal or itm8 in config.get("groupes", {})):
+                ligne["article_stock"] = principal
+                porteur = porteurs.get(principal)
+                ligne["commande_groupe_portee_par"] = porteur[1] if porteur else None
+                ligne["commande_groupe_ambigue"] = principal in porteurs and porteur is None and not est_masque
+                if ligne["commande_groupe_ambigue"]:
+                    ligne["motif_commande_groupe"] = (
+                        f"Plusieurs articles actifs partagent le stock {principal}, sans ligne principale active. "
+                        "Choisissez avec le responsable l’article à commander : aucune quantité automatique "
+                        "n’est répartie entre ces offres. Les quantités manuelles restent conservées.")
+                if porteur and index != porteur[0] and not est_masque:
+                    nom_porteur = cadencier["articles"][porteur[0]]["nom"]
+                    ligne["motif_commande_groupe"] = (
+                        f"Même stock et mêmes ventes que {nom_porteur} ({porteur[1]}). "
+                        "Le besoin automatique est proposé une seule fois sur cette autre ligne. "
+                        "Vérifiez le total du groupe si vous changez une quantité manuellement.")
             lignes.append(ligne)
         for l in lignes:
             if l["masque"]:
@@ -437,9 +513,9 @@ def main():
     # l'article réellement compté, jamais tous ses voisins.
     couvertures = []
     sans_position = sans_mapping = sans_position_connus = a_verifier = 0
-    dernier_comptage = max((v.get("mesuree_le") or "" for v in positions.values()), default="")
+    dernier_comptage = max((v.get("mesuree_le") or "" for v in etat["articles"].values()), default="")
     articles_dernier_comptage = sum(
-        1 for v in positions.values() if dernier_comptage and v.get("mesuree_le") == dernier_comptage)
+        1 for v in etat["articles"].values() if dernier_comptage and v.get("mesuree_le") == dernier_comptage)
     veille_commande = prop.decaler(date_commande, -1)
     # Après 9h30 la proposition passe à demain, mais les ventes d'aujourd'hui
     # ne sont exportées que demain. Ne pas signaler tout le rayon en retard.
@@ -449,7 +525,7 @@ def main():
     for ligne in lignes:
         if ligne.get("masque"):
             continue
-        mesure = etat["articles"].get(ligne["itm8"], {})
+        mesure = etat["articles"].get(ligne.get("article_stock") or ligne["itm8"], {})
         mesure_le = mesure.get("mesuree_le") or ""
         if not ligne.get("connu") or ligne["itm8"].startswith("nom:"):
             sans_mapping += 1

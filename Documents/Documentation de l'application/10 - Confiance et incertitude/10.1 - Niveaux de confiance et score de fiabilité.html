@@ -178,46 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-10.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Scores de Fiabilité & Qualification</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Exploitants, Chefs Rayon</div>
         </div>
       </div>
 
 
-      <h2>1. Les 3 Niveaux de Confiance Algorithmique</h2>
-      <p>
-        Chaque proposition de commande est qualifiée par un niveau de confiance déterministe affiché à l'exploitant :
-      </p>
-
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 20%;">Niveau de Confiance</th>
-            <th style="width: 30%;">Conditions Techniques Requises</th>
-            <th style="width: 50%;">Interprétation Opérationnelle Rayon</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong style="color:#15803d;">ÉLEVÉ (Vert)</strong></td>
-            <td>Historique &ge; 21 jours, comptage physique du matin validé, cadencier certifié avec PCB conforme.</td>
-            <td>Proposition robuste et directement validable en un clic.</td>
-          </tr>
-          <tr>
-            <td><strong style="color:#b45309;">MOYEN (Orange)</strong></td>
-            <td>Stock théorique non pointé le matin, ou météo de repli par défaut (API inaccessible), ou fin de promotion.</td>
-            <td>Revue visuelle recommandée avant validation.</td>
-          </tr>
-          <tr>
-            <td><strong style="color:#b91c1c;">FAIBLE (Rouge)</strong></td>
-            <td>Moins de 5 jours d'historique, contradiction de colisage cadencier/magasin, ou absence de mercuriale.</td>
-            <td>Proposition à 0 colis ou décision manuelle impérative de l'exploitant.</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <div class="page-nav-bar">
+      <h2>Lire la fiabilité</h2>
+<p>La confiance se juge à partir des sources : date du comptage, couverture des sorties, correspondance catalogue, unités et fraîcheur des statistiques. Aucun score probabiliste unique ne garantit la fiabilité d’une ligne. Consulter les motifs et les dates du calcul, puis faire contrôler les ambiguïtés.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li><li><a href="../../../procedures/controle-stock.md">procedures/controle-stock.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../9 - Meteo calendrier et evenements/9.2 - Calendrier commercial, jours fériés et vacances scolaires.html" class="btn-action">&larr; 9.2 Calendrier commercial</a>
         </div>

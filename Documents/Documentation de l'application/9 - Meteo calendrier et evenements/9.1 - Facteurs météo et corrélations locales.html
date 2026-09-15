@@ -178,42 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-09.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Paramétrage Météorologique Carmaux</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Analystes</div>
         </div>
       </div>
 
 
-      <h2>1. Intégration Météorologique Temps Réel</h2>
-      <p>
-        Les conditions météorologiques sont récupérées chaque matin par <code>moteur/generer-proposition.py</code> auprès de l'API Open-Meteo pour Carmaux (44.052, 2.158).
-      </p>
-
-      <h2>2. Seuils Déterministes Globaux</h2>
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Forte Pluie (&ge; 10 mm)</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Facteur multiplicateur : <code>0.901</code> (-9,9 %).<br>
-            • Effet : Baisse de la fréquentation piétonne et des achats d'impulsion fraîcheur.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Chaleur Significative (&ge; 25°C)</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Facteur multiplicateur : <code>1.076</code> (+7,6 %).<br>
-            • Effet : Explosion de la demande en salades, melons, pastèques et fruits désaltérants.
-          </p>
-        </div>
-      </div>
-
-      <h2>3. Ratios Empiriques Produits (<code>profils-produits-sensibilites.json</code>)</h2>
-      <p>
-        Chaque article dispose de coefficients personnalisés issus de 2,5 ans d'historique croisé température/ventes : <code>chaud_30</code>, <code>chaud_25</code>, <code>froid_10</code>, <code>pluie_5mm</code>, bornés strictement entre <code>0.4</code> et <code>2.5</code>.
-      </p>
-
-
-      <div class="page-nav-bar">
+      <h2>Facteurs météorologiques</h2>
+<p>Le générateur consulte les prévisions locales et applique les coefficients prévus par son code, y compris les profils d’articles lorsqu’ils sont disponibles. Les ratios historiques ne prouvent pas une causalité. L’absence de prévision laisse le facteur météo de commande neutre. Pour analyser une baisse de ventes, la météo historique de toutes les journées comparées doit être disponible : sinon le contexte reste non vérifié et les suggestions de réduction sont suspendues.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li><li><a href="../../../moteur/analyser-ventes-livraisons.py">moteur/analyser-ventes-livraisons.py</a></li><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../8 - Prevision des ventes/8.2 - Profils journaliers et saisonnalité.html" class="btn-action">&larr; 8.2 Profils journaliers</a>
         </div>

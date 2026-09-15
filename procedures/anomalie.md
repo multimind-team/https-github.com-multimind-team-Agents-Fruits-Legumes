@@ -20,10 +20,13 @@ clôt pas une anomalie d'un autre fichier ; un rectificatif doit être intégré
 3. Verifier l'article :
 
 ```bat
-py -3.14 moteur/agregats.py <code>
 py -3.14 moteur/catalogue.py <code>
 py -3.14 moteur/regles.py <code>
 ```
+
+Lire directement `donnees/agregats.json` existant pour les statistiques. `agregats.py <code>`
+peut créer ce fichier s'il manque : une analyse sans écriture l'exécute en copie. De même,
+`articles-masques-vendus.py` produit un dérivé ; son nom ne garantit pas la lecture seule.
 
 4. Chercher la cause :
    - livraison directe non saisie ;
@@ -35,7 +38,7 @@ py -3.14 moteur/regles.py <code>
    - fichier absent ou incomplet.
    - doublon historique, instant de comptage ou conversion d'unité incohérent ;
    - désaccord entre une règle documentée et le code en cours d'exécution.
-5. Les agents de contrôle/articles restent en lecture seule. Si une correction est sûre, l'agent orchestrateur
+5. Les agents de contrôle/articles restent en lecture seule métier ; ils peuvent rendre leurs rapports de preuve privés selon le mandat. Si une correction est sûre, l'agent orchestrateur
    la transmet à l'agent autorisé avec son motif et, si nécessaire, la validation du responsable.
 6. Sinon, signaler ce que tu as trouve et demander validation.
 

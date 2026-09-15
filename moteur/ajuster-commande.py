@@ -51,6 +51,7 @@ from pathlib import Path
 MOTEUR = Path(__file__).resolve().parent
 sys.path.insert(0, str(MOTEUR))
 import journal_agents
+from verrou_donnees import append_jsonl, operation_donnees
 
 RACINE = MOTEUR.parent
 DONNEES = RACINE / "donnees"
@@ -137,6 +138,7 @@ def verifier(agent, article, avant, apres, applique, jour=None):
                  "dit au responsable de rayon.")
 
 
+@operation_donnees(lambda: FICHIER.parent)
 def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -186,12 +188,11 @@ def main():
         requis = {"commander"} if courants[code].get("applique") else {"commander", "proposer-commande"}
         if "*" not in autorisees and not autorisees & requis:
             sys.exit(f"REFUSÉ : « {args.agent} » n'a pas le droit de retirer cet ajustement.")
-        with open(FICHIER, "a", encoding="utf-8") as f:
-            f.write(json.dumps({
+        append_jsonl(FICHIER, [{
                 "date_commande": jour, "article": code, "retire": True,
                 "motif": args.motif.strip(), "agent": args.agent,
                 "enregistre_le": datetime.now().isoformat(timespec="seconds"),
-            }, ensure_ascii=False) + "\n")
+            }])
         print(f"Ajustement retiré sur {courants[code]['libelle']}.")
         return 0
 
@@ -233,8 +234,7 @@ def main():
         "enregistre_le": datetime.now().isoformat(timespec="seconds"),
     }
     FICHIER.parent.mkdir(parents=True, exist_ok=True)
-    with open(FICHIER, "a", encoding="utf-8") as f:
-        f.write(json.dumps(enregistrement, ensure_ascii=False, allow_nan=False) + "\n")
+    append_jsonl(FICHIER, [enregistrement])
 
     journal_agents.enregistrer(
         agent=args.agent, action=numero,

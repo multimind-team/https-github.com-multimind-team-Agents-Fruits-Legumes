@@ -33,6 +33,10 @@ publiée dans le même fil. Un agent de contrôle peut donner un avis, pas exéc
    `py -3.14 moteur/dire.py --auteur "Agent rayon" --en-reponse-a "<id-message>" "<reponse-verifiee>"`.
    Relire la réponse cible et fournir son ID à l'agent orchestrateur. Une réponse seulement visible au terminal
    n'est pas une réponse reçue sur le téléphone.
+7. Si la demande provient de la sentinelle, acquitter son événement seulement après
+   vérification du traitement et de la réponse publiée :
+   `py -3.14 moteur/surveille-mail-message-comptage.py --acquitter MESSAGE "<id-message>" --preuve "<id-reponse-verifiee>"`.
+   Une question de clarification ou un traitement encore en échec laisse l'événement en attente.
 
 Avant une annulation, lire l'action originale et les changements postérieurs. Ne jamais annuler
 une décision devenue conflictuelle ou un type non pris en charge seulement parce que le CLI dit

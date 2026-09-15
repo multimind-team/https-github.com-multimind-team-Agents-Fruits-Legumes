@@ -107,13 +107,163 @@ class ColisageEtCouvertureTests(unittest.TestCase):
                 self.assertEqual(ligne["source_conditionnement"], "decision")
                 self.assertEqual(ligne["propose_colis"], 0)
                 self.assertIsNone(ligne["position_colis"])
-                self.assertTrue(any("prix non apparié" in a for a in ligne["avertissements_conditionnement"]))
+                self.assertTrue(any("Contradiction de colisage" in a for a in ligne["avertissements_conditionnement"]))
+                self.assertEqual(ligne["prix_achat"], 2)
+
+    def test_generation_fin_promotion_garde_quantite_et_montant(self):
+        initiale = self.generer()
+        offre = {"nom": "Orange", "debut": "2026-09-01",
+                 "fin": initiale["date_livraison"],
+                 "correspondances": [{"itm8": "ORANGE", "statut": "confirme"}]}
+        self.ecrire("promotions", {"offres": [offre]})
+        finale = self.generer()
+        self.assertTrue(finale["lignes"][0]["fin_promotion"])
+        self.assertEqual(finale["lignes"][0]["propose_colis"], initiale["lignes"][0]["propose_colis"])
+        self.assertEqual(finale["totaux"]["montant_achat"], initiale["totaux"]["montant_achat"])
 
     def test_masques_exclus_aussi_du_nombre_articles_a_commander(self):
         self.config["overrides"]["PDT"] = {"masque": True}
         p = self.generer()
         self.assertEqual(p["totaux"]["articles_a_commander"], 1)
         self.assertEqual(p["totaux"]["montant_achat"], p["lignes"][0]["montant_achat"])
+
+    def ajouter_alias_orange(self, code="ORANGE_ALIAS", pcb=6, achat=2):
+        self.references[code] = {"CODE ITM": code, "LIBELLE": code,
+                                 "CONDIT.BASE": 1, "UNITE MESURE": "2 kg"}
+        self.config.setdefault("groupes", {}).setdefault("ORANGE", []).append(code)
+        return {"article": code, "nom": code, "rang": 0, "groupe": "fruits",
+                "offres": [{"par_colis": pcb, "prix_achat": achat}]}
+
+    def test_alias_unique_recoit_stock_demande_prix_et_couverture_du_groupe(self):
+        alias = self.ajouter_alias_orange()
+        self.cadencier["articles"][0] = alias
+        self.positions["ORANGE"]["position"] = 4
+        self.agr["articles"]["ORANGE"]["dernierPrixVente"] = 3.69
+        p = self.generer()
+        ligne = p["lignes"][0]
+        self.assertEqual(ligne["itm8"], "ORANGE_ALIAS")
+        self.assertEqual(ligne["article_stock"], "ORANGE")
+        self.assertTrue(ligne["connu"])
+        self.assertEqual(ligne["position_unites"], 4)
+        self.assertEqual(ligne["position_colis"], 0.7)
+        self.assertEqual(ligne["position_mesuree_le"], "2026-09-07")
+        self.assertEqual(ligne["demande"], 17)
+        self.assertEqual(ligne["conditionnement"], 6)
+        self.assertEqual(ligne["propose_colis"], 3)
+        self.assertEqual(ligne["montant_achat"], 36)
+        self.assertEqual(ligne["prix_vente"], 3.69)
+        self.assertEqual(ligne["sorties_couvertes_jusquau"], "2026-09-07")
+        self.assertEqual(ligne["commande_groupe_portee_par"], "ORANGE_ALIAS")
+        self.assertFalse(ligne["commande_groupe_ambigue"])
+        self.assertEqual(p["couverture_stock"]["articles_sans_mapping"], 0)
+        self.assertEqual(p["couverture_stock"]["articles_sans_position"], 0)
+        self.assertEqual(p["couverture_stock"]["articles_dernier_comptage"], 2)
+        self.assertNotIn("ORANGE_ALIAS", self.positions)
+        self.assertNotIn("ORANGE_ALIAS", self.moyennes)
+
+    def test_principal_present_porte_seul_besoin_sans_doubler_les_alias(self):
+        alias = self.ajouter_alias_orange()
+        alias["rang"] = -1
+        self.cadencier["articles"].insert(0, alias)
+        p = self.generer()
+        lignes = {l["itm8"]: l for l in p["lignes"]}
+        self.assertEqual([l["itm8"] for l in p["lignes"]], ["ORANGE_ALIAS", "ORANGE", "PDT"])
+        self.assertEqual(lignes["ORANGE"]["propose_colis"], 3)
+        secondaire = lignes["ORANGE_ALIAS"]
+        self.assertEqual(secondaire["propose_colis"], 0)
+        self.assertEqual(secondaire["montant_achat"], 0)
+        self.assertTrue(secondaire["connu"])
+        self.assertEqual(secondaire["demande"], 17)
+        self.assertEqual(secondaire["commande_groupe_portee_par"], "ORANGE")
+        self.assertIn("une seule fois", secondaire["motif_commande_groupe"])
+        self.assertFalse(secondaire["commande_groupe_ambigue"])
+        self.assertEqual(p["totaux"]["colis"], lignes["ORANGE"]["propose_colis"] + lignes["PDT"]["propose_colis"])
+
+    def test_plusieurs_alias_sans_principal_exigent_un_choix_sans_repartir(self):
+        alias1 = self.ajouter_alias_orange("ALIAS1", 6, 2)
+        alias2 = self.ajouter_alias_orange("ALIAS2", 10, 5)
+        self.cadencier["articles"] = [alias1, alias2]
+        self.positions["ORANGE"]["position"] = 4
+        p = self.generer()
+        self.assertEqual(p["totaux"]["colis"], 0)
+        self.assertEqual(p["totaux"]["montant_achat"], 0)
+        self.assertEqual([l["conditionnement"] for l in p["lignes"]], [6, 10])
+        self.assertEqual([l["prix_achat"] for l in p["lignes"]], [2, 5])
+        for l in p["lignes"]:
+            self.assertEqual(l["position_unites"], 4)
+            self.assertTrue(l["connu"])
+            self.assertEqual(l["demande"], 17)
+            self.assertEqual(l["propose_colis"], 0)
+            self.assertTrue(l["commande_groupe_ambigue"])
+            self.assertIsNone(l["commande_groupe_portee_par"])
+            self.assertIn("Choisissez", l["motif_commande_groupe"])
+
+    def test_principal_masque_alias_unique_et_decision_propre_conserves(self):
+        alias = self.ajouter_alias_orange(pcb=6)
+        alias["offres"].append({"par_colis": 4, "prix_achat": 5})
+        self.config["overrides"]["ORANGE"] = {"masque": True, "conditionnement": "8", "unite": "kg"}
+        self.config["overrides"]["ORANGE_ALIAS"] = {"conditionnement": "4", "fournisseur": "DIRECT"}
+        self.cadencier["articles"].append(alias)
+        p = self.generer()
+        lignes = {l["itm8"]: l for l in p["lignes"]}
+        self.assertTrue(lignes["ORANGE"]["masque"])
+        l = lignes["ORANGE_ALIAS"]
+        self.assertFalse(l["masque"])
+        self.assertEqual(l["conditionnement"], 4)
+        self.assertEqual(l["prix_achat"], 5)
+        self.assertEqual(l["propose_colis"], 5)
+        self.assertEqual(l["montant_achat"], 100)
+        self.assertEqual(l["fournisseur"], "DIRECT")
+        self.assertEqual(l["unite"], "kg")
+        self.assertEqual(l["commande_groupe_portee_par"], "ORANGE_ALIAS")
+        self.assertNotIn("masque", self.config["overrides"]["ORANGE_ALIAS"])
+
+    def test_alias_sans_decision_garde_pcb_offre_malgre_reglage_du_principal(self):
+        self.cadencier["articles"] = [self.ajouter_alias_orange(pcb=6, achat=2)]
+        self.config["overrides"]["ORANGE"] = {"conditionnement": "8", "fournisseur": "DIRECT"}
+        l = self.generer()["lignes"][0]
+        self.assertEqual(l["conditionnement"], 6)
+        self.assertEqual(l["prix_achat"], 2)
+        self.assertEqual(l["propose_colis"], 3)
+        self.assertEqual(l["montant_achat"], 36)
+        self.assertEqual(l["source_conditionnement"], "cadencier")
+        self.assertEqual(l["avertissements_conditionnement"], [])
+        self.assertNotEqual(l["fournisseur"], "DIRECT")
+        self.assertNotIn("ORANGE_ALIAS", self.config["overrides"])
+
+    def test_alias_sans_profil_garde_position_reelle_sans_inventer_ventes(self):
+        self.cadencier["articles"] = [self.ajouter_alias_orange()]
+        self.moyennes.pop("ORANGE")
+        self.positions["ORANGE"]["position"] = 12
+        l = self.generer()["lignes"][0]
+        self.assertFalse(l["connu"])
+        self.assertEqual(l["position_colis"], 2)
+        self.assertEqual(l["position_mesuree_le"], "2026-09-07")
+        self.assertEqual(l["propose_colis"], 0)
+        self.assertEqual(l["article_stock"], "ORANGE")
+
+    def test_alias_reutilise_recence_livraison_et_promotion_du_principal(self):
+        self.cadencier["articles"] = [self.ajouter_alias_orange()]
+        self.moyennes["ORANGE"]["saison"] = [1] * 366
+        self.agr["dernieres_livraisons"] = {"ORANGE": "2026-09-08"}
+        l = self.generer()["lignes"][0]
+        self.assertEqual(l["demande"], 2)
+        self.assertEqual(l["propose_colis"], 0)  # livraison récente : arrondi au plus proche
+        self.agr["dernieres_livraisons"] = {}
+        self.assertEqual(self.generer()["lignes"][0]["propose_colis"], 1)
+        self.config["overrides"]["ORANGE"] = {"promotion": True}
+        l = self.generer()["lignes"][0]
+        self.assertTrue(l["promotion"])
+        self.assertEqual(l["propose_colis"], 0)
+
+    def test_principal_masque_et_plusieurs_alias_ne_designent_aucune_offre(self):
+        self.cadencier["articles"] += [self.ajouter_alias_orange("ALIAS1"), self.ajouter_alias_orange("ALIAS2")]
+        self.config["overrides"]["ORANGE"] = {"masque": True}
+        p = self.generer()
+        for l in p["lignes"]:
+            if l["itm8"].startswith("ALIAS"):
+                self.assertTrue(l["commande_groupe_ambigue"])
+                self.assertEqual(l["propose_colis"], 0)
 
     def test_couverture_distingue_comptages_et_statistiques_et_inconnus(self):
         self.cadencier["articles"].append({"article": None, "nom": "INCONNU", "rang": 2, "groupe": "legumes", "offres": [{"par_colis": 6, "prix_achat": 2}]})

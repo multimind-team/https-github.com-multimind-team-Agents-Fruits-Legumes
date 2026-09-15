@@ -21,11 +21,11 @@ Usage :
   python moteur/analyser-ecarts-comptage.py --publier
 """
 import argparse
+import importlib.util
 from collections import defaultdict
-from datetime import datetime, date, timedelta
+from datetime import datetime
 import json
 import math
-import os
 from pathlib import Path
 import re
 import sys
@@ -41,12 +41,15 @@ FICHIER_RECEPTIONS = DONNEES / "receptions-courrier.json"
 sys.path.insert(0, str(MOTEUR))
 import catalogue
 import faits
+import regles
+from verrou_donnees import operation_donnees
 from ecriture_derivee import ecrire_json
 
-AJOUTE = {"livraison"}
-RETIRE = {"vente", "casse", "don"}
-HEURE_DEBUT_SOIR = "17:00:00"
-HEURE_MAIL_DEFAUT = "06:30:00"
+_spec_position = importlib.util.spec_from_file_location("position_pour_audit", MOTEUR / "calculer-position.py")
+position = importlib.util.module_from_spec(_spec_position)
+_spec_position.loader.exec_module(position)
+AJOUTE, RETIRE = position.AJOUTE, position.RETIRE
+moment_du_comptage = position.moment_du_comptage
 
 FRUITS_LEGUMES_PERISSABLES = {
     "tomate", "salade", "batavia", "laitue", "sucrine", "mache", "fraise", "framboise",
@@ -75,41 +78,6 @@ def charger_heures_reception_mail():
         except Exception:
             pass
     return {}
-
-
-def moment_du_comptage(fait, heures_mail=None):
-    # L'heure physique de saisie prévaut sur l'horodatage technique d'enregistrement
-    val_heure = (fait.get("source") or {}).get("saisi_le") or fait.get("horodatage") or fait.get("enregistre_le")
-    if not val_heure or "T" not in str(val_heure):
-        return "soir"
-
-    try:
-        heure_str = str(val_heure).split("T")[1][:8]
-    except (ValueError, IndexError):
-        return "soir"
-
-    # Comptage de fin de journée / soir (dès 16h50 / 17h00) : toute la journée écoulée est dedans
-    if heure_str >= "16:50:00":
-        return "soir"
-
-    jour = fait.get("date_effet") or fait.get("date_source")
-    heure_mail = (heures_mail or {}).get(jour, HEURE_MAIL_DEFAUT)
-    if heure_str < heure_mail:
-        return "avant-livraison"
-    return "matin"
-
-
-def a_appliquer(jour, type_fait, depart):
-    if jour > depart["date"]:
-        return True
-    if jour < depart["date"]:
-        return False
-    moment = depart.get("moment")
-    if moment == "soir":
-        return False
-    if moment == "avant-livraison":
-        return True
-    return type_fait not in AJOUTE
 
 
 def charger_faits_par_article():
@@ -142,66 +110,32 @@ def trouver_codes_jumeaux_potentiels(itm8, libelle_cible, tous_articles):
     return jumeaux[:3]
 
 
-def calculer_stock_theorique_avant_comptage(comptage, faits_article, heures_mail):
-    id_cible = comptage.get("id")
-    date_comptage = comptage.get("date_effet") or comptage.get("date_source")
-    horodatage_comptage = comptage.get("horodatage") or comptage.get("enregistre_le") or ""
-
-    comptages_anterieurs = []
-    mouvements = []
-
-    for f in faits_article:
-        if f.get("id") == id_cible:
-            continue
-        f_date = f.get("date_effet") or f.get("date_source") or ""
-        f_horo = f.get("horodatage") or f.get("enregistre_le") or ""
-        if f["type"] in ("comptage", "correction-comptage"):
-            if (f_date, f_horo) < (date_comptage, horodatage_comptage):
-                comptages_anterieurs.append(f)
-        else:
-            mouvements.append(f)
-
-    depart = None
-    if comptages_anterieurs:
-        dernier_c = max(comptages_anterieurs, key=lambda x: (x.get("date_effet") or x.get("date_source") or "",
-                                                              x.get("horodatage") or x.get("enregistre_le") or ""))
-        h = str(dernier_c.get("horodatage") or "").split("T")[-1][:8] if "T" in str(dernier_c.get("horodatage") or "") else "23:59:59"
-        depart = {
-            "date": dernier_c.get("date_effet") or dernier_c.get("date_source"),
-            "valeur": float(dernier_c.get("quantite") or 0.0),
-            "moment": moment_du_comptage(dernier_c, heures_mail),
-            "heure": h,
-            "id": dernier_c.get("id"),
-        }
-
-    total_unites = depart["valeur"] if depart else 0.0
-    mouvements_appliques = []
-
-    for m in mouvements:
-        m_date = m.get("date_effet") or m.get("date_source") or ""
-        if depart:
-            if not a_appliquer(m_date, m["type"], depart):
-                continue
-        if m_date > date_comptage:
-            continue
-        q = float(m.get("quantite") or 0.0)
-        total_unites += q if m["type"] in AJOUTE else -q
-        mouvements_appliques.append(m)
-
-    return round(total_unites, 3), depart, mouvements_appliques
+def calculer_stock_theorique_avant_comptage(comptage, faits_article, heures_mail, config=None):
+    resultat = position.position_avant_comptage(
+        comptage, faits_article, config if config is not None else regles.charger(), heures_mail)
+    return resultat.get("position"), resultat.get("depart"), resultat.get("mouvements_appliques", [])
 
 
 def auditer_un_comptage(comptage, faits_article, catalogue_articles, heures_mail, tous_articles):
     itm8 = comptage["article"]
     fiche_cat = catalogue_articles.get(itm8, {})
     libelle = comptage.get("libelle") or fiche_cat.get("LIBELLE") or itm8
-    unite = comptage.get("unite") or fiche_cat.get("UNITE") or "colis"
-    colisage = float(comptage.get("conditionnement") or fiche_cat.get("COLISAGE") or 1.0)
-    if colisage <= 0:
-        colisage = 1.0
-
+    unite = comptage.get("unite") or fiche_cat.get("UNITE MESURE") or "unité"
     quantite_physique = float(comptage.get("quantite") or 0.0)
-    colis_physique = float(comptage.get("colis") or (quantite_physique / colisage))
+    colis_physique = comptage.get("colis")
+    colisage = comptage.get("conditionnement") or comptage.get("colisage")
+    # La conversion attestée dans le relevé prime sur un PCB catalogue plus récent.
+    if not colisage and colis_physique not in (None, 0):
+        colisage = quantite_physique / float(colis_physique)
+    colisage = colisage or fiche_cat.get("CONDIT.BASE") or fiche_cat.get("COLISAGE")
+    try:
+        colisage = float(colisage)
+        if not math.isfinite(colisage) or colisage <= 0:
+            colisage = None
+    except (ValueError, TypeError):
+        colisage = None
+    colis_physique = (float(colis_physique) if colis_physique is not None else
+                      quantite_physique / colisage if colisage else None)
 
     date_comptage = comptage.get("date_effet") or comptage.get("date_source")
     moment = moment_du_comptage(comptage, heures_mail)
@@ -209,6 +143,15 @@ def auditer_un_comptage(comptage, faits_article, catalogue_articles, heures_mail
     stock_theorique_unites, depart, mouvements = calculer_stock_theorique_avant_comptage(
         comptage, faits_article, heures_mail
     )
+    if stock_theorique_unites is None or colisage is None:
+        return {"comptage_id": comptage.get("id"), "article": itm8, "libelle": libelle,
+                "date": date_comptage, "moment": moment, "colisage": colisage,
+                "physique": {"colis": colis_physique, "unites": quantite_physique},
+                "theorique": {"colis": None, "unites": stock_theorique_unites},
+                "ecart": {"colis": None, "unites": None}, "statut": "inconnu",
+                "causes_identifiees": [],
+                "explication_responsable": ("Aucun stock antérieur exploitable : le stock attendu et l'écart restent inconnus."
+                    if stock_theorique_unites is None else "Conditionnement du relevé inconnu : aucun écart en colis calculé.")}
     stock_theorique_colis = round(stock_theorique_unites / colisage, 2)
 
     ecart_unites = round(quantite_physique - stock_theorique_unites, 2)
@@ -250,12 +193,12 @@ def auditer_un_comptage(comptage, faits_article, catalogue_articles, heures_mail
         if abs(diff_sans_livraison / colisage) < 0.5:
             causes.append({
                 "type": "regle_17h_livraison_matin",
-                "gravite": "normale",
-                "titre": "Règle des 17h : Livraison du matin non entrée en chambre froide",
+                "gravite": "a_verifier",
+                "titre": "Écart égal à la livraison du matin : vérifier le quai et le rangement",
                 "details": (
                     f"Comptage effectué à {moment} ({comptage.get('horodatage')}). "
-                    f"La livraison du jour de {c_livres_jour:.1f} colis n'était pas encore en chambre froide "
-                    f"au moment du comptage. L'écart est normal et s'aligne dès l'intégration matinale."
+                    f"L'écart correspond à la livraison du jour de {c_livres_jour:.1f} colis. "
+                    f"Vérifier si elle était sur le quai, déjà rangée ou comptée. Cette égalité ne prouve pas sa localisation."
                 ),
             })
 
@@ -273,7 +216,7 @@ def auditer_un_comptage(comptage, faits_article, catalogue_articles, heures_mail
                 "details": (
                     f"Déficit de {abs(ecart_colis):.1f} colis ({abs(ecart_unites):.1f} {unite}). "
                     f"Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. "
-                    f"Marchandise abîmée ou pourrie très probablement jetée sans enregistrement du bon de démarque."
+                    f"Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
                 ),
             })
         elif total_casse > 0:
@@ -352,17 +295,26 @@ def analyser_comptages_recents(date_cible=None, comptage_id=None, limite=20):
     heures_mail = charger_heures_reception_mail()
     catalogue_articles = catalogue.articles()
 
-    comptages = [f for f in tous_faits if f["type"] == "comptage"]
+    # Une correction remplace seulement le diagnostic du relevé qu'elle corrige.
+    corrections = {f.get("cible_id"): f for f in tous_faits if f.get("type") == "correction-comptage"}
+    comptages = [{**f, **({"id": corrections[f.get("id")]["id"],
+                            "type": "correction-comptage", "cible_id": f.get("id"),
+                            "quantite": corrections[f.get("id")]["quantite"],
+                            "conditionnement": corrections[f.get("id")].get("conditionnement", f.get("conditionnement")),
+                            "colis": corrections[f.get("id")].get("colis")}
+                           if f.get("id") in corrections else {})}
+                 for f in tous_faits if f.get("type") == "comptage"]
     if not comptages:
         return {
             "genere_le": datetime.now().isoformat(timespec="seconds"),
             "comptages_audites": 0,
+            "total_comptages": 0,
             "resultats": [],
             "synthese": {"conformes": 0, "ecarts_detectes": 0},
         }
 
     if comptage_id:
-        selection = [c for c in comptages if c.get("id") == comptage_id]
+        selection = [c for c in comptages if c.get("id") == comptage_id or c.get("cible_id") == comptage_id]
     elif date_cible:
         selection = [c for c in comptages if (c.get("date_effet") or c.get("date_source")) == date_cible]
     else:
@@ -376,7 +328,7 @@ def analyser_comptages_recents(date_cible=None, comptage_id=None, limite=20):
         itm8 = c.get("article")
         audit = auditer_un_comptage(
             c,
-            faits_par_article.get(itm8, []),
+            tous_faits,
             catalogue_articles,
             heures_mail,
             catalogue_articles,
@@ -384,7 +336,7 @@ def analyser_comptages_recents(date_cible=None, comptage_id=None, limite=20):
         resultats.append(audit)
 
     nb_conformes = len([r for r in resultats if r["statut"] == "conforme"])
-    nb_ecarts = len([r for r in resultats if r["statut"] != "conforme"])
+    nb_ecarts = len([r for r in resultats if r["statut"] == "ecart_detecte"])
 
     rapport = {
         "_lisez_moi": "Audit des écarts de stock (agent-audit-stock) lors de la réception d'un comptage.",
@@ -394,6 +346,7 @@ def analyser_comptages_recents(date_cible=None, comptage_id=None, limite=20):
         "synthese": {
             "conformes": nb_conformes,
             "ecarts_detectes": nb_ecarts,
+            "inconnus": sum(r["statut"] == "inconnu" for r in resultats),
         },
         "resultats": resultats,
     }
@@ -414,10 +367,13 @@ def formater_message_chat(rapport):
         )
 
     lignes = [
-        f"Audit de votre comptage ({len(resultats)} articles, dont {len(ecarts)} avec écart) :"
+        f"Audit de votre comptage ({len(resultats)} articles, dont {len(ecarts)} à examiner) :"
     ]
 
     for item in ecarts[:5]:
+        if item["statut"] == "inconnu":
+            lignes.append(f"• {item['libelle']} : comptage reçu ; {item['explication_responsable']}")
+            continue
         lib = item["libelle"]
         c_phy = item["physique"]["colis"]
         c_att = item["theorique"]["colis"]
@@ -444,6 +400,7 @@ def publier_dans_chat(rapport):
     return message
 
 
+@operation_donnees(lambda: DONNEES)
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--date", type=str, default=None, help="Date des comptages à analyser (AAAA-MM-JJ)")
@@ -463,7 +420,9 @@ def main():
         print(f"  Écarts détectés : {rapport['synthese']['ecarts_detectes']}")
 
         for r in rapport.get("resultats", []):
-            if r["statut"] != "conforme":
+            if r["statut"] == "inconnu":
+                print(f"[?] {r['libelle']} : {r['explication_responsable']}")
+            elif r["statut"] != "conforme":
                 print(f"\n[!] {r['libelle']} ({r['article']}) :")
                 print(f"    Physique : {r['physique']['colis']} colis | Attendu : {r['theorique']['colis']} colis | Écart : {r['ecart']['colis']:+} colis")
                 for c in r.get("causes_identifiees", []):

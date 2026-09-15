@@ -16,8 +16,13 @@ import threading
 import uuid
 from datetime import date, datetime
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
+from io import BytesIO
+from contextlib import nullcontext
 from pathlib import Path
 from urllib.parse import quote, unquote, urlparse
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from verrou_donnees import append_jsonl, environnement_verrou, verrou_donnees
+from ecriture_derivee import publier_etat_calcul
 
 RACINE = Path(__file__).resolve().parent.parent
 DONNEES = RACINE / "donnees"
@@ -30,16 +35,41 @@ DONNEES_PUBLIQUES = {
     "journal.jsonl", "messages.jsonl", "note-du-matin.json", "promotions.json",
     "proposition.json", "reponses.jsonl", "photos.json",
     "analyse-ventes-annuelle-saisonniere.json", "profils-produits-sensibilites.json",
-    "alertes-marges.json",
+    "alertes-marges.json", "recalcul.json",
 }
 APP_PUBLIQUE = {
     "/app/index.html", "/app/commander.html", "/app/compter.html",
-    "/app/promo.html", "/app/maintenance.html", "/app/presentation.html",
+    "/app/promo.html", "/app/maintenance.html",
     "/app/analyse-historique.html",
     "/app/manifest.json", "/app/css/charte.css", "/app/img/favicon.ico",
     "/app/js/photos-produits.js",
     "/app/img/icone-192.png", "/app/img/icone-512.png",
 }
+
+
+_RESUMES_CARNETS = {}
+
+
+def resume_carnets():
+    """Statistiques de taille, en cache selon l'empreinte filesystem du carnet."""
+    fichiers = []
+    with verrou_donnees(DONNEES):
+        for chemin in sorted(DOSSIER_FAITS.glob("[0-9][0-9][0-9][0-9].jsonl")):
+            if not chemin.is_file() or chemin.resolve() != chemin.absolute():
+                continue
+            stat = chemin.stat()
+            signature = (stat.st_mtime_ns, stat.st_size)
+            cle = str(chemin.resolve())
+            precedent = _RESUMES_CARNETS.get(cle)
+            if not precedent or precedent[0] != signature:
+                with chemin.open("rb") as flux:
+                    lignes = sum(1 for ligne in flux if ligne.strip())
+                _RESUMES_CARNETS[cle] = (signature, lignes)
+            fichiers.append({"annee": chemin.stem, "fichier": chemin.name,
+                             "lignes": _RESUMES_CARNETS[cle][1], "octets": stat.st_size})
+    return {"ok": True, "fichiers": fichiers,
+            "total_lignes": sum(f["lignes"] for f in fichiers),
+            "total_octets": sum(f["octets"] for f in fichiers)}
 
 
 def marges_pomona_disponibles():
@@ -342,22 +372,6 @@ def normaliser_comptage(recu, articles):
     }
 
 
-def preparer_correction_comptage(original, nouveau, maintenant=None):
-    """Enregistre une nouvelle mesure sans effacer le fait initial."""
-    maintenant = maintenant or datetime.now()
-    correction = dict(nouveau)
-    correction.update({
-        "id": f"correction-comptage:{uuid.uuid4().hex}",
-        "type": "correction-comptage",
-        "cible_id": original.get("cible_id") or original["id"],
-        "origine_mesure": "ecran-comptage-correction",
-        "horodatage": nouveau.get("horodatage") or maintenant.isoformat(timespec="seconds"),
-        "enregistre_le": maintenant.isoformat(timespec="seconds"),
-        "motif": "Comptage corrigé par un nouveau relevé envoyé depuis la chambre froide.",
-    })
-    return correction
-
-
 def lancer_reponse_message(identifiant, texte):
     """Déclenche le traitement du message sans bloquer la réponse HTTP de l'application."""
     processus = subprocess.Popen(
@@ -392,25 +406,9 @@ def journaliser(agent, message, motif, details=None):
         evenement["details"] = details
     try:
         JOURNAL.parent.mkdir(parents=True, exist_ok=True)
-        with open(JOURNAL, "a", encoding="utf-8") as f:
-            f.write(json.dumps(evenement, ensure_ascii=False) + "\n")
-    except Exception:
-        pass   # un problème de journal ne doit jamais faire échouer l'appelant
-
-
-def etiquettes_existantes(annee):
-    """Les identifiants déjà présents dans le carnet de l'année."""
-    chemin = DOSSIER_FAITS / f"{annee}.jsonl"
-    connues = set()
-    if chemin.exists():
-        with open(chemin, encoding="utf-8") as f:
-            for ligne in f:
-                if ligne.strip():
-                    try:
-                        connues.add(json.loads(ligne)["id"])
-                    except (json.JSONDecodeError, KeyError):
-                        pass
-    return connues
+        append_jsonl(JOURNAL, [evenement])
+    except Exception as exc:
+        print(f"Journal serveur indisponible : {type(exc).__name__}", file=sys.stderr)
 
 
 def lire_comptages(chemin):
@@ -426,17 +424,6 @@ def lire_comptages(chemin):
         fait = decoder_requete_json(ligne)
         if fait.get("type") in {"comptage", "correction-comptage"}:
             yield fait
-
-
-def comptages_actifs(chemin):
-    """Vue historique par cible, conservée pour compatibilité (pas une chronologie)."""
-    actifs = {}
-    for fait in lire_comptages(chemin):
-        if fait.get("type") == "comptage":
-            actifs[fait.get("id")] = fait
-        elif fait.get("cible_id") in actifs:
-            actifs[fait["cible_id"]] = fait
-    return actifs
 
 
 _recalcul_en_cours = threading.Lock()
@@ -473,30 +460,34 @@ def recalculer_en_arriere_plan():
         _recalcul_actif = True
 
     def une_passe():
-        _recalcul_en_cours.acquire()
-        try:
-            for script in ("calculer-position.py", "generer-proposition.py",
-                           "preparer-liste-comptage.py"):
-                resultat = subprocess.run(
-                    [sys.executable, str(RACINE / "moteur" / script)],
-                    capture_output=True, text=True, timeout=120)
-                if resultat.returncode != 0:
-                    journaliser("serveur", f"Echec du recalcul ({script})",
-                                "Le recalcul automatique apres reception des comptages a echoue. "
-                                "Les faits sont bien enregistres, mais les positions affichees "
-                                "restent celles d'avant : a relancer a la main.",
-                                {"erreur": (resultat.stderr or "")[-400:]})
-                    return
-            journaliser("serveur", "Positions recalculees apres reception des comptages",
-                        "Un comptage remplace tout ce qui le precede : l'etat et la liste de "
-                        "comptage sont refaits pour que l'ecran reparte des vraies valeurs.")
-        except Exception as e:
-            journaliser("serveur", "Echec du recalcul automatique",
-                        "Erreur inattendue pendant le recalcul declenche par la reception des "
-                        "comptages. Les faits sont enregistres, les positions affichees non.",
-                        {"erreur": str(e)})
-        finally:
-            _recalcul_en_cours.release()
+        with _recalcul_en_cours, verrou_donnees(DONNEES):
+            try:
+                publier_etat_calcul(DONNEES, "en-cours", "serveur")
+                for script in ("calculer-position.py", "generer-proposition.py", "preparer-liste-comptage.py"):
+                    resultat = subprocess.run(
+                        [sys.executable, str(RACINE / "moteur" / script)],
+                        capture_output=True, text=True, timeout=120,
+                        env=environnement_verrou(DONNEES))
+                    if resultat.returncode != 0:
+                        publier_etat_calcul(DONNEES, "echec", "serveur",
+                                           f"Le calcul {script} a échoué ; relancer le recalcul complet.")
+                        journaliser("serveur", f"Echec du recalcul ({script})",
+                                    "Les faits sont enregistrés ; les sorties peuvent être partiellement actualisées. "
+                                    "Le recalcul complet doit être relancé.",
+                                    {"erreur": (resultat.stderr or "")[-400:]})
+                        return
+                publier_etat_calcul(DONNEES, "termine", "serveur")
+                journaliser("serveur", "Positions recalculées après réception des comptages",
+                            "Les positions, la proposition et la liste de comptage sont recalculées ensemble.")
+            except Exception as exc:
+                try:
+                    publier_etat_calcul(DONNEES, "echec", "serveur",
+                                       "Le recalcul a été interrompu ; relancer le calcul complet.")
+                except Exception as statut:
+                    print(f"Statut de recalcul indisponible : {type(statut).__name__}", file=sys.stderr)
+                journaliser("serveur", "Echec du recalcul automatique",
+                            "Les faits sont enregistrés, mais le recalcul complet n'est pas confirmé.",
+                            {"erreur": str(exc)})
 
     def travail():
         global _recalcul_demande, _recalcul_actif
@@ -507,7 +498,13 @@ def recalculer_en_arriere_plan():
                     return
                 _recalcul_demande = False
             # Un nouvel envoi pendant cette passe impose une passe supplémentaire.
-            une_passe()
+            try:
+                une_passe()
+            except Exception as exc:
+                with _recalcul_etat:
+                    _recalcul_actif = False
+                print(f"Recalcul non démarré : {type(exc).__name__}. Relance nécessaire.", file=sys.stderr)
+                return
 
     try:
         threading.Thread(target=travail, daemon=True).start()
@@ -554,8 +551,13 @@ class Gestionnaire(SimpleHTTPRequestHandler):
                     or any(ord(c) < 32 for c in chemin)
                     or any(p in ("", ".", "..") or p.endswith((" ", ".")) for p in parties)):
                 raise ValueError
-            if chemin == "/api/marges-pomona":
-                contenu = json.dumps(marges_pomona_disponibles(), ensure_ascii=False).encode("utf-8")
+            statut_absent = chemin == "/donnees/recalcul.json" and not (DONNEES / "recalcul.json").is_file()
+            if chemin in {"/api/marges-pomona", "/api/carnets/resume"} or statut_absent:
+                if statut_absent:
+                    charge = {"etat": "absent"}
+                else:
+                    charge = marges_pomona_disponibles() if chemin == "/api/marges-pomona" else resume_carnets()
+                contenu = json.dumps(charge, ensure_ascii=False).encode("utf-8")
                 self.send_response(200)
                 self.send_header("Content-Type", "application/json; charset=utf-8")
                 self.send_header("Content-Length", str(len(contenu)))
@@ -588,6 +590,18 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         except (ValueError, OSError):
             self.send_error(404, "Ressource non publiée.")
             return None
+        # Ouvrir chaque dérivé après la fin du lot en cours. Le statut reste
+        # consultable pendant le calcul pour que l'interface puisse le signaler.
+        cible = Path(self._fichier_public)
+        if cible.parent == DONNEES and cible.suffix == ".json":
+            with (nullcontext() if cible.name == "recalcul.json" else verrou_donnees(DONNEES)):
+                flux = super().send_head()
+                if flux is None:
+                    return None
+                # Sous Windows, un handle disque encore ouvert empêcherait le
+                # remplacement atomique suivant pendant un téléchargement lent.
+                with flux:
+                    return BytesIO(flux.read())
         return super().send_head()
 
     def translate_path(self, path):
@@ -605,21 +619,22 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         if self._charge_json is None:
             return
         if chemin == "/api/comptages":
-            self._recevoir_comptages()
+            with verrou_donnees(DONNEES):
+                self._recevoir_comptages()
             return
         if chemin == "/api/messages":
             self._recevoir_messages()
             return
         if chemin == "/api/masquer":
-            with _recalcul_en_cours:
+            with _recalcul_en_cours, verrou_donnees(DONNEES):
                 self._masquer_demasquer()
             return
         if chemin == "/api/fournisseur":
-            with _recalcul_en_cours:
+            with _recalcul_en_cours, verrou_donnees(DONNEES):
                 self._changer_fournisseur()
             return
         if chemin == "/api/conditionnement":
-            with _recalcul_en_cours:
+            with _recalcul_en_cours, verrou_donnees(DONNEES):
                 try:
                     self._changer_conditionnement()
                 except (OSError, ValueError, TypeError, KeyError, OverflowError, AttributeError):
@@ -706,7 +721,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
 
             chemin = DONNEES / "messages.jsonl"
             nouveaux_messages = []
-            with _ecriture_messages:
+            with _ecriture_messages, verrou_donnees(DONNEES):
                 connus = {}
                 if chemin.exists():
                     with open(chemin, encoding="utf-8") as f:
@@ -732,9 +747,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
                     connus[identifiant] = texte
                     nouveaux_messages.append((identifiant, texte))
                 if a_ecrire:
-                    contenu = "".join(json.dumps(m, ensure_ascii=False, allow_nan=False) + "\n" for m in a_ecrire)
-                    with open(chemin, "a", encoding="utf-8") as f:
-                        f.write(contenu)
+                    append_jsonl(chemin, a_ecrire)
             ecrits = len(nouveaux_messages)
 
             if ecrits:
@@ -758,10 +771,9 @@ class Gestionnaire(SimpleHTTPRequestHandler):
                 }
                 journaliser("serveur", "Echec du lancement de la réponse automatique", avis["texte"], {"message_id": identifiant})
                 try:
-                    with _ecriture_messages:
-                        with open(DONNEES / "reponses.jsonl", "a", encoding="utf-8") as f:
-                            f.write(json.dumps(avis, ensure_ascii=False) + "\n")
-                except OSError:
+                    with _ecriture_messages, verrou_donnees(DONNEES):
+                        append_jsonl(DONNEES / "reponses.jsonl", [avis])
+                except (OSError, ValueError):
                     journaliser("serveur", "Impossible de publier l'avis de panne dans le chat", avis["texte"])
 
     def _recevoir_comptages(self):
@@ -789,7 +801,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             DOSSIER_FAITS.mkdir(parents=True, exist_ok=True)
             # Le serveur est multithreadé : lecture, déduplication et ajout
             # doivent former une seule opération atomique en mémoire.
-            with _ecriture_faits:
+            with _ecriture_faits, verrou_donnees(DONNEES):
                 for annee, lignes in par_annee.items():
                     chemin = DOSSIER_FAITS / f"{annee}.jsonl"
                     recus = list(lire_comptages(chemin))
@@ -841,10 +853,8 @@ class Gestionnaire(SimpleHTTPRequestHandler):
                         recus.append(nouveau)
                         ecrits += 1
                     if a_ecrire:
-                        with open(chemin, "a", encoding="utf-8") as f:
-                            for fait in a_ecrire:
-                                f.write(json.dumps(fait, ensure_ascii=False) + "\n")
-                                ids_ecrits.append(fait["id"])
+                        append_jsonl(chemin, a_ecrire)
+                        ids_ecrits.extend(fait["id"] for fait in a_ecrire)
 
             if ecrits:
                 journaliser(
@@ -898,7 +908,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             resultat = subprocess.run(
                 [sys.executable, str(RACINE / "moteur" / "appliquer-decision.py"),
                  action, itm8, "--auteur", "responsable-rayon", "--motif", motif],
-                capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+                capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30, env=environnement_verrou(DONNEES))
 
             if resultat.returncode != 0:
                 return self._repondre({"ok": False,
@@ -949,7 +959,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             resultat = subprocess.run(
                 [sys.executable, str(RACINE / "moteur" / "appliquer-decision.py"),
                  "conditionnement", itm8, str(valeur), "--auteur", "responsable-rayon", "--motif", motif],
-                cwd=RACINE, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+                cwd=RACINE, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30, env=environnement_verrou(DONNEES))
             if resultat.returncode != 0:
                 erreur_cli = (resultat.stderr or resultat.stdout or "refus du programme").strip()[-400:]
         except subprocess.TimeoutExpired:
@@ -1004,7 +1014,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             resultat = subprocess.run(
                 [sys.executable, str(RACINE / "moteur" / "appliquer-decision.py"),
                  "fournisseur", itm8, fournisseur, "--auteur", "responsable-rayon", "--motif", motif],
-                capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30)
+                capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=30, env=environnement_verrou(DONNEES))
 
             if resultat.returncode != 0:
                 return self._repondre({"ok": False,

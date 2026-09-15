@@ -31,10 +31,11 @@ MAPPING_TERREAZUR = {"TA-TEST": {"itm8": "ARTICLE-TEST", "libelle_magasin": "Pro
 
 
 def entree():
+    # La source synthétique décrit explicitement un kilogramme livré.
     return {"fournisseur": "TERREAZUR", "date_reception": "2026-10-07",
             "bordereau": "TEST-FOURNISSEUR-CENTIME", "pages_lues": 1, "pages_totales": 1,
             "lignes": [{"code_fournisseur": "TA-TEST", "produit": "Produit fixture",
-                        "quantite_uf": 1, "pu": 1, "montant_ht": 1, "colis": 1,
+                        "quantite_uf": 1, "unite_uf": "kg", "pu": 1, "montant_ht": 1, "colis": 1,
                         "pv_magasin_ttc": 2, "source_pv": "Prix rayon fixture vérifié"}]}
 
 
@@ -171,7 +172,7 @@ class FactureCliIsoleeTests(unittest.TestCase):
         self.assertRegex(err, "[Ff]ournisseur.*TerreAzur")
         self.assertFalse(self.stock.exists())
         self.assertEqual(self.marge.read_bytes(), avant)
-        self.assertFalse((self.root / "donnees/.factures-directes.lock").exists())
+        self.assertFalse((self.root / "donnees/.operations.lock").exists())
 
     def test_cli_plus_dun_centime_refuse_avant_stock_et_marge(self):
         self.donnees["lignes"][0]["montant_ht"] = "1.02"
@@ -181,7 +182,7 @@ class FactureCliIsoleeTests(unittest.TestCase):
         self.assertIn("Montant HT", err)
         self.assertFalse(self.stock.exists())
         self.assertEqual(self.marge.read_bytes(), avant)
-        self.assertFalse((self.root / "donnees/.factures-directes.lock").exists())
+        self.assertFalse((self.root / "donnees/.operations.lock").exists())
 
     def test_cli_centime_accepte_publie_et_se_rejoue_uniquement_en_fixture(self):
         self.donnees["lignes"][0]["montant_ht"] = "1.01"
@@ -191,7 +192,7 @@ class FactureCliIsoleeTests(unittest.TestCase):
         self.assertEqual(json.loads(out)["livraisons_nouvelles"], 1)
         self.assertFalse(self.stock.exists())
         self.assertEqual(self.marge.read_bytes(), avant)
-        self.assertFalse((self.root / "donnees/.factures-directes.lock").exists())
+        self.assertFalse((self.root / "donnees/.operations.lock").exists())
 
         code, out, err = self.appeler()
         self.assertEqual(code, 0, err)
@@ -199,6 +200,7 @@ class FactureCliIsoleeTests(unittest.TestCase):
         self.assertEqual(len(faits), 1)
         self.assertEqual(faits[0]["article"], "ARTICLE-TEST")
         self.assertEqual(faits[0]["source"]["montant_ht"], 1.01)
+        self.assertEqual(faits[0]["source"]["unite_uf"], "kg")
         self.assertEqual(faits[0]["source"]["source_pv"], self.donnees["lignes"][0]["source_pv"])
         wb = load_workbook(self.marge)
         try:

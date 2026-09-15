@@ -99,7 +99,7 @@
 
   <!-- ACCÈS ANALYSE DES VENTES -->
   <div style="margin-top:14px">
-    <a class="bouton secondaire" href="analyse-historique.html" style="width:100%;text-align:center;display:block;">📊 Analyse des Ventes (2,5 ans)</a>
+    <a class="bouton secondaire" href="analyse-historique.html" style="width:100%;text-align:center;display:block;">📊 Analyse de l’historique des ventes</a>
   </div>
 
 
@@ -304,9 +304,11 @@ async function chargerFil() {
         });
       }
     }
-  } else {
-    // Si aucun message utilisateur, afficher au plus les 2 dernières réponses
-    const dernieresRep = [...reponses]
+  }
+  // Les annonces (sauvegarde, incidents) n'ont pas toujours de message parent.
+  // Elles restent visibles même lorsque le responsable a déjà posé une question.
+  const idsMessages = new Set(messages.map(m => m.id));
+  const dernieresRep = reponses.filter(r => !r.en_reponse_a || !idsMessages.has(r.en_reponse_a))
       .sort((a, b) => (b.ecrit_le || "").localeCompare(a.ecrit_le || ""))
       .slice(0, 2);
     dernieresRep.forEach(r => {
@@ -317,8 +319,6 @@ async function chargerFil() {
         action: r.action
       });
     });
-  }
-
   boite.innerHTML = elements.map(e => {
     const badge = e.action ? ' <span class="etat ok" style="font-size:11px">' + texteSecurise(e.action) + '</span>' : "";
     const styleTexte = (e.enAttente || (e.texte && e.texte.includes("en cours de traitement"))) ? 'style="color:var(--warn);font-style:italic"' : "";
@@ -362,6 +362,25 @@ async function transmettreMessages() {
   }
 }
 
+function afficherEnvoiMessages(r) {
+  const retour = document.getElementById("retour-message");
+  if (r.stockage) {
+    retour.innerHTML = '<span class="etat warn">Envoi confirmé, mais stockage local indisponible : les messages restent en attente sur cet appareil.</span>';
+  } else if (r.reste) {
+    retour.innerHTML = '<span class="etat warn">Gardé sur le téléphone (' + r.reste
+      + ' en attente) — nouvelle tentative au retour du réseau.</span>';
+  } else if (r.envoyes) {
+    retour.innerHTML = '<span class="etat ok">Envoyé — en attente de réponse de l\'assistant</span>';
+  }
+}
+
+async function reprendreMessages() {
+  if (!lire(CLE_MESSAGES, []).length) return;
+  const r = await envoyerMessages();
+  afficherEnvoiMessages(r);
+  if (r.envoyes) chargerFil();
+}
+
 document.getElementById("bouton-envoyer").addEventListener("click", async () => {
   const champ = document.getElementById("champ-message");
   const retour = document.getElementById("retour-message");
@@ -381,22 +400,15 @@ document.getElementById("bouton-envoyer").addEventListener("click", async () => 
 
   const r = await envoyerMessages();
   bouton.disabled = false;
-  retour.innerHTML = r.envoyes
-    ? '<span class="etat ok">Envoyé - transmis à l\'assistant</span>'
-    : '<span class="etat warn">Garde sur le telephone (' + r.reste
-      + ' en attente) - repartira des que le reseau revient</span>';
+  afficherEnvoiMessages(r);
   chargerFil();
 });
 
 // Au chargement, on tente de faire partir ce qui attend depuis la derniere fois.
-envoyerMessages().then(function (r) {
-  if (r.envoyes) {
-    document.getElementById("retour-message").innerHTML =
-      '<span class="etat ok">' + r.envoyes + ' message' + (r.envoyes > 1 ? 's' : '')
-      + ' en attente ' + (r.envoyes > 1 ? 'ont' : 'a') + ' ete envoye'
-      + (r.envoyes > 1 ? 's' : '') + '</span>';
-  }
-});
+reprendreMessages();
+window.addEventListener("online", reprendreMessages);
+// Une panne HTTP peut se terminer sans nouvel événement réseau du téléphone.
+setInterval(() => { if (navigator.onLine) reprendreMessages(); }, 15000);
 
 majAlerteComptages();
 chargerCommande();

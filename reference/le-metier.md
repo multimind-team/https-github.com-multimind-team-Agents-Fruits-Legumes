@@ -2,7 +2,7 @@
 
 À lire avant de conclure que quelque chose est anormal.
 
-Consigne canonique : `AGENT.md`. Ce document explique le métier ; les écritures et leurs droits
+Consigne canonique : `AGENTS.md`. Ce document explique le métier ; les écritures et leurs droits
 sont définis dans `reference/contrat-echange.md` et `donnees/pouvoirs.json`.
 
 ---

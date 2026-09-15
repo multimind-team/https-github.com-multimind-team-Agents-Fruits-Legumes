@@ -63,7 +63,10 @@ class FixturesTests(unittest.TestCase):
         return resultat, sortie.getvalue()
 
     def etat_fichiers(self):
-        return {str(p.relative_to(self.racine)): p.read_bytes() for p in self.racine.rglob("*") if p.is_file()}
+        # Le fichier vide du verrou OS persiste pour garder une identité commune.
+        # Tous les carnets, compteurs et décisions doivent rester intacts.
+        return {str(p.relative_to(self.racine)): p.read_bytes() for p in self.racine.rglob("*")
+                if p.is_file() and p.name != ".operations.lock"}
 
     def ajustement(self, applique=False, agent="agent-tendances"):
         self.ajustements.write_text(json.dumps({"date_commande": date.today().isoformat(),
@@ -181,6 +184,23 @@ class AnnulationsTests(FixturesTests):
 
 
 class SimulationTests(FixturesTests):
+    def test_application_refuse_un_carnet_non_termine_sans_le_modifier(self):
+        avant = b'{"type":"fournisseur","article":"TEST","valeur":"Fixture"}'
+        self.decisions.write_bytes(avant)
+        with self.assertRaisesRegex(ValueError, "dernière ligne non terminée"):
+            self.appeler(APPLIQUER, "conditionnement", "TEST", "8", "--motif", MOTIF)
+        self.assertEqual(self.decisions.read_bytes(), avant)
+
+    def test_annulation_refuse_un_carnet_non_termine_sans_le_modifier(self):
+        self.appeler(APPLIQUER, "conditionnement", "TEST", "8", "--motif", MOTIF)
+        numero = journal.lire()[-1]["action"]
+        avant = self.decisions.read_bytes().rstrip(b"\r\n")
+        self.decisions.write_bytes(avant)
+        with patch.object(ANNULER, "POUVOIRS", self.pouvoirs), \
+             self.assertRaisesRegex(ValueError, "dernière ligne non terminée"):
+            self.appeler(ANNULER, numero, "--par", "agent-rayon")
+        self.assertEqual(self.decisions.read_bytes(), avant)
+
     def test_simulation_application_ne_cree_pas_de_repertoire(self):
         avant = list(self.racine.rglob("*"))
         self.appeler(APPLIQUER, "conditionnement", "TEST", "12", "--motif", MOTIF, "--simuler")
@@ -210,12 +230,42 @@ class SimulationTests(FixturesTests):
 
 
 class FeriesTests(FixturesTests):
+    def test_consultation_ne_cree_pas_de_fichier(self):
+        avant = self.etat_fichiers()
+        self.assertIn("2040-11-11", [j["date"] for j in FERIES.a_confirmer(depuis="2040-11-05")])
+        self.appeler(FERIES)
+        self.assertEqual(self.etat_fichiers(), avant)
+
+    def test_consultation_conserve_exactement_les_confirmations(self):
+        contenu = {"jours": {"2040-11-11": {"nom": "Armistice", "statut": "ferme"}}}
+        FERIES.FICHIER.write_text(json.dumps(contenu), encoding="utf-8")
+        avant = FERIES.FICHIER.read_bytes()
+        self.assertEqual(FERIES.a_confirmer(depuis="2040-11-05"), [])
+        self.assertEqual(FERIES.FICHIER.read_bytes(), avant)
+
+    def test_fichier_invalide_est_refuse_et_jamais_remplace(self):
+        for contenu in (b'{"jours":', b'[]', b'{"jours":[]}',
+                        b'{"jours":{"2026-11-11":{"statut":"inconnu"}}}'):
+            with self.subTest(contenu=contenu):
+                FERIES.FICHIER.write_bytes(contenu)
+                with self.assertRaises(ValueError):
+                    FERIES.a_confirmer()
+                with self.assertRaises(ValueError):
+                    FERIES.definir(f"{date.today().year}-11-11", "ferme", MOTIF)
+                self.assertEqual(FERIES.FICHIER.read_bytes(), contenu)
+
+    def test_definition_invalide_ne_cree_pas_de_fichier_metier(self):
+        with self.assertRaises(SystemExit):
+            FERIES.definir(f"{date.today().year}-12-25", "ferme", MOTIF)
+        self.assertFalse(FERIES.FICHIER.exists())
+
     def test_definition_ferie_ne_promet_pas_une_annulation_non_implantee(self):
         jour = f"{date.today().year}-11-11"
         with contextlib.redirect_stdout(io.StringIO()):
             FERIES.definir(jour, "ferme", MOTIF, "responsable-rayon")
         self.assertEqual(FERIES.statut(jour), "ferme")
         self.assertFalse(journal.lire()[-1]["annulable"])
+        self.assertNotIn("_operation_id", json.loads(FERIES.FICHIER.read_text(encoding="utf-8")))
 
     def test_journal_ne_declare_pas_annulable_un_inverse_non_supporte(self):
         for changements in ([], [{"itm8": "TEST", "champ": "seuil", "avant": 1, "apres": 2}]):
@@ -225,6 +275,52 @@ class FeriesTests(FixturesTests):
 
 
 class DatesReglesTests(FixturesTests):
+    def test_carnet_absent_et_lignes_vides_restent_acceptes(self):
+        self.assertEqual(regles.charger(), {"groupes": {}, "overrides": {}})
+        self.decisions.write_text('\n  \n{"type":"conditionnement","article":"TEST","valeur":"8"}', encoding="utf-8")
+        self.assertEqual(regles.charger()["overrides"]["TEST"]["conditionnement"], "8")
+
+    def test_decision_tronquee_nest_pas_ignoree(self):
+        avant = b'{"type":"fournisseur","article":"TEST","valeur":"Fixture"}\n{"type":"conditionnement","valeur":"8"'
+        self.decisions.write_bytes(avant)
+        with self.assertRaisesRegex(ValueError, "decisions.jsonl.*ligne 2"):
+            regles.charger()
+        self.assertEqual(self.decisions.read_bytes(), avant)
+
+    def test_journal_annulations_tronque_bloque_le_calcul(self):
+        self.carnet([{"type": "conditionnement", "article": "TEST", "valeur": "8"}])
+        fichier = journal.JOURNAUX / "tout.jsonl"
+        fichier.parent.mkdir()
+        avant = b'{"message":"ancien format"}\n{"annule_action":'
+        fichier.write_bytes(avant)
+        with self.assertRaisesRegex(ValueError, "tout.jsonl.*ligne 2"):
+            regles.charger()
+        self.assertEqual(fichier.read_bytes(), avant)
+
+    def test_journal_annulations_inaccessible_nest_pas_un_journal_vide(self):
+        self.carnet([{"type": "conditionnement", "article": "TEST", "valeur": "8"}])
+        with patch.object(journal, "actions_annulees", side_effect=PermissionError("Fixture inaccessible")), \
+             self.assertRaises(PermissionError):
+            regles.charger()
+
+    def test_objet_json_obligatoire_mais_anciens_champs_acceptes(self):
+        for invalide in ("[]", "null", "12"):
+            with self.subTest(invalide=invalide):
+                self.decisions.write_text(invalide, encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "objet JSON attendu"):
+                    regles.charger()
+        self.carnet([{"ancienne_information": "conservée"},
+                     {"type": "conditionnement", "article": "TEST", "valeur": "8"}])
+        self.assertEqual(regles.charger()["overrides"]["TEST"]["conditionnement"], "8")
+
+    def test_reservation_numeros_refuse_un_carnet_endommage(self):
+        fichier = journal.JOURNAUX / ".numeros.jsonl"
+        fichier.parent.mkdir()
+        fichier.write_bytes(b'{"action":')
+        with self.assertRaisesRegex(ValueError, ".numeros.jsonl.*ligne 1"):
+            journal.numero_action()
+        self.assertEqual(fichier.read_bytes(), b'{"action":')
+
     def carnet(self, lignes):
         self.decisions.write_text("".join(json.dumps(l) + "\n" for l in lignes), encoding="utf-8")
 

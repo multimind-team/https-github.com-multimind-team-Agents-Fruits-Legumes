@@ -44,7 +44,7 @@ class TraitementTests(unittest.TestCase):
             # Matérialiser sa nouvelle génération sans attendre l'horloge réelle.
             nouveau = max(cible.stat().st_mtime_ns, precedent + 1_000_000_000)
             os.utime(cible, ns=(nouveau, nouveau))
-        return subprocess.CompletedProcess(commande, 0, "fixture uniquement", "")
+        return subprocess.CompletedProcess(commande, 0, json.dumps({"statut": "ok", "a_verifier": []}), "")
 
     def traiter(self, pieces, execution=None, mail="mail-test", date="2026-09-07", simuler=False):
         argv = ["traiter-courrier.py", "--racine", str(self.racine), "--mail-id", mail,
@@ -127,7 +127,7 @@ class TraitementTests(unittest.TestCase):
                   self.piece("photo-inconnue.png")]
         for _ in range(2):
             retour, resultat = self.traiter(pieces)
-            self.assertEqual(retour, 0)  # Rangement réussi, aucun import métier autorisé.
+            self.assertEqual(retour, 3)  # Rangement réussi, pièces à vérifier explicitement.
             self.assertEqual(resultat["statut"], "a-verifier")
             self.assertFalse(resultat["succes"])
             self.assertEqual(self.appels, [])
@@ -238,9 +238,9 @@ class TraitementTests(unittest.TestCase):
             self.piece("Livraison-08.09.2026.xlsx")], mail="mail-transfert", date="2026-09-08")
         imports = [c for c in self.appels if Path(c[2]).name == "integrer-fichiers.py"]
         self.assertEqual([Path(c[3]) for c in imports],
-                         [self.racine / "donnees/courrier/2026-09-07-pdv",
-                          self.racine / "donnees/courrier/2026-09-08-pdv"])
-        self.assertEqual(retour, 0)
+                         [self.racine / "donnees/courrier/2026-09-07-pdv/Vente-07.09.2026.xlsx",
+                          self.racine / "donnees/courrier/2026-09-08-pdv/Livraison-08.09.2026.xlsx"])
+        self.assertEqual(retour, 3)
         self.assertEqual(resultat["rangement"]["doublons"], 1)
         self.assertTrue(index.read_bytes().startswith(avant))
         self.assertEqual(len(index.read_bytes().splitlines()), 3)
@@ -273,8 +273,10 @@ class TraitementTests(unittest.TestCase):
                   self.piece("Vente-07.09.2026.xlsx"), self.piece("Livraison-07.09.2026.xlsx")]
         retour, resultat = self.traiter(pieces)
         imports = [c for c in self.appels if Path(c[2]).name == "integrer-fichiers.py"]
-        self.assertEqual([Path(c[3]) for c in imports], [self.racine / "donnees/courrier/2026-09-07-pdv"])
-        self.assertEqual(retour, 0)
+        self.assertEqual([Path(c[3]) for c in imports], [
+            self.racine / "donnees/courrier/2026-09-07-pdv/Vente-07.09.2026.xlsx",
+            self.racine / "donnees/courrier/2026-09-07-pdv/Livraison-07.09.2026.xlsx"])
+        self.assertEqual(retour, 3)
         self.assertEqual(resultat["rangement"]["nouveaux"], 3)
 
 

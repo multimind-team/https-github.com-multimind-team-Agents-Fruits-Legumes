@@ -21,7 +21,7 @@ class ChaineMetierTests(unittest.TestCase):
                         'generer-proposition.py', 'proposer-commande.py', 'preparer-liste-comptage.py',
                         'note-du-matin.py', 'filet-de-securite.py', 'calendrier.py', 'catalogue.py',
                         'regles.py', 'journal_agents.py', 'ouverture-jours-feries.py', 'faits.py',
-                        'ecriture_derivee.py', 'conditionnements.py']:
+                        'ecriture_derivee.py', 'conditionnements.py', 'verrou_donnees.py']:
                 shutil.copy2(RACINE / 'moteur' / nom, moteur / nom)
             donnees = racine / 'donnees'
             (donnees / 'faits').mkdir(parents=True)

@@ -178,106 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-03.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Concepts Métier & Référentiel F&L</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Gestionnaires de Stock, DSI</div>
         </div>
       </div>
 
 
-      <h2>1. Modélisation de l'Article Ultra-Frais</h2>
-      <p>
-        Dans la filière Fruits &amp; Légumes du Groupement Les Mousquetaires, un article ne se résume pas à un simple code barre EAN. Il constitue une entité vivante, soumise à des normes réglementaires européennes strictes (calibre, catégorie, variété, origine), à une forte saisonnalité et à une instabilité physique permanente (perte en eau, maturation, dessiccation).
-      </p>
-
-      <div class="callout-box">
-        <div class="callout-title">STRUCTURE D'IDENTIFICATION INTERMARCHÉ (ITM8 &amp; PLU)</div>
-        <p style="margin:0;">
-          Chaque référence est identifiée par son <strong>code interne ITM8</strong> (8 chiffres attribués par la centrale d'achat) associé au <strong>code PLU (Price Look-Up)</strong> ou code balance caisse pour les articles vendus au poids. Pour les produits préemballés (barquettes, filets, sachets), le code EAN standard (13 chiffres) est également rattaché.
-        </p>
-      </div>
-
-      <h2>2. Les Attributs Fondamentaux de la Fiche Produit</h2>
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Attribut</th>
-            <th style="width: 20%;">Type &amp; Format</th>
-            <th style="width: 55%;">Règle Métier &amp; Rôle Opérationnel</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Code ITM8</strong></td>
-            <td>Numérique (8 car.)</td>
-            <td>Identifiant pivot absolu. Utilisé sur le cadencier SCAFRUIT et dans tous les flux de commande.</td>
-          </tr>
-          <tr>
-            <td><strong>Désignation Marchande</strong></td>
-            <td>Texte (50 car.)</td>
-            <td>Libellé officiel en magasin (ex. : <em>« TOMATE RONDE GRAPPE CAT1 FRANCE »</em>).</td>
-          </tr>
-          <tr>
-            <td><strong>Famille &amp; Groupe Cadencier</strong></td>
-            <td>Enum (fruits, legumes, bio)</td>
-            <td>Ordre officiel Webtelevente : (0) Fruits non bio, (1) Légumes non bio, (2) Bio. Facilite la recopie sur la tablette du chef de rayon.</td>
-          </tr>
-          <tr>
-            <td><strong>Conditionnement (PCB)</strong></td>
-            <td>Entier / Décimal</td>
-            <td>Nombre de pièces ou poids moyen net contenu dans un carton d'approvisionnement (ex. : colis de 6 kg, plateau de 10 barquettes).</td>
-          </tr>
-          <tr>
-            <td><strong>Unité de Vente Consommateur (UVC)</strong></td>
-            <td>Enum (kg, unité)</td>
-            <td>Définit la modalité de vente en caisse : au poids (kg) ou à l'unité (pièce/barquette/filet).</td>
-          </tr>
-          <tr>
-            <td><strong>Origine &amp; Calibre</strong></td>
-            <td>Texte réglementaire</td>
-            <td>Obligation DGCCRF : Origine (France, Espagne, Maroc...), Calibre commercial (ex. : 57-67 mm, 12-14 mm) et Catégorie (Extra, I, II).</td>
-          </tr>
-          <tr>
-            <td><strong>Statut de Vie</strong></td>
-            <td>Enum (ACTIF, ARRETE, SAISONNIER)</td>
-            <td>Conditionne la génération automatique : un produit <code>ARRETE</code> ne peut en aucun cas faire l'objet d'une proposition d'achat.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2>3. Le Conditionnement Colis (PCB) et Poids Moyen</h2>
-      <p>
-        L'un des défis majeurs du calcul prévisionnel réside dans la dualité entre l'<strong>unité de besoin</strong> (souvent le kilogramme pour le vrac) et l'<strong>unité de livraison</strong> (le colis ou carton standardisé par la SCAFRUIT).
-      </p>
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Articles Vendus au Kilogramme</div>
-          <p style="font-size: 13px; margin: 0;">
-            Le besoin net calculé en kilogrammes doit impérativement être converti en nombre entier de colis via la formule :
-            <br><code>Nb_Colis = ceil(Besoin_Net_Kg / Poids_Colis_Kg)</code>
-            <br>Le système intègre une tolérance fond de colis pour éviter de commander un colis supplémentaire complet de 10 kg pour un excédent marginal de 500 g.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Articles Vendus à la Pièce</div>
-          <p style="font-size: 13px; margin: 0;">
-            Pour les concombres, avocats unitaires ou barquettes de fraises, le PCB est un nombre entier de pièces :
-            <br><code>Nb_Colis = ceil(Besoin_Net_Unites / PCB_Pieces)</code>
-            <br>Aucun fractionnement de colis n'est possible auprès de la centrale SCAFRUIT.
-          </p>
-        </div>
-      </div>
-
-      <h2>4. Cycle de Vie, Codes Jumeaux et Cas Particuliers Réels</h2>
-      <p>
-        Le système intègre les réalités d'exploitation observées sur le terrain :
-      </p>
-      <ul>
-        <li><strong>Codes jumeaux (Fusions) :</strong> Enregistrés dans <code>donnees/decisions.jsonl</code> sous le type <code>fusion</code>. Un code ITM8 principal agrège l'historique d'un ou plusieurs anciens codes pour préserver la mémoire de vente lors d'un changement de code fournisseur.</li>
-        <li><strong>Cas de la machine à jus d'oranges :</strong> L'article <code>0000087004386</code> (Orange petit calibre machine à jus) ne passe jamais en caisse lui-même. Seules les bouteilles de jus pressé sont scannées. Le système convertit automatiquement les ventes : <strong>1 L de jus = 2,0 kg d'oranges</strong> et <strong>50 cl de jus = 1,0 kg d'oranges</strong>.</li>
-      </ul>
-
-
-      <div class="page-nav-bar">
+      <h2>Référentiel et catalogue commandable</h2>
+<p>Le catalogue Mercalys fournit les références historiques. Le cadencier Webtelevente définit les offres du jour. Les correspondances, groupes et surcharges viennent de règles vérifiées. Un libellé ressemblant ne constitue pas une preuve de correspondance ; un article sans rapprochement reste explicitement inconnu. L’import Mercalys dédié fusionne les références sans effacer les anciennes.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/catalogue.py">moteur/catalogue.py</a></li><li><a href="../../../moteur/importer-catalogue-mercalys.py">moteur/importer-catalogue-mercalys.py</a></li><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../2 - Utilisateurs et roles/2.2 - Brigade numérique et rôles des agents.html" class="btn-action">&larr; 2.2 Brigade numérique</a>
         </div>

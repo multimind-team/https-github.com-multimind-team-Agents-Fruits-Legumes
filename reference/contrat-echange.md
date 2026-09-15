@@ -1,7 +1,8 @@
 # Les carnets
 
-Comment les fichiers sont faits, et qui a le droit d'y écrire. Si une règle change, elle change
-**ici d'abord**, jamais dans une fiche de rôle.
+Comment les fichiers sont faits et comment tracer leurs écritures. La consigne canonique
+reste `AGENTS.md` et les permissions sont déclarées dans `donnees/pouvoirs.json` ; ce contrat
+décrit les formats sans créer de pouvoirs supplémentaires.
 
 ---
 
@@ -9,13 +10,13 @@ Comment les fichiers sont faits, et qui a le droit d'y écrire. Si une règle ch
 
 | Fichier | Contenu | On efface ? | Qui écrit |
 |---|---|---|---|
-| `faits/AAAA.jsonl` | ce qui s'est **passé**, un fichier par année | jamais | préparateur |
-| `decisions.jsonl` | les **réglages** des articles | jamais | préparateur, assistant |
-| `etat.json` | la position **d'aujourd'hui** | à volonté | préparateur |
-| `travaux.jsonl` | ce qui est **à faire** | jamais | l'application |
+| `faits/AAAA.jsonl` | ce qui s'est **passé**, un fichier par année | jamais | importeurs autorisés sous `agent-donnees`, serveur pour les comptages humains |
+| `decisions.jsonl` | les **réglages** des articles | jamais | agents autorisés selon `pouvoirs.json`, serveur pour les décisions humaines |
+| `etat.json` | la position calculée à la date des faits retenus | régénérable | moteur de calcul |
+| `messages.jsonl`, `reponses.jsonl` | demandes et réponses de l’application | jamais | serveur et agents autorisés |
 | `journaux/<rôle>.jsonl` | ce que chaque rôle a fait, avec l'avant et l'après | jamais | le rôle |
 | `journaux/tout.jsonl` | les mêmes actions, tous rôles, dans l'ordre | jamais | tous |
-| `ajustements.jsonl` | les ajustements de commande | jamais | analyste |
+| `ajustements.jsonl` | les ajustements de commande | jamais | auteurs habilités selon `pouvoirs.json` et validation de la demande |
 | `faits/analyse_historique_ventes.json` | profil de vente et saisonnalité sur 2,5 ans | à volonté | `analyser_historique_ventes.py` |
 | `pouvoirs.json` | qui a le droit de faire quoi seul | à volonté | le responsable de rayon |
 
@@ -29,8 +30,9 @@ revient jamais modifier une ligne écrite.
 
 ## Les faits
 
-Une ligne = un mouvement qui a vraiment eu lieu. En cas d'erreur, on **ajoute** une ligne qui
-annule la précédente.
+Une ligne = un fait attesté. En cas d'erreur, conserver l'original et utiliser la
+procédure de correction applicable par nouvel événement explicite ; un type d'événement
+inventé ne corrige pas le calcul.
 
 ```json
 {
@@ -47,9 +49,7 @@ annule la précédente.
 }
 ```
 
-**`id`** — fabriqué à partir du type, de la date, de l'article et de la ligne du fichier
-d'origine. Si l'étiquette existe déjà, la ligne est ignorée : on peut relancer un traitement dix
-fois sans changer le résultat.
+**`id`** — identité stable du fait. Les anciens identifiants sont conservés ; les importeurs vérifient aussi les équivalences de contenu pour résister au réordonnancement des lignes. Une version différente d’un mouvement déjà reçu exige une correction explicite, jamais un second ajout silencieux. La ligne du fichier reste une preuve de provenance, pas une identité métier suffisante.
 
 **`date_source` / `date_effet`** — la date écrite dans le fichier (pour une livraison : la date
 de **commande**), et le jour où la marchandise arrive vraiment. Les confondre fait chercher la
@@ -61,7 +61,7 @@ se révèle faux, on peut tout refaire.
 **`quantite` / `unite`** — toujours en kilos ou en pièces, **jamais en colis** : le nombre de
 pièces par colis change d'une livraison à l'autre.
 
-**Les cinq types :**
+**Types de mouvements et de comptages reconnus :**
 
 | Type | Effet |
 |---|---|
@@ -70,6 +70,7 @@ pièces par colis change d'une livraison à l'autre.
 | `casse` (jetée) | retire |
 | `don` (Restos du Cœur) | retire |
 | `comptage` | **remplace** tout ce qui précède |
+| `correction-comptage` | corrige la quantité du comptage désigné par `cible_id`, en conservant son instant physique |
 
 Un comptage porte `"mesure": "position"` et `origine_mesure`. Il remet l'incertitude à zéro ; les
 mouvements postérieurs s'appliquent par-dessus. La position n'est **pas un stock** : voir
@@ -91,7 +92,7 @@ les rejouer ou les défaire.
   "membres": ["0000087005028"],
   "valide_a_partir_de": "2026-08-30",
   "motif": "Livré sous un code, jamais vendu sous celui-ci. Vérifié sur le bordereau.",
-  "auteur": "preparateur",
+  "auteur": "agent-donnees",
   "enregistre_le": "2026-08-30T21:14:02"
 }
 ```

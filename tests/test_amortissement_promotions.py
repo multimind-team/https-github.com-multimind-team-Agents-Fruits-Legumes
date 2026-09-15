@@ -19,7 +19,7 @@ class TestAmortissementPromotions(unittest.TestCase):
                 "debut": "2026-09-15",
                 "fin": "2026-09-19",
                 "correspondances": [
-                    {"itm8": "0000087004011", "libelle": "BANANE VRAC"}
+                    {"itm8": "0000087004011", "libelle": "BANANE VRAC", "statut": "confirme"}
                 ]
             }
         ]
@@ -43,7 +43,7 @@ class TestAmortissementPromotions(unittest.TestCase):
         res = ap.evaluer_amortissement("0000087004011", "2026-09-18", "2026-09-19", self.fausses_offres)
         self.assertTrue(res["en_fin_promo"])
         self.assertEqual(res["phase"], "dernier_jour")
-        self.assertEqual(res["facteur_amortissement"], 0.80)
+        self.assertEqual(res["facteur_amortissement"], 1.0)
         self.assertIn("Dernier jour promo", res["motif"])
 
     def test_post_promo(self):
@@ -51,7 +51,7 @@ class TestAmortissementPromotions(unittest.TestCase):
         res = ap.evaluer_amortissement("0000087004011", "2026-09-19", "2026-09-21", self.fausses_offres)
         self.assertTrue(res["en_fin_promo"])
         self.assertEqual(res["phase"], "post_promo")
-        self.assertEqual(res["facteur_amortissement"], 0.70)
+        self.assertEqual(res["facteur_amortissement"], 1.0)
         self.assertIn("Fin de promo", res["motif"])
 
     def test_article_inconnu(self):
@@ -59,6 +59,14 @@ class TestAmortissementPromotions(unittest.TestCase):
         self.assertFalse(res["en_fin_promo"])
         self.assertEqual(res["phase"], "hors_promo")
         self.assertEqual(res["facteur_amortissement"], 1.0)
+
+    def test_correspondance_non_confirmee_sans_effet(self):
+        for statut in (None, "a_confirmer", "refuse"):
+            with self.subTest(statut=statut):
+                self.fausses_offres[0]["correspondances"][0]["statut"] = statut
+                res = ap.evaluer_amortissement("0000087004011", "2026-09-19", "2026-09-21", self.fausses_offres)
+                self.assertFalse(res["en_fin_promo"])
+                self.assertEqual(res["facteur_amortissement"], 1.0)
 
 
 if __name__ == "__main__":

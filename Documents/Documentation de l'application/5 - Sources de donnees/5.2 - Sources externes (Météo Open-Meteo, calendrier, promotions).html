@@ -178,86 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-05.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Variables Exogènes & Facteurs Prédictifs</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Direction Magasin, Analystes</div>
         </div>
       </div>
 
 
-      <h2>1. Les Variables Exogènes et Facteurs Prédictifs</h2>
-      <p>
-        Le comportement d'achat en Fruits &amp; Légumes est fortement tributaire de la météo locale, du calendrier des vacances scolaires et des opérations promotionnelles.
-      </p>
-
-      <h2>2. Paramétrage Météorologique Local (Carmaux)</h2>
-      <p>
-        Les prévisions météorologiques sont interrogées quotidiennement via l'API Open-Meteo pour les coordonnées précises du magasin de <strong>Carmaux (Latitude 44.052, Longitude 2.158)</strong> :
-      </p>
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Seuils Météo Globaux Moteur</div>
-          <p style="font-size: 13px; margin: 0;">
-            • <strong>Précipitations &ge; 10 mm :</strong> Facteur multiplicateur global = <code>0.901</code> (-9,9 % sur la demande globale).<br>
-            • <strong>Chaleur Tmax &ge; 25°C :</strong> Facteur multiplicateur global = <code>1.076</code> (+7,6 % sur la demande globale).<br>
-            • <em>En cas de panne d'API météo : facteur = 1.0 par défaut, aucune invention.</em>
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Sensibilités Spécifiques par Article</div>
-          <p style="font-size: 13px; margin: 0;">
-            Le fichier <code>donnees/profils-produits-sensibilites.json</code> stocke les ratios empiriques calculés sur 2,5 ans d'historique : <code>chaud_30</code> (&ge; 30°C), <code>chaud_25</code> (&ge; 25°C), <code>froid_10</code> (&lt; 10°C), <code>pluie_5mm</code>, <code>pluie_10mm</code>.
-          </p>
-        </div>
-      </div>
-
-      <h2>3. Facteurs de Vacances Scolaires (Zone C)</h2>
-      <p>
-        Mesurés empiriquement par <code>calibrer-vacances.py</code> et validés par le responsable de rayon, les coefficients de vacances modulent la demande selon la période :
-      </p>
-      <table class="subchap-table">
-        <thead>
-          <tr>
-            <th style="width: 40%;">Période de Vacances</th>
-            <th style="width: 25%;">Coefficient Multiplicateur</th>
-            <th style="width: 35%;">Impact Observé sur Carmaux</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Vacances de Noël</strong></td>
-            <td><code>1.162</code> (+16,2 %)</td>
-            <td>Fêtes de fin d'année, repas festifs, fruits exotiques, agrumes.</td>
-          </tr>
-          <tr>
-            <td><strong>Vacances de la Toussaint</strong></td>
-            <td><code>1.045</code> (+4,5 %)</td>
-            <td>Début de l'automne, plats chauds, légumes de saison.</td>
-          </tr>
-          <tr>
-            <td><strong>Grandes Vacances d'Été</strong></td>
-            <td><code>1.027</code> (+2,7 %)</td>
-            <td>Présence touristique locale et achats estivaux.</td>
-          </tr>
-          <tr>
-            <td><strong>Vacances d'Hiver (Février)</strong></td>
-            <td><code>1.002</code> (+0,2 %)</td>
-            <td>Stabilité globale de la consommation de fond de rayon.</td>
-          </tr>
-          <tr>
-            <td><strong>Vacances de Printemps (Pâques)</strong></td>
-            <td><code>0.984</code> (-1,6 %)</td>
-            <td>Légère baisse de présence des résidents.</td>
-          </tr>
-          <tr>
-            <td><strong>Pont de l'Ascension</strong></td>
-            <td><code>0.901</code> (-9,9 %)</td>
-            <td>Départs massifs en week-end prolongé hors agglomération.</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      <div class="page-nav-bar">
+      <h2>Météo, calendrier et prospectus</h2>
+<p>La prévision météo et le calendrier complètent les données de vente. Leur indisponibilité doit rester distinguée d’un contexte vérifié normal. Les offres d’un prospectus sont publiées après validation ; une correspondance à confirmer ne pilote pas les quantités. La fin d’un prospectus confirmé est un repère, sans baisse automatique.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li><li><a href="../../../moteur/amortissement_promotions.py">moteur/amortissement_promotions.py</a></li><li><a href="../../../AGENTS.md">AGENTS.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./5.1 - Sources internes (Mercalys, SCAFRUIT, comptage).html" class="btn-action">&larr; 5.1 Sources internes</a>
         </div>

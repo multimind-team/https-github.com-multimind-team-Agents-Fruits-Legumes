@@ -33,6 +33,8 @@ MOTEUR = Path(__file__).resolve().parent
 sys.path.insert(0, str(MOTEUR))
 import calendrier
 import journal_agents
+from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees
 
 RACINE = MOTEUR.parent
 FICHIER = RACINE / "donnees" / "ouverture-jours-feries.json"
@@ -52,10 +54,14 @@ DELAI_A_CONFIRMER_JOURS = 10    # « quelques jours avant », demandé par le re
 def charger():
     if not FICHIER.exists():
         return {"_lisez_moi": "", "jours": {}}
-    try:
-        return json.loads(FICHIER.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return {"_lisez_moi": "", "jours": {}}
+    contenu = json.loads(FICHIER.read_text(encoding="utf-8"))
+    if not isinstance(contenu, dict) or not isinstance(contenu.get("jours"), dict):
+        raise ValueError("Ouverture des jours fériés : structure illisible, fichier conservé.")
+    for iso, entree in contenu["jours"].items():
+        date.fromisoformat(iso)
+        if not isinstance(entree, dict) or entree.get("statut") not in STATUTS_VALIDES | {None}:
+            raise ValueError(f"Ouverture des jours fériés : entrée invalide pour {iso}, fichier conservé.")
+    return contenu
 
 
 def _ecrire(contenu):
@@ -64,12 +70,12 @@ def _ecrire(contenu):
         "voir calendrier.py). null = pas encore confirme par le responsable de rayon. "
         "journee-complete / demi-journee / ferme. Ne jamais deviner : demander."
     )
-    FICHIER.write_text(json.dumps(contenu, ensure_ascii=False, indent=1), encoding="utf-8")
+    ecrire_json(FICHIER, contenu, avec_operation=False)
 
 
 def ensemencer(annees=None):
-    """S'assure qu'une entrée existe pour chaque jour férié variable des
-    années demandées, sans jamais écraser une réponse déjà donnée."""
+    """Prépare en mémoire les jours variables manquants, sans écrire le fichier
+    ni remplacer les réponses déjà données."""
     annees = annees or range(date.today().year, date.today().year + 3)
     contenu = charger()
     jours = contenu.setdefault("jours", {})
@@ -81,7 +87,6 @@ def ensemencer(annees=None):
             if iso not in jours:
                 jours[iso] = {"nom": nom, "statut": None, "confirme_par": None,
                               "confirme_le": None, "motif": None}
-    _ecrire(contenu)
     return contenu
 
 
@@ -114,10 +119,9 @@ def dates_fermees():
 def a_confirmer(jours_delai=DELAI_A_CONFIRMER_JOURS, depuis=None):
     """Les fériés variables qui approchent (dans les N prochains jours) et
     dont le statut n'est pas encore connu — ce qu'il faut demander au responsable de rayon."""
-    ensemencer()
-    contenu = charger()
     debut = date.fromisoformat(depuis) if depuis else date.today()
     limite = debut + timedelta(days=jours_delai)
+    contenu = ensemencer(range(debut.year, limite.year + 1))
     trouves = []
     for iso, e in sorted(contenu.get("jours", {}).items()):
         j = date.fromisoformat(iso)
@@ -126,6 +130,7 @@ def a_confirmer(jours_delai=DELAI_A_CONFIRMER_JOURS, depuis=None):
     return trouves
 
 
+@operation_donnees(lambda: FICHIER.parent)
 def definir(date_iso, nouveau_statut, motif, auteur="responsable-rayon"):
     if nouveau_statut not in STATUTS_VALIDES:
         sys.exit(f"Statut inconnu : {nouveau_statut}. Attendu : {', '.join(STATUTS_VALIDES)}.")

@@ -178,35 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-21.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Traçabilité & Journaux d'Audit</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Auditeurs</div>
         </div>
       </div>
 
 
-      <h2>1. Architecture Immuable du Carnet de Faits (Append-Only)</h2>
-      <p>
-        Le socle de données du système repose sur le principe de l'immutabilité absolue. Les fichiers situés dans <code>donnees/faits/AAAA.jsonl</code> et <code>donnees/decisions.jsonl</code> fonctionnent en mode ajout exclusif (<em>append-only</em>) :
-      </p>
-      <ul>
-        <li>Aucun enregistrement existant n'est écrasé, mis à jour ou supprimé.</li>
-        <li>Toute rectification opérationnelle fait l'objet d'un nouvel enregistrement de compensation (ex : <code>correction-comptage</code>), conservant la trace intégrale de la valeur erronée initiale.</li>
-        <li>Chaque ligne est horodatée en temps universel (ISO-8601) et signée avec l'identifiant de son auteur (agent numérique ou opérateur humain).</li>
-      </ul>
-
-      <h2>2. Opposabilité Comptable et Traçabilité des Décisions</h2>
-      <p>
-        Le journal d'audit <code>donnees/journaux/</code> garantit une traçabilité totale opposable lors des revues de performance avec l'Adhérent ou les auditeurs de gestion :
-      </p>
-      <div class="card-panel">
-        <div class="card-panel-title">Historique Exhaustif des Arbitrages</div>
-        <p style="font-size: 13px; margin: 0;">
-          Pour chaque commande validée, le système conserve : le montant d'achat prévisionnel, les propositions initiales calculées par l'algorithme, les modifications manuelles saisies par le chef de rayon, l'heure exacte de validation et la confirmation de transmission reçue de Webtelevente.
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Traçabilité et sauvegarde</h2>
+<p>Les carnets sont ajoutés ligne par ligne. Les fichiers dérivés sont remplacés atomiquement fichier par fichier, et un verrou commun coordonne les opérations. Une interruption n’est pas une transaction annulée automatiquement : l’état de recalcul et les preuves permettent de reprendre. Git exclut secrets et courrier privé ; la sauvegarde vérifie aussi les fichiers déjà suivis.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../moteur/verrou_donnees.py">moteur/verrou_donnees.py</a></li><li><a href="../../../moteur/ecriture_derivee.py">moteur/ecriture_derivee.py</a></li><li><a href="../../../moteur/sauvegarder.py">moteur/sauvegarder.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../20 - Tests et validation/20.2 - Scénarios de simulation et jeux d'essais.html" class="btn-action">&larr; 20.2 Scénarios simulation</a>
         </div>

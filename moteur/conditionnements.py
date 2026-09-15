@@ -18,6 +18,18 @@ def _positif_fini(valeur):
     return nombre if math.isfinite(nombre) and nombre > 0 else None
 
 
+def _meme_conditionnement(gauche, droite):
+    """Tolère uniquement l'erreur de représentation float32 de l'export XLS.
+
+    Une mantisse binary32 a 24 bits significatifs : son epsilon relatif est
+    2**-23. Aucun arrondi métier ou seuil absolu n'est appliqué aux petits PCB.
+    Les valeurs conservées dans l'offre et dans la décision restent intactes.
+    """
+    gauche, droite = _positif_fini(gauche), _positif_fini(droite)
+    return (gauche is not None and droite is not None
+            and math.isclose(gauche, droite, rel_tol=2**-23, abs_tol=0.0))
+
+
 def selectionner(article_cadencier, surcharge=None, reference=None):
     """Priorité : décision valide, PCB du jour, Mercalys, repli inconnu à 1.
 
@@ -45,8 +57,8 @@ def selectionner(article_cadencier, surcharge=None, reference=None):
         avertissements.append("Conditionnement de décision invalide : valeur ignorée.")
     if conditionnement is not None:
         source = "decision"
-        offre = next((o for pcb, o in valides if pcb == conditionnement), premiere)
-        if conditionnement not in pcbs:
+        offre = next((o for pcb, o in valides if _meme_conditionnement(pcb, conditionnement)), premiere)
+        if not any(_meme_conditionnement(pcb, conditionnement) for pcb in pcbs):
             liste_pcb = ", ".join(f"{p:g}" for p in sorted(pcbs)) if pcbs else "aucun"
             avertissements.append(
                 f"Contradiction de colisage : réglage magasin fixé à {conditionnement:g}, "

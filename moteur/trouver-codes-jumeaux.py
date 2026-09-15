@@ -13,7 +13,6 @@ Il ne décide rien : il prépare de quoi trancher en dix secondes par article.
 
 LECTURE SEULE.
 """
-import json
 import sys
 import re
 import unicodedata

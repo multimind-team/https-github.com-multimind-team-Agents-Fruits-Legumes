@@ -22,7 +22,7 @@ class PromotionsTests(unittest.TestCase):
         self.assertNotIn('<iframe class="prospectus"', page)
 
     def test_rend_les_pages_lues_du_prospectus_en_images(self):
-        import fitz
+        import pymupdf as fitz
 
         with tempfile.TemporaryDirectory() as tmp:
             dossier = Path(tmp)

@@ -178,48 +178,19 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-07.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Résilience, Données Dégradées & Alertes</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> DSI, Chefs Rayon, Direction</div>
         </div>
       </div>
 
 
-      <h2>1. Stratégies de Continuité en Mode Dégradé</h2>
-      <p>
-        Les incidents techniques ne doivent jamais interrompre la commande matinale du magasin. Le système prévoit des stratégies de repli déterministes :
-      </p>
-
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Absence de Ventes Mercalys</div>
-          <p style="font-size: 13px; margin: 0;">
-            • En cas d'échec de récupération du fichier de caisse J-1, le moteur utilise la moyenne historique du même jour de semaine.<br>
-            • Le niveau de confiance est abaissé à <code>MOYEN</code> et l'exploitant est averti sur sa console.
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Indisponibilité API Météo</div>
-          <p style="font-size: 13px; margin: 0;">
-            • Si l'appel à Open-Meteo échoue ou dépasse le délai de 15 secondes, le facteur météo prend la valeur neutre <code>1.0</code>.<br>
-            • Le système ne devine aucune température et mentionne <em>« Météo neutre par défaut »</em>.
-          </p>
-        </div>
-      </div>
-
-      <div class="card-panel" style="margin-top: 14px;">
-        <div class="card-panel-title">Absence de Cadencier SCAFRUIT</div>
-        <p style="font-size: 13px; margin: 0;">
-          L'absence de cadencier est un événement bloquant majeur : le système interdit de générer une commande sans connaître les prix et les disponibilités officielles de la centrale. Une alerte d'urgence rouge est émise pour contacter immédiatement l'approvisionnement SCAFRUIT.
-        </p>
-      </div>
-
-      <h2>2. Neutralisation des Ventes Atypiques</h2>
-      <p>
-        Lorsqu'une vente hors norme est détectée (ex. commande exceptionnelle d'une association de 50 cageots de pommes), elle est comptabilisée pour le chiffre d'affaires mais exclue de la base d'apprentissage de la moyenne saisonnière pour éviter de sur-commander l'année suivante.
-      </p>
-
-
-      <div class="page-nav-bar">
+      <h2>Inconnues explicites</h2>
+<p>Ne pas remplacer une donnée manquante par une quantité supposée. Une position inconnue reste représentée par la valeur JSON null, avec avertissement dans la proposition ; cela ne signifie pas que le stock vaut zéro. Une unité de facture ou un colisage ambigu bloque l’écriture de stock. L’absence de ventes récentes et l’âge du comptage décrivent deux incertitudes distinctes.</p>
+<p>Pour une livraison vrac dont la base source vaut 1 ou manque, le colisage habituel du catalogue ne suffit pas à prouver le poids réellement livré : la conversion est refusée. Les unités source absentes ou incompatibles sont également refusées. Le classeur de facture seul peut être préparé sous contrôle sans import de stock.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li><li><a href="../../../moteur/generer-proposition.py">moteur/generer-proposition.py</a></li><li><a href="../../../moteur/facture_directe.py">moteur/facture_directe.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./7.1 - Contrôles d'intégrité et règles de cohérence.html" class="btn-action">&larr; 7.1 Contrôles intégrité</a>
         </div>

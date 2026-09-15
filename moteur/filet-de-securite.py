@@ -41,7 +41,8 @@ from pathlib import Path
 MOTEUR = Path(__file__).resolve().parent
 sys.path.insert(0, str(MOTEUR))
 import journal_agents
-from ecriture_derivee import ecrire_json
+from ecriture_derivee import ecrire_json, publier_etat_calcul
+from verrou_donnees import environnement_verrou, operation_donnees
 
 RACINE = MOTEUR.parent
 PROPOSITION = RACINE / "donnees" / "proposition.json"
@@ -160,7 +161,8 @@ def lancer(script):
     """Lance un calcul. Renvoie (réussi, ce qui s'est dit)."""
     resultat = subprocess.run([sys.executable, str(MOTEUR / script)],
                               capture_output=True, text=True, encoding="utf-8",
-                              errors="replace", timeout=900)
+                              errors="replace", timeout=900,
+                              env=environnement_verrou(PROPOSITION.parent))
     sortie = (resultat.stdout or "") + (resultat.stderr or "")
     return resultat.returncode == 0, sortie.strip()
 
@@ -188,6 +190,7 @@ def marquer_fraicheur(etat, message, echecs):
     })
 
 
+@operation_donnees(lambda: PROPOSITION.parent)
 def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -208,6 +211,7 @@ def main():
         return 0
 
     print("\nRecalcul :")
+    publier_etat_calcul(PROPOSITION.parent, "en-cours", "filet-de-securite")
     echecs = []
     for script, quoi in ETAPES:
         print(f"  {quoi:42}", end=" ", flush=True)
@@ -233,8 +237,10 @@ def main():
     if echecs:
         etat = "calcul-incomplet"
         message = ("Recalcul incomplet : " + ", ".join(e["calcul"] for e in echecs)
-                   + ". La dernière proposition disponible est conservée. " + message)
+                   + ". Les fichiers déjà publiés restent disponibles ; le lot complet n'est pas confirmé. " + message)
     marquer_fraicheur(etat, message, echecs)
+    publier_etat_calcul(PROPOSITION.parent, "echec" if echecs else "termine",
+                       "filet-de-securite", message if echecs else "")
 
     print()
     if etat == "a-jour" and not echecs:

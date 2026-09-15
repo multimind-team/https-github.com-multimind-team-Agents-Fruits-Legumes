@@ -178,68 +178,22 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-04.1</div>
           <div class="meta-item"><strong>Domaine :</strong> Architecture Globale & Runbook Quotidien</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Exploitants, Intégrateurs, DSI</div>
         </div>
       </div>
 
 
-      <h2>1. Vue d'Ensemble du Cycle Opérationnel Quotidien</h2>
-      <p>
-        La préparation des commandes Fruits &amp; Légumes est une course contre la montre quotidienne. Elle démarre aux aurores pour se conclure impérativement avant le <strong>cut-off de 09h30</strong>, heure limite de validation sur le portail Webtelevente SCAFRUIT pour une livraison le lendemain matin à 05h00.
-      </p>
-
-      <h2>2. Chronologie Matinale Étape par Étape</h2>
-      <div class="timeline-row">
-        <div class="timeline-time-badge">05h00 – 06h00</div>
-        <div class="timeline-detail">
-          <div class="timeline-step-title">1. Réception Quai, Déchargement &amp; Agréage</div>
-          <p style="font-size: 13px; margin: 0;">Arrivée du camion frigorifique SCAFRUIT. Déchargement des rolls et palettes. Contrôle de température quai, pointage qualitatif (agréage) et vérification du bordereau de livraison (BL). Remplissage prioritaire des étals.</p>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-time-badge">06h00 – 06h30</div>
-        <div class="timeline-detail">
-          <div class="timeline-step-title">2. Ingestion Automatique des Données &amp; Actualisation Mercalys</div>
-          <p style="font-size: 13px; margin: 0;">L'Agent Courrier extrait automatiquement le fichier des sorties caisse de la veille (Mercalys J-1), le cadencier officiel du jour émis par la centrale et le BL réel de la livraison. Intégration dans le carnet de faits (<code>donnees/faits/AAAA.jsonl</code>).</p>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-time-badge">06h30 – 07h15</div>
-        <div class="timeline-detail">
-          <div class="timeline-step-title">3. Pointage Mobile des Stocks en Chambre Froide</div>
-          <p style="font-size: 13px; margin: 0;">Le responsable de rayon ou l'adjoint parcourt la chambre froide avec l'application smartphone <code>app/compter.html</code>. Saisie rapide du nombre de colis restants sur les références sensibles.</p>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-time-badge">07h15 – 07h45</div>
-        <div class="timeline-detail">
-          <div class="timeline-step-title">4. Exécution du Moteur d'Aide à la Décision</div>
-          <p style="font-size: 13px; margin: 0;">Le moteur algorithmique (<code>moteur/calculer-commande.py</code>) exécute les calculs de prévision, applique la fenêtre saisonnière de ± 21 jours, les règles de colisage PCB, les stocks de sécurité et génère <code>donnees/proposition.json</code>.</p>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-time-badge">07h45 – 09h00</div>
-        <div class="timeline-detail">
-          <div class="timeline-step-title">5. Revue Décisionnelle Magasin sur Tablette</div>
-          <p style="font-size: 13px; margin: 0;">L'exploitant consulte la console <code>app/commander.html</code>. Les articles sont triés dans l'ordre Webtelevente (Fruits, Légumes, Bio). Validation en un geste ou ajustement des colis au doigt (+/- 1 colis).</p>
-        </div>
-      </div>
-
-      <div class="timeline-row">
-        <div class="timeline-time-badge">09h00 – 09h30</div>
-        <div class="timeline-detail">
-          <div class="timeline-step-title">6. Clôture &amp; Transmission Webtelevente SCAFRUIT</div>
-          <p style="font-size: 13px; margin: 0;">Validation finale formelle. Export de la commande vers le portail Webtelevente. Clôture du cycle, archivage immuable des arbitrages dans le carnet de faits et génération de la note de synthèse matinale (<code>moteur/note-du-matin.py</code>).</p>
-        </div>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Chaîne quotidienne contrôlée</h2>
+<p>Lire les pièces et leur provenance, simuler les importeurs, obtenir un contrôle indépendant puis intégrer le seul lot autorisé. Relire ensuite les faits réellement écrits et les résultats du recalcul. Un fichier rangé, une simulation ou un code retour nul ne prouvent pas à eux seuls une intégration complète. Les factures directes ont un circuit de validation distinct.</p>
+<h2>Dates, contrôles et reprise</h2>
+<p>Le lot habituel du matin porte les sorties de J−1 et les livraisons de J. Un renvoi conserve toutefois sa période interne et sa date physique attestée : ni la réception du mail ni la modification du fichier ne permettent de redater le mouvement. La couverture des sorties, l’instant du comptage et les dates statistiques sont vérifiés séparément de l’heure de génération de la proposition.</p>
+<p>L’avis « sûr pour le périmètre » ne crée aucune autorisation. La délégation permanente des exports habituels permet de continuer après les contrôles ; une nouvelle livraison de facture directe exige la validation explicite prévue. Après exécution, chaque pièce reçoit un état exact et chaque événement terminé est acquitté avec une référence de preuve. Une erreur ou une clarification reste en attente ; un fichier sain ne clôt pas une anomalie différente.</p>
+<p>La sentinelle conserve les événements et nécessite un superviseur externe pour transmettre sa sortie à un agent. Le gestionnaire de serveur et sa surveillance de processus sont distincts de cette veille métier. Le succès HTTP local ne prouve pas l’accès par téléphone.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../AGENTS.md">AGENTS.md</a></li><li><a href="../../../procedures/courrier.md">procedures/courrier.md</a></li><li><a href="../../../procedures/controle-stock.md">procedures/controle-stock.md</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="../3 - Concepts metier fondamentaux/3.3 - Typologie des stocks et statuts physiques.html" class="btn-action">&larr; 3.3 Typologie stocks</a>
         </div>

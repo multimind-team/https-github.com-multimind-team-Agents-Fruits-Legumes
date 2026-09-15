@@ -9,10 +9,12 @@ import email
 from email.header import decode_header
 import imaplib
 import json
-import os
 import re
+import sys
 from datetime import datetime
 from pathlib import Path
+
+from courrier_fichiers import conserver_piece, identite_message
 
 RACINE = Path(__file__).resolve().parent.parent
 CONFIG_DEFAUT = RACINE / "donnees" / "courrier-config.json"
@@ -29,13 +31,6 @@ def decoder_entete(valeur):
         else:
             morceaux.append(str(bout))
     return "".join(morceaux)
-
-
-def assainir_nom(nom):
-    """Nettoie un nom de fichier pour éviter les chemins malveillants."""
-    nom = re.sub(r'[\r\n\t]+', ' ', str(nom))
-    nom = Path(nom).name
-    return re.sub(r'[\\/*?:"<>|]', "_", nom).strip()
 
 
 def determiner_dossier_cible(expediteur, sujet):
@@ -102,8 +97,11 @@ def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_
 
             entetes_bruts = donnees_h[0][1]
             taille = 0
-            if len(donnees_h) > 1 and isinstance(donnees_h[1], bytes):
-                m_taille = re.search(r'RFC822\.SIZE\s+(\d+)', donnees_h[1].decode("ascii", errors="ignore"))
+            for fragment in donnees_h:
+                metadata = fragment[0] if isinstance(fragment, tuple) else fragment
+                if not isinstance(metadata, bytes):
+                    continue
+                m_taille = re.search(rb'RFC822\.SIZE\s+(\d+)', metadata)
                 if m_taille:
                     taille = int(m_taille.group(1))
 
@@ -121,7 +119,7 @@ def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_
                 continue
 
             date_reception = datetime.now().strftime("%Y-%m-%d")
-            rep_courrier = dest_rep / f"{assainir_nom(email_expediteur)}-{date_reception}"
+            rep_courrier = dest_rep / ("message-" + identite_message(host, user, dossier, message_id))
 
             info_msg = {
                 "uid": uid_str,
@@ -134,6 +132,7 @@ def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_
                 "taille_octets": taille,
                 "pieces_jointes": []
             }
+            info_msg["originaux"] = []
 
             if simuler:
                 info_msg["statut"] = "simulation_entetes_validees"
@@ -169,9 +168,8 @@ def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_
                 nom_fichier = partie.get_filename()
                 if nom_fichier:
                     nom_fichier = decoder_entete(nom_fichier)
-                    nom_propre = assainir_nom(nom_fichier)
                     contenu = partie.get_payload(decode=True)
-                    pieces.append((nom_propre, contenu))
+                    pieces.append((nom_fichier, contenu))
 
             info_msg["texte"] = corps_texte.strip()
 
@@ -179,9 +177,10 @@ def relever(config, simuler=False, marquer_lu=False, tous=False, limite=10, max_
                 rep_courrier.mkdir(parents=True, exist_ok=True)
                 for nom_f, contenu_f in pieces:
                     if contenu_f is not None:
-                        chemin_f = rep_courrier / nom_f
-                        chemin_f.write_bytes(contenu_f)
+                        chemin_f, empreinte = conserver_piece(rep_courrier, nom_f, contenu_f)
                         info_msg["pieces_jointes"].append(str(chemin_f.resolve()))
+                        info_msg["originaux"].append({"nom_original": nom_f,
+                            "chemin": str(chemin_f.resolve()), "sha256": empreinte})
 
             if marquer_lu:
                 client.uid("store", uid_bytes, "+FLAGS", "\\Seen")

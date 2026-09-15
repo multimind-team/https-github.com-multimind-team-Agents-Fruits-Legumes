@@ -36,6 +36,7 @@ LECTURE SEULE sur les carnets : ce programme n'en modifie aucun.
 import importlib.util
 import json
 from ecriture_derivee import ecrire_json
+from verrou_donnees import operation_donnees
 import sys
 from datetime import date
 from pathlib import Path
@@ -127,6 +128,7 @@ def position_est_perdue(position_unites, conditionnement):
     return position_unites is not None and (position_unites / conditionnement) <= SEUIL_POSITION_PERDUE_COLIS
 
 
+@operation_donnees(lambda: RACINE / "donnees")
 def main():
     aggregats = agregats.charger()
     config = regles.charger()

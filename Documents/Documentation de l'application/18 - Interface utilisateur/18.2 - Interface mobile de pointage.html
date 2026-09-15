@@ -178,63 +178,18 @@
         <div class="meta-grid">
           <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-18.2</div>
           <div class="meta-item"><strong>Domaine :</strong> Pointage Mobile Chambre Froide</div>
-          <div class="meta-item"><strong>Système :</strong> Production Intermarché &amp; Netto</div>
+          <div class="meta-item"><strong>Système :</strong> Application locale Carmaux</div>
           <div class="meta-item"><strong>Public Cible :</strong> Chefs Rayon, Réceptionnaires</div>
         </div>
       </div>
 
 
-      <h2>1. L'Interface Mobile Smartphone (<code>app/compter.html</code>)</h2>
-      <p>
-        Développée spécifiquement pour l'employé commercial ou le chef de rayon circulant dans les allées de la réserve et de la chambre froide, l'application mobile de pointage offre une ergonomie adaptée aux conditions de manutention.
-      </p>
-
-      <h2>2. Ergonomie Chambre Froide et Saisie Tactile</h2>
-      <div class="grid-2">
-        <div class="card-panel">
-          <div class="card-panel-title">Saisie Tactile Haute Vitesse</div>
-          <p style="font-size: 13px; margin: 0;">
-            • <strong>Clavier numérique plein écran :</strong> Boutons géants prévus pour l'utilisation avec des gants thermiques.<br>
-            • <strong>Tri par parcours physique :</strong> Les références sont ordonnées selon l'implantation des palettes et alvéoles dans la chambre froide, éliminant les allers-retours inutiles.<br>
-            • <strong>Unité explicite :</strong> Affichage bien visible de l'unité de décompte (nombre de colis complets ou poids net en kg).
-          </p>
-        </div>
-        <div class="card-panel">
-          <div class="card-panel-title">Horodatage Fin &amp; Règle des 17h</div>
-          <p style="font-size: 13px; margin: 0;">
-            • <strong>Pointage du matin (&lt; 17h00) :</strong> Réalisé après la livraison du jour. Il fige le stock de départ intégrant la nouvelle réception.<br>
-            • <strong>Pointage du soir (&ge; 17h00) :</strong> Réalisé en fin de journée. Il sert de base de départ au stock projeté pour le lendemain matin.<br>
-            • <strong>Horodatage ISO-8601 :</strong> Enregistrement à la seconde garantissant l'ordonnancement rigoureux des mouvements.
-          </p>
-        </div>
-      </div>
-
-      <h2>3. Protocole d'Envoi et Contrôle de Cohérence</h2>
-      <p>
-        Lors de la validation d'un article ou d'un lot, la requête est transmise instantanément via l'API locale :
-      </p>
-      <pre><code>POST /api/compter
-Host: 127.0.0.1:8751
-Content-Type: application/json
-
-{
-  "date": "2026-09-15",
-  "heure": "06:45:12",
-  "itm8": "0000087004386",
-  "quantite": 3,
-  "unite": "colis",
-  "auteur": "chef_rayon_fl"
-}</code></pre>
-
-      <div class="callout-box">
-        <div class="callout-title">CONTRÔLE DES ÉCARTS MAJEURS EN DIRECT</div>
-        <p style="margin:0;">
-          Si la quantité saisie présente un écart supérieur à 3 colis par rapport à la position théorique attendue, l'écran affiche une pastille orange invitant à une revérification immédiate du lot physique (ex : carton resté au fond de la réserve ou non déballé).
-        </p>
-      </div>
-
-
-      <div class="page-nav-bar">
+      <h2>Comptage mobile et réseau</h2>
+<p>Les articles de comptage sont classés par importance dans le chiffre d’affaires. Le relevé est gardé sur le téléphone avant envoi et contient l’identité, le colisage et les unités saisies. Une actualisation réseau attend la navigation pour remplacer la liste active. Le bouton Envoyer mes comptages reste accessible sans parcourir tous les articles. L’envoi utilise POST /api/comptages.</p>
+<h2>Références vérifiables</h2>
+<ul><li><a href="../../../app/compter.html">app/compter.html</a></li><li><a href="../../../moteur/preparer-liste-comptage.py">moteur/preparer-liste-comptage.py</a></li></ul>
+<p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>
+<div class="page-nav-bar">
         <div>
           <a href="./18.1 - Console de commande magasin.html" class="btn-action">&larr; 18.1 Console commande</a>
         </div>

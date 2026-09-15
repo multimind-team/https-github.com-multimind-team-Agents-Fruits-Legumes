@@ -8,6 +8,9 @@ __pycache__/
 
 # Courrier brut et pièces jointes volumineuses
 donnees/courrier/
+# État privé de la boîte mail et file durable de la sentinelle
+donnees/.sentinelle-evenements.json
+donnees/.courrier_uids_connus.json
 
 # Dossiers temporaires de travail / scratch
 scratch/

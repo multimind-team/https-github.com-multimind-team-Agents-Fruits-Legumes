@@ -1,96 +1,72 @@
-# Procédure de Sauvegarde et Synchronisation GitHub (/sauvegarde)
+# Sauvegarde et synchronisation GitHub (`/sauvegarde`)
 
-## 1. Contexte et Objectif
+## Déclenchement et périmètre
 
-La commande `/sauvegarde` est le protocole officiel de sauvegarde, de contrôle de cohérence et de synchronisation du système complet sur GitHub.
+Lancer cette procédure sur demande explicite du responsable (`/sauvegarde`, « sauvegarde »), après la revue documentaire. Une correction de code ou un import de fichiers ne déclenche pas à lui seul un commit ou un envoi sur GitHub.
 
-Elle garantit que l'ensemble du travail (code moteur, carnets de données, documentation officielle des 23 chapitres, règles métier, photos produits optimisées) est pérennisé sur le dépôt distant sans **aucun risque de fuite de secrets ou de données personnelles sensibles**.
+Le script sauvegarde les fichiers retenus par Git. Le fichier local `.env`, le courrier brut et les autres chemins exclus restent sur le disque : cette publication ne remplace pas une sauvegarde privée de ces originaux. Les contrôles ci-dessous sont ciblés ; ils ne prouvent pas l'absence de données sensibles dans tout l'historique Git ou dans le dépôt distant.
 
----
+## Phase A — Revue par l'agent orchestrateur
 
-## 2. Déclenchement
+1. Lire le statut Git et les différences réelles, en distinguant les modifications antérieures à l'intervention.
+2. Mettre à jour les procédures, références et fiches HTML concernées dans `Documents/Documentation de l'application/`.
+3. Vérifier que les règles expliquées correspondent au comportement du code et aux autorisations en vigueur. Aucun script ne peut certifier cette cohérence métier.
 
-La procédure est déclenchée :
-- À la demande explicite de l'utilisateur (commande `/sauvegarde`, « sauvegarde », ou « fais une sauvegarde »).
-- Après chaque cycle majeur d'intégration ou d'évolution du système.
-- Avant toute intervention structurelle sur le code ou les carnets.
+La source canonique est `AGENTS.md`. `AGENT.md` est un renvoi historique vers cette source ; il ne doit pas redevenir une copie divergente des règles.
 
----
+## Phase B — Chaîne technique
 
-## 3. Répartition des rôles : L'IA rédige, le script exécute
+Lancer `sauvegarder.bat` ou `py -3.14 -B moteur/sauvegarder.py` uniquement après cette revue.
 
-Un script Python ne peut pas « inventer » ou rédiger intelligemment de la documentation technique : il ne comprend pas le sens des règles métier ajoutées ni la portée des modifications de code.
+### 1. Vérifier les exclusions et l'index réel
 
-La commande `/sauvegarde` repose donc sur une collaboration stricte en deux phases :
+- Vérifier que `.env` est ignoré et que `donnees/courrier-config.json` ne contient aucun mot de passe.
+- Vérifier l'exclusion des nouveaux fichiers de `donnees/courrier/` avec un nom `.eml` ; un nom `.tmp` serait une fausse preuve, cette extension étant déjà ignorée partout.
+- Vérifier aussi les traces privées exactes : `donnees/.sentinelle-evenements.json` (contenus et en-têtes en attente), `donnees/.courrier_uids_connus.json` (ancien registre mail) et `donnees/.operations-bail.lock` (bail technique). Leur exclusion ne dispense pas du contrôle des fichiers déjà suivis.
+- Relire les chemins effectivement suivis/indexés avec `git ls-files -z`. Un `.env`, une trace privée listée ci-dessus ou un fichier de `donnees/courrier/` encore suivi bloque la sauvegarde, même si `.gitignore` contient déjà son exclusion.
+- Refaire ce contrôle avant et après `git add -A`. Le script ne retire pas spontanément un fichier de l'index et ne supprime jamais les originaux du courrier.
 
-```
-[Utilisateur tape /sauvegarde]
-          │
-          ▼
-┌─────────────────────────────────────────────────────────────┐
-│ PHASE A : L'IA (Agent Orchestrateur / Rédacteur)            │
-│ 1. Analyse les modifications récentes (git status, diff).   │
-│ 2. Rédige et met à jour les fichiers .md (agents, proc).    │
-│ 3. Met à jour les fiches HTML de la Documentation officielle│
-│    (23 chapitres) selon les nouveautés fonctionnelles.      │
-└─────────────────────────────────────────────────────────────┘
-          │
-          ▼ (Une fois la doc rédigée par l'IA)
-┌─────────────────────────────────────────────────────────────┐
-│ PHASE B : Le script technique (moteur/sauvegarder.py)       │
-│ 1. Contrôle de sécurité (anti-fuite secrets .env).          │
-│ 2. Contrôle de conformité syntaxique et tests unitaires.    │
-│ 3. Synchronisation physique vers le miroir secondaire.      │
-│ 4. Git add, commit structuré et git push origin main.       │
-│ 5. Publication de la confirmation dans le chat web.         │
-└─────────────────────────────────────────────────────────────┘
-```
+Un retrait du suivi Git conserve le fichier local. Il n'efface pas les anciennes versions déjà enregistrées dans l'historique ; une intervention sur cet historique est une opération distincte.
 
----
+### 2. Vérifier la syntaxe et exécuter les tests en copie
 
-## 4. Étapes exécutées par la chaîne technique (sauvegarder.py)
+- `tests/verifier_projet.py` lit les fichiers du projet et vérifie leur syntaxe Python, JavaScript, JSON et JSONL. Un résultat absent ou illisible est un échec, pas un succès implicite.
+- Les tests sélectionnés de préparation des photos et d'envoi du classeur sont lancés par `tests/lancer_tests_isoles.py` dans une copie temporaire. Les secrets et le courrier brut sont exclus ; la configuration de courrier de cette copie est neutralisée.
+- La garde Python bloque les écritures dans l'installation originale, les connexions externes et les appels au serveur de production sur le port 8751. Les fixtures peuvent ouvrir leurs propres serveurs locaux. Ce dispositif de test coopératif n'est pas une isolation système pour du code hostile.
+- Toute erreur de contrôle ou de test interrompt la publication.
 
-Le script `moteur/sauvegarder.py` applique automatiquement un protocole rigoureux en 5 étapes successives :
+Pour un audit complet explicitement demandé : `py -3.14 -B tests/lancer_tests_isoles.py`. Pour une vérification ciblée : ajouter les chemins des fichiers de test comme arguments séparés.
 
-### Étape 1 : Contrôle strict anti-fuite de secrets (Sécurité absolue)
-- Vérifie que le fichier `.env` est **strictement exclu** par `.gitignore` (`git check-ignore .env`).
-- Vérifie que le mot de passe Gmail dans `donnees/courrier-config.json` est **totalement vide** (`"mot_de_passe": ""`). Tout mot de passe doit résider exclusivement dans le fichier `.env` local.
-- Vérifie que le dossier des pièces jointes brutes reçues par courrier (`donnees/courrier/`) est **strictement exclu** par `.gitignore` afin de ne pas versionner des centaines de mégaoctets de photos brutes ou d'adresses email.
-- **En cas d'anomalie :** interruption immédiate, aucun commit n'est créé.
+Pour les parcours navigateur avec envois de comptages et changements de réglages fictifs : `py -3.14 -B tests/lancer_tests_isoles.py --navigateur --sortie <dossier-externe>`. Ce chemin ajoute la garde aux sous-processus de recalcul et utilise uniquement des copies sans courrier ni secrets. Le mode `tests/e2e_application.py --lecture-seule --url <adresse>` vérifie les pages réelles dans un navigateur neuf, sans effectuer les scénarios d'écriture.
 
-### Étape 2 : Contrôle d'intégrité et tests de non-régression
-- Lance l'audit d'intégrité complet `tests/verifier_projet.py` : vérification syntaxique Python (`ast`), intégrité stricte des fichiers JSON et carnets JSONL (plus de 140 000 lignes de faits certifiées).
-- Lance la suite de tests unitaires clés (`tests/test_preparer_photos.py`, `tests/test_envoyer_classeur_marge.py`).
-- **En cas d'erreur de syntaxe ou de test unitaire :** arrêt immédiat avec rapport d'erreur.
+### 3. Copier la documentation vers le miroir configuré
 
-### Étape 3 : Synchronisation de la documentation officielle
-- Synchronise les fichiers de la documentation officielle (`Documents/Documentation de l'application/`) et les directives `AGENT.md` / `AGENTS.md` vers l'espace miroir si présent.
-- Garantit la parité exacte entre le référentiel documentaire et le code en production.
+Si le dossier miroir configuré dans `moteur/sauvegarder.py` existe, le script copie la documentation officielle et le `AGENTS.md` canonique. `AGENT.md` reste seulement le point d'entrée historique du projet.
 
-### Étape 4 : Indexation Git, Commit et Push
-- Exécute `git add -A` (en respectant les exclusions de `.gitignore`).
-- Analyse le statut de l'arbre de travail :
-  - Si aucune modification n'est détectée : confirme l'état à jour sans créer de commit inutile.
-  - Si des modifications existent : génère un commit explicite et horodaté, puis effectue un `git push origin main`.
+L'absence du miroir est annoncée et n'empêche pas la sauvegarde principale. Une erreur de `robocopy` est signalée dans la sortie ; elle ne doit pas être interprétée comme une synchronisation réussie. Cette copie matérielle ne prouve aucune parité sémantique entre code et documentation : cette vérification appartient à la phase A.
 
-### Étape 5 : Annonce dans l'application web
-- Publie une confirmation lisible dans le flux d'activité de l'application web via `moteur/dire.py` sous l'identité de l'**Agent Orchestrateur**, précisant le hash du commit et le statut de publication.
+### 4. Créer le commit et vérifier la publication
 
----
+- La procédure automatique exige la branche locale `main`, avant toute indexation. Une branche différente ou une tête détachée entraîne un refus explicite.
+- Après les contrôles de l'index privé, créer un commit uniquement si des changements sont indexés. Le message est transmis à Git par un fichier temporaire.
+- Même si aucun nouveau commit n'est nécessaire, effectuer la publication demandée : un commit local antérieur peut encore attendre son envoi.
+- Publier le `HEAD` vérifié vers `origin/refs/heads/main`, puis relire cette référence distante avec `git ls-remote`. Le hash distant doit correspondre au hash local complet.
+- Avec `--sans-push`, conserver un résultat de sauvegarde locale et ne pas affirmer que GitHub est synchronisé.
 
-## 5. Options du script
+### 5. Publier le résultat exact dans l'application
 
-| Commande | Description |
+`moteur/dire.py` publie sous l'identité de l'Agent Orchestrateur le hash et le statut réellement obtenu : publication distante vérifiée ou sauvegarde locale seulement. Un échec est annoncé ; si cette annonce échoue aussi, le script le signale dans sa sortie d'erreur.
+
+Cette annonce intervient après le commit et peut ajouter de nouvelles lignes aux carnets locaux de dialogue. Un arbre Git parfaitement propre après l'annonce n'est donc pas une condition de succès de la publication précédente.
+
+## Options
+
+| Commande | Résultat demandé |
 |---|---|
-| `python moteur/sauvegarder.py` | Sauvegarde complète standard (contrôles + commit + push + annonce web) |
-| `python moteur/sauvegarder.py --message "feat: mise à jour X"` | Sauvegarde avec message de commit personnalisé |
-| `python moteur/sauvegarder.py --sans-push` | Exécute les contrôles, la synchronisation et le commit local sans pousser sur GitHub |
+| `py -3.14 -B moteur/sauvegarder.py` | Contrôles, commit si nécessaire, publication vérifiée et annonce |
+| `py -3.14 -B moteur/sauvegarder.py --message "Correction documentée"` | Même procédure avec message de commit personnalisé |
+| `py -3.14 -B moteur/sauvegarder.py --sans-push` | Contrôles, copie documentaire éventuelle, commit local et annonce locale |
 
----
+## Relecture finale
 
-## 6. Vérification après sauvegarde
-
-Après l'exécution, l'Agent Orchestrateur vérifie :
-1. Que le message de succès s'affiche avec le hash du commit.
-2. Que `git status` indique : *« Your branch is up to date with 'origin/main'. nothing to commit, working tree clean »*.
-3. Que l'annonce apparaît bien dans le journal de l'application web.
+L'agent orchestrateur relit le code retour, le hash annoncé, le statut de publication et la réponse effectivement ajoutée dans l'application. Il vérifie séparément les avertissements de miroir et les modifications locales créées après le commit. Il ne présente ni un commit local comme un envoi distant, ni l'exclusion actuelle du courrier comme un nettoyage de l'historique GitHub.

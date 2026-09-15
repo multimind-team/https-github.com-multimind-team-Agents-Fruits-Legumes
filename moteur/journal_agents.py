@@ -19,11 +19,7 @@ autonome qui se plante en silence est plus dangereux qu'un agent qui ne fait
 rien.
 """
 import json
-import os
 import traceback
-import errno
-import threading
-import time
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
@@ -37,53 +33,14 @@ CHAMPS_RESTAURABLES = {"groupes", "masque", "promotion", "conditionnement",
                        "fournisseur", "unite"}
 
 
-_MUTEX = threading.RLock()
-_VERROUS_THREAD = threading.local()
+from verrou_donnees import append_jsonl, verrou_donnees
 
 
 @contextmanager
-def verrou(timeout=30):
-    """Verrou coopératif réentrant : threads ET processus, stdlib seulement.
-
-    Sérialise le contrôle des plafonds, le calcul d'avant/après et les ajouts.
-    Ce n'est ni une authentification OS, ni une transaction multi-fichiers.
-    """
-    cle = str(JOURNAUX.resolve())
-    with _MUTEX:
-        tenus = getattr(_VERROUS_THREAD, "tenus", set())
-        if cle in tenus:
-            yield
-            return
-        JOURNAUX.mkdir(parents=True, exist_ok=True)
-        with open(JOURNAUX / ".ecriture.lock", "a+b") as fichier:
-            fin = time.monotonic() + timeout
-            while True:
-                try:
-                    fichier.seek(0)
-                    if os.name == "nt":
-                        import msvcrt
-                        msvcrt.locking(fichier.fileno(), msvcrt.LK_NBLCK, 1)
-                    else:
-                        import fcntl
-                        fcntl.flock(fichier.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-                    break
-                except OSError as erreur:
-                    if erreur.errno not in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
-                        raise
-                    if time.monotonic() >= fin:
-                        raise TimeoutError("Écriture occupée : aucun changement appliqué par cet appel.") from erreur
-                    time.sleep(0.02)
-            _VERROUS_THREAD.tenus = tenus
-            tenus.add(cle)
-            try:
-                yield
-            finally:
-                tenus.remove(cle)
-                fichier.seek(0)
-                if os.name == "nt":
-                    msvcrt.locking(fichier.fileno(), msvcrt.LK_UNLCK, 1)
-                else:
-                    fcntl.flock(fichier.fileno(), fcntl.LOCK_UN)
+def verrou(timeout=120):
+    """Verrou partagé avec les importeurs, l'API et les producteurs dérivés."""
+    with verrou_donnees(JOURNAUX.parent, timeout=timeout):
+        yield
 
 
 def verifier_pouvoirs(agent, actions, fichier):
@@ -118,6 +75,35 @@ def _fichier(agent):
     return JOURNAUX / f"{agent}.jsonl"
 
 
+def lire_fichier(fichier):
+    """Lit entièrement un carnet d'objets JSON ; une erreur n'efface pas une décision.
+
+    Un carnet absent et les lignes vides sont normaux. Une dernière ligne JSON
+    complète sans saut final reste lisible ; append_jsonl refuse de la prolonger.
+    Les anciens formats d'objet restent acceptés, sans inventer de champs.
+    """
+    fichier = Path(fichier)
+    try:
+        flux = fichier.open(encoding="utf-8")
+    except FileNotFoundError:
+        return []
+    lignes = []
+    with flux:
+        for numero, ligne in enumerate(flux, 1):
+            if not ligne.strip():
+                continue
+            try:
+                objet = json.loads(ligne)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"Carnet illisible ({fichier.name}), ligne {numero} : JSON invalide. "
+                                 "Aucun résultat partiel utilisé ; fichier conservé.") from exc
+            if not isinstance(objet, dict):
+                raise ValueError(f"Carnet illisible ({fichier.name}), ligne {numero} : objet JSON attendu. "
+                                 "Aucun résultat partiel utilisé ; fichier conservé.")
+            lignes.append(objet)
+    return lignes
+
+
 def numero_action():
     """Réserve durablement un numéro, même si l'action n'est jamais publiée.
 
@@ -129,32 +115,19 @@ def numero_action():
         reservations = JOURNAUX / ".numeros.jsonl"
         dernier = 0
         for fichier in (_fichier("tout"), reservations):
-            if not fichier.exists():
-                continue
-            with open(fichier, encoding="utf-8") as f:
-                for ligne in f:
-                    try:
-                        numero = json.loads(ligne).get("action", "")
-                        if numero.startswith(f"A-{jour}-"):
-                            dernier = max(dernier, int(numero.rsplit("-", 1)[1]))
-                    except (json.JSONDecodeError, ValueError):
-                        continue
+            for ligne in lire_fichier(fichier):
+                numero = ligne.get("action", "")
+                if numero.startswith(f"A-{jour}-"):
+                    dernier = max(dernier, int(numero.rsplit("-", 1)[1]))
         numero = f"A-{jour}-{dernier + 1:04d}"
-        with open(reservations, "a", encoding="utf-8") as f:
-            f.write(json.dumps({"action": numero}) + "\n")
-            f.flush()
-            os.fsync(f.fileno())
+        append_jsonl(reservations, [{"action": numero}])
         return numero
 
 
 def _ecrire(agent, ligne):
     with verrou():
         for cible in (agent, "tout"):
-            with open(_fichier(cible), "a", encoding="utf-8") as f:
-                f.write(json.dumps(ligne, ensure_ascii=False) + "\n")
-                f.flush()
-                os.fsync(f.fileno())   # un agent tourne sans surveillance :
-                                       # la trace doit survivre à une coupure.
+            append_jsonl(_fichier(cible), [ligne])
 
 
 def enregistrer(agent, message, motif=None, changements=None, details=None,
@@ -208,18 +181,7 @@ def echec(agent, message, exception=None, details=None, action=None):
 
 def lire(agent="tout", limite=None):
     """Relit un journal, du plus ancien au plus récent."""
-    fichier = _fichier(agent)
-    if not fichier.exists():
-        return []
-    lignes = []
-    with open(fichier, encoding="utf-8") as f:
-        for ligne in f:
-            ligne = ligne.strip()
-            if ligne:
-                try:
-                    lignes.append(json.loads(ligne))
-                except json.JSONDecodeError:
-                    continue
+    lignes = lire_fichier(_fichier(agent))
     return lignes[-limite:] if limite else lignes
 
 

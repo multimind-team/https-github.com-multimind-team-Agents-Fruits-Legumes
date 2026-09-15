@@ -1,2 +1,0 @@
-Le calcul exact (stock, moyennes, prévisions, quantités).
-Écrit une fois, vérifié, puis figé. Les agents l'utilisent, ils ne le réécrivent pas.

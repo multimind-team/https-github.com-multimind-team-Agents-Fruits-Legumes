@@ -9,6 +9,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from config_courrier import charger_config_courrier
+from courrier_fichiers import conserver_piece
 
 RACINE = Path(__file__).resolve().parent.parent
 CONFIG_PATH = RACINE / "donnees" / "courrier-config.json"
@@ -31,6 +32,8 @@ def main():
     parser.add_argument("uid", help="UID IMAP du message")
     parser.add_argument("--telecharger", action="store_true", help="Telecharger les pieces jointes")
     args = parser.parse_args()
+    if not args.uid.isascii() or not args.uid.isdigit():
+        parser.error("L'UID IMAP doit être un entier positif")
 
     cfg = charger_config_courrier(CONFIG_PATH)
 
@@ -39,7 +42,7 @@ def main():
         client.login(cfg["utilisateur"], cfg["mot_de_passe"])
         client.select("INBOX", readonly=True)
 
-        typ, data = client.uid("fetch", args.uid.encode("ascii"), "(RFC822)")
+        typ, data = client.uid("fetch", args.uid.encode("ascii"), "(BODY.PEEK[])")
         if typ != "OK" or not data or not data[0]:
             print(json.dumps({"erreur": "Message introuvable", "uid": args.uid}))
             return 1
@@ -60,8 +63,8 @@ def main():
                 payload = part.get_payload(decode=True) or b""
                 pieces.append({"nom": nom, "taille": len(payload), "type": part.get_content_type()})
                 if args.telecharger:
-                    dest_rep.mkdir(parents=True, exist_ok=True)
-                    (dest_rep / nom).write_bytes(payload)
+                    chemin, empreinte = conserver_piece(dest_rep, nom, payload)
+                    pieces[-1].update(chemin=str(chemin), sha256=empreinte)
             elif part.get_content_type() == "text/plain":
                 payload = part.get_payload(decode=True) or b""
                 corps += payload.decode("utf-8", errors="replace")
@@ -87,4 +90,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -22,6 +22,7 @@ from zipfile import BadZipFile
 from openpyxl import load_workbook
 from openpyxl.comments import Comment
 import catalogue
+from verrou_donnees import verrou_donnees, append_jsonl
 
 
 class FactureInvalide(ValueError):
@@ -38,25 +39,8 @@ def _verrou_import(racine):
     Le fichier verrou est conservé (le supprimer créerait deux verrous possibles).
     Les anciens écrivains qui ne prennent pas ce verrou restent hors garantie.
     """
-    chemin = Path(racine) / "donnees" / ".factures-directes.lock"
-    with _VERROU_THREADS:
-        chemin.parent.mkdir(parents=True, exist_ok=True)
-        with open(chemin, "a+b") as verrou:
-            if os.name == "nt":
-                import msvcrt
-                verrou.seek(0)
-                msvcrt.locking(verrou.fileno(), msvcrt.LK_LOCK, 1)
-            else:
-                import fcntl
-                fcntl.flock(verrou.fileno(), fcntl.LOCK_EX)
-            try:
-                yield
-            finally:
-                if os.name == "nt":
-                    verrou.seek(0)
-                    msvcrt.locking(verrou.fileno(), msvcrt.LK_UNLCK, 1)
-                else:
-                    fcntl.flock(verrou.fileno(), fcntl.LOCK_UN)
+    with verrou_donnees(Path(racine) / "donnees"):
+        yield
 
 
 def _nombre(ligne, champ, *, decimal=False):
@@ -141,6 +125,7 @@ def valider_facture(donnees, correspondances):
             "article": str(fiche["itm8"]),
             "produit": str(ligne.get("produit") or fiche.get("libelle_magasin") or "").strip(),
             "quantite": float(quantite),
+            **({"unite_uf": ligne["unite_uf"]} if "unite_uf" in ligne else {}),
             "pu": float(pu),
             **({"_pv_historique": historique_pv} if historique_pv else {}),
             "montant_ht": float(montant),
@@ -308,6 +293,13 @@ def ajouter_marge(chemin_classeur, jour, facture):
         temporaire.unlink(missing_ok=True)
 
 
+def normaliser_unite(valeur):
+    valeur = str(valeur or "").strip().casefold()
+    return {"kg": "kg", "kilogramme": "kg", "kilogrammes": "kg",
+            "pièce": "piece", "pièces": "piece", "piece": "piece", "pieces": "piece",
+            "unité": "piece", "unite": "piece", "u": "piece"}.get(valeur, valeur)
+
+
 def preparer_livraisons(racine, facture):
     """Vérifie le catalogue et les doublons sans modifier les faits."""
     racine = Path(racine)
@@ -336,6 +328,8 @@ def preparer_livraisons(racine, facture):
                 raise FactureInvalide("Conflit d'empreinte : facture déjà enregistrée avec un autre contenu")
             identifiants.setdefault(fait.get("id"), []).append(fait)
 
+    if fichier.exists() and fichier.read_bytes()[-1:] not in (b"", b"\n"):
+        raise FactureInvalide("Carnet incomplet : dernière ligne non terminée ; aucun ajout effectué")
     nouveaux = []
     for ligne in facture["lignes"]:
         fiche = catalogue.fiche(ligne["article"])
@@ -362,6 +356,8 @@ def preparer_livraisons(racine, facture):
                        **ligne.get("_pv_historique", {}),
                        **{cle: trace[cle] for cle in ("facture_id", "empreinte_facture", "empreinte_ligne")}},
         }
+        if "unite_uf" in ligne:
+            mouvement["source"]["unite_uf"] = ligne["unite_uf"]
         if identifiant in identifiants:
             for ancien in identifiants[identifiant]:
                 if any(ancien.get(cle) != mouvement[cle] for cle in
@@ -371,23 +367,19 @@ def preparer_livraisons(racine, facture):
                         for cle in ancien["source"]):
                     raise FactureInvalide("Conflit d'empreinte : livraison déjà enregistrée avec un autre contenu")
             continue
+        unite_source = normaliser_unite(ligne.get("unite_uf"))
+        unite_cible = normaliser_unite(unite)
+        if not unite_source or unite_source in {"uf", "inconnue"} or unite_source != unite_cible:
+            raise FactureInvalide(f"Ligne {ligne['numero']} : unité physique UF absente ou incompatible "
+                                 f"avec le stock ({unite}). Relever unite_uf sur la facture ; "
+                                 "aucune conversion par hypothèse.")
         nouveaux.append(mouvement)
     return fichier, nouveaux
 
 
 def _publier_livraisons(fichier, nouveaux):
     if nouveaux:
-        contenu = "".join(json.dumps(mouvement, ensure_ascii=False, allow_nan=False) + "\n"
-                          for mouvement in nouveaux).encode("utf-8")
-        fichier.parent.mkdir(parents=True, exist_ok=True)
-        with open(fichier, "ab+") as sortie:
-            if sortie.tell():
-                sortie.seek(-1, os.SEEK_END)
-                if sortie.read(1) != b"\n":
-                    sortie.write(b"\n")
-            sortie.write(contenu)
-            sortie.flush()
-            os.fsync(sortie.fileno())
+        append_jsonl(fichier, nouveaux)
     return len(nouveaux)
 
 

@@ -77,6 +77,7 @@
   </div>
 
   <!-- ÉTAT DES QUATRE CARNETS -->
+  <div class="avertissement" id="etat-recalcul" hidden></div>
   <h2>Les carnets de données</h2>
   <p class="sous-titre">Voir <code>contrat-echange.md</code> pour ce que contient chacun.</p>
   <section class="grille-etat" id="grille-carnets"></section>
@@ -150,7 +151,6 @@
 
 // Les faits sont ranges par annee (voir contrat-echange.md) : on additionne
 // les annees connues plutot que de lire un seul gros fichier.
-const ANNEES_FAITS = ["2024", "2025", "2026"];
 
 const CARNETS = [
   { fichier: "faits",           titre: "Faits",     detail: "livraisons, ventes, casse, dons, comptages", parAnnee: true },
@@ -167,18 +167,15 @@ function texteSecurise(texte) {
 
 async function verifierCarnet(carnet) {
   if (carnet.parAnnee) {
-    let total = 0, trouve = false, erreur = false;
-    for (const annee of ANNEES_FAITS) {
-      try {
-        const reponse = await fetch("../donnees/faits/" + annee + ".jsonl?t=" + Date.now(), { cache: "no-store" });
-        if (reponse.status === 404) continue;
-        if (!reponse.ok) throw new Error(reponse.status);
-        const texte = await reponse.text();
-        total += texte.split(String.fromCharCode(10)).filter(function (l) { return l.trim() !== ""; }).length;
-        trouve = true;
-      } catch (e) { erreur = true; }
+    try {
+      const reponse = await fetch("/api/carnets/resume", {cache: "no-store"});
+      if (!reponse.ok) throw new Error(reponse.status);
+      const resume = await reponse.json();
+      if (!resume.ok || !Array.isArray(resume.fichiers) || !Number.isInteger(resume.total_lignes)) throw new Error("Résumé invalide");
+      return {existe: resume.fichiers.length > 0, lignes: resume.total_lignes, texte: "", erreur: false};
+    } catch (e) {
+      return {existe: false, lignes: 0, texte: "", erreur: true};
     }
-    return { existe: trouve, lignes: total, texte: "", erreur };
   }
   try {
     const reponse = await fetch("../donnees/" + carnet.fichier + "?t=" + Date.now(), { cache: "no-store" });
@@ -189,7 +186,7 @@ async function verifierCarnet(carnet) {
       // etat.json est un seul objet : ce qui compte, c'est le nombre d'articles
       // qui ont une position, pas le nombre de lignes du fichier.
       const donnees = JSON.parse(texte);
-      const avec = Object.values(donnees.articles || {}).filter(function (a) { return a.position !== null; }).length;
+      const avec = Object.values(donnees.articles || {}).filter(function (a) { return Number.isFinite(a.position); }).length;
       return { existe: true, lignes: avec, texte: "" };
     }
     const lignes = texte.split("\n").filter(function (l) { return l.trim() !== ""; });
@@ -274,6 +271,23 @@ async function chargerMessages() {
 
 chargerCarnets();
 chargerMessages();
+async function chargerRecalcul() {
+  const zone = document.getElementById("etat-recalcul");
+  try {
+    const r = await fetch("../donnees/recalcul.json", {cache:"no-store"});
+    if (r.status === 404) { zone.hidden = true; return; }
+    if (!r.ok) throw new Error("Lecture impossible");
+    const s = await r.json();
+    if (s.etat === "absent") { zone.hidden = true; return; }
+    if (!["termine", "echec", "en-cours"].includes(s.etat) || !/^[a-f0-9]{32}$/.test(s.operation_id || "")) throw new Error("État invalide");
+    zone.hidden = s.etat === "termine";
+    zone.textContent = s.etat === "echec"
+      ? "Le dernier recalcul a échoué. Vérifie le résultat sur le PC et relance le calcul."
+      : "Recalcul en cours ou interrompu : attends sa fin ; si cet état persiste, vérifie le traitement sur le PC.";
+  } catch (e) { zone.hidden = false; zone.textContent = "État du recalcul indisponible : vérifie la connexion au PC."; }
+}
+chargerRecalcul();
+setInterval(chargerRecalcul, 15000);
 </script>
 
 </body>
