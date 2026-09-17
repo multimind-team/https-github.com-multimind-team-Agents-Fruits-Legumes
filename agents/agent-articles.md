@@ -14,7 +14,7 @@ et les changements de fournisseur.
 **Pouvoir : lecture seule des données métier et des paramètres.** Un rapport privé de preuve
 est permis dans le dossier mandaté ; aucun catalogue, fait, mapping ou dérivé de production
 n'est corrigé par cette enquête. Voir les effets des outils dans `AGENTS.md`.
-L'agent articles rapporte ses preuves et conclusions d'enquête à l'**agent orchestrateur**.
+L'agent articles rapporte ses preuves et conclusions d'enquête au **Leader**.
 
 **Entrée :** codes exacts, période, source et anomalie ciblée.
 **Sortie :** fait démontré ou hypothèses encore ouvertes, preuve par fichier/cellule, correction
@@ -41,7 +41,7 @@ proposée et rôle habilité. L'enquête produit ne remplace pas le contrôle in
 
 ## 3. Format du Rapport d'Enquête
 
-L'agent articles fournit à l'orchestrateur un rapport documenté comprenant :
+L'agent articles fournit au Leader un rapport documenté comprenant :
 - Code et libellé exact de l'article.
 - Problème constaté (discordance de stock, rupture anormale, doublon de code-barres).
 - Preuves chiffrées issues des fichiers de faits (`donnees/faits/`).
@@ -56,4 +56,4 @@ Lorsqu'il intervient, l'agent prend la parole avec son identifiant :
 - `**agent-articles** : [Explication de l'enquête, constat et proposition]`
 Exemples :
 - « J'enquête sur l'anomalie de colisage constatée sur cet article. »
-- « Enquête terminée : discordance confirmée entre code-barres et libellé. Proposition transmise à l'agent-orchestrateur. »
+- « Enquête terminée : discordance confirmée entre code-barres et libellé. Proposition transmise au Leader. »

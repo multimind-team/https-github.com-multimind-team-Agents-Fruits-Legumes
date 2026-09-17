@@ -1,0 +1,1134 @@
+{
+  "auteur": "agent-controle",
+  "execution_independante": "/root/corrections_systeme",
+  "revue_le": "2026-09-15T21:35:47",
+  "phase": "après écritures réelles et restitution des plafonds",
+  "verdict": "SÛR POUR LE PÉRIMÈTRE",
+  "etat_execution": "INTÉGRÉ ET VÉRIFIÉ",
+  "perimetre": "Réponses source P01-P21/C01-C11/R01-R18 : seules21positions explicites du15septembre au soir, six PCB, douze masques ; un filet final ; note du soir bornée au lot. Aucune nouvelle livraison ni association de codes.",
+  "preuves": [
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\demande-source.md",
+      "sha256": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\autorisation-plafonds.md",
+      "sha256": "da261b118c0ca40f244f01fb62df742429667aeaa2db40238b15a80ffbef5841"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\plan-final-agent-donnees-20260915-2114.json",
+      "sha256": "b59ae2f5a6fb5c006021cddcc7b5d4a4802bef90ba9b0bac6f2fbade9ab0e1ed"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\agent-controle-avis-avant-20260915-211655.json",
+      "sha256": "dc665dfaabf7811427537f0a51a3acaa99a0fbca63365189a2dfac0cc89221c4"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\agent-controle-phase-faits-20260915-212223.json",
+      "sha256": "4921425e5413f657c92a07834aa29e8f90bc83b3bcfa5b8e573f640db95a9801"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\agent-controle-phase-decisions-20260915-212712.json",
+      "sha256": "53c1f6ca2dac3b5a3f4d17cf9614201162b516dc83d549f14f904f08835faae5"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\agent-controle-etat-avant-execution-20260915-212040.json",
+      "sha256": "a0c043f47362c47bf20d324cb22258325eb6f230a96155e5404b23630d2748f0"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\agent-controle-verifications-finales-20260915-213357.json",
+      "sha256": "a2df9805a156f9c60473181ec4bacf4f3d9fdcd9ec84d5a492fba7ae88aa0554"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\execution-positions-agent-donnees-20260915T212026.json",
+      "sha256": "f08e298928ae4c55dc318352f2db7d80823bd4e4025d5e0c44bc251158198a81"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\execution-decisions-agent-rayon-20260915T212507.json",
+      "sha256": "c1c9a84f986b89fd6cc5aa59628e9cee21044b4fadad2d588cb0eb21cbca1d1f"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\execution-filet-final-agent-donnees-20260915T212855.json",
+      "sha256": "6253c6e25560ac632249786fb3ae544084dc235e3a8719cc5d4e93a87f9c3a95"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\exception-plafonds-execution.json",
+      "sha256": "57de4b68fc0c21e1c0f48ce978595c6dffdbf7b5656c4a58605cf7af71b7831f"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\actualisation-note-orchestrateur.json",
+      "sha256": "0a8661c2353210e2b08f0840d9e6ed57306f73f8e3d326f984df86dd925c8052"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\note-avant-actualisation-du-soir.json",
+      "sha256": "2f1fd84104aae7bca05030defecdeb875755942f9bbd26d3ed53a46cdc717d14"
+    }
+  ],
+  "controles": {
+    "positions_reelles_exactes": 21,
+    "faits_ajoutes_seuls": 21,
+    "reglages_reels_exacts": 18,
+    "pcb": 6,
+    "masques_nouveaux": 12,
+    "prefixes_tous_carnets_et_journaux_conserves": true,
+    "etats_anciens_hors21_strictement_identiques": 805,
+    "lignes_proposition": 427,
+    "lignes_affectees_identiques_apercu_simule": 26,
+    "autres_lignes_proposition_strictement_identiques": true,
+    "ajustements_manuels_strictement_identiques": true,
+    "checks_independants_fichier_detaille": 83,
+    "HTTP200_contenu_identique": 6
+  },
+  "positions_ligne_par_ligne": [
+    {
+      "repere": "P01",
+      "code": "nom:KIT GUACAMOLE",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "KIT GUACAMOLE"
+      },
+      "proposition": {
+        "itm8": "nom:KIT GUACAMOLE",
+        "libelle": "KIT GUACAMOLE",
+        "ordre": 5,
+        "groupe": "fruits",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.690000057220459,
+        "prix_vente": 3.990000009536743,
+        "marge_pct": 32.6,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "AVOCAT KIT GUACAMOLE C 1 BARQUETTE 400 g PRECONISE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P02",
+      "code": "nom:SHARON PIECE",
+      "etat": {
+        "position": -12.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "SHARON PIECE"
+      },
+      "proposition": {
+        "itm8": "nom:SHARON PIECE",
+        "libelle": "SHARON PIECE",
+        "ordre": 335,
+        "groupe": "fruits",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 12.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 0.7200000286102295,
+        "prix_vente": 1.090000033378601,
+        "marge_pct": 33.9,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "FRUIT EXOTIQUE SHARON ESPAGNE C 1 PIECE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P03",
+      "code": "nom:POMME GALA SACHET 1,5KG",
+      "etat": {
+        "position": -10.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "POMME GALA SACHET 1,5KG"
+      },
+      "proposition": {
+        "itm8": "nom:POMME GALA SACHET 1,5KG",
+        "libelle": "POMME GALA SACHET 1,5KG",
+        "ordre": 341,
+        "groupe": "fruits",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.1500000953674316,
+        "prix_vente": 3.2899999618530273,
+        "marge_pct": 34.7,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "POMME GALA FRANCE 115/150G C 1 SACHET 1,5 Kg",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P04",
+      "code": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "etat": {
+        "position": -5.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE COULEUR MIXTE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CAROTTE COULEUR MIXTE VRAC",
+        "libelle": "CAROTTE COULEUR MIXTE VRAC",
+        "ordre": 135,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 5.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.444999933242798,
+        "prix_vente": 3.7899999618530273,
+        "marge_pct": 35.5,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CAROTTE COULEUR FRANCE 20/40MM C 1 VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P05",
+      "code": "0000087010603",
+      "etat": {
+        "position": 32.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE SACHET 1.5KG ITM"
+      },
+      "proposition": {
+        "itm8": "0000087010603",
+        "libelle": "CAROTTE SACHET 1.5KG ITM",
+        "ordre": 137,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 2.0,
+        "conditionnement": 8.0,
+        "unite": "sachet",
+        "position_colis": 4.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 32.0,
+        "demande": 47.768,
+        "vente_moyenne_jour": 24.52,
+        "taux_perte": 0.0,
+        "prix_achat": 1.7899999618530273,
+        "prix_vente": 2.79,
+        "marge_pct": 35.8,
+        "montant_achat": 28.64,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "decision",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P06",
+      "code": "nom:BUTTERNUT PIECE",
+      "etat": {
+        "position": -10.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "BUTTERNUT PIECE"
+      },
+      "proposition": {
+        "itm8": "nom:BUTTERNUT PIECE",
+        "libelle": "BUTTERNUT PIECE",
+        "ordre": 162,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.590000033378601,
+        "prix_vente": 2.490000009536743,
+        "marge_pct": 36.1,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "COURGE ALIMENTAIRE BUTTERNUT FRANCE C 1 PIECE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P07",
+      "code": "0000087010665",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "ECHALOTE TRADI FILET 250G ITM"
+      },
+      "proposition": {
+        "itm8": "0000087010665",
+        "libelle": "ECHALOTE TRADI FILET 250G ITM",
+        "ordre": 168,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 0.0,
+        "conditionnement": 20.0,
+        "unite": "filet",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 0.0,
+        "demande": 0.0,
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.100000023841858,
+        "prix_vente": 1.39,
+        "marge_pct": 20.9,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "decision",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P08",
+      "code": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "ECHALOTE TRADITIONNELLE 250G CQLP"
+      },
+      "proposition": {
+        "itm8": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+        "libelle": "ECHALOTE TRADITIONNELLE 250G CQLP",
+        "ordre": 170,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 20.0,
+        "unite": "unité",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.590000033378601,
+        "prix_vente": 2.3299999237060547,
+        "marge_pct": 31.8,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "ECHALOTE LONGUE FRANCE 30/50MM FILET 250 g PRICE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P09",
+      "code": "0000087950043",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "PDT SALADE MICRO ONDE 500G"
+      },
+      "proposition": {
+        "itm8": "0000087950043",
+        "libelle": "PDT SALADE MICRO ONDE 500G",
+        "ordre": 223,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 0.0,
+        "conditionnement": 8.0,
+        "unite": "pièce",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 0.0,
+        "demande": 0.0,
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.4900000095367432,
+        "prix_vente": 2.29,
+        "marge_pct": 34.9,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P10",
+      "code": "0000087755054",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "MELANGE JEUNES POUSSES 125G"
+      },
+      "proposition": {
+        "itm8": "0000087755054",
+        "libelle": "MELANGE JEUNES POUSSES 125G",
+        "ordre": 237,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 1.0,
+        "conditionnement": 6.0,
+        "unite": "pièce",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 0.0,
+        "demande": 7.824,
+        "vente_moyenne_jour": 3.88,
+        "taux_perte": 0.0,
+        "prix_achat": 0.699999988079071,
+        "prix_vente": 1.29,
+        "marge_pct": 45.7,
+        "montant_achat": 4.2,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P11",
+      "code": "nom:CAROTTE JAUNE VRAC",
+      "etat": {
+        "position": -5.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE JAUNE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CAROTTE JAUNE VRAC",
+        "libelle": "CAROTTE JAUNE VRAC",
+        "ordre": 361,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 5.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 0.0,
+        "prix_vente": 0.0,
+        "marge_pct": 0.0,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CAROTTE JAUNE FRANCE 20/40MM C 1 VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P12",
+      "code": "nom:CAROTTE VIOLETTE VRAC",
+      "etat": {
+        "position": -5.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE VIOLETTE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CAROTTE VIOLETTE VRAC",
+        "libelle": "CAROTTE VIOLETTE VRAC",
+        "ordre": 362,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 5.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 0.0,
+        "prix_vente": 0.0,
+        "marge_pct": 0.0,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CAROTTE VIOLETTE FRANCE 20/40MM C 1 VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P13",
+      "code": "nom:CHAMPIGNON SHITAKE VRAC",
+      "etat": {
+        "position": -2.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CHAMPIGNON SHITAKE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CHAMPIGNON SHITAKE VRAC",
+        "libelle": "CHAMPIGNON SHITAKE VRAC",
+        "ordre": 365,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 2.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 8.989999771118164,
+        "prix_vente": 12.949999809265137,
+        "marge_pct": 30.6,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CHAMPIGNON SHI TAKE FRANCE VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P14",
+      "code": "nom:MACHE BARQUETTE 150 G",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "MACHE BARQUETTE 150 G"
+      },
+      "proposition": {
+        "itm8": "nom:MACHE BARQUETTE 150 G",
+        "libelle": "MACHE BARQUETTE 150 G",
+        "ordre": 385,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.2999999523162842,
+        "prix_vente": 1.9900000095367432,
+        "marge_pct": 34.7,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "LEGUME TRANCHE MACHE FRANCE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P15",
+      "code": "nom:CRESSON BOTTE",
+      "etat": {
+        "position": -8.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CRESSON BOTTE"
+      },
+      "proposition": {
+        "itm8": "nom:CRESSON BOTTE",
+        "libelle": "CRESSON BOTTE",
+        "ordre": 401,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 8.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.990000009536743,
+        "marge_pct": 33.4,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "SALADE CRESSON FRANCE C 1 BOTTE",
+        "source_conditionnement": "decision",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P16",
+      "code": "nom:CRESSON FLOW PACK 200G",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CRESSON FLOW PACK 200G"
+      },
+      "proposition": {
+        "itm8": "nom:CRESSON FLOW PACK 200G",
+        "libelle": "CRESSON FLOW PACK 200G",
+        "ordre": 403,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.8899999856948853,
+        "prix_vente": 2.7899999618530273,
+        "marge_pct": 32.3,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "SALADE CRESSON FRANCE C 1 SACHET 200 g",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P17",
+      "code": "nom:CONCOMBRE BIO PIECE PE",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CONCOMBRE BIO PIECE PE"
+      },
+      "proposition": {
+        "itm8": "nom:CONCOMBRE BIO PIECE PE",
+        "libelle": "CONCOMBRE BIO PIECE PE",
+        "ordre": 273,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 12.0,
+        "unite": "unité",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.3899999856948853,
+        "prix_vente": 1.9900000095367432,
+        "marge_pct": 30.2,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "BIO CONCOMBRE LONG ESPAGNE 300/400G C 2 PIECE MON MARCHE PLAISIR",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P18",
+      "code": "nom:MANGUE BIO PIECE",
+      "etat": {
+        "position": -9.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "MANGUE BIO PIECE"
+      },
+      "proposition": {
+        "itm8": "nom:MANGUE BIO PIECE",
+        "libelle": "MANGUE BIO PIECE",
+        "ordre": 281,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 9.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.890000104904175,
+        "marge_pct": 31.1,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "BIO MANGUE KENT ESPAGNE CAL 9 C 2 PIECE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P19",
+      "code": "nom:OIGNON JAUNE 1KG BIO MMP",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "OIGNON JAUNE 1KG BIO MMP"
+      },
+      "proposition": {
+        "itm8": "nom:OIGNON JAUNE 1KG BIO MMP",
+        "libelle": "OIGNON JAUNE 1KG BIO MMP",
+        "ordre": 283,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.990000009536743,
+        "marge_pct": 33.4,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "PNM BIO OIGNON JAUNE FRANCE 40/60MM C 2 FILET 1 Kg MON MARCHE PLAISIR",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P20",
+      "code": "nom:RAISIN BLC BIO 500G",
+      "etat": {
+        "position": -10.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "RAISIN BLC BIO 500G"
+      },
+      "proposition": {
+        "itm8": "nom:RAISIN BLC BIO 500G",
+        "libelle": "RAISIN BLC BIO 500G",
+        "ordre": 294,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.690000057220459,
+        "prix_vente": 3.990000009536743,
+        "marge_pct": 32.6,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "BIO RAISIN ITALIA ITALIE C 2 BARQUETTE 500 g",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P21",
+      "code": "nom:PATATE DOUCE 500G BIO ITM",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "PATATE DOUCE 500G BIO ITM"
+      },
+      "proposition": {
+        "itm8": "nom:PATATE DOUCE 500G BIO ITM",
+        "libelle": "PATATE DOUCE 500G BIO ITM",
+        "ordre": 417,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.990000009536743,
+        "marge_pct": 33.4,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "PNM BIO PATATE DOUCE FRANCE C 2 FILET 500 g BIO ITM",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    }
+  ],
+  "temoins": {
+    "C03": {
+      "article": "0000087004035",
+      "position_kg": 28,
+      "PCB_actuel_kg": 6.5,
+      "ancien_comptage_4x7_kg_preserve": true
+    },
+    "C09": {
+      "article": "0000087010621",
+      "position_unites": -3,
+      "PCB_actuel_sacs": 6,
+      "position_colis": -0.5,
+      "aucune_reconversion_historique": true
+    },
+    "AMANDINE_20h46": {
+      "article": "0000087950042",
+      "position_unites": 0,
+      "inchange": true
+    },
+    "ICEBERG_20h46": {
+      "article": "0000087755078",
+      "position_unites": 54,
+      "inchange": true,
+      "pas_de_ligne_inventee_dans_offres": true
+    },
+    "MACHE_125g": {
+      "article": "0000087755102",
+      "ligne_integralement_identique": true,
+      "masque": false,
+      "position_barquettes": 48,
+      "PCB": 12
+    },
+    "C07_C08": "Fournisseurs POMONA déjà corrects et conservés ; aucune décision fournisseur redondante."
+  },
+  "recalcul": {
+    "lancements_filet": 1,
+    "code_retour": 0,
+    "operation_id": "67cb7a9b2e834c92ac40c500612785f6",
+    "etat": "termine",
+    "proposition_generee_le": "2026-09-15T21:28:47",
+    "calculs_en_echec": [],
+    "date_commande": "2026-09-16",
+    "date_livraison": "2026-09-17",
+    "date_statistique_reference": "2026-09-14",
+    "date_physique_positions21": "2026-09-15"
+  },
+  "pouvoirs": {
+    "global_consomme": 25,
+    "rayon_consomme": 18,
+    "donnees_consomme": 5,
+    "global_restaure": 20,
+    "rayon_restaure": 15,
+    "autres_pouvoirs_identiques": true,
+    "sha256_restaure": "51b4c6403e21f9d70cb70d2b08a1f006a0bc00f28e7e30c7ec4cde4148f3129a",
+    "aucune_action_effacee": true
+  },
+  "HTTP_lectures_seules": [
+    {
+      "url": "http://127.0.0.1:8751/donnees/proposition.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "e917be822bda33f70f388b5565539d75a2de08d7dc2b3c46bd657d54f6c7788e",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/donnees/etat.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "685966990e7f5fd5e9c41babb47100f6e88fc20ff2dd4b5d3c2d0004e8ab516f",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/donnees/fraicheur.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "3ee6fef49073a032a1fcd9005715bc36e7ff66c6477c403fb1060d8ebe2d0cc7",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/donnees/recalcul.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "cdcdc648755074fbd838383389d9b1617fb8df0dbecacc08594611be4aa9b0f3",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/app/commander.html?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "text/html",
+      "sha256_reponse": "010fb68f963b2f8dffff037a9317733113e8b5c372049dc9e900734a506e68b8",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/donnees/note-du-matin.json?controle_independant=20260915213547",
+      "status": 200,
+      "sha256_reponse": "7944c30e6caef840540f73fd64d97d1ed9439eae9178eaf21df549788a1b9645",
+      "identique_disque": true
+    }
+  ],
+  "note_du_soir": {
+    "sha256": "7944c30e6caef840540f73fd64d97d1ed9439eae9178eaf21df549788a1b9645",
+    "date_ecriture": "2026-09-15T21:33:01",
+    "ancienne_note_archivee_sha256": "2f1fd84104aae7bca05030defecdeb875755942f9bbd26d3ed53a46cdc717d14",
+    "contenu_borne_au_lot_verifie": true,
+    "autres_carnets_et_resultats_inchanges": true
+  },
+  "matrice_R01_R24": {
+    "R01": {
+      "etat": "vérifié",
+      "motif": "Demande textuelle et autorisation exacte lues ; aucune pièce de mouvement dans ce lot."
+    },
+    "R02": {
+      "etat": "vérifié",
+      "motif": "21 lignes P, 11 lignes C et 18 lignes R de etat_actuel parcourues ; seules 21 positions et 18 décisions ciblées."
+    },
+    "R03": {
+      "etat": "vérifié",
+      "motif": "Demande directe du responsable transcrite ; aucune commande présentée comme réception."
+    },
+    "R04": {
+      "etat": "vérifié",
+      "motif": "Date physique 15 septembre et phase soir confirmées ; heure précise non fournie."
+    },
+    "R05": {
+      "etat": "non applicable",
+      "motif": "Aucun agrégat de mouvements ni période à répartir."
+    },
+    "R06": {
+      "etat": "vérifié",
+      "motif": "Comptage partiel de 21 articles uniquement ; aucun zéro pour les articles hors liste."
+    },
+    "R07": {
+      "etat": "vérifié",
+      "motif": "IDs stables ; copie : première écriture 21, rejeu 0 nouveau/21 doublons."
+    },
+    "R08": {
+      "etat": "vérifié",
+      "motif": "Nouvelles mesures explicites, pas de réécriture de l’historique."
+    },
+    "R09": {
+      "etat": "non applicable",
+      "motif": "Aucune livraison importée ; P03 éventuelle commande exclue."
+    },
+    "R10": {
+      "etat": "vérifié",
+      "motif": "Correspondance exacte etat_actuel ; 17 identifiants nom: conservés sans code ni rapprochement inventé."
+    },
+    "R11": {
+      "etat": "vérifié",
+      "motif": "21 valeurs source finies, signes et zéros conservés ; PCB 6.5 conservé sans arrondi entier."
+    },
+    "R12": {
+      "etat": "vérifié",
+      "motif": "Unités/PCB publiés conservés pour les P ; unités génériques provisoires explicitement maintenues. C09 = six sacs, pas 15 kg ni box55."
+    },
+    "R13": {
+      "etat": "vérifié",
+      "motif": "Six PCB explicitement demandés, offres compatibles ; C11 décision8 justifiée malgré affichage8 déjà existant."
+    },
+    "R14": {
+      "etat": "vérifié",
+      "motif": "P03 commande probable de trois colis exclue ; aucune livraison attestée nouvelle."
+    },
+    "R15": {
+      "etat": "non applicable",
+      "motif": "Aucune vente importée ni changement de signe d’export."
+    },
+    "R16": {
+      "etat": "non applicable",
+      "motif": "Aucune casse/don importé."
+    },
+    "R17": {
+      "etat": "vérifié",
+      "motif": "21 bases absentes avant ; phase soir après mouvements confirmée ; aucun mouvement du jour réappliqué en simulation ; futur comptage prioritaire."
+    },
+    "R18": {
+      "etat": "vérifié",
+      "motif": "Anciens faits/prefixes inchangés ; C03 reste28kg, C09 reste−3unités ; PCB mémorisé dans les nouveaux faits."
+    },
+    "R19": {
+      "etat": "non applicable",
+      "motif": "Aucune transformation, fusion ou substitution créée."
+    },
+    "R20": {
+      "etat": "vérifié",
+      "motif": "Multiplication contrôlée par ligne et unité ; pas de total additionnant unités hétérogènes, aucun prix inventé."
+    },
+    "R21": {
+      "etat": "vérifié",
+      "motif": "21 faits seuls, 18 décisions seules ; code0 des18décisions et du filet unique ; tous préfixes JSONL contrôlés. 25actions consommées conservées, plafonds restaurés byte pour byte."
+    },
+    "R22": {
+      "etat": "vérifié",
+      "motif": "805 états hors21identiques ; dérivés et carnets actuels égaux aux empreintes après filet, hormis pouvoirs restaurés. Publication note sans autre changement de fichiers protégés."
+    },
+    "R23": {
+      "etat": "vérifié",
+      "motif": "21 positions reproduites ligne par ligne ;26lignes affectées égales à l’aperçu simulé ; toute autre ligne de proposition identique à l’état précédent ; HTTP200 et octets identiques au disque."
+    },
+    "R24": {
+      "etat": "vérifié dans le périmètre",
+      "motif": "Ancienne note périmée signalée puis conservée en preuve privée ; note du soir limitée au lot lue sur disque et HTTP. Aucun envoi courrier ou notification externe certifié par ce contrôle."
+    }
+  },
+  "ecarts_residuels_dans_ce_lot": [],
+  "limites_maintenues": [
+    "Les17identifiants nom: ne sont pas devenus des codes caisse ; unités génériques conservées, aucune fusion automatique créée.",
+    "C04/C05/C06 et recherches de sources hors six PCB ne sont pas des décisions nouvelles autorisées ; les résultats d’enquête se traitent séparément.",
+    "L’heure physique précise des21positions reste inconnue ; 21:20:26 est l’instant technique réel enregistré, pas une heure de mesure inventée.",
+    "La note du soir ne certifie pas tous les produits du magasin. SUCRINE X6 conserve une base inconnue et MANGUE AVION une ancienne position−137unités dans l’état ; ces deux articles sont absents des427offres actuelles et n’ont pas été corrigés par le lot.",
+    "Cette revue HTTP prouve les réponses servies et leur conformité au disque ; aucune interaction d’écriture ou nouvelle mesure de téléphone n’a été exécutée.",
+    "Les anciens321doublons de faits identiques ignorés par le lecteur restent historiques ; aucun doublon nouveau ajouté par ce lot."
+  ],
+  "ecritures_par_agent_controle": "Nouveaux rapports privés uniquement ; aucun code, carnet, quantité, décision, pouvoir ou dérivé métier modifié par le contrôleur."
+}

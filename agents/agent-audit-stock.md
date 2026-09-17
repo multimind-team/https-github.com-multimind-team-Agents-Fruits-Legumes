@@ -27,7 +27,7 @@ faire correspondre la mesure au calcul. Le comptage reste le nouveau repère phy
 
 ## 2. Détection et prise en charge
 
-La sentinelle unifiée signale les événements à l'orchestrateur ou à un superviseur externe ; elle ne lance pas un agent toute seule :
+La sentinelle unifiée signale les événements au Leader ou à un superviseur externe ; elle ne lance pas un agent toute seule :
 ```bash
 python moteur/surveille-mail-message-comptage.py
 ```

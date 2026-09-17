@@ -1,9 +1,9 @@
 """
-moteur/dire.py - Permet à l'agent orchestrateur ou à un agent spécialisé
+moteur/dire.py - Permet au Leader ou à un agent spécialisé
 de publier une annonce ou une réponse directement dans le chat de l'application web.
 
 Usage :
-  python moteur/dire.py --auteur "Agent Orchestrateur" "Je prends la main sur la commande."
+  python moteur/dire.py --auteur "Leader" "Je prends la main sur la commande."
   python moteur/dire.py --auteur "Agent donnees" "Les fichiers du matin sont integres."
 """
 import argparse
@@ -55,7 +55,7 @@ def publier(texte, auteur="Assistant", en_reponse_a=None, action=None):
 def main():
     parser = argparse.ArgumentParser(description="Publier un message dans le chat web.")
     parser.add_argument("message", type=str, help="Le texte du message à afficher.")
-    parser.add_argument("--auteur", type=str, default="Agent Orchestrateur", help="L'auteur du message.")
+    parser.add_argument("--auteur", type=str, default="Leader", help="L'auteur du message.")
     parser.add_argument("--en-reponse-a", type=str, default=None, help="L'ID du message auquel on répond.")
     parser.add_argument("--action", type=str, default=None, help="Une étiquette d'action (ex: A-20260906-0001).")
 

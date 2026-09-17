@@ -1,4 +1,4 @@
-"""Classe et range les pièces jointes relevées par l'agent orchestrateur.
+"""Classe et range les pièces jointes relevées par le Leader.
 
 Ce module ne lit pas le contenu métier des fichiers et ne modifie pas les
 carnets métier. Son index atteste uniquement le rangement : la même empreinte

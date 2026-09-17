@@ -8,23 +8,30 @@ décrit les formats sans créer de pouvoirs supplémentaires.
 
 ## Les fichiers
 
+Les chemins de ce tableau sont relatifs à `donnees/`.
+
 | Fichier | Contenu | On efface ? | Qui écrit |
 |---|---|---|---|
 | `faits/AAAA.jsonl` | ce qui s'est **passé**, un fichier par année | jamais | importeurs autorisés sous `agent-donnees`, serveur pour les comptages humains |
 | `decisions.jsonl` | les **réglages** des articles | jamais | agents autorisés selon `pouvoirs.json`, serveur pour les décisions humaines |
-| `etat.json` | la position calculée à la date des faits retenus | régénérable | moteur de calcul |
+| `etat.json` | la position calculée depuis les mesures et mouvements | régénérable | moteur de calcul |
 | `messages.jsonl`, `reponses.jsonl` | demandes et réponses de l’application | jamais | serveur et agents autorisés |
 | `journaux/<rôle>.jsonl` | ce que chaque rôle a fait, avec l'avant et l'après | jamais | le rôle |
 | `journaux/tout.jsonl` | les mêmes actions, tous rôles, dans l'ordre | jamais | tous |
 | `ajustements.jsonl` | les ajustements de commande | jamais | auteurs habilités selon `pouvoirs.json` et validation de la demande |
-| `faits/analyse_historique_ventes.json` | profil de vente et saisonnalité sur 2,5 ans | à volonté | `analyser_historique_ventes.py` |
-| `pouvoirs.json` | qui a le droit de faire quoi seul | à volonté | le responsable de rayon |
+| `agregats.json` | statistiques et profils saisonniers des articles | régénérable | `moteur/agregats.py`, avec les calculs de `moteur/calculer-commande.py` |
+| `analyse-ventes-annuelle-saisonniere.json` | analyse des années, mois et saisons disponibles | régénérable | `moteur/analyser-historique-complet.py` |
+| `proposition.json`, `articles.json` | proposition et aide au comptage | régénérables | producteurs du moteur |
+| `fraicheur.json`, `recalcul.json` | contrôles de fraîcheur et état d'une opération de calcul | régénérables | filet de sécurité et opérations coordonnées |
+| `pouvoirs.json` | qui a le droit de faire quoi seul | modification explicite seulement | le responsable de rayon |
 
 Les `.jsonl` sont des fichiers texte : **une ligne par information**, ajoutée à la suite. On ne
 revient jamais modifier une ligne écrite.
 
-> **`etat.json` ne fait jamais foi.** On doit pouvoir le supprimer, tout relire depuis le début,
-> et retrouver exactement le même stock.
+> **`etat.json` est une sortie calculée, pas une preuve d'entrée physique.** Pour reproduire
+> une position, conserver les faits, les décisions, les référentiels et unités nécessaires,
+> la date de calcul et la version du moteur. Les horodatages de publication peuvent changer.
+> La reconstruction s'essaie en copie ; supprimer ce fichier réel n'est pas une étape d'audit.
 
 ---
 
@@ -51,15 +58,32 @@ inventé ne corrige pas le calcul.
 
 **`id`** — identité stable du fait. Les anciens identifiants sont conservés ; les importeurs vérifient aussi les équivalences de contenu pour résister au réordonnancement des lignes. Une version différente d’un mouvement déjà reçu exige une correction explicite, jamais un second ajout silencieux. La ligne du fichier reste une preuve de provenance, pas une identité métier suffisante.
 
-**`date_source` / `date_effet`** — la date écrite dans le fichier (pour une livraison : la date
-de **commande**), et le jour où la marchandise arrive vraiment. Les confondre fait chercher la
-livraison à une date qui n'existe pas.
+**`date_source` / `date_effet`** — la date portée ou interprétée depuis la source, et le jour
+auquel le mouvement agit sur la position. Pour Scafruit, l'importeur lit la date de commande
+dans l'en-tête, sinon dans le nom, puis déduit une réception le lendemain en sautant le
+dimanche. Cette convention n'applique pas le calendrier complet des jours fériés : vérifier
+la réception réelle. Pour une facture directe ou une saisie de livraison manuelle, les deux
+champs reprennent la date de réception attestée. Pour les sorties, ils reprennent la journée
+interne de vente, casse ou don. Un fichier tardif conserve son jour d'effet ; ne pas le redater
+au jour de réception du mail.
 
-**`article` / `article_source`** — le code retenu **et** le code d'origine. Si un rapprochement
-se révèle faux, on peut tout refaire.
+**Heure physique et enregistrement** — pour un comptage de l'API courante, `source.saisi_le`
+et `horodatage` conservent l'instant de saisie ; `enregistre_le` date l'enregistrement technique.
+Ces champs ne sont pas tous présents dans les autres importeurs et n'ont pas partout ce même
+contrat. Le lecteur de position privilégie l'heure physique disponible pour départager les
+mesures, pas l'ordre de réception des fichiers.
 
-**`quantite` / `unite`** — toujours en kilos ou en pièces, **jamais en colis** : le nombre de
-pièces par colis change d'une livraison à l'autre.
+**`article` / `article_source`** — le code retenu **et** le code d'origine. La provenance aide
+à contrôler ou corriger un rapprochement. Une reprise reste soumise à la procédure applicable ;
+conserver un code source ne garantit pas à lui seul une annulation sans conséquence.
+
+**`quantite` / `unite`** — quantité dans l'unité métier compatible avec l'article : kg, pièce,
+sachet, filet, botte, etc. Le nombre de colis et son contenu attesté sont conservés séparément
+quand la source les fournit. Une UF facturée n'est pas une conversion universelle vers cette
+unité. Le contenu réellement livré peut différer du PCB habituel, sans modifier celui-ci.
+Certains exports de sorties laissent `unite` à `inconnue` : le contrôle doit établir la
+dimension depuis les sources. La boucle de position additionne les quantités reçues ; elle
+ne vérifie ni ne convertit elle-même leurs dimensions physiques.
 
 **Types de mouvements et de comptages reconnus :**
 
@@ -69,12 +93,20 @@ pièces par colis change d'une livraison à l'autre.
 | `vente` | retire |
 | `casse` (jetée) | retire |
 | `don` (Restos du Cœur) | retire |
-| `comptage` | **remplace** tout ce qui précède |
+| `comptage` | la mesure physiquement la plus récente devient la base de l'article concerné |
 | `correction-comptage` | corrige la quantité du comptage désigné par `cible_id`, en conservant son instant physique |
 
-Un comptage porte `"mesure": "position"` et `origine_mesure`. Il remet l'incertitude à zéro ; les
-mouvements postérieurs s'appliquent par-dessus. La position n'est **pas un stock** : voir
-`reference/le-metier.md`.
+Les comptages courants portent `"mesure": "position"` et `origine_mesure`. Ils donnent une
+nouvelle base à leur périmètre et à leur instant, sans certifier les autres articles ni
+actualiser les statistiques. Les mouvements antérieurs sont déjà inclus ; ceux du même jour
+dépendent de la phase du relevé ; ceux des jours suivants s'appliquent. La position est un
+écart par rapport au rayon plein, pas la quantité totale présente : voir `reference/le-metier.md`.
+
+Une correction conserve la date, l'heure et la phase de sa cible. Le lecteur doit retrouver
+cette cible plus tôt dans le carnet, pour le même article ; une cible absente n'est pas une
+correction appliquée. `corriger-conversion-comptage.py` est limité aux anciens IDs `:saisie`
+et refuse notamment un autre comptage simultané ou postérieur. Un nouveau comptage courant
+et une correction historique sont deux opérations distinctes.
 
 ---
 
@@ -97,26 +129,32 @@ les rejouer ou les défaire.
 }
 ```
 
-Types : rapprocher deux codes ou les séparer, corriger un fournisseur, un conditionnement, une
-unité, cacher ou réafficher un article, signaler une promotion.
+Le lecteur `moteur/regles.py` traite `fusion`, `fournisseur`, `conditionnement`, `unite`,
+`masquage`, `demasquage`, `promotion` et les annulations. Cela ne signifie pas que chaque outil
+permet d'écrire tous ces types : `appliquer-decision.py` expose les actions rapprocher,
+conditionnement, fournisseur, masquer, démasquer et promotion, avec ses contrôles de pouvoirs.
 
 **Trois obligations, sans exception :**
 
-1. **une date de début** — une décision d'aujourd'hui ne réécrit pas le passé ;
+1. **une date de début explicite pour une nouvelle décision** — le lecteur filtre les
+   décisions effectives à la date demandée, aujourd'hui par défaut ;
 2. **une explication** ;
-3. **la validation notée** — ce qui est proposé n'entre pas dans le calcul tant que ce n'est pas
-   validé.
+3. **l'autorisation applicable et sa preuve** — avant écriture, distinguer ce que le rôle
+   peut faire seul et ce qui exige la validation du responsable. Le lecteur n'authentifie pas
+   lui-même cette validation ; ajouter une décision effective peut agir sur le calcul.
 
-**Les événements du terrain** (tête de gondole, fête locale) sont un type à part. Deux règles :
-**aucun effet inventé** — tant que l'ampleur n'a pas été mesurée, l'événement est signalé à
-l'écran, jamais appliqué au calcul ; et **une période, pas une date** — sinon son effet se
-prolonge indéfiniment.
+**Les événements du terrain** (tête de gondole, fête locale) sont des éléments de contexte à
+faire examiner avec leur période et leurs preuves. Ils ne constituent pas un type générique
+de décision appliqué automatiquement par `regles.py`. Ne pas inventer de coefficient ni
+confondre une remarque dans le fil avec une instruction d'ajustement autorisée.
 
-**Les réglages sont rejoués, jamais stockés.** Le fournisseur d'un article, son colisage, son
-unité, s'il est masqué : tout est reconstitué en rejouant le carnet (`moteur/regles.py`), la
-ligne la plus récente gagne. Les décisions du **2 septembre 2026** sont les décisions
-fondatrices ; tout ce qui a été décidé depuis s'empile par-dessus. Une décision retirée n'est
-pas gommée : on ajoute une ligne qui remet la valeur d'avant.
+**Les décisions sont stockées ; leurs effets sont rejoués.** `regles.py` reconstitue les
+groupes et surcharges à partir du carnet, dans l'ordre des lignes effectives non annulées.
+Les référentiels et offres restent nécessaires aux valeurs de repli. Le carnet original
+n'est pas réécrit, mais une règle devenue effective peut changer le résultat d'un recalcul
+de faits anciens : la date de début n'est pas une garantie universelle de calcul historique
+avec les règles de chaque journée. Une annulation ajoute des événements et contrôle les
+changements intermédiaires ; elle ne gomme pas la décision d'origine.
 
 ```
 python moteur/regles.py 0000087010624
@@ -126,9 +164,23 @@ python moteur/regles.py 0000087010624
 
 ## L'état
 
-`etat.json` est **recalculé** par `calculer-position.py` : par article, la position, la date du
-dernier comptage, celle du dernier mouvement, et le signal « trop bas pour être crédible ». Il
-retient aussi le dernier jour de ventes connu — **jamais** la date de l'ordinateur.
+`etat.json` est **recalculé** par `calculer-position.py`. Par article, il publie notamment
+`position`, `mesuree_le`, `moment_mesure`, `origine_mesure` et le nombre `mouvements_depuis`.
+Sans mesure exploitable, la position reste `null`. Le signal de position perdue est produit
+pour la proposition et l'aide au comptage, pas comme un champ de cet état.
+
+Au niveau global :
+
+- `calcule_jusquau` est le maximum des dates d'effet connues, sans preuve de complétude ;
+- `date_base_commande` combine les dates de ventes et les phases des faits pour préparer le cycle ;
+- `date_reference` vient des agrégats de ventes ; sans aucune vente, l'agrégateur utilise le
+  jour de l'ordinateur, ce qui ne prouve pas l'existence de statistiques ;
+- `reconstruit_le` est un horodatage de publication, distinct de ces dates métier.
+
+`proposition.json` précise la couverture des sorties par article. Elle avance sur les jours
+consécutifs disponibles, sans combler artificiellement un trou ; la présence d'une vente
+pour une journée ne prouve pas l'exhaustivité de l'export. `articles.json` peut déduire des
+ventes estimées du repère de comptage, sans ajouter de faits de vente.
 
 **Interdit :** modifier le stock sans avoir d'abord écrit le mouvement qui le justifie.
 
@@ -136,31 +188,45 @@ retient aussi le dernier jour de ventes connu — **jamais** la date de l'ordina
 
 ## Qui écrit où
 
-| Rôle | faits | décisions | position | commande | son journal |
-|---|---|---|---|---|---|
-| préparateur | oui | oui, dans ses limites | oui | — | oui |
-| assistant de rayon | oui (comptages) | oui | oui | — | oui |
-| analyste des tendances | — | — | — | oui | oui |
-| détective des articles | — | — | — | — | oui |
-| contrôleur | — | — | — | — | — |
+| Rôle canonique | Périmètre de mission et écritures |
+|---|---|
+| `Leader` | coordonne, transmet les mandats et relit ; aucun droit métier acquis à la place de l'exécutant |
+| `agent-courrier` | relève et prépare les preuves ; ses droits déclarés ne transforment pas une relève en autorisation d'import |
+| `agent-donnees` | importe le périmètre contrôlé et autorisé, puis produit les dérivés ; décisions limitées par ses pouvoirs |
+| `agent-rayon` | traite les demandes explicites du responsable avec les outils et droits applicables |
+| `agent-controle` | contrôle indépendant des données métier et paramètres en lecture seule ; peut rédiger sa preuve privée |
+| `agent-articles` | enquête sur les articles sans modifier les données métier |
+| `agent-tendances` | analyse et propose des ajustements habilités, sans droit de transmettre une commande |
+| `agent-audit-stock` | enquête sur les écarts sans créer de mouvement ni corriger les quantités |
+| `responsable-rayon` | décisions humaines selon ses pouvoirs ; le serveur enregistre notamment ses mesures directes |
 
-Les limites sont dans `pouvoirs.json`, et **l'outil refuse ce qui dépasse** : une consigne écrite
-peut être oubliée, un refus non. Le contrôleur ne modifie rien : c'est celui dont une erreur —
-valider ce qui n'aurait pas dû l'être — coûterait le plus cher.
+Les plafonds et actions viennent de `pouvoirs.json`. `appliquer-decision.py` et `annuler.py`
+contrôlent le rôle déclaré, les actions permises et les plafonds via `journal_agents.py` ;
+`ajuster-commande.py` contrôle les droits et limites propres aux ajustements. Ces plafonds
+d'actions ne sont pas un quota de lignes de ventes dans un import.
+
+Il n'existe pas de contrôle universel des pouvoirs autour de toute écriture de fichier : les
+importeurs restent soumis aux mandats et à `procedures/controle-stock.md`. Les outils ne
+vérifient pas l'identité d'une personne derrière le rôle déclaré, et les routes humaines ne
+doivent pas servir aux agents pour contourner leurs droits. Un avis de contrôle sûr ne donne
+aucune autorisation supplémentaire ; chaque exécutant signe sa propre action.
 
 ---
 
-## Les cinq propriétés à garantir
+## Les cinq propriétés à contrôler
 
-Si l'une tombe, quelque chose est cassé.
+Ce sont des contrôles à démontrer sur le périmètre traité, pas des garanties déduites du seul
+nom d'un script ou de son code retour.
 
-1. **On peut tout reconstruire** — supprimer `etat.json`, tout relire, retrouver les mêmes
-   chiffres.
-2. **On peut tout refaire dix fois** — réimporter le même fichier ne change rien.
+1. **Reconstruction reproductible** — en copie, avec les mêmes faits, règles, référentiels,
+   date et code, expliquer les positions obtenues.
+2. **Pas de double mouvement** — rejouer une source déjà intégrée ne doit pas ajouter sa
+   quantité une seconde fois ; les journaux et comptes rendus peuvent néanmoins être renouvelés.
 3. **Chaque chiffre s'explique** — on remonte aux mouvements qui composent une position.
 4. **Rien sans explication.**
-5. **On peut revenir en arrière** — retirer une décision et tout relire redonne la situation
-   d'avant.
+5. **Correction contrôlée** — vérifier les événements intervenus depuis, utiliser une
+   annulation ou correction prise en charge, puis relire son résultat. Une panne partielle
+   ne supprime pas automatiquement les fichiers ou faits déjà écrits.
 
 ---
 
@@ -180,8 +246,13 @@ Si l'une tombe, quelque chose est cassé.
 | un chiffre sur un article | `python moteur/agregats.py <code>` |
 | le nom, le prix, le conditionnement | `python moteur/catalogue.py <code>` |
 | pourquoi ce réglage | `python moteur/regles.py <code>` |
-| ce qu'un rôle a fait | `python moteur/annuler.py --liste` |
-| le profil de saisonnalité d'un article | `python moteur/analyser_historique_ventes.py` ou fiche détail dans `app/commander.html` |
+| les actions journalisées d'un rôle | `python moteur/annuler.py --liste <role-canonique>` ; la liste n'est pas un relevé exhaustif de toute activité |
+| le profil de saisonnalité d'un article | fiche de `app/commander.html` et profils de `agregats.json`, calculés par `moteur/calculer-commande.py` |
+| l'analyse historique détaillée | `app/analyse-historique.html`, alimenté par `donnees/analyse-ventes-annuelle-saisonniere.json` |
+
+`python moteur/analyser-historique-complet.py` **réécrit** l'analyse dérivée. Même une commande
+de consultation d'`agregats.py` peut créer `agregats.json` s'il manque. Pour un audit strict
+sans écriture, lire les fichiers existants ou travailler en copie isolée.
 
 Un chiffre juste au moment où il a été calculé peut être faux au moment où on le répète : entre
 les deux, un comptage est arrivé, ou une décision a été appliquée.

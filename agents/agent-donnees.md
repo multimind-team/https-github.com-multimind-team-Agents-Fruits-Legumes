@@ -33,17 +33,18 @@ L'agent données n'exécute aucun import réel avant simulation, contrôle indé
    - Doublons détectés (qui seront ignorés).
    - Articles non reconnus dans le catalogue.
    - Décalages éventuels par rapport aux derniers comptages.
-3. Transmettre le bilan complet de simulation à l'**agent orchestrateur** pour soumission à l'**agent contrôle**.
+3. Transmettre le bilan complet de simulation au **Leader** pour soumission à l'**agent contrôle**.
 
 ### Temps 2 : L'Exécution Réelle (Après validation)
 1. N'exécuter l'intégration réelle qu'après avis `SÛR POUR LE PÉRIMÈTRE` et autorisation applicable, puis vérification que sources/comptages n'ont pas changé :
    `python moteur/integrer-fichiers.py "<fichier>" --agent agent-donnees`
-2. Recalculer immédiatement la fraîcheur des stocks et les alertes :
+2. Recalculer immédiatement la fraîcheur des stocks et purger les alertes d'échec :
    `python moteur/filet-de-securite.py --forcer`
-3. Le filet exécute déjà agrégats, positions, cadencier, proposition et liste de comptage. Lire chaque résultat et `recalcul.json` ; ne pas relancer séparément la proposition après un filet réussi, ce qui rendrait sa vérification de fraîcheur périmée.
+   Cette étape est OBLIGATOIRE, tout particulièrement après un renvoi de bon fichier ou une correction d'anomalie : elle remet `recalcul.json` à `"etat": "termine"`, actualise `fraicheur.json` et éteint le bandeau d'alerte rouge affiché sur le téléphone du responsable.
+3. Le filet exécute déjà agrégats, positions, cadencier, proposition et liste de comptage. Vérifier que `recalcul.json` est bien à `"etat": "termine"` ; ne pas relancer séparément la proposition après un filet réussi, ce qui rendrait sa vérification de fraîcheur périmée.
 4. Actualiser la note du matin si le pipeline ne l'a pas déjà faite :
    `python moteur/note-du-matin.py`
-5. Remettre les constats chiffrés post-intégration à l'agent orchestrateur pour contre-expertise par l'agent contrôle.
+5. Remettre les constats chiffrés post-intégration (dont confirmation de `recalcul.json == "termine"`) au Leader pour contre-expertise par l'agent contrôle.
 
 ---
 

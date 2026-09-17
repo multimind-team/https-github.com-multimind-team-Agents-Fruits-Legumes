@@ -1,0 +1,131 @@
+{
+  "_lisez_moi": [
+    "Pouvoirs des agents specialises pilotes par l'agent orchestrateur.",
+    "L'agent orchestrateur coordonne et decide qui travaille, mais chaque action sensible est signee par l'agent specialise qui l'a faite.",
+    "Un agent absent de ce fichier n'a aucun droit d'ecriture."
+  ],
+  "plafond_par_jour_tous_agents": 20,
+  "agents": {
+    "agent-orchestrateur": {
+      "role": "Chef d'orchestre. Lit AGENT.md, surveille les entrées (courrier, messages magasin, commandes), distribue le travail aux agents spécialisés et arbitre.",
+      "peut_seul": [],
+      "doit_demander": [],
+      "plafond_par_jour": 0,
+      "peut_deleguer_a": [
+        "agent-courrier",
+        "agent-donnees",
+        "agent-rayon",
+        "agent-controle",
+        "agent-articles",
+        "agent-tendances",
+        "agent-audit-stock"
+      ]
+    },
+    "agent-courrier": {
+      "role": "Lit les mails, comprend leur contenu, range les pieces jointes utiles et demande l'integration.",
+      "peut_seul": [
+        "conditionnement",
+        "fournisseur",
+        "demasquer"
+      ],
+      "doit_demander": [
+        "rapprocher",
+        "masquer",
+        "promotion"
+      ],
+      "plafond_par_jour": 8,
+      "peut_deleguer_a": [
+        "agent-donnees",
+        "agent-controle",
+        "agent-articles"
+      ]
+    },
+    "agent-donnees": {
+      "role": "Integre les fichiers magasin, recalcule les positions, la proposition et les listes de comptage.",
+      "peut_seul": [
+        "conditionnement",
+        "fournisseur",
+        "demasquer"
+      ],
+      "doit_demander": [
+        "rapprocher",
+        "masquer",
+        "promotion"
+      ],
+      "plafond_par_jour": 8,
+      "peut_deleguer_a": [
+        "agent-controle",
+        "agent-articles"
+      ]
+    },
+    "agent-rayon": {
+      "role": "Applique les demandes explicites du responsable de rayon et lui repond simplement.",
+      "peut_seul": [
+        "conditionnement",
+        "fournisseur",
+        "demasquer",
+        "masquer",
+        "promotion",
+        "rapprocher"
+      ],
+      "doit_demander": [],
+      "plafond_par_jour": 15,
+      "peut_deleguer_a": [
+        "agent-controle",
+        "agent-articles"
+      ]
+    },
+    "agent-controle": {
+      "role": "Deuxieme regard. Verifie les chiffres et les risques. Ne modifie rien.",
+      "peut_seul": [],
+      "doit_demander": [],
+      "plafond_par_jour": 0
+    },
+    "agent-articles": {
+      "role": "Enquete sur les articles douteux, codes jumeaux, colisages et fournisseurs. Ne modifie rien.",
+      "peut_seul": [],
+      "doit_demander": [],
+      "plafond_par_jour": 0
+    },
+    "agent-tendances": {
+      "role": "Analyse les mouvements de fond des ventes et propose des ajustements de commande.",
+      "peut_seul": [
+        "proposer-commande"
+      ],
+      "doit_demander": [
+        "commander"
+      ],
+      "plafond_par_jour": 0,
+      "ajustements_max_par_jour": 10,
+      "ajustement_max_pourcent": 30,
+      "ajustement_max_depuis_zero": 3
+    },
+    "agent-audit-stock": {
+      "role": "Enquête sur les motifs des écarts de stock constatés lors du comptage (règle 17h, casse non déclarée, codes jumeaux en caisse, livraisons). Ne modifie rien.",
+      "peut_seul": [],
+      "doit_demander": [],
+      "plafond_par_jour": 0
+    },
+    "responsable-rayon": {
+      "role": "Le proprietaire du rayon. Aucune limite.",
+      "peut_seul": [
+        "*"
+      ],
+      "doit_demander": [],
+      "plafond_par_jour": 999
+    }
+  },
+  "deleguer": {
+    "qui_peut_deleguer": [
+      "agent-orchestrateur",
+      "agent-courrier",
+      "agent-donnees",
+      "agent-rayon"
+    ],
+    "_regle": [
+      "Celui qui delegue reste responsable du resultat.",
+      "Un agent d'enquete ne gagne pas de droit d'ecriture parce qu'il a ete appele.",
+      "L'agent orchestrateur tranche les conflits et demande au responsable de rayon quand le risque est reel."
+    ]
+  }
+}

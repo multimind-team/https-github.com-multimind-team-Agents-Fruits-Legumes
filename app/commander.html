@@ -495,6 +495,9 @@ let filtre = "a-commander";
 let recherche = "";
 let filtreFournisseur = "";
 let promotionsParItm8 = {};
+let recommandationsSaison = null;
+let recDemasquerParItm8 = {};
+let recMasquerParItm8 = {};
 let analyseHistorique = null;
 
 async function chargerAnalyseHistorique() {
@@ -813,8 +816,16 @@ function afficher() {
     const etiquettePromo = promo ? '<div class="badge-promo">PROMO</div>' : "";
     const etiquetteFinPromo = l.fin_promotion ? '<div class="badge-promo" style="background:#e06666;border-color:#cc0000">FIN PROMO</div>' : "";
     const etiquetteAlerteMarge = l.alerte_marge ? '<div class="badge-promo" style="background:#f1c232;color:#222;font-weight:700">⚠ MARGE</div>' : "";
+    let etiquetteSaison = "";
+    if (l.masque && recDemasquerParItm8[l.itm8]) {
+      const rec = recDemasquerParItm8[l.itm8];
+      etiquetteSaison = '<div class="badge-promo" style="background:#e65100;border-color:#bf360c;color:#fff" title="' + texteSecurise(rec.motif) + '">🍂 À DÉMASQUER (' + texteSecurise(rec.quand) + ')</div>';
+    } else if (!l.masque && recMasquerParItm8[l.itm8]) {
+      const rec = recMasquerParItm8[l.itm8];
+      etiquetteSaison = '<div class="badge-promo" style="background:#0277bd;border-color:#01579b;color:#fff" title="' + texteSecurise(rec.motif) + '">❄ FIN SAISON (à masquer ' + texteSecurise(rec.quand) + ')</div>';
+    }
     return '<div class="article' + (l.masque ? " faite" : "") + (promo ? " promo" : "") + '" data-itm8="' + texteSecurise(l.itm8) + '">'
-      + '<div class="identite">' + etiquettePromo + etiquetteFinPromo + etiquetteAlerteMarge + '<div class="nom" data-role="detail" role="button" tabindex="0">'
+      + '<div class="identite">' + etiquettePromo + etiquetteFinPromo + etiquetteAlerteMarge + etiquetteSaison + '<div class="nom" data-role="detail" role="button" tabindex="0">'
       + (window.PhotosProduits ? PhotosProduits.image(l.itm8, "liste") : "") + texteSecurise(l.libelle) + "</div>"
       + '<div class="sous">' + pos + " · colis de " + fr(l.conditionnement) + " " + texteSecurise(l.unite)
       + " · marge " + fr(l.marge_pct) + " %"
@@ -1632,6 +1643,15 @@ document.getElementById("recherche").addEventListener("input", (e) => {
         }
       }
     } catch (e) { /* le repère promo est optionnel */ }
+    // Recommandations de transition saisonnière (à masquer ou démasquer)
+    try {
+      const r5 = await fetch("../donnees/recommandations-saisonnieres.json?t=" + Date.now(), { cache: "no-store" });
+      if (r5.ok) {
+        recommandationsSaison = await r5.json();
+        for (const it of (recommandationsSaison.a_demasquer || [])) recDemasquerParItm8[it.itm8] = it;
+        for (const it of (recommandationsSaison.a_masquer || [])) recMasquerParItm8[it.itm8] = it;
+      }
+    } catch (e) { /* optionnel */ }
   } catch (e) {
     // Le pire cas : plus rien à afficher. On ne laisse pas le responsable de rayon devant un
     // écran muet à 9h25 — on lui dit quoi faire. La commande passe quand même,

@@ -1,4 +1,4 @@
-"""Traite un lot de pièces jointes relevé par l'agent orchestrateur.
+"""Traite un lot de pièces jointes relevé par le Leader.
 
 Le modèle fournit les chemins locaux des pièces jointes, l'identifiant du mail,
 sa date et l'expéditeur. Ce script assure le rangement idempotent et lance les

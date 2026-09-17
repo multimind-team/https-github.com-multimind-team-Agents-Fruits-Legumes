@@ -2,9 +2,9 @@
 
 ## Quand l'utiliser
 
-Utilise-la quand le responsable de rayon ecrit depuis l'application ou directement a l'agent orchestrateur.
+Utilise-la quand le responsable de rayon ecrit depuis l'application ou directement au Leader.
 
-l'agent orchestrateur reçoit le message entier et son identifiant ; `agent-rayon` possède l'interprétation et
+le Leader reçoit le message entier et son identifiant ; `agent-rayon` possède l'interprétation et
 l'exécution de la demande explicite. La sortie est une décision vérifiée ou une question unique,
 publiée dans le même fil. Un agent de contrôle peut donner un avis, pas exécuter la décision.
 
@@ -31,7 +31,7 @@ publiée dans le même fil. Un agent de contrôle peut donner un avis, pas exéc
 5. Recalcule si la decision change la proposition.
 6. Reponds en francais simple avec ce qui a ete fait. Pour le fil applicatif :
    `py -3.14 moteur/dire.py --auteur "Agent rayon" --en-reponse-a "<id-message>" "<reponse-verifiee>"`.
-   Relire la réponse cible et fournir son ID à l'agent orchestrateur. Une réponse seulement visible au terminal
+   Relire la réponse cible et fournir son ID au Leader. Une réponse seulement visible au terminal
    n'est pas une réponse reçue sur le téléphone.
 7. Si la demande provient de la sentinelle, acquitter son événement seulement après
    vérification du traitement et de la réponse publiée :

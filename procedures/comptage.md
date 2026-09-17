@@ -6,7 +6,7 @@ Utilise-la quand une position est saisie depuis l'ecran de comptage ou corrigee 
 commande.
 
 Propriétaire de la mesure : responsable de rayon via l'application. Le serveur enregistre les
-faits ; l'agent données vérifie le rejeu et les dérivés, l'agent orchestrateur restitue les écarts. Une demande de
+faits ; l'agent données vérifie le rejeu et les dérivés, le Leader restitue les écarts. Une demande de
 correction ambiguë revient au responsable, pas à une estimation de l'agent.
 
 ## Regle metier
@@ -25,6 +25,14 @@ journée contient les mouvements antérieurs de cette journée. Le moteur appliq
 à la journée (soir à partir de 17h, « soir » sans heure) : elle ne prouve ni la fermeture ni le rangement.
 Si la situation réelle ne correspond pas, signaler la limite plutôt que supposer une inclusion.
 Voir `reference/le-metier.md` et `procedures/controle-stock.md`.
+
+## Saisie sur le pavé du téléphone
+
+- La touche virgule permet les fractions de colis : `1,2` pour un colis et deux dixièmes.
+- La touche `+ / −` change le signe : `−0,5` signifie qu'il manque un demi-colis pour remplir le rayon.
+- La virgule reste visible pendant la saisie, même avant le chiffre suivant. Une seconde virgule est ignorée ; `⌫` efface le dernier caractère.
+- Les boutons `+` et `−` ajoutent ou retirent un colis en conservant les décimales saisies : `1,25` devient `2,25`, sans arrondi au dixième.
+- « Valider et suivant » garde le relevé avec l'identité, le colisage et l'unité affichés. « Envoyer mes comptages » envoie uniquement les relevés déjà gardés, même si la saisie suivante n'est pas encore validée. Un changement de colisage ne reconvertit pas un ancien relevé en attente.
 
 ## Etapes
 

@@ -10,7 +10,10 @@ __pycache__/
 donnees/courrier/
 # État privé de la boîte mail et file durable de la sentinelle
 donnees/.sentinelle-evenements.json
+donnees/.sentinelle-etat.json
 donnees/.courrier_uids_connus.json
+.serveur-arrete
+.services-arret-id
 
 # Dossiers temporaires de travail / scratch
 scratch/

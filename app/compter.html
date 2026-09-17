@@ -82,7 +82,7 @@
   .pas:active { transform: scale(.94); }
   .equivalent { text-align: center; color: var(--text-faible); font-size: 14px; min-height: 20px; }
 
-  .pave { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+  .pave { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 12px 0; }
   .pave button {
     height: 62px; font-size: 26px; font-weight: 700;
     background: var(--bg-panel); color: var(--text);
@@ -90,8 +90,9 @@
     font-family: inherit; cursor: pointer;
   }
   .pave button:active { background: var(--bg-panel-alt); transform: scale(.97); }
-  .pave button.signe { font-size: 22px; color: var(--warn); }
-  .pave button.effacer { font-size: 22px; }
+  .pave button.signe { grid-column: 4; grid-row: 3 / 5; height: auto; font-size: 22px; color: var(--warn); }
+  .pave button.effacer { grid-column: 4; grid-row: 1 / 3; height: auto; font-size: 22px; }
+  .pave button[data-touche="0"] { grid-column: 2 / 4; }
 
   .bas { margin-top: auto; padding-bottom: 10px; }
   .attente {
@@ -174,9 +175,10 @@
     <button data-touche="1">1</button><button data-touche="2">2</button><button data-touche="3">3</button>
     <button data-touche="4">4</button><button data-touche="5">5</button><button data-touche="6">6</button>
     <button data-touche="7">7</button><button data-touche="8">8</button><button data-touche="9">9</button>
-    <button class="signe" data-touche="signe">+ / −</button>
+    <button data-touche="virgule" aria-label="Virgule décimale">,</button>
     <button data-touche="0">0</button>
-    <button class="effacer" data-touche="effacer">⌫</button>
+    <button class="signe" data-touche="signe" aria-label="Changer le signe">+ / −</button>
+    <button class="effacer" data-touche="effacer" aria-label="Effacer le dernier caractère">⌫</button>
   </div>
 
   <div class="bas">
@@ -391,8 +393,8 @@ function afficher() {
   document.getElementById("equivalent").textContent =
     doitRecompter ? "Saisis un nouveau comptage avec le colisage affiché. Le relevé précédent est conservé." :
     v === 0 ? "réserve vide et rayon plein" :
-    v > 0 ? "= " + Math.round(v * a.conditionnement * 100) / 100 + " " + a.unite + " en réserve, rayon plein"
-          : "il manque " + Math.abs(v) + " colis pour remplir le rayon";
+    v > 0 ? "= " + String(Math.round(v * a.conditionnement * 100) / 100).replace(".", ",") + " " + a.unite + " en réserve, rayon plein"
+          : "il manque " + String(Math.abs(v)).replace(".", ",") + " colis pour remplir le rayon";
 
   majAttente();
 }
@@ -414,6 +416,19 @@ function valider() {
     return;
   }
   const colis = valeurCourante();
+  const unites = Math.round(colis * a.conditionnement * 1000) / 1000;
+  if (!Number.isFinite(colis) || !Number.isFinite(unites)) {
+    const resultat = document.getElementById("resultat");
+    resultat.className = "resultat rate";
+    resultat.textContent = "Valeur trop grande ou non valide : corrige la saisie avant de valider. Les comptages déjà gardés sont conservés.";
+    return;
+  }
+  if (Math.abs(colis) > 9999) {
+    const resultat = document.getElementById("resultat");
+    resultat.className = "resultat rate";
+    resultat.textContent = "Saisis une valeur entre −9 999 et 9 999 colis. Les comptages déjà gardés sont conservés.";
+    return;
+  }
   const liste = lire(CLE_COMPTAGES, []).filter(c => c.itm8 !== a.itm8 || c.date !== aujourdhui());
   liste.push({
     // Étiquette unique par article et par jour : recompter le même article
@@ -423,7 +438,7 @@ function valider() {
     libelle: a.libelle,
     date: aujourdhui(),
     colis: colis,
-    unites: Math.round(colis * a.conditionnement * 1000) / 1000,
+    unites: unites,
     conditionnement: a.conditionnement,
     unite: a.unite,
     saisi_le: maintenantLocal(),
@@ -462,13 +477,38 @@ document.getElementById("pave").addEventListener("click", (e) => {
   if (!touche) { touche = true; saisie = ""; negatif = false; }   // on repart de zéro
   if (t === "signe") negatif = !negatif;
   else if (t === "effacer") saisie = saisie.slice(0, -1);
-  else if (saisie.length < 4) saisie += t;
+  else if (t === "virgule") {
+    if (!saisie.includes(".")) saisie = (saisie || "0") + ".";
+  } else if (/^\d$/.test(t)) saisie += t;
   afficher();
 });
 
+function texteDecimal(nombre) {
+  const texte = String(Math.abs(nombre));
+  if (!texte.includes("e")) return texte;
+  const [mantisse, exposant] = texte.split("e");
+  const chiffres = mantisse.replace(".", "");
+  const place = (mantisse.includes(".") ? mantisse.indexOf(".") : mantisse.length) + Number(exposant);
+  if (place <= 0) return "0." + "0".repeat(-place) + chiffres;
+  if (place >= chiffres.length) return chiffres.padEnd(place, "0");
+  return chiffres.slice(0, place) + "." + chiffres.slice(place);
+}
+
 function ajuster(pas) {
-  const v = Math.round((valeurCourante() + pas) * 10) / 10;
-  touche = true; negatif = v < 0; saisie = String(Math.abs(v));
+  const valeur = valeurCourante();
+  if (!Number.isFinite(valeur)) return;
+  const texte = touche ? (saisie || "0") : texteDecimal(valeur);
+  const [entier, fraction = ""] = texte.split(".");
+  // Addition exacte sur les chiffres saisis : 1,25 + 1 reste 2,25,
+  // sans arrondi au dixième ni résidu de calcul binaire affiché.
+  const facteur = 10n ** BigInt(fraction.length);
+  const amplitude = BigInt(entier || "0") * facteur + BigInt(fraction || "0");
+  const signe = (touche ? negatif : valeur < 0) ? -1n : 1n;
+  const resultat = signe * amplitude + BigInt(pas) * facteur;
+  const chiffres = (resultat < 0n ? -resultat : resultat).toString().padStart(fraction.length + 1, "0");
+  saisie = fraction.length ? chiffres.slice(0, -fraction.length) + "." + chiffres.slice(-fraction.length)
+    : chiffres + (texte.includes(".") ? "." : "");
+  touche = true; negatif = resultat < 0n;
   afficher();
 }
 document.getElementById("plus").addEventListener("click", () => ajuster(1));

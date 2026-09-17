@@ -35,7 +35,7 @@ DONNEES_PUBLIQUES = {
     "journal.jsonl", "messages.jsonl", "note-du-matin.json", "promotions.json",
     "proposition.json", "reponses.jsonl", "photos.json",
     "analyse-ventes-annuelle-saisonniere.json", "profils-produits-sensibilites.json",
-    "alertes-marges.json", "recalcul.json",
+    "alertes-marges.json", "recalcul.json", "recommandations-saisonnieres.json",
 }
 APP_PUBLIQUE = {
     "/app/index.html", "/app/commander.html", "/app/compter.html",
@@ -45,7 +45,6 @@ APP_PUBLIQUE = {
     "/app/js/photos-produits.js",
     "/app/img/icone-192.png", "/app/img/icone-512.png",
 }
-
 
 _RESUMES_CARNETS = {}
 

@@ -20,17 +20,26 @@ Les tests utilisent Chromium disponible ou Microsoft Edge installé. Node.js ser
 Copier `.env.example` vers `.env`, puis renseigner localement les identifiants si le courrier est utilisé. `.env.example` est le modèle de configuration sans secret ; il doit être conservé. `.env` et les pièces jointes privées ne doivent pas être versionnés.
 Un clonage Git ne fournit pas les secrets ni les pièces jointes exclues : leur reprise vient d’une sauvegarde privée autorisée.
 
-## Démarrage
+## Services
 
-- `demarrer-serveur.bat` gère le démarrage du serveur ; `arreter-serveur.bat` l’arrête.
-- Application : <http://127.0.0.1:8751/app/index.html>.
-- Lancement manuel au premier plan : `py -3.14 moteur/serveur.py 8751`.
+| Composant | Action | Commande |
+|---|---|---|
+| **Serveur Web Applicatif** (mobile/PC) | Démarrer | `demarrer-serveur.bat` |
+| | Arrêter | `arreter-serveur.bat` |
+| | État | `py -3.14 -B moteur/gerer-serveur.py etat` |
+| **Tri-Sentinelle** (mails, messages, comptages) | Démarrer | `demarrer-sentinelle.bat` |
+| | Arrêter | `arreter-sentinelle.bat` |
+
+Le serveur web et la sentinelle sont strictement découplés pour garantir la haute disponibilité mobile :
+- **Serveur Web :** tourne en tâche de fond permanente (daemon). Il maintient le serveur HTTP local et sa surveillance de processus active, permettant au responsable de rayon d'accéder à l'application sur son téléphone à tout instant sans risque de coupure.
+- **Tri-Sentinelle :** surveille la boîte aux lettres IMAP, les messages du rayon et les comptages. Lorsqu'un événement survient, elle affiche `EVENEMENT: MAIL`, `MESSAGE` ou `COMPTAGE` et se termine pour réveiller le Leader. Sa fin n'affecte en aucun cas le serveur web.
+
+- Application locale : <http://127.0.0.1:8751/app/index.html>.
 - Sur téléphone ou tablette avec Tailscale actif : <https://desktop-11kv59v.tail44b4ba.ts.net/app/index.html>.
 
-Le serveur écoute sur `127.0.0.1` ; l’adresse Wi-Fi du PC ne donne donc pas accès à l’application. Tailscale Serve relaie l’accès HTTPS vers le port local 8751. La commande `tailscale serve status` permet de vérifier ce relais. Le lanceur démarre aussi la surveillance du serveur ; il ne configure pas Tailscale.
+Le serveur écoute sur `127.0.0.1` ; l’adresse Wi-Fi du PC ne donne donc pas accès direct à l’application. Tailscale Serve relaie l’accès HTTPS vers le port local 8751. La commande `tailscale serve status` permet de vérifier ce relais.
 
-La surveillance des entrées est distincte du serveur : `py -3.14 moteur/surveille-mail-message-comptage.py`.
-Elle signale les événements de courrier, messages et comptages à un agent externe. Elle ne fournit pas de service IA autonome. Un message reçu peut rester en attente jusqu’au traitement par l’agent ; voir [la procédure courrier](procedures/courrier.md).
+Pour un agent, lancer le serveur avec `py -3.14 -B moteur/gerer-serveur.py demarrer` (processus daemon d'arrière-plan persistant) et la sentinelle séparément avec `py -3.14 -B moteur/surveille-mail-message-comptage.py`. Aucun traitement métier n’est déclenché par ces commandes : voir [la procédure courrier](procedures/courrier.md).
 
 ## Fonctionnement
 
@@ -54,6 +63,10 @@ Les factures directes nécessitent une validation explicite ligne par ligne avan
 | `tests/` | Contrôles syntaxiques, métier et navigateur |
 
 [Documentation de l’application](Documents/Documentation%20de%20l%27application/index.html) : ouvrir le fichier local dans le navigateur. Le serveur de l’application ne publie pas le dossier `Documents/`.
+
+[Fonctionnement en images](Documents/Documentation%20de%20l%27application/schema-fonctionnement.html) : animation de 19 scènes, avec lecture, pause et navigation par sujet. Courrier, agents, comptages, commande et protections sont expliqués une étape à la fois, sans action sur les données. Le [document détaillé](Documents/Documentation%20de%20l%27application/schema-fonctionnement-detaille.html) conserve les règles, les sources du code et leurs limites.
+
+[Vidéo des échanges entre agents](Documents/Documentation%20de%20l%27application/video-interactions-agents.html) : film illustré avec narration française, sous-titres et accès par chapitre. Il explique les transmissions de missions, les contrôles, les réponses au rayon et le retour à l'écoute.
 
 ## Tests et sauvegarde
 

@@ -1,0 +1,216 @@
+{
+  "auteur": "agent-controle",
+  "execution": "/root/corrections_systeme",
+  "revu_le": "2026-09-15T21:27:12",
+  "phase": "contrôle intermédiaire des18décisions réelles, avis global final encore en attente",
+  "preuve_executeur": {
+    "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\execution-decisions-agent-rayon-20260915T212507.json",
+    "sha256": "c1c9a84f986b89fd6cc5aa59628e9cee21044b4fadad2d588cb0eb21cbca1d1f"
+  },
+  "18_decisions_exactement_attendues": true,
+  "prefixe_decisions_ancien_identique": true,
+  "faits_2026_identiques_apres_21_positions": true,
+  "decisions_ajoutees": [
+    {
+      "type": "conditionnement",
+      "article": "0000087635005",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:12",
+      "valeur": "8",
+      "id": "conditionnement:0000087635005:A-20260915-0006:0",
+      "action": "A-20260915-0006"
+    },
+    {
+      "type": "conditionnement",
+      "article": "0000087440009",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:12",
+      "valeur": "8",
+      "id": "conditionnement:0000087440009:A-20260915-0007:0",
+      "action": "A-20260915-0007"
+    },
+    {
+      "type": "conditionnement",
+      "article": "0000087004035",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:12",
+      "valeur": "6.5",
+      "id": "conditionnement:0000087004035:A-20260915-0008:0",
+      "action": "A-20260915-0008"
+    },
+    {
+      "type": "conditionnement",
+      "article": "0000087010621",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:13",
+      "valeur": "6",
+      "id": "conditionnement:0000087010621:A-20260915-0009:0",
+      "action": "A-20260915-0009"
+    },
+    {
+      "type": "conditionnement",
+      "article": "0000087003331",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:13",
+      "valeur": "8",
+      "id": "conditionnement:0000087003331:A-20260915-0010:0",
+      "action": "A-20260915-0010"
+    },
+    {
+      "type": "conditionnement",
+      "article": "nom:CRESSON BOTTE",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:13",
+      "valeur": "8",
+      "id": "conditionnement:nom:CRESSON BOTTE:A-20260915-0011:0",
+      "action": "A-20260915-0011"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:SHARON PIECE",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:14",
+      "valeur": true,
+      "id": "masquage:nom:SHARON PIECE:A-20260915-0012:0",
+      "action": "A-20260915-0012"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:14",
+      "valeur": true,
+      "id": "masquage:nom:CAROTTE COULEUR MIXTE VRAC:A-20260915-0013:0",
+      "action": "A-20260915-0013"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:BUTTERNUT PIECE",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:14",
+      "valeur": true,
+      "id": "masquage:nom:BUTTERNUT PIECE:A-20260915-0014:0",
+      "action": "A-20260915-0014"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:CAROTTE JAUNE VRAC",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:14",
+      "valeur": true,
+      "id": "masquage:nom:CAROTTE JAUNE VRAC:A-20260915-0015:0",
+      "action": "A-20260915-0015"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:CAROTTE VIOLETTE VRAC",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:15",
+      "valeur": true,
+      "id": "masquage:nom:CAROTTE VIOLETTE VRAC:A-20260915-0016:0",
+      "action": "A-20260915-0016"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:CHAMPIGNON SHITAKE VRAC",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:15",
+      "valeur": true,
+      "id": "masquage:nom:CHAMPIGNON SHITAKE VRAC:A-20260915-0017:0",
+      "action": "A-20260915-0017"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:MACHE BARQUETTE 150 G",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:15",
+      "valeur": true,
+      "id": "masquage:nom:MACHE BARQUETTE 150 G:A-20260915-0018:0",
+      "action": "A-20260915-0018"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:CRESSON BOTTE",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:16",
+      "valeur": true,
+      "id": "masquage:nom:CRESSON BOTTE:A-20260915-0019:0",
+      "action": "A-20260915-0019"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:CRESSON FLOW PACK 200G",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:16",
+      "valeur": true,
+      "id": "masquage:nom:CRESSON FLOW PACK 200G:A-20260915-0020:0",
+      "action": "A-20260915-0020"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:MANGUE BIO PIECE",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:16",
+      "valeur": true,
+      "id": "masquage:nom:MANGUE BIO PIECE:A-20260915-0021:0",
+      "action": "A-20260915-0021"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:RAISIN BLC BIO 500G",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:17",
+      "valeur": true,
+      "id": "masquage:nom:RAISIN BLC BIO 500G:A-20260915-0022:0",
+      "action": "A-20260915-0022"
+    },
+    {
+      "type": "masquage",
+      "article": "nom:PATATE DOUCE 500G BIO ITM",
+      "valide_a_partir_de": "2026-09-15",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "auteur": "agent-rayon",
+      "enregistre_le": "2026-09-15T21:25:17",
+      "valeur": true,
+      "id": "masquage:nom:PATATE DOUCE 500G BIO ITM:A-20260915-0023:0",
+      "action": "A-20260915-0023"
+    }
+  ],
+  "retours18": 0,
+  "refus": [],
+  "reste": "Filet final, positions/proposition effectivement servies et restauration exacte des plafonds."
+}

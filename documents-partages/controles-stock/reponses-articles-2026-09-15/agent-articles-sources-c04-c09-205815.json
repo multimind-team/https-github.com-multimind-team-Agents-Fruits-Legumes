@@ -1,0 +1,1134 @@
+{
+  "genere_le": "2026-09-15T20:58:15.637301",
+  "nature": "lecture seule des exports originaux, aucune sauvegarde Excel",
+  "fichiers_trouves": 12,
+  "contenus_uniques": 10,
+  "documents": [
+    {
+      "fichier": "donnees\\courrier\\2026-09-07-cache-hermes\\livraison 07.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\2026-09-07-cache-hermes\\livraison 07.09.2026.xlsx"
+      ],
+      "sha256": "8b0a36e98b6d2994a747638960594525e40cf5e48aae10cee5e46fbaf705ca9c",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 45,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A45": "0000087004562",
+            "B45": "2800506000000",
+            "C45": "4562",
+            "D45": "CAROTTE NON LAVEE VRAC        ",
+            "E45": 1.49,
+            "F45": 2.39,
+            "G45": 1,
+            "H45": 1,
+            "I45": "05/09/2026",
+            "J45": "",
+            "K45": "203434020001                  ",
+            "L45": "kg",
+            "M45": "",
+            "N45": "FRANCE                             ",
+            "O45": "SABLE PRIMEUR                      ",
+            "P45": "20/45MM                            ",
+            "Q45": "1                                  ",
+            "R45": "                                                                                                    ",
+            "S45": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 54,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A54": "0000087005002",
+            "B54": "2834202000000",
+            "C54": "5002",
+            "D54": "CAROTTE VRAC                  ",
+            "E54": 1,
+            "F54": 1.79,
+            "G54": 10,
+            "H54": 4,
+            "I54": "05/09/2026",
+            "J54": "",
+            "K54": "203434020001                  ",
+            "L54": "kg",
+            "M54": "",
+            "N54": "FRANCE                             ",
+            "O54": "PRIMEUR                            ",
+            "P54": "20/50MM                            ",
+            "Q54": "1                                  ",
+            "R54": "                                                                                                    ",
+            "S54": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 07/09/2026  05:06:51"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 05/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "8b0a36e98b6d2994a747638960594525e40cf5e48aae10cee5e46fbaf705ca9c"
+    },
+    {
+      "fichier": "donnees\\courrier\\2026-09-09-reprise-cache-controlee\\livraison 09.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\2026-09-09-reprise-cache-controlee\\livraison 09.09.2026.xlsx"
+      ],
+      "sha256": "94765ac4353d58f3c3b383b0e5aed59280b788fddb7d9acb50aebcd7dfee0800",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 16,
+          "reperes": [
+            "C04"
+          ],
+          "cellules": {
+            "A16": "0000087004282",
+            "B16": "0000000004282",
+            "C16": "",
+            "D16": "POMELO ROUGE PIECE            ",
+            "E16": 0.49,
+            "F16": 0.79,
+            "G16": 45,
+            "H16": 1,
+            "I16": "07/09/2026",
+            "J16": "",
+            "K16": "203434000001                  ",
+            "L16": "Pièce",
+            "M16": "",
+            "N16": "AFRIQUE DU SUD                     ",
+            "O16": "STAR RUBY                          ",
+            "P16": "4                                  ",
+            "Q16": "1                                  ",
+            "R16": "Imazalil, Thiabendazol, Pyrimethanil, Fludioxonil, Orthophenylphenol, E914, E904, E202 et E903      ",
+            "S16": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 41,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A41": "0000087005002",
+            "B41": "2834202000000",
+            "C41": "5002",
+            "D41": "CAROTTE VRAC                  ",
+            "E41": 1,
+            "F41": 1.79,
+            "G41": 10,
+            "H41": 5,
+            "I41": "07/09/2026",
+            "J41": "",
+            "K41": "203434020001                  ",
+            "L41": "kg",
+            "M41": "",
+            "N41": "FRANCE                             ",
+            "O41": "PRIMEUR                            ",
+            "P41": "20/50MM                            ",
+            "Q41": "1                                  ",
+            "R41": "                                                                                                    ",
+            "S41": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 09/09/2026  08:15:38"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 07/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "94765ac4353d58f3c3b383b0e5aed59280b788fddb7d9acb50aebcd7dfee0800"
+    },
+    {
+      "fichier": "donnees\\courrier\\2026-09-12-pdv11768-mousquetaires.com\\livraison 12.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\2026-09-12-pdv11768-mousquetaires.com\\livraison 12.09.2026.xlsx",
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-12\\livraison 12.09.2026.xlsx"
+      ],
+      "sha256": "68c9d7646a4b7020eb35fa0c56143a4ce25bf2a3a59303a774b3b9ae97dd8e3b",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 43,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A43": "0000087004562",
+            "B43": "2800506000000",
+            "C43": "4562",
+            "D43": "CAROTTE NON LAVEE VRAC        ",
+            "E43": 1.49,
+            "F43": 2.39,
+            "G43": 1,
+            "H43": 2,
+            "I43": "11/09/2026",
+            "J43": "",
+            "K43": "203434020001                  ",
+            "L43": "kg",
+            "M43": "",
+            "N43": "FRANCE                             ",
+            "O43": "SABLE NON LAVE                     ",
+            "P43": "20/45MM                            ",
+            "Q43": "1                                  ",
+            "R43": "                                                                                                    ",
+            "S43": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 56,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A56": "0000087005002",
+            "B56": "2834202000000",
+            "C56": "5002",
+            "D56": "CAROTTE VRAC                  ",
+            "E56": 1.18,
+            "F56": 1.89,
+            "G56": 12,
+            "H56": 4,
+            "I56": "11/09/2026",
+            "J56": "",
+            "K56": "203434020001                  ",
+            "L56": "kg",
+            "M56": "",
+            "N56": "FRANCE                             ",
+            "O56": "CONSERVATION                       ",
+            "P56": "20/45MM                            ",
+            "Q56": "1                                  ",
+            "R56": "                                                                                                    ",
+            "S56": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 76,
+          "reperes": [
+            "C09"
+          ],
+          "cellules": {
+            "A76": "0000087010621",
+            "B76": "3250399883471",
+            "C76": "",
+            "D76": "PDT VAPEUR BLONDE 2.5KG ITM   ",
+            "E76": 2.848,
+            "F76": 3.99,
+            "G76": 6,
+            "H76": 2,
+            "I76": "11/09/2026",
+            "J76": "",
+            "K76": "203434020002                  ",
+            "L76": "kg",
+            "M76": "",
+            "N76": "FRANCE                             ",
+            "O76": "JAZZY                              ",
+            "P76": "35/55MM                            ",
+            "Q76": "1                                  ",
+            "R76": "Anti germinatif                                                                                     ",
+            "S76": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 12/09/2026  05:12:11"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 11/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "68c9d7646a4b7020eb35fa0c56143a4ce25bf2a3a59303a774b3b9ae97dd8e3b"
+    },
+    {
+      "fichier": "donnees\\courrier\\2026-09-15-pdv11768-mousquetaires.com\\livraison 15.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\2026-09-15-pdv11768-mousquetaires.com\\livraison 15.09.2026.xlsx",
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-15\\livraison 15.09.2026.xlsx"
+      ],
+      "sha256": "e3d56ac204b567c3c4dcedf24949641279f66c5105d7e0b373de54cee119ade4",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 25,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A25": "0000087004562",
+            "B25": "2800506000000",
+            "C25": "4562",
+            "D25": "CAROTTE NON LAVEE VRAC        ",
+            "E25": 1.49,
+            "F25": 2.39,
+            "G25": 1,
+            "H25": 1,
+            "I25": "14/09/2026",
+            "J25": "",
+            "K25": "203434020001                  ",
+            "L25": "kg",
+            "M25": "",
+            "N25": "FRANCE                             ",
+            "O25": "SABLE NON LAVE                     ",
+            "P25": "20/45MM                            ",
+            "Q25": "1                                  ",
+            "R25": "                                                                                                    ",
+            "S25": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 53,
+          "reperes": [
+            "C09"
+          ],
+          "cellules": {
+            "A53": "0000087010621",
+            "B53": "3250399883471",
+            "C53": "",
+            "D53": "PDT VAPEUR BLONDE 2.5KG ITM   ",
+            "E53": 2.392,
+            "F53": 3.99,
+            "G53": 6,
+            "H53": 2,
+            "I53": "14/09/2026",
+            "J53": "",
+            "K53": "203434020002                  ",
+            "L53": "kg",
+            "M53": "",
+            "N53": "FRANCE                             ",
+            "O53": "JAZZY                              ",
+            "P53": "35/55MM                            ",
+            "Q53": "1                                  ",
+            "R53": "Anti germinatif                                                                                     ",
+            "S53": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 15/09/2026  05:13:28"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 14/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "e3d56ac204b567c3c4dcedf24949641279f66c5105d7e0b373de54cee119ade4"
+    },
+    {
+      "fichier": "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-11\\livraison 09.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-11\\livraison 09.09.2026.xlsx"
+      ],
+      "sha256": "7bfeb1675eb3fb095af47460936749b04ba91ba91ed19fe739d6a05fe48dc369",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 44,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A44": "0000087004562",
+            "B44": "2800506000000",
+            "C44": "4562",
+            "D44": "CAROTTE NON LAVEE VRAC        ",
+            "E44": 1.49,
+            "F44": 2.39,
+            "G44": 1,
+            "H44": 1,
+            "I44": "08/09/2026",
+            "J44": "",
+            "K44": "203434020001                  ",
+            "L44": "kg",
+            "M44": "",
+            "N44": "FRANCE                             ",
+            "O44": "SABLE NON LAVE                     ",
+            "P44": "20/45MM                            ",
+            "Q44": "1                                  ",
+            "R44": "                                                                                                    ",
+            "S44": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 56,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A56": "0000087005002",
+            "B56": "2834202000000",
+            "C56": "5002",
+            "D56": "CAROTTE VRAC                  ",
+            "E56": 1.18,
+            "F56": 1.89,
+            "G56": 10,
+            "H56": 2,
+            "I56": "08/09/2026",
+            "J56": "",
+            "K56": "203434020001                  ",
+            "L56": "kg",
+            "M56": "",
+            "N56": "FRANCE                             ",
+            "O56": "PRIMEUR                            ",
+            "P56": "20/50MM                            ",
+            "Q56": "1                                  ",
+            "R56": "                                                                                                    ",
+            "S56": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 10/09/2026  05:11:53"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 08/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "7bfeb1675eb3fb095af47460936749b04ba91ba91ed19fe739d6a05fe48dc369"
+    },
+    {
+      "fichier": "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-11\\livraison 10.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-11\\livraison 10.09.2026.xlsx"
+      ],
+      "sha256": "b867a6941d49b5bd72c675600b628cef551786a94ac70ae175222dd454d362ef",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 42,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A42": "0000087004562",
+            "B42": "2800506000000",
+            "C42": "4562",
+            "D42": "CAROTTE NON LAVEE VRAC        ",
+            "E42": 1.49,
+            "F42": 2.39,
+            "G42": 1,
+            "H42": 2,
+            "I42": "09/09/2026",
+            "J42": "",
+            "K42": "203434020001                  ",
+            "L42": "kg",
+            "M42": "",
+            "N42": "FRANCE                             ",
+            "O42": "SABLE NON LAVE                     ",
+            "P42": "20/45MM                            ",
+            "Q42": "1                                  ",
+            "R42": "                                                                                                    ",
+            "S42": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 53,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A53": "0000087005002",
+            "B53": "2834202000000",
+            "C53": "5002",
+            "D53": "CAROTTE VRAC                  ",
+            "E53": 1.18,
+            "F53": 1.89,
+            "G53": 10,
+            "H53": 2,
+            "I53": "09/09/2026",
+            "J53": "",
+            "K53": "203434020001                  ",
+            "L53": "kg",
+            "M53": "",
+            "N53": "FRANCE                             ",
+            "O53": "PRIMEUR                            ",
+            "P53": "20/50MM                            ",
+            "Q53": "1                                  ",
+            "R53": "                                                                                                    ",
+            "S53": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 10/09/2026  05:17:18"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 09/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "b867a6941d49b5bd72c675600b628cef551786a94ac70ae175222dd454d362ef"
+    },
+    {
+      "fichier": "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-11\\livraison 11.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-11\\livraison 11.09.2026.xlsx"
+      ],
+      "sha256": "91157b89fac2dfc8264d49c3ceddd6f18df78ab57462ba697566961b7003cf12",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 49,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A49": "0000087004562",
+            "B49": "2800506000000",
+            "C49": "4562",
+            "D49": "CAROTTE NON LAVEE VRAC        ",
+            "E49": 1.49,
+            "F49": 2.39,
+            "G49": 1,
+            "H49": 2,
+            "I49": "10/09/2026",
+            "J49": "",
+            "K49": "203434020001                  ",
+            "L49": "kg",
+            "M49": "",
+            "N49": "FRANCE                             ",
+            "O49": "SABLE NON LAVE                     ",
+            "P49": "20/45MM                            ",
+            "Q49": "1                                  ",
+            "R49": "                                                                                                    ",
+            "S49": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 57,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A57": "0000087005002",
+            "B57": "2834202000000",
+            "C57": "5002",
+            "D57": "CAROTTE VRAC                  ",
+            "E57": 1.18,
+            "F57": 1.89,
+            "G57": 12,
+            "H57": 2,
+            "I57": "10/09/2026",
+            "J57": "",
+            "K57": "203434020001                  ",
+            "L57": "kg",
+            "M57": "",
+            "N57": "FRANCE                             ",
+            "O57": "CONSERVATION                       ",
+            "P57": "20/45MM                            ",
+            "Q57": "1                                  ",
+            "R57": "                                                                                                    ",
+            "S57": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 11/09/2026  05:11:41"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 10/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "91157b89fac2dfc8264d49c3ceddd6f18df78ab57462ba697566961b7003cf12"
+    },
+    {
+      "fichier": "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-14\\Livraison 04.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-14\\Livraison 04.09.2026.xlsx"
+      ],
+      "sha256": "6d4c1722a515fc04fa0d9d88f63f9ef2b4d7c308ee440a9a30162618c45b7ee9",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 35,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A35": "0000087004562",
+            "B35": "2800506000000",
+            "C35": "4562",
+            "D35": "CAROTTE NON LAVEE VRAC        ",
+            "E35": 1.49,
+            "F35": 2.39,
+            "G35": 1,
+            "H35": 1,
+            "I35": "02/09/2026",
+            "J35": "",
+            "K35": "203434020001                  ",
+            "L35": "kg",
+            "M35": "",
+            "N35": "FRANCE                             ",
+            "O35": "SABLE PRIMEUR                      ",
+            "P35": "20/45MM                            ",
+            "Q35": "1                                  ",
+            "R35": "                                                                                                    ",
+            "S35": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 47,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A47": "0000087005002",
+            "B47": "2834202000000",
+            "C47": "5002",
+            "D47": "CAROTTE VRAC                  ",
+            "E47": 1,
+            "F47": 1.79,
+            "G47": 10,
+            "H47": 5,
+            "I47": "02/09/2026",
+            "J47": "",
+            "K47": "203434020001                  ",
+            "L47": "kg",
+            "M47": "",
+            "N47": "FRANCE                             ",
+            "O47": "PRIMEUR                            ",
+            "P47": "20/50MM                            ",
+            "Q47": "1                                  ",
+            "R47": "                                                                                                    ",
+            "S47": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 04/09/2026  05:55:43"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 02/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "6d4c1722a515fc04fa0d9d88f63f9ef2b4d7c308ee440a9a30162618c45b7ee9"
+    },
+    {
+      "fichier": "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-14\\livraison 14.09.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-14\\livraison 14.09.2026.xlsx"
+      ],
+      "sha256": "f57737ef763b405a3116a72c0a8a4f4d9772874489bbb7d76b0ef1980ca657cf",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 18,
+          "reperes": [
+            "C04"
+          ],
+          "cellules": {
+            "A18": "0000087004282",
+            "B18": "0000000004282",
+            "C18": "",
+            "D18": "POMELO ROUGE PIECE            ",
+            "E18": 0.5,
+            "F18": 0.79,
+            "G18": 45,
+            "H18": 1,
+            "I18": "12/09/2026",
+            "J18": "",
+            "K18": "203434000001                  ",
+            "L18": "Pièce",
+            "M18": "",
+            "N18": "AFRIQUE DU SUD                     ",
+            "O18": "STAR RUBY                          ",
+            "P18": "4                                  ",
+            "Q18": "1                                  ",
+            "R18": "Imazalil, Thiabendazol, Pyrimethanil, Fludioxonil, Orthophenylphenol, E914, E904, E202 et E903      ",
+            "S18": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 52,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A52": "0000087004562",
+            "B52": "2800506000000",
+            "C52": "4562",
+            "D52": "CAROTTE NON LAVEE VRAC        ",
+            "E52": 1.49,
+            "F52": 2.39,
+            "G52": 1,
+            "H52": 2,
+            "I52": "12/09/2026",
+            "J52": "",
+            "K52": "203434020001                  ",
+            "L52": "kg",
+            "M52": "",
+            "N52": "FRANCE                             ",
+            "O52": "SABLE NON LAVE                     ",
+            "P52": "20/45MM                            ",
+            "Q52": "1                                  ",
+            "R52": "                                                                                                    ",
+            "S52": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 64,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A64": "0000087005002",
+            "B64": "2834202000000",
+            "C64": "5002",
+            "D64": "CAROTTE VRAC                  ",
+            "E64": 1.18,
+            "F64": 1.89,
+            "G64": 12,
+            "H64": 5,
+            "I64": "12/09/2026",
+            "J64": "",
+            "K64": "203434020001                  ",
+            "L64": "kg",
+            "M64": "",
+            "N64": "FRANCE                             ",
+            "O64": "CONSERVATION                       ",
+            "P64": "20/45MM                            ",
+            "Q64": "1                                  ",
+            "R64": "                                                                                                    ",
+            "S64": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 89,
+          "reperes": [
+            "C09"
+          ],
+          "cellules": {
+            "A89": "0000087010621",
+            "B89": "3250399883471",
+            "C89": "",
+            "D89": "PDT VAPEUR BLONDE 2.5KG ITM   ",
+            "E89": 2.383,
+            "F89": 3.99,
+            "G89": 6,
+            "H89": 6,
+            "I89": "12/09/2026",
+            "J89": "",
+            "K89": "203434020002                  ",
+            "L89": "kg",
+            "M89": "",
+            "N89": "FRANCE                             ",
+            "O89": "JAZZY                              ",
+            "P89": "35/55MM                            ",
+            "Q89": "1                                  ",
+            "R89": "Anti germinatif                                                                                     ",
+            "S89": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 14/09/2026  05:09:54"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 12/09/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "f57737ef763b405a3116a72c0a8a4f4d9772874489bbb7d76b0ef1980ca657cf"
+    },
+    {
+      "fichier": "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-14\\Livraison 21.08.2026.xlsx",
+      "aliases": [
+        "donnees\\courrier\\pdv11768@mousquetaires.com-2026-09-14\\Livraison 21.08.2026.xlsx"
+      ],
+      "sha256": "e6b43b2bbc7170bb529d89b2b9dceb9bb2bc1a9604481a5930c718944eed36d1",
+      "lignes": [
+        {
+          "feuille": "Mercalys",
+          "ligne": 46,
+          "reperes": [
+            "C05"
+          ],
+          "cellules": {
+            "A46": "0000087004562",
+            "B46": "2800506000000",
+            "C46": "4562",
+            "D46": "CAROTTE NON LAVEE VRAC        ",
+            "E46": 1.49,
+            "F46": 2.39,
+            "G46": 1,
+            "H46": 1,
+            "I46": "20/08/2026",
+            "J46": "",
+            "K46": "203434020001                  ",
+            "L46": "kg",
+            "M46": "",
+            "N46": "FRANCE                             ",
+            "O46": "SABLE PRIMEUR                      ",
+            "P46": "20/45MM                            ",
+            "Q46": "1                                  ",
+            "R46": "                                                                                                    ",
+            "S46": "                                        "
+          }
+        },
+        {
+          "feuille": "Mercalys",
+          "ligne": 54,
+          "reperes": [
+            "C06"
+          ],
+          "cellules": {
+            "A54": "0000087005002",
+            "B54": "2834202000000",
+            "C54": "5002",
+            "D54": "CAROTTE VRAC                  ",
+            "E54": 0.95,
+            "F54": 1.79,
+            "G54": 10,
+            "H54": 6,
+            "I54": "20/08/2026",
+            "J54": "",
+            "K54": "203434020001                  ",
+            "L54": "kg",
+            "M54": "",
+            "N54": "FRANCE                             ",
+            "O54": "PRIMEUR                            ",
+            "P54": "20/50MM                            ",
+            "Q54": "1                                  ",
+            "R54": "                                                                                                    ",
+            "S54": "                                        "
+          }
+        }
+      ],
+      "entetes": {
+        "Mercalys:1": {
+          "A1": "SAS SOGARDA - Numéro point de vente : 11768"
+        },
+        "Mercalys:2": {
+          "A2": "Date : 21/08/2026  05:50:31"
+        },
+        "Mercalys:3": {
+          "A3": "Liste des articles commandés"
+        },
+        "Mercalys:4": {
+          "A4": "Commande du 20/08/2026"
+        },
+        "Mercalys:5": {
+          "A5": "Type : SCAFRUIT"
+        },
+        "Mercalys:7": {
+          "A7": "Code ITM",
+          "B7": "Code EAN13",
+          "C7": "Code PLU",
+          "D7": "Libellé article",
+          "E7": "Prix cession",
+          "F7": "Prix de vente TTC",
+          "G7": "Cond. de base",
+          "H7": "Qté cmdée (nbre colis)",
+          "I7": "Date commande",
+          "J7": "Promo",
+          "K7": "Code nomenclature",
+          "L7": "Unité de mesure",
+          "M7": "Bio",
+          "N7": "Origine",
+          "O7": "Variété",
+          "P7": "Calibre",
+          "Q7": "Catégorie",
+          "R7": "Traitement",
+          "S7": "Nom scientifique"
+        }
+      },
+      "sha256_apres": "e6b43b2bbc7170bb529d89b2b9dceb9bb2bc1a9604481a5930c718944eed36d1"
+    }
+  ]
+}

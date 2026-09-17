@@ -1,0 +1,1340 @@
+{
+  "auteur": "agent-rayon",
+  "operation": "6 conditionnements et12 masquages explicites",
+  "demarre_le": "2026-09-15T21:25:07",
+  "references": {
+    "plan-final-agent-donnees-20260915-2114.json": "b59ae2f5a6fb5c006021cddcc7b5d4a4802bef90ba9b0bac6f2fbade9ab0e1ed",
+    "agent-controle-avis-avant-20260915-211655.json": "dc665dfaabf7811427537f0a51a3acaa99a0fbca63365189a2dfac0cc89221c4",
+    "execution-positions-agent-donnees-20260915T212026.json": "f08e298928ae4c55dc318352f2db7d80823bd4e4025d5e0c44bc251158198a81"
+  },
+  "recalcul_execute": false,
+  "mail_envoye": false,
+  "statut": "18 DECISIONS AJOUTEES ET RELUES ; RECALCUL ET CONTROLE FINAL EN ATTENTE",
+  "simulations": [
+    {
+      "repere": "C01",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087635005",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  FRAISE FRANCE BARQUETTE 250G : colis de 8\n    {'itm8': '0000087635005', 'champ': 'conditionnement', 'avant': '10', 'apres': '8'}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "C02",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087440009",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  LIME FILET 500 G : colis de 8\n    {'itm8': '0000087440009', 'champ': 'conditionnement', 'avant': '10', 'apres': '8'}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "C03",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087004035",
+        "6.5",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  NECTARINE JAUNE VRAC : colis de 6.5\n    {'itm8': '0000087004035', 'champ': 'conditionnement', 'avant': '7', 'apres': '6.5'}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "C09",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087010621",
+        "6",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  PDT VAPEUR BLONDE 2.5KG ITM : colis de 6\n    {'itm8': '0000087010621', 'champ': 'conditionnement', 'avant': '8', 'apres': '6'}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "C10",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087003331",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  OIGNON BLANC BOTTE : colis de 8\n    {'itm8': '0000087003331', 'champ': 'conditionnement', 'avant': '12', 'apres': '8'}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "C11",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "nom:CRESSON BOTTE",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:CRESSON BOTTE : colis de 8\n    {'itm8': 'nom:CRESSON BOTTE', 'champ': 'conditionnement', 'avant': None, 'apres': '8'}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P02",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:SHARON PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:SHARON PIECE : masquer\n    {'itm8': 'nom:SHARON PIECE', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P04",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE COULEUR MIXTE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:CAROTTE COULEUR MIXTE VRAC : masquer\n    {'itm8': 'nom:CAROTTE COULEUR MIXTE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P06",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:BUTTERNUT PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:BUTTERNUT PIECE : masquer\n    {'itm8': 'nom:BUTTERNUT PIECE', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P11",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE JAUNE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:CAROTTE JAUNE VRAC : masquer\n    {'itm8': 'nom:CAROTTE JAUNE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P12",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE VIOLETTE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:CAROTTE VIOLETTE VRAC : masquer\n    {'itm8': 'nom:CAROTTE VIOLETTE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P13",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CHAMPIGNON SHITAKE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:CHAMPIGNON SHITAKE VRAC : masquer\n    {'itm8': 'nom:CHAMPIGNON SHITAKE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P14",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:MACHE BARQUETTE 150 G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:MACHE BARQUETTE 150 G : masquer\n    {'itm8': 'nom:MACHE BARQUETTE 150 G', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P15",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CRESSON BOTTE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:CRESSON BOTTE : masquer\n    {'itm8': 'nom:CRESSON BOTTE', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P16",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CRESSON FLOW PACK 200G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:CRESSON FLOW PACK 200G : masquer\n    {'itm8': 'nom:CRESSON FLOW PACK 200G', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P18",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:MANGUE BIO PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:MANGUE BIO PIECE : masquer\n    {'itm8': 'nom:MANGUE BIO PIECE', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P20",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:RAISIN BLC BIO 500G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:RAISIN BLC BIO 500G : masquer\n    {'itm8': 'nom:RAISIN BLC BIO 500G', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    },
+    {
+      "repere": "P21",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:PATATE DOUCE 500G BIO ITM",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "--simuler"
+      ],
+      "retour": 0,
+      "stdout": "SIMULATION — rien n'a été écrit\n\n  nom:PATATE DOUCE 500G BIO ITM : masquer\n    {'itm8': 'nom:PATATE DOUCE 500G BIO ITM', 'champ': 'masque', 'avant': None, 'apres': True}\n",
+      "stderr": ""
+    }
+  ],
+  "executions": [
+    {
+      "repere": "C01",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087635005",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques."
+      ],
+      "retour": 0,
+      "stdout": "FRAISE FRANCE BARQUETTE 250G : colis de 8\n    {'itm8': '0000087635005', 'champ': 'conditionnement', 'avant': '10', 'apres': '8'}\n\n  numéro d'action : A-20260915-0006\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0006 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0006",
+      "decision": {
+        "type": "conditionnement",
+        "article": "0000087635005",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:12",
+        "valeur": "8",
+        "id": "conditionnement:0000087635005:A-20260915-0006:0",
+        "action": "A-20260915-0006"
+      },
+      "journal": {
+        "action": "A-20260915-0006",
+        "horodatage": "2026-09-15T21:25:12",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "FRAISE FRANCE BARQUETTE 250G : colis de 8",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques.",
+        "changements": [
+          {
+            "itm8": "0000087635005",
+            "champ": "conditionnement",
+            "avant": "10",
+            "apres": "8"
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "conditionnement:0000087635005:A-20260915-0006:0"
+          ],
+          "commande": "conditionnement 0000087635005 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "C02",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087440009",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques."
+      ],
+      "retour": 0,
+      "stdout": "LIME FILET 500 G : colis de 8\n    {'itm8': '0000087440009', 'champ': 'conditionnement', 'avant': '10', 'apres': '8'}\n\n  numéro d'action : A-20260915-0007\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0007 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0007",
+      "decision": {
+        "type": "conditionnement",
+        "article": "0000087440009",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:12",
+        "valeur": "8",
+        "id": "conditionnement:0000087440009:A-20260915-0007:0",
+        "action": "A-20260915-0007"
+      },
+      "journal": {
+        "action": "A-20260915-0007",
+        "horodatage": "2026-09-15T21:25:12",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "LIME FILET 500 G : colis de 8",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques.",
+        "changements": [
+          {
+            "itm8": "0000087440009",
+            "champ": "conditionnement",
+            "avant": "10",
+            "apres": "8"
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "conditionnement:0000087440009:A-20260915-0007:0"
+          ],
+          "commande": "conditionnement 0000087440009 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "C03",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087004035",
+        "6.5",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques."
+      ],
+      "retour": 0,
+      "stdout": "NECTARINE JAUNE VRAC : colis de 6.5\n    {'itm8': '0000087004035', 'champ': 'conditionnement', 'avant': '7', 'apres': '6.5'}\n\n  numéro d'action : A-20260915-0008\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0008 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0008",
+      "decision": {
+        "type": "conditionnement",
+        "article": "0000087004035",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:12",
+        "valeur": "6.5",
+        "id": "conditionnement:0000087004035:A-20260915-0008:0",
+        "action": "A-20260915-0008"
+      },
+      "journal": {
+        "action": "A-20260915-0008",
+        "horodatage": "2026-09-15T21:25:12",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "NECTARINE JAUNE VRAC : colis de 6.5",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques.",
+        "changements": [
+          {
+            "itm8": "0000087004035",
+            "champ": "conditionnement",
+            "avant": "7",
+            "apres": "6.5"
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "conditionnement:0000087004035:A-20260915-0008:0"
+          ],
+          "commande": "conditionnement 0000087004035 6.5 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "C09",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087010621",
+        "6",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre."
+      ],
+      "retour": 0,
+      "stdout": "PDT VAPEUR BLONDE 2.5KG ITM : colis de 6\n    {'itm8': '0000087010621', 'champ': 'conditionnement', 'avant': '8', 'apres': '6'}\n\n  numéro d'action : A-20260915-0009\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0009 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0009",
+      "decision": {
+        "type": "conditionnement",
+        "article": "0000087010621",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:13",
+        "valeur": "6",
+        "id": "conditionnement:0000087010621:A-20260915-0009:0",
+        "action": "A-20260915-0009"
+      },
+      "journal": {
+        "action": "A-20260915-0009",
+        "horodatage": "2026-09-15T21:25:13",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "PDT VAPEUR BLONDE 2.5KG ITM : colis de 6",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre.",
+        "changements": [
+          {
+            "itm8": "0000087010621",
+            "champ": "conditionnement",
+            "avant": "8",
+            "apres": "6"
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "conditionnement:0000087010621:A-20260915-0009:0"
+          ],
+          "commande": "conditionnement 0000087010621 6 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "C10",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087003331",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques."
+      ],
+      "retour": 0,
+      "stdout": "OIGNON BLANC BOTTE : colis de 8\n    {'itm8': '0000087003331', 'champ': 'conditionnement', 'avant': '12', 'apres': '8'}\n\n  numéro d'action : A-20260915-0010\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0010 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0010",
+      "decision": {
+        "type": "conditionnement",
+        "article": "0000087003331",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:13",
+        "valeur": "8",
+        "id": "conditionnement:0000087003331:A-20260915-0010:0",
+        "action": "A-20260915-0010"
+      },
+      "journal": {
+        "action": "A-20260915-0010",
+        "horodatage": "2026-09-15T21:25:13",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "OIGNON BLANC BOTTE : colis de 8",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques.",
+        "changements": [
+          {
+            "itm8": "0000087003331",
+            "champ": "conditionnement",
+            "avant": "12",
+            "apres": "8"
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "conditionnement:0000087003331:A-20260915-0010:0"
+          ],
+          "commande": "conditionnement 0000087003331 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "C11",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "nom:CRESSON BOTTE",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques."
+      ],
+      "retour": 0,
+      "stdout": "nom:CRESSON BOTTE : colis de 8\n    {'itm8': 'nom:CRESSON BOTTE', 'champ': 'conditionnement', 'avant': None, 'apres': '8'}\n\n  numéro d'action : A-20260915-0011\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0011 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0011",
+      "decision": {
+        "type": "conditionnement",
+        "article": "nom:CRESSON BOTTE",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:13",
+        "valeur": "8",
+        "id": "conditionnement:nom:CRESSON BOTTE:A-20260915-0011:0",
+        "action": "A-20260915-0011"
+      },
+      "journal": {
+        "action": "A-20260915-0011",
+        "horodatage": "2026-09-15T21:25:13",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:CRESSON BOTTE : colis de 8",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques.",
+        "changements": [
+          {
+            "itm8": "nom:CRESSON BOTTE",
+            "champ": "conditionnement",
+            "avant": null,
+            "apres": "8"
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "conditionnement:nom:CRESSON BOTTE:A-20260915-0011:0"
+          ],
+          "commande": "conditionnement nom:CRESSON BOTTE 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P02",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:SHARON PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:SHARON PIECE : masquer\n    {'itm8': 'nom:SHARON PIECE', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0012\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0012 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0012",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:SHARON PIECE",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:14",
+        "valeur": true,
+        "id": "masquage:nom:SHARON PIECE:A-20260915-0012:0",
+        "action": "A-20260915-0012"
+      },
+      "journal": {
+        "action": "A-20260915-0012",
+        "horodatage": "2026-09-15T21:25:14",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:SHARON PIECE : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:SHARON PIECE",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:SHARON PIECE:A-20260915-0012:0"
+          ],
+          "commande": "masquer nom:SHARON PIECE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P04",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE COULEUR MIXTE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:CAROTTE COULEUR MIXTE VRAC : masquer\n    {'itm8': 'nom:CAROTTE COULEUR MIXTE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0013\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0013 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0013",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:CAROTTE COULEUR MIXTE VRAC",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:14",
+        "valeur": true,
+        "id": "masquage:nom:CAROTTE COULEUR MIXTE VRAC:A-20260915-0013:0",
+        "action": "A-20260915-0013"
+      },
+      "journal": {
+        "action": "A-20260915-0013",
+        "horodatage": "2026-09-15T21:25:14",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:CAROTTE COULEUR MIXTE VRAC : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:CAROTTE COULEUR MIXTE VRAC",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:CAROTTE COULEUR MIXTE VRAC:A-20260915-0013:0"
+          ],
+          "commande": "masquer nom:CAROTTE COULEUR MIXTE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P06",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:BUTTERNUT PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:BUTTERNUT PIECE : masquer\n    {'itm8': 'nom:BUTTERNUT PIECE', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0014\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0014 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0014",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:BUTTERNUT PIECE",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:14",
+        "valeur": true,
+        "id": "masquage:nom:BUTTERNUT PIECE:A-20260915-0014:0",
+        "action": "A-20260915-0014"
+      },
+      "journal": {
+        "action": "A-20260915-0014",
+        "horodatage": "2026-09-15T21:25:14",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:BUTTERNUT PIECE : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:BUTTERNUT PIECE",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:BUTTERNUT PIECE:A-20260915-0014:0"
+          ],
+          "commande": "masquer nom:BUTTERNUT PIECE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P11",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE JAUNE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:CAROTTE JAUNE VRAC : masquer\n    {'itm8': 'nom:CAROTTE JAUNE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0015\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0015 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0015",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:CAROTTE JAUNE VRAC",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:14",
+        "valeur": true,
+        "id": "masquage:nom:CAROTTE JAUNE VRAC:A-20260915-0015:0",
+        "action": "A-20260915-0015"
+      },
+      "journal": {
+        "action": "A-20260915-0015",
+        "horodatage": "2026-09-15T21:25:15",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:CAROTTE JAUNE VRAC : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:CAROTTE JAUNE VRAC",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:CAROTTE JAUNE VRAC:A-20260915-0015:0"
+          ],
+          "commande": "masquer nom:CAROTTE JAUNE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P12",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE VIOLETTE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:CAROTTE VIOLETTE VRAC : masquer\n    {'itm8': 'nom:CAROTTE VIOLETTE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0016\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0016 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0016",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:CAROTTE VIOLETTE VRAC",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:15",
+        "valeur": true,
+        "id": "masquage:nom:CAROTTE VIOLETTE VRAC:A-20260915-0016:0",
+        "action": "A-20260915-0016"
+      },
+      "journal": {
+        "action": "A-20260915-0016",
+        "horodatage": "2026-09-15T21:25:15",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:CAROTTE VIOLETTE VRAC : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:CAROTTE VIOLETTE VRAC",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:CAROTTE VIOLETTE VRAC:A-20260915-0016:0"
+          ],
+          "commande": "masquer nom:CAROTTE VIOLETTE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P13",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CHAMPIGNON SHITAKE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:CHAMPIGNON SHITAKE VRAC : masquer\n    {'itm8': 'nom:CHAMPIGNON SHITAKE VRAC', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0017\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0017 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0017",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:CHAMPIGNON SHITAKE VRAC",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:15",
+        "valeur": true,
+        "id": "masquage:nom:CHAMPIGNON SHITAKE VRAC:A-20260915-0017:0",
+        "action": "A-20260915-0017"
+      },
+      "journal": {
+        "action": "A-20260915-0017",
+        "horodatage": "2026-09-15T21:25:15",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:CHAMPIGNON SHITAKE VRAC : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:CHAMPIGNON SHITAKE VRAC",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:CHAMPIGNON SHITAKE VRAC:A-20260915-0017:0"
+          ],
+          "commande": "masquer nom:CHAMPIGNON SHITAKE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P14",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:MACHE BARQUETTE 150 G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:MACHE BARQUETTE 150 G : masquer\n    {'itm8': 'nom:MACHE BARQUETTE 150 G', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0018\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0018 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0018",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:MACHE BARQUETTE 150 G",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:15",
+        "valeur": true,
+        "id": "masquage:nom:MACHE BARQUETTE 150 G:A-20260915-0018:0",
+        "action": "A-20260915-0018"
+      },
+      "journal": {
+        "action": "A-20260915-0018",
+        "horodatage": "2026-09-15T21:25:15",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:MACHE BARQUETTE 150 G : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:MACHE BARQUETTE 150 G",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:MACHE BARQUETTE 150 G:A-20260915-0018:0"
+          ],
+          "commande": "masquer nom:MACHE BARQUETTE 150 G --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P15",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CRESSON BOTTE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:CRESSON BOTTE : masquer\n    {'itm8': 'nom:CRESSON BOTTE', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0019\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0019 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0019",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:CRESSON BOTTE",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:16",
+        "valeur": true,
+        "id": "masquage:nom:CRESSON BOTTE:A-20260915-0019:0",
+        "action": "A-20260915-0019"
+      },
+      "journal": {
+        "action": "A-20260915-0019",
+        "horodatage": "2026-09-15T21:25:16",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:CRESSON BOTTE : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:CRESSON BOTTE",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:CRESSON BOTTE:A-20260915-0019:0"
+          ],
+          "commande": "masquer nom:CRESSON BOTTE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P16",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CRESSON FLOW PACK 200G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:CRESSON FLOW PACK 200G : masquer\n    {'itm8': 'nom:CRESSON FLOW PACK 200G', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0020\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0020 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0020",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:CRESSON FLOW PACK 200G",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:16",
+        "valeur": true,
+        "id": "masquage:nom:CRESSON FLOW PACK 200G:A-20260915-0020:0",
+        "action": "A-20260915-0020"
+      },
+      "journal": {
+        "action": "A-20260915-0020",
+        "horodatage": "2026-09-15T21:25:16",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:CRESSON FLOW PACK 200G : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:CRESSON FLOW PACK 200G",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:CRESSON FLOW PACK 200G:A-20260915-0020:0"
+          ],
+          "commande": "masquer nom:CRESSON FLOW PACK 200G --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P18",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:MANGUE BIO PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:MANGUE BIO PIECE : masquer\n    {'itm8': 'nom:MANGUE BIO PIECE', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0021\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0021 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0021",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:MANGUE BIO PIECE",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:16",
+        "valeur": true,
+        "id": "masquage:nom:MANGUE BIO PIECE:A-20260915-0021:0",
+        "action": "A-20260915-0021"
+      },
+      "journal": {
+        "action": "A-20260915-0021",
+        "horodatage": "2026-09-15T21:25:16",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:MANGUE BIO PIECE : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:MANGUE BIO PIECE",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:MANGUE BIO PIECE:A-20260915-0021:0"
+          ],
+          "commande": "masquer nom:MANGUE BIO PIECE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P20",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:RAISIN BLC BIO 500G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:RAISIN BLC BIO 500G : masquer\n    {'itm8': 'nom:RAISIN BLC BIO 500G', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0022\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0022 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0022",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:RAISIN BLC BIO 500G",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:17",
+        "valeur": true,
+        "id": "masquage:nom:RAISIN BLC BIO 500G:A-20260915-0022:0",
+        "action": "A-20260915-0022"
+      },
+      "journal": {
+        "action": "A-20260915-0022",
+        "horodatage": "2026-09-15T21:25:17",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:RAISIN BLC BIO 500G : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:RAISIN BLC BIO 500G",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:RAISIN BLC BIO 500G:A-20260915-0022:0"
+          ],
+          "commande": "masquer nom:RAISIN BLC BIO 500G --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    },
+    {
+      "repere": "P21",
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:PATATE DOUCE 500G BIO ITM",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "retour": 0,
+      "stdout": "nom:PATATE DOUCE 500G BIO ITM : masquer\n    {'itm8': 'nom:PATATE DOUCE 500G BIO ITM', 'champ': 'masque', 'avant': None, 'apres': True}\n\n  numéro d'action : A-20260915-0023\n  carnet vivant   : 1 ligne(s) ajoutée(s)\n  journal         : agent-rayon\n\n  Pour défaire : python moteur/annuler.py A-20260915-0023 --par agent-rayon\n  Penser à relancer : calculer-position.py, preparer-liste-comptage.py\n",
+      "stderr": "",
+      "action": "A-20260915-0023",
+      "decision": {
+        "type": "masquage",
+        "article": "nom:PATATE DOUCE 500G BIO ITM",
+        "valide_a_partir_de": "2026-09-15",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "auteur": "agent-rayon",
+        "enregistre_le": "2026-09-15T21:25:17",
+        "valeur": true,
+        "id": "masquage:nom:PATATE DOUCE 500G BIO ITM:A-20260915-0023:0",
+        "action": "A-20260915-0023"
+      },
+      "journal": {
+        "action": "A-20260915-0023",
+        "horodatage": "2026-09-15T21:25:17",
+        "agent": "agent-rayon",
+        "resultat": "ok",
+        "message": "nom:PATATE DOUCE 500G BIO ITM : masquer",
+        "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+        "changements": [
+          {
+            "itm8": "nom:PATATE DOUCE 500G BIO ITM",
+            "champ": "masque",
+            "avant": null,
+            "apres": true
+          }
+        ],
+        "annulable": true,
+        "details": {
+          "decisions": [
+            "masquage:nom:PATATE DOUCE 500G BIO ITM:A-20260915-0023:0"
+          ],
+          "commande": "masquer nom:PATATE DOUCE 500G BIO ITM --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+        }
+      },
+      "verifie": true
+    }
+  ],
+  "erreurs": [],
+  "empreintes_avant": {
+    "C:\\Users\\user\\Desktop\\audit-preparation-commande-2026-09-15\\articles-a-verifier.json": "6d2f8648b9d8a0a2b5d91e38b055b9b99396a6471da7b0aae2fdc075a8d4d3b1",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\demande-source.md": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\proposition.json": "18d62b137da784e94b853c3c5122ceb7840345726a0140514b216051ac336a26",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\etat.json": "591976a88032c34c8ce5ac00c2952c86863d195021da1fd100b011ae7dcc7c23",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\decisions.jsonl": "9bbb60764b739da8cdca7a20ad3c8a9dd70372ec86b20fb332e4e10f65132259",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\pouvoirs.json": "6852269ba4884bca49a22c126ca93bda52503914bcefe0aa6a559c1bf36f7c58",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\cadencier-du-jour.json": "f2c92066b991dfa8543660c78a674282bf1f70fb7053c8a4c9b4b743c4972856",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\catalogue.json": "ad96a6b1c2f6db66b70426f8caee651a5f2f6e1f1d65b1e65af89fb0cf092e9f",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\recalcul.json": "5c2d8f2155e5c85df3e62bce4b9bc04bf6c26478c9c0ec6d4ad0e404801deeb7",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2024.jsonl": "fc29efdb4d9c2b4a28d820371f4fe2618f5e4b0250ddb00f9cbaf9a669ad803a",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2025.jsonl": "8a2f8e9a5a3063774eef6334bebec89c5df15ee99009c0baded491dcf4ba20bc",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2026.jsonl": "fce02b9eee57b379fb161dbcde811cde1da71e1edfde955dbd56368656617a6b",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\.numeros.jsonl": "e8eff72b89621e9e073455ef4ac59f063a9b0b91bcf6c50d331ef993f771e0b1",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-donnees.jsonl": "22e0cff8633416560ff3582248a792f42e4ed42c37a54bd5f0a71a07bea77d81",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-orchestrateur.jsonl": "2810bd677c5e62b856b54b9df85419eaeaf4244e6699201d883869825437d95e",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-rayon.jsonl": "155be0756523d728ff7582911609870ecc092595a8097d547597a61784c2ea78",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-tendances.jsonl": "8d986227c2d336210890613db2753c237ef6640c46d93d9abe88d96aaed2d36f",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\dialogues.jsonl": "aa1f204686ae6225ba99e42fa586b313835709225befdde37ffd517708578644",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\filet-de-securite.jsonl": "833fe3e12eb0b591b627694d03e0570e7162c8a42184eb11271f473c6c441932",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\hermes-orchestrateur.jsonl": "7807609029889e1db8fdcf797d2c52876bb7e958d9158484201703690443afdf",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur-auto.jsonl": "80527eb96c0d4bd13484e24f7c7fdae060d49d0d0bb0a4a7f87b489572eaa0ec",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur.jsonl": "a2aedd76d2c0ee51927352d5157c34ddcdc985e1a9ea4b825fdfb4d269a61606",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\responsable-rayon.jsonl": "adba3abcf7824eea64ca328196ab14a965481c3c3b131677bb48615257242f17",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\reveil.jsonl": "e52f6aba5155fa838d95aaaa5b286611fe48a622fc0788785de3778079429857",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\sentinelle-mail.jsonl": "ecb26b11f6bac956107a541d463b072c6f946f4c691155f1aa5731daa83cbdc9",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\tout.jsonl": "8e0fcd919426cef121605ed68d5f81a814068f06d2e55745dd67e31d158e2894"
+  },
+  "quotas_avant": {
+    "global": 5,
+    "agent-rayon": 0,
+    "agent-donnees": 4
+  },
+  "simulations_sans_ecriture": true,
+  "empreintes_apres": {
+    "C:\\Users\\user\\Desktop\\audit-preparation-commande-2026-09-15\\articles-a-verifier.json": "6d2f8648b9d8a0a2b5d91e38b055b9b99396a6471da7b0aae2fdc075a8d4d3b1",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\demande-source.md": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\proposition.json": "18d62b137da784e94b853c3c5122ceb7840345726a0140514b216051ac336a26",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\etat.json": "591976a88032c34c8ce5ac00c2952c86863d195021da1fd100b011ae7dcc7c23",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\decisions.jsonl": "bcadb3c6dbe910cb60bab80ccb93fffb340a7315566e4522ac24951aefb70e7d",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\pouvoirs.json": "6852269ba4884bca49a22c126ca93bda52503914bcefe0aa6a559c1bf36f7c58",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\cadencier-du-jour.json": "f2c92066b991dfa8543660c78a674282bf1f70fb7053c8a4c9b4b743c4972856",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\catalogue.json": "ad96a6b1c2f6db66b70426f8caee651a5f2f6e1f1d65b1e65af89fb0cf092e9f",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\recalcul.json": "5c2d8f2155e5c85df3e62bce4b9bc04bf6c26478c9c0ec6d4ad0e404801deeb7",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2024.jsonl": "fc29efdb4d9c2b4a28d820371f4fe2618f5e4b0250ddb00f9cbaf9a669ad803a",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2025.jsonl": "8a2f8e9a5a3063774eef6334bebec89c5df15ee99009c0baded491dcf4ba20bc",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2026.jsonl": "fce02b9eee57b379fb161dbcde811cde1da71e1edfde955dbd56368656617a6b",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\.numeros.jsonl": "007bc3b1cf60a722ec2dfd51a2f37a6af7b1571620ac687b4111d28b1b58ee83",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-donnees.jsonl": "22e0cff8633416560ff3582248a792f42e4ed42c37a54bd5f0a71a07bea77d81",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-orchestrateur.jsonl": "2810bd677c5e62b856b54b9df85419eaeaf4244e6699201d883869825437d95e",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-rayon.jsonl": "b3497b9c242cd4eaf2bef94b979589332a3fad2357f206d069ec4a41918d7a94",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-tendances.jsonl": "8d986227c2d336210890613db2753c237ef6640c46d93d9abe88d96aaed2d36f",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\dialogues.jsonl": "aa1f204686ae6225ba99e42fa586b313835709225befdde37ffd517708578644",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\filet-de-securite.jsonl": "833fe3e12eb0b591b627694d03e0570e7162c8a42184eb11271f473c6c441932",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\hermes-orchestrateur.jsonl": "7807609029889e1db8fdcf797d2c52876bb7e958d9158484201703690443afdf",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur-auto.jsonl": "80527eb96c0d4bd13484e24f7c7fdae060d49d0d0bb0a4a7f87b489572eaa0ec",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur.jsonl": "a2aedd76d2c0ee51927352d5157c34ddcdc985e1a9ea4b825fdfb4d269a61606",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\responsable-rayon.jsonl": "adba3abcf7824eea64ca328196ab14a965481c3c3b131677bb48615257242f17",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\reveil.jsonl": "e52f6aba5155fa838d95aaaa5b286611fe48a622fc0788785de3778079429857",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\sentinelle-mail.jsonl": "ecb26b11f6bac956107a541d463b072c6f946f4c691155f1aa5731daa83cbdc9",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\tout.jsonl": "617847424628e92baeffb9b97107f29761188c93d079d45271c05078894ed077"
+  },
+  "fichiers_metier_modifies": [
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\decisions.jsonl",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\.numeros.jsonl",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-rayon.jsonl",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\tout.jsonl"
+  ],
+  "prefixes_conserves": {
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\decisions.jsonl": true,
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-rayon.jsonl": true,
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\tout.jsonl": true,
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\.numeros.jsonl": true
+  },
+  "regles_exactes_verifiees": true,
+  "faits_inchanges": true,
+  "fournisseurs_unites_groupes_autres_reglages_inchanges": true,
+  "quotas_apres": {
+    "global": 23,
+    "agent-rayon": 18,
+    "agent-donnees": 4
+  },
+  "actions": [
+    "A-20260915-0006",
+    "A-20260915-0007",
+    "A-20260915-0008",
+    "A-20260915-0009",
+    "A-20260915-0010",
+    "A-20260915-0011",
+    "A-20260915-0012",
+    "A-20260915-0013",
+    "A-20260915-0014",
+    "A-20260915-0015",
+    "A-20260915-0016",
+    "A-20260915-0017",
+    "A-20260915-0018",
+    "A-20260915-0019",
+    "A-20260915-0020",
+    "A-20260915-0021",
+    "A-20260915-0022",
+    "A-20260915-0023"
+  ],
+  "termine_le": "2026-09-15T21:25:17",
+  "preuve_progression": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\progression-agent-rayon-20260915T212507.jsonl"
+}

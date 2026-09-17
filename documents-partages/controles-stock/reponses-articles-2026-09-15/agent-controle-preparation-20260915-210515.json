@@ -1,0 +1,1234 @@
+{
+  "auteur": "agent-controle",
+  "agent_execution": "/root/corrections_systeme",
+  "genere_le": "2026-09-15T21:05:15",
+  "phase": "preparation du contrôle avant écriture",
+  "avis_avant_ecriture": "NON RENDU : simulation exacte attendue",
+  "execution_metier_par_controle": "AUCUNE",
+  "demande": {
+    "fichier": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\demande-source.md",
+    "sha256": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+    "reference_message": "non fournie",
+    "precision_exacte": "Oui, positions actuelles de ce soir",
+    "date_physique": "2026-09-15",
+    "phase_physique": "soir après les mouvements du jour",
+    "heure_physique_precise": null
+  },
+  "rapport_articles": {
+    "fichier": "C:\\Users\\user\\Desktop\\audit-preparation-commande-2026-09-15\\articles-a-verifier.json",
+    "sha256": "6d2f8648b9d8a0a2b5d91e38b055b9b99396a6471da7b0aae2fdc075a8d4d3b1",
+    "sous_table": "etat_actuel",
+    "prepare_le": "2026-09-15T18:31:33",
+    "effectifs": [
+      21,
+      11,
+      18
+    ]
+  },
+  "consignes_relues": [
+    "agents/agent-controle.md",
+    "donnees/pouvoirs.json",
+    "procedures/controle-stock.md",
+    "reference/modele-controle-stock.md"
+  ],
+  "positions": [
+    {
+      "repere": "P01",
+      "code": "nom:KIT GUACAMOLE",
+      "produit": "KIT GUACAMOLE",
+      "liens": [
+        "R01"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 6.0,
+      "quantite_avec_ce_pcb": -6.0,
+      "unite_affichee": "unité",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P02",
+      "code": "nom:SHARON PIECE",
+      "produit": "SHARON PIECE",
+      "liens": [
+        "R02"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 12.0,
+      "quantite_avec_ce_pcb": -12.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P03",
+      "code": "nom:POMME GALA SACHET 1,5KG",
+      "produit": "POMME GALA SACHET 1,5KG",
+      "liens": [
+        "R03"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 10.0,
+      "quantite_avec_ce_pcb": -10.0,
+      "unite_affichee": "unité",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P04",
+      "code": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "produit": "CAROTTE COULEUR MIXTE VRAC",
+      "liens": [
+        "R04"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 5.0,
+      "quantite_avec_ce_pcb": -5.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P05",
+      "code": "0000087010603",
+      "produit": "CAROTTE SACHET 1.5KG ITM",
+      "liens": [],
+      "colis_declares": 4,
+      "pcb_actuel": 8.0,
+      "quantite_avec_ce_pcb": 32.0,
+      "unite_affichee": "sachet",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": false,
+      "comptages_existants": [],
+      "etat_avant": {
+        "position": null,
+        "mesuree_le": null,
+        "raison": "aucune position jamais mesurée pour cet article",
+        "libelle": "CAROTTE SACHET 1.5KG ITM"
+      }
+    },
+    {
+      "repere": "P06",
+      "code": "nom:BUTTERNUT PIECE",
+      "produit": "BUTTERNUT PIECE",
+      "liens": [
+        "R05"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 10.0,
+      "quantite_avec_ce_pcb": -10.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P07",
+      "code": "0000087010665",
+      "produit": "ECHALOTE TRADI FILET 250G ITM",
+      "liens": [],
+      "colis_declares": 0,
+      "pcb_actuel": 20.0,
+      "quantite_avec_ce_pcb": 0.0,
+      "unite_affichee": "filet",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": false,
+      "comptages_existants": [],
+      "etat_avant": {
+        "position": null,
+        "mesuree_le": null,
+        "raison": "aucune position jamais mesurée pour cet article",
+        "libelle": "ECHALOTE TRADI FILET 250G ITM"
+      }
+    },
+    {
+      "repere": "P08",
+      "code": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+      "produit": "ECHALOTE TRADITIONNELLE 250G CQLP",
+      "liens": [
+        "R07"
+      ],
+      "colis_declares": 0,
+      "pcb_actuel": 20.0,
+      "quantite_avec_ce_pcb": 0.0,
+      "unite_affichee": "unité",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P09",
+      "code": "0000087950043",
+      "produit": "PDT SALADE MICRO ONDE 500G",
+      "liens": [],
+      "colis_declares": 0,
+      "pcb_actuel": 8.0,
+      "quantite_avec_ce_pcb": 0.0,
+      "unite_affichee": "pièce",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": false,
+      "comptages_existants": [],
+      "etat_avant": {
+        "position": null,
+        "mesuree_le": null,
+        "raison": "aucune position jamais mesurée pour cet article",
+        "libelle": "PDT SALADE MICRO ONDE 500G"
+      }
+    },
+    {
+      "repere": "P10",
+      "code": "0000087755054",
+      "produit": "MELANGE JEUNES POUSSES 125G",
+      "liens": [],
+      "colis_declares": 0,
+      "pcb_actuel": 6.0,
+      "quantite_avec_ce_pcb": 0.0,
+      "unite_affichee": "pièce",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": false,
+      "comptages_existants": [],
+      "etat_avant": {
+        "position": null,
+        "mesuree_le": null,
+        "raison": "aucune position jamais mesurée pour cet article",
+        "libelle": "MELANGE JEUNES POUSSES 125G"
+      }
+    },
+    {
+      "repere": "P11",
+      "code": "nom:CAROTTE JAUNE VRAC",
+      "produit": "CAROTTE JAUNE VRAC",
+      "liens": [
+        "R08"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 5.0,
+      "quantite_avec_ce_pcb": -5.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P12",
+      "code": "nom:CAROTTE VIOLETTE VRAC",
+      "produit": "CAROTTE VIOLETTE VRAC",
+      "liens": [
+        "R09"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 5.0,
+      "quantite_avec_ce_pcb": -5.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P13",
+      "code": "nom:CHAMPIGNON SHITAKE VRAC",
+      "produit": "CHAMPIGNON SHITAKE VRAC",
+      "liens": [
+        "R10"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 2.0,
+      "quantite_avec_ce_pcb": -2.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P14",
+      "code": "nom:MACHE BARQUETTE 150 G",
+      "produit": "MACHE BARQUETTE 150 G",
+      "liens": [
+        "R11"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 6.0,
+      "quantite_avec_ce_pcb": -6.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P15",
+      "code": "nom:CRESSON BOTTE",
+      "produit": "CRESSON BOTTE",
+      "liens": [
+        "C11",
+        "R12"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 8.0,
+      "quantite_avec_ce_pcb": -8.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P16",
+      "code": "nom:CRESSON FLOW PACK 200G",
+      "produit": "CRESSON FLOW PACK 200G",
+      "liens": [
+        "R13"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 6.0,
+      "quantite_avec_ce_pcb": -6.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P17",
+      "code": "nom:CONCOMBRE BIO PIECE PE",
+      "produit": "CONCOMBRE BIO PIECE PE",
+      "liens": [
+        "R14"
+      ],
+      "colis_declares": 0,
+      "pcb_actuel": 12.0,
+      "quantite_avec_ce_pcb": 0.0,
+      "unite_affichee": "unité",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P18",
+      "code": "nom:MANGUE BIO PIECE",
+      "produit": "MANGUE BIO PIECE",
+      "liens": [
+        "R15"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 9.0,
+      "quantite_avec_ce_pcb": -9.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P19",
+      "code": "nom:OIGNON JAUNE 1KG BIO MMP",
+      "produit": "OIGNON JAUNE 1KG BIO MMP",
+      "liens": [
+        "R16"
+      ],
+      "colis_declares": 0,
+      "pcb_actuel": 10.0,
+      "quantite_avec_ce_pcb": 0.0,
+      "unite_affichee": "unité",
+      "masque_demande": false,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P20",
+      "code": "nom:RAISIN BLC BIO 500G",
+      "produit": "RAISIN BLC BIO 500G",
+      "liens": [
+        "R17"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 10.0,
+      "quantite_avec_ce_pcb": -10.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    },
+    {
+      "repere": "P21",
+      "code": "nom:PATATE DOUCE 500G BIO ITM",
+      "produit": "PATATE DOUCE 500G BIO ITM",
+      "liens": [
+        "R18"
+      ],
+      "colis_declares": -1,
+      "pcb_actuel": 6.0,
+      "quantite_avec_ce_pcb": -6.0,
+      "unite_affichee": "unité",
+      "masque_demande": true,
+      "code_metier_restant_a_identifier": true,
+      "comptages_existants": [],
+      "etat_avant": null
+    }
+  ],
+  "colisages": [
+    {
+      "repere": "C01",
+      "code": "0000087635005",
+      "produit": "FRAISE FRANCE BARQUETTE 250G",
+      "pcb_demande": 8,
+      "pcb_avant": 10.0,
+      "unite_affichee": "barquette",
+      "fournisseur_avant": "SCAFRUIT",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "FRAISE - FRANCE C 1 BARQUETTE 250 g",
+          "par_colis": 8.0,
+          "prix_achat": 1.9900000095367432
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 41463,
+          "id": "comptage:2026-09-07:0000087635005:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087635005",
+          "article_source": "0000087635005",
+          "quantite": 0,
+          "colis": 0,
+          "conditionnement": 10,
+          "unite": "barquette",
+          "libelle": "FRAISE FRANCE BARQUETTE 250G",
+          "horodatage": "2026-09-07T17:20:08",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:20:08"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        },
+        {
+          "ligne": 43473,
+          "id": "comptage:2026-09-13:0000087635005:stock-negatif-masque",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "position-forcee",
+          "date_source": "2026-09-13",
+          "date_effet": "2026-09-13",
+          "article": "0000087635005",
+          "article_source": "0000087635005",
+          "quantite": -10.0,
+          "colis": -1.0,
+          "conditionnement": 10.0,
+          "unite": "2 barquette",
+          "libelle": "FRAISE FRANCE BARQUETTE 250G",
+          "horodatage": "2026-09-13T14:12:38",
+          "motif": "Position mise à -1 colis pour article masqué. Consigne responsable de rayon.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-13T14:12:38"
+          },
+          "enregistre_le": "2026-09-13T14:12:38"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C02",
+      "code": "0000087440009",
+      "produit": "LIME FILET 500 G",
+      "pcb_demande": 8,
+      "pcb_avant": 10.0,
+      "unite_affichee": "filet",
+      "fournisseur_avant": "SCAFRUIT",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "FRUIT EXOTIQUE - ESPAGNE CAL 4 C 1 FILET 500 g",
+          "par_colis": 8.0,
+          "prix_achat": 1.8899999856948853
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39299,
+          "id": "comptage:2026-08-31:0000087440009",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-08-31",
+          "date_effet": "2026-08-31",
+          "article": "0000087440009",
+          "article_source": "0000087440009",
+          "quantite": -8.0,
+          "unite": "filet",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-08-31T23:24:59"
+          }
+        },
+        {
+          "ligne": 40021,
+          "id": "comptage:2026-09-02:0000087440009",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-09-02",
+          "date_effet": "2026-09-02",
+          "article": "0000087440009",
+          "article_source": "0000087440009",
+          "quantite": -6.0,
+          "unite": "filet",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-02T18:51:21"
+          }
+        },
+        {
+          "ligne": 41407,
+          "id": "comptage:2026-09-07:0000087440009:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087440009",
+          "article_source": "0000087440009",
+          "quantite": -1,
+          "colis": -0.1,
+          "conditionnement": 10,
+          "unite": "filet",
+          "libelle": "LIME FILET 500 G",
+          "horodatage": "2026-09-07T17:11:08",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:11:08"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C03",
+      "code": "0000087004035",
+      "produit": "NECTARINE JAUNE VRAC",
+      "pcb_demande": 6.5,
+      "pcb_avant": 7.0,
+      "unite_affichee": "kg",
+      "fournisseur_avant": "POMONA",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "NECTARINE JAUNE . FRANCE B-61/67MM C 1 VRAC",
+          "par_colis": 6.5,
+          "prix_achat": 2.890000104904175
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39930,
+          "id": "comptage:2026-09-02:0000087004035",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-09-02",
+          "date_effet": "2026-09-02",
+          "article": "0000087004035",
+          "article_source": "0000087004035",
+          "quantite": -32.9,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-02T18:52:44"
+          }
+        },
+        {
+          "ligne": 41293,
+          "id": "comptage:2026-09-07:0000087004035:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087004035",
+          "article_source": "0000087004035",
+          "quantite": 56,
+          "colis": 8,
+          "conditionnement": 7,
+          "unite": "kg",
+          "libelle": "NECTARINE JAUNE VRAC",
+          "horodatage": "2026-09-07T16:51:41",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T16:51:41"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        },
+        {
+          "ligne": 44475,
+          "id": "comptage:2026-09-15:0000087004035:mesure:2026-09-15T18:22:26",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-15",
+          "date_effet": "2026-09-15",
+          "article": "0000087004035",
+          "article_source": "0000087004035",
+          "quantite": 28.0,
+          "colis": 4.0,
+          "conditionnement": 7.0,
+          "unite": "kg",
+          "libelle": "NECTARINE JAUNE VRAC",
+          "horodatage": "2026-09-15T18:22:26",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-15T18:22:26"
+          },
+          "enregistre_le": "2026-09-15T18:26:53"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C04",
+      "code": "0000087004282",
+      "produit": "POMELO ROUGE PIECE",
+      "pcb_demande": null,
+      "pcb_avant": 45.0,
+      "unite_affichee": "Pièce",
+      "fournisseur_avant": "SCAFRUIT",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "POMELO STAR RUBY AFRIQUE DU SUD CAL 4 C 1 PIECE PRECONISE",
+          "par_colis": 45.0,
+          "prix_achat": 0.5
+        },
+        {
+          "libelle": "POMELO STAR RUBY AFRIQUE DU SUD CAL 5 PIECE",
+          "par_colis": 50.0,
+          "prix_achat": 0.33000001311302185
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39219,
+          "id": "comptage:2026-08-31:0000087004282",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "inventaire-pdf",
+          "date_source": "2026-08-31",
+          "date_effet": "2026-08-31",
+          "article": "0000087004282",
+          "article_source": "0000087004282",
+          "quantite": 45.0,
+          "unite": "inconnue",
+          "libelle": "POMELO ROUGE PIECE",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : inventaire PDF de la chambre froide, retrouvee dans le journal de la (2026-08-31T21:53:34). Valeur positive : ce qui reste en reserve, rayon plein a 100%.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-08-31T21:53:34"
+          }
+        },
+        {
+          "ligne": 41383,
+          "id": "comptage:2026-09-07:0000087004282:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087004282",
+          "article_source": "0000087004282",
+          "quantite": 0,
+          "colis": 0,
+          "conditionnement": 45,
+          "unite": "Pièce",
+          "libelle": "POMELO ROUGE PIECE",
+          "horodatage": "2026-09-07T17:07:19",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:07:19"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C05",
+      "code": "0000087004562",
+      "produit": "CAROTTE NON LAVEE VRAC",
+      "pcb_demande": null,
+      "pcb_avant": 5.0,
+      "unite_affichee": "kg",
+      "fournisseur_avant": "SCAFRUIT",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "CAROTTE SABLE NON LAVE FRANCE 20/45MM C 1 VRAC NON LAVEE",
+          "par_colis": 12.0,
+          "prix_achat": 1.2999999523162842
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39234,
+          "id": "comptage:2026-08-31:0000087004562",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-08-31",
+          "date_effet": "2026-08-31",
+          "article": "0000087004562",
+          "article_source": "0000087004562",
+          "quantite": -1.0,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-08-31T23:26:19"
+          }
+        },
+        {
+          "ligne": 39963,
+          "id": "comptage:2026-09-02:0000087004562",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-09-02",
+          "date_effet": "2026-09-02",
+          "article": "0000087004562",
+          "article_source": "0000087004562",
+          "quantite": 5.0,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur positive : ce qui reste en reserve, rayon plein a 100%.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-02T18:39:32"
+          }
+        },
+        {
+          "ligne": 41367,
+          "id": "comptage:2026-09-07:0000087004562:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087004562",
+          "article_source": "0000087004562",
+          "quantite": 2.5,
+          "colis": 0.5,
+          "conditionnement": 5,
+          "unite": "kg",
+          "libelle": "CAROTTE NON LAVEE VRAC",
+          "horodatage": "2026-09-07T17:05:37",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:05:37"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C06",
+      "code": "0000087005002",
+      "produit": "CAROTTE VRAC",
+      "pcb_demande": null,
+      "pcb_avant": 12.0,
+      "unite_affichee": "kg",
+      "fournisseur_avant": "SCAFRUIT",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "CAROTTE CONSERVATION FRANCE 20/45MM VRAC PRECONISE",
+          "par_colis": 12.0,
+          "prix_achat": 1.2999999523162842
+        },
+        {
+          "libelle": "CAROTTE CONSERVATION FRANCE 20/50MM C 1 VRAC",
+          "par_colis": 10.0,
+          "prix_achat": 1.0499999523162842
+        },
+        {
+          "libelle": "CAROTTE CONSERVATION FRANCE 28/40MM VRAC",
+          "par_colis": 12.0,
+          "prix_achat": 1.350000023841858
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39986,
+          "id": "comptage:2026-09-02:0000087005002",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-09-02",
+          "date_effet": "2026-09-02",
+          "article": "0000087005002",
+          "article_source": "0000087005002",
+          "quantite": 0.0,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur nulle : reserve vide et rayon plein.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-02T18:39:45"
+          }
+        },
+        {
+          "ligne": 41302,
+          "id": "comptage:2026-09-07:0000087005002:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087005002",
+          "article_source": "0000087005002",
+          "quantite": 40,
+          "colis": 4,
+          "conditionnement": 10,
+          "unite": "kg",
+          "libelle": "CAROTTE VRAC",
+          "horodatage": "2026-09-07T16:53:29",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T16:53:29"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        },
+        {
+          "ligne": 44484,
+          "id": "comptage:2026-09-15:0000087005002:mesure:2026-09-15T18:23:56",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-15",
+          "date_effet": "2026-09-15",
+          "article": "0000087005002",
+          "article_source": "0000087005002",
+          "quantite": 18.0,
+          "colis": 1.5,
+          "conditionnement": 12.0,
+          "unite": "kg",
+          "libelle": "CAROTTE VRAC",
+          "horodatage": "2026-09-15T18:23:56",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-15T18:23:56"
+          },
+          "enregistre_le": "2026-09-15T18:26:53"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C07",
+      "code": "0000087004662",
+      "produit": "ECHALOTE TRADITIONNELLE VRAC",
+      "pcb_demande": null,
+      "pcb_avant": 5.0,
+      "unite_affichee": "kg",
+      "fournisseur_avant": "POMONA",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "ECHALOTE LONGUE FRANCE 30/50MM VRAC",
+          "par_colis": 6.0,
+          "prix_achat": 2.5899999141693115
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39243,
+          "id": "comptage:2026-08-31:0000087004662",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-08-31",
+          "date_effet": "2026-08-31",
+          "article": "0000087004662",
+          "article_source": "0000087004662",
+          "quantite": -6.0,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-08-31T23:18:53"
+          }
+        },
+        {
+          "ligne": 41432,
+          "id": "comptage:2026-09-07:0000087004662:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087004662",
+          "article_source": "0000087004662",
+          "quantite": 3,
+          "colis": 0.6,
+          "conditionnement": 5,
+          "unite": "kg",
+          "libelle": "ECHALOTE TRADITIONNELLE VRAC",
+          "horodatage": "2026-09-07T17:14:16",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:14:16"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C08",
+      "code": "0000087004082",
+      "produit": "OIGNON ROUGE VRAC",
+      "pcb_demande": null,
+      "pcb_avant": 5.0,
+      "unite_affichee": "kg",
+      "fournisseur_avant": "POMONA",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "OIGNON ROUGE FRANCE 60/80MM VRAC",
+          "par_colis": 6.0,
+          "prix_achat": 2.390000104904175
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39653,
+          "id": "comptage:2026-09-01:0000087004082",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-09-01",
+          "date_effet": "2026-09-01",
+          "article": "0000087004082",
+          "article_source": "0000087004082",
+          "quantite": -4.5,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-01T10:12:06"
+          }
+        },
+        {
+          "ligne": 39940,
+          "id": "comptage:2026-09-02:0000087004082",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-09-02",
+          "date_effet": "2026-09-02",
+          "article": "0000087004082",
+          "article_source": "0000087004082",
+          "quantite": -4.5,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-02T19:01:00"
+          }
+        },
+        {
+          "ligne": 41376,
+          "id": "comptage:2026-09-07:0000087004082:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087004082",
+          "article_source": "0000087004082",
+          "quantite": 3,
+          "colis": 0.6,
+          "conditionnement": 5,
+          "unite": "kg",
+          "libelle": "OIGNON ROUGE VRAC",
+          "horodatage": "2026-09-07T17:06:37",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:06:37"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C09",
+      "code": "0000087010621",
+      "produit": "PDT VAPEUR BLONDE 2.5KG ITM",
+      "pcb_demande": 6,
+      "pcb_avant": 8.0,
+      "unite_affichee": "pièce",
+      "fournisseur_avant": "SCAFRUIT",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "PNM POMME DE TERRE CONSOJAZZY FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+          "par_colis": 55.0,
+          "prix_achat": 2.299999952316284
+        },
+        {
+          "libelle": "PNM POMME DE TERRE CONSOJAZZY FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+          "par_colis": 6.0,
+          "prix_achat": 2.299999952316284
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 41347,
+          "id": "comptage:2026-09-07:0000087010621:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087010621",
+          "article_source": "0000087010621",
+          "quantite": -40,
+          "colis": -5,
+          "conditionnement": 8,
+          "unite": "pièce",
+          "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+          "horodatage": "2026-09-07T17:01:48",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:01:48"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C10",
+      "code": "0000087003331",
+      "produit": "OIGNON BLANC BOTTE",
+      "pcb_demande": 8,
+      "pcb_avant": 12.0,
+      "unite_affichee": "Pièce",
+      "fournisseur_avant": "SCAFRUIT",
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "RADIS ET LEGUMES FANOIGNON BLANC ITALIE C 1 BOTTE",
+          "par_colis": 8.0,
+          "prix_achat": 1.149999976158142
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [
+        {
+          "ligne": 39185,
+          "id": "comptage:2026-08-31:0000087003331",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "inventaire-pdf",
+          "date_source": "2026-08-31",
+          "date_effet": "2026-08-31",
+          "article": "0000087003331",
+          "article_source": "0000087003331",
+          "quantite": 8.0,
+          "unite": "inconnue",
+          "libelle": "OIGNON BLANC BOTTE",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : inventaire PDF de la chambre froide, retrouvee dans le journal de la (2026-08-31T21:53:34). Valeur positive : ce qui reste en reserve, rayon plein a 100%.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-08-31T21:53:34"
+          }
+        },
+        {
+          "ligne": 39921,
+          "id": "comptage:2026-09-02:0000087003331",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "saisie-app",
+          "date_source": "2026-09-02",
+          "date_effet": "2026-09-02",
+          "article": "0000087003331",
+          "article_source": "0000087003331",
+          "quantite": -11.2,
+          "unite": "inconnue",
+          "libelle": "",
+          "motif": "Position relevee le soir, rayon deja rempli. Origine : releve du magasin. Valeur negative : il manque ce nombre de colis pour remplir le rayon, reserve vide.",
+          "source": {
+            "origine": "releve-magasin",
+            "horodatage": "2026-09-02T18:47:11"
+          }
+        },
+        {
+          "ligne": 41349,
+          "id": "comptage:2026-09-07:0000087003331:saisie",
+          "type": "comptage",
+          "mesure": "position",
+          "origine_mesure": "ecran-comptage",
+          "date_source": "2026-09-07",
+          "date_effet": "2026-09-07",
+          "article": "0000087003331",
+          "article_source": "0000087003331",
+          "quantite": -12,
+          "colis": -1,
+          "conditionnement": 12,
+          "unite": "Pièce",
+          "libelle": "OIGNON BLANC BOTTE",
+          "horodatage": "2026-09-07T17:02:42",
+          "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+          "source": {
+            "origine": "app/compter.html",
+            "saisi_le": "2026-09-07T17:02:42"
+          },
+          "enregistre_le": "2026-09-07T17:31:12"
+        }
+      ],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    },
+    {
+      "repere": "C11",
+      "code": "nom:CRESSON BOTTE",
+      "produit": "CRESSON BOTTE",
+      "pcb_demande": 8,
+      "pcb_avant": 8.0,
+      "unite_affichee": "unité",
+      "fournisseur_avant": null,
+      "offres_lues_dans_rapport": [
+        {
+          "libelle": "SALADE CRESSON FRANCE C 1 BOTTE",
+          "par_colis": 8.0,
+          "prix_achat": 1.9900000095367432
+        },
+        {
+          "libelle": "SALADE CRESSON FRANCE C 1 BOTTE",
+          "par_colis": 6.0,
+          "prix_achat": 1.8899999856948853
+        }
+      ],
+      "trois_dernieres_traces_dans_carnet": [],
+      "preservation": "Aucune ancienne quantité ou mesure à reconvertir depuis une simple décision de PCB."
+    }
+  ],
+  "quotas": {
+    "methode": "Dernier état par action du journal/tout ; résultat ok, préfixe A-20260915, identique au garde journal_agents.verifier_pouvoirs",
+    "global_deja_compte": 4,
+    "par_auteur": {
+      "agent-donnees": 3,
+      "filet-de-securite": 1
+    },
+    "plafond_global": 20,
+    "plafond_agent_rayon": 15,
+    "reglages_demandes": 18,
+    "detail": "12 masquages et 6 décisions de PCB ; C07/C08 sont déjà POMONA, confirmation sans décision redondante si inchangés. Le périmètre de 18 actions dépasse les plafonds existants. Aucun auteur de remplacement ni hausse de permission autorisée par ce constat."
+  },
+  "preconditions_comptages": [
+    "Nouvelle simulation sur le carnet comprenant les deux mesures écran reçues à20:46:14, hors lot.",
+    "Aucune nouvelle mesure des P depuis la déclaration et la base contrôlée ; sinon sortir le P et recontrôler.",
+    "Aucune heure physique inventée. Si repli enregistre_le, champ explicitement technique, enregistrement encore le15septembre après17h.",
+    "Simulation : phase soir et priorité reprise par un comptage écran réellement ultérieur.",
+    "Ne pas traiter les trois colis éventuellement commandés pour demain comme une livraison reçue.",
+    "Identifiants nom: conservés sans inventer de code caisse ou de fusion ; unités de la simulation à contrôler."
+  ],
+  "points_de_controle": [
+    "C03 : fait réel du15septembre à18:22:26, 4 colis ×PCB7 =28kg ; la décision6,5 ne signifie pas autorisation de remplacer par26kg.",
+    "C09 : nouvelle caisse6 sacs de2,5kg ; le PCB métier est6 unités/sacs, pas15kg ni55. L’ancien relevé−5×8=−40 unités reste conservé.",
+    "C11 : décision8 explicitement demandée malgré valeur affichée8 sans décision ; ne pas confondre cette demande avec absence de toute action utile.",
+    "C04/C05/C06 et recherches factures C07/C08 : aucun nouveau colisage déduit de la réponse incertaine."
+  ],
+  "comptages_hors_lot_a_preserver": [
+    {
+      "ligne": 44518,
+      "id": "comptage:2026-09-15:0000087950042:mesure:2026-09-15T20:33:47",
+      "type": "comptage",
+      "mesure": "position",
+      "origine_mesure": "ecran-comptage",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "article": "0000087950042",
+      "article_source": "0000087950042",
+      "quantite": 0.0,
+      "colis": 0.0,
+      "conditionnement": 8.0,
+      "unite": "pièce",
+      "libelle": "PDT PRINCESSE AMANDINE 2KG",
+      "horodatage": "2026-09-15T20:33:47",
+      "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+      "source": {
+        "origine": "app/compter.html",
+        "saisi_le": "2026-09-15T20:33:47"
+      },
+      "enregistre_le": "2026-09-15T20:46:14"
+    },
+    {
+      "ligne": 44519,
+      "id": "comptage:2026-09-15:0000087755078:mesure:2026-09-15T20:46:07",
+      "type": "comptage",
+      "mesure": "position",
+      "origine_mesure": "ecran-comptage",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "article": "0000087755078",
+      "article_source": "0000087755078",
+      "quantite": 54.0,
+      "colis": 5.4,
+      "conditionnement": 10.0,
+      "unite": "Pièce",
+      "libelle": "LAITUE ICEBERG EMBALLEE PIECE",
+      "horodatage": "2026-09-15T20:46:07",
+      "motif": "Position relevée en chambre froide, rayon déjà rempli.",
+      "source": {
+        "origine": "app/compter.html",
+        "saisi_le": "2026-09-15T20:46:07"
+      },
+      "enregistre_le": "2026-09-15T20:46:14"
+    }
+  ],
+  "sha256_base_lue": {
+    "donnees/proposition.json": "18d62b137da784e94b853c3c5122ceb7840345726a0140514b216051ac336a26",
+    "donnees/etat.json": "591976a88032c34c8ce5ac00c2952c86863d195021da1fd100b011ae7dcc7c23",
+    "donnees/articles.json": "512694a69d72c66808e149b4995033cceff6a386452f352d98ccf443c9472562",
+    "donnees/decisions.jsonl": "9bbb60764b739da8cdca7a20ad3c8a9dd70372ec86b20fb332e4e10f65132259",
+    "donnees/pouvoirs.json": "51b4c6403e21f9d70cb70d2b08a1f006a0bc00f28e7e30c7ec4cde4148f3129a",
+    "donnees/faits/2026.jsonl": "e5d12b6d573ec25c2ca99e9d1b9817f4159a04c6bb6aa8f482b54fa66f631084",
+    "donnees/cadencier-du-jour.json": "f2c92066b991dfa8543660c78a674282bf1f70fb7053c8a4c9b4b743c4972856",
+    "donnees/recalcul.json": "5c2d8f2155e5c85df3e62bce4b9bc04bf6c26478c9c0ec6d4ad0e404801deeb7",
+    "donnees/journaux/tout.jsonl": "12c961bf6291f3433e63ae0c2defac3b623ac2594eaed7c5365dc093bc6faa4a"
+  },
+  "lectures_stables": true,
+  "limite": "Ce rapport préalable ne valide aucune écriture ; l’avis formel distinct sera rendu après relecture indépendante de la simulation agent-donnees."
+}

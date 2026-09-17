@@ -2,7 +2,7 @@
 
 Ce script est un connecteur réseau pur : il télécharge les pièces jointes brutes
 sans aucune logique métier ni classification. L''analyse, la compréhension et la
-qualification des fichiers sont assurées par l''agent courrier et l''agent orchestrateur.
+qualification des fichiers sont assurées par l''agent courrier et le Leader.
 """
 import argparse
 import email

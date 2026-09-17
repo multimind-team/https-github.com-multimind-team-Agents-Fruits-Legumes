@@ -5,7 +5,7 @@
 Utilise-la chaque matin avant la preparation de commande, ou apres integration de nouveaux
 fichiers.
 
-Propriétaire : `agent-donnees` pour le recalcul ; l'agent orchestrateur pour la relecture et la restitution ;
+Propriétaire : `agent-donnees` pour le recalcul ; le Leader pour la relecture et la restitution ;
 le responsable conserve la décision finale. Entrées : proposition, état, fraîcheur, cadencier et
 résultats d'import. Sortie : dates vérifiées, limites et anomalies utiles avant 9h30.
 

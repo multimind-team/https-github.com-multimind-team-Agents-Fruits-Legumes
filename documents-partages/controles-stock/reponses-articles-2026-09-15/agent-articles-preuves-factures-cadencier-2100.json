@@ -1,0 +1,256 @@
+{
+  "date": "2026-09-15T21:00:41.100083",
+  "cadencier": {
+    "fichier": "donnees\\courrier\\2026-09-15-pdv11768-mousquetaires.com\\cadencier webtelevente 15.09.2026.xls",
+    "sha256_avant": "e832cd1333cc84f43bb4ad85465f72dd52068be6f6d5c2dbaba66c3fa8ed875b",
+    "sha256_apres": "e832cd1333cc84f43bb4ad85465f72dd52068be6f6d5c2dbaba66c3fa8ed875b",
+    "feuille": "Sheet0",
+    "lignes": [
+      {
+        "ligne": 1,
+        "cellules": {
+          "A1": "CADENCIER DU 15/09/2026"
+        }
+      },
+      {
+        "ligne": 6,
+        "cellules": {
+          "D6": "PCB",
+          "E6": "PRIX D'ACHAT",
+          "F6": "EVOL.",
+          "G6": "PVC PRECO",
+          "H6": "PVC PDV",
+          "I6": "Stock",
+          "J6": "Com.",
+          "K6": "Stock",
+          "L6": "Com.",
+          "M6": "Stock",
+          "N6": "Com.",
+          "O6": "Stock",
+          "P6": "Com.",
+          "Q6": "Stock",
+          "R6": "Com.",
+          "S6": "Stock",
+          "T6": "Com."
+        }
+      },
+      {
+        "ligne": 149,
+        "cellules": {
+          "A149": "POMELO ROUGE PIECE"
+        }
+      },
+      {
+        "ligne": 150,
+        "cellules": {
+          "A150": "       POMELO STAR RUBY AFRIQUE DU SUD CAL 4 C 1 PIECE PRECONISE",
+          "D150": 45.0,
+          "E150": 0.5,
+          "F150": "=",
+          "G150": 0.7900000214576721
+        }
+      },
+      {
+        "ligne": 151,
+        "cellules": {
+          "A151": "       POMELO STAR RUBY AFRIQUE DU SUD CAL 5 PIECE",
+          "D151": 50.0,
+          "E151": 0.33000001311302185,
+          "F151": "+",
+          "G151": 0.550000011920929
+        }
+      },
+      {
+        "ligne": 290,
+        "cellules": {
+          "A290": "CAROTTE NON LAVEE VRAC"
+        }
+      },
+      {
+        "ligne": 291,
+        "cellules": {
+          "A291": "       CAROTTE SABLE NON LAVE FRANCE 20/45MM C 1 VRAC NON LAVEE",
+          "D291": 12.0,
+          "E291": 1.2999999523162842,
+          "F291": "-",
+          "G291": 1.9900000095367432
+        }
+      },
+      {
+        "ligne": 298,
+        "cellules": {
+          "A298": "CAROTTE VRAC"
+        }
+      },
+      {
+        "ligne": 299,
+        "cellules": {
+          "A299": "       CAROTTE CONSERVATION FRANCE 20/45MM VRAC PRECONISE",
+          "D299": 12.0,
+          "E299": 1.2999999523162842,
+          "F299": "+",
+          "G299": 1.9900000095367432
+        }
+      },
+      {
+        "ligne": 300,
+        "cellules": {
+          "A300": "       CAROTTE CONSERVATION FRANCE 20/50MM C 1 VRAC",
+          "D300": 10.0,
+          "E300": 1.0499999523162842,
+          "F300": "-",
+          "G300": 1.7899999618530273
+        }
+      },
+      {
+        "ligne": 301,
+        "cellules": {
+          "A301": "       CAROTTE CONSERVATION FRANCE 28/40MM VRAC",
+          "D301": 12.0,
+          "E301": 1.350000023841858,
+          "F301": "=",
+          "G301": 2.2899999618530273
+        }
+      },
+      {
+        "ligne": 362,
+        "cellules": {
+          "A362": "ECHALOTE TRADITIONNELLE VRAC"
+        }
+      },
+      {
+        "ligne": 363,
+        "cellules": {
+          "A363": "       ECHALOTE LONGUE FRANCE 30/50MM VRAC",
+          "D363": 6.0,
+          "E363": 2.5899999141693115,
+          "F363": "=",
+          "G363": 3.990000009536743
+        }
+      },
+      {
+        "ligne": 410,
+        "cellules": {
+          "A410": "OIGNON ROUGE VRAC"
+        }
+      },
+      {
+        "ligne": 411,
+        "cellules": {
+          "A411": "       OIGNON ROUGE FRANCE 60/80MM VRAC",
+          "D411": 6.0,
+          "E411": 2.390000104904175,
+          "F411": "=",
+          "G411": 3.990000009536743
+        }
+      },
+      {
+        "ligne": 471,
+        "cellules": {
+          "A471": "PDT VAPEUR BLONDE 2.5KG ITM"
+        }
+      },
+      {
+        "ligne": 472,
+        "cellules": {
+          "A472": "       PNM POMME DE TERRE CONSOJAZZY FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+          "D472": 55.0,
+          "E472": 2.299999952316284,
+          "F472": "-",
+          "G472": 3.990000009536743
+        }
+      },
+      {
+        "ligne": 473,
+        "cellules": {
+          "A473": "       PNM POMME DE TERRE CONSOJAZZY FRANCE 35/55MM FILET 2,5 Kg PRECONISE ITM",
+          "D473": 6.0,
+          "E473": 2.299999952316284,
+          "F473": "-",
+          "G473": 3.990000009536743
+        }
+      }
+    ]
+  },
+  "photos": [
+    {
+      "fichier": "donnees/courrier/2026-09-12-Antoine-Parraga/20260912_110144.jpg",
+      "page": 1,
+      "pages_totales": 2,
+      "bordereau": "7835384670",
+      "date_imprimee": "2026-09-12",
+      "sha256": "b50e361e033d3c458c6dbcba51a7842ad1a0f44b57a02c0bb19d87a4465cc7b7",
+      "lecture_visuelle": "page entière inspectée, aucune modification"
+    },
+    {
+      "fichier": "donnees/courrier/2026-09-12-Antoine-Parraga/20260912_110156.jpg",
+      "page": 2,
+      "pages_totales": 2,
+      "bordereau": "7835384670",
+      "date_imprimee": "2026-09-12",
+      "sha256": "5367dee4bde3b5c674f6072382dad56d9daf76ed50da4552e0ce75cc215fe70e",
+      "lecture_visuelle": "page entière inspectée, aucune modification"
+    },
+    {
+      "fichier": "donnees/courrier/parraga.antoine@gmail.com-2026-09-14/20260914_120258.jpg",
+      "page": 1,
+      "pages_totales": 2,
+      "bordereau": "7835385131",
+      "date_imprimee": "2026-09-14",
+      "sha256": "75804d65e6afc0eac24ea9fdfed5d705c3508754d71a1c6a45cc469710b5edf2",
+      "lecture_visuelle": "page entière inspectée, aucune modification"
+    },
+    {
+      "fichier": "donnees/courrier/parraga.antoine@gmail.com-2026-09-14/20260914_120309.jpg",
+      "page": 2,
+      "pages_totales": 2,
+      "bordereau": "7835385131",
+      "date_imprimee": "2026-09-14",
+      "sha256": "b4ab71696b1dc2cabc483fe3e858cf1a4f2da98cc8f47114d0564f07c4756eb7",
+      "lecture_visuelle": "page entière inspectée, aucune modification"
+    }
+  ],
+  "lignes_visuellement_verifiees": [
+    {
+      "repere": "C07",
+      "bordereau": "7835384670",
+      "page": 1,
+      "ligne_imprimee": "30",
+      "code_fournisseur": "106051",
+      "libelle": "Echalote td 1/2 lg 30/50 5K c1 FR",
+      "colis": 1,
+      "quantite_uf": 5,
+      "unite_uf": "KG",
+      "pu": 1.6,
+      "montant_ht": 8
+    },
+    {
+      "repere": "C08",
+      "bordereau": "7835385131",
+      "page": 1,
+      "ligne_imprimee": "110",
+      "code_fournisseur": "106535",
+      "libelle": "Oignon rge 60/80 5K c1 FR",
+      "colis": 1,
+      "quantite_uf": 5,
+      "unite_uf": "KG",
+      "pu": 1.39,
+      "montant_ht": 6.95
+    }
+  ],
+  "mapping_verifie": {
+    "106051": {
+      "itm8": "0000087004662",
+      "libelle_magasin": "ECHALOTE TRADITIONNELLE VRAC",
+      "verifie_le": "2026-09-07",
+      "source": "Bordereau TerreAzur 7835380889 du 07/09/2026"
+    },
+    "106535": {
+      "itm8": "0000087004082",
+      "libelle_magasin": "OIGNON ROUGE VRAC",
+      "verifie_le": "2026-09-07",
+      "source": "Bordereau TerreAzur 7835380889 du 07/09/2026"
+    }
+  },
+  "limite": "Constat des documents conservés localement, pas une interrogation des mails ni une nouvelle livraison."
+}

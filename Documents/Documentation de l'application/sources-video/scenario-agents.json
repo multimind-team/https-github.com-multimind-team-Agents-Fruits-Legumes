@@ -1,0 +1,167 @@
+[
+  {
+    "chapter": "Le principe",
+    "title": "Une équipe qui se passe le relais",
+    "from": "Responsable du rayon",
+    "to": "Leader",
+    "roleFrom": "Vous exprimez le besoin",
+    "roleTo": "Il distribue le travail",
+    "message": "Bienvenue au rayon fruits et légumes !\nComment la brigade numérique s'organise-t-elle ?",
+    "note": "Une équipe d'assistants numériques spécialisés au service du magasin.",
+    "voice": "Bienvenue au rayon fruits et légumes ! Pour préparer vos commandes sans erreur, toute une équipe d'assistants numériques spécialisés travaille main dans la main. Je suis le Leader de la brigade : je distribue le travail et je rassemble les résultats pour vous faire gagner un temps précieux !"
+  },
+  {
+    "chapter": "Le réveil",
+    "title": "Un événement donne le signal",
+    "from": "Agent Sentinelle",
+    "to": "Logiciel → Leader",
+    "roleFrom": "Elle veille sur les courriels",
+    "roleTo": "Relais vers le Leader",
+    "message": "Agent Sentinelle :\n« Nouveau signal détecté !\nUn mail avec des fichiers vient d'arriver. »",
+    "note": "L'Agent Sentinelle veille jour et nuit sur la boîte aux lettres.",
+    "voice": "Bonjour ! Je suis l'Agent Sentinelle. Jour et nuit, je veille calmement sur la boîte aux lettres du magasin. Dès qu'un e-mail avec vos fichiers arrive, je capte le signal et je donne le top départ au Leader !"
+  },
+  {
+    "chapter": "Un mail arrive",
+    "title": "Le Leader confie la lecture",
+    "from": "Leader",
+    "to": "Agent de courrier",
+    "roleFrom": "Il donne une mission précise",
+    "roleTo": "Il examine les documents",
+    "message": "Leader :\n« Ouvre ce mail et ses pièces jointes.\nVérifie chaque fichier sans toucher au stock. »",
+    "note": "L'Agent de Courrier lit et classe les pièces, sans jamais modifier les stocks.",
+    "voice": "Agent de Courrier, le chef de rayon vient d'envoyer ses fichiers : ventes, livraisons et pertes. Lis chaque document attentivement, mais sans jamais modifier les stocks ! C'est une règle d'or : chaque agent a sa mission sans jamais déborder sur les autres."
+  },
+  {
+    "chapter": "Un mail arrive",
+    "title": "L’agent de courrier rend ses preuves",
+    "from": "Agent de courrier",
+    "to": "Leader",
+    "roleFrom": "Il explique ce qu'il a lu",
+    "roleTo": "Il prépare la suite",
+    "message": "Agent de Courrier :\n« Fichiers analysés et classés !\nDates et quantités vérifiées, prêts pour la suite. »",
+    "note": "Ventes de la veille, livraisons du jour : chaque date est certifiée.",
+    "voice": "C'est tout bon, Leader ! J'ai relevé tous les articles et leurs dates : les ventes sont bien celles d'hier et les livraisons celles de ce matin. Tout est propre, classé et prêt pour la suite !"
+  },
+  {
+    "chapter": "Préparer sans écrire",
+    "title": "L’agent de données essaie d’abord",
+    "from": "Leader",
+    "to": "Agent de données",
+    "roleFrom": "Il demande une simulation",
+    "roleTo": "Il calcule les effets attendus",
+    "message": "Agent de Données :\n« Test à blanc en cours :\nje prépare la simulation sans toucher au vrai stock. »",
+    "note": "Test à blanc : le stock réel du magasin reste intact.",
+    "voice": "Pas d'inquiétude pour les stocks réels du magasin : avant d'enregistrer quoi que ce soit, je prépare une simulation virtuelle. On calcule tout à blanc pour s'assurer que tout colle parfaitement !"
+  },
+  {
+    "chapter": "Le deuxième regard",
+    "title": "Un autre agent vérifie",
+    "from": "Leader",
+    "to": "Agent de contrôle",
+    "roleFrom": "Il transmet sources et simulation",
+    "roleTo": "Il vérifie indépendamment",
+    "message": "Agent de Contrôle :\n« J'audite cette simulation :\naucun doublon ni anomalie ne m'échappe. »",
+    "note": "La règle du double regard : un auditeur indépendant vérifie.",
+    "voice": "C'est la règle du double regard : je prends le relais pour auditer cette simulation de manière totalement indépendante. Je traque les doublons ou la moindre incohérence."
+  },
+  {
+    "chapter": "Le deuxième regard",
+    "title": "L'avis revient au Leader",
+    "from": "Agent de contrôle",
+    "to": "Leader",
+    "roleFrom": "Il rend un avis précis",
+    "roleTo": "Il valide l'enregistrement",
+    "message": "Agent de Contrôle :\n« Audit validé avec succès !\nFeu vert pour appliquer la mise à jour. »",
+    "note": "Au moindre doute, l'Agent de Contrôle bloque immédiatement l'écriture.",
+    "voice": "Audit validé avec succès ! Les chiffres de livraison sont parfaitement cohérents. Je donne mon feu vert au Leader pour la mise à jour. Parfait ! Contrôle validé : Agent de Données, tu peux enregistrer la mise à jour en stock."
+  },
+  {
+    "chapter": "Mettre à jour",
+    "title": "L’agent de données réalise l’opération",
+    "from": "Leader",
+    "to": "Agent de données",
+    "roleFrom": "Il confie le seul lot autorisé",
+    "roleTo": "Il importe puis recalcule",
+    "message": "Agent de Données :\n« Feu vert accordé :\nj'enregistre en stock et je recalcule les disponibilités. »",
+    "note": "Seules les données vérifiées et validées sont enregistrées en stock.",
+    "voice": "Le feu vert est donné ! J'enregistre officiellement les entrées de marchandises dans la base. Les quantités disponibles en rayon sont recalculées et à jour pour la journée !"
+  },
+  {
+    "chapter": "Vérifier le résultat",
+    "title": "L’agent de contrôle revient après l’écriture",
+    "from": "Agent de contrôle",
+    "to": "Leader",
+    "roleFrom": "Il relit le résultat réel",
+    "roleTo": "Il annonce le bilan vérifié",
+    "message": "Agent de Contrôle :\n« Contrôle final réussi :\nle stock enregistré correspond exactement à la prévision. »",
+    "note": "Dernière vérification pour s'assurer que rien n'a été altéré.",
+    "voice": "Dernière vérification de sécurité : le nouveau stock réel correspond exactement à ce qui était prévu dans notre simulation. Travail accompli à cent pour cent !"
+  },
+  {
+    "chapter": "Vous envoyez un message",
+    "title": "L’agent de rayon prend votre demande",
+    "from": "Leader",
+    "to": "Agent de rayon",
+    "roleFrom": "Il transmet votre message",
+    "roleTo": "Il agit dans ses droits et répond",
+    "message": "Agent de Rayon :\n« Une question sur le terrain ?\nJe vous réponds directement sans jargon technique ! »",
+    "note": "L'Agent de Rayon vous répond directement en français simple.",
+    "voice": "Une question ou une remarque depuis le magasin ? Je dialogue directement avec le responsable sur sa tablette, avec des explications claires et sans aucun jargon technique !"
+  },
+  {
+    "chapter": "Vous envoyez un comptage",
+    "title": "L’agent d’audit cherche la cause de l’écart",
+    "from": "Leader",
+    "to": "Agent d'audit",
+    "roleFrom": "Il désigne le relevé exact",
+    "roleTo": "Il enquête sur l'écart constaté",
+    "message": "Agent d'Audit :\n« Écart constaté en réserve ?\nJ'enquête pour trouver la cause réelle sans rien inventer. »",
+    "note": "L'Agent d'Audit enquête sur les écarts entre réserve et informatique.",
+    "voice": "Vous constatez un écart en comptant vos palettes en chambre froide ? Je mène l'enquête ! Je croise les ventes, les réceptions et la casse pour trouver la cause réelle, sans rien inventer."
+  },
+  {
+    "chapter": "Un article pose question",
+    "title": "L'enquête passe par le Leader",
+    "from": "Leader",
+    "to": "Détective des articles",
+    "roleFrom": "Il relaie le doute de l’agent audit-stock",
+    "roleTo": "Il recherche une preuve fiable",
+    "message": "Détective des Articles :\n« Doute sur un colisage ou un code ?\nJe vérifie les fiches et les cartons en magasin. »",
+    "note": "Le Détective des Articles traque les confusions de colis et de codes-barres.",
+    "voice": "Un doute sur un code-barres ou le poids d'un colis de fraises ? J'examine les fiches des fournisseurs. Et si une incertitude subsiste, je demande simplement au chef de vérifier le carton en magasin !"
+  },
+  {
+    "chapter": "Anticiper les besoins",
+    "title": "L’agent des tendances propose un ajustement",
+    "from": "Agent des tendances",
+    "to": "Leader",
+    "roleFrom": "Il analyse une évolution durable",
+    "roleTo": "Il vérifie la suggestion",
+    "message": "Agent des Tendances :\n« Grand soleil prévu ?\nJ'anticipe la demande pour ajuster sans gaspiller. »",
+    "note": "Ajuster selon la météo et les ventes, sans risquer la rupture.",
+    "voice": "Grand soleil prévu ce week-end ? J'analyse la météo et le rythme des ventes pour vous suggérer d'ajuster prudemment les quantités, tout en protégeant le rayon contre le gaspillage."
+  },
+  {
+    "chapter": "Votre décision",
+    "title": "Vous gardez la main",
+    "from": "Leader",
+    "to": "Responsable du rayon",
+    "roleFrom": "Il résume résultats et réserves",
+    "roleTo": "Vous décidez de la commande",
+    "message": "Leader :\n« Les agents préparent les calculs,\nmais c'est toujours vous qui décidez de la commande ! »",
+    "note": "L'ordinateur propose, le chef de rayon décide en toute souveraineté.",
+    "voice": "Et voici le principe fondamental de l'application : nous préparons et sécurisons tous les calculs, mais c'est toujours vous, responsable de rayon, qui décidez et validez votre commande finale !"
+  },
+  {
+    "chapter": "Retour à l'écoute",
+    "title": "La boucle repart après vérification",
+    "from": "Leader",
+    "to": "Agent Sentinelle",
+    "roleFrom": "Il clôt le traitement avec preuve",
+    "roleTo": "Elle veille sur les courriels",
+    "message": "Leader & Sentinelle :\n« Commande archivée, mission accomplie !\nVeille relancée pour la journée. »",
+    "note": "La mission est bouclée, la brigade se remet en veille.",
+    "voice": "La commande du matin est bouclée et archivée ! Agent Sentinelle, la brigade se remet en veille. Bien reçu, Leader ! Je reprends la surveillance de la boîte mail, prête pour le prochain message. Bonne journée à toute l'équipe du magasin !"
+  }
+]

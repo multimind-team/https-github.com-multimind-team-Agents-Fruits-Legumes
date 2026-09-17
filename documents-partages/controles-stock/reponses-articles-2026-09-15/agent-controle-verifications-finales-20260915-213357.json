@@ -1,0 +1,2657 @@
+{
+  "auteur": "agent-controle",
+  "execution": "/root/corrections_systeme",
+  "revu_le": "2026-09-15T21:33:57",
+  "nature": "Comparaisons indépendantes après écritures ; avis final séparé",
+  "erreurs": [],
+  "checks": {
+    "pouvoirs_sha_restaure": {
+      "ok": true,
+      "detail": null
+    },
+    "pouvoirs_objet_restaure": {
+      "ok": true,
+      "detail": null
+    },
+    "P01": {
+      "ok": true,
+      "detail": null
+    },
+    "P02": {
+      "ok": true,
+      "detail": null
+    },
+    "P03": {
+      "ok": true,
+      "detail": null
+    },
+    "P04": {
+      "ok": true,
+      "detail": null
+    },
+    "P05": {
+      "ok": true,
+      "detail": null
+    },
+    "P06": {
+      "ok": true,
+      "detail": null
+    },
+    "P07": {
+      "ok": true,
+      "detail": null
+    },
+    "P08": {
+      "ok": true,
+      "detail": null
+    },
+    "P09": {
+      "ok": true,
+      "detail": null
+    },
+    "P10": {
+      "ok": true,
+      "detail": null
+    },
+    "P11": {
+      "ok": true,
+      "detail": null
+    },
+    "P12": {
+      "ok": true,
+      "detail": null
+    },
+    "P13": {
+      "ok": true,
+      "detail": null
+    },
+    "P14": {
+      "ok": true,
+      "detail": null
+    },
+    "P15": {
+      "ok": true,
+      "detail": null
+    },
+    "P16": {
+      "ok": true,
+      "detail": null
+    },
+    "P17": {
+      "ok": true,
+      "detail": null
+    },
+    "P18": {
+      "ok": true,
+      "detail": null
+    },
+    "P19": {
+      "ok": true,
+      "detail": null
+    },
+    "P20": {
+      "ok": true,
+      "detail": null
+    },
+    "P21": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_C01": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_C02": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_C03": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_C09": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_C10": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_C11": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P02": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P04": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P06": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P11": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P12": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P13": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P14": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P15": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P16": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P18": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P20": {
+      "ok": true,
+      "detail": null
+    },
+    "decision_P21": {
+      "ok": true,
+      "detail": null
+    },
+    "anciens_etats_integralement_identiques_hors_P": {
+      "ok": true,
+      "detail": {
+        "compares": 805,
+        "ecarts": []
+      }
+    },
+    "nouveaux_etats_dans_21P": {
+      "ok": true,
+      "detail": [
+        "nom:BUTTERNUT PIECE",
+        "nom:CAROTTE COULEUR MIXTE VRAC",
+        "nom:CAROTTE JAUNE VRAC",
+        "nom:CAROTTE VIOLETTE VRAC",
+        "nom:CHAMPIGNON SHITAKE VRAC",
+        "nom:CONCOMBRE BIO PIECE PE",
+        "nom:CRESSON BOTTE",
+        "nom:CRESSON FLOW PACK 200G",
+        "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+        "nom:KIT GUACAMOLE",
+        "nom:MACHE BARQUETTE 150 G",
+        "nom:MANGUE BIO PIECE",
+        "nom:OIGNON JAUNE 1KG BIO MMP",
+        "nom:PATATE DOUCE 500G BIO ITM",
+        "nom:POMME GALA SACHET 1,5KG",
+        "nom:RAISIN BLC BIO 500G",
+        "nom:SHARON PIECE"
+      ]
+    },
+    "ajustements_manuels_sha": {
+      "ok": true,
+      "detail": null
+    },
+    "mache125_ligne_entierement_identique": {
+      "ok": true,
+      "detail": null
+    },
+    "mache125_visible": {
+      "ok": true,
+      "detail": null
+    },
+    "temoin_0000087004035": {
+      "ok": true,
+      "detail": null
+    },
+    "temoin_0000087010621": {
+      "ok": true,
+      "detail": null
+    },
+    "temoin_0000087950042": {
+      "ok": true,
+      "detail": null
+    },
+    "temoin_0000087755078": {
+      "ok": true,
+      "detail": null
+    },
+    "fournisseur_0000087004662": {
+      "ok": true,
+      "detail": null
+    },
+    "fournisseur_0000087004082": {
+      "ok": true,
+      "detail": null
+    },
+    "douze_nouveaux_masques_exactement": {
+      "ok": true,
+      "detail": {
+        "ajoutes": [
+          "nom:BUTTERNUT PIECE",
+          "nom:CAROTTE COULEUR MIXTE VRAC",
+          "nom:CAROTTE JAUNE VRAC",
+          "nom:CAROTTE VIOLETTE VRAC",
+          "nom:CHAMPIGNON SHITAKE VRAC",
+          "nom:CRESSON BOTTE",
+          "nom:CRESSON FLOW PACK 200G",
+          "nom:MACHE BARQUETTE 150 G",
+          "nom:MANGUE BIO PIECE",
+          "nom:PATATE DOUCE 500G BIO ITM",
+          "nom:RAISIN BLC BIO 500G",
+          "nom:SHARON PIECE"
+        ],
+        "retires": []
+      }
+    },
+    "427_articles_memes_codes": {
+      "ok": true,
+      "detail": null
+    },
+    "commandes_nonnegatives_finies": {
+      "ok": true,
+      "detail": null
+    },
+    "proposition_hors_perimetre_identique": {
+      "ok": true,
+      "detail": []
+    },
+    "26_lignes_apercu_simule_identiques": {
+      "ok": true,
+      "detail": []
+    },
+    "operation_et_dates": {
+      "ok": true,
+      "detail": {
+        "recalcul": {
+          "etat": "termine",
+          "origine": "filet-de-securite",
+          "operation_id": "67cb7a9b2e834c92ac40c500612785f6",
+          "modifie_le": "2026-09-15T21:28:54",
+          "message": "",
+          "_operation_id": "67cb7a9b2e834c92ac40c500612785f6"
+        },
+        "fraicheur": {
+          "_lisez_moi": "Ce qu'il faut penser de la proposition affichée. Ecrit par filet-de-securite.py, lu par l'ecran de commande. Fichier separe expres : proposition.json est reecrit a chaque calcul.",
+          "etat": "a-jour",
+          "message": "Proposition du 2026-09-16, 427 articles.",
+          "verifie_le": "2026-09-15T21:28:54",
+          "jour_de_commande_attendu": "2026-09-16",
+          "proposition_generee_le": "2026-09-15T21:28:47",
+          "calculs_en_echec": [],
+          "_operation_id": "67cb7a9b2e834c92ac40c500612785f6"
+        },
+        "proposition": {
+          "genere_le": "2026-09-15T21:28:47",
+          "date_stock": "2026-09-15",
+          "date_reference": "2026-09-14",
+          "date_commande": "2026-09-16",
+          "date_livraison": "2026-09-17",
+          "_operation_id": "67cb7a9b2e834c92ac40c500612785f6"
+        }
+      }
+    },
+    "prefixe_donnees/decisions.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_faits/2024.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_faits/2025.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_faits/2026.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/.numeros.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/agent-donnees.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/agent-orchestrateur.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/agent-rayon.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/agent-tendances.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/dialogues.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/filet-de-securite.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/hermes-orchestrateur.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/preparateur-auto.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/preparateur.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/responsable-rayon.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/reveil.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/sentinelle-mail.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "prefixe_journaux/tout.jsonl": {
+      "ok": true,
+      "detail": null
+    },
+    "21faits_reels_seuls": {
+      "ok": true,
+      "detail": null
+    },
+    "quotas_consommes_preserves": {
+      "ok": true,
+      "detail": {
+        "global": 25,
+        "par_agent": {
+          "agent-donnees": 5,
+          "filet-de-securite": 2,
+          "agent-rayon": 18
+        }
+      }
+    },
+    "HTTP_donnees/proposition.json": {
+      "ok": true,
+      "detail": null
+    },
+    "HTTP_donnees/etat.json": {
+      "ok": true,
+      "detail": null
+    },
+    "HTTP_donnees/fraicheur.json": {
+      "ok": true,
+      "detail": null
+    },
+    "HTTP_donnees/recalcul.json": {
+      "ok": true,
+      "detail": null
+    },
+    "HTTP_app/commander.html": {
+      "ok": true,
+      "detail": null
+    }
+  },
+  "positions21": [
+    {
+      "repere": "P01",
+      "code": "nom:KIT GUACAMOLE",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "KIT GUACAMOLE"
+      },
+      "proposition": {
+        "itm8": "nom:KIT GUACAMOLE",
+        "libelle": "KIT GUACAMOLE",
+        "ordre": 5,
+        "groupe": "fruits",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.690000057220459,
+        "prix_vente": 3.990000009536743,
+        "marge_pct": 32.6,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "AVOCAT KIT GUACAMOLE C 1 BARQUETTE 400 g PRECONISE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P02",
+      "code": "nom:SHARON PIECE",
+      "etat": {
+        "position": -12.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "SHARON PIECE"
+      },
+      "proposition": {
+        "itm8": "nom:SHARON PIECE",
+        "libelle": "SHARON PIECE",
+        "ordre": 335,
+        "groupe": "fruits",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 12.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 0.7200000286102295,
+        "prix_vente": 1.090000033378601,
+        "marge_pct": 33.9,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "FRUIT EXOTIQUE SHARON ESPAGNE C 1 PIECE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P03",
+      "code": "nom:POMME GALA SACHET 1,5KG",
+      "etat": {
+        "position": -10.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "POMME GALA SACHET 1,5KG"
+      },
+      "proposition": {
+        "itm8": "nom:POMME GALA SACHET 1,5KG",
+        "libelle": "POMME GALA SACHET 1,5KG",
+        "ordre": 341,
+        "groupe": "fruits",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.1500000953674316,
+        "prix_vente": 3.2899999618530273,
+        "marge_pct": 34.7,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "POMME GALA FRANCE 115/150G C 1 SACHET 1,5 Kg",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P04",
+      "code": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "etat": {
+        "position": -5.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE COULEUR MIXTE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CAROTTE COULEUR MIXTE VRAC",
+        "libelle": "CAROTTE COULEUR MIXTE VRAC",
+        "ordre": 135,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 5.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.444999933242798,
+        "prix_vente": 3.7899999618530273,
+        "marge_pct": 35.5,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CAROTTE COULEUR FRANCE 20/40MM C 1 VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P05",
+      "code": "0000087010603",
+      "etat": {
+        "position": 32.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE SACHET 1.5KG ITM"
+      },
+      "proposition": {
+        "itm8": "0000087010603",
+        "libelle": "CAROTTE SACHET 1.5KG ITM",
+        "ordre": 137,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 2.0,
+        "conditionnement": 8.0,
+        "unite": "sachet",
+        "position_colis": 4.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 32.0,
+        "demande": 47.768,
+        "vente_moyenne_jour": 24.52,
+        "taux_perte": 0.0,
+        "prix_achat": 1.7899999618530273,
+        "prix_vente": 2.79,
+        "marge_pct": 35.8,
+        "montant_achat": 28.64,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "decision",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P06",
+      "code": "nom:BUTTERNUT PIECE",
+      "etat": {
+        "position": -10.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "BUTTERNUT PIECE"
+      },
+      "proposition": {
+        "itm8": "nom:BUTTERNUT PIECE",
+        "libelle": "BUTTERNUT PIECE",
+        "ordre": 162,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.590000033378601,
+        "prix_vente": 2.490000009536743,
+        "marge_pct": 36.1,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "COURGE ALIMENTAIRE BUTTERNUT FRANCE C 1 PIECE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P07",
+      "code": "0000087010665",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "ECHALOTE TRADI FILET 250G ITM"
+      },
+      "proposition": {
+        "itm8": "0000087010665",
+        "libelle": "ECHALOTE TRADI FILET 250G ITM",
+        "ordre": 168,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 0.0,
+        "conditionnement": 20.0,
+        "unite": "filet",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 0.0,
+        "demande": 0.0,
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.100000023841858,
+        "prix_vente": 1.39,
+        "marge_pct": 20.9,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "decision",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P08",
+      "code": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "ECHALOTE TRADITIONNELLE 250G CQLP"
+      },
+      "proposition": {
+        "itm8": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+        "libelle": "ECHALOTE TRADITIONNELLE 250G CQLP",
+        "ordre": 170,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 20.0,
+        "unite": "unité",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.590000033378601,
+        "prix_vente": 2.3299999237060547,
+        "marge_pct": 31.8,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "ECHALOTE LONGUE FRANCE 30/50MM FILET 250 g PRICE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P09",
+      "code": "0000087950043",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "PDT SALADE MICRO ONDE 500G"
+      },
+      "proposition": {
+        "itm8": "0000087950043",
+        "libelle": "PDT SALADE MICRO ONDE 500G",
+        "ordre": 223,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 0.0,
+        "conditionnement": 8.0,
+        "unite": "pièce",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 0.0,
+        "demande": 0.0,
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.4900000095367432,
+        "prix_vente": 2.29,
+        "marge_pct": 34.9,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P10",
+      "code": "0000087755054",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "MELANGE JEUNES POUSSES 125G"
+      },
+      "proposition": {
+        "itm8": "0000087755054",
+        "libelle": "MELANGE JEUNES POUSSES 125G",
+        "ordre": 237,
+        "groupe": "legumes",
+        "fournisseur": "SCAFRUIT",
+        "propose_colis": 1.0,
+        "conditionnement": 6.0,
+        "unite": "pièce",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "position_unites": 0.0,
+        "demande": 7.824,
+        "vente_moyenne_jour": 3.88,
+        "taux_perte": 0.0,
+        "prix_achat": 0.699999988079071,
+        "prix_vente": 1.29,
+        "marge_pct": 45.7,
+        "montant_achat": 4.2,
+        "promotion": false,
+        "fin_promotion": false,
+        "motif_fin_promotion": null,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": true,
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P11",
+      "code": "nom:CAROTTE JAUNE VRAC",
+      "etat": {
+        "position": -5.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE JAUNE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CAROTTE JAUNE VRAC",
+        "libelle": "CAROTTE JAUNE VRAC",
+        "ordre": 361,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 5.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 0.0,
+        "prix_vente": 0.0,
+        "marge_pct": 0.0,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CAROTTE JAUNE FRANCE 20/40MM C 1 VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P12",
+      "code": "nom:CAROTTE VIOLETTE VRAC",
+      "etat": {
+        "position": -5.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CAROTTE VIOLETTE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CAROTTE VIOLETTE VRAC",
+        "libelle": "CAROTTE VIOLETTE VRAC",
+        "ordre": 362,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 5.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 0.0,
+        "prix_vente": 0.0,
+        "marge_pct": 0.0,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CAROTTE VIOLETTE FRANCE 20/40MM C 1 VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P13",
+      "code": "nom:CHAMPIGNON SHITAKE VRAC",
+      "etat": {
+        "position": -2.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CHAMPIGNON SHITAKE VRAC"
+      },
+      "proposition": {
+        "itm8": "nom:CHAMPIGNON SHITAKE VRAC",
+        "libelle": "CHAMPIGNON SHITAKE VRAC",
+        "ordre": 365,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 2.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 8.989999771118164,
+        "prix_vente": 12.949999809265137,
+        "marge_pct": 30.6,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "CHAMPIGNON SHI TAKE FRANCE VRAC",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P14",
+      "code": "nom:MACHE BARQUETTE 150 G",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "MACHE BARQUETTE 150 G"
+      },
+      "proposition": {
+        "itm8": "nom:MACHE BARQUETTE 150 G",
+        "libelle": "MACHE BARQUETTE 150 G",
+        "ordre": 385,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.2999999523162842,
+        "prix_vente": 1.9900000095367432,
+        "marge_pct": 34.7,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "LEGUME TRANCHE MACHE FRANCE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P15",
+      "code": "nom:CRESSON BOTTE",
+      "etat": {
+        "position": -8.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CRESSON BOTTE"
+      },
+      "proposition": {
+        "itm8": "nom:CRESSON BOTTE",
+        "libelle": "CRESSON BOTTE",
+        "ordre": 401,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 8.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.990000009536743,
+        "marge_pct": 33.4,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "SALADE CRESSON FRANCE C 1 BOTTE",
+        "source_conditionnement": "decision",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P16",
+      "code": "nom:CRESSON FLOW PACK 200G",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CRESSON FLOW PACK 200G"
+      },
+      "proposition": {
+        "itm8": "nom:CRESSON FLOW PACK 200G",
+        "libelle": "CRESSON FLOW PACK 200G",
+        "ordre": 403,
+        "groupe": "legumes",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.8899999856948853,
+        "prix_vente": 2.7899999618530273,
+        "marge_pct": 32.3,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "SALADE CRESSON FRANCE C 1 SACHET 200 g",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P17",
+      "code": "nom:CONCOMBRE BIO PIECE PE",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "CONCOMBRE BIO PIECE PE"
+      },
+      "proposition": {
+        "itm8": "nom:CONCOMBRE BIO PIECE PE",
+        "libelle": "CONCOMBRE BIO PIECE PE",
+        "ordre": 273,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 12.0,
+        "unite": "unité",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.3899999856948853,
+        "prix_vente": 1.9900000095367432,
+        "marge_pct": 30.2,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "BIO CONCOMBRE LONG ESPAGNE 300/400G C 2 PIECE MON MARCHE PLAISIR",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P18",
+      "code": "nom:MANGUE BIO PIECE",
+      "etat": {
+        "position": -9.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "MANGUE BIO PIECE"
+      },
+      "proposition": {
+        "itm8": "nom:MANGUE BIO PIECE",
+        "libelle": "MANGUE BIO PIECE",
+        "ordre": 281,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 9.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.890000104904175,
+        "marge_pct": 31.1,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "BIO MANGUE KENT ESPAGNE CAL 9 C 2 PIECE",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P19",
+      "code": "nom:OIGNON JAUNE 1KG BIO MMP",
+      "etat": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "OIGNON JAUNE 1KG BIO MMP"
+      },
+      "proposition": {
+        "itm8": "nom:OIGNON JAUNE 1KG BIO MMP",
+        "libelle": "OIGNON JAUNE 1KG BIO MMP",
+        "ordre": 283,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": 0.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.990000009536743,
+        "marge_pct": 33.4,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "PNM BIO OIGNON JAUNE FRANCE 40/60MM C 2 FILET 1 Kg MON MARCHE PLAISIR",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": false,
+        "sorties_couvertes_jusquau": "2026-09-15"
+      }
+    },
+    {
+      "repere": "P20",
+      "code": "nom:RAISIN BLC BIO 500G",
+      "etat": {
+        "position": -10.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "RAISIN BLC BIO 500G"
+      },
+      "proposition": {
+        "itm8": "nom:RAISIN BLC BIO 500G",
+        "libelle": "RAISIN BLC BIO 500G",
+        "ordre": 294,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 10.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 2.690000057220459,
+        "prix_vente": 3.990000009536743,
+        "marge_pct": 32.6,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "BIO RAISIN ITALIA ITALIE C 2 BARQUETTE 500 g",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    },
+    {
+      "repere": "P21",
+      "code": "nom:PATATE DOUCE 500G BIO ITM",
+      "etat": {
+        "position": -6.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "conversation-responsable",
+        "mouvements_depuis": 0,
+        "libelle": "PATATE DOUCE 500G BIO ITM"
+      },
+      "proposition": {
+        "itm8": "nom:PATATE DOUCE 500G BIO ITM",
+        "libelle": "PATATE DOUCE 500G BIO ITM",
+        "ordre": 417,
+        "groupe": "bio",
+        "fournisseur": "",
+        "propose_colis": 0.0,
+        "conditionnement": 6.0,
+        "unite": "unité",
+        "position_colis": -1.0,
+        "position_mesuree_le": "2026-09-15",
+        "vente_moyenne_jour": 0.0,
+        "taux_perte": 0.0,
+        "prix_achat": 1.9900000095367432,
+        "prix_vente": 2.990000009536743,
+        "marge_pct": 33.4,
+        "montant_achat": 0.0,
+        "promotion": false,
+        "fin_promotion": false,
+        "alerte_marge": null,
+        "position_bloquee": false,
+        "connu": false,
+        "offre": "PNM BIO PATATE DOUCE FRANCE C 2 FILET 500 g BIO ITM",
+        "source_conditionnement": "cadencier",
+        "avertissements_conditionnement": [],
+        "masque": true
+      }
+    }
+  ],
+  "prefixes": [
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\decisions.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 516716,
+      "octets_apres": 524712,
+      "sha256_apres": "bcadb3c6dbe910cb60bab80ccb93fffb340a7315566e4522ac24951aefb70e7d"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2024.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 14239386,
+      "octets_apres": 14239386,
+      "sha256_apres": "fc29efdb4d9c2b4a28d820371f4fe2618f5e4b0250ddb00f9cbaf9a669ad803a"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2025.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 19959759,
+      "octets_apres": 19959759,
+      "sha256_apres": "8a2f8e9a5a3063774eef6334bebec89c5df15ee99009c0baded491dcf4ba20bc"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2026.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 16126975,
+      "octets_apres": 16153208,
+      "sha256_apres": "fce02b9eee57b379fb161dbcde811cde1da71e1edfde955dbd56368656617a6b"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\.numeros.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 4340,
+      "octets_apres": 4970,
+      "sha256_apres": "012ad3875f89abf3292bd4c40ab0c4136a53cc7e264d2bbae562f2d9e28b7e1a"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-donnees.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 22044,
+      "octets_apres": 24538,
+      "sha256_apres": "9fd2d7455dc8675a5557efc07e313340be29738fd76aca0290130fe33b723ec3"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-orchestrateur.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 1492,
+      "octets_apres": 1492,
+      "sha256_apres": "2810bd677c5e62b856b54b9df85419eaeaf4244e6699201d883869825437d95e"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-rayon.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 10236,
+      "octets_apres": 24394,
+      "sha256_apres": "b3497b9c242cd4eaf2bef94b979589332a3fad2357f206d069ec4a41918d7a94"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-tendances.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 1691,
+      "octets_apres": 1691,
+      "sha256_apres": "8d986227c2d336210890613db2753c237ef6640c46d93d9abe88d96aaed2d36f"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\dialogues.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 282,
+      "octets_apres": 282,
+      "sha256_apres": "aa1f204686ae6225ba99e42fa586b313835709225befdde37ffd517708578644"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\filet-de-securite.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 19924,
+      "octets_apres": 20422,
+      "sha256_apres": "e42e6861110de5c049cd505503c7db1bd7d682a6274ad66f84154e12e14e9413"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\hermes-orchestrateur.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 1490,
+      "octets_apres": 1490,
+      "sha256_apres": "7807609029889e1db8fdcf797d2c52876bb7e958d9158484201703690443afdf"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur-auto.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 6542,
+      "octets_apres": 6542,
+      "sha256_apres": "80527eb96c0d4bd13484e24f7c7fdae060d49d0d0bb0a4a7f87b489572eaa0ec"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 29559,
+      "octets_apres": 29559,
+      "sha256_apres": "a2aedd76d2c0ee51927352d5157c34ddcdc985e1a9ea4b825fdfb4d269a61606"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\responsable-rayon.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 53587,
+      "octets_apres": 53587,
+      "sha256_apres": "adba3abcf7824eea64ca328196ab14a965481c3c3b131677bb48615257242f17"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\reveil.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 1062,
+      "octets_apres": 1062,
+      "sha256_apres": "e52f6aba5155fa838d95aaaa5b286611fe48a622fc0788785de3778079429857"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\sentinelle-mail.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 3394,
+      "octets_apres": 3394,
+      "sha256_apres": "ecb26b11f6bac956107a541d463b072c6f946f4c691155f1aa5731daa83cbdc9"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\tout.jsonl",
+      "prefixe_identique": true,
+      "octets_avant": 149531,
+      "octets_apres": 166681,
+      "sha256_apres": "a0bb70c742de4597c45e492ee09e87440e54f9fa2e43ef6590d3df35f90ae04e"
+    }
+  ],
+  "HTTP_lecture_seule": [
+    {
+      "url": "http://127.0.0.1:8751/donnees/proposition.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "e917be822bda33f70f388b5565539d75a2de08d7dc2b3c46bd657d54f6c7788e",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/donnees/etat.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "685966990e7f5fd5e9c41babb47100f6e88fc20ff2dd4b5d3c2d0004e8ab516f",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/donnees/fraicheur.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "3ee6fef49073a032a1fcd9005715bc36e7ff66c6477c403fb1060d8ebe2d0cc7",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/donnees/recalcul.json?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "application/json",
+      "sha256_reponse": "cdcdc648755074fbd838383389d9b1617fb8df0dbecacc08594611be4aa9b0f3",
+      "identique_disque": true
+    },
+    {
+      "url": "http://127.0.0.1:8751/app/commander.html?controle_independant=20260915213357",
+      "status": 200,
+      "content_type": "text/html",
+      "sha256_reponse": "010fb68f963b2f8dffff037a9317733113e8b5c372049dc9e900734a506e68b8",
+      "identique_disque": true
+    }
+  ],
+  "faits21": [
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P01",
+      "type": "comptage",
+      "article": "nom:KIT GUACAMOLE",
+      "article_source": "nom:KIT GUACAMOLE",
+      "libelle": "KIT GUACAMOLE",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -6.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 6.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P01",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 6.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P02",
+      "type": "comptage",
+      "article": "nom:SHARON PIECE",
+      "article_source": "nom:SHARON PIECE",
+      "libelle": "SHARON PIECE",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -12.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 12.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P02",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 12.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P03",
+      "type": "comptage",
+      "article": "nom:POMME GALA SACHET 1,5KG",
+      "article_source": "nom:POMME GALA SACHET 1,5KG",
+      "libelle": "POMME GALA SACHET 1,5KG",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -10.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 10.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P03",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 10.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P04",
+      "type": "comptage",
+      "article": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "article_source": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "libelle": "CAROTTE COULEUR MIXTE VRAC",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -5.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 5.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P04",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 5.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P05",
+      "type": "comptage",
+      "article": "0000087010603",
+      "article_source": "0000087010603",
+      "libelle": "CAROTTE SACHET 1.5KG ITM",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": 32.0,
+      "unite": "sachet",
+      "colis": 4,
+      "par_colis": 8.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P05",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 8.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P06",
+      "type": "comptage",
+      "article": "nom:BUTTERNUT PIECE",
+      "article_source": "nom:BUTTERNUT PIECE",
+      "libelle": "BUTTERNUT PIECE",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -10.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 10.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P06",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 10.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P07",
+      "type": "comptage",
+      "article": "0000087010665",
+      "article_source": "0000087010665",
+      "libelle": "ECHALOTE TRADI FILET 250G ITM",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": 0.0,
+      "unite": "filet",
+      "colis": 0,
+      "par_colis": 20.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P07",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 20.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P08",
+      "type": "comptage",
+      "article": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+      "article_source": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+      "libelle": "ECHALOTE TRADITIONNELLE 250G CQLP",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": 0.0,
+      "unite": "unité",
+      "colis": 0,
+      "par_colis": 20.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P08",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 20.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P09",
+      "type": "comptage",
+      "article": "0000087950043",
+      "article_source": "0000087950043",
+      "libelle": "PDT SALADE MICRO ONDE 500G",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": 0.0,
+      "unite": "pièce",
+      "colis": 0,
+      "par_colis": 8.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P09",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 8.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P10",
+      "type": "comptage",
+      "article": "0000087755054",
+      "article_source": "0000087755054",
+      "libelle": "MELANGE JEUNES POUSSES 125G",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": 0.0,
+      "unite": "pièce",
+      "colis": 0,
+      "par_colis": 6.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P10",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 6.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P11",
+      "type": "comptage",
+      "article": "nom:CAROTTE JAUNE VRAC",
+      "article_source": "nom:CAROTTE JAUNE VRAC",
+      "libelle": "CAROTTE JAUNE VRAC",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -5.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 5.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P11",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 5.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P12",
+      "type": "comptage",
+      "article": "nom:CAROTTE VIOLETTE VRAC",
+      "article_source": "nom:CAROTTE VIOLETTE VRAC",
+      "libelle": "CAROTTE VIOLETTE VRAC",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -5.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 5.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P12",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 5.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P13",
+      "type": "comptage",
+      "article": "nom:CHAMPIGNON SHITAKE VRAC",
+      "article_source": "nom:CHAMPIGNON SHITAKE VRAC",
+      "libelle": "CHAMPIGNON SHITAKE VRAC",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -2.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 2.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P13",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 2.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P14",
+      "type": "comptage",
+      "article": "nom:MACHE BARQUETTE 150 G",
+      "article_source": "nom:MACHE BARQUETTE 150 G",
+      "libelle": "MACHE BARQUETTE 150 G",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -6.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 6.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P14",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 6.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P15",
+      "type": "comptage",
+      "article": "nom:CRESSON BOTTE",
+      "article_source": "nom:CRESSON BOTTE",
+      "libelle": "CRESSON BOTTE",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -8.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 8.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P15",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 8.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P16",
+      "type": "comptage",
+      "article": "nom:CRESSON FLOW PACK 200G",
+      "article_source": "nom:CRESSON FLOW PACK 200G",
+      "libelle": "CRESSON FLOW PACK 200G",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -6.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 6.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P16",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 6.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P17",
+      "type": "comptage",
+      "article": "nom:CONCOMBRE BIO PIECE PE",
+      "article_source": "nom:CONCOMBRE BIO PIECE PE",
+      "libelle": "CONCOMBRE BIO PIECE PE",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": 0.0,
+      "unite": "unité",
+      "colis": 0,
+      "par_colis": 12.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P17",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 12.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P18",
+      "type": "comptage",
+      "article": "nom:MANGUE BIO PIECE",
+      "article_source": "nom:MANGUE BIO PIECE",
+      "libelle": "MANGUE BIO PIECE",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -9.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 9.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P18",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 9.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P19",
+      "type": "comptage",
+      "article": "nom:OIGNON JAUNE 1KG BIO MMP",
+      "article_source": "nom:OIGNON JAUNE 1KG BIO MMP",
+      "libelle": "OIGNON JAUNE 1KG BIO MMP",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": 0.0,
+      "unite": "unité",
+      "colis": 0,
+      "par_colis": 10.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P19",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 10.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P20",
+      "type": "comptage",
+      "article": "nom:RAISIN BLC BIO 500G",
+      "article_source": "nom:RAISIN BLC BIO 500G",
+      "libelle": "RAISIN BLC BIO 500G",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -10.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 10.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P20",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 10.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    },
+    {
+      "id": "comptage-conversation:reponses-articles-2026-09-15:P21",
+      "type": "comptage",
+      "article": "nom:PATATE DOUCE 500G BIO ITM",
+      "article_source": "nom:PATATE DOUCE 500G BIO ITM",
+      "libelle": "PATATE DOUCE 500G BIO ITM",
+      "date_source": "2026-09-15",
+      "date_effet": "2026-09-15",
+      "quantite": -6.0,
+      "unite": "unité",
+      "colis": -1,
+      "par_colis": 6.0,
+      "origine_mesure": "conversation-responsable",
+      "auteur": "agent-donnees",
+      "enregistre_le": "2026-09-15T21:20:26",
+      "source": {
+        "canal": "conversation Codex",
+        "document_prive": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "sha256_document": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+        "repere": "P21",
+        "date_physique": "2026-09-15",
+        "phase_physique": "soir, après les mouvements de la journée",
+        "heure_physique": null,
+        "repere_technique": "enregistre_le est l’instant technique effectif d’enregistrement de la déclaration actuelle du soir, pas une heure physique déclarée ; heure physique précise non fournie.",
+        "message_id": null
+      },
+      "mesure": "position",
+      "conditionnement": 6.0,
+      "motif": "Position actuelle du soir déclarée par le responsable dans la conversation, après les mouvements du 15 septembre 2026 ; heure physique précise non fournie."
+    }
+  ],
+  "journal_actions_jour": [
+    {
+      "action": "A-20260915-0001",
+      "horodatage": "2026-09-15T15:08:16",
+      "agent": "agent-donnees",
+      "resultat": "ok",
+      "message": "252 mouvements intégrés depuis 3 fichier(s)",
+      "motif": "Intégration des fichiers du magasin. Le programme fait le geste mécanique ; ce qu'il n'a pas compris est listé dans dernier-import.json, à charge pour l'agent de vérifier, corriger ou alerter le responsable de rayon.",
+      "changements": [],
+      "annulable": false,
+      "details": {
+        "fichiers": [
+          {
+            "fichier": "casse 15.09.2026.xlsx",
+            "mouvements": 37,
+            "type": "casse"
+          },
+          {
+            "fichier": "livraison 15.09.2026.xlsx",
+            "mouvements": 49,
+            "type": "livraison"
+          },
+          {
+            "fichier": "vente 15.09.2026.xlsx",
+            "mouvements": 166,
+            "type": "vente"
+          }
+        ],
+        "nouveaux": 252,
+        "deja_connus": 0,
+        "a_verifier": 0
+      }
+    },
+    {
+      "action": "A-20260915-0002",
+      "horodatage": "2026-09-15T15:08:16",
+      "agent": "agent-donnees",
+      "resultat": "ok",
+      "message": "Cadencier du jour lu : 427 articles commandables",
+      "motif": "Le cadencier Webtelevente dit ce qu'on peut commander aujourd'hui. Un article absent n'est pas masque : il sera peut-etre la demain.",
+      "changements": [],
+      "annulable": false,
+      "details": {
+        "date_cadencier": "2026-09-15",
+        "fichier": "cadencier webtelevente 15.09.2026.xls",
+        "commandables": 427,
+        "sans_offre": 0,
+        "rapprochement": {
+          "surs": 242,
+          "ambigus": 1,
+          "inconnus": 184
+        }
+      }
+    },
+    {
+      "action": "A-20260915-0003",
+      "horodatage": "2026-09-15T15:08:39",
+      "agent": "agent-donnees",
+      "resultat": "ok",
+      "message": "Cadencier du jour lu : 427 articles commandables",
+      "motif": "Le cadencier Webtelevente dit ce qu'on peut commander aujourd'hui. Un article absent n'est pas masque : il sera peut-etre la demain.",
+      "changements": [],
+      "annulable": false,
+      "details": {
+        "date_cadencier": "2026-09-15",
+        "fichier": "cadencier webtelevente 15.09.2026.xls",
+        "commandables": 427,
+        "sans_offre": 0,
+        "rapprochement": {
+          "surs": 242,
+          "ambigus": 1,
+          "inconnus": 184
+        }
+      }
+    },
+    {
+      "action": "A-20260915-0004",
+      "horodatage": "2026-09-15T15:08:51",
+      "agent": "filet-de-securite",
+      "resultat": "ok",
+      "message": "Vérification avant commande : a-jour",
+      "motif": "La commande doit pouvoir être passée même si aucun agent n'a tourné. Ce contrôle ne comprend rien et ne décide rien : il garantit qu'une proposition existe, et dit son âge.",
+      "changements": [],
+      "annulable": false,
+      "details": {
+        "etat": "a-jour",
+        "message": "Proposition du 2026-09-16, 427 articles.",
+        "echecs": []
+      }
+    },
+    {
+      "action": "A-20260915-0005",
+      "horodatage": "2026-09-15T21:20:50",
+      "agent": "agent-donnees",
+      "resultat": "ok",
+      "message": "21 positions actuelles du soir enregistrées depuis la déclaration du responsable",
+      "motif": "Demande explicite du responsable dans la conversation du 15 septembre 2026, positions confirmées après les mouvements du jour ; avis indépendant sûr avant écriture. Aucun ancien fait reconverti.",
+      "changements": [],
+      "annulable": false,
+      "details": {
+        "lot": "reponses-articles-2026-09-15",
+        "source_privee": "documents-partages/controles-stock/reponses-articles-2026-09-15/demande-source.md",
+        "nouveaux": 21,
+        "deja_connus": 0,
+        "ids": [
+          "comptage-conversation:reponses-articles-2026-09-15:P01",
+          "comptage-conversation:reponses-articles-2026-09-15:P02",
+          "comptage-conversation:reponses-articles-2026-09-15:P03",
+          "comptage-conversation:reponses-articles-2026-09-15:P04",
+          "comptage-conversation:reponses-articles-2026-09-15:P05",
+          "comptage-conversation:reponses-articles-2026-09-15:P06",
+          "comptage-conversation:reponses-articles-2026-09-15:P07",
+          "comptage-conversation:reponses-articles-2026-09-15:P08",
+          "comptage-conversation:reponses-articles-2026-09-15:P09",
+          "comptage-conversation:reponses-articles-2026-09-15:P10",
+          "comptage-conversation:reponses-articles-2026-09-15:P11",
+          "comptage-conversation:reponses-articles-2026-09-15:P12",
+          "comptage-conversation:reponses-articles-2026-09-15:P13",
+          "comptage-conversation:reponses-articles-2026-09-15:P14",
+          "comptage-conversation:reponses-articles-2026-09-15:P15",
+          "comptage-conversation:reponses-articles-2026-09-15:P16",
+          "comptage-conversation:reponses-articles-2026-09-15:P17",
+          "comptage-conversation:reponses-articles-2026-09-15:P18",
+          "comptage-conversation:reponses-articles-2026-09-15:P19",
+          "comptage-conversation:reponses-articles-2026-09-15:P20",
+          "comptage-conversation:reponses-articles-2026-09-15:P21"
+        ],
+        "avis_prive": "agent-controle-avis-avant-20260915-211655.json"
+      }
+    },
+    {
+      "action": "A-20260915-0006",
+      "horodatage": "2026-09-15T21:25:12",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "FRAISE FRANCE BARQUETTE 250G : colis de 8",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques.",
+      "changements": [
+        {
+          "itm8": "0000087635005",
+          "champ": "conditionnement",
+          "avant": "10",
+          "apres": "8"
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "conditionnement:0000087635005:A-20260915-0006:0"
+        ],
+        "commande": "conditionnement 0000087635005 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques."
+      }
+    },
+    {
+      "action": "A-20260915-0007",
+      "horodatage": "2026-09-15T21:25:12",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "LIME FILET 500 G : colis de 8",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques.",
+      "changements": [
+        {
+          "itm8": "0000087440009",
+          "champ": "conditionnement",
+          "avant": "10",
+          "apres": "8"
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "conditionnement:0000087440009:A-20260915-0007:0"
+        ],
+        "commande": "conditionnement 0000087440009 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques."
+      }
+    },
+    {
+      "action": "A-20260915-0008",
+      "horodatage": "2026-09-15T21:25:12",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "NECTARINE JAUNE VRAC : colis de 6.5",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques.",
+      "changements": [
+        {
+          "itm8": "0000087004035",
+          "champ": "conditionnement",
+          "avant": "7",
+          "apres": "6.5"
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "conditionnement:0000087004035:A-20260915-0008:0"
+        ],
+        "commande": "conditionnement 0000087004035 6.5 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques."
+      }
+    },
+    {
+      "action": "A-20260915-0009",
+      "horodatage": "2026-09-15T21:25:13",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "PDT VAPEUR BLONDE 2.5KG ITM : colis de 6",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre.",
+      "changements": [
+        {
+          "itm8": "0000087010621",
+          "champ": "conditionnement",
+          "avant": "8",
+          "apres": "6"
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "conditionnement:0000087010621:A-20260915-0009:0"
+        ],
+        "commande": "conditionnement 0000087010621 6 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre."
+      }
+    },
+    {
+      "action": "A-20260915-0010",
+      "horodatage": "2026-09-15T21:25:13",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "OIGNON BLANC BOTTE : colis de 8",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques.",
+      "changements": [
+        {
+          "itm8": "0000087003331",
+          "champ": "conditionnement",
+          "avant": "12",
+          "apres": "8"
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "conditionnement:0000087003331:A-20260915-0010:0"
+        ],
+        "commande": "conditionnement 0000087003331 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques."
+      }
+    },
+    {
+      "action": "A-20260915-0011",
+      "horodatage": "2026-09-15T21:25:13",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:CRESSON BOTTE : colis de 8",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques.",
+      "changements": [
+        {
+          "itm8": "nom:CRESSON BOTTE",
+          "champ": "conditionnement",
+          "avant": null,
+          "apres": "8"
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "conditionnement:nom:CRESSON BOTTE:A-20260915-0011:0"
+        ],
+        "commande": "conditionnement nom:CRESSON BOTTE 8 --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques."
+      }
+    },
+    {
+      "action": "A-20260915-0012",
+      "horodatage": "2026-09-15T21:25:14",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:SHARON PIECE : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:SHARON PIECE",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:SHARON PIECE:A-20260915-0012:0"
+        ],
+        "commande": "masquer nom:SHARON PIECE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0013",
+      "horodatage": "2026-09-15T21:25:14",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:CAROTTE COULEUR MIXTE VRAC : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:CAROTTE COULEUR MIXTE VRAC",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:CAROTTE COULEUR MIXTE VRAC:A-20260915-0013:0"
+        ],
+        "commande": "masquer nom:CAROTTE COULEUR MIXTE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0014",
+      "horodatage": "2026-09-15T21:25:14",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:BUTTERNUT PIECE : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:BUTTERNUT PIECE",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:BUTTERNUT PIECE:A-20260915-0014:0"
+        ],
+        "commande": "masquer nom:BUTTERNUT PIECE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0015",
+      "horodatage": "2026-09-15T21:25:15",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:CAROTTE JAUNE VRAC : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:CAROTTE JAUNE VRAC",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:CAROTTE JAUNE VRAC:A-20260915-0015:0"
+        ],
+        "commande": "masquer nom:CAROTTE JAUNE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0016",
+      "horodatage": "2026-09-15T21:25:15",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:CAROTTE VIOLETTE VRAC : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:CAROTTE VIOLETTE VRAC",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:CAROTTE VIOLETTE VRAC:A-20260915-0016:0"
+        ],
+        "commande": "masquer nom:CAROTTE VIOLETTE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0017",
+      "horodatage": "2026-09-15T21:25:15",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:CHAMPIGNON SHITAKE VRAC : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:CHAMPIGNON SHITAKE VRAC",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:CHAMPIGNON SHITAKE VRAC:A-20260915-0017:0"
+        ],
+        "commande": "masquer nom:CHAMPIGNON SHITAKE VRAC --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0018",
+      "horodatage": "2026-09-15T21:25:15",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:MACHE BARQUETTE 150 G : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:MACHE BARQUETTE 150 G",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:MACHE BARQUETTE 150 G:A-20260915-0018:0"
+        ],
+        "commande": "masquer nom:MACHE BARQUETTE 150 G --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0019",
+      "horodatage": "2026-09-15T21:25:16",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:CRESSON BOTTE : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:CRESSON BOTTE",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:CRESSON BOTTE:A-20260915-0019:0"
+        ],
+        "commande": "masquer nom:CRESSON BOTTE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0020",
+      "horodatage": "2026-09-15T21:25:16",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:CRESSON FLOW PACK 200G : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:CRESSON FLOW PACK 200G",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:CRESSON FLOW PACK 200G:A-20260915-0020:0"
+        ],
+        "commande": "masquer nom:CRESSON FLOW PACK 200G --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0021",
+      "horodatage": "2026-09-15T21:25:16",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:MANGUE BIO PIECE : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:MANGUE BIO PIECE",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:MANGUE BIO PIECE:A-20260915-0021:0"
+        ],
+        "commande": "masquer nom:MANGUE BIO PIECE --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0022",
+      "horodatage": "2026-09-15T21:25:17",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:RAISIN BLC BIO 500G : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:RAISIN BLC BIO 500G",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:RAISIN BLC BIO 500G:A-20260915-0022:0"
+        ],
+        "commande": "masquer nom:RAISIN BLC BIO 500G --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0023",
+      "horodatage": "2026-09-15T21:25:17",
+      "agent": "agent-rayon",
+      "resultat": "ok",
+      "message": "nom:PATATE DOUCE 500G BIO ITM : masquer",
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits.",
+      "changements": [
+        {
+          "itm8": "nom:PATATE DOUCE 500G BIO ITM",
+          "champ": "masque",
+          "avant": null,
+          "apres": true
+        }
+      ],
+      "annulable": true,
+      "details": {
+        "decisions": [
+          "masquage:nom:PATATE DOUCE 500G BIO ITM:A-20260915-0023:0"
+        ],
+        "commande": "masquer nom:PATATE DOUCE 500G BIO ITM --auteur agent-rayon --motif Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      }
+    },
+    {
+      "action": "A-20260915-0024",
+      "horodatage": "2026-09-15T21:28:42",
+      "agent": "agent-donnees",
+      "resultat": "ok",
+      "message": "Cadencier du jour lu : 427 articles commandables",
+      "motif": "Le cadencier Webtelevente dit ce qu'on peut commander aujourd'hui. Un article absent n'est pas masque : il sera peut-etre la demain.",
+      "changements": [],
+      "annulable": false,
+      "details": {
+        "date_cadencier": "2026-09-15",
+        "fichier": "cadencier webtelevente 15.09.2026.xls",
+        "commandables": 427,
+        "sans_offre": 0,
+        "rapprochement": {
+          "surs": 242,
+          "ambigus": 1,
+          "inconnus": 184
+        }
+      }
+    },
+    {
+      "action": "A-20260915-0025",
+      "horodatage": "2026-09-15T21:28:54",
+      "agent": "filet-de-securite",
+      "resultat": "ok",
+      "message": "Vérification avant commande : a-jour",
+      "motif": "La commande doit pouvoir être passée même si aucun agent n'a tourné. Ce contrôle ne comprend rien et ne décide rien : il garantit qu'une proposition existe, et dit son âge.",
+      "changements": [],
+      "annulable": false,
+      "details": {
+        "etat": "a-jour",
+        "message": "Proposition du 2026-09-16, 427 articles.",
+        "echecs": []
+      }
+    }
+  ],
+  "note_matin_lue": {
+    "date": "2026-09-15",
+    "ecrite_le": "2026-09-15T21:33:01",
+    "ecrite_par": "l'agent orchestrateur",
+    "entrees": [
+      {
+        "heure": "21h33",
+        "texte": "Mise à jour de vos réponses du 15 septembre au soir : 21 positions enregistrées, 6 contenus de colis fixés et 12 articles masqués. La proposition a été recalculée. Les anciens comptages sont conservés.",
+        "gravite": "info"
+      },
+      {
+        "heure": "21h33",
+        "texte": "Au magasin, relever les codes-barres de ces six produits : KIT GUACAMOLE, POMME GALA SACHET 1,5 KG, COURGETTE FILET 1 KG, ÉCHALOTE TRADITIONNELLE 250 G CQLP, CONCOMBRE BIO PIÈCE et OIGNON JAUNE BIO 1 KG MMP. Ils permettront de retrouver les ventes des bons produits.",
+        "gravite": "attention"
+      },
+      {
+        "heure": "21h33",
+        "texte": "CAROTTE NON LAVÉE VRAC : le poids net de la demi-cagette reste à confirmer avec son étiquette.",
+        "gravite": "attention"
+      },
+      {
+        "heure": "21h33",
+        "texte": "POMME GALA SACHET 1,5 KG : vérifier si les trois colis envisagés ont bien été commandés, puis indiquer le nombre réellement reçu le 16 septembre.",
+        "gravite": "info"
+      }
+    ],
+    "_operation_id": "3b2ecded2c824696b74fcc9838d64c1e"
+  },
+  "limite_note": "La note du matin historique initiale mentionne des articles déjà recomptés ou absents de la commande actuelle ; l’orchestrateur prépare une note du soir bornée au lot."
+}

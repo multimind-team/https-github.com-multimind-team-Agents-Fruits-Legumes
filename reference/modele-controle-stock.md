@@ -82,7 +82,7 @@ L'avis indépendant n'est pas une autorisation humaine de stock Pomona.
 | Anomalie / constat initial | Pièces, dates et articles concernés | Effet position / statistiques | Propriétaire de la suite | Message d'erreur publié : ID relu et texte | Résolution vérifiée ou encore ouverte |
 |---|---|---|---|---|---|
 
-L'agent contrôle transmet son constat à l'agent orchestrateur ; l'agent orchestrateur ou l'exécutant autorisé publie et relit
+L'agent contrôle transmet son constat au Leader ; le Leader ou l'exécutant autorisé publie et relit
 le message d'erreur. Donner la référence réelle du message au canal d'origine, si disponible.
 Aucune publication ou réception ne doit être affirmée faute de preuve. Un succès sur une autre
 pièce ne clôt pas cette anomalie. Un échec de notification reste lui-même à signaler.

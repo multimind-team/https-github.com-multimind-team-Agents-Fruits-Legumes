@@ -9,6 +9,10 @@ sont définis dans `reference/contrat-echange.md` et `donnees/pouvoirs.json`.
 
 ## La journée
 
+Les heures ci-dessous sont les repères d'organisation habituels du rayon. Elles ne prouvent
+pas l'heure réelle d'une livraison, son rangement ou la présence d'un export ; elles ne
+constituent pas non plus des tâches automatiques installées dans le logiciel.
+
 | Heure | Quoi |
 |---|---|
 | 05h00 | La livraison arrive sur le quai. |
@@ -19,25 +23,36 @@ sont définis dans `reference/contrat-echange.md` et `donnees/pouvoirs.json`.
 | 19h00 | Mise à jour du stock dans l'application. |
 | 19h30 | Fermeture. |
 
-**Samedi** : la commande est livrée le **lundi**, pas de livraison le dimanche.
-**Dimanche** : pas de livraison, ouverture 9h–12h15, **aucun fichier envoyé**. Les ventes du
-dimanche arrivent dans l'envoi du lundi, avec celles du samedi.
+**Samedi** : la commande habituelle est livrée le **lundi**, sans livraison le dimanche,
+sous réserve d'une fermeture ou d'une réception réellement décalée à contrôler.
+**Dimanche** : organisation habituelle sans livraison ni envoi des exports, avec ouverture
+9h–12h15. L'envoi du lundi peut donc contenir les sorties du samedi et du dimanche ; vérifier
+les périodes internes. Un renvoi ou une facture reçu le dimanche garde son propre périmètre.
 
 ---
 
 ## L'envoi du matin
 
-Cadencier Mercalys, cadencier Webtelevente, vente et livraison **tous les jours** ; casse et
-dons **seulement s'il y en a eu**.
+Le lot habituel apporte cadencier Mercalys, cadencier Webtelevente, ventes et livraisons,
+selon l'organisation décrite ci-dessus ; casse et dons sont facultatifs.
 
-### La règle temporelle d'or des fichiers du matin (Date du nom J vs Contenu réel) :
-Dans les e-mails envoyés au petit matin (vers 05h00-06h30) avec une date de fichier **JJ.MM.AAAA (jour J)** :
-1. **Les Ventes (`vente JJ.MM.AAAA`)** : portent **TOUJOURS sur la veille (J−1)**. La journée du jour J n'ayant pas encore commencé, les caisses arrêtent et exportent le bilan complet de la veille pendant la nuit. *(Le lundi matin, l'envoi couvre le samedi et le dimanche).*
-2. **La Casse (`casse JJ.MM.AAAA`)** : porte **TOUJOURS sur la veille (J−1)**. Il s'agit des fruits et légumes triés et jetés lors de la fermeture de la veille.
-3. **Les Dons (`don JJ.MM.AAAA` ou `dons JJ.MM.AAAA`)** : portent **TOUJOURS sur la veille (J−1)**. Ce sont les produits écartés pour les associations la veille au soir.
-4. **Les Livraisons (`livraison JJ.MM.AAAA` ou bordereaux du jour)** : portent **TOUJOURS sur le jour même (J)**. Les camions (Scafruit, TerreAzur, etc.) sont déchargés sur le quai entre 05h00 et 06h00 avant l'ouverture du magasin. La marchandise est donc physiquement livrée et rangée pour la journée qui s'ouvre.
+### Calendrier normal et période réellement attestée
 
-- **L'heure varie beaucoup** : vers 6h certains jours, en début d'après-midi d'autres. Rien ne se déclenche donc à heure fixe.
+Dans le lot matinal de J, **ventes, casse et dons portent normalement sur J−1** ; la
+**livraison du matin porte normalement sur J**. Le décalage d'un jour est attendu, pas une
+anomalie. Le lundi, les sorties peuvent concerner aussi le samedi.
+
+Cette règle ne permet pas de déduire le contenu du seul nom du fichier. Lire les journées
+et périodes internes : une sortie du jour encore ouvert, un cumul sans détail, un renvoi
+ou une facture tardive exigent leur contrôle propre. Ne jamais répartir un total ni forcer
+la date de J pour faire correspondre le fichier au calendrier habituel.
+
+Pour Scafruit, l'importeur lit la date de commande puis déduit le lendemain, en sautant
+dimanche, comme date d'effet. Il ne prend pas ici en compte le calendrier complet des jours
+fériés. Pour une livraison directe, la date de réception attestée est fournie explicitement.
+La réception du mail ne prouve ni l'arrivée du camion ni le rangement des marchandises.
+
+- **L'heure du mail varie** : vers 6h certains jours, en début d'après-midi d'autres. Un traitement de fichier repose sur son arrivée et son contrôle, pas sur une heure supposée.
 - **Un envoi en double ne doit jamais compter double** : contrôler les identifiants et le résultat du rejeu. Des doublons historiques peuvent exister ; ne jamais nettoyer le carnet en place.
 - **Un fichier peut manquer.** Il faut le dire.
 
@@ -61,55 +76,65 @@ Remplir le rayon depuis la chambre froide sort un colis de la réserve et comble
 rayon : **la position ne bouge pas**. C'est pour ça que ce geste, qu'aucun fichier n'enregistre,
 n'a aucun effet sur la mesure.
 
-**Le moment du comptage change ce qu'il contient (Règle d'or chambre froide) :**
+**Le moment physique du comptage change ce qu'il contient.** Le moteur applique les phases
+suivantes ; le contrôleur doit vérifier que cette convention représente bien la réalité :
 
-| Compté | Ce qui est dedans | Ce qu'on applique ensuite |
+| Phase programmée | Ce que la convention présume déjà inclus | Mouvements du même jour appliqués ensuite |
 |---|---|---|
-| **Entre 17h00 et la fermeture** (le soir) | La livraison du jour **et** les ventes écoulées | Rien du jour même. La livraison du lendemain s'ajoutera à son arrivée le matin. |
-| **Le matin, AVANT la réception du mail** (ex. 5h30) | Le stock de la veille. La livraison **n'est pas encore entrée** en chambre froide. | La livraison du matin **DOIT s'ajouter** au stock à son arrivée. Les ventes du jour seront déduites. |
-| **Le matin, APRÈS la réception du mail** (ex. 7h15) | La livraison est rangée, **aucune vente** encore passée | Ventes, casse et dons du jour — **jamais la livraison** (déjà dedans). |
+| **À partir de 17h00** (soir) | Tous les mouvements du jour | Aucun. Les mouvements des jours suivants s'appliqueront. |
+| **Avant 17h00 et avant le repère de réception du mail** | Position avant livraison du jour et avant ses sorties | Livraison, ventes, casse et dons du jour. |
+| **Avant 17h00 et à partir du repère de réception du mail** | Livraison rangée, avant les sorties de la journée | Ventes, casse et dons ; livraison déjà comprise. |
 
-L'heure du comptage est donc enregistrée précisément, pas seulement le jour. Sans heure connue, il est
-traité comme un comptage du soir.
+Le comptage courant conserve son heure locale de saisie, distincte de l'enregistrement
+technique. Sans heure connue, le lecteur se replie sur la phase soir. Sans repère de réception
+disponible, il utilise 06h30 : à cette heure exacte, la phase est déjà matin après réception.
 
-Le moteur utilise l'heure réelle de réception du mail de livraison du matin pour distinguer exactement
-si le comptage a été fait avant ou après l'arrivée physique des palettes en chambre froide.
+Ce sont des repères techniques, pas des preuves de clôture ou de rangement. Une livraison
+reçue à 11h après un comptage de 8h, ou un relevé à 16h59 qui contient déjà des ventes du jour,
+peut ne pas être représenté correctement par cette convention journalière. Bloquer le
+périmètre douteux et vérifier l'ordre physique ; ne pas modifier l'heure ou la date pour
+contourner le problème. Voir `procedures/controle-stock.md`.
 
-Un recomptage remet la position à jour, même si les statistiques de ventes reçues sont anciennes.
-Conserver les deux dates ; ne pas dégrader le stock recompté au seul motif des anciennes ventes.
-Inversement, une seule livraison récente ne valide pas la couverture de tous les articles.
+Une mesure physiquement plus récente renouvelle la base du seul article concerné, même si
+les statistiques de ventes sont anciennes. Conserver les deux dates ; ne pas dégrader cette
+position au seul motif des anciennes ventes. Cela ne certifie ni les autres articles ni les
+sorties survenues ensuite. Une seule livraison récente ne valide pas non plus leur couverture.
+Un document tardif garde sa date d'effet et n'est pas réappliqué à une mesure qui le contient
+déjà. Une correction historique conserve l'instant de sa cible et suit sa procédure propre.
 
 **Pas de position du tout** : sans mesure exploitable, la position est inconnue, pas zéro.
 L'écran n'invente aucun chiffre. Un article sans activité depuis longtemps peut ne plus être en
 rayon, mais une absence de mesure ne suffit pas à le prouver : vérifier les faits avant de masquer.
 
-Le calcul, lui, **traite une position inconnue comme 0** — « rayon plein, réserve vide » — et
-propose donc la demande attendue. Si un tel article n'est pas commandé, c'est parce que sa
-demande attendue est nulle (moins de 5 jours de vente observés dans la fenêtre de saison), pas
-parce que sa position manque. Un article qui **continue de vendre** mais qu'on a cessé de
-compter sera donc bien commandé.
+Dans la soustraction du besoin, le calcul utilise provisoirement **0 pour une position
+inconnue**, tout en conservant le signal d'inconnu. Ce zéro n'atteste pas « rayon plein,
+réserve vide ». Une demande peut être proposée, selon le profil, les arrondis et les autres
+règles : l'absence de mesure ne suffit ni à prouver une quantité disponible ni à garantir
+une commande. Voir `reference/le-calcul.md` pour les exceptions et blocages.
 
-**À partir de −10 colis inclus**, l'écran affiche `--` : ce n'est plus une mesure, c'est le signe
-qu'on a perdu le fil. Il faut recompter.
+**À partir de −10 colis inclus**, l'écran affiche `--` et demande de recompter. Le calcul
+bloque le proposé si la mesure est antérieure aux sept derniers jours de la commande ; une
+mesure récente bénéficie de l'exception existante, sans rajeunir les statistiques.
 
 ---
 
 ## Les fournisseurs
 
-| Fournisseur | Part du rayon | Comment sa livraison arrive |
-|---|---|---|
-| **Scafruit** — l'officiel | ~79 % | dans le fichier `Livraison-*.xlsx`, intégré tout seul |
-| **Pomona / TerreAzur** | ~14 % | **facture reçue par mail**, à lire et à saisir |
-| Garrigues, Pouget, autres directs | ~6 % | **facture reçue par mail**, à lire et à saisir |
+| Fournisseur | Source et traitement habituels |
+|---|---|
+| **Scafruit** — l'officiel | export de livraison, intégré par `agent-donnees` après simulation et contrôle indépendant |
+| **Pomona / TerreAzur** | facture reçue par mail, lue et structurée ; document et import de stock sont distincts |
+| Garrigues, Pouget, autres directs | facture à lire ; identité, unités et parcours d'import à vérifier pour ce fournisseur |
 
 On commande chez Pomona en cas de rupture chez Scafruit, et certains produits en permanence pour
 le prix ou la qualité. Ça change régulièrement.
 
-**Les factures de livraison de tous les fournisseurs arrivent par mail.** Mais seul le fichier
-`Livraison-*.xlsx` de Scafruit est intégré automatiquement : une facture est un document, pas un
-fichier de données. Tant que personne ne la saisit, l'entrée en stock n'existe pas — pour
-environ **un article sur cinq**, toutes les sorties sont alors enregistrées et **aucune entrée**,
-et la position ne peut que descendre toute seule.
+Dans ce fonctionnement, les factures arrivent par mail. Leur réception ne crée pas une
+entrée de stock : il faut un fait de livraison attesté et effectivement importé. Les exports
+Scafruit habituels bénéficient de la délégation décrite dans `AGENTS.md`, après simulation et
+contrôle, sans nouvelle confirmation pour un lot sûr. Une livraison directe exige son
+autorisation distincte. Si son entrée manque alors que les sorties sont intégrées, la
+position calculée peut baisser à tort ; vérifier l'historique au lieu d'inventer un reçu.
 
 **D'où l'obligation de lire et contrôler les factures directes**, puis de confier leur import à
 `agent-donnees` selon `procedures/courrier.md`. Pour Pomona/TerreAzur, le parcours normal utilise
@@ -122,25 +147,29 @@ seul catalogue ni supposer le colisage du jour.
 parcours pour une même livraison. Un fournisseur sans mapping vérifié nécessite une décision
 humaine ; ne pas appliquer les codes TerreAzur à un autre fournisseur.
 
-Un comptage remet la position juste quelle que soit l'origine de la marchandise. Une position qui
-remonte sans livraison enregistrée indique une anomalie à enquêter, **pas une quantité livrée
-prouvée** : erreur de mesure, unité ou mouvement oublié restent possibles. Aucune entrée déduite
-ne doit être inventée pour équilibrer le calcul.
+Un comptage correctement effectué fournit une nouvelle base physique quelle que soit
+l'origine de la marchandise comprise dans la mesure. Il ne complète pas les livraisons
+historiques manquantes. Une position qui remonte sans livraison enregistrée est un écart à
+enquêter, **pas une quantité livrée prouvée** : erreur de mesure, unité ou mouvement oublié
+restent possibles. Aucune entrée déduite ne doit être inventée pour équilibrer le calcul.
 
-**Le masquage est réversible** : un article masqué n'est pas en rayon *pour l'instant*.
+**Le masquage est réversible** : il retire une ligne de la préparation selon la décision
+applicable ; il ne prouve pas que toute marchandise a disparu du rayon.
 Vérifier les changements intervenus depuis avant une annulation : réversible ne veut pas dire
 qu'il soit sûr de restaurer n'importe quelle ancienne valeur sans contrôle.
 
 ---
 
-## Trois cas normaux à ne jamais signaler
+## Trois particularités à reconnaître et à contrôler
 
 **Les oranges de la machine à jus** ne passent jamais en caisse : elles partent à la presse. Ce
 sont les ventes de jus qui les font sortir — **2 kg par litre, 1 kg par 50 cl**.
 
-**Le box et la caissette** : pommes de terre et filets d'orange existent en box (65 filets, 90
-pour l'orange) et en caissette (8, ou 9). Seules les caissettes sont commandées, donc **un box
-compte +8**, pas +65.
+**Le box et la caissette** : pour certains couples d'offres du cadencier, le moteur choisit
+la caissette : pommes de terre 65/8 ou 55/6, oranges en filet 90/9. C'est une sélection de
+l'offre commandable, pas une conversion de quantité livrée. Un box réellement reçu avec
+65 filets reste 65 filets attestés ; ne pas enregistrer 8 à sa place. Une décision de PCB
+effective reste prioritaire et tout autre couple douteux doit être vérifié.
 
 **Le colisage change d'une livraison à l'autre**, surtout chez Pomona : 6 pièces un jour, 12 le
 lendemain. **Ne jamais le supposer** d'après une livraison précédente : le relire sur la facture
@@ -153,7 +182,7 @@ du jour.
 Marchandise sortie sans être vendue ; la casse est jetée, les dons vont aux Restos du Cœur.
 **Strictement équivalents pour le calcul** : les deux entrent dans le taux de perte, qui gonfle
 la commande. Ils restent séparés dans les carnets parce que la destination est une information
-utile. Le taux de perte du rayon tourne autour de **3 %**.
+utile. Le repère historique de **3 %** cité pour le rayon n'est pas une mesure de la période actuelle.
 
 Ce taux est un repère historique, pas un substitut au taux calculé sur les données de l'article.
 L'absence d'un fichier de casse ou de dons est normale lorsqu'il n'y a pas eu d'activité : elle
@@ -161,11 +190,18 @@ ne doit ni bloquer la commande ni faire déclarer les données incomplètes à e
 
 ## Ordre et photos des produits
 
-Le cadencier Webtelevente reste la référence de l'ordre. Conserver ses séparateurs Fruits,
-Légumes et Bio et les sections qui se répètent ; ne pas ajouter un regroupement global ou un tri.
-Une photo est indicative : elle ne prouve ni code, ni prix, ni quantité, ni colisage. Les seules
-associations publiées viennent d'une correspondance exacte, unique et cohérente avec une ligne
-déjà présente dans la proposition. Voir `procedures/courrier.md`.
+Le tri demandé reste fruits non bio, puis légumes non bio, puis bio, avec l'ordre Webtelevente
+à l'intérieur de chaque groupe. Ne pas modifier ce tri ni ajouter des sous-groupes sans la
+comparaison demandée avec la liste du responsable.
+Une photo est indicative : elle ne prouve ni code, ni prix, ni quantité, ni colisage.
+Le rapprochement automatique exige une correspondance exacte avec l'offre et une entrée
+cohérente déjà présente dans la proposition. Une entrée `nom:<libellé>` reste sans code métier
+connu : la photo ne lui en crée pas un. Les associations exactes historiques prouvées peuvent
+être conservées avec leur preuve privée, sans inventer une validation humaine.
+Une association explicitement validée par le responsable conserve sa preuve et l'empreinte
+de l'original. Elle résiste aux changements de libellé d'offre, mais reste contrôlée sur
+l'identifiant et le libellé vérifiés dans la proposition. Les ambiguïtés et conflits restent
+exclus. Voir `procedures/courrier.md` et `AGENTS.md`.
 
 ---
 
@@ -173,8 +209,8 @@ déjà présente dans la proposition. Voir `procedures/courrier.md`.
 
 | Terme | Sens |
 |---|---|
-| **TG** — tête de gondole | bout de rayon, très visible : ce qui y est mis se vend nettement plus |
+| **TG** — tête de gondole | bout de rayon très visible ; son effet commercial doit être observé, pas converti en coefficient supposé |
 | **Cadencier** | la liste des produits commandables chez un fournisseur, avec conditionnements et prix |
 | **PCB / Cond. de base** | le nombre d'unités dans un colis |
 | **Réappro** | le réapprovisionnement du rayon depuis la chambre froide |
-| **Position** | la mesure du besoin — **pas** un stock |
+| **Position** | écart physique par rapport au rayon plein, pas la quantité totale présente |

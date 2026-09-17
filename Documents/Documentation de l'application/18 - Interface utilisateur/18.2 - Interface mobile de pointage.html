@@ -186,6 +186,9 @@
 
       <h2>Comptage mobile et réseau</h2>
 <p>Les articles de comptage sont classés par importance dans le chiffre d’affaires. Le relevé est gardé sur le téléphone avant envoi et contient l’identité, le colisage et les unités saisies. Une actualisation réseau attend la navigation pour remplacer la liste active. Le bouton Envoyer mes comptages reste accessible sans parcourir tous les articles. L’envoi utilise POST /api/comptages.</p>
+<h2>Fractions de colis sur le pavé intégré</h2>
+<p>La touche virgule permet de saisir <strong>1,2 colis</strong> ; la touche <strong>+ / −</strong> permet notamment <strong>−0,5 colis</strong>. La virgule reste visible pendant la saisie. Une seconde virgule est ignorée et <strong>⌫</strong> efface le dernier caractère. Les boutons <strong>+</strong> et <strong>−</strong> ajoutent ou retirent un colis en conservant les décimales : 1,25 devient 2,25. Le pavé reste sur quatre rangées et n’ouvre pas le clavier du téléphone.</p>
+<p><strong>Valider et suivant</strong> garde le relevé avec le colisage affiché. <strong>Envoyer mes comptages</strong> envoie les seuls relevés déjà gardés ; la saisie en cours n’est pas ajoutée automatiquement. Les relevés en attente conservent leur ancien colisage et leurs unités.</p>
 <h2>Références vérifiables</h2>
 <ul><li><a href="../../../app/compter.html">app/compter.html</a></li><li><a href="../../../moteur/preparer-liste-comptage.py">moteur/preparer-liste-comptage.py</a></li></ul>
 <p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>

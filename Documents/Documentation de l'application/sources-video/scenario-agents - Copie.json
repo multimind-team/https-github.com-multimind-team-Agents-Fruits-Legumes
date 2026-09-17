@@ -1,0 +1,167 @@
+[
+  {
+    "chapter": "Le principe",
+    "title": "Une équipe qui se passe le relais",
+    "from": "Responsable du rayon",
+    "to": "Leader",
+    "roleFrom": "Vous exprimez le besoin",
+    "roleTo": "Il distribue le travail",
+    "message": "Qui doit intervenir ?\nAvec quelles informations ?",
+    "note": "Les agents interviennent selon le besoin.",
+    "voice": "L'application s'appuie sur des agents spécialisés. Le Leader répartit le travail et rassemble leurs résultats. Ce sont des rôles mobilisés selon le besoin, pas huit intelligences artificielles qui tournent en permanence. Suivons leurs passages de relais."
+  },
+  {
+    "chapter": "Le réveil",
+    "title": "Un événement donne le signal",
+    "from": "Agent sentinelle",
+    "to": "Logiciel → Leader",
+    "roleFrom": "Il détecte et s’arrête",
+    "roleTo": "Relais à configurer et vérifier",
+    "message": "Un mail, un message\nou un comptage est arrivé.",
+    "note": "Sans logiciel de supervision configuré, aucun agent ne démarre.",
+    "voice": "L’agent sentinelle est le programme de veille. Il repère les mails, les messages, les comptages et leurs corrections encore à traiter. Il signale l’événement, puis s’arrête. Un logiciel configuré pour suivre cette tâche doit transmettre le signal au Leader. Sans ce relais, aucun agent ne démarre. Les anciens événements en attente restent à examiner."
+  },
+  {
+    "chapter": "Un mail arrive",
+    "title": "Le Leader confie la lecture",
+    "from": "Leader",
+    "to": "Agent courrier",
+    "roleFrom": "Il donne une mission précise",
+    "roleTo": "Il examine les documents",
+    "message": "Lis ce mail et ses pièces.\nVérifie ce qu'ils contiennent.",
+    "note": "Chaque mission précise les documents, les limites et le résultat attendu.",
+    "voice": "Pour un mail, le Leader transmet les documents exacts, le travail permis et le résultat attendu. L'agent courrier examine chaque pièce. Il relève les articles, les quantités, les unités et les dates, puis signale ce qui manque ou reste incompréhensible. Il ne modifie pas les stocks."
+  },
+  {
+    "chapter": "Un mail arrive",
+    "title": "L’agent courrier rend ses preuves",
+    "from": "Agent courrier",
+    "to": "Leader",
+    "roleFrom": "Il explique ce qu'il a lu",
+    "roleTo": "Il prépare la suite",
+    "message": "Voici les fichiers vérifiés,\nleurs dates et les points douteux.",
+    "note": "Un mail classé n'est pas forcément traité.",
+    "voice": "L'agent courrier rend son inventaire, ses preuves et ses incertitudes. Dans le lot habituel du matin, les ventes concernent normalement la veille et les livraisons le jour même. Les dates attestées restent prioritaires, même pour un document tardif. L’agent courrier classe aussi le mail. Mais classé ne veut pas dire traité."
+  },
+  {
+    "chapter": "Préparer sans écrire",
+    "title": "L’agent données essaie d’abord",
+    "from": "Leader",
+    "to": "Agent données",
+    "roleFrom": "Il demande une simulation",
+    "roleTo": "Il calcule les effets attendus",
+    "message": "Prépare le résultat attendu,\nsans modifier les stocks réels.",
+    "note": "SIMULATION · Les données réelles restent inchangées.",
+    "voice": "Le Leader demande ensuite à l'agent données une simulation. Celui-ci utilise les outils de calcul pour montrer ce que l'import changerait. Il transmet les résultats attendus et les éventuelles erreurs. Les stocks réels restent inchangés pendant cette préparation."
+  },
+  {
+    "chapter": "Le deuxième regard",
+    "title": "Un autre agent vérifie",
+    "from": "Leader",
+    "to": "Agent contrôle",
+    "roleFrom": "Il transmet sources et simulation",
+    "roleTo": "Il vérifie indépendamment",
+    "message": "Compare les documents\navec le résultat prévu.",
+    "note": "L’agent contrôle ne modifie pas les données métier.",
+    "voice": "Le Leader confie les documents d'origine et la simulation à l'agent contrôle, dans une intervention distincte. Celui-ci vérifie les dates, les unités, les doublons et les comptages déjà réalisés. Il relit les preuves, sans modifier les données métier."
+  },
+  {
+    "chapter": "Le deuxième regard",
+    "title": "L'avis revient au Leader",
+    "from": "Agent contrôle",
+    "to": "Leader",
+    "roleFrom": "Il rend un avis précis",
+    "roleTo": "Il vérifie aussi l'autorisation",
+    "message": "Ce périmètre est sûr\nsous les conditions indiquées.",
+    "note": "Si un doute subsiste, le périmètre concerné reste bloqué.",
+    "voice": "L’agent contrôle indique ce qui est sûr et ce qui reste bloqué. Le Leader vérifie séparément les autorisations. Les exports habituels disposent d'un accord permanent. En revanche, un nouvel import de stock depuis une facture directe exige votre accord sur chaque ligne."
+  },
+  {
+    "chapter": "Mettre à jour",
+    "title": "L’agent données réalise l’opération",
+    "from": "Leader",
+    "to": "Agent données",
+    "roleFrom": "Il confie le seul lot autorisé",
+    "roleTo": "Il importe puis recalcule",
+    "message": "Intègre uniquement\nles lignes contrôlées et autorisées.",
+    "note": "Documents ou comptages modifiés : refaire le contrôle concerné.",
+    "voice": "Juste avant d'agir, l'agent données vérifie que les sources et les comptages concernés n'ont pas changé. Sinon, il faut refaire la simulation et le contrôle de la partie concernée. Il importe ensuite le seul lot contrôlé et autorisé, recalcule, puis transmet les résultats réels. Préparer un classeur de marge reste une opération distincte d'un import de stock."
+  },
+  {
+    "chapter": "Vérifier le résultat",
+    "title": "L’agent contrôle revient après l’écriture",
+    "from": "Agent contrôle",
+    "to": "Leader",
+    "roleFrom": "Il relit le résultat réel",
+    "roleTo": "Il annonce le bilan vérifié",
+    "message": "Les résultats réels ont été\ncomparés à ce qui était prévu.",
+    "note": "Une erreur ou une intégration partielle doit être signalée.",
+    "voice": "L'agent contrôle compare les écritures réelles et le recalcul avec ce qui était prévu. Il rend ensuite son avis au Leader. C'est seulement après ce retour que celui-ci peut annoncer le résultat vérifié. Un échec ou un travail partiel reste clairement signalé."
+  },
+  {
+    "chapter": "Vous envoyez un message",
+    "title": "L’agent rayon prend votre demande",
+    "from": "Leader",
+    "to": "Agent rayon",
+    "roleFrom": "Il transmet votre message",
+    "roleTo": "Il agit dans ses droits et répond",
+    "message": "Traite cette demande\net réponds dans le même fil.",
+    "note": "Un changement sensible est contrôlé avant et après.",
+    "voice": "Le Leader confie votre message à l'agent rayon. Celui-ci traite votre demande explicite dans ses droits, ou vous demande une précision. Si elle change un colisage, une correspondance d'article ou une position, un autre agent contrôle l'opération avant et après. L'agent rayon vérifie le résultat et sa réponse publiée dans le même fil."
+  },
+  {
+    "chapter": "Vous envoyez un comptage",
+    "title": "L’agent audit-stock cherche la cause de l’écart",
+    "from": "Leader",
+    "to": "Agent audit-stock",
+    "roleFrom": "Il désigne le relevé exact",
+    "roleTo": "Il enquête sur l'écart constaté",
+    "message": "Pourquoi ce comptage\ndiffère-t-il de la position prévue ?",
+    "note": "Le recalcul est lancé par le serveur ; sa réussite reste à vérifier.",
+    "voice": "Le serveur enregistre votre comptage et lance le recalcul, sans attendre l'intelligence artificielle. Le Leader désigne ensuite le comptage, ou sa correction, à examiner. L'agent audit-stock le compare à la position prévue juste avant. Il distingue les causes prouvées des simples possibilités et fait parvenir une explication vérifiée. Il n'invente aucun mouvement."
+  },
+  {
+    "chapter": "Un article pose question",
+    "title": "L'enquête passe par le Leader",
+    "from": "Leader",
+    "to": "Agent articles",
+    "roleFrom": "Il relaie le doute de l’agent audit-stock",
+    "roleTo": "Il recherche une preuve fiable",
+    "message": "Vérifie ce code article\nou le contenu de ce colis.",
+    "note": "Le résultat revient au Leader pour poursuivre l'enquête.",
+    "voice": "Si l’agent audit-stock relève un code ou un colisage douteux, le Leader sollicite l'agent articles. Celui-ci cherche une correspondance prouvée et rend ses conclusions. Si la preuve manque, il vous demande une vérification au magasin. Il ne devine ni le code-barres ni le contenu du colis."
+  },
+  {
+    "chapter": "Anticiper les besoins",
+    "title": "L’agent tendances propose un ajustement",
+    "from": "Agent tendances",
+    "to": "Leader",
+    "roleFrom": "Il analyse une évolution durable",
+    "roleTo": "Il vérifie la suggestion",
+    "message": "Voici une tendance étayée\net une proposition prudente.",
+    "note": "Une mauvaise journée isolée ne suffit pas à réduire la commande.",
+    "voice": "Quand le Leader le sollicite, l'agent tendances compare ventes et livraisons, puis examine le contexte. Il propose un ajustement prudent s'il dispose de preuves suffisantes. Une seule mauvaise journée ne suffit pas. Sa conclusion reste une suggestion, pas une commande envoyée."
+  },
+  {
+    "chapter": "Votre décision",
+    "title": "Vous gardez la main",
+    "from": "Leader",
+    "to": "Responsable du rayon",
+    "roleFrom": "Il résume résultats et réserves",
+    "roleTo": "Vous décidez de la commande",
+    "message": "Voici ce qui est prêt\net ce qui reste à vérifier.",
+    "note": "La commande est envoyée depuis l'outil habituel du magasin.",
+    "voice": "Le Leader rassemble les résultats des agents et vous explique ce qui est prêt ou reste douteux. Vous décidez de la commande. L'application prépare une proposition ; elle n'envoie pas automatiquement la commande au fournisseur. Vous la reportez et l'envoyez dans l'outil habituel du magasin."
+  },
+  {
+    "chapter": "Retour à l'écoute",
+    "title": "La boucle repart après vérification",
+    "from": "Leader",
+    "to": "Agent sentinelle",
+    "roleFrom": "Il clôt le traitement avec preuve",
+    "roleTo": "Il attend le prochain événement",
+    "message": "Résultat vérifié et signalé :\névénement terminé, écoute relancée.",
+    "note": "Seuls les événements terminés et vérifiés sont clôturés.",
+    "voice": "Après vérification du résultat et de la réponse publiée, seul l'événement réellement terminé est marqué comme traité, avec sa preuve. Les échecs, les précisions et les accords attendus restent en attente. L'écoute reprend, sauf si vous avez demandé l'arrêt. Des enquêtes indépendantes peuvent avancer en parallèle. Les écritures d'un même lot gardent leur ordre."
+  }
+]

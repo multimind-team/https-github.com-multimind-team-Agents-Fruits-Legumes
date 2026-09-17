@@ -1,0 +1,24 @@
+{
+  "verification": "2026-09-16T15:51:58.126653+02:00",
+  "scope": "Comparaison du scénario au fonctionnement prescrit, sans exécution métier.",
+  "avis_controle": "Favorable après correction des scènes 2, 3, 4, 8, 10, 11, 15.",
+  "sources": {
+    "AGENTS.md": "122841e6d1d57cf378cbf2b31723d63b9f55ac02cd6ccca3bbaf3f0a50005303",
+    "agents/agent-orchestrateur.md": "955b7513c987b3a026141152c838534ec4755c2472914c0d3f7e753bc50ffd35",
+    "agents/agent-courrier.md": "3d12f7c2c46b46d9ad30155f8535a836606fea9eea6a19505b7253122e5d7201",
+    "agents/agent-donnees.md": "43825bd9b5332b8cfaadc154778c6189702bf2b03811846f73d286afafcdb66f",
+    "agents/agent-controle.md": "f49ba187a7bd3dc5571024dc8f0a2e795fab852b7f30c68fdbb9333997e08405",
+    "agents/agent-rayon.md": "1d0e530ee3a7120e614590b24f7c3e8eb91f64289963e854afccc6fa36c0c28a",
+    "agents/agent-articles.md": "4b59fbe4350e881fe0cf98fe31489f89c7c0f0c1250444ee29032a795e6d64eb",
+    "agents/agent-tendances.md": "605cb810b4bd42bd09b54e9a684655301657452af6b3fc50b786c47a070a6db0",
+    "agents/agent-audit-stock.md": "7f649dd235feeb417c21ccc57865c33e1803a461b3c77c46a3874058531dd2b1",
+    "procedures/courrier.md": "41fa68844aaf2703e85ef8180bf9f0ede9adc2cf234245522f2e513b01fe7f98",
+    "procedures/controle-stock.md": "e1d29045afeb9460b842beb7c2b4e75a5eabda820c324ae7dd389348629d10f9",
+    "procedures/message-rayon.md": "8e3a7db2ed33f99d2f913c4ef1a624474367f48ba03b42713a892a92d5c55306",
+    "procedures/comptage.md": "029ae7016ba970c1889d00225c617031d45d870b0aaceb4a9fa6f143cb636d0d"
+  },
+  "scenario_sha256": "e9b6c7a0ae8cbadf3fd750250f1f87e49124ebb0540847e832bb4e13090c729e",
+  "voice": "fr-FR-VivienneMultilingualNeural",
+  "video_sha256": "4c5466f240b944f2a34195d9f5166176f34b96e531f41661452510ca96f67551",
+  "duration_seconds": 245.067
+}

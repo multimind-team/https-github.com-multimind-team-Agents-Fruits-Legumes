@@ -4,7 +4,7 @@
 
 Utilise-la quand un chiffre, un article ou un fichier semble bizarre.
 
-l'agent orchestrateur choisit `agent-controle` pour le risque, `agent-articles` pour une enquête produit, ou
+le Leader choisit `agent-controle` pour le risque, `agent-articles` pour une enquête produit, ou
 `agent-donnees` pour un import. Entrée : anomalie exacte et sources. Sortie : fait vérifié,
 hypothèses, effet possible, correction proposée et propriétaire autorisé à l'appliquer.
 
@@ -38,7 +38,7 @@ peut créer ce fichier s'il manque : une analyse sans écriture l'exécute en co
    - fichier absent ou incomplet.
    - doublon historique, instant de comptage ou conversion d'unité incohérent ;
    - désaccord entre une règle documentée et le code en cours d'exécution.
-5. Les agents de contrôle/articles restent en lecture seule métier ; ils peuvent rendre leurs rapports de preuve privés selon le mandat. Si une correction est sûre, l'agent orchestrateur
+5. Les agents de contrôle/articles restent en lecture seule métier ; ils peuvent rendre leurs rapports de preuve privés selon le mandat. Si une correction est sûre, le Leader
    la transmet à l'agent autorisé avec son motif et, si nécessaire, la validation du responsable.
 6. Sinon, signaler ce que tu as trouve et demander validation.
 

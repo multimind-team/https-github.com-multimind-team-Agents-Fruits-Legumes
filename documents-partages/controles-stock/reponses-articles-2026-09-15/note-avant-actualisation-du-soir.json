@@ -1,0 +1,37 @@
+{
+ "date": "2026-09-14",
+ "ecrite_le": "2026-09-15T16:09:48",
+ "ecrite_par": "l'agent orchestrateur",
+ "entrees": [
+  {
+   "heure": "16h09",
+   "texte": "**1 article(s) masqués ont reçu une livraison** : PDT PRINCESSE AMANDINE 1KG (2 colis).",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h09",
+   "texte": "2 article(s) ont une position trop basse pour être crédible (ORANGE DESSERT VRAC, MANGUE AVION PIECE). Un comptage les remettrait d'aplomb.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h09",
+   "texte": "5 article(s) actifs n'ont aucune position mesurée : CAROTTE SACHET 1.5KG ITM, ECHALOTE TRADI FILET 250G ITM, LAITUE SUCRINE X6 BARQUETTE, MELANGE JEUNES POUSSES 125G, PDT SALADE MICRO ONDE 500G. Leur commande part d'une estimation.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h09",
+   "texte": "**Sur-stockage récurrent détecté** sur 2 article(s) : CAROTTE SACHET 1.5KG ITM (8 -> 6 colis), OIGNON JAUNE FILET 1KG ITM (6 -> 5 colis). Des réductions prudentes sont suggérées sur l'écran de commande.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h09",
+   "texte": "**Hausse brutale du prix d'achat** sur 1 article(s) ce matin : COURGETTE FILET 1KG (+29%). Vérifier le prix de vente en caisse.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "16h09",
+   "texte": "Données du 14/09 intégrées : les ventes (166 lignes), la livraison (61 lignes), la casse (37 lignes).",
+   "gravite": "info"
+  }
+ ]
+}

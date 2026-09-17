@@ -228,7 +228,7 @@ def dernier_cadencier(dossier_courrier=None):
         if re.match(r"^cadencier[-_ ]+webtelevente(?:[-_ ]|$)", fichier.name, re.IGNORECASE)
     ]
     if not fichiers:
-        sys.exit("Aucun cadencier Webtelevente reçu. L'agent orchestrateur doit d'abord relever les mails "
+        sys.exit("Aucun cadencier Webtelevente reçu. Le Leader doit d'abord relever les mails "
                  "et ranger les pièces jointes utiles.")
     return max(fichiers, key=lambda f: (date_du_nom(f), f.stat().st_mtime))
 

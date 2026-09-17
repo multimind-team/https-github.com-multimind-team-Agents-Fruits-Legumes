@@ -1,0 +1,112 @@
+[
+  {
+    "chapter": "Prise en main",
+    "title": "La tablette au quotidien",
+    "from": "Responsable du rayon",
+    "to": "Application Rayon F&L",
+    "roleFrom": "Décideur terrain",
+    "roleTo": "Assistant numérique connecté",
+    "message": "Responsable du rayon :\n« Bienvenue dans mon rayon !\nDécouvrons ensemble l'application sur ma tablette. »",
+    "note": "Une application mobile et tactile spécialement conçue pour le terrain.",
+    "voice": "Bienvenue au rayon fruits et légumes ! Chaque matin, cette tablette est mon outil de travail indispensable. Simple, intuitive et connectée à notre brigade d'agents numériques, l'application me fait gagner un temps précieux en sécurisant toutes mes commandes !"
+  },
+  {
+    "chapter": "Tableau de bord",
+    "title": "L'accueil et la note du matin",
+    "from": "Responsable du rayon",
+    "to": "Accueil (index.html)",
+    "roleFrom": "Consultation matinale",
+    "roleTo": "Synthèse de la nuit et alertes",
+    "message": "Responsable du rayon :\n« Première étape au rayon :\nje consulte la commande du jour et la note de la nuit. »",
+    "note": "Vision globale immédiate : montants, volumes et événements nocturnes.",
+    "voice": "Dès mon arrivée au rayon, l'écran d'accueil me donne la météo de la journée : le résumé chiffré de la commande préparée, les alertes prioritaires et la note du matin rédigée par les agents pour savoir exactement ce qui s'est passé cette nuit."
+  },
+  {
+    "chapter": "Dialogue de terrain",
+    "title": "Parler à l'assistant de rayon",
+    "from": "Responsable du rayon",
+    "to": "Agent de Rayon",
+    "roleFrom": "Signalement en magasin",
+    "roleTo": "Réponse immédiate sans jargon",
+    "message": "Responsable du rayon :\n« J'ai mis les melons en tête de gondole.\nL'assistant adapte immédiatement les prévisions. »",
+    "note": "Communication en français simple, utilisable même hors réseau.",
+    "voice": "Un changement d'implantation ou une remarque sur le terrain ? Pas besoin d'aller au bureau : j'écris directement à mon assistant sur la tablette. Il me répond en français simple et tient compte de mes remarques pour recalculer les besoins !"
+  },
+  {
+    "chapter": "Chambre froide",
+    "title": "Le pointage mobile en réserve",
+    "from": "Responsable du rayon",
+    "to": "Pointage (compter.html)",
+    "roleFrom": "Comptage physique",
+    "roleTo": "Liste ordonnée par importance CA",
+    "message": "Responsable du rayon :\n« Direction la chambre froide :\nles articles prioritaires s'affichent en grand format. »",
+    "note": "Classement automatique selon l'impact sur le chiffre d'affaires.",
+    "voice": "Direction la chambre froide pour l'inventaire rapide. L'écran de comptage m'affiche les articles prioritaires par ordre d'importance. Pas de perte de temps : les gros volumes de vente apparaissent en premier pour cibler l'essentiel !"
+  },
+  {
+    "chapter": "Saisie tactile",
+    "title": "Pavé numérique et fractions de colis",
+    "from": "Responsable du rayon",
+    "to": "Pavé tactile intégré",
+    "roleFrom": "Saisie au doigt",
+    "roleTo": "Gestion des demis et quarts de colis",
+    "message": "Responsable du rayon :\n« Une demi-cagette entamée ?\nLa virgule et le plus-moins gèrent 1,5 colis en un geste. »",
+    "note": "Pavé intégré 4 rangées : ne masque jamais la quantité affichée.",
+    "voice": "Le grand atout sur le terrain, c'est ce pavé tactile géant intégré : il ne bloque pas l'écran et permet de saisir facilement des fractions de cagettes, comme un virgule deux ou deux virgule cinq colis. Un clic sur 'Valider et suivant', et le tour est joué !"
+  },
+  {
+    "chapter": "Cadencier",
+    "title": "La console de commande",
+    "from": "Responsable du rayon",
+    "to": "Console (commander.html)",
+    "roleFrom": "Contrôle de la proposition",
+    "roleTo": "Articles triés selon le cadencier",
+    "message": "Responsable du rayon :\n« Tous mes articles rangés par famille :\nFruits, Légumes et Bio dans l'ordre de la centrale. »",
+    "note": "Alignement strict sur le cadencier officiel Webtelevente et Mercalys.",
+    "voice": "Voici le cœur du réacteur : la console de commande. Les articles sont parfaitement ordonnés selon le cadencier officiel : fruits, légumes, puis bio. Pour chaque produit, les agents ont déjà calculé une proposition idéale selon les ventes et la météo !"
+  },
+  {
+    "chapter": "Ajustements",
+    "title": "Les explications des agents",
+    "from": "Agent de Rayon",
+    "to": "Responsable du rayon",
+    "roleFrom": "Transparence des calculs",
+    "roleTo": "Ajustement au colis près",
+    "message": "Agent de Rayon :\n« Ventes prévues : 4 colis. Météo ensoleillée.\nBesoin calculé : 3 colis après déduction du stock. »",
+    "note": "Explicabilité totale : zéro boîte noire, chaque proposition est justifiée.",
+    "voice": "Sous chaque article, un encadré clair m'explique le calcul : les ventes moyennes, l'impact du beau temps et le stock déjà présent. Si je veux modifier, de simples boutons plus et moins me permettent d'ajuster la quantité au colis près en une seconde !"
+  },
+  {
+    "chapter": "Détail article",
+    "title": "L'historique et la fiche produit",
+    "from": "Responsable du rayon",
+    "to": "Fiche détail tactile",
+    "roleFrom": "Analyse approfondie",
+    "roleTo": "Courbes N vs N-1 et colisage",
+    "message": "Responsable du rayon :\n« Un doute sur un produit ?\nJ'ouvre la fiche pour voir la courbe des ventes de l'an dernier. »",
+    "note": "Comparaison hebdomadaire ISO, prix d'achat, PCB et stock projeté.",
+    "voice": "En touchant le nom d'un article, une fiche complète s'ouvre : j'y retrouve le conditionnement exact, le prix d'achat, et un graphique comparant mes ventes actuelles à celles de l'année dernière sur la même semaine. Tout est transparent et vérifiable !"
+  },
+  {
+    "chapter": "Catalogue",
+    "title": "Les promotions et prospectus",
+    "from": "Responsable du rayon",
+    "to": "Promotions (promo.html)",
+    "roleFrom": "Anticipation des opérations",
+    "roleTo": "Prospectus officiels intégrés",
+    "message": "Responsable du rayon :\n« Les offres prospectus sont détectées automatiquement\npour prévoir les volumes sans risquer la rupture. »",
+    "note": "Visibilité des offres catalogue dès le samedi pour le mardi.",
+    "voice": "L'écran Promotions intègre automatiquement les prospectus nationaux Intermarché. Les offres à venir sont détectées à l'avance, ce qui me permet d'anticiper les volumes promotionnels et de mettre en place le bon réassort sans jamais me faire déborder !"
+  },
+  {
+    "chapter": "Validation",
+    "title": "Vous gardez le contrôle",
+    "from": "Responsable du rayon",
+    "to": "Recopie sur Webtélévente",
+    "roleFrom": "Décision finale souveraine",
+    "roleTo": "Saisie finale et envoi de commande",
+    "message": "Responsable du rayon :\n« Les agents préparent tout, mais c'est moi qui décide !\nJe recopie la proposition sur Webtélévente et j'envoie. »",
+    "note": "Principe fondamental du Human-in-the-Loop : souveraineté absolue du chef de rayon.",
+    "voice": "Et voici la règle d'or : l'application et les agents préparent tout le travail, mais c'est toujours moi, responsable de rayon, qui décide et garde la main. À la fin, je n'ai plus qu'à recopier la proposition de commande sur l'application Webtélévente et envoyer la commande en toute sérénité !"
+  }
+]

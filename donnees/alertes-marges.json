@@ -1,23 +1,40 @@
 {
- "calcule_le": "2026-09-15T16:09:02.060991",
- "date_cadencier": "2026-09-15",
- "nombre_articles_analyses": 427,
- "nombre_alertes": 1,
+ "calcule_le": "2026-09-17T06:10:39.550669",
+ "date_cadencier": "2026-09-17",
+ "nombre_articles_analyses": 434,
+ "nombre_alertes": 2,
  "alertes": [
   {
-   "itm8": "0000087765013",
-   "nom": "COURGETTE FILET 1KG",
-   "prix_achat_actuel": 1.93,
-   "prix_achat_precedent": 1.5,
-   "date_prix_precedent": "2026-09-12",
-   "hausse_pct": 28.7,
-   "prix_vente": 2.49,
-   "taux_marge": 22.5,
+   "itm8": "0000087400039",
+   "nom": "ORANGE FILET 1,5KG PETIT PRIX",
+   "prix_achat_actuel": 2.29,
+   "prix_achat_precedent": 1.63,
+   "date_prix_precedent": "2026-09-16",
+   "hausse_pct": 40.5,
+   "prix_vente": 2.79,
+   "taux_marge": 17.9,
    "gravite": "avertissement",
    "motifs": [
-    "Hausse d'achat de +28.7% (1.93 € vs 1.50 € le 2026-09-12)"
+    "Hausse d'achat de +40.5% (2.29 € vs 1.63 € le 2026-09-16)",
+    "Marge brute faible (17.9% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087004566",
+   "nom": "CHOU FLEUR PIECE",
+   "prix_achat_actuel": 2.05,
+   "prix_achat_precedent": 1.7,
+   "date_prix_precedent": "2026-09-16",
+   "hausse_pct": 20.6,
+   "prix_vente": 3.19,
+   "taux_marge": 35.7,
+   "gravite": "avertissement",
+   "motifs": [
+    "Hausse d'achat de +20.6% (2.05 € vs 1.70 € le 2026-09-16)"
    ],
    "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
   }
- ]
+ ],
+ "_operation_id": "313baa02abd0480b85e3624b8c35f9c5"
 }

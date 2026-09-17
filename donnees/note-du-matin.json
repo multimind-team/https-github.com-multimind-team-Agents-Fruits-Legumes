@@ -1,37 +1,48 @@
 {
- "date": "2026-09-14",
- "ecrite_le": "2026-09-15T16:09:48",
- "ecrite_par": "l'agent orchestrateur",
+ "date": "2026-09-16",
+ "ecrite_le": "2026-09-17T06:12:03",
+ "ecrite_par": "constats automatiques (le Leader n'a pas encore relu)",
  "entrees": [
   {
-   "heure": "16h09",
-   "texte": "**1 article(s) masqués ont reçu une livraison** : PDT PRINCESSE AMANDINE 1KG (2 colis).",
+   "heure": "06h12",
+   "texte": "**2 article(s) masqués ont reçu une livraison** : PDT PRINCESSE AMANDINE 1KG (2 colis), PACK CHOI EMBALLE (1 colis).",
    "gravite": "attention"
   },
   {
-   "heure": "16h09",
-   "texte": "2 article(s) ont une position trop basse pour être crédible (ORANGE DESSERT VRAC, MANGUE AVION PIECE). Un comptage les remettrait d'aplomb.",
+   "heure": "06h12",
+   "texte": "3 article(s) ont une position trop basse pour être crédible (COURGETTE FILET 1KG PETIT PRIX, MANGUE AVION PIECE, nom:POMME GALA SACHET 1,5KG). Un comptage les remettrait d'aplomb.",
    "gravite": "attention"
   },
   {
-   "heure": "16h09",
-   "texte": "5 article(s) actifs n'ont aucune position mesurée : CAROTTE SACHET 1.5KG ITM, ECHALOTE TRADI FILET 250G ITM, LAITUE SUCRINE X6 BARQUETTE, MELANGE JEUNES POUSSES 125G, PDT SALADE MICRO ONDE 500G. Leur commande part d'une estimation.",
+   "heure": "06h12",
+   "texte": "3 article(s) actifs n'ont aucune position mesurée : LAITUE SUCRINE X6 BARQUETTE, PIMENT ROUGE VRAC, TOMATE CERISE RONDE BIO 250G. Leur commande part d'une estimation.",
    "gravite": "attention"
   },
   {
-   "heure": "16h09",
+   "heure": "06h12",
    "texte": "**Sur-stockage récurrent détecté** sur 2 article(s) : CAROTTE SACHET 1.5KG ITM (8 -> 6 colis), OIGNON JAUNE FILET 1KG ITM (6 -> 5 colis). Des réductions prudentes sont suggérées sur l'écran de commande.",
    "gravite": "attention"
   },
   {
-   "heure": "16h09",
-   "texte": "**Hausse brutale du prix d'achat** sur 1 article(s) ce matin : COURGETTE FILET 1KG (+29%). Vérifier le prix de vente en caisse.",
+   "heure": "06h12",
+   "texte": "**Hausse brutale du prix d'achat** sur 2 article(s) ce matin : ORANGE FILET 1,5KG PETIT PRIX (+40%), CHOU FLEUR PIECE (+21%). Vérifier le prix de vente en caisse.",
    "gravite": "attention"
   },
   {
-   "heure": "16h09",
-   "texte": "Données du 14/09 intégrées : les ventes (166 lignes), la livraison (61 lignes), la casse (37 lignes).",
+   "heure": "06h12",
+   "texte": "**Transition saisonnière — Produits à remettre en vente (démasquer)** : **Dès maintenant (mi-septembre)** : BUTTERNUT PIECE PE (+73%), POTIMARRON PIECE (+47%), CAROTTE SACHET 1,5KG BIO MMP (+25%) et 6 autre(s) — **D'ici fin septembre (semaine 39)** : LEGUMES POT AU FEU 1KG MMP (+100%), CLEMENTINE FILET 1,5 KG (+100%), POIRE WILLIAM ROUGE VRAC (+54%) et 11 autre(s) — **Début novembre (semaine 44)** : CLEMENTINE FEUILLE VRAC (+287%), PDT CONSO LAVEE 10KG (+4314%), CLEMENTINE CORSE 1KG (+300%) et 5 autre(s). À réactiver sur la console de commande (onglet Masqués) pour capter la demande d'automne.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "06h12",
+   "texte": "**Fin de saison estivale — Produits à arrêter (masquer)** : **Dès maintenant (semaine 38)** : NECTARINE JAUNE VRAC (-100%), PECHE JAUNE VRAC (-100%), PECHE PLATE VRAC (-100%) et 14 autre(s) — **D'ici fin septembre (semaine 39)** : TOMATE COTELEE JAUNE VRAC (-65%), HARICOT VERT VRAC (-69%), PIMENT VERT VRAC (-36%) et 1 autre(s) — **Début octobre (semaine 40)** : CONCOMBRE PIECE (-52%), TOMATE ALLONGEE VRAC (-53%), AUBERGINE VIOLETTE VRAC (-39%) et 4 autre(s). À masquer sur la console de commande pour éviter les invendus et la casse.",
+   "gravite": "attention"
+  },
+  {
+   "heure": "06h11",
+   "texte": "Données du 16/09 intégrées : les ventes (178 lignes), la livraison (48 lignes), la casse (24 lignes).",
    "gravite": "info"
   }
- ]
+ ],
+ "_operation_id": "313baa02abd0480b85e3624b8c35f9c5"
 }

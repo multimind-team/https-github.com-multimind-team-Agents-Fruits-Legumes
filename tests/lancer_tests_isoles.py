@@ -55,7 +55,8 @@ sys.addaudithook(_audit)
 def ignorer_prives(dossier, noms):
     """Ne transporte ni identifiants de courrier ni traces privées dans les copies."""
     exclus = {".git", ".venv", "node_modules", "__pycache__", "scratch", "courrier",
-              "courrier-config.json", ".sentinelle-evenements.json", ".courrier_uids_connus.json"}
+              "courrier-config.json", ".sentinelle-evenements.json", ".sentinelle-etat.json",
+              ".serveur-arrete", ".services-arret-id", ".courrier_uids_connus.json"}
     return [n for n in noms if n in exclus or n == ".env" or (n.startswith(".env.") and n != ".env.example")
             or n.endswith((".pyc", ".log", ".lock"))]
 

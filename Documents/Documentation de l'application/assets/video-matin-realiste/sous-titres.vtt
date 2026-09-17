@@ -1,0 +1,178 @@
+WEBVTT
+
+00:00:00.050 --> 00:00:01.775
+<v Responsable de rayon>6 heures 45.
+
+00:00:01.774 --> 00:00:10.337
+<v Responsable de rayon>J'expédie les six exports du matin : ventes d'hier, casse, dons, le bon de livraison de ce matin, et les deux cadenciers Mercalys et Webtélévente.
+
+00:00:10.337 --> 00:00:12.362
+<v Responsable de rayon>Envoi groupé à la brigade.
+
+00:00:13.131 --> 00:00:15.094
+<v Agent Sentinelle>Alerte transmission.
+
+00:00:15.044 --> 00:00:18.457
+<v Agent Sentinelle>Signal courriel externe intercepté à la porte.
+
+00:00:18.457 --> 00:00:21.957
+<v Agent Sentinelle>Expéditeur certifié : Responsable Rayon.
+
+00:00:21.957 --> 00:00:24.294
+<v Agent Sentinelle>Six pièces jointes détectées.
+
+00:00:24.294 --> 00:00:26.919
+<v Agent Sentinelle>Je transfère l'événement au Leader.
+
+00:00:27.676 --> 00:00:30.475
+<v Leader>Signal bien reçu, Sentinelle.
+
+00:00:30.426 --> 00:00:32.838
+<v Leader>Brigade, à vos postes.
+
+00:00:32.838 --> 00:00:34.975
+<v Leader>Le lot matinal arrive.
+
+00:00:34.975 --> 00:00:38.650
+<v Leader>Ne modifiez aucun stock réel tant que tout n'est pas audité.
+
+00:00:39.411 --> 00:00:43.174
+<v Leader>Agent Courrier, dresse l'inventaire formel des pièces.
+
+00:00:43.124 --> 00:00:47.436
+<v Leader>Agent Données, prépare la simulation à blanc sans toucher aux stocks.
+
+00:00:48.195 --> 00:00:50.183
+<v Agent Courrier>Fichiers réceptionnés.
+
+00:00:50.133 --> 00:00:54.070
+<v Agent Courrier>Ventes, casse, dons et cadenciers sont conformes.
+
+00:00:54.070 --> 00:00:59.570
+<v Agent Courrier>Cependant, le fichier de livraison présente une incohérence de date et un en-tête altéré.
+
+00:01:00.339 --> 00:01:03.277
+<v Agent Données>Simulation lancée en mémoire protégée.
+
+00:01:03.227 --> 00:01:09.414
+<v Agent Données>Les sorties s'articulent bien avec les comptages, mais la livraison bloque : trois références sont rejetées au test à blanc.
+
+00:01:10.179 --> 00:01:12.392
+<v Agent Contrôle>Veto de conformité.
+
+00:01:12.342 --> 00:01:17.367
+<v Agent Contrôle>Le bon de livraison reçu ne concorde pas avec les réceptions effectives du jour.
+
+00:01:17.367 --> 00:01:20.292
+<v Agent Contrôle>Je verrouille l'intégration de ce fichier.
+
+00:01:20.292 --> 00:01:23.017
+<v Agent Contrôle>Risque d'erreur de stock critique.
+
+00:01:23.763 --> 00:01:25.576
+<v Leader>Veto approuvé.
+
+00:01:25.526 --> 00:01:28.263
+<v Leader>Zéro écriture sur le stock réel.
+
+00:01:28.263 --> 00:01:32.813
+<v Leader>Agent Rayon, alerte immédiatement le responsable sur son application.
+
+00:01:32.814 --> 00:01:35.901
+<v Leader>Message clair, sans jargon technique.
+
+00:01:36.652 --> 00:01:38.039
+<v Agent Rayon>C'est fait.
+
+00:01:37.989 --> 00:01:43.627
+<v Agent Rayon>Message envoyé sur son mobile : Le fichier de livraison présente une discordance.
+
+00:01:43.627 --> 00:01:46.527
+<v Agent Rayon>Merci de renvoyer le bon export.
+
+00:01:46.527 --> 00:01:49.701
+<v Agent Rayon>Les autres flux restent en attente sécurisée.
+
+00:01:50.402 --> 00:01:53.739
+<v Responsable de rayon>Oups, mauvais export sélectionné dans l'urgence.
+
+00:01:53.739 --> 00:01:57.701
+<v Responsable de rayon>Je viens de renvoyer la bonne version avec les réceptions validées à quai.
+
+00:01:58.468 --> 00:02:01.168
+<v Agent Sentinelle>Nouvel événement courriel à la porte.
+
+00:02:01.118 --> 00:02:04.943
+<v Agent Sentinelle>Pièce rectifiée détectée : livraison du jour corrigée.
+
+00:02:04.943 --> 00:02:07.705
+<v Agent Sentinelle>Transfert prioritaire au Leader.
+
+00:02:08.475 --> 00:02:10.988
+<v Agent Courrier>Document certifié conforme.
+
+00:02:10.938 --> 00:02:13.551
+<v Agent Courrier>Il remplace la version erronée.
+
+00:02:13.551 --> 00:02:16.626
+<v Agent Courrier>Preuve horodatée conservée dans le registre.
+
+00:02:17.379 --> 00:02:21.280
+<v Agent Données>Rejeu de la simulation avec le filet de sécurité forcé.
+
+00:02:21.229 --> 00:02:23.992
+<v Agent Données>Zéro doublon sur les ventes et la casse.
+
+00:02:23.992 --> 00:02:27.742
+<v Agent Données>La livraison s'aligne parfaitement sur les positions de stock.
+
+00:02:28.491 --> 00:02:30.729
+<v Agent Contrôle>Audit complet validé.
+
+00:02:30.679 --> 00:02:33.404
+<v Agent Contrôle>Les six flux sont intègres et cohérents.
+
+00:02:33.404 --> 00:02:36.616
+<v Agent Contrôle>Feu vert accordé pour l'intégration réelle.
+
+00:02:37.347 --> 00:02:40.160
+<v Leader>Autorisation d'intégration accordée.
+
+00:02:40.110 --> 00:02:43.285
+<v Leader>Données, applique le recalcul complet.
+
+00:02:43.285 --> 00:02:47.510
+<v Leader>Rayon, publie la Note du Matin et lève l'alerte sur le smartphone.
+
+00:02:48.267 --> 00:02:50.605
+<v Agent Données>Intégration achevée.
+
+00:02:50.555 --> 00:02:54.192
+<v Agent Données>Recalcul général du cadencier terminé avec succès.
+
+00:02:54.192 --> 00:02:57.730
+<v Agent Données>La proposition de commande est à jour pour 7 heures 30.
+
+00:02:58.491 --> 00:03:00.829
+<v Agent Rayon>Note du matin publiée.
+
+00:03:00.779 --> 00:03:04.329
+<v Agent Rayon>L'alerte d'erreur est effacée de l'écran mobile.
+
+00:03:04.329 --> 00:03:07.816
+<v Agent Rayon>Le responsable peut commander en toute sérénité.
+
+00:03:08.571 --> 00:03:10.446
+<v Leader>Mission accomplie.
+
+00:03:10.396 --> 00:03:14.796
+<v Leader>Sentinelle, reprends la surveillance de la porte pour les flux de la journée.
+
+00:03:15.555 --> 00:03:18.018
+<v Agent Sentinelle>Surveillance active réarmée.
+
+00:03:17.968 --> 00:03:19.855
+<v Agent Sentinelle>Porte sécurisée.
+
+00:03:19.855 --> 00:03:21.743
+<v Agent Sentinelle>Brigade prête.

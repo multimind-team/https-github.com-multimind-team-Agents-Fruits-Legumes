@@ -1,0 +1,62 @@
+{
+  "auteur": "agent-orchestrateur",
+  "portee": "Compte rendu du seul lot de réponses du soir ; aucun recalcul ni carnet modifié.",
+  "ecrite_le": "2026-09-15T21:33:01",
+  "ancienne_note_sha256": "2f1fd84104aae7bca05030defecdeb875755942f9bbd26d3ed53a46cdc717d14",
+  "nouvelle_note_sha256": "7944c30e6caef840540f73fd64d97d1ed9439eae9178eaf21df549788a1b9645",
+  "fichiers_proteges_inchanges_pendant_verification": true,
+  "empreintes_protegees": {
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2024.jsonl": "fc29efdb4d9c2b4a28d820371f4fe2618f5e4b0250ddb00f9cbaf9a669ad803a",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2025.jsonl": "8a2f8e9a5a3063774eef6334bebec89c5df15ee99009c0baded491dcf4ba20bc",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2026.jsonl": "fce02b9eee57b379fb161dbcde811cde1da71e1edfde955dbd56368656617a6b",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\.numeros.jsonl": "012ad3875f89abf3292bd4c40ab0c4136a53cc7e264d2bbae562f2d9e28b7e1a",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-donnees.jsonl": "9fd2d7455dc8675a5557efc07e313340be29738fd76aca0290130fe33b723ec3",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-orchestrateur.jsonl": "2810bd677c5e62b856b54b9df85419eaeaf4244e6699201d883869825437d95e",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-rayon.jsonl": "b3497b9c242cd4eaf2bef94b979589332a3fad2357f206d069ec4a41918d7a94",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-tendances.jsonl": "8d986227c2d336210890613db2753c237ef6640c46d93d9abe88d96aaed2d36f",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\dialogues.jsonl": "aa1f204686ae6225ba99e42fa586b313835709225befdde37ffd517708578644",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\filet-de-securite.jsonl": "e42e6861110de5c049cd505503c7db1bd7d682a6274ad66f84154e12e14e9413",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\hermes-orchestrateur.jsonl": "7807609029889e1db8fdcf797d2c52876bb7e958d9158484201703690443afdf",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur-auto.jsonl": "80527eb96c0d4bd13484e24f7c7fdae060d49d0d0bb0a4a7f87b489572eaa0ec",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur.jsonl": "a2aedd76d2c0ee51927352d5157c34ddcdc985e1a9ea4b825fdfb4d269a61606",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\responsable-rayon.jsonl": "adba3abcf7824eea64ca328196ab14a965481c3c3b131677bb48615257242f17",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\reveil.jsonl": "e52f6aba5155fa838d95aaaa5b286611fe48a622fc0788785de3778079429857",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\sentinelle-mail.jsonl": "ecb26b11f6bac956107a541d463b072c6f946f4c691155f1aa5731daa83cbdc9",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\tout.jsonl": "a0bb70c742de4597c45e492ee09e87440e54f9fa2e43ef6590d3df35f90ae04e",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\decisions.jsonl": "bcadb3c6dbe910cb60bab80ccb93fffb340a7315566e4522ac24951aefb70e7d",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\pouvoirs.json": "51b4c6403e21f9d70cb70d2b08a1f006a0bc00f28e7e30c7ec4cde4148f3129a",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\etat.json": "685966990e7f5fd5e9c41babb47100f6e88fc20ff2dd4b5d3c2d0004e8ab516f",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\proposition.json": "e917be822bda33f70f388b5565539d75a2de08d7dc2b3c46bd657d54f6c7788e",
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\recalcul.json": "cdcdc648755074fbd838383389d9b1617fb8df0dbecacc08594611be4aa9b0f3"
+  },
+  "note": {
+    "date": "2026-09-15",
+    "ecrite_le": "2026-09-15T21:33:01",
+    "ecrite_par": "l'agent orchestrateur",
+    "entrees": [
+      {
+        "heure": "21h33",
+        "texte": "Mise à jour de vos réponses du 15 septembre au soir : 21 positions enregistrées, 6 contenus de colis fixés et 12 articles masqués. La proposition a été recalculée. Les anciens comptages sont conservés.",
+        "gravite": "info"
+      },
+      {
+        "heure": "21h33",
+        "texte": "Au magasin, relever les codes-barres de ces six produits : KIT GUACAMOLE, POMME GALA SACHET 1,5 KG, COURGETTE FILET 1 KG, ÉCHALOTE TRADITIONNELLE 250 G CQLP, CONCOMBRE BIO PIÈCE et OIGNON JAUNE BIO 1 KG MMP. Ils permettront de retrouver les ventes des bons produits.",
+        "gravite": "attention"
+      },
+      {
+        "heure": "21h33",
+        "texte": "CAROTTE NON LAVÉE VRAC : le poids net de la demi-cagette reste à confirmer avec son étiquette.",
+        "gravite": "attention"
+      },
+      {
+        "heure": "21h33",
+        "texte": "POMME GALA SACHET 1,5 KG : vérifier si les trois colis envisagés ont bien été commandés, puis indiquer le nombre réellement reçu le 16 septembre.",
+        "gravite": "info"
+      }
+    ]
+  },
+  "operation_id_note": "3b2ecded2c824696b74fcc9838d64c1e",
+  "reprise_verification_seule": true,
+  "limite_verification_initiale": "La première écriture a réussi ; la comparaison initiale ignorait le champ _operation_id ajouté par la publication atomique. Relecture corrigée sans nouvelle écriture de note."
+}

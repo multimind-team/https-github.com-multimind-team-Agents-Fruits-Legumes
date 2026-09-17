@@ -6,7 +6,7 @@ Lancer cette procédure sur demande explicite du responsable (`/sauvegarde`, « 
 
 Le script sauvegarde les fichiers retenus par Git. Le fichier local `.env`, le courrier brut et les autres chemins exclus restent sur le disque : cette publication ne remplace pas une sauvegarde privée de ces originaux. Les contrôles ci-dessous sont ciblés ; ils ne prouvent pas l'absence de données sensibles dans tout l'historique Git ou dans le dépôt distant.
 
-## Phase A — Revue par l'agent orchestrateur
+## Phase A – Revue par le Leader
 
 1. Lire le statut Git et les différences réelles, en distinguant les modifications antérieures à l'intervention.
 2. Mettre à jour les procédures, références et fiches HTML concernées dans `Documents/Documentation de l'application/`.
@@ -55,7 +55,7 @@ L'absence du miroir est annoncée et n'empêche pas la sauvegarde principale. Un
 
 ### 5. Publier le résultat exact dans l'application
 
-`moteur/dire.py` publie sous l'identité de l'Agent Orchestrateur le hash et le statut réellement obtenu : publication distante vérifiée ou sauvegarde locale seulement. Un échec est annoncé ; si cette annonce échoue aussi, le script le signale dans sa sortie d'erreur.
+`moteur/dire.py` publie sous l'identité de le Leader le hash et le statut réellement obtenu : publication distante vérifiée ou sauvegarde locale seulement. Un échec est annoncé ; si cette annonce échoue aussi, le script le signale dans sa sortie d'erreur.
 
 Cette annonce intervient après le commit et peut ajouter de nouvelles lignes aux carnets locaux de dialogue. Un arbre Git parfaitement propre après l'annonce n'est donc pas une condition de succès de la publication précédente.
 
@@ -69,4 +69,4 @@ Cette annonce intervient après le commit et peut ajouter de nouvelles lignes au
 
 ## Relecture finale
 
-L'agent orchestrateur relit le code retour, le hash annoncé, le statut de publication et la réponse effectivement ajoutée dans l'application. Il vérifie séparément les avertissements de miroir et les modifications locales créées après le commit. Il ne présente ni un commit local comme un envoi distant, ni l'exclusion actuelle du courrier comme un nettoyage de l'historique GitHub.
+Le Leader relit le code retour, le hash annoncé, le statut de publication et la réponse effectivement ajoutée dans l'application. Il vérifie séparément les avertissements de miroir et les modifications locales créées après le commit. Il ne présente ni un commit local comme un envoi distant, ni l'exclusion actuelle du courrier comme un nettoyage de l'historique GitHub.

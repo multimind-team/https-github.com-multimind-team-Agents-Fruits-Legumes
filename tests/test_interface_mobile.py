@@ -96,6 +96,108 @@ class InterfaceMobileTests(unittest.TestCase):
         self.assertRegex(self.page.locator("#resultat").inner_text(), "[Ss]tockage|[Ee]nregistr")
         self.assertEqual(self.page.evaluate(f"localStorage.getItem('{PENDING}')"), None)
 
+    def test_count_keypad_keeps_decimal_comma_and_ignores_second_separator(self):
+        self.open('compter')
+        key = lambda value: self.page.locator(f'[data-touche="{value}"]').click()
+        key('1'); key('virgule')
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '1,')
+        key('2'); key('virgule'); key('3')
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '1,23')
+        for expected in ('1,2', '1,', '1', '0'):
+            key('effacer')
+            self.assertEqual(self.page.locator('#nombre').inner_text(), expected)
+        key('1'); key('virgule'); key('2')
+        self.assertIn('7,2 kg', self.page.locator('#equivalent').inner_text())
+        self.page.locator('#valider').click()
+        saved = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+        self.assertEqual((saved[0]['colis'], saved[0]['unites'], saved[0]['conditionnement']), (1.2, 7.2, 6))
+        self.assertEqual(self.posts, [])
+        self.assertFalse(self.errors)
+
+    def test_decimal_negative_count_keeps_original_packaging_and_sends_only_saved(self):
+        self.open('compter')
+        for value in ('signe', 'virgule', '5'):
+            self.page.locator(f'[data-touche="{value}"]').click()
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '−0,5')
+        self.assertIn('0,5 colis', self.page.locator('#equivalent').inner_text())
+        self.fixtures['/donnees/articles.json'] = {'articles': [dict(ARTICLE, conditionnement=10), dict(ARTICLE, itm8='0000000000002')]}
+        self.page.evaluate('chargerArticles(false)')
+        self.page.locator('#valider').click()
+        saved = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+        self.assertEqual((saved[0]['itm8'], saved[0]['colis'], saved[0]['unites'], saved[0]['conditionnement']), (CODE, -.5, -3, 6))
+        for value in ('2', 'virgule', '5'):
+            self.page.locator(f'[data-touche="{value}"]').click()
+        self.page.locator('#envoyer').click()
+        self.page.wait_for_function('!envoiEnCours')
+        self.assertEqual(self.posts, [{'comptages': saved}])
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '2,5')
+        self.assertEqual(self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))"), [])
+        self.assertFalse(self.errors)
+
+    def test_count_steps_keep_all_entered_decimal_digits_and_cross_zero(self):
+        self.open('compter')
+        for value in ('1', '2', 'virgule', '3', '4', '5', '6'):
+            self.page.locator(f'[data-touche="{value}"]').click()
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '12,3456')
+        self.page.locator('#plus').click()
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '13,3456')
+        self.page.locator('#moins').click()
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '12,3456')
+        self.page.evaluate("saisie='0.25'; negatif=false; afficher()")
+        self.page.locator('#moins').click()
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '−0,75')
+        self.page.locator('#plus').click()
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '0,25')
+        # Une valeur reçue sous forme scientifique conserve aussi sa précision.
+        self.page.evaluate('touche=false; attendu=1e-7')
+        self.page.locator('#plus').click()
+        self.assertEqual(self.page.locator('#nombre').inner_text(), '1,0000001')
+        self.assertEqual(self.posts, [])
+        self.assertFalse(self.errors)
+
+    def test_invalid_or_out_of_range_count_preserves_saved_measurement(self):
+        self.open('compter')
+        self.page.locator('#valider').click()
+        before = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+        for text, negative, message in [('9' * 400, False, 'non valide'), ('10000', False, '9 999'), ('10000', True, '9 999')]:
+            with self.subTest(text=text[:10], negative=negative):
+                self.page.evaluate('([text, negative]) => {allerA(0); touche=true; saisie=text; negatif=negative; valider()}', [text, negative])
+                self.assertEqual(self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))"), before)
+                self.assertEqual(self.page.evaluate('index'), 0)
+                self.assertIn(message, self.page.locator('#resultat').inner_text())
+        self.page.evaluate('allerA(0)')
+        for value in ('9', '9', '9', '8', 'virgule', '7', '5'):
+            self.page.locator(f'[data-touche="{value}"]').click()
+        self.page.locator('#valider').click()
+        saved = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+        self.assertEqual((saved[0]['colis'], saved[0]['unites']), (9998.75, 59992.5))
+        for value in (9999, -9999):
+            with self.subTest(boundary=value):
+                self.page.evaluate('(value) => {allerA(0); touche=true; saisie=String(Math.abs(value)); negatif=value<0; valider()}', value)
+                saved = self.page.evaluate(f"JSON.parse(localStorage.getItem('{PENDING}'))")
+                self.assertEqual(saved[0]['colis'], value)
+        self.assertEqual(self.posts, [])
+        self.assertFalse(self.errors)
+
+    def test_decimal_keypad_remains_accessible_without_an_extra_row(self):
+        self.install_photo_fixture()
+        self.fixtures['/donnees/articles.json'] = {'articles': [dict(ARTICLE, libelle='TOMATE CERISE ALLONGEE ROUGE ORIGINE FRANCE')]}
+        for width in (320, 360, 768):
+            with self.subTest(width=width):
+                self.page.set_viewport_size({'width': width, 'height': 800})
+                self.open('compter')
+                comma = self.page.locator('[data-touche="virgule"]')
+                self.assertEqual(comma.inner_text(), ',')
+                boxes = self.page.locator('#pave button').evaluate_all('buttons => buttons.map(b => {const r=b.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})')
+                self.assertTrue(all(b['width'] >= 44 and b['height'] >= 44 for b in boxes))
+                self.assertTrue(all(b['x'] >= 0 and b['x'] + b['width'] <= width for b in boxes))
+                self.assertEqual(len({round(b['y']) for b in boxes}), 4)
+                if width >= 360:
+                    send = self.page.locator('#envoyer').bounding_box()
+                    self.assertLessEqual(send['y'] + send['height'], 800)
+        self.assertEqual(self.posts, [])
+        self.assertFalse(self.errors)
+
     def test_refresh_keeps_visible_article_and_packaging_until_validation(self):
         self.open("compter")
         self.page.locator('[data-touche="3"]').click()

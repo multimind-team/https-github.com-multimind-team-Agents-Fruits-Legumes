@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidéo Réaliste · La Réunion du Matin de la Brigade</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root {
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --emerald: #10b981;
+    --border-subtle: #334155;
+  }
+  body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    margin: 0;
+    padding: 24px;
+  }
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .hero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .hero-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .badge-live {
+    background: var(--emerald);
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .nav-back {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .nav-back:hover { color: var(--text-main); }
+  .video-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+  }
+  @media (max-width: 1024px) {
+    .video-layout { grid-template-columns: 1fr; }
+  }
+  .video-panel {
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-subtle);
+  }
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+  }
+  .chapters-panel {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    max-height: 720px;
+  }
+  .chapters-panel h2 {
+    margin: 0 0 16px 0;
+    font-size: 1.15rem;
+    color: #fff;
+  }
+  .chapters-list {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 6px;
+  }
+  .btn-chap {
+    background: #0f172a;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text-main);
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .btn-chap:hover {
+    background: #1e293b;
+    border-color: var(--emerald);
+    transform: translateX(4px);
+  }
+  .btn-chap .time {
+    font-size: 0.75rem;
+    color: var(--emerald);
+    font-family: monospace;
+    font-weight: 700;
+  }
+  .btn-chap .ch-title {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  .transcript-section {
+    margin-top: 36px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border-subtle);
+  }
+  .transcript-section h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 12px;
+  }
+  .transcript-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .transcript-row {
+    background: #0f172a;
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .t-speaker {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .t-role {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .t-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #f1f5f9;
+  }
+  .t-note {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero-header">
+    <div>
+      <a href="index.html" class="nav-back">← Documentation de l'application</a>
+      <h1>Vidéo Réaliste · La Réunion du Matin de la Brigade <span class="badge-live">3:22</span></h1>
+    </div>
+  </div>
+
+  <div class="video-layout">
+    <div class="video-panel">
+      <video id="player" controls preload="metadata" poster="assets/video-matin-realiste/images/room_dispatch.jpg">
+        <source src="assets/video-matin-realiste/matin-agents-realiste.mp4" type="video/mp4">
+        <track src="assets/video-matin-realiste/sous-titres.vtt" kind="subtitles" srclang="fr" label="Français" default>
+        Votre navigateur ne supporte pas la lecture vidéo MP4.
+      </video>
+    </div>
+
+    <div class="chapters-panel">
+      <h2>Chapitres & Répliques</h2>
+      <div class="chapters-list">
+        <button class="btn-chap" data-time="0.0"><span class="time">0:00</span><span class="spk" style="color:#14b8a6; font-weight:700;">Responsable de rayon</span> <span class="ch-title">Responsable de rayon : 6 heures 45. J'expédie les six exports du matin : ...</span></button><button class="btn-chap" data-time="13.03"><span class="time">0:13</span><span class="spk" style="color:#06b6d4; font-weight:700;">Agent Sentinelle</span> <span class="ch-title">Agent Sentinelle : Alerte transmission. Signal courriel externe inter...</span></button><button class="btn-chap" data-time="27.58"><span class="time">0:27</span><span class="spk" style="color:#10b981; font-weight:700;">Leader</span> <span class="ch-title">Leader : Signal bien reçu, Sentinelle. Brigade, à vos poste...</span></button><button class="btn-chap" data-time="39.31"><span class="time">0:39</span><span class="spk" style="color:#10b981; font-weight:700;">Leader</span> <span class="ch-title">Leader : Agent Courrier, dresse l'inventaire formel des piè...</span></button><button class="btn-chap" data-time="48.1"><span class="time">0:48</span><span class="spk" style="color:#3b82f6; font-weight:700;">Agent Courrier</span> <span class="ch-title">Agent Courrier : Fichiers réceptionnés. Ventes, casse, dons et cade...</span></button><button class="btn-chap" data-time="60.24"><span class="time">1:00</span><span class="spk" style="color:#f59e0b; font-weight:700;">Agent Données</span> <span class="ch-title">Agent Données : Simulation lancée en mémoire protégée. Les sorties...</span></button><button class="btn-chap" data-time="70.08"><span class="time">1:10</span><span class="spk" style="color:#ef4444; font-weight:700;">Agent Contrôle</span> <span class="ch-title">Agent Contrôle : Veto de conformité. Le bon de livraison reçu ne co...</span></button><button class="btn-chap" data-time="83.66"><span class="time">1:23</span><span class="spk" style="color:#10b981; font-weight:700;">Leader</span> <span class="ch-title">Leader : Veto approuvé. Zéro écriture sur le stock réel. Ag...</span></button><button class="btn-chap" data-time="96.55"><span class="time">1:36</span><span class="spk" style="color:#8b5cf6; font-weight:700;">Agent Rayon</span> <span class="ch-title">Agent Rayon : C'est fait. Message envoyé sur son mobile : Le fic...</span></button><button class="btn-chap" data-time="110.35"><span class="time">1:50</span><span class="spk" style="color:#14b8a6; font-weight:700;">Responsable de rayon</span> <span class="ch-title">Responsable de rayon : Oups, mauvais export sélectionné dans l'urgence. J...</span></button><button class="btn-chap" data-time="118.37"><span class="time">1:58</span><span class="spk" style="color:#06b6d4; font-weight:700;">Agent Sentinelle</span> <span class="ch-title">Agent Sentinelle : Nouvel événement courriel à la porte. Pièce rectif...</span></button><button class="btn-chap" data-time="128.38"><span class="time">2:08</span><span class="spk" style="color:#3b82f6; font-weight:700;">Agent Courrier</span> <span class="ch-title">Agent Courrier : Document certifié conforme. Il remplace la version...</span></button><button class="btn-chap" data-time="137.28"><span class="time">2:17</span><span class="spk" style="color:#f59e0b; font-weight:700;">Agent Données</span> <span class="ch-title">Agent Données : Rejeu de la simulation avec le filet de sécurité f...</span></button><button class="btn-chap" data-time="148.39"><span class="time">2:28</span><span class="spk" style="color:#ef4444; font-weight:700;">Agent Contrôle</span> <span class="ch-title">Agent Contrôle : Audit complet validé. Les six flux sont intègres e...</span></button><button class="btn-chap" data-time="157.25"><span class="time">2:37</span><span class="spk" style="color:#10b981; font-weight:700;">Leader</span> <span class="ch-title">Leader : Autorisation d'intégration accordée. Données, appl...</span></button><button class="btn-chap" data-time="168.17"><span class="time">2:48</span><span class="spk" style="color:#f59e0b; font-weight:700;">Agent Données</span> <span class="ch-title">Agent Données : Intégration achevée. Recalcul général du cadencier...</span></button><button class="btn-chap" data-time="178.39"><span class="time">2:58</span><span class="spk" style="color:#8b5cf6; font-weight:700;">Agent Rayon</span> <span class="ch-title">Agent Rayon : Note du matin publiée. L'alerte d'erreur est effac...</span></button><button class="btn-chap" data-time="188.47"><span class="time">3:08</span><span class="spk" style="color:#10b981; font-weight:700;">Leader</span> <span class="ch-title">Leader : Mission accomplie. Sentinelle, reprends la surveil...</span></button><button class="btn-chap" data-time="195.46"><span class="time">3:15</span><span class="spk" style="color:#06b6d4; font-weight:700;">Agent Sentinelle</span> <span class="ch-title">Agent Sentinelle : Surveillance active réarmée. Porte sécurisée. Brig...</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="transcript-section">
+    <h2>Transcription Complète des Dialogues</h2>
+    <div class="transcript-list">
+      <div class="transcript-row" style="border-left: 4px solid #14b8a6;"><div class="t-speaker" style="color: #14b8a6; font-weight: 700;">Responsable de rayon <span class="t-role">(Humain · Responsable Rayon Fruits & Légumes)</span></div><div class="t-text">6 heures 45. J'expédie les six exports du matin : ventes d'hier, casse, dons, le bon de livraison de ce matin, et les deux cadenciers Mercalys et Webtélévente. Envoi groupé à la brigade.</div><div class="t-note">📌 6 fichiers joints : ventes J-1, casse J-1, dons J-1, livraison J, cadencier Mercalys, cadencier Webtélévente</div></div><div class="transcript-row" style="border-left: 4px solid #06b6d4;"><div class="t-speaker" style="color: #06b6d4; font-weight: 700;">Agent Sentinelle <span class="t-role">(Robot Humanoïde Tactique · Garde & Veille)</span></div><div class="t-text">Alerte transmission. Signal courriel externe intercepté à la porte. Expéditeur certifié : Responsable Rayon. Six pièces jointes détectées. Je transfère l'événement au Leader.</div><div class="t-note">📌 Filtrage et veille autonome à l'entrée sans toucher aux bases de données</div></div><div class="transcript-row" style="border-left: 4px solid #10b981;"><div class="t-speaker" style="color: #10b981; font-weight: 700;">Leader <span class="t-role">(Robot Humanoïde · Coordination & Arbitrage)</span></div><div class="t-text">Signal bien reçu, Sentinelle. Brigade, à vos postes. Le lot matinal arrive. Ne modifiez aucun stock réel tant que tout n'est pas audité.</div><div class="t-note">📌 Règle absolue : zéro écriture directe sur le stock sans validation préalable</div></div><div class="transcript-row" style="border-left: 4px solid #10b981;"><div class="t-speaker" style="color: #10b981; font-weight: 700;">Leader <span class="t-role">(Robot Humanoïde · Coordination & Arbitrage)</span></div><div class="t-text">Agent Courrier, dresse l'inventaire formel des pièces. Agent Données, prépare la simulation à blanc sans toucher aux stocks.</div><div class="t-note">📌 Délégation stricte des compétences selon les habilitations</div></div><div class="transcript-row" style="border-left: 4px solid #3b82f6;"><div class="t-speaker" style="color: #3b82f6; font-weight: 700;">Agent Courrier <span class="t-role">(Robot Humanoïde · Certification des Sources)</span></div><div class="t-text">Fichiers réceptionnés. Ventes, casse, dons et cadenciers sont conformes. Cependant, le fichier de livraison présente une incohérence de date et un en-tête altéré.</div><div class="t-note">📌 Détection précoce d'une anomalie sur le format du fichier de livraison</div></div><div class="transcript-row" style="border-left: 4px solid #f59e0b;"><div class="t-speaker" style="color: #f59e0b; font-weight: 700;">Agent Données <span class="t-role">(Robot Humanoïde · Calculs & Gestion des Stocks)</span></div><div class="t-text">Simulation lancée en mémoire protégée. Les sorties s'articulent bien avec les comptages, mais la livraison bloque : trois références sont rejetées au test à blanc.</div><div class="t-note">📌 Test à blanc révélateur : le fichier est incompatible avec les stocks du jour</div></div><div class="transcript-row" style="border-left: 4px solid #ef4444;"><div class="t-speaker" style="color: #ef4444; font-weight: 700;">Agent Contrôle <span class="t-role">(Robot Humanoïde · Qualité & Droit de Veto)</span></div><div class="t-text">Veto de conformité. Le bon de livraison reçu ne concorde pas avec les réceptions effectives du jour. Je verrouille l'intégration de ce fichier. Risque d'erreur de stock critique.</div><div class="t-note">📌 Veto immédiat et inconditionnel de l'Agent Contrôle pour protéger l'intégrité</div></div><div class="transcript-row" style="border-left: 4px solid #10b981;"><div class="t-speaker" style="color: #10b981; font-weight: 700;">Leader <span class="t-role">(Robot Humanoïde · Coordination & Arbitrage)</span></div><div class="t-text">Veto approuvé. Zéro écriture sur le stock réel. Agent Rayon, alerte immédiatement le responsable sur son application. Message clair, sans jargon technique.</div><div class="t-note">📌 Communication explicite et directe avec le responsable humain</div></div><div class="transcript-row" style="border-left: 4px solid #8b5cf6;"><div class="t-speaker" style="color: #8b5cf6; font-weight: 700;">Agent Rayon <span class="t-role">(Robot Humanoïde · Interface Terrain & Tablette)</span></div><div class="t-text">C'est fait. Message envoyé sur son mobile : Le fichier de livraison présente une discordance. Merci de renvoyer le bon export. Les autres flux restent en attente sécurisée.</div><div class="t-note">📌 Notification instantanée sur smartphone : problème circonscrit et expliqué</div></div><div class="transcript-row" style="border-left: 4px solid #14b8a6;"><div class="t-speaker" style="color: #14b8a6; font-weight: 700;">Responsable de rayon <span class="t-role">(Humain · Responsable Rayon Fruits & Légumes)</span></div><div class="t-text">Oups, mauvais export sélectionné dans l'urgence. Je viens de renvoyer la bonne version avec les réceptions validées à quai.</div><div class="t-note">📌 Réaction humaine immédiate : renvoi du fichier certifié conforme</div></div><div class="transcript-row" style="border-left: 4px solid #06b6d4;"><div class="t-speaker" style="color: #06b6d4; font-weight: 700;">Agent Sentinelle <span class="t-role">(Robot Humanoïde Tactique · Garde & Veille)</span></div><div class="t-text">Nouvel événement courriel à la porte. Pièce rectifiée détectée : livraison du jour corrigée. Transfert prioritaire au Leader.</div><div class="t-note">📌 La Sentinelle réveille la brigade dès l'arrivée du correctif</div></div><div class="transcript-row" style="border-left: 4px solid #3b82f6;"><div class="t-speaker" style="color: #3b82f6; font-weight: 700;">Agent Courrier <span class="t-role">(Robot Humanoïde · Certification des Sources)</span></div><div class="t-text">Document certifié conforme. Il remplace la version erronée. Preuve horodatée conservée dans le registre.</div><div class="t-note">📌 Traçabilité intégrale de la substitution sans perte d'historique</div></div><div class="transcript-row" style="border-left: 4px solid #f59e0b;"><div class="t-speaker" style="color: #f59e0b; font-weight: 700;">Agent Données <span class="t-role">(Robot Humanoïde · Calculs & Gestion des Stocks)</span></div><div class="t-text">Rejeu de la simulation avec le filet de sécurité forcé. Zéro doublon sur les ventes et la casse. La livraison s'aligne parfaitement sur les positions de stock.</div><div class="t-note">📌 Filet de sécurité avec option forcer : purge de l'ancien état d'échec</div></div><div class="transcript-row" style="border-left: 4px solid #ef4444;"><div class="t-speaker" style="color: #ef4444; font-weight: 700;">Agent Contrôle <span class="t-role">(Robot Humanoïde · Qualité & Droit de Veto)</span></div><div class="t-text">Audit complet validé. Les six flux sont intègres et cohérents. Feu vert accordé pour l'intégration réelle.</div><div class="t-note">📌 Feu vert unanime : sécurité garantie avant toute modification du système</div></div><div class="transcript-row" style="border-left: 4px solid #10b981;"><div class="t-speaker" style="color: #10b981; font-weight: 700;">Leader <span class="t-role">(Robot Humanoïde · Coordination & Arbitrage)</span></div><div class="t-text">Autorisation d'intégration accordée. Données, applique le recalcul complet. Rayon, publie la Note du Matin et lève l'alerte sur le smartphone.</div><div class="t-note">📌 Ordre d'exécution finale sous délégation permanente</div></div><div class="transcript-row" style="border-left: 4px solid #f59e0b;"><div class="t-speaker" style="color: #f59e0b; font-weight: 700;">Agent Données <span class="t-role">(Robot Humanoïde · Calculs & Gestion des Stocks)</span></div><div class="t-text">Intégration achevée. Recalcul général du cadencier terminé avec succès. La proposition de commande est à jour pour 7 heures 30.</div><div class="t-note">📌 Recalcul complet : les quantités à commander sont prêtes avant l'heure limite</div></div><div class="transcript-row" style="border-left: 4px solid #8b5cf6;"><div class="t-speaker" style="color: #8b5cf6; font-weight: 700;">Agent Rayon <span class="t-role">(Robot Humanoïde · Interface Terrain & Tablette)</span></div><div class="t-text">Note du matin publiée. L'alerte d'erreur est effacée de l'écran mobile. Le responsable peut commander en toute sérénité.</div><div class="t-note">📌 Effacement de l'erreur mobile : retour à un état sain et lisible</div></div><div class="transcript-row" style="border-left: 4px solid #10b981;"><div class="t-speaker" style="color: #10b981; font-weight: 700;">Leader <span class="t-role">(Robot Humanoïde · Coordination & Arbitrage)</span></div><div class="t-text">Mission accomplie. Sentinelle, reprends la surveillance de la porte pour les flux de la journée.</div><div class="t-note">📌 Le cycle matinal se termine, la surveillance continue reprend</div></div><div class="transcript-row" style="border-left: 4px solid #06b6d4;"><div class="t-speaker" style="color: #06b6d4; font-weight: 700;">Agent Sentinelle <span class="t-role">(Robot Humanoïde Tactique · Garde & Veille)</span></div><div class="t-text">Surveillance active réarmée. Porte sécurisée. Brigade prête.</div><div class="t-note">📌 Périmètre sécurisé en continu pour les futurs messages et comptages</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const player = document.getElementById('player');
+  const buttons = document.querySelectorAll('.btn-chap');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const t = parseFloat(btn.getAttribute('data-time'));
+      player.currentTime = t;
+      player.play();
+    });
+  });
+</script>
+</body>
+</html>

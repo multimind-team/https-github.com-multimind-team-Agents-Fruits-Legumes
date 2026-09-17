@@ -1,0 +1,317 @@
+[
+  {
+    "chapter": "Le mail du matin",
+    "title": "Vous envoyez les six fichiers",
+    "from": "Responsable du rayon",
+    "to": "Leader",
+    "voice": "Bonjour, voici les ventes, la casse, les dons, la livraison et les cadenciers Webtélévente et Mercalys. Je vous les envoie ensemble pour préparer la commande de ce matin.",
+    "note": "Exemple expliqué · Six pièces jointes dans un même mail",
+    "focus": [
+      "all"
+    ],
+    "state": "envoi"
+  },
+  {
+    "chapter": "Le mail du matin",
+    "title": "Le signal arrive à la réunion",
+    "from": "Leader",
+    "to": "Toute l’équipe",
+    "voice": "Le mail est signalé par l’agent sentinelle, le programme de veille. Un logiciel configuré pour suivre cette tâche me transmet le signal. Je répartis le travail. Nous sommes tous visibles pour expliquer nos rôles ; les spécialistes interviennent seulement au besoin.",
+    "note": "Agent sentinelle → logiciel de supervision configuré → Leader",
+    "focus": [
+      "all"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Lire les sources",
+    "title": "Le Leader distribue la lecture",
+    "from": "Leader",
+    "to": "Agent courrier",
+    "voice": "Agent courrier, examine le message et chaque pièce jointe. Je te confie ces six fichiers précis. Rapporte les dates, les unités, ce qui manque et les points douteux, sans modifier les stocks.",
+    "note": "Mission précise · Pièces exactes · Résultat attendu",
+    "focus": [
+      "all"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Lire les sources",
+    "title": "Les dates viennent des documents",
+    "from": "Agent courrier",
+    "to": "Leader",
+    "voice": "Je vérifie les lignes et leurs dates. Habituellement, les ventes, la casse et les dons concernent hier ; la livraison concerne aujourd’hui. Mais les documents et la réception attestée font foi. La date du mail ne suffit pas.",
+    "note": "Sorties : normalement J−1 · Livraison : normalement J",
+    "focus": [
+      "all"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Comprendre les six fichiers",
+    "title": "Trois façons de sortir du stock",
+    "from": "Agent données",
+    "to": "Toute l’équipe",
+    "voice": "Ventes, casse et dons décrivent trois sorties différentes. Je vérifie les codes, les unités et les quantités. Une même sortie ne doit jamais être retirée deux fois, même si un fichier est renvoyé.",
+    "note": "Ventes · Casse · Dons : trois types de sorties",
+    "focus": [
+      "vente",
+      "casse",
+      "don"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Comprendre les six fichiers",
+    "title": "La livraison et le dernier comptage",
+    "from": "Agent données",
+    "to": "Agent contrôle",
+    "voice": "La livraison décrit les marchandises reçues. Je compare sa date au dernier comptage de chaque article. Si elle était déjà comprise dans la mesure, je ne dois pas l’ajouter une seconde fois à la position.",
+    "note": "Une livraison déjà comptée ne s’ajoute pas deux fois",
+    "focus": [
+      "livraison"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Comprendre les six fichiers",
+    "title": "Mercalys décrit les articles",
+    "from": "Agent données",
+    "to": "Toute l’équipe",
+    "voice": "Mercalys met à jour les fiches des articles : codes, unités, conditionnements et prix de référence. Cela nous aide à comprendre les produits. Ce cadencier ne prouve aucune livraison et n’ajoute aucune marchandise au stock.",
+    "note": "Mercalys : référentiel des articles, sans mouvement de stock",
+    "focus": [
+      "mercalys"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Comprendre les six fichiers",
+    "title": "Webtélévente décrit l’offre du jour",
+    "from": "Agent données",
+    "to": "Toute l’équipe",
+    "voice": "Webtélévente présente les articles et les offres commandables aujourd’hui, avec leur ordre de présentation. Je respecte cet ordre dans les groupes de l’application. Une indisponibilité aujourd’hui ne masque pas définitivement l’article.",
+    "note": "Webtélévente : offres, disponibilité et ordre de présentation",
+    "focus": [
+      "web"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Simuler et contrôler",
+    "title": "Essayer avant de modifier",
+    "from": "Leader",
+    "to": "Agent données",
+    "voice": "Agent données, simule les effets des six fichiers. Compare-les aux mouvements déjà enregistrés et aux comptages. Nous voulons connaître le résultat attendu avant de modifier les stocks réels.",
+    "note": "Simulation : aucune écriture de stock réel",
+    "focus": [
+      "all"
+    ],
+    "state": "normal"
+  },
+  {
+    "chapter": "Une erreur est détectée",
+    "title": "La livraison pose problème",
+    "from": "Agent données",
+    "to": "Leader",
+    "voice": "Je te transmets ma simulation et un doute sur la livraison. Le document reçu semble ne pas correspondre à la livraison annoncée. Il faut comparer l’original aux informations de réception avant de continuer.",
+    "note": "Exemple d’anomalie · Document de livraison incohérent",
+    "focus": [
+      "livraison"
+    ],
+    "state": "erreur"
+  },
+  {
+    "chapter": "Une erreur est détectée",
+    "title": "L’agent contrôle bloque le fichier douteux",
+    "from": "Agent contrôle",
+    "to": "Leader",
+    "voice": "Je reprends les originaux et la simulation de mon côté. Ici, la livraison annoncée ne correspond pas au document. Je bloque ce fichier. Je ne change pas sa date pour le rendre acceptable.",
+    "note": "Contrôle indépendant · Le fichier douteux reste bloqué",
+    "focus": [
+      "livraison"
+    ],
+    "state": "erreur"
+  },
+  {
+    "chapter": "Une erreur est détectée",
+    "title": "Le Leader organise la résolution",
+    "from": "Leader",
+    "to": "Agent rayon",
+    "voice": "Dans cet exemple, je suspends le lot avant toute intégration réelle. Agent rayon, explique le problème dans le fil et demande le bon fichier de livraison. La réussite des autres vérifications ne fait pas disparaître ce doute.",
+    "note": "Dans cet exemple, aucun des six fichiers n’a encore été intégré",
+    "focus": [
+      "livraison"
+    ],
+    "state": "erreur"
+  },
+  {
+    "chapter": "Une erreur est détectée",
+    "title": "Une demande simple au magasin",
+    "from": "Agent rayon",
+    "to": "Responsable du rayon",
+    "voice": "Le fichier de livraison ne correspond pas à la livraison annoncée. Pouvez-vous renvoyer le bon export ? Les stocks n’ont pas été modifiés par ce lot. Je publie cette demande et vérifie qu’elle apparaît dans le fil.",
+    "note": "Message au magasin · Le traitement reste en attente",
+    "focus": [
+      "livraison"
+    ],
+    "state": "erreur"
+  },
+  {
+    "chapter": "Le fichier corrigé revient",
+    "title": "Vous renvoyez le bon export",
+    "from": "Responsable du rayon",
+    "to": "Leader",
+    "voice": "J’ai vérifié au magasin. Voici le bon fichier de livraison. Il remplace celui que j’ai envoyé dans mon premier mail. Les autres pièces restent les mêmes.",
+    "note": "Nouveau mail · Le bon fichier remplace la pièce erronée",
+    "focus": [
+      "livraison"
+    ],
+    "state": "renvoi"
+  },
+  {
+    "chapter": "Le fichier corrigé revient",
+    "title": "L’agent courrier relit la nouvelle source",
+    "from": "Agent courrier",
+    "to": "Leader",
+    "voice": "Je lis ce nouveau mail et le bon export. Je vérifie ses dates et sa provenance, puis j’identifie la pièce qu’il remplace. Je conserve les deux sources pour expliquer la reprise. Classer les mails ne signifie pas les avoir traités.",
+    "note": "Source corrigée identifiée · Ancienne preuve conservée",
+    "focus": [
+      "livraison"
+    ],
+    "state": "corrige"
+  },
+  {
+    "chapter": "Les experts restent disponibles",
+    "title": "Si un produit reste ambigu",
+    "from": "Agent articles",
+    "to": "Leader",
+    "voice": "Si tu me confies un code ou un colisage douteux, je recherche une preuve. Deux noms ressemblants ne suffisent pas pour fusionner des produits. Si nécessaire, je précise ce qu’il faut relever au magasin.",
+    "note": "Expert au besoin · L’enquête ne modifie pas les données métier",
+    "focus": [
+      "mercalys"
+    ],
+    "state": "expert"
+  },
+  {
+    "chapter": "Reprendre sans doublonner",
+    "title": "Le Leader redonne un mandat précis",
+    "from": "Leader",
+    "to": "Agent données",
+    "voice": "Agent données, reprends le lot avec cette livraison corrigée. Vérifie d’abord ce qui est réellement enregistré. Si des fichiers avaient déjà été intégrés, ils ne devraient pas être comptés à nouveau. Refais la simulation sur les sources retenues.",
+    "note": "Reprise ciblée · Vérification de l’état réel avant tout ajout",
+    "focus": [
+      "all"
+    ],
+    "state": "corrige"
+  },
+  {
+    "chapter": "Les experts restent disponibles",
+    "title": "Si un comptage arrive entre-temps",
+    "from": "Agent audit-stock",
+    "to": "Leader",
+    "voice": "Si un comptage arrive, le serveur l’enregistre et lance le recalcul. Quand tu me confies le relevé précis, j’examine l’écart et distingue les preuves des hypothèses. Ce nouveau comptage impose aussi de revoir les contrôles qui utilisaient l’ancienne position.",
+    "note": "Expert au besoin · Un nouveau comptage peut invalider l’avis précédent",
+    "focus": [
+      "livraison"
+    ],
+    "state": "expert"
+  },
+  {
+    "chapter": "Reprendre sans doublonner",
+    "title": "Les effets attendus sont transmis",
+    "from": "Agent données",
+    "to": "Agent contrôle",
+    "voice": "Voici la nouvelle simulation, les fichiers exacts et les comptages utilisés. Je distingue ce qui complète l’historique de ce qui change la position. Les sorties ou livraisons déjà comprises dans un comptage ne sont pas appliquées une seconde fois.",
+    "note": "Nouvelles sources → nouvelle simulation → nouveau contrôle",
+    "focus": [
+      "all"
+    ],
+    "state": "corrige"
+  },
+  {
+    "chapter": "Reprendre sans doublonner",
+    "title": "L’agent contrôle rend un nouvel avis",
+    "from": "Agent contrôle",
+    "to": "Leader",
+    "voice": "Je compare à nouveau les originaux et les effets attendus. Dans notre exemple corrigé, le périmètre examiné est sûr sous les conditions précisées. Mon avis ne crée aucun droit : l’autorisation d’intégrer doit aussi être vérifiée.",
+    "note": "Avis de contrôle et autorisation : deux éléments distincts",
+    "focus": [
+      "all"
+    ],
+    "state": "valide"
+  },
+  {
+    "chapter": "Intégrer le lot autorisé",
+    "title": "Le Leader confie l’intégration",
+    "from": "Leader",
+    "to": "Agent données",
+    "voice": "Les exports habituels bénéficient de l’autorisation permanente. Tu peux intégrer le périmètre contrôlé et autorisé. Vérifie juste avant d’agir que les sources et les comptages n’ont pas changé ; sinon, nous renouvelons le contrôle concerné.",
+    "note": "Aucune nouvelle confirmation pour le lot habituel déjà autorisé",
+    "focus": [
+      "all"
+    ],
+    "state": "valide"
+  },
+  {
+    "chapter": "Intégrer le lot autorisé",
+    "title": "L’agent données importe puis recalcule",
+    "from": "Agent données",
+    "to": "Agent contrôle",
+    "voice": "J’intègre les fichiers retenus, puis je relance le calcul des positions et de la proposition. Je te transmets les écritures réellement faites, les refus éventuels et le résultat du recalcul. Un simple message de réussite ne suffit pas.",
+    "note": "Import réel du périmètre autorisé · Recalcul · Résultats transmis",
+    "focus": [
+      "all"
+    ],
+    "state": "valide"
+  },
+  {
+    "chapter": "Vérifier après l’intégration",
+    "title": "L’agent contrôle vérifie le résultat réel",
+    "from": "Agent contrôle",
+    "to": "Leader",
+    "voice": "Je compare les résultats aux effets attendus. Je vérifie les positions, les fichiers produits et la fin du recalcul. Je regarde aussi le signalement initial. Seules les anomalies effectivement résolues peuvent être annoncées comme levées.",
+    "note": "Contrôle après écriture · Vérifier aussi l’anomalie initiale",
+    "focus": [
+      "all"
+    ],
+    "state": "valide"
+  },
+  {
+    "chapter": "Les experts restent disponibles",
+    "title": "Si une tendance mérite une étude",
+    "from": "Agent tendances",
+    "to": "Leader",
+    "voice": "Si tu me sollicites, j’étudie les ventes et les livraisons avec leur contexte. Je peux proposer un ajustement prudent. Une mauvaise journée isolée ne suffit pas pour baisser la commande. Le responsable garde la décision.",
+    "note": "Expert au besoin · Une suggestion n’est pas une commande envoyée",
+    "focus": [
+      "vente",
+      "livraison"
+    ],
+    "state": "expert"
+  },
+  {
+    "chapter": "Informer et terminer",
+    "title": "Le magasin reçoit la résolution",
+    "from": "Agent rayon",
+    "to": "Responsable du rayon",
+    "voice": "Dans cet exemple, le bon fichier est intégré et son résultat a été contrôlé. Je confirme la résolution dans le même fil, avec les éventuels points restant à vérifier. Je ne cache pas une autre erreur encore présente.",
+    "note": "Réponse relue dans le fil · Résolution explicite du problème initial",
+    "focus": [
+      "all"
+    ],
+    "state": "valide"
+  },
+  {
+    "chapter": "Informer et terminer",
+    "title": "Le Leader clôt les seuls événements terminés",
+    "from": "Leader",
+    "to": "Responsable du rayon",
+    "voice": "Je relis le bilan et les réponses. Seuls les événements réellement terminés sont marqués comme traités, avec leurs preuves. L’écoute reprend sauf demande d’arrêt. Vous choisissez ensuite votre commande et l’envoyez dans l’outil habituel, avant neuf heures trente.",
+    "note": "Événements vérifiés · Décision finale du responsable",
+    "focus": [
+      "all"
+    ],
+    "state": "valide"
+  }
+]

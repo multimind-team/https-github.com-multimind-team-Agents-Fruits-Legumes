@@ -1,0 +1,80 @@
+{
+  "duration": 200.292,
+  "chapters": [
+    {
+      "title": "Une équipe qui se passe le relais",
+      "start": 0.0,
+      "duration": 19.292
+    },
+    {
+      "title": "Un événement donne le signal",
+      "start": 19.292,
+      "duration": 15.708
+    },
+    {
+      "title": "Le Leader confie la lecture",
+      "start": 35.0,
+      "duration": 17.042
+    },
+    {
+      "title": "L’agent de courrier rend ses preuves",
+      "start": 52.042,
+      "duration": 13.042
+    },
+    {
+      "title": "L’agent de données essaie d’abord",
+      "start": 65.083,
+      "duration": 11.792
+    },
+    {
+      "title": "Un autre agent vérifie",
+      "start": 76.875,
+      "duration": 10.5
+    },
+    {
+      "title": "L'avis revient au Leader",
+      "start": 87.375,
+      "duration": 16.5
+    },
+    {
+      "title": "L’agent de données réalise l’opération",
+      "start": 103.875,
+      "duration": 6.875
+    },
+    {
+      "title": "L’agent de contrôle revient après l’écriture",
+      "start": 110.75,
+      "duration": 10.542
+    },
+    {
+      "title": "L’agent de rayon prend votre demande",
+      "start": 121.292,
+      "duration": 10.708
+    },
+    {
+      "title": "L’agent d’audit cherche la cause de l’écart",
+      "start": 132.0,
+      "duration": 13.375
+    },
+    {
+      "title": "L'enquête passe par le Leader",
+      "start": 145.375,
+      "duration": 13.333
+    },
+    {
+      "title": "L’agent des tendances propose un ajustement",
+      "start": 158.708,
+      "duration": 12.125
+    },
+    {
+      "title": "Vous gardez la main",
+      "start": 170.833,
+      "duration": 10.958
+    },
+    {
+      "title": "La boucle repart après vérification",
+      "start": 181.792,
+      "duration": 18.5
+    }
+  ]
+}

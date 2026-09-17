@@ -1,0 +1,260 @@
+{
+  "_synthese": [
+    "Vos 21 positions sont enregistrées au soir du 15 septembre, après les mouvements de la journée.",
+    "Six contenus de colis sont fixés selon vos réponses. Les anciens comptages gardent leurs quantités.",
+    "Les 12 produits que vous ne vendez pas actuellement sont masqués. Leurs données sont conservées.",
+    "Les plafonds habituels sont rétablis après l’exception autorisée pour ce lot.",
+    "Pour demain : six codes-barres, le poids de la demi-cagette de carottes non lavées, puis vérifier la commande éventuelle de trois colis de pommes Gala et le nombre réellement reçu.",
+    "Proposition recalculée : 2026-09-15T21:28:47."
+  ],
+  "P01": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Relever le code-barres pour retrouver les ventes du bon produit."
+  },
+  "P02": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P03": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Relever le code-barres pour retrouver les ventes du bon produit. Vérifier aussi la commande éventuelle de trois colis et le nombre réellement reçu le 16 septembre."
+  },
+  "P04": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P05": {
+    "demande": "4",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Aucun autre relevé demandé pour cette position."
+  },
+  "P06": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P07": {
+    "demande": "0",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Aucun autre relevé demandé pour cette position."
+  },
+  "P08": {
+    "demande": "0",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Relever le code-barres pour retrouver les ventes du bon produit."
+  },
+  "P09": {
+    "demande": "0",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Aucun autre relevé demandé pour cette position."
+  },
+  "P10": {
+    "demande": "0",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Usage comme remplacement de la mâche noté ; aucune substitution automatique créée."
+  },
+  "P11": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P12": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P13": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P14": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "La mâche de 125 g reste visible ; la barquette de 150 g est masquée."
+  },
+  "P15": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P16": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P17": {
+    "demande": "0",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Relever le code-barres pour retrouver les ventes du bon produit."
+  },
+  "P18": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P19": {
+    "demande": "0",
+    "resultat": "Position enregistrée ; article visible.",
+    "suite": "Relever le code-barres pour retrouver les ventes du bon produit."
+  },
+  "P20": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "P21": {
+    "demande": "-1",
+    "resultat": "Position enregistrée ; article masqué.",
+    "suite": "Rien à relever pour le moment."
+  },
+  "C01": {
+    "demande": "8",
+    "resultat": "8 par colis enregistré.",
+    "suite": "Aucune vérification supplémentaire demandée."
+  },
+  "C02": {
+    "demande": "8",
+    "resultat": "8 par colis enregistré.",
+    "suite": "Aucune vérification supplémentaire demandée."
+  },
+  "C03": {
+    "demande": "6,5",
+    "resultat": "6,5 par colis enregistré.",
+    "suite": "Aucune vérification supplémentaire demandée."
+  },
+  "C09": {
+    "demande": "6",
+    "resultat": "6 par colis enregistré.",
+    "suite": "Caisse : 6 sacs de 2,5 kg. Le box de 55 sacs est un autre format. Anciens comptages conservés."
+  },
+  "C10": {
+    "demande": "8",
+    "resultat": "8 par colis enregistré.",
+    "suite": "Aucune vérification supplémentaire demandée."
+  },
+  "C11": {
+    "demande": "8",
+    "resultat": "8 par colis enregistré.",
+    "suite": "Article masqué car vous ne le vendez pas actuellement."
+  },
+  "C04": {
+    "demande": "Rechercher le calibre des derniers documents.",
+    "resultat": "45 pièces, calibre 4 STAR RUBY dans le dernier export du 14 septembre ; même offre dans le cadencier du 15.",
+    "suite": "45 conservé. Ces documents décrivent la commande ; ils ne prouvent pas seuls le contenu physiquement reçu."
+  },
+  "C05": {
+    "demande": "Demi-cagette ; le cadencier indique 12, à confirmer.",
+    "resultat": "Poids réel encore incertain. La valeur existante de 5 kg n’a pas été remplacée par une supposition.",
+    "suite": "Vérifier le poids net de la demi-cagette et photographier son étiquette."
+  },
+  "C06": {
+    "demande": "Colisage inconnu.",
+    "resultat": "12 kg dans les derniers exports des 11, 12 et 14 septembre pour la carotte de conservation 20/45.",
+    "suite": "12 kg conservé. L’offre primeur précédente était à 10 kg."
+  },
+  "C07": {
+    "demande": "Rechercher ÉCHALOTE chez Pomona.",
+    "resultat": "Dernier bon Pomona/TerreAzur du 12 septembre : échalote 30/50, 1 colis de 5 kg.",
+    "suite": "Fournisseur Pomona et contenu de 5 kg déjà corrects, conservés."
+  },
+  "C08": {
+    "demande": "Rechercher OIGNON chez Pomona.",
+    "resultat": "Dernier bon Pomona/TerreAzur du 14 septembre : oignon rouge 60/80, 1 colis de 5 kg.",
+    "suite": "Fournisseur Pomona et contenu de 5 kg déjà corrects, conservés."
+  },
+  "R01": {
+    "demande": "À regarder au magasin.",
+    "resultat": "Code du produit vendu à relever ; correspondance encore ouverte.",
+    "suite": "Relever les chiffres du code-barres ou photographier l’étiquette du produit vendu ; à défaut, noter le numéro utilisé en caisse."
+  },
+  "R02": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R03": {
+    "demande": "À regarder au magasin.",
+    "resultat": "Code du produit vendu à relever ; correspondance encore ouverte.",
+    "suite": "Relever les chiffres du code-barres ou photographier l’étiquette du produit vendu ; à défaut, noter le numéro utilisé en caisse."
+  },
+  "R04": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R05": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R06": {
+    "demande": "À regarder au magasin.",
+    "resultat": "Un code existe, mais aucune vente sous ce code dans les fichiers reçus.",
+    "suite": "Relever les chiffres du code-barres ou photographier l’étiquette du produit vendu ; à défaut, noter le numéro utilisé en caisse."
+  },
+  "R07": {
+    "demande": "À regarder au magasin.",
+    "resultat": "Code du produit vendu à relever ; correspondance encore ouverte.",
+    "suite": "Relever les chiffres du code-barres ou photographier l’étiquette du produit vendu ; à défaut, noter le numéro utilisé en caisse."
+  },
+  "R08": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R09": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R10": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R11": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R12": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R13": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R14": {
+    "demande": "À regarder au magasin.",
+    "resultat": "Code du produit vendu à relever ; correspondance encore ouverte.",
+    "suite": "Relever les chiffres du code-barres ou photographier l’étiquette du produit vendu ; à défaut, noter le numéro utilisé en caisse."
+  },
+  "R15": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R16": {
+    "demande": "À regarder au magasin.",
+    "resultat": "Code du produit vendu à relever ; correspondance encore ouverte.",
+    "suite": "Relever les chiffres du code-barres ou photographier l’étiquette du produit vendu ; à défaut, noter le numéro utilisé en caisse."
+  },
+  "R17": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  },
+  "R18": {
+    "demande": "Je n’en vends pas pour l’instant.",
+    "resultat": "Article masqué. Aucune correspondance avec un autre produit n’a été inventée.",
+    "suite": "Pas de recherche nécessaire actuellement ; à reprendre avant de le remettre en vente."
+  }
+}

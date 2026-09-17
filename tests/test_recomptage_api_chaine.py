@@ -22,9 +22,9 @@ JOUR = "2026-09-10"
 
 
 def empreintes_production():
-    chemins = set((RACINE / "donnees").glob("*.json"))
+    chemins = {p for p in (RACINE / "donnees").glob("*.json") if not p.name.startswith(".")}
     for dossier in ("donnees", "donnees/faits", "donnees/journaux"):
-        chemins.update((RACINE / dossier).glob("*.jsonl"))
+        chemins.update(p for p in (RACINE / dossier).glob("*.jsonl") if not p.name.startswith("."))
     return {p.relative_to(RACINE).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
             for p in sorted(chemins)}
 

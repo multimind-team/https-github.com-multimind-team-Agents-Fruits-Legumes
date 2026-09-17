@@ -152,6 +152,17 @@ def etape_3_synchronisation_documentation():
         else:
             log("Avertissement miroir", f"Code retour robocopy : {res.returncode}")
 
+    # Synchroniser aussi Presentation de l'application si présent
+    source_pres = RACINE / "Documents" / "Presentation de l'application"
+    miroir_pres = DOSSIER_MIROIR / "Documents" / "Presentation de l'application"
+    if source_pres.is_dir() and miroir_pres.parent.is_dir():
+        cmd_sync_pres = f'robocopy "{source_pres}" "{miroir_pres}" /E /NDL /NFL /NJH /NJS /nc /ns /np'
+        res_pres = executer(cmd_sync_pres, verifier=False)
+        if res_pres.returncode < 8:
+            log("Présentation miroir", f"Synchronisée vers {miroir_pres}")
+        else:
+            log("Avertissement miroir présentation", f"Code retour robocopy : {res_pres.returncode}")
+
     # Synchroniser aussi AGENTS.md si présent
     source_agents = RACINE / "AGENTS.md"
     cible_agents = DOSSIER_MIROIR / "AGENTS.md"
@@ -209,7 +220,7 @@ def etape_5_annonce_web(resultat):
     else:
         message = (f"📦 Sauvegarde locale vérifiée : commit `{resultat['commit']}`. "
                    "Publication GitHub non demandée ; aucune synchronisation distante confirmée.")
-    publier(message, auteur="Agent Orchestrateur")
+    publier(message, auteur="Leader")
     log("Annonce Web", "Message publié dans l'application.")
 
 
@@ -237,7 +248,7 @@ def executer_sauvegarde_complete(message=None, sans_push=False):
             from dire import publier
             publier(f"⚠️ Sauvegarde interrompue ({type(exc).__name__}). "
                     "Consulter le compte rendu technique local avant de conclure sur sa publication.",
-                    auteur="Agent Orchestrateur")
+                    auteur="Leader")
         except Exception as publication:
             print(f"L'annonce d'échec n'a pas pu être publiée : {type(publication).__name__}", file=sys.stderr)
         return False

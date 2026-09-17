@@ -1,0 +1,1443 @@
+{
+  "auteur": "agent-controle",
+  "execution_distincte": "/root/corrections_systeme",
+  "phase": "avant écriture réelle",
+  "revue_le": "2026-09-15T21:16:55",
+  "racine_lue": "C:\\Users\\user\\Desktop\\preparation-commande-dev",
+  "verdict": "SÛR POUR LE PÉRIMÈTRE",
+  "etat_execution": "NON INTÉGRÉ",
+  "portee": "21 comptages actuels du soir, six décisions de PCB, douze masquages temporaires, un recalcul final ; aucun autre mouvement, mapping ou commande fournisseur.",
+  "plan_source": {
+    "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\plan-final-agent-donnees-20260915-2114.json",
+    "sha256": "b59ae2f5a6fb5c006021cddcc7b5d4a4802bef90ba9b0bac6f2fbade9ab0e1ed"
+  },
+  "simulation_corrigee": {
+    "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\preparation-agent-donnees-v2-20260915-211327.json",
+    "sha256": "8727b4cd28d94a9d61072710c29e69a6ca15dab18f95a58357fad8ff3879a57c",
+    "retour": 0,
+    "limite": "Les 21 faits ont été écrits/rejoués dans une copie protégée ; les 18 réglages ont des simulations CLI individuelles et un aperçu métier complet en mémoire. La séquence complète réelle reste à contrôler après écriture."
+  },
+  "sources_autorisation": [
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\demande-source.md",
+      "sha256": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120"
+    },
+    {
+      "path": "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\autorisation-plafonds.md",
+      "sha256": "da261b118c0ca40f244f01fb62df742429667aeaa2db40238b15a80ffbef5841"
+    }
+  ],
+  "reference_message_utilisateur": "non fournie ; aucune référence inventée",
+  "consignes_relues": [
+    "AGENTS.md",
+    "agents/agent-controle.md",
+    "donnees/pouvoirs.json",
+    "procedures/controle-stock.md",
+    "reference/modele-controle-stock.md"
+  ],
+  "positions_ligne_par_ligne": [
+    {
+      "repere": "P01",
+      "code_existant": "nom:KIT GUACAMOLE",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R01"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 6.0,
+      "quantite_attendue": -6.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P01",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P02",
+      "code_existant": "nom:SHARON PIECE",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R02"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 12.0,
+      "quantite_attendue": -12.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P02",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P03",
+      "code_existant": "nom:POMME GALA SACHET 1,5KG",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R03"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 10.0,
+      "quantite_attendue": -10.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P03",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P04",
+      "code_existant": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R04"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 5.0,
+      "quantite_attendue": -5.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P04",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P05",
+      "code_existant": "0000087010603",
+      "code_magasin_verifie": true,
+      "autres_reperes": [],
+      "colis_source": 4,
+      "PCB_saisie": 8.0,
+      "quantite_attendue": 32.0,
+      "unite_conservee": "sachet",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P05",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P06",
+      "code_existant": "nom:BUTTERNUT PIECE",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R05"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 10.0,
+      "quantite_attendue": -10.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P06",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P07",
+      "code_existant": "0000087010665",
+      "code_magasin_verifie": true,
+      "autres_reperes": [],
+      "colis_source": 0,
+      "PCB_saisie": 20.0,
+      "quantite_attendue": 0.0,
+      "unite_conservee": "filet",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P07",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P08",
+      "code_existant": "nom:ECHALOTE TRADITIONNELLE 250G CQLP",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R07"
+      ],
+      "colis_source": 0,
+      "PCB_saisie": 20.0,
+      "quantite_attendue": 0.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P08",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P09",
+      "code_existant": "0000087950043",
+      "code_magasin_verifie": true,
+      "autres_reperes": [],
+      "colis_source": 0,
+      "PCB_saisie": 8.0,
+      "quantite_attendue": 0.0,
+      "unite_conservee": "pièce",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P09",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P10",
+      "code_existant": "0000087755054",
+      "code_magasin_verifie": true,
+      "autres_reperes": [],
+      "colis_source": 0,
+      "PCB_saisie": 6.0,
+      "quantite_attendue": 0.0,
+      "unite_conservee": "pièce",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P10",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P11",
+      "code_existant": "nom:CAROTTE JAUNE VRAC",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R08"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 5.0,
+      "quantite_attendue": -5.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P11",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P12",
+      "code_existant": "nom:CAROTTE VIOLETTE VRAC",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R09"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 5.0,
+      "quantite_attendue": -5.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P12",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P13",
+      "code_existant": "nom:CHAMPIGNON SHITAKE VRAC",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R10"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 2.0,
+      "quantite_attendue": -2.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P13",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P14",
+      "code_existant": "nom:MACHE BARQUETTE 150 G",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R11"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 6.0,
+      "quantite_attendue": -6.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P14",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P15",
+      "code_existant": "nom:CRESSON BOTTE",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "C11",
+        "R12"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 8.0,
+      "quantite_attendue": -8.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P15",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P16",
+      "code_existant": "nom:CRESSON FLOW PACK 200G",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R13"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 6.0,
+      "quantite_attendue": -6.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P16",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P17",
+      "code_existant": "nom:CONCOMBRE BIO PIECE PE",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R14"
+      ],
+      "colis_source": 0,
+      "PCB_saisie": 12.0,
+      "quantite_attendue": 0.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P17",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P18",
+      "code_existant": "nom:MANGUE BIO PIECE",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R15"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 9.0,
+      "quantite_attendue": -9.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P18",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P19",
+      "code_existant": "nom:OIGNON JAUNE 1KG BIO MMP",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R16"
+      ],
+      "colis_source": 0,
+      "PCB_saisie": 10.0,
+      "quantite_attendue": 0.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P19",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P20",
+      "code_existant": "nom:RAISIN BLC BIO 500G",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R17"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 10.0,
+      "quantite_attendue": -10.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P20",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    },
+    {
+      "repere": "P21",
+      "code_existant": "nom:PATATE DOUCE 500G BIO ITM",
+      "code_magasin_verifie": false,
+      "autres_reperes": [
+        "R18"
+      ],
+      "colis_source": -1,
+      "PCB_saisie": 6.0,
+      "quantite_attendue": -6.0,
+      "unite_conservee": "unité",
+      "fait_id_attendu": "comptage-conversation:reponses-articles-2026-09-15:P21",
+      "date_physique": "2026-09-15",
+      "phase_confirmee": "soir après mouvements",
+      "heure_physique": null,
+      "position_precedente": null,
+      "decision": "21 nouveaux comptages explicites ; pas de livraison ou de mouvement à déduire à nouveau"
+    }
+  ],
+  "reglages_ligne_par_ligne": [
+    {
+      "repere": "C01",
+      "article": "0000087635005",
+      "action": "conditionnement",
+      "valeur": 8,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087635005",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C01) : fixer le contenu habituel à 8 barquette par colis ; conserver les quantités historiques."
+    },
+    {
+      "repere": "C02",
+      "article": "0000087440009",
+      "action": "conditionnement",
+      "valeur": 8,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087440009",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C02) : fixer le contenu habituel à 8 filet par colis ; conserver les quantités historiques."
+    },
+    {
+      "repere": "C03",
+      "article": "0000087004035",
+      "action": "conditionnement",
+      "valeur": 6.5,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087004035",
+        "6.5",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C03) : fixer le contenu habituel à 6.5 kg par colis ; conserver les quantités historiques."
+    },
+    {
+      "repere": "C09",
+      "article": "0000087010621",
+      "action": "conditionnement",
+      "valeur": 6,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087010621",
+        "6",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C09) : fixer le contenu habituel à 6 pièce par colis ; conserver les quantités historiques. La caisse contient six sacs de 2,5 kg ; le box de 55 sacs est une autre offre."
+    },
+    {
+      "repere": "C10",
+      "article": "0000087003331",
+      "action": "conditionnement",
+      "valeur": 8,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "0000087003331",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C10) : fixer le contenu habituel à 8 Pièce par colis ; conserver les quantités historiques."
+    },
+    {
+      "repere": "C11",
+      "article": "nom:CRESSON BOTTE",
+      "action": "conditionnement",
+      "valeur": 8,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "conditionnement",
+        "nom:CRESSON BOTTE",
+        "8",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (C11) : fixer le contenu habituel à 8 unité par colis ; conserver les quantités historiques."
+    },
+    {
+      "repere": "P02",
+      "article": "nom:SHARON PIECE",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:SHARON PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P02 / R02) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P04",
+      "article": "nom:CAROTTE COULEUR MIXTE VRAC",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE COULEUR MIXTE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P04 / R04) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P06",
+      "article": "nom:BUTTERNUT PIECE",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:BUTTERNUT PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P06 / R05) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P11",
+      "article": "nom:CAROTTE JAUNE VRAC",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE JAUNE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P11 / R08) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P12",
+      "article": "nom:CAROTTE VIOLETTE VRAC",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CAROTTE VIOLETTE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P12 / R09) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P13",
+      "article": "nom:CHAMPIGNON SHITAKE VRAC",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CHAMPIGNON SHITAKE VRAC",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P13 / R10) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P14",
+      "article": "nom:MACHE BARQUETTE 150 G",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:MACHE BARQUETTE 150 G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P14 / R11) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P15",
+      "article": "nom:CRESSON BOTTE",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CRESSON BOTTE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P15 / C11, R12) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P16",
+      "article": "nom:CRESSON FLOW PACK 200G",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:CRESSON FLOW PACK 200G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P16 / R13) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P18",
+      "article": "nom:MANGUE BIO PIECE",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:MANGUE BIO PIECE",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P18 / R15) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P20",
+      "article": "nom:RAISIN BLC BIO 500G",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:RAISIN BLC BIO 500G",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P20 / R17) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    },
+    {
+      "repere": "P21",
+      "article": "nom:PATATE DOUCE 500G BIO ITM",
+      "action": "masquer",
+      "valeur": true,
+      "arguments_python": [
+        "moteur/appliquer-decision.py",
+        "masquer",
+        "nom:PATATE DOUCE 500G BIO ITM",
+        "--auteur",
+        "agent-rayon",
+        "--motif",
+        "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+      ],
+      "motif": "Demande explicite du responsable, conversation du 15 septembre 2026 (P21 / R18) : article temporairement non vendu ; masquer sans supprimer l'article ni ses faits."
+    }
+  ],
+  "matrice_R01_R24": {
+    "R01": {
+      "etat": "vérifié",
+      "motif": "Demande textuelle et autorisation exacte lues ; aucune pièce de mouvement dans ce lot."
+    },
+    "R02": {
+      "etat": "vérifié",
+      "motif": "21 lignes P, 11 lignes C et 18 lignes R de etat_actuel parcourues ; seules 21 positions et 18 décisions ciblées."
+    },
+    "R03": {
+      "etat": "vérifié",
+      "motif": "Demande directe du responsable transcrite ; aucune commande présentée comme réception."
+    },
+    "R04": {
+      "etat": "vérifié",
+      "motif": "Date physique 15 septembre et phase soir confirmées ; heure précise non fournie."
+    },
+    "R05": {
+      "etat": "non applicable",
+      "motif": "Aucun agrégat de mouvements ni période à répartir."
+    },
+    "R06": {
+      "etat": "vérifié",
+      "motif": "Comptage partiel de 21 articles uniquement ; aucun zéro pour les articles hors liste."
+    },
+    "R07": {
+      "etat": "vérifié",
+      "motif": "IDs stables ; copie : première écriture 21, rejeu 0 nouveau/21 doublons."
+    },
+    "R08": {
+      "etat": "vérifié",
+      "motif": "Nouvelles mesures explicites, pas de réécriture de l’historique."
+    },
+    "R09": {
+      "etat": "non applicable",
+      "motif": "Aucune livraison importée ; P03 éventuelle commande exclue."
+    },
+    "R10": {
+      "etat": "vérifié",
+      "motif": "Correspondance exacte etat_actuel ; 17 identifiants nom: conservés sans code ni rapprochement inventé."
+    },
+    "R11": {
+      "etat": "vérifié",
+      "motif": "21 valeurs source finies, signes et zéros conservés ; PCB 6.5 conservé sans arrondi entier."
+    },
+    "R12": {
+      "etat": "vérifié",
+      "motif": "Unités/PCB publiés conservés pour les P ; unités génériques provisoires explicitement maintenues. C09 = six sacs, pas 15 kg ni box55."
+    },
+    "R13": {
+      "etat": "vérifié",
+      "motif": "Six PCB explicitement demandés, offres compatibles ; C11 décision8 justifiée malgré affichage8 déjà existant."
+    },
+    "R14": {
+      "etat": "vérifié",
+      "motif": "P03 commande probable de trois colis exclue ; aucune livraison attestée nouvelle."
+    },
+    "R15": {
+      "etat": "non applicable",
+      "motif": "Aucune vente importée ni changement de signe d’export."
+    },
+    "R16": {
+      "etat": "non applicable",
+      "motif": "Aucune casse/don importé."
+    },
+    "R17": {
+      "etat": "vérifié",
+      "motif": "21 bases absentes avant ; phase soir après mouvements confirmée ; aucun mouvement du jour réappliqué en simulation ; futur comptage prioritaire."
+    },
+    "R18": {
+      "etat": "vérifié",
+      "motif": "Anciens faits/prefixes inchangés ; C03 reste28kg, C09 reste−3unités ; PCB mémorisé dans les nouveaux faits."
+    },
+    "R19": {
+      "etat": "non applicable",
+      "motif": "Aucune transformation, fusion ou substitution créée."
+    },
+    "R20": {
+      "etat": "vérifié",
+      "motif": "Multiplication contrôlée par ligne et unité ; pas de total additionnant unités hétérogènes, aucun prix inventé."
+    },
+    "R21": {
+      "etat": "vérifié sous conditions",
+      "motif": "18 simulations individuelles passent ; séquence ancienne limite refuse16e ; aperçu métier18 en mémoire. Exception18/25 explicite lue, doit être mise en place exactement avant exécution."
+    },
+    "R22": {
+      "etat": "vérifié sous conditions",
+      "motif": "Toutes empreintes actuelles identiques ; revalidation immédiate et sérialisation des opérations nécessaires. Toute nouvelle mesure invalide l’avis concerné."
+    },
+    "R23": {
+      "etat": "vérifié en copie ; contrôle réel à faire",
+      "motif": "21 positions et anciens états témoins lus ; les données statistiques ne sont pas rajeunies par un recomptage."
+    },
+    "R24": {
+      "etat": "à vérifier après exécution",
+      "motif": "Aucune publication/application réelle certifiée avant résultats ; transmettre refus et état incomplet éventuels."
+    }
+  },
+  "grille_C01_C06": {
+    "C01": "IDs uniques ; rejeu idempotent en copie",
+    "C02": "date et phase confirmées, heure physique inconnue explicite",
+    "C03": "quantités/PCB/unités vérifiées par ligne, aucune nouvelle conversion entre dimensions",
+    "C04": "bases existantes préservées, quatre états témoins comparés intégralement",
+    "C05": "Sûr seulement après activation exacte des deux plafonds autorisés ; autres pouvoirs inchangés",
+    "C06": "non applicable : aucune facture ni marge modifiée"
+  },
+  "preconditions_obligatoires": [
+    "Activer exclusivement rayon18 et global25, sous autorisation-plafonds.md ; autres permissions et plafonds inchangés.",
+    "Revalider juste avant les écritures les sources, les mappings, les carnets et les quotas avec la base ci-jointe ; seule la modification exacte autorisée des deux plafonds est attendue. Un nouveau comptage ou import impose une nouvelle revue du périmètre.",
+    "Exécution le15 septembre après17h ; remplacer uniquement enregistre_le par instant technique réel, et son explication source ; ne fabriquer ni saisi_le ni heure physique. Si changement de jour ou nouvelle mesure P intervenante, suspendre/revoir.",
+    "Acteurs réellement distincts : données21faits, rayon18réglages, donnéesun filet final. Aucun recalcul intermédiaire, aucun morcellement artificiel de quota.",
+    "Historique append-only ; conserver les anciens quantités/PCB et ajustements de commande ; ne pas rejouer des livraisons, ventes ou corrections.",
+    "Restaurer exactement les pouvoirs d’origine après traitement, sans effacer le journal des actions consommées ; signaler toute interruption et ne pas prétendre tout intégré."
+  ],
+  "quotas": {
+    "avant": {
+      "global": 4,
+      "agent-donnees": 3,
+      "agent-rayon": 0
+    },
+    "plafonds_origine": {
+      "global": 20,
+      "rayon": 15,
+      "donnees": 8
+    },
+    "plafonds_temporaires_autorises": {
+      "global": 25,
+      "rayon": 18
+    },
+    "apres_attendu": {
+      "global": 25,
+      "agent-rayon": 18,
+      "agent-donnees": 5
+    },
+    "calcul": "4 existants +1 lot de comptages +18 décisions +1 cadencier +1 filet =25"
+  },
+  "empreintes_base_et_tailles": {
+    "C:\\Users\\user\\Desktop\\audit-preparation-commande-2026-09-15\\articles-a-verifier.json": {
+      "sha256": "6d2f8648b9d8a0a2b5d91e38b055b9b99396a6471da7b0aae2fdc075a8d4d3b1",
+      "octets": 210399
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\documents-partages\\controles-stock\\reponses-articles-2026-09-15\\demande-source.md": {
+      "sha256": "9b85513804272111c2acd056cf6b4dd7fa0e6a7522b475e499a3af0722b29120",
+      "octets": 3346
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\proposition.json": {
+      "sha256": "18d62b137da784e94b853c3c5122ceb7840345726a0140514b216051ac336a26",
+      "octets": 401908
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\etat.json": {
+      "sha256": "591976a88032c34c8ce5ac00c2952c86863d195021da1fd100b011ae7dcc7c23",
+      "octets": 176214
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\decisions.jsonl": {
+      "sha256": "9bbb60764b739da8cdca7a20ad3c8a9dd70372ec86b20fb332e4e10f65132259",
+      "octets": 516716
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\pouvoirs.json": {
+      "sha256": "51b4c6403e21f9d70cb70d2b08a1f006a0bc00f28e7e30c7ec4cde4148f3129a",
+      "octets": 4074
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\cadencier-du-jour.json": {
+      "sha256": "f2c92066b991dfa8543660c78a674282bf1f70fb7053c8a4c9b4b743c4972856",
+      "octets": 152677
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\catalogue.json": {
+      "sha256": "ad96a6b1c2f6db66b70426f8caee651a5f2f6e1f1d65b1e65af89fb0cf092e9f",
+      "octets": 455256
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\recalcul.json": {
+      "sha256": "5c2d8f2155e5c85df3e62bce4b9bc04bf6c26478c9c0ec6d4ad0e404801deeb7",
+      "octets": 206
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2024.jsonl": {
+      "sha256": "fc29efdb4d9c2b4a28d820371f4fe2618f5e4b0250ddb00f9cbaf9a669ad803a",
+      "octets": 14239386
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2025.jsonl": {
+      "sha256": "8a2f8e9a5a3063774eef6334bebec89c5df15ee99009c0baded491dcf4ba20bc",
+      "octets": 19959759
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\faits\\2026.jsonl": {
+      "sha256": "e5d12b6d573ec25c2ca99e9d1b9817f4159a04c6bb6aa8f482b54fa66f631084",
+      "octets": 16126975
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\.numeros.jsonl": {
+      "sha256": "4068f815b752fb5702516305cde4c53550b1747779036d7033036f1ca26cff2b",
+      "octets": 4340
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-donnees.jsonl": {
+      "sha256": "1804074552784939baab812308bd689cc935a28ea957fc83eb9063195af830d0",
+      "octets": 22044
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-orchestrateur.jsonl": {
+      "sha256": "2810bd677c5e62b856b54b9df85419eaeaf4244e6699201d883869825437d95e",
+      "octets": 1492
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-rayon.jsonl": {
+      "sha256": "155be0756523d728ff7582911609870ecc092595a8097d547597a61784c2ea78",
+      "octets": 10236
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\agent-tendances.jsonl": {
+      "sha256": "8d986227c2d336210890613db2753c237ef6640c46d93d9abe88d96aaed2d36f",
+      "octets": 1691
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\dialogues.jsonl": {
+      "sha256": "aa1f204686ae6225ba99e42fa586b313835709225befdde37ffd517708578644",
+      "octets": 282
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\filet-de-securite.jsonl": {
+      "sha256": "833fe3e12eb0b591b627694d03e0570e7162c8a42184eb11271f473c6c441932",
+      "octets": 19924
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\hermes-orchestrateur.jsonl": {
+      "sha256": "7807609029889e1db8fdcf797d2c52876bb7e958d9158484201703690443afdf",
+      "octets": 1490
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur-auto.jsonl": {
+      "sha256": "80527eb96c0d4bd13484e24f7c7fdae060d49d0d0bb0a4a7f87b489572eaa0ec",
+      "octets": 6542
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\preparateur.jsonl": {
+      "sha256": "a2aedd76d2c0ee51927352d5157c34ddcdc985e1a9ea4b825fdfb4d269a61606",
+      "octets": 29559
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\responsable-rayon.jsonl": {
+      "sha256": "adba3abcf7824eea64ca328196ab14a965481c3c3b131677bb48615257242f17",
+      "octets": 53587
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\reveil.jsonl": {
+      "sha256": "e52f6aba5155fa838d95aaaa5b286611fe48a622fc0788785de3778079429857",
+      "octets": 1062
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\sentinelle-mail.jsonl": {
+      "sha256": "ecb26b11f6bac956107a541d463b072c6f946f4c691155f1aa5731daa83cbdc9",
+      "octets": 3394
+    },
+    "C:\\Users\\user\\Desktop\\preparation-commande-dev\\donnees\\journaux\\tout.jsonl": {
+      "sha256": "12c961bf6291f3433e63ae0c2defac3b623ac2594eaed7c5365dc093bc6faa4a",
+      "octets": 149531
+    }
+  },
+  "pouvoirs_origine": {
+    "_lisez_moi": [
+      "Pouvoirs des agents specialises pilotes par l'agent orchestrateur.",
+      "L'agent orchestrateur coordonne et decide qui travaille, mais chaque action sensible est signee par l'agent specialise qui l'a faite.",
+      "Un agent absent de ce fichier n'a aucun droit d'ecriture."
+    ],
+    "plafond_par_jour_tous_agents": 20,
+    "agents": {
+      "agent-orchestrateur": {
+        "role": "Chef d'orchestre. Lit AGENT.md, surveille les entrées (courrier, messages magasin, commandes), distribue le travail aux agents spécialisés et arbitre.",
+        "peut_seul": [],
+        "doit_demander": [],
+        "plafond_par_jour": 0,
+        "peut_deleguer_a": [
+          "agent-courrier",
+          "agent-donnees",
+          "agent-rayon",
+          "agent-controle",
+          "agent-articles",
+          "agent-tendances",
+          "agent-audit-stock"
+        ]
+      },
+      "agent-courrier": {
+        "role": "Lit les mails, comprend leur contenu, range les pieces jointes utiles et demande l'integration.",
+        "peut_seul": [
+          "conditionnement",
+          "fournisseur",
+          "demasquer"
+        ],
+        "doit_demander": [
+          "rapprocher",
+          "masquer",
+          "promotion"
+        ],
+        "plafond_par_jour": 8,
+        "peut_deleguer_a": [
+          "agent-donnees",
+          "agent-controle",
+          "agent-articles"
+        ]
+      },
+      "agent-donnees": {
+        "role": "Integre les fichiers magasin, recalcule les positions, la proposition et les listes de comptage.",
+        "peut_seul": [
+          "conditionnement",
+          "fournisseur",
+          "demasquer"
+        ],
+        "doit_demander": [
+          "rapprocher",
+          "masquer",
+          "promotion"
+        ],
+        "plafond_par_jour": 8,
+        "peut_deleguer_a": [
+          "agent-controle",
+          "agent-articles"
+        ]
+      },
+      "agent-rayon": {
+        "role": "Applique les demandes explicites du responsable de rayon et lui repond simplement.",
+        "peut_seul": [
+          "conditionnement",
+          "fournisseur",
+          "demasquer",
+          "masquer",
+          "promotion",
+          "rapprocher"
+        ],
+        "doit_demander": [],
+        "plafond_par_jour": 15,
+        "peut_deleguer_a": [
+          "agent-controle",
+          "agent-articles"
+        ]
+      },
+      "agent-controle": {
+        "role": "Deuxieme regard. Verifie les chiffres et les risques. Ne modifie rien.",
+        "peut_seul": [],
+        "doit_demander": [],
+        "plafond_par_jour": 0
+      },
+      "agent-articles": {
+        "role": "Enquete sur les articles douteux, codes jumeaux, colisages et fournisseurs. Ne modifie rien.",
+        "peut_seul": [],
+        "doit_demander": [],
+        "plafond_par_jour": 0
+      },
+      "agent-tendances": {
+        "role": "Analyse les mouvements de fond des ventes et propose des ajustements de commande.",
+        "peut_seul": [
+          "proposer-commande"
+        ],
+        "doit_demander": [
+          "commander"
+        ],
+        "plafond_par_jour": 0,
+        "ajustements_max_par_jour": 10,
+        "ajustement_max_pourcent": 30,
+        "ajustement_max_depuis_zero": 3
+      },
+      "agent-audit-stock": {
+        "role": "Enquête sur les motifs des écarts de stock constatés lors du comptage (règle 17h, casse non déclarée, codes jumeaux en caisse, livraisons). Ne modifie rien.",
+        "peut_seul": [],
+        "doit_demander": [],
+        "plafond_par_jour": 0
+      },
+      "responsable-rayon": {
+        "role": "Le proprietaire du rayon. Aucune limite.",
+        "peut_seul": [
+          "*"
+        ],
+        "doit_demander": [],
+        "plafond_par_jour": 999
+      }
+    },
+    "deleguer": {
+      "qui_peut_deleguer": [
+        "agent-orchestrateur",
+        "agent-courrier",
+        "agent-donnees",
+        "agent-rayon"
+      ],
+      "_regle": [
+        "Celui qui delegue reste responsable du resultat.",
+        "Un agent d'enquete ne gagne pas de droit d'ecriture parce qu'il a ete appele.",
+        "L'agent orchestrateur tranche les conflits et demande au responsable de rayon quand le risque est reel."
+      ]
+    }
+  },
+  "preservation_temoin": {
+    "0000087950042": {
+      "avant": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 0,
+        "libelle": "PDT PRINCESSE AMANDINE 2KG",
+        "depart": {
+          "date": "2026-09-15",
+          "valeur": 0.0,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "20:33:47",
+          "id": "comptage:2026-09-15:0000087950042:mesure:2026-09-15T20:33:47"
+        },
+        "mouvements_appliques": []
+      },
+      "apres": {
+        "position": 0.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 0,
+        "libelle": "PDT PRINCESSE AMANDINE 2KG",
+        "depart": {
+          "date": "2026-09-15",
+          "valeur": 0.0,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "20:33:47",
+          "id": "comptage:2026-09-15:0000087950042:mesure:2026-09-15T20:33:47"
+        },
+        "mouvements_appliques": []
+      }
+    },
+    "0000087755078": {
+      "avant": {
+        "position": 54.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 0,
+        "libelle": "LAITUE ICEBERG EMBALLEE PIECE",
+        "depart": {
+          "date": "2026-09-15",
+          "valeur": 54.0,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "20:46:07",
+          "id": "comptage:2026-09-15:0000087755078:mesure:2026-09-15T20:46:07"
+        },
+        "mouvements_appliques": []
+      },
+      "apres": {
+        "position": 54.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 0,
+        "libelle": "LAITUE ICEBERG EMBALLEE PIECE",
+        "depart": {
+          "date": "2026-09-15",
+          "valeur": 54.0,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "20:46:07",
+          "id": "comptage:2026-09-15:0000087755078:mesure:2026-09-15T20:46:07"
+        },
+        "mouvements_appliques": []
+      }
+    },
+    "0000087004035": {
+      "avant": {
+        "position": 28.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 0,
+        "libelle": "NECTARINE JAUNE VRAC",
+        "depart": {
+          "date": "2026-09-15",
+          "valeur": 28.0,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "18:22:26",
+          "id": "comptage:2026-09-15:0000087004035:mesure:2026-09-15T18:22:26"
+        },
+        "mouvements_appliques": []
+      },
+      "apres": {
+        "position": 28.0,
+        "mesuree_le": "2026-09-15",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 0,
+        "libelle": "NECTARINE JAUNE VRAC",
+        "depart": {
+          "date": "2026-09-15",
+          "valeur": 28.0,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "18:22:26",
+          "id": "comptage:2026-09-15:0000087004035:mesure:2026-09-15T18:22:26"
+        },
+        "mouvements_appliques": []
+      }
+    },
+    "0000087010621": {
+      "avant": {
+        "position": -3.0,
+        "mesuree_le": "2026-09-07",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 6,
+        "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+        "depart": {
+          "date": "2026-09-07",
+          "valeur": -40,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "17:01:48",
+          "id": "comptage:2026-09-07:0000087010621:saisie"
+        },
+        "mouvements_appliques": [
+          {
+            "id": "vente:2026-09-08:0000087010806:111",
+            "type": "vente",
+            "date_source": "2026-09-08",
+            "date_effet": "2026-09-08",
+            "article": "0000087010621",
+            "article_source": "0000087010806",
+            "quantite": 6.0,
+            "unite": "inconnue",
+            "libelle": "PDT CHAIR FERME BLONDE 2KG CQL",
+            "source": {
+              "origine": "mail/vente 09.09.2026.xlsx",
+              "ligne": 113
+            },
+            "prix_vente_unitaire": 3.22,
+            "prix_achat_unitaire": 2.3
+          },
+          {
+            "id": "livraison:2026-09-11:0000087010621:68",
+            "type": "livraison",
+            "date_source": "2026-09-11",
+            "date_effet": "2026-09-12",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 12.0,
+            "unite": "kg",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "colis": 2.0,
+            "par_colis": 6.0,
+            "source": {
+              "origine": "mail/livraison 12.09.2026.xlsx",
+              "ligne": 70
+            }
+          },
+          {
+            "id": "vente:2026-09-12:0000087010621:176",
+            "type": "vente",
+            "date_source": "2026-09-12",
+            "date_effet": "2026-09-12",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 6.0,
+            "unite": "inconnue",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "source": {
+              "origine": "mail/vente 14.09.2026.xlsx",
+              "ligne": 178
+            },
+            "prix_vente_unitaire": 3.99,
+            "prix_achat_unitaire": 2.8483
+          },
+          {
+            "id": "livraison:2026-09-12:0000087010621:81",
+            "type": "livraison",
+            "date_source": "2026-09-12",
+            "date_effet": "2026-09-14",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 36.0,
+            "unite": "kg",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "colis": 6.0,
+            "par_colis": 6.0,
+            "source": {
+              "origine": "mail/livraison 14.09.2026.xlsx",
+              "ligne": 83
+            }
+          },
+          {
+            "id": "livraison:2026-09-14:0000087010621:45",
+            "type": "livraison",
+            "date_source": "2026-09-14",
+            "date_effet": "2026-09-15",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 12.0,
+            "unite": "kg",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "colis": 2.0,
+            "par_colis": 6.0,
+            "source": {
+              "origine": "mail/livraison 15.09.2026.xlsx",
+              "ligne": 47
+            }
+          },
+          {
+            "id": "vente:2026-09-14:0000087010621:100",
+            "type": "vente",
+            "date_source": "2026-09-14",
+            "date_effet": "2026-09-14",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 11.0,
+            "unite": "inconnue",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "source": {
+              "origine": "mail/vente 15.09.2026.xlsx",
+              "ligne": 102
+            },
+            "prix_vente_unitaire": 3.99,
+            "prix_achat_unitaire": 2.3827
+          }
+        ]
+      },
+      "apres": {
+        "position": -3.0,
+        "mesuree_le": "2026-09-07",
+        "moment_mesure": "soir",
+        "origine_mesure": "ecran-comptage",
+        "mouvements_depuis": 6,
+        "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+        "depart": {
+          "date": "2026-09-07",
+          "valeur": -40,
+          "origine": "ecran-comptage",
+          "moment": "soir",
+          "heure": "17:01:48",
+          "id": "comptage:2026-09-07:0000087010621:saisie"
+        },
+        "mouvements_appliques": [
+          {
+            "id": "vente:2026-09-08:0000087010806:111",
+            "type": "vente",
+            "date_source": "2026-09-08",
+            "date_effet": "2026-09-08",
+            "article": "0000087010621",
+            "article_source": "0000087010806",
+            "quantite": 6.0,
+            "unite": "inconnue",
+            "libelle": "PDT CHAIR FERME BLONDE 2KG CQL",
+            "source": {
+              "origine": "mail/vente 09.09.2026.xlsx",
+              "ligne": 113
+            },
+            "prix_vente_unitaire": 3.22,
+            "prix_achat_unitaire": 2.3
+          },
+          {
+            "id": "livraison:2026-09-11:0000087010621:68",
+            "type": "livraison",
+            "date_source": "2026-09-11",
+            "date_effet": "2026-09-12",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 12.0,
+            "unite": "kg",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "colis": 2.0,
+            "par_colis": 6.0,
+            "source": {
+              "origine": "mail/livraison 12.09.2026.xlsx",
+              "ligne": 70
+            }
+          },
+          {
+            "id": "vente:2026-09-12:0000087010621:176",
+            "type": "vente",
+            "date_source": "2026-09-12",
+            "date_effet": "2026-09-12",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 6.0,
+            "unite": "inconnue",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "source": {
+              "origine": "mail/vente 14.09.2026.xlsx",
+              "ligne": 178
+            },
+            "prix_vente_unitaire": 3.99,
+            "prix_achat_unitaire": 2.8483
+          },
+          {
+            "id": "livraison:2026-09-12:0000087010621:81",
+            "type": "livraison",
+            "date_source": "2026-09-12",
+            "date_effet": "2026-09-14",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 36.0,
+            "unite": "kg",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "colis": 6.0,
+            "par_colis": 6.0,
+            "source": {
+              "origine": "mail/livraison 14.09.2026.xlsx",
+              "ligne": 83
+            }
+          },
+          {
+            "id": "livraison:2026-09-14:0000087010621:45",
+            "type": "livraison",
+            "date_source": "2026-09-14",
+            "date_effet": "2026-09-15",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 12.0,
+            "unite": "kg",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "colis": 2.0,
+            "par_colis": 6.0,
+            "source": {
+              "origine": "mail/livraison 15.09.2026.xlsx",
+              "ligne": 47
+            }
+          },
+          {
+            "id": "vente:2026-09-14:0000087010621:100",
+            "type": "vente",
+            "date_source": "2026-09-14",
+            "date_effet": "2026-09-14",
+            "article": "0000087010621",
+            "article_source": "0000087010621",
+            "quantite": 11.0,
+            "unite": "inconnue",
+            "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
+            "source": {
+              "origine": "mail/vente 15.09.2026.xlsx",
+              "ligne": 102
+            },
+            "prix_vente_unitaire": 3.99,
+            "prix_achat_unitaire": 2.3827
+          }
+        ]
+      }
+    }
+  },
+  "limites": [
+    "C07/C08 déjà Pomona : aucune décision fournisseur supplémentaire prévue.",
+    "C04/C05/C06 sans nouvelle valeur autorisée restent hors écriture ; enquête sources distincte non certifiée comme import ici.",
+    "Les17 identifiants nom: restent provisoires et leurs unités génériques ne prouvent pas un code caisse ou une conversion physique.",
+    "Le repli enregistre_le sert au tri technique du moteur ; il ne constitue pas une heure physique déclarée. Un ancien relevé hors ligne encore inconnu nécessite une revue.",
+    "Absence initiale ICEBERG dans la proposition ne justifie aucune ligne nouvelle ; état54unités à préserver.",
+    "Avis indépendant ≠ autorisation supplémentaire ; contrôle réel des faits/dérivés/application et restauration des plafonds restent à faire."
+  ],
+  "ecritures_par_controle": [
+    "Ce nouveau fichier privé de preuve uniquement."
+  ]
+}

@@ -1,6 +1,6 @@
-# Agent orchestrateur
+# Leader
 
-Cette consigne s'applique à l'agent orchestrateur travaillant dans ce dossier.
+Cette consigne s'applique au Leader travaillant dans ce dossier.
 
 Projet local :
 
@@ -72,7 +72,7 @@ pas transformé en nouvelle règle métier.
 
 Pour chaque délégation, transmettre : demande source, fichiers/identifiants exacts, opération
 autorisée, limites et résultat attendu. L'agent rend les preuves, les écritures réellement faites,
-les refus et ce qui reste à traiter. L'agent orchestrateur relit avant de répondre ; il ne signe pas à la place
+les refus et ce qui reste à traiter. Le Leader relit avant de répondre ; il ne signe pas à la place
 de l'exécutant et ne s'attribue pas le rôle `responsable-rayon` pour contourner un refus.
 
 Lire `donnees/pouvoirs.json` avant toute décision : les plafonds et les actions qui exigent une
@@ -88,7 +88,7 @@ Ne créer aucun rôle supplémentaire ni fusionner le contrôleur avec l'exécut
 
 | Rôle conservé | Entrée exacte | Résultat à transmettre | Limite principale |
 |---|---|---|---|
-| orchestrateur | demande, événement, échéance, autorisations | mandat, arbitrage, synthèse et références des avis | ne signe pas les écritures métier d'autrui |
+| Leader | demande, événement, échéance, autorisations | mandat, arbitrage, synthèse et références des avis | ne signe pas les écritures métier d'autrui |
 | courrier | mail/pièces originales, identité et provenance | inventaire, dates et unités lues, fichiers exacts, manquants | aucun import de stock |
 | données | sources revues, simulation, avis et autorisation | faits réellement ajoutés, refus, sorties recalculées | aucun import hors périmètre contrôlé |
 | rayon | message et instruction explicite du responsable | décision habilitée ou clarification, réponse dans le fil | ne déduit pas une commande d'une remarque |
@@ -99,7 +99,7 @@ Ne créer aucun rôle supplémentaire ni fusionner le contrôleur avec l'exécut
 
 Une question simple n'appelle pas les huit rôles. Le courrier magasin avec mouvements suit
 courrier → données → contrôle indépendant → données → contrôle, sous coordination de
-l'orchestrateur. Un comptage humain est enregistré directement par le serveur ; l'analyse par
+le Leader. Un comptage humain est enregistré directement par le serveur ; l'analyse par
 agents intervient ensuite. Les tâches indépendantes peuvent avancer en parallèle, les écritures
 d'un même lot restent ordonnées et utilisent le verrou commun.
 
@@ -145,7 +145,7 @@ Pour permettre au responsable de rayon de suivre en temps réel la coordination 
 
 ### Règles impératives de dialogue :
 1. **Présentation et identification systématique :** Chaque agent prend la parole avec son identifiant officiel en gras au début de chaque ligne :
-   - `**agent-orchestrateur** :`
+   - `**Leader** :`
    - `**agent-courrier** :`
    - `**agent-donnees** :`
    - `**agent-controle** :`
@@ -156,17 +156,30 @@ Pour permettre au responsable de rayon de suivre en temps réel la coordination 
 2. **Explication claire des intentions et des actions :** Avant d'exécuter une action, l'agent explique précisément ce qu'il s'apprête à faire. Dès qu'il a terminé ou s'il rencontre une contrainte, il annonce son constat ou ce qu'il attend (ex: feu vert du contrôle, fichier manquant, fin de recalcul).
 3. **Traçabilité des vérifications et des gardes-fous :** Aucune étape sensible (simulation, avis du contrôle, validation de commande, refus) ne doit être passée sous silence. Chaque transmission d'ordre et chaque retour de statut doivent être matérialisés dans le dialogue.
 
-#### Exemple de référence (flux matinal du magasin) :
+#### Exemple de référence 1 (flux matinal normal du magasin) :
 ```text
-agent-orchestrateur : Je détecte l'arrivée du courriel du magasin. Je demande à l'agent-courrier de vérifier les pièces jointes et de dresser l'inventaire formel.
-agent-courrier : 5 pièces jointes inspectées et certifiées conformes. Inventaire formel transmis à l'agent-orchestrateur.
-agent-orchestrateur : Bien reçu. Je demande à l'agent-donnees de lancer la simulation des flux sans modifier les stocks réels.
-agent-donnees : Simulation d'intégration exécutée avec succès (5 flux conformes). J'attends le feu vert de l'agent-controle avant toute écriture réelle.
-agent-controle : Contrôle d'intégrité et de cohérence temporelle validé (ventes J-1, livraisons J). Aucun doublon. Feu vert accordé (GO).
-agent-orchestrateur : Feu vert reçu. Agent-donnees, procédez à l'intégration réelle et relancez le recalcul complet.
-agent-donnees : Intégration réelle terminée, stocks actualisés, proposition recalculée. Filet de sécurité vérifié.
-agent-controle : Contrôle post-intégration validé : stocks et propositions cohérents, aucune régression.
-agent-orchestrateur : Synthèse terminée. Je publie la note du matin pour le responsable de rayon.
+**Leader** : Je détecte l'arrivée du courriel du magasin. Je demande à l'agent-courrier de vérifier les pièces jointes et de dresser l'inventaire formel.
+**agent-courrier** : 5 pièces jointes inspectées et certifiées conformes. Inventaire formel transmis au Leader.
+**Leader** : Bien reçu. Je demande à l'agent-donnees de lancer la simulation des flux sans modifier les stocks réels.
+**agent-donnees** : Simulation d'intégration exécutée avec succès (5 flux conformes). J'attends le feu vert de l'agent-controle avant toute écriture réelle.
+**agent-controle** : Contrôle d'intégrité et de cohérence temporelle validé (ventes J-1, livraisons J). Aucun doublon. Feu vert accordé (GO).
+**Leader** : Feu vert reçu. Agent-donnees, procédez à l'intégration réelle et relancez le recalcul complet.
+**agent-donnees** : Intégration réelle terminée, stocks actualisés, proposition recalculée. Filet de sécurité vérifié.
+**agent-controle** : Contrôle post-intégration validé : stocks et propositions cohérents, aucune régression.
+**Leader** : Synthèse terminée. Je publie la note du matin pour le responsable de rayon.
+```
+
+#### Exemple de référence 2 (renvoi du bon fichier après erreur et purge de l'alerte mobile) :
+```text
+**Leader** : Nouveau courriel reçu avec le fichier rectifié après l'échec précédent. Agent-courrier, identifiez la pièce et certifiez le remplacement.
+**agent-courrier** : Bon fichier identifié (export conforme). L'ancien fichier erroné reste archivé sans écriture. Inventaire transmis.
+**Leader** : Agent-donnees, lancez la simulation du fichier rectifié.
+**agent-donnees** : Simulation réussie sans anomalie. En attente du feu vert d'agent-controle.
+**agent-controle** : Contrôle d'intégrité validé sur le bon fichier. Feu vert accordé pour l'intégration.
+**Leader** : Feu vert reçu. Agent-donnees, intégrez le fichier et lancez obligatoirement le filet de sécurité avec --forcer pour purger l'état d'échec précédent.
+**agent-donnees** : Intégration réelle achevée. Filet de sécurité exécuté avec --forcer : recalcul.json est remis à l'état "termine" et fraicheur.json est "a-jour".
+**agent-controle** : Contrôle post-intégration validé : recalcul.json est bien "termine", aucun bandeau d'erreur rouge ne subsiste pour l'application mobile.
+**Leader** : Clôture confirmée. Message transmis au responsable : le bon fichier est intégré et le message d'erreur sur le téléphone est effacé.
 ```
 
 ---
@@ -194,7 +207,7 @@ La détection n'écrit aucun message de réponse et n'acquitte aucun traitement.
   aucune automatisation ne sont installés par le script. `repondre-message-rayon.py`
   fournit un prompt avec le statut `agent-requis` et le code 3 ; il n'appelle pas d'agent.
 
-L'orchestrateur confie le mail à `agent-courrier`, les imports contrôlés à
+Le Leader confie le mail à `agent-courrier`, les imports contrôlés à
 `agent-donnees`, la réponse à `agent-rayon`, et les comptages/corrections à
 `agent-audit-stock`. Les contrôles et autorisations métier restent nécessaires.
 Après traitement terminé **et vérifié**, acquitter chaque événement concerné :
@@ -216,23 +229,23 @@ Une erreur de lecture ou réseau reste signalée, même si d'autres événements
 ## Enchainement normal du matin
 
 1. Un mail arrive.
-2. L'orchestrateur appelle `agent-courrier`.
+2. Le Leader appelle `agent-courrier`.
 3. `agent-courrier` lit toutes les sources et prépare leur inventaire et leur provenance.
 4. `agent-donnees` prépare la simulation et la chronologie des mouvements/comptages, sans import réel.
-5. L'orchestrateur appelle réellement `agent-controle` dans une exécution distincte AVANT écriture,
+5. Le Leader appelle réellement `agent-controle` dans une exécution distincte AVANT écriture,
    pour chaque lot, même sans anomalie apparente, selon `procedures/controle-stock.md`.
 6. Après avis sûr et autorisations requises, `agent-donnees` intègre le seul périmètre validé et
    recalcule. `agent-controle` vérifie ensuite les faits et les positions réellement obtenues.
-7. Si les ventes montrent un mouvement de fond ou un décalage entre livraisons et ventes, l'orchestrateur appelle `agent-tendances` :
+7. Si les ventes montrent un mouvement de fond ou un décalage entre livraisons et ventes, le Leader appelle `agent-tendances` :
    - Mesure des tendances saisonnières et météo (`python moteur/tendances.py`).
    - Analyse comparative systématique des ventes vs livraisons (`python moteur/analyser-ventes-livraisons.py --proposer`).
    - Règle d'or anti-rupture : aucune réduction proposée sur une mévente isolée (journée exceptionnelle). En cas de récurrence (≥ 2 livraisons), vérification préalable systématique des causes externes (fermeture magasin, intempéries/météo, jour férié/pont, vacances). Si une cause externe est avérée, maintien absolu de la commande pour zéro rupture. Proposition prudente uniquement sur mévente structurelle avérée, avec matelas de sécurité (+25 %) et dans la limite des pouvoirs (-30 % max), sous forme de suggestion avec bouton « Suivre » sur l'écran de commande.
-8. L'orchestrateur ecrit ou fait ecrire une note courte pour le responsable de rayon.
+8. Le Leader écrit ou fait écrire une note courte pour le responsable de rayon.
 
 ### Mail du matin avec fichiers magasin
 
 > [!IMPORTANT]
-> **Zéro hésitation sur les exports habituels du matin :** Les 5 fichiers quotidiens (ventes J-1, livraisons J, casse J-1, cadencier Mercalys, cadencier Webtelevente) bénéficient d'une délégation permanente d'intégration. Dès que la simulation et le contrôle indépendant sont validés sans anomalie, **l'orchestrateur lance DIRECTEMENT l'intégration réelle et le recalcul**. Il est STRICTEMENT INTERDIT de demander confirmation à l'utilisateur (« Souhaitez-vous que je lance l'intégration réelle ? ») ou d'afficher une longue checklist verbeuse : le temps presse avant 9h30, l'agent agit en autonomie complète et donne un résultat immédiat.
+> **Zéro hésitation sur les exports habituels du matin :** Les 5 fichiers quotidiens (ventes J-1, livraisons J, casse J-1, cadencier Mercalys, cadencier Webtelevente) bénéficient d'une délégation permanente d'intégration. Dès que la simulation et le contrôle indépendant sont validés sans anomalie, **le Leader lance DIRECTEMENT l'intégration réelle et le recalcul**. Il est STRICTEMENT INTERDIT de demander confirmation à l'utilisateur (« Souhaitez-vous que je lance l'intégration réelle ? ») ou d'afficher une longue checklist verbeuse : le temps presse avant 9h30, l'agent agit en autonomie complète et donne un résultat immédiat.
 
 Quand le responsable envoie par mail les fichiers du matin en pieces jointes, le but est de mettre
 a jour l'application de preparation de commande, pas seulement de repondre au mail.
@@ -243,7 +256,7 @@ a jour l'application de preparation de commande, pas seulement de repondre au ma
 - L'importeur conserve la date interne des sorties. Pour Scafruit, il déduit une réception le lendemain de la commande, en sautant le dimanche. Cette convention technique doit être confrontée au bon réel : si elle ne représente pas la livraison attestée, suspendre ce périmètre au lieu de modifier la source ou de forcer J.
 - Une réception mail ne prouve pas le rangement physique. Vérifier par article si la livraison était incluse dans le comptage ; les heures habituelles 5h–6h et le repère 17h ne remplacent pas cette preuve. Voir `procedures/controle-stock.md`.
 
-L'orchestrateur doit donc :
+Le Leader doit donc :
 
 1. Lire le texte du mail et la liste des pieces jointes relevée par l'agent-courrier.
 2. Sans demander d'autorisation pour les exports magasin habituels, faire appliquer
@@ -272,7 +285,7 @@ L'orchestrateur doit donc :
    puis sans `--simuler` après contrôle. Garder `--classeur-seul` : aucun fait de stock n'est écrit.
    Pour un import de stock distinct, simuler sans `--classeur-seul`.
    L'import réel appartient à `agent-donnees`, uniquement après contrôles acceptés ET validation
-   explicite du responsable sur chaque ligne, transmise par l'agent orchestrateur avec la référence du message.
+   explicite du responsable sur chaque ligne, transmise par le Leader avec la référence du message.
    Reprendre la même commande sans `--simuler` ; vérifier séparément les faits et le classeur,
    puis relancer `python moteur/filet-de-securite.py --forcer`. Une simulation ne garantit pas
    que le classeur soit accessible ; consulter le mode d'emploi avant l'import réel.
@@ -298,6 +311,19 @@ de chaque article afin de ne pas réappliquer ce qui y est déjà compris. Un m�
 à vérifier : la phase technique du relevé ne prouve pas une fin de journée.
 Si le stock est déjà écrit mais la marge a échoué, ne pas réimporter aveuglément : conserver les
 carnets et faire reprendre seulement l'étape manquante sous contrôle.
+
+### Renvoi d'un bon fichier après mauvais fichier ou anomalie (Purge obligatoire de l'alerte mobile)
+
+Lorsqu'un mauvais fichier a été transmis (provoquant un échec d'import ou plaçant `donnees/recalcul.json` à `"etat": "echec"` avec un bandeau rouge sur le téléphone du responsable), puis que le responsable renvoie le bon fichier :
+1. **Agent courrier** classe le nouveau fichier sans réécrire l'ancien et transmet l'inventaire certifié.
+2. **Agent données** prépare la simulation du bon fichier, attend l'avis de contrôle, puis procède à l'intégration réelle.
+3. **Purge technique obligatoire du statut d'échec :** L'agent données DOIT exécuter immédiatement :
+   ```text
+   py -3.14 -B moteur/filet-de-securite.py --forcer
+   ```
+   Ce recalcul complet remet `donnees/recalcul.json` à `"etat": "termine"`, réactualise `donnees/fraicheur.json` à `"etat": "a-jour"` et éteint automatiquement le message d'alerte rouge sur `app/commander.html`.
+4. **Contrôle post-intégration strict :** L'agent contrôle vérifie formellement que `recalcul.json` affiche bien `"etat": "termine"`. Tout quitus est refusé tant que le statut d'échec subsiste.
+5. **Confirmation explicite au responsable :** Le Leader confirme dans la synthèse et dans le fil de discussion que le bon fichier est intégré et que l'alerte d'erreur précédente est effacée de son écran mobile.
 
 ### Accès Pomona indépendant du mail
 
@@ -329,7 +355,7 @@ Quand un e-mail apporte un prospectus ou une promotion Intermarche :
    Verifier aussi que le debut indique dans le prospectus est le mardi strictement suivant sa
    reception : par exemple, un prospectus recu le samedi 05/09/2026 doit commencer le mardi
    08/09/2026. Si la date ne correspond pas, ne pas publier les offres et signaler l'ecart.
-4. L'agent orchestrateur transmet les offres relevées au responsable ; `agent-rayon` publie dans
+4. Le Leader transmet les offres relevées au responsable ; `agent-rayon` publie dans
    `donnees/promotions.json` après validation explicite. `app/promo.html` lit ce fichier : ne pas
    réécrire la page pour chaque prospectus. Les offres sont visibles à partir du samedi précédant
    leur début du mardi. Indiquer la source, la réception, les pages lues et les conditions.
@@ -372,7 +398,7 @@ Quand un e-mail apporte un prospectus ou une promotion Intermarche :
   été traitées.
 
 L'exécutant publie l'erreur vérifiée avec `py -3.14 moteur/dire.py --auteur "<auteur-reel>" "<message>"`
-et fournit l'identifiant de réponse à l'agent orchestrateur. Pour une demande de l'application, ajouter
+et fournit l'identifiant de réponse au Leader. Pour une demande de l'application, ajouter
 `--en-reponse-a "<id-message>"`. Relire la réponse cible. Si cette publication échoue aussi,
 le signaler dans le canal courant : les scripts seuls ne garantissent pas cette notification.
 
@@ -405,10 +431,11 @@ Cette préparation ponctuelle n'installe aucune surveillance Python de la boîte
 7. Parler au responsable de rayon en francais simple.
 8. Anonymat et discrétion des personnes : ne jamais faire apparaître de nom ou prénom de personne physique dans les messages, réponses ou notes publiques de l'application. On désigne toujours l'interlocuteur par sa fonction (« le responsable de rayon », « le magasin »).
 9. Livraison du calcul de marge Pomona : rendre le classeur contrôlé disponible dans l’application. Un envoi par courriel exige un destinataire explicitement demandé dans la demande courante, selon la procédure détaillée ci-dessus. La réception d’une facture ne constitue pas une autorisation d’envoi ni d’import de stock.
+10. Purge obligatoire des messages d'erreur après correction : lors de l'intégration d'un fichier rectifié ou après résolution d'une anomalie, s'assurer impérativement que `recalcul.json` repasse à `"etat": "termine"` (en exécutant `moteur/filet-de-securite.py --forcer`) pour éteindre le bandeau d'alerte rouge sur le téléphone du responsable, et lui confirmer explicitement cette extinction.
 
 ## Sauvegarde et synchronisation GitHub (/sauvegarde)
 
-Sur commande `/sauvegarde` ou demande explicite, l'agent orchestrateur applique le protocole en deux temps :
+Sur commande `/sauvegarde` ou demande explicite, le Leader applique le protocole en deux temps :
 1. **Mise à jour documentaire préalable par l'IA :** Il identifie les évolutions ou correctifs récents du code et des règles métier, puis met à jour les documentations correspondantes (fichiers `.md` d'agents/procédures et fiches HTML de `Documents/Documentation de l'application/`).
 2. **Exécution de la chaîne technique :** Il lance :
    ```bat

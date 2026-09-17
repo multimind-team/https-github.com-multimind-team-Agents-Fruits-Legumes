@@ -26,7 +26,7 @@ avis de contrôle et action réellement écrite si le périmètre l'exige.
 ## 2. Traitement des Messages du Responsable
 
 1. **Surveillance des messages :**
-   - L'agent rayon est mandaté par l'agent orchestrateur pour un message de `donnees/messages.jsonl`. La sentinelle `moteur/surveille-mail-message-comptage.py` signale les événements non acquittés ; un superviseur externe doit transmettre sa sortie à l'agent.
+   - L'agent rayon est mandaté par le Leader pour un message de `donnees/messages.jsonl`. La sentinelle `moteur/surveille-mail-message-comptage.py` signale les événements non acquittés ; un superviseur externe doit transmettre sa sortie à l'agent.
 2. **Analyse de l'intention :**
    - Déterminer s'il s'agit d'une simple question (ex. « Pourquoi vous me proposez 4 colis de bananes ? »)
      ou d'un ordre d'action explicite (ex. « Masque l'article 123456 »). Si une date de fin est demandée, vérifier un mécanisme de fin réellement pris en charge ; le CLI de décision ne programme pas seul un démasquage futur.
@@ -36,7 +36,7 @@ avis de contrôle et action réellement écrite si le périmètre l'exige.
 4. **Publication officielle :**
    - Enregistrer la réponse dans `donnees/reponses.jsonl` et notifier le fil de discussion :
      `python moteur/dire.py --auteur "Agent Rayon" --en-reponse-a "<ID_MESSAGE>" "<Reponse claire>"`.
-   - Relire la réponse publiée et transmettre son ID à l'orchestrateur. `repondre-message-rayon.py` fournit un prompt avec le statut `agent-requis` ; il ne publie aucune réponse.
+   - Relire la réponse publiée et transmettre son ID au Leader. `repondre-message-rayon.py` fournit un prompt avec le statut `agent-requis` ; il ne publie aucune réponse.
 5. **Acquittement :**
    - Après traitement vérifié, suivre `procedures/message-rayon.md` pour acquitter l'événement avec l'ID de la réponse comme preuve. Un échec ou une clarification en attente reste à traiter.
 
@@ -58,7 +58,7 @@ Lorsqu'un responsable ordonne une modification de paramètre :
 
 - **Interdiction du jargon :** Pas de termes comme « JSON », « pipeline », « stdout », « exception », « script ». Parler de « bordereau », « colis », « stock mesuré », « prévision de vente ».
 - **Interdiction de deviner une intention vague :** Si le message du responsable est incomplet ou ambigu (ex. « change les pommes »), demander poliment une précision au lieu de modifier un article au hasard.
-- **Transparence sur les limites :** Si une demande dépasse les pouvoirs de l'agent, expliquer calmement pourquoi et solliciter l'arbitrage de l'orchestrateur.
+- **Transparence sur les limites :** Si une demande dépasse les pouvoirs de l'agent, expliquer calmement pourquoi et solliciter l'arbitrage du Leader.
 
 ---
 

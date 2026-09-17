@@ -1,0 +1,157 @@
+{
+  "total_duration": 202.39,
+  "chapters": [
+    {
+      "id": 1,
+      "chapter": "1. L'envoi matinal",
+      "speaker": "Responsable de rayon",
+      "title": "Responsable de rayon : 6 heures 45. J'expédie les six exports du matin : ...",
+      "start": 0.0,
+      "duration": 13.03
+    },
+    {
+      "id": 2,
+      "chapter": "2. Détection à la porte",
+      "speaker": "Agent Sentinelle",
+      "title": "Agent Sentinelle : Alerte transmission. Signal courriel externe inter...",
+      "start": 13.03,
+      "duration": 14.54
+    },
+    {
+      "id": 3,
+      "chapter": "2. Détection à la porte",
+      "speaker": "Leader",
+      "title": "Leader : Signal bien reçu, Sentinelle. Brigade, à vos poste...",
+      "start": 27.58,
+      "duration": 11.74
+    },
+    {
+      "id": 4,
+      "chapter": "3. Inventaire & Simulation",
+      "speaker": "Leader",
+      "title": "Leader : Agent Courrier, dresse l'inventaire formel des piè...",
+      "start": 39.31,
+      "duration": 8.78
+    },
+    {
+      "id": 5,
+      "chapter": "3. Inventaire & Simulation",
+      "speaker": "Agent Courrier",
+      "title": "Agent Courrier : Fichiers réceptionnés. Ventes, casse, dons et cade...",
+      "start": 48.1,
+      "duration": 12.14
+    },
+    {
+      "id": 6,
+      "chapter": "4. Détection de l'erreur",
+      "speaker": "Agent Données",
+      "title": "Agent Données : Simulation lancée en mémoire protégée. Les sorties...",
+      "start": 60.24,
+      "duration": 9.84
+    },
+    {
+      "id": 7,
+      "chapter": "4. Détection de l'erreur",
+      "speaker": "Agent Contrôle",
+      "title": "Agent Contrôle : Veto de conformité. Le bon de livraison reçu ne co...",
+      "start": 70.08,
+      "duration": 13.58
+    },
+    {
+      "id": 8,
+      "chapter": "5. Relais vers le magasin",
+      "speaker": "Leader",
+      "title": "Leader : Veto approuvé. Zéro écriture sur le stock réel. Ag...",
+      "start": 83.66,
+      "duration": 12.89
+    },
+    {
+      "id": 9,
+      "chapter": "5. Relais vers le magasin",
+      "speaker": "Agent Rayon",
+      "title": "Agent Rayon : C'est fait. Message envoyé sur son mobile : Le fic...",
+      "start": 96.55,
+      "duration": 13.8
+    },
+    {
+      "id": 10,
+      "chapter": "6. Renvoi du fichier corrigé",
+      "speaker": "Responsable de rayon",
+      "title": "Responsable de rayon : Oups, mauvais export sélectionné dans l'urgence. J...",
+      "start": 110.35,
+      "duration": 8.02
+    },
+    {
+      "id": 11,
+      "chapter": "6. Renvoi du fichier corrigé",
+      "speaker": "Agent Sentinelle",
+      "title": "Agent Sentinelle : Nouvel événement courriel à la porte. Pièce rectif...",
+      "start": 118.37,
+      "duration": 10.01
+    },
+    {
+      "id": 12,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Agent Courrier",
+      "title": "Agent Courrier : Document certifié conforme. Il remplace la version...",
+      "start": 128.38,
+      "duration": 8.9
+    },
+    {
+      "id": 13,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Agent Données",
+      "title": "Agent Données : Rejeu de la simulation avec le filet de sécurité f...",
+      "start": 137.28,
+      "duration": 11.11
+    },
+    {
+      "id": 14,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Agent Contrôle",
+      "title": "Agent Contrôle : Audit complet validé. Les six flux sont intègres e...",
+      "start": 148.39,
+      "duration": 8.86
+    },
+    {
+      "id": 15,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Leader",
+      "title": "Leader : Autorisation d'intégration accordée. Données, appl...",
+      "start": 157.25,
+      "duration": 10.92
+    },
+    {
+      "id": 16,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Agent Données",
+      "title": "Agent Données : Intégration achevée. Recalcul général du cadencier...",
+      "start": 168.17,
+      "duration": 10.22
+    },
+    {
+      "id": 17,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Agent Rayon",
+      "title": "Agent Rayon : Note du matin publiée. L'alerte d'erreur est effac...",
+      "start": 178.39,
+      "duration": 10.08
+    },
+    {
+      "id": 18,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Leader",
+      "title": "Leader : Mission accomplie. Sentinelle, reprends la surveil...",
+      "start": 188.47,
+      "duration": 6.98
+    },
+    {
+      "id": 19,
+      "chapter": "7. Rejeu & Validation finale",
+      "speaker": "Agent Sentinelle",
+      "title": "Agent Sentinelle : Surveillance active réarmée. Porte sécurisée. Brig...",
+      "start": 195.46,
+      "duration": 6.94
+    }
+  ]
+}

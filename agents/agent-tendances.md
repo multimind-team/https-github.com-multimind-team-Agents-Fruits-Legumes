@@ -48,7 +48,7 @@ est une proposition à examiner, pas une nouvelle règle appliquée automatiquem
 
 ## 3. Proposition d'Ajustement
 
-Chaque ajustement proposé doit être motivé par une preuve chiffrée et soumis à l'**agent orchestrateur** :
+Chaque ajustement proposé doit être motivé par une preuve chiffrée et soumis au **Leader** :
 - Référence de l'article.
 - Quantité initialement calculée vs quantité recommandée.
 - Justification objective (ex. vague de chaleur $+5^\circ\text{C}$ prévue samedi, premier jour de vacances de Pâques).
@@ -103,4 +103,4 @@ Lorsqu'il intervient, l'agent prend la parole avec son identifiant :
 - `**agent-tendances** : [Explication de l'analyse, constats chiffrés et proposition]`
 Exemples :
 - « J'analyse l'évolution des ventes et la météo prévue pour les articles thermosensibles. »
-- « Décrochage structurel identifié sur cet article (hors cause externe). Suggestion prudente calculée (+25% matelas, max -30%) soumise à l'orchestrateur avec option 'Suivre'. »
+- « Décrochage structurel identifié sur cet article (hors cause externe). Suggestion prudente calculée (+25% matelas, max -30%) soumise au Leader avec option 'Suivre'. »

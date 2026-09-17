@@ -24,6 +24,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import agregats
 import catalogue
 import regles
+try:
+    import saisonnalite_masquage
+except ImportError:
+    saisonnalite_masquage = None
 
 RACINE = Path(__file__).resolve().parent.parent
 DOSSIER_FAITS = RACINE / "donnees" / "faits"
@@ -193,6 +197,17 @@ def main():
         except Exception:
             pass
 
+    # --- 8. Recommandations saisonnières (Masquage & Démasquage) -----------
+    if saisonnalite_masquage:
+        try:
+            recommandations = saisonnalite_masquage.analyser_recommandations(RACINE)
+            if recommandations:
+                saisonnalite_masquage.sauvegarder_recommandations(recommandations, RACINE)
+                for point in saisonnalite_masquage.synthese_note_du_matin(recommandations):
+                    dire(point["texte"], point["gravite"])
+        except Exception:
+            pass
+
     if not any(e["gravite"] != "info" for e in entrees):
         dire("Rien d'anormal ce matin.")
 
@@ -203,7 +218,7 @@ def main():
     note = {
         "date": date_reference,
         "ecrite_le": datetime.now().isoformat(timespec="seconds"),
-        "ecrite_par": "constats automatiques (l'agent orchestrateur n'a pas encore relu)",
+        "ecrite_par": "constats automatiques (le Leader n'a pas encore relu)",
         "entrees": entrees,
     }
     ecrire_json(RACINE / "donnees" / "note-du-matin.json", note)

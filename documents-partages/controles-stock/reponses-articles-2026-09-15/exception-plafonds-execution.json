@@ -1,0 +1,18 @@
+{
+  "autorisation": "autorisation-plafonds.md",
+  "avant_sha256": "51b4c6403e21f9d70cb70d2b08a1f006a0bc00f28e7e30c7ec4cde4148f3129a",
+  "temporaire_sha256": "6852269ba4884bca49a22c126ca93bda52503914bcefe0aa6a559c1bf36f7c58",
+  "agent_rayon": {
+    "avant": 15,
+    "temporaire": 18
+  },
+  "global": {
+    "avant": 20,
+    "temporaire": 25
+  },
+  "etat": "plafonds-restaures",
+  "prepare_le": "2026-09-15T21:18:45",
+  "active_le": "2026-09-15T21:18:45",
+  "restaure_le": "2026-09-15T21:29:34",
+  "restaure_sha256": "51b4c6403e21f9d70cb70d2b08a1f006a0bc00f28e7e30c7ec4cde4148f3129a"
+}
