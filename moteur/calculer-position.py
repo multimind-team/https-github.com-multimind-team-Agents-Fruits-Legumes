@@ -109,6 +109,25 @@ def lire_conditionnements():
     return {code: selection["conditionnement"] for code, selection in selections.items()}
 
 
+def normaliser_heure_magasin(val_horodatage):
+    """Extrait l'heure locale HH:MM:SS du magasin, en convertissant le fuseau si présent."""
+    if not val_horodatage or "T" not in str(val_horodatage):
+        return None
+    texte = str(val_horodatage).strip()
+    try:
+        from datetime import datetime
+        dt = datetime.fromisoformat(texte)
+        if dt.tzinfo is not None:
+            from zoneinfo import ZoneInfo
+            return dt.astimezone(ZoneInfo("Europe/Paris")).strftime("%H:%M:%S")
+        return dt.strftime("%H:%M:%S")
+    except (ValueError, TypeError):
+        try:
+            return texte.split("T")[1][:8]
+        except (IndexError, ValueError):
+            return None
+
+
 def moment_du_comptage(fait, heures_mail=None):
     """Détermine le moment du comptage selon la règle métier :
 
@@ -122,12 +141,8 @@ def moment_du_comptage(fait, heures_mail=None):
     """
     # L'heure physique de saisie prévaut sur l'horodatage technique d'enregistrement
     val_heure = (fait.get("source") or {}).get("saisi_le") or fait.get("horodatage") or fait.get("enregistre_le")
-    if not val_heure or "T" not in str(val_heure):
-        return "soir"
-
-    try:
-        heure_str = str(val_heure).split("T")[1][:8]
-    except (ValueError, IndexError):
+    heure_str = normaliser_heure_magasin(val_heure)
+    if not heure_str:
         return "soir"
 
     # La règle canonique fixe le début du soir à 17h00, sans avance implicite.
@@ -175,12 +190,12 @@ def calculer(jusqua=None):
 
 
 def heure_physique(fait):
-    """Heure de mesure, y compris si le téléphone l'a envoyée plus tard."""
     horodatage = ((fait.get("source") or {}).get("saisi_le")
                   or fait.get("horodatage")
                   or (fait.get("source") or {}).get("horodatage")
                   or fait.get("enregistre_le"))
-    return str(horodatage).split("T", 1)[-1][:8] if horodatage and "T" in str(horodatage) else "23:59:59"
+    h = normaliser_heure_magasin(horodatage)
+    return h if h else "23:59:59"
 
 
 def calculer_depuis_faits(tous_faits, config, heures_mail, jusqua=None, details=False):
@@ -205,6 +220,7 @@ def calculer_depuis_faits(tous_faits, config, heures_mail, jusqua=None, details=
                 "origine": fait.get("origine_mesure", "?"),
                 "moment": moment_du_comptage(fait, heures_mail), "heure": heure,
                 "id": fait.get("id"),
+                "motif": fait.get("motif"),
             }
             comptages[fait.get("id")] = (article, position)
             precedente = derniere_position.get(article)
@@ -219,6 +235,7 @@ def calculer_depuis_faits(tous_faits, config, heures_mail, jusqua=None, details=
                 position.update({
                     "valeur": fait["quantite"],
                     "origine": fait.get("origine_mesure", "correction-comptage"),
+                    "motif": fait.get("motif") or position.get("motif"),
                 })
         elif fait["type"] in AJOUTE | RETIRE:
             mouvements[article].append((jour, fait["type"], fait["quantite"], fait))
@@ -251,6 +268,7 @@ def calculer_depuis_faits(tous_faits, config, heures_mail, jusqua=None, details=
         etat[article] = {"position": round(total, 3), "mesuree_le": depart["date"],
                          "moment_mesure": depart["moment"],
                          "origine_mesure": depart["origine"],
+                         "motif": depart.get("motif"),
                          "mouvements_depuis": depuis,
                          "libelle": libelles.get(article, "")}
         if details:

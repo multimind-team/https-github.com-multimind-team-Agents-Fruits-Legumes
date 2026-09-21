@@ -1,6 +1,6 @@
 {
- "calcule_le": "2026-09-17T06:12:03",
- "date_reference": "2026-09-16",
+ "calcule_le": "2026-09-19T05:27:51",
+ "date_reference": "2026-09-18",
  "mois_reference": 9,
  "nom_mois_reference": "Septembre",
  "semaine_iso": 38,
@@ -15,17 +15,6 @@
    "tendance": "forte_hausse",
    "motif": "Pleine saison en Octobre (+73% attendus en octobre)",
    "volume_total": 3355.9
-  },
-  {
-   "itm8": "0000087004764",
-   "libelle": "POTIMARRON PIECE",
-   "quand": "Dès maintenant (mi-septembre)",
-   "priorite": 1,
-   "pleine_saison": "Octobre",
-   "evolution_pct": 47.4,
-   "tendance": "forte_hausse",
-   "motif": "Pleine saison en Octobre (+47% attendus en octobre)",
-   "volume_total": 2201.3
   },
   {
    "itm8": "0000087200241",
@@ -349,28 +338,6 @@
  ],
  "a_masquer": [
   {
-   "itm8": "0000087004035",
-   "libelle": "NECTARINE JAUNE VRAC",
-   "quand": "Dès maintenant (semaine 38)",
-   "priorite": 1,
-   "pleine_saison": "Juillet",
-   "evolution_pct": -100.0,
-   "tendance": "fin_saison",
-   "motif": "Fin de récolte : ventes en chute libre (-100% en octobre)",
-   "volume_total": 16763.1
-  },
-  {
-   "itm8": "0000087004037",
-   "libelle": "PECHE JAUNE VRAC",
-   "quand": "Dès maintenant (semaine 38)",
-   "priorite": 1,
-   "pleine_saison": "Juillet",
-   "evolution_pct": -100.0,
-   "tendance": "fin_saison",
-   "motif": "Fin de récolte : ventes en chute libre (-100% en octobre)",
-   "volume_total": 11285.9
-  },
-  {
    "itm8": "0000087003113",
    "libelle": "PECHE PLATE VRAC",
    "quand": "Dès maintenant (semaine 38)",
@@ -492,28 +459,6 @@
    "volume_total": 238.0
   },
   {
-   "itm8": "0000087004441",
-   "libelle": "PRUNE MIRABELLE VRAC",
-   "quand": "Dès maintenant (semaine 38)",
-   "priorite": 1,
-   "pleine_saison": "Août",
-   "evolution_pct": -45.5,
-   "tendance": "fin_saison",
-   "motif": "Fin de récolte : ventes en chute libre (-46% en octobre)",
-   "volume_total": 150.4
-  },
-  {
-   "itm8": "0000087004377",
-   "libelle": "NECTARINE PLATE VRAC",
-   "quand": "Dès maintenant (semaine 38)",
-   "priorite": 1,
-   "pleine_saison": "Juillet",
-   "evolution_pct": -100.0,
-   "tendance": "fin_saison",
-   "motif": "Fin de récolte : ventes en chute libre (-100% en octobre)",
-   "volume_total": 121.7
-  },
-  {
    "itm8": "0000087947012",
    "libelle": "OIGNON ROUGE 500G",
    "quand": "Dès maintenant (semaine 38)",
@@ -523,17 +468,6 @@
    "tendance": "fin_saison",
    "motif": "Fin de récolte : ventes en chute libre (-100% en octobre)",
    "volume_total": 114.0
-  },
-  {
-   "itm8": "0000087755043",
-   "libelle": "LAITUE SUCRINE X6 BARQUETTE",
-   "quand": "Dès maintenant (semaine 38)",
-   "priorite": 1,
-   "pleine_saison": "Juillet",
-   "evolution_pct": -100.0,
-   "tendance": "fin_saison",
-   "motif": "Fin de récolte : ventes en chute libre (-100% en octobre)",
-   "volume_total": 24.0
   },
   {
    "itm8": "0000087004778",
@@ -589,6 +523,17 @@
    "tendance": "fin_saison",
    "motif": "Fin de récolte : ventes en chute libre (-52% en octobre)",
    "volume_total": 69467.0
+  },
+  {
+   "itm8": "0000087003331",
+   "libelle": "OIGNON BLANC BOTTE",
+   "quand": "Début octobre (semaine 40)",
+   "priorite": 3,
+   "pleine_saison": "Juillet",
+   "evolution_pct": -45.1,
+   "tendance": "fin_saison",
+   "motif": "Fin de récolte : ventes en chute libre (-45% en octobre)",
+   "volume_total": 9552.0
   },
   {
    "itm8": "0000087003145",
@@ -657,5 +602,5 @@
    "volume_total": 1146.4
   }
  ],
- "_operation_id": "313baa02abd0480b85e3624b8c35f9c5"
+ "_operation_id": "8570064a0b844c76b8be255900b470b4"
 }

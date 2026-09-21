@@ -185,6 +185,7 @@ def main():
             "position_perdue": perdue,
             "ventes_estimees_retirees": round(vendu_estime, 2) if vendu_estime else 0,
             "mesuree_le": position.get("mesuree_le"),
+            "motif": position.get("motif"),
             "ca": donnees.get("totalCA") or 0,
         })
 

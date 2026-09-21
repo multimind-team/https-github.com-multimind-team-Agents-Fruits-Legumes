@@ -1,19 +1,19 @@
 {
  "statut": "ok",
- "quand": "2026-09-17T06:10:39",
+ "quand": "2026-09-19T05:23:48",
  "simulation": false,
  "fichiers": [
   {
-   "fichier": "vente 17.09.2026.xlsx",
-   "mouvements": 178,
+   "fichier": "vente 19.09.2026.xlsx",
+   "mouvements": 183,
    "type": "vente"
   }
  ],
- "mouvements_nouveaux": 178,
+ "mouvements_nouveaux": 183,
  "mouvements_deja_connus": 0,
  "jours_couverts": [
-  "2026-09-16"
+  "2026-09-18"
  ],
  "a_verifier": [],
- "_operation_id": "313baa02abd0480b85e3624b8c35f9c5"
+ "_operation_id": "be8e6d903def4fce9dd48e9554de00c3"
 }

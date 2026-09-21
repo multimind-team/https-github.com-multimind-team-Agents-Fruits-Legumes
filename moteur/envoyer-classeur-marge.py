@@ -33,6 +33,11 @@ def lit_env_mail():
 def construit_message(expediteur, destinataire, classeur, sujet, corps):
     """Construit un e-mail MIME avec une copie binaire exacte du classeur."""
     classeur = Path(classeur)
+    if not classeur.is_file() and (classeur.name == "Calcul marge Pomona.xlsx" or classeur.name.endswith("Calcul marge Pomona.xlsx")):
+        original = classeur.parent / "Calcul marge Pomona - Original.xlsx"
+        if original.is_file():
+            import shutil
+            shutil.copy2(original, classeur)
     if not classeur.is_file():
         raise FileNotFoundError(f"Classeur absent : {classeur}")
     message = EmailMessage()
@@ -70,7 +75,7 @@ def envoie_message(configuration, message):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--destinataire", default="PDV11768@mousquetaires.com",
-                        help="Adresse destinataire (par défaut : PDV11768@mousquetaires.com)")
+                        help="Adresse destinataire (magasin : PDV11768@mousquetaires.com)")
     parser.add_argument("--classeur", type=Path, required=True,
                         help="Chemin exact du classeur mensuel validé par l'import facture")
     parser.add_argument("--sujet", default="Calcul de marge Pomona")
@@ -87,11 +92,17 @@ def main():
     )
     if not args.simuler:
         envoie_message(configuration, message)
+        if args.classeur.name == "Calcul marge Pomona.xlsx" and not args.classeur.name.endswith("- Original.xlsx"):
+            try:
+                args.classeur.unlink(missing_ok=True)
+            except OSError:
+                pass
     print(json.dumps({
         "succes": True,
         "simulation": args.simuler,
         "fichier_joint": args.classeur.name,
         "smtp_accepte": not args.simuler,
+        **({"fichier_supprime": True} if not args.simuler and args.classeur.name == "Calcul marge Pomona.xlsx" else {}),
     }, ensure_ascii=False))
 
 

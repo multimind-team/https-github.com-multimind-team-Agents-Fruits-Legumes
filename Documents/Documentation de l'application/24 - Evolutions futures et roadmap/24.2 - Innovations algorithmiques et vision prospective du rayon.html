@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>24.2 Innovations algorithmiques et vision prospective du rayon • Documentation pour IA</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html"><picture><source srcset="../assets/logo.webp" type="image/webp"><img src="../assets/logo.gif" alt="Agents Fruits &amp; Légumes" class="sidebar-brand-img"></picture></a>
+      <div class="project-tag">
+        <span class="project-tag-dot"></span> Documentation pour IA
+      </div>
+      <div class="project-name-display">Agents Fruits &amp; Légumes</div>
+    </div>
+
+    <div class="sidebar-search">
+      <input type="text" id="docSearch" placeholder="Filtrer les chapitres..." onkeyup="filterNav()">
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">Portail Général</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../index.html">🏠 Accueil &amp; Plan Général</a></li>
+      </ul>
+      <div class="nav-section-title">1 - Présentation générale</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../1 - Présenation generale/1.1 - Objectif de l'application.html">1.1 - Objectif de l'application</a></li>
+        <li class="nav-item"><a href="../1 - Présenation generale/1.2 - Périmètre et limites du système.html">1.2 - Périmètre et limites du système</a></li>
+        <li class="nav-item"><a href="../1 - Présenation generale/1.3 - Principes directeurs et fonctionnement général.html">1.3 - Principes directeurs et fonctionnement général</a></li>
+      </ul>
+      <div class="nav-section-title">2 - Utilisateurs et rôles</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../2 - Utilisateurs et roles/2.1 - Profils utilisateurs et permissions.html">2.1 - Profils utilisateurs et permissions</a></li>
+        <li class="nav-item"><a href="../2 - Utilisateurs et roles/2.2 - Brigade numérique et rôles des agents.html">2.2 - Brigade numérique et rôles des agents</a></li>
+      </ul>
+      <div class="nav-section-title">3 - Concepts métier fondamentaux</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.1 - Typologie des produits et référentiel article.html">3.1 - Typologie des produits et référentiel article</a></li>
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.2 - Flux de vente et canaux d'encaissement.html">3.2 - Flux de vente et canaux d'encaissement</a></li>
+        <li class="nav-item"><a href="../3 - Concepts metier fondamentaux/3.3 - Typologie des stocks et statuts physiques.html">3.3 - Typologie des stocks et statuts physiques</a></li>
+      </ul>
+      <div class="nav-section-title">4 - Architecture générale du système</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../4 - Architecture generale/4.1 - Chaîne de traitement et cycle quotidien.html">4.1 - Chaîne de traitement et cycle quotidien</a></li>
+        <li class="nav-item"><a href="../4 - Architecture generale/4.2 - Cartographie modulaire et composants logiciels.html">4.2 - Cartographie modulaire et composants logiciels</a></li>
+      </ul>
+      <div class="nav-section-title">5 - Sources de données et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../5 - Sources de donnees/5.1 - Sources internes (Mercalys, SCAFRUIT, comptage).html">5.1 - Sources internes (Mercalys, SCAFRUIT, comptage)</a></li>
+        <li class="nav-item"><a href="../5 - Sources de donnees/5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions).html">5.2 - Sources externes (Météo Open-Meteo, calendrier, promotions)</a></li>
+      </ul>
+      <div class="nav-section-title">6 - Modèle de données et dictionnaire métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../6 - Modele de donnees et dictionnaire metier/6.1 - Format du carnet de faits et schéma JSONL.html">6.1 - Format du carnet de faits et schéma JSONL</a></li>
+        <li class="nav-item"><a href="../6 - Modele de donnees et dictionnaire metier/6.2 - Dictionnaire des champs et typologie des entités.html">6.2 - Dictionnaire des champs et typologie des entités</a></li>
+      </ul>
+      <div class="nav-section-title">7 - Qualité et préparation des données</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../7 - Qualite et preparation des donnees/7.1 - Contrôles d'intégrité et règles de cohérence.html">7.1 - Contrôles d'intégrité et règles de cohérence</a></li>
+        <li class="nav-item"><a href="../7 - Qualite et preparation des donnees/7.2 - Traitement des anomalies et valeurs manquantes.html">7.2 - Traitement des anomalies et valeurs manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">8 - Prévision des ventes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../8 - Prevision des ventes/8.1 - Modélisation statistique et fenêtre circulaire.html">8.1 - Modélisation statistique et fenêtre circulaire</a></li>
+        <li class="nav-item"><a href="../8 - Prevision des ventes/8.2 - Profils journaliers et saisonnalité.html">8.2 - Profils journaliers et saisonnalité</a></li>
+      </ul>
+      <div class="nav-section-title">9 - Météo, calendrier et événements</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../9 - Meteo calendrier et evenements/9.1 - Facteurs météo et corrélations locales.html">9.1 - Facteurs météo et corrélations locales</a></li>
+        <li class="nav-item"><a href="../9 - Meteo calendrier et evenements/9.2 - Calendrier commercial, jours fériés et vacances scolaires.html">9.2 - Calendrier commercial, jours fériés et vacances scolaires</a></li>
+      </ul>
+      <div class="nav-section-title">10 - Confiance et incertitude</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../10 - Confiance et incertitude/10.1 - Niveaux de confiance et score de fiabilité.html">10.1 - Niveaux de confiance et score de fiabilité</a></li>
+        <li class="nav-item"><a href="../10 - Confiance et incertitude/10.2 - Facteurs de risque et données manquantes.html">10.2 - Facteurs de risque et données manquantes</a></li>
+      </ul>
+      <div class="nav-section-title">11 - Stock et livraisons</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../11 - Stock et livraisons/11.1 - Calcul du stock projeté et couverture.html">11.1 - Calcul du stock projeté et couverture</a></li>
+        <li class="nav-item"><a href="../11 - Stock et livraisons/11.2 - Gestion des livraisons attendues et reliquats.html">11.2 - Gestion des livraisons attendues et reliquats</a></li>
+      </ul>
+      <div class="nav-section-title">12 - Calcul du besoin de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../12 - Calcul du besoin de commande/12.1 - Algorithme du besoin net et horizon de réapprovisionnement.html">12.1 - Algorithme du besoin net et horizon de réapprovisionnement</a></li>
+        <li class="nav-item"><a href="../12 - Calcul du besoin de commande/12.2 - Stock de sécurité et ajustements dynamiques.html">12.2 - Stock de sécurité et ajustements dynamiques</a></li>
+      </ul>
+      <div class="nav-section-title">13 - Règles métier</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../13 - Regles metier/13.1 - Règles de colisage, PCB et arrondis.html">13.1 - Règles de colisage, PCB et arrondis</a></li>
+        <li class="nav-item"><a href="../13 - Regles metier/13.2 - Garde-fous anti-rupture et plafonds de baisse.html">13.2 - Garde-fous anti-rupture et plafonds de baisse</a></li>
+      </ul>
+      <div class="nav-section-title">14 - Proposition de commande</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../14 - Proposition de commande/14.1 - Structure de la proposition et arbitrages.html">14.1 - Structure de la proposition et arbitrages</a></li>
+        <li class="nav-item"><a href="../14 - Proposition de commande/14.2 - Cycle de vie d'une ligne de commande.html">14.2 - Cycle de vie d'une ligne de commande</a></li>
+      </ul>
+      <div class="nav-section-title">15 - Gestion des exceptions</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../15 - Gestion des exceptions/15.1 - Typologie des alertes et niveaux de criticité.html">15.1 - Typologie des alertes et niveaux de criticité</a></li>
+        <li class="nav-item"><a href="../15 - Gestion des exceptions/15.2 - Procédures de résolution d'anomalies.html">15.2 - Procédures de résolution d'anomalies</a></li>
+      </ul>
+      <div class="nav-section-title">16 - Explicabilité pour les LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../16 - Explicabilite pour les LLM/16.1 - Distinction Faits, Calculs et Hypothèses.html">16.1 - Distinction Faits, Calculs et Hypothèses</a></li>
+        <li class="nav-item"><a href="../16 - Explicabilite pour les LLM/16.2 - Format d'échange et prompts structurés.html">16.2 - Format d'échange et prompts structurés</a></li>
+      </ul>
+      <div class="nav-section-title">17 - API et intégrations</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../17 - API et integrations/17.1 - Endpoints locaux et protocoles d'échange.html">17.1 - Endpoints locaux et protocoles d'échange</a></li>
+        <li class="nav-item"><a href="../17 - API et integrations/17.2 - Connecteurs Webtelevente et export des ordres.html">17.2 - Connecteurs Webtelevente et export des ordres</a></li>
+      </ul>
+      <div class="nav-section-title">18 - Interface utilisateur</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../18 - Interface utilisateur/18.1 - Console de commande magasin.html">18.1 - Console de commande magasin</a></li>
+        <li class="nav-item"><a href="../18 - Interface utilisateur/18.2 - Interface mobile de pointage.html">18.2 - Interface mobile de pointage</a></li>
+      </ul>
+      <div class="nav-section-title">19 - Indicateurs et performance</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../19 - Indicateurs et performance/19.1 - KPIs métier (rupture, casse, marge).html">19.1 - KPIs métier (rupture, casse, marge)</a></li>
+        <li class="nav-item"><a href="../19 - Indicateurs et performance/19.2 - Métriques algorithmiques et taux d'adhésion.html">19.2 - Métriques algorithmiques et taux d'adhésion</a></li>
+      </ul>
+      <div class="nav-section-title">20 - Tests et validation</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../20 - Tests et validation/20.1 - Protocoles de test à blanc et non-régression.html">20.1 - Protocoles de test à blanc et non-régression</a></li>
+        <li class="nav-item"><a href="../20 - Tests et validation/20.2 - Scénarios de simulation et jeux d'essais.html">20.2 - Scénarios de simulation et jeux d'essais</a></li>
+      </ul>
+      <div class="nav-section-title">21 - Versionnement, audit et sécurité</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../21 - Versionnement audit et securite/21.1 - Immutabilité du journal d'audit et traçabilité.html">21.1 - Immutabilité du journal d'audit et traçabilité</a></li>
+        <li class="nav-item"><a href="../21 - Versionnement audit et securite/21.2 - Matrice des pouvoirs et sécurité locale.html">21.2 - Matrice des pouvoirs et sécurité locale</a></li>
+      </ul>
+      <div class="nav-section-title">22 - Prompt système du LLM</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../22 - Prompt systeme du LLM/22.1 - Spécification formelle du rôle agentique.html">22.1 - Spécification formelle du rôle agentique</a></li>
+        <li class="nav-item"><a href="../22 - Prompt systeme du LLM/22.2 - Garde-fous déontologiques et zéro-invention.html">22.2 - Garde-fous déontologiques et zéro-invention</a></li>
+      </ul>
+      <div class="nav-section-title">23 - Glossaire et annexes</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="../23 - Glossaire et annexes/23.1 - Glossaire terminologique F&L et grande distribution.html">23.1 - Glossaire terminologique F&L et grande distribution</a></li>
+        <li class="nav-item"><a href="../23 - Glossaire et annexes/23.2 - Exemples chiffrés complets et tables de référence.html">23.2 - Exemples chiffrés complets et tables de référence</a></li>
+      </ul>
+      <div class="nav-section-title">24 - Évolutions futures et roadmap</div>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="./24.1 - Roadmap des chantiers techniques et donnees manquantes.html">24.1 - Roadmap technique &amp; Données manquantes</a></li>
+        <li class="nav-item active"><a href="./24.2 - Innovations algorithmiques et vision prospective du rayon.html">24.2 - Innovations algorithmiques &amp; Vision</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div>Groupement Les Mousquetaires</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <div class="breadcrumb">
+          <a href="../index.html">Accueil</a>
+          <span class="breadcrumb-sep">&gt;</span>
+          <span>24 - Évolutions futures et roadmap</span>
+          <span class="breadcrumb-sep">&gt;</span>
+          <strong>24.2 Innovations algorithmiques et vision prospective du rayon</strong>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <a href="../index.html" class="btn-action">🏠 Sommaire Général</a>
+        <button onclick="window.print()" class="btn-action btn-red">🖨️ Imprimer / PDF</button>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <div class="doc-page-header">
+        <div class="doc-top-red-line"></div>
+        <span class="doc-badge-chapter">Chapitre 24 — Évolutions futures et roadmap</span>
+        <h1 class="doc-main-title">24.2 Innovations algorithmiques et vision prospective du rayon</h1>
+        <p class="doc-subtitle-text">Modélisations prédictives avancées, arbitrage économique multi-sources et pilotage commercial par agents IA</p>
+
+        <div class="meta-grid">
+          <div class="meta-item"><strong>Réf Référentiel :</strong> DOC-ITM-24.2</div>
+          <div class="meta-item"><strong>Domaine :</strong> Data Science, IA Prédictive &amp; Merchandising F&amp;L</div>
+          <div class="meta-item"><strong>Système :</strong> Moteur de calcul &amp; Intelligence Agentique</div>
+          <div class="meta-item"><strong>Public Cible :</strong> Agents IA du système (Brigade Numérique)</div>
+        </div>
+      </div>
+
+      <h2>1. Des pistes de recherche, pas des capacités acquises</h2>
+      <p><strong>Révision documentaire du 20 septembre 2026.</strong> L'objectif est d'aider le responsable à comparer disponibilité, fraîcheur, charge de travail et contribution économique. Aucun modèle ne garantit zéro rupture, une durée de vie certaine ou un gain financier. Les innovations décrites ici restent des propositions à démontrer sur les données locales et dans les pouvoirs existants.</p>
+      <p>Le <a href="../cockpit-pc.html">cockpit livré</a> apporte des chronologies, du contexte daté, des observations promotion et des photos locales commentées. Ses commentaires automatiques sont déterministes ; il n'interprète pas les images et n'entraîne pas de modèle. Les règles TG ×1,5 et îlot ×2 sont fixes, non des effets appris. L'<a href="24.1 - Roadmap des chantiers techniques et donnees manquantes.html">état des chantiers techniques</a> et le <a href="24.3 - Contrat de developpement du cockpit et apprentissage local.html">contrat de développement et d'apprentissage local</a> fixent les dépendances avant expérimentation.</p>
+
+      <h2>2. Innovation 1 : étudier les pertes et la fraîcheur sans inventer l'âge du stock</h2>
+      <p>Les sorties de casse et les dons renseignent des événements effectivement enregistrés, avec une couverture à vérifier. Leur absence n'atteste pas une absence de perte. Le calcul existant peut intégrer un taux de pertes ; il ne reconstitue pas l'âge biologique de chaque lot et ne prédit pas une date certaine de dégradation.</p>
+      <p><strong>Données nécessaires :</strong> lots identifiés, dates et quantités réellement reçues, observations humaines successives, conditions de stockage mesurées lorsqu'elles existent, retraits constatés et éventuels changements de prix. FIFO/FEFO serait une hypothèse d'allocation à vérifier, pas la preuve de l'ordre réel de sortie des lots. La dernière livraison ne donne pas l'âge de tout le stock restant.</p>
+      <p><strong>Piste locale :</strong> comparer des modèles simples de risque de perte par famille, saison et âge observé. Afficher un intervalle et la couverture des lots, avec possibilité de répondre « données insuffisantes ». Aucune durée universelle ni pourcentage de casse par famille n'est fixé dans cette documentation. Une photographie seule ne mesure ni la fraîcheur intérieure ni la salubrité.</p>
+      <p>Une future fonction de coût pourrait pondérer séparément sous-prévision et sur-prévision. Les coûts de rupture, de perte et de manutention restent des hypothèses tant qu'ils ne sont pas documentés ; les ventes perdues ne sont pas observées directement. Il faut distinguer une erreur de prévision d'une perte économique effectivement constatée.</p>
+      <p><strong>Validation :</strong> suivi prospectif des lots, évaluation sur périodes ultérieures non utilisées pour l'ajustement, comparaison au taux moyen simple et examen des erreurs par famille. Le résultat reste une aide à l'inspection humaine ; aucune note de maturité ne retire du stock ni ne justifie seule une réduction de commande.</p>
+
+      <h2>3. Innovation 2 : mesurer les associations météo et saison</h2>
+      <p>Chaleur, pluie, jours de semaine, vacances et saison peuvent coïncider avec des évolutions de ventes. Le sens et l'ampleur doivent être mesurés localement en tenant compte des prix, de la disponibilité et des promotions. Aucun seuil de température ni multiplicateur de ventes générique n'est présenté comme établi.</p>
+      <p><strong>Point de départ :</strong> inspecter les fichiers météo et calendrier déjà présents, leurs sources, dates, couverture et versions. Un téléchargement ou un passage quotidien à heure fixe n'est pas installé par cette fiche. Une éventuelle évolution de la collecte nécessitera une source vérifiable et le périmètre d'accès autorisé.</p>
+      <p><strong>Données nécessaires :</strong> quantités et unités comparables, disponibilité, ouvertures, prix et implantation datés, météo locale observée pour l'explication et prévisions météo archivées pour la prédiction. Le modèle ne doit jamais recevoir, lors d'un test historique, la météo réalisée qui n'était pas connue au moment de commander.</p>
+      <p><strong>Piste locale :</strong> commencer par un profil jour de semaine/saison, puis tester si la météo améliore la prévision hors échantillon. Mutualiser prudemment les petites séries par famille, avec une règle de repli documentée. Un coefficient ajusté est une association statistique conditionnelle ; le qualifier d'effet causal exige une étude supplémentaire.</p>
+      <p><strong>Validation :</strong> fenêtres chronologiques successives, plusieurs saisons lorsque disponibles, erreurs et biais par famille et horizon, robustesse aux périodes atypiques et aux ruptures. Rejeter une complexité supplémentaire si elle ne dépasse pas les références simples de manière stable.</p>
+
+      <h2>4. Innovation 3 : comparer fournisseurs et contributions économiques</h2>
+      <p>Comparer SCAFRUIT, grossistes directs et producteurs locaux exige leurs offres et conditions réelles : même produit ou substitution approuvée, unité, calibre, origine, date, qualité, quantité minimale, disponibilité, échéance et frais. Aucun fournisseur n'est supposé systématiquement moins cher, plus frais ou disponible selon un calendrier générique.</p>
+      <p><strong>Données nécessaires :</strong> coûts et prix historiques sur des bases fiscales attestées, remises documentées, règles de franco et d'affectation des frais, conditions contractuelles et réceptions. Le prix d'achat d'une facture n'est pas un prix de vente validé. Les RFA et avantages fidélité ne peuvent pas être déduits sans justificatifs et méthode d'allocation explicite.</p>
+      <p>Le cockpit affiche aujourd'hui un <strong>CA reconstitué partiel</strong> pour les ventes dont le prix historique est disponible. La marge historique reste indisponible lorsque HT/TTC et TVA ne sont pas attestés. Une analyse future pourra présenter, selon les données disponibles, une marge brute produit ou une contribution après coûts identifiés ; <strong>elle ne l'appellera pas « marge nette du rayon »</strong> sans l'ensemble des charges et une méthode comptable validée.</p>
+      <p><strong>Piste locale :</strong> simulateur de scénarios d'achat, avec fourchettes pour les éléments incertains, prix effectivement constatés séparés des hypothèses et contraintes de fraîcheur. Aucun changement de prix client, choix fournisseur ou ordre d'achat automatique n'est activé.</p>
+      <p><strong>Validation :</strong> rapprochement des lignes aux pièces d'origine, unités et fiscalité compatibles, comparaison des scénarios sur un même périmètre, contrôle indépendant des totaux. Un bénéfice simulé reste une hypothèse ; seul un résultat ultérieur documenté permet d'en mesurer la réalisation.</p>
+
+      <h2>5. Innovation 4 : apprendre des promotions et préparer des précommandes</h2>
+      <p>Les observations promotion actuelles comparent des périodes documentées et peuvent signaler des campagnes comparables à étudier. La référence est descriptive, pas causale : prix, saison, emplacement, disponibilité et fréquentation peuvent évoluer ensemble. Les dates promotion et la précommande renseignée ne créent aucun mouvement ni engagement fournisseur.</p>
+      <p><strong>À compléter :</strong> identifiant stable de campagne, prix réellement appliqués et unités, conditions de l'offre, dates de diffusion connues, volumes engagés et confirmés, réceptions partielles, horaires de rupture et présentation. Les sources prospectus suivent les règles de réception, lecture, rapprochement des codes et validation déjà fixées dans AGENTS.md. Aucun accès à une base nationale ou connecteur publicitaire n'est présumé disponible.</p>
+      <p><strong>Piste locale :</strong> comparaison avant/pendant/après, jours de semaine comparables et groupes témoins lorsque le terrain le permet ; puis scénarios de demande pour une prochaine campagne. Conserver les promotions réservées au test hors des données d'ajustement. Une campagne peu documentée ne permet pas d'apprendre un effet de prix ou de TG fiable.</p>
+      <p>Les bilans rédigés après la campagne servent à l'explication et à l'étiquetage humain ; ils ne doivent pas entrer comme informations connues dans une prévision rejouée avant cette campagne. De même, des commentaires automatiques et plusieurs photos d'une seule opération ne constituent pas plusieurs résultats indépendants.</p>
+      <p><strong>Précommande future :</strong> séparer prévision de ventes, besoin net et ordre confirmé. Avant toute quantité suggérée, vérifier horizon, stock réellement vendable, réserve de présentation, durée de conservation et engagements encore à recevoir. La position du moteur, notamment avec la convention de rayon plein, n'est pas une preuve de stock vendable. Ne soustraire ni une réception déjà comptée dans le stock ni un engagement déjà intégré au besoin. Aucune augmentation fixe avant promo, réduction automatique en fin de promo ou objectif de stock quasi nul n'est prescrit.</p>
+      <p><strong>Validation :</strong> campagnes comparables en nombre suffisant, incertitude affichée, contrôles des doubles comptes et des indisponibilités, évaluation prospective en mode miroir. Les observations seules peuvent être corrigées rétroactivement sans réactiver une consigne annulée ni réécrire le passé moteur.</p>
+
+      <h2>6. Innovation 5 : préparer des passerelles d'étiquetage et de pesée</h2>
+      <p>Une passerelle avec les étiquettes électroniques ou les balances est une intégration future distincte. Il faut identifier le matériel réellement installé, son interface documentée, les droits d'accès et le référentiel magasin faisant autorité pour le prix de vente. Aucune marque de matériel ni possibilité d'accès n'est tenue pour acquise.</p>
+      <p>Origine, variété, lot et unité peuvent varier entre réceptions. Une facture ou un cadencier ne justifie pas à lui seul de remplacer une étiquette client. Les exigences d'affichage applicables devront être vérifiées dans les sources officielles à la conception, puis sur les produits concernés. Une image de produit n'établit pas la correspondance caisse/PLU.</p>
+      <p><strong>Dépendances :</strong> correspondances vérifiées, dates d'effet, validation humaine, prévisualisation, accusé de réception et procédure de correction. Toute extraction de document resterait locale selon le choix actuel ; ni OCR externe ni transfert des photos n'est autorisé.</p>
+      <p><strong>Validation :</strong> environnement de test, comparaison étiquette/caisse/source validée, contrôle des mises à jour partielles et de la reprise après erreur. Aucun envoi vers un appareil ou changement de prix client n'est déclenché par cette roadmap.</p>
+
+      <h2>7. Innovation 6 : analyses et conseil répartis entre les huit rôles</h2>
+      <p>Les termes « analyste » et « stratège » désignent deux missions complémentaires, <strong>pas deux nouveaux agents ni de nouveaux pouvoirs</strong>. Le travail reste réparti entre Leader, courrier, données, rayon, contrôle, articles, tendances et audit-stock. Le responsable de rayon conserve la décision humaine ; il n'est pas un rôle que peut emprunter l'exécutant pour contourner un refus.</p>
+      <table class="subchap-table">
+        <thead><tr><th>Mission</th><th>Responsabilités existantes</th><th>Livrable vérifiable</th></tr></thead>
+        <tbody>
+          <tr><td>Construire un dossier d'analyse</td><td>Courrier établit provenance ; articles examine les correspondances ; données prépare les extractions autorisées ; audit-stock enquête sur les écarts.</td><td>Sources, dates, unités, périmètre, inconnus et règles de calcul ; aucune certification de précision absolue.</td></tr>
+          <tr><td>Formuler des scénarios</td><td>Tendances propose dans ses plafonds ; rayon recueille les observations et la décision du responsable.</td><td>Hypothèse, mécanisme envisagé, alternatives, incertitude, données manquantes et méthode de suivi.</td></tr>
+          <tr><td>Vérifier et coordonner</td><td>Contrôle donne un avis indépendant ; Leader transmet les mandats et arbitre sans signer les écritures métier d'autrui.</td><td>Avis limité au périmètre contrôlé ; autorisation, avis et preuve de résultat restent distincts.</td></tr>
+        </tbody>
+      </table>
+      <p>Un futur dossier de conseil peut organiser quatre questions : un lot mérite-t-il une inspection, une implantation mérite-t-elle un essai, un scénario de prix est-il calculable, une réimplantation mérite-t-elle une enquête ? Il devra montrer les observations nécessaires et les alternatives. Des affirmations telles que « ce prix doublera les ventes », « cette action sauvera 85 % de la valeur » ou « cet article rapportera 45 € » sont exclues sans protocole et preuves adaptés.</p>
+      <p>Les métriques horaires exigent des données horaires ; l'âge des lots exige une traçabilité des lots ; la rentabilité exige des bases comptables compatibles. Une donnée manquante reste manquante. Les commentaires produits par une règle ou un modèle doivent conserver leur statut calculé, la version utilisée et leurs références.</p>
+      <p><strong>Supervision :</strong> aucune réunion automatique à 8h30 ou 14h ni aucun réveil d'agent n'est installé par cette fiche. La sentinelle signale des événements ; un superviseur externe serait nécessaire pour déclencher une tâche. Une future automatisation aurait un mandat borné, des permissions vérifiées et une preuve de traitement, sans acquittement prématuré.</p>
+
+      <h2>8. Innovation 7 : aider l'enquête sur le cycle de vie des articles</h2>
+      <p>Le but est de rendre la liste utile sans masquer un article encore nécessaire. Une absence de vente, d'offre ou de mouvement n'atteste ni une fin de saison ni un stock nul. Les seuils de 14 ou 30 jours peuvent devenir des paramètres d'exploration validés, jamais une autorisation implicite de retrait.</p>
+      <p><strong>Piste locale :</strong> produire des dossiers par article : couverture des imports, cadence saisonnière, stock mesuré et date, ventes observées, offres, engagements confirmés et réimplantation prévue. La réapparition d'un code ouvre une enquête sur les correspondances et doublons ; elle n'autorise pas une fusion ni une nouvelle commande.</p>
+      <p>Articles et contrôle restent en lecture seule ; tendances ne gagne pas de droit de masquage. Une éventuelle écriture passe par le rôle réellement habilité, dans <code>donnees/pouvoirs.json</code>, avec l'autorisation applicable et son motif. Cette roadmap ne demande ni ne réalise une extension de ces pouvoirs.</p>
+      <p>Un futur registre de références permanentes serait une déclaration explicite du responsable, historisée et révisable, distincte d'une classification supposée par l'IA. Une alerte de qualité ou sanitaire suit les procédures humaines applicables ; une inférence ne crée ni retrait physique ni garantie de sécurité.</p>
+      <p><strong>Validation :</strong> contrôler les faux signalements en période creuse et les retours en saison, préserver les codes de stock commun et permettre une révision traçable. Mesurer le taux de suggestions retenues et les erreurs constatées ; ne promettre ni absence absolue de rupture ni auditabilité sans limite.</p>
+
+      <h2>9. Protocole commun d'apprentissage local</h2>
+      <ol>
+        <li><strong>Construire la cible :</strong> quantités physiques comparables et couverture explicite ; distinguer faits, déclarations humaines et estimations. Ne pas convertir des unités historiques inconnues à partir d'un PCB actuel supposé.</li>
+        <li><strong>Prévenir la fuite d'information :</strong> n'utiliser que les données démontrées disponibles à l'instant de décision. Pour les faits anciens sans date d'enregistrement, limiter les conclusions ; ne pas prétendre avoir reproduit la connaissance passée.</li>
+        <li><strong>Archiver avant le résultat :</strong> conserver modèle, version, paramètres, sources, instant de décision et horizon. Le mécanisme actuel archive des prévisions futures et son lecteur retient la dernière avant chaque jour ; l'évaluation de plusieurs horizons nécessitera un lecteur supplémentaire conservant toutes les versions utiles.</li>
+        <li><strong>Comparer équitablement :</strong> validation chronologique, références simples et moteur actuel, périodes de test réservées ; erreurs de quantité, biais et calibration des intervalles par famille, saison et campagne. La tolérance de conformité actuelle ne suffit pas à évaluer un apprenant.</li>
+        <li><strong>Éprouver en mode miroir :</strong> premiers modèles locaux sans effet sur les commandes réelles. Une meilleure précision ne prouve pas une amélioration des ruptures ou de la marge ; ces résultats demandent leurs propres observations et contrôles.</li>
+        <li><strong>Décider séparément du déploiement :</strong> seuils d'acceptation définis avant le test, avis indépendant, autorisation, version réversible et surveillance des dérives. Aucune performance historique n'accorde un pouvoir d'envoi fournisseur.</li>
+      </ol>
+      <p>Les photos et annotations restent sur le PC, selon le choix explicite du responsable. Tout futur traitement visuel local serait un projet distinct avec données annotées, incertitude et validation humaine ; il n'est ni livré ni nécessaire aux premiers modèles tabulaires. Voir <a href="24.3 - Contrat de developpement du cockpit et apprentissage local.html">24.3</a>, la <a href="../../Cockpit - feuille de route analyses et apprentissage.md">feuille de route détaillée</a> et la <a href="../../../reference/cockpit-pc.md">référence du code actuel</a>.</p>
+
+      <div class="page-nav-bar" style="margin-top: 40px;">
+        <div>
+          <a href="./24.1 - Roadmap des chantiers techniques et donnees manquantes.html" class="btn-action">&larr; 24.1 Roadmap technique</a>
+        </div>
+        <div>
+          <a href="../index.html" class="btn-action btn-red">🏠 Retour au Sommaire Général</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function filterNav() {
+      const q = document.getElementById('docSearch').value.toLowerCase();
+      const items = document.querySelectorAll('.nav-item');
+      items.forEach(function(item) {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

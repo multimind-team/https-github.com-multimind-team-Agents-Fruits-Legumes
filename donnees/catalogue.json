@@ -1,7 +1,7 @@
 {
  "_lisez_moi": "La fiche de chaque article du rayon : son nom, son prix, son conditionnement. Constituee a partir du cadencier Mercalys du magasin, puis mise a jour a chaque nouveau cadencier recu par mail.",
  "origine": "cadencier Mercalys du magasin",
- "derniere_maj": "2026-09-17",
+ "derniere_maj": "2026-09-19",
  "repris_le": "2026-09-02T20:00:00",
  "ordre_webtelevente": {
   "0000087003010": 324,
@@ -1170,7 +1170,7 @@
    "ROTATION STOCK": 410.455,
    "TYPE ARTICLE": "1 Elémentaire",
    "VARIETE": "CAVEND",
-   "ORIGINE": "GHANA",
+   "ORIGINE": "COTE D",
    "CALIBRE": ">20CM",
    "CODE PLU": null,
    "MARGE": 0.05
@@ -1427,7 +1427,7 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 1.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.49,
+   "PRIX ACHAT BRUT": 2.59,
    "PRIX VENTE": 3.89,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
@@ -1437,7 +1437,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "A 67/7",
    "CODE PLU": null,
-   "MARGE": 30.78
+   "MARGE": 28.21
   },
   "0000087004039": {
    "CODE ITM": "0000087004039",
@@ -1499,8 +1499,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 1.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 3.99,
-   "PRIX VENTE": 5.49,
+   "PRIX ACHAT BRUT": 2.99,
+   "PRIX VENTE": 4.99,
    "TYPE DE VENTE": "1 Libre service",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 9.743,
@@ -1509,7 +1509,7 @@
    "ORIGINE": "ESPAGN",
    "CALIBRE": "3",
    "CODE PLU": null,
-   "MARGE": 22.11
+   "MARGE": 34.87
   },
   "0000087004052": {
    "CODE ITM": "0000087004052",
@@ -2267,7 +2267,7 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 1.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.49,
+   "PRIX ACHAT BRUT": 2.59,
    "PRIX VENTE": 3.89,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
@@ -2277,7 +2277,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "A 67/7",
    "CODE PLU": null,
-   "MARGE": 30.78
+   "MARGE": 28.21
   },
   "0000087004406": {
    "CODE ITM": "0000087004406",
@@ -4019,17 +4019,17 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 14.0,
    "NATURE DU PRODUIT": "2 PNM",
-   "PRIX ACHAT BRUT": 1.685,
-   "PRIX VENTE": 2.52,
+   "PRIX ACHAT BRUT": 1.65,
+   "PRIX VENTE": 2.58,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 77,
    "TYPE ARTICLE": "1 Elémentaire",
    "VARIETE": "EUREKA",
    "ORIGINE": "AFRIQU",
-   "CALIBRE": "3/4",
+   "CALIBRE": "4/5",
    "CODE PLU": null,
-   "MARGE": 27.92
+   "MARGE": 30.83
   },
   "0000087410004": {
    "CODE ITM": "0000087410004",
@@ -4746,7 +4746,7 @@
    "ROTATION STOCK": 74.75,
    "TYPE ARTICLE": "1 Elémentaire",
    "VARIETE": "HASS",
-   "ORIGINE": "KENYA",
+   "ORIGINE": "AFRIQU",
    "CALIBRE": "134/14",
    "CODE PLU": null,
    "MARGE": 16.18
@@ -5315,17 +5315,17 @@
    "POIDS VOLUME": 0.5,
    "CONDIT.BASE": 10.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 0.79,
-   "PRIX VENTE": 1.99,
+   "PRIX ACHAT BRUT": 1.5,
+   "PRIX VENTE": 2.29,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 0,
    "TYPE ARTICLE": "1 Elémentaire",
-   "VARIETE": "PLATE",
+   "VARIETE": "BLANCH",
    "ORIGINE": "ESPAGN",
-   "CALIBRE": "A",
+   "CALIBRE": "B 61/6",
    "CODE PLU": null,
-   "MARGE": 55.09
+   "MARGE": 29.28
   },
   "0000087590014": {
    "CODE ITM": "0000087590014",
@@ -6035,17 +6035,17 @@
    "POIDS VOLUME": 0.125,
    "CONDIT.BASE": 12.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.15,
-   "PRIX VENTE": 2.99,
+   "PRIX ACHAT BRUT": 1.53,
+   "PRIX VENTE": 2.29,
    "TYPE DE VENTE": "1 Libre service",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 62.5,
    "TYPE ARTICLE": "1 Elémentaire",
    "VARIETE": "MYRTIL",
-   "ORIGINE": "FRANCE",
+   "ORIGINE": "PEROU",
    "CALIBRE": "",
    "CODE PLU": null,
-   "MARGE": 22.88
+   "MARGE": 27.97
   },
   "0000087660002": {
    "CODE ITM": "0000087660002",
@@ -7331,8 +7331,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 9.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.19,
-   "PRIX VENTE": 3.29,
+   "PRIX ACHAT BRUT": 2.29,
+   "PRIX VENTE": 3.49,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 50.926,
@@ -7341,7 +7341,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "1350/1",
    "CODE PLU": null,
-   "MARGE": 28.22
+   "MARGE": 29.17
   },
   "0000087003048": {
    "CODE ITM": "0000087003048",
@@ -7355,8 +7355,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 1.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 5.49,
-   "PRIX VENTE": 6.95,
+   "PRIX ACHAT BRUT": 4.19,
+   "PRIX VENTE": 5.99,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 5.771,
@@ -7365,7 +7365,7 @@
    "ORIGINE": "MAROC",
    "CALIBRE": "FIN",
    "CODE PLU": 3048,
-   "MARGE": 15.79
+   "MARGE": 24.84
   },
   "0000087003049": {
    "CODE ITM": "0000087003049",
@@ -7403,8 +7403,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 8.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.19,
-   "PRIX VENTE": 3.29,
+   "PRIX ACHAT BRUT": 1.79,
+   "PRIX VENTE": 2.99,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 21.25,
@@ -7413,7 +7413,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "8",
    "CODE PLU": null,
-   "MARGE": 28.22
+   "MARGE": 34.92
   },
   "0000087003053": {
    "CODE ITM": "0000087003053",
@@ -7451,8 +7451,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 1.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 4.4,
-   "PRIX VENTE": 6.49,
+   "PRIX ACHAT BRUT": 3.99,
+   "PRIX VENTE": 5.99,
    "TYPE DE VENTE": "1 Libre service",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 22.282,
@@ -7461,7 +7461,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "",
    "CODE PLU": null,
-   "MARGE": 26.99
+   "MARGE": 28.18
   },
   "0000087003089": {
    "CODE ITM": "0000087003089",
@@ -7523,7 +7523,7 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 6.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 1.99,
+   "PRIX ACHAT BRUT": 1.59,
    "PRIX VENTE": 3.49,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
@@ -7533,7 +7533,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "6",
    "CODE PLU": null,
-   "MARGE": 37.77
+   "MARGE": 49.23
   },
   "0000087003119": {
    "CODE ITM": "0000087003119",
@@ -8459,8 +8459,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 8.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.19,
-   "PRIX VENTE": 3.29,
+   "PRIX ACHAT BRUT": 1.99,
+   "PRIX VENTE": 2.99,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 12.75,
@@ -8469,7 +8469,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "8",
    "CODE PLU": null,
-   "MARGE": 28.22
+   "MARGE": 28.23
   },
   "0000087004561": {
    "CODE ITM": "0000087004561",
@@ -8555,8 +8555,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 6.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 1.7,
-   "PRIX VENTE": 2.79,
+   "PRIX ACHAT BRUT": 2.05,
+   "PRIX VENTE": 3.19,
    "TYPE DE VENTE": "1 Libre service",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 43.5,
@@ -8565,7 +8565,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "6",
    "CODE PLU": null,
-   "MARGE": 33.85
+   "MARGE": 30.52
   },
   "0000087004575": {
    "CODE ITM": "0000087004575",
@@ -9083,17 +9083,17 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 1.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 1.8,
-   "PRIX VENTE": 2.79,
+   "PRIX ACHAT BRUT": 2.39,
+   "PRIX VENTE": 3.59,
    "TYPE DE VENTE": "1 Libre service",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 111.422,
    "TYPE ARTICLE": "1 Elémentaire",
    "VARIETE": "PATATE",
-   "ORIGINE": "EGYPTE",
-   "CALIBRE": "300/60",
+   "ORIGINE": "FRANCE",
+   "CALIBRE": "300/80",
    "CODE PLU": null,
-   "MARGE": 30.27
+   "MARGE": 28.21
   },
   "0000087004764": {
    "CODE ITM": "0000087004764",
@@ -9299,8 +9299,8 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 1.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.0,
-   "PRIX VENTE": 2.99,
+   "PRIX ACHAT BRUT": 3.15,
+   "PRIX VENTE": 4.99,
    "TYPE DE VENTE": "1 Libre service",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 13.763,
@@ -9309,7 +9309,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "82/102",
    "CODE PLU": null,
-   "MARGE": 27.9
+   "MARGE": 31.66
   },
   "0000087004803": {
    "CODE ITM": "0000087004803",
@@ -11555,7 +11555,7 @@
    "POIDS VOLUME": 1,
    "CONDIT.BASE": 8.0,
    "NATURE DU PRODUIT": "1 Autres",
-   "PRIX ACHAT BRUT": 2.59,
+   "PRIX ACHAT BRUT": 2.69,
    "PRIX VENTE": 3.89,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
@@ -11565,7 +11565,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "",
    "CODE PLU": null,
-   "MARGE": 28.21
+   "MARGE": 25.64
   },
   "0000087695101": {
    "CODE ITM": "0000087695101",
@@ -14747,8 +14747,8 @@
    "POIDS VOLUME": 0.75,
    "CONDIT.BASE": 18.0,
    "NATURE DU PRODUIT": "2 PNM",
-   "PRIX ACHAT BRUT": 3.2,
-   "PRIX VENTE": 4.69,
+   "PRIX ACHAT BRUT": 1.99,
+   "PRIX VENTE": 2.99,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
    "ROTATION STOCK": 0.25,
@@ -14757,7 +14757,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "35/55M",
    "CODE PLU": null,
-   "MARGE": 26.56
+   "MARGE": 28.23
   },
   "0000087010619": {
    "CODE ITM": "0000087010619",
@@ -14819,7 +14819,7 @@
    "POIDS VOLUME": 2.5,
    "CONDIT.BASE": 6.0,
    "NATURE DU PRODUIT": "2 PNM",
-   "PRIX ACHAT BRUT": 2.392,
+   "PRIX ACHAT BRUT": 2.3,
    "PRIX VENTE": 3.99,
    "TYPE DE VENTE": "2 Traditionnel",
    "PRIORITE": "Oui",
@@ -14829,7 +14829,7 @@
    "ORIGINE": "FRANCE",
    "CALIBRE": "35/55M",
    "CODE PLU": null,
-   "MARGE": 34.84
+   "MARGE": 37.14
   },
   "0000087010622": {
    "CODE ITM": "0000087010622",
@@ -14865,7 +14865,7 @@
    "ORIGINE DU PRODUIT": "1 Base",
    "UNITE MESURE": "2 kg",
    "POIDS VOLUME": 2.5,
-   "CONDIT.BASE": 55.0,
+   "CONDIT.BASE": 6.0,
    "NATURE DU PRODUIT": "2 PNM",
    "PRIX ACHAT BRUT": 1.71,
    "PRIX VENTE": 2.49,
@@ -15478,17 +15478,65 @@
    "CALIBRE": "",
    "CODE PLU": null,
    "MARGE": 30.54
+  },
+  "0000087540009": {
+   "CODE ITM": "0000087540009",
+   "CODE EAN": "8032307029028",
+   "LIBELLE": "KIWI JAUNE BARQUETTE 4 FRUITS",
+   "LIBELLE CAISSE": "KIWI JAUNE BARQUETTE 4 FR",
+   "NOMENCLATURE": "20 34 3400 0001 FRUITS FRAIS",
+   "FOURNISSEUR": "9 SCAFRUIT",
+   "ORIGINE DU PRODUIT": "1 Base",
+   "UNITE MESURE": "1 Pièce",
+   "POIDS VOLUME": 1,
+   "CONDIT.BASE": 10.0,
+   "NATURE DU PRODUIT": "1 Autres",
+   "PRIX ACHAT BRUT": 3.15,
+   "PRIX VENTE": 4.99,
+   "TYPE DE VENTE": "2 Traditionnel",
+   "PRIORITE": "Oui",
+   "ROTATION STOCK": 0,
+   "TYPE ARTICLE": "1 Elémentaire",
+   "VARIETE": "SUNGOL",
+   "ORIGINE": "NOUVEL",
+   "CALIBRE": "88/103",
+   "CODE PLU": null,
+   "MARGE": 31.66
+  },
+  "0000087795003": {
+   "CODE ITM": "0000087795003",
+   "CODE EAN": "8412276735937",
+   "LIBELLE": "CONCOMBRE BIO PIECE PE",
+   "LIBELLE CAISSE": "CONCOMBRE BIO PIECE PE",
+   "NOMENCLATURE": "20 34 3402 0001 LEGUMES FRAIS",
+   "FOURNISSEUR": "9 SCAFRUIT",
+   "ORIGINE DU PRODUIT": "1 Base",
+   "UNITE MESURE": "1 Pièce",
+   "POIDS VOLUME": 1,
+   "CONDIT.BASE": 12.0,
+   "NATURE DU PRODUIT": "1 Autres",
+   "PRIX ACHAT BRUT": 1.39,
+   "PRIX VENTE": 1.99,
+   "TYPE DE VENTE": "2 Traditionnel",
+   "PRIORITE": "Oui",
+   "ROTATION STOCK": 0,
+   "TYPE ARTICLE": "1 Elémentaire",
+   "VARIETE": "CONCOM",
+   "ORIGINE": "ESPAGN",
+   "CALIBRE": "300/40",
+   "CODE PLU": null,
+   "MARGE": 24.94
   }
  },
- "importe_le": "2026-09-17T06:10:09",
+ "importe_le": "2026-09-19T05:23:24",
  "sources_dernier_import": [
   {
-   "fichier": "cadencier mercalys 17.09.2026.xlsx",
-   "date": "2026-09-17",
-   "sha256": "0c6a6e7c29aeea644778a64e7ed73a7a86726881d1dc2e6f505507d858968dab",
-   "articles": 634,
+   "fichier": "cadencier mercalys 19.09.2026.xlsx",
+   "date": "2026-09-19",
+   "sha256": "778f38ea55156bd325ba0f9e0d4dcc43d207b8d253a9a46a35023ad88ac76471",
+   "articles": 636,
    "erreurs": []
   }
  ],
- "_operation_id": "313baa02abd0480b85e3624b8c35f9c5"
+ "_operation_id": "be8e6d903def4fce9dd48e9554de00c3"
 }

@@ -19,3 +19,8 @@ donnees/.courrier_uids_connus.json
 scratch/
 *.tmp
 *.bak
+
+# Journal visuel personnel : conservation sur ce PC, hors sauvegarde Git distante.
+donnees/photos-contexte.jsonl
+documents-partages/contexte-visuel/
+app/img/contexte/

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15050a">
+  <title>Cockpit · Fruits & Légumes · Carmaux</title>
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/charte.css">
+  <link rel="stylesheet" href="css/cockpit.css?v=20260921-v4">
+  <script defer src="js/cockpit-ventes.js?v=20260921-v4"></script>
+  <script defer src="js/cockpit.js?v=20260921-v4"></script>
+  <script defer src="js/cockpit-photos.js?v=20260921-v4"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="cockpit.html"><span class="brand-icon" aria-hidden="true">✳</span><span>LE COCKPIT<small>FRUITS & LÉGUMES</small></span></a>
+    <div class="store"><span class="store-dot"></span> Intermarché Carmaux<small>Poste de pilotage & clôture</small></div>
+    <p class="nav-label">PILOTAGE DE FIN DE JOURNÉE</p>
+    <nav aria-label="Navigation principale">
+      <button class="nav-item selected" data-view="dashboard"><span aria-hidden="true">▦</span> Vue d’ensemble</button>
+      <button class="nav-item" data-view="margins"><span aria-hidden="true">💰</span> Ventes & Marges <b id="margins-badge" class="nav-pill warn" hidden>0</b></button>
+      <button class="nav-item" data-view="anomalies"><span aria-hidden="true">🚨</span> Radar Anomalies <b id="anomalies-badge" class="nav-pill danger" hidden>0</b></button>
+      <button class="nav-item" data-view="assortment"><span aria-hidden="true">🌿</span> Assortiment & Saisons</button>
+      <button class="nav-item" data-view="reliability"><span aria-hidden="true">🧠</span> Audit Prédictions IA <b id="fiab-score-pill" class="nav-pill" hidden>0%</b></button>
+      <button class="nav-item" data-view="sales"><span aria-hidden="true">▥</span> Analyse des ventes</button>
+      <button class="nav-item" data-view="products"><span aria-hidden="true">⌕</span> Enquête produit</button>
+      <button class="nav-item" data-view="instructions"><span aria-hidden="true">☷</span> Consignes terrain <b id="context-count">0</b></button>
+      <button class="nav-item" data-view="photos"><span aria-hidden="true">▧</span> Journal photo</button>
+    </nav>
+    <p class="nav-label nav-spacer">OUTILS DU QUOTIDIEN</p>
+    <a class="nav-item" href="commander.html" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> Préparer la commande</a>
+    <a class="nav-item" href="compter.html" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> Comptage du rayon</a>
+    <a class="nav-item" href="index.html" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> Messages & accueil</a>
+    <div class="sidebar-bottom">
+      <div class="pilot-session">
+        <span class="pilot-badge">BUREAU & CLÔTURE</span>
+        <p>Pilotage de fin de journée<small>Analyse, marges, anomalies & saisons.</small></p>
+      </div>
+      <div class="local-label"><span></span> Application locale sur ce PC</div>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span id="breadcrumb">Rayon / Vue d’ensemble</span><div class="top-actions"><span id="today"></span><button class="icon-button" id="refresh" title="Actualiser les données" aria-label="Actualiser les données">↻</button></div></header>
+    <main>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <div id="loading" class="loading" role="status">Lecture des données du rayon…</div>
+      
+      <!-- 1. VUE D'ENSEMBLE (DASHBOARD FLUX) -->
+      <section id="dashboard" class="view">
+        <div class="page-heading"><div><p class="eyebrow">UNE VUE CLAIRE POUR DÉCIDER</p><h1>Le rayon, en perspective.</h1><p class="subtitle">Les chiffres du magasin, enrichis par votre regard terrain.</p></div><div class="periods" role="group" aria-label="Période d’analyse"><button data-period="3">3 j</button><button data-period="7">7 j</button><button data-period="14" class="active">14 j</button><button data-period="30">30 j</button><button data-period="annee" id="year-period">Année</button></div></div>
+        <p class="source-line" id="source-line">Les périodes et la couverture sont vérifiées à la lecture.</p>
+        <div class="kpi-grid" id="kpis"></div>
+        <div class="analysis-strip" id="analysis-strip"></div>
+        <div class="dashboard-grid">
+          <section class="card flow-card"><div class="card-heading"><div><p class="eyebrow">LE RYTHME DU RAYON</p><h2>Ventes, livraisons & prévisions</h2></div><span class="tag">14 jours</span></div><div class="legend" id="flow-legend"></div><div id="flow-chart" class="chart"></div><div id="flow-availability"></div><p class="chart-note" id="flow-note"></p></section>
+          <section class="card causes-card"><div class="card-heading"><div><p class="eyebrow">COMPRENDRE LES ÉCARTS</p><h2>Pistes à explorer</h2></div><span class="tag">À vérifier</span></div><div id="causes"></div><p class="muted small">Référentiel complet, articles masqués inclus. Ces pistes ne prouvent pas une rupture ou une perte.</p></section>
+        </div>
+        <section class="card"><div class="card-heading"><div><p class="eyebrow">DU CHIFFRE À L’ACTION</p><h2>Les articles à regarder</h2></div><button class="text-button" data-view="products">Explorer tous les articles <span aria-hidden="true">→</span></button></div><div id="priority-table" class="table-wrap"></div></section>
+      </section>
+
+      <!-- 2. VENTES & MARGES (RENTABILITÉ) -->
+      <section id="margins" class="view" hidden>
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">PILOTAGE ÉCONOMIQUE & RENTABILITÉ</p>
+            <h1>Ventes, marges et alertes de prix.</h1>
+            <p class="subtitle">Surveillez la marge brute, repérez les hausses fournisseurs et téléchargez les classeurs de marge directe.</p>
+          </div>
+          <div class="margins-actions">
+            <button class="primary" data-view="sales">Ouvrir l'explorateur détaillé des ventes →</button>
+          </div>
+        </div>
+        <div class="kpi-grid" id="margins-kpis"></div>
+        <section class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">PRIX D'ACHAT & COURS FOURNISSEURS</p>
+              <h2>Alertes sur les hausses de prix et risques de marge</h2>
+            </div>
+            <div class="alert-filter-group" id="margin-alert-filters">
+              <button class="chart-toggle active" data-margin-filter="all">Toutes les alertes</button>
+              <button class="chart-toggle" data-margin-filter="fin_promo">🏷️ Fins de promo</button>
+              <button class="chart-toggle" data-margin-filter="critique">Hausses fortes (&gt; 40%)</button>
+              <button class="chart-toggle" data-margin-filter="avertissement">À surveiller</button>
+            </div>
+          </div>
+          <div id="margin-alerts-table" class="table-wrap"></div>
+        </section>
+        <div class="dashboard-grid">
+          <section class="card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">ACHATS DIRECTS TERREAZUR / POMONA</p>
+                <h2>Classeurs de calcul de marge du mois</h2>
+              </div>
+            </div>
+            <div id="pomona-workbooks-list"></div>
+          </section>
+          <section class="card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">SYNTHÈSE DE RENTABILITÉ</p>
+                <h2>Ventilation estimée par famille</h2>
+              </div>
+            </div>
+            <div id="family-margins-summary"></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- 3. RADAR DES ANOMALIES -->
+      <section id="anomalies" class="view" hidden>
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">ASSAINISSEMENT DES DONNÉES DE FIN DE JOURNÉE</p>
+            <h1>Radar des anomalies de flux.</h1>
+            <p class="subtitle">Détectez et traitez les incohérences de stocks, surstocks, ruptures et écarts de comptage avant la nuit.</p>
+          </div>
+          <div class="periods" role="group" aria-label="Filtres d'anomalies" id="anomaly-pills">
+            <button class="active" data-anomaly-type="all">Toutes (<span id="anomaly-count-all">0</span>)</button>
+            <button data-anomaly-type="stock_negatif">🔴 Stocks négatifs (<span id="anomaly-count-neg">0</span>)</button>
+            <button data-anomaly-type="surstock">🟠 Surstocks (<span id="anomaly-count-sur">0</span>)</button>
+            <button data-anomaly-type="rupture">🟡 Ruptures (<span id="anomaly-count-rup">0</span>)</button>
+          </div>
+        </div>
+        <div class="kpi-grid" id="anomaly-kpis"></div>
+        <section class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">REGISTRE D'ÉPURATION</p>
+              <h2 id="anomaly-table-title">Articles nécessitant un arbitrage ou un contrôle</h2>
+            </div>
+            <label class="search-box inline-search">
+              <span aria-hidden="true">⌕</span>
+              <input id="anomaly-search" type="search" placeholder="Filtrer l'anomalie…">
+            </label>
+          </div>
+          <div id="anomaly-table" class="table-wrap"></div>
+        </section>
+      </section>
+
+      <!-- 4. ASSORTIMENT & SAISONS -->
+      <section id="assortment" class="view" hidden>
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">GESTION DU CYCLE DE VIE DU RAYON</p>
+            <h1>Assortiment, saisons et implantations.</h1>
+            <p class="subtitle">Adaptez l'assortiment : masquez les articles en fin de campagne, activez les retours de saison et protégez le fond de rayon.</p>
+          </div>
+          <div class="periods" role="group" aria-label="Onglets d'assortiment" id="assortment-tabs">
+            <button class="active" data-assortment-tab="to-hide">🍂 À sortir / Fin de saison (<span id="to-hide-count">0</span>)</button>
+            <button data-assortment-tab="to-reactivate">🌱 À réimplanter / Nouveautés (<span id="to-reactivate-count">0</span>)</button>
+            <button data-assortment-tab="permanent">🛡️ Fond de Rayon 365j (<span id="permanent-count">0</span>)</button>
+          </div>
+        </div>
+        <div class="kpi-grid" id="assortment-kpis"></div>
+        <section class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">DÉCISIONS RAPIDES</p>
+              <h2 id="assortment-section-title">Articles en fin de campagne ou dormants</h2>
+            </div>
+            <p class="muted small">Toute décision est tracée dans le carnet des décisions.</p>
+          </div>
+          <div id="assortment-table" class="table-wrap"></div>
+        </section>
+        <section class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">ÉQUILIBRE DU RAYON</p>
+              <h2>Répartition de l'assortiment actif par famille</h2>
+            </div>
+          </div>
+          <div id="assortment-families-chart" class="families-bar-chart"></div>
+        </section>
+      </section>
+
+            <!-- 5. AUDIT PRÉDICTIONS & FIABILITÉ ALGORITHME -->
+      <section id="reliability" class="view" hidden>
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">TRANSPARENCE ET AUDIT DE L'ALGORITHME</p>
+            <h1>Audit des prédictions & Fiabilité IA.</h1>
+            <p class="subtitle">Confrontez les prévisions calculées aux ventes réelles constatées en caisse et auditez les biais de commande.</p>
+          </div>
+          <div class="reliability-summary-pill" id="reliability-summary-tag">Taux de précision : — %</div>
+        </div>
+
+        <!-- Leader Evening Brief -->
+        <div class="leader-brief-card" id="fiab-leader-brief"></div>
+
+        <div class="kpi-grid" id="reliability-kpis"></div>
+
+        <!-- Bias Distribution Bell Chart -->
+        <section class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">PROFIL DE PRUDENCE DU MOTEUR</p>
+              <h2>Distribution des biais de commande (248 articles du rayon)</h2>
+            </div>
+            <span class="tag">Biais global +6.1%</span>
+          </div>
+          <div id="fiab-bias-bell" class="bias-bell-chart"></div>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="card reliability-chart-card">
+            <div class="card-heading fiab-chart-heading">
+              <div>
+                <p class="eyebrow">SUPERPOSITION PRÉDICTION VS RÉALITÉ (14 JOURS)</p>
+                <h2 id="fiab-selected-article-title">Sélectionnez un article à auditer</h2>
+                <div class="fiab-quick-chips" id="fiab-quick-chips">
+                  <span class="quick-chip-label">Accès direct :</span>
+                  <button type="button" class="quick-chip" data-quick-article="0000087004136">🍏 Pomme Golden</button>
+                  <button type="button" class="quick-chip" data-quick-article="0000087004011">🍌 Banane Vrac</button>
+                  <button type="button" class="quick-chip" data-quick-article="0000087004664">🍅 Tomate Grappe</button>
+                  <button type="button" class="quick-chip" data-quick-article="0000087004740">🌱 Radis Rose</button>
+                  <button type="button" class="quick-chip" data-quick-article="0000087003003">🍎 Pomme Chantecler</button>
+                  <button type="button" class="quick-chip" data-quick-article="0000087004593">🥒 Concombre</button>
+                  <button type="button" class="quick-chip" data-quick-article="0000087004222">🥑 Avocat</button>
+                </div>
+              </div>
+              <div class="fiab-selector-group">
+                <div class="fiab-search-box">
+                  <span class="search-icon" aria-hidden="true">⌕</span>
+                  <input id="fiab-article-search" list="fiab-article-datalist" type="search" placeholder="Filtrer ou chercher un produit…" autocomplete="off">
+                  <datalist id="fiab-article-datalist"></datalist>
+                </div>
+                <select id="fiab-article-select" class="compact-select"></select>
+              </div>
+            </div>
+            <div class="fiab-legend" id="fiab-chart-legend"></div>
+            <div id="fiab-chart" class="chart"></div>
+            
+            <!-- Profil Hebdomadaire (Lundi-Dimanche) -->
+            <div class="weekly-profile-wrap">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">PROFIL HEBDOMADAIRE</p>
+                  <h3>Ventes vs Prévisions par jour de la semaine</h3>
+                </div>
+              </div>
+              <div id="fiab-weekly-profile" class="weekly-days-grid"></div>
+            </div>
+
+            <!-- Baromètre des 4 Horizons -->
+            <div class="weekly-profile-wrap">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">BAROMÈTRE D'ÉVOLUTION TEMPORELLE</p>
+                  <h3>Précision de l'évaluation selon l'horizon</h3>
+                </div>
+              </div>
+              <div id="fiab-horizons-strip" class="horizons-strip"></div>
+            </div>
+
+            <!-- Tribune des 4 Experts Multi-Agents -->
+            <div class="weekly-profile-wrap">
+              <div class="card-heading">
+                <div>
+                  <p class="eyebrow">COLLÈGE DES EXPERTS NUMÉRIQUES</p>
+                  <h3>Avis croisés de la Brigade sur cet article</h3>
+                </div>
+              </div>
+              <div id="fiab-experts-grid" class="experts-grid"></div>
+            </div>
+
+            <div id="fiab-article-diagnostic" class="fiab-diag-wrap"></div>
+          </section>
+
+          <section class="card">
+            <div class="card-heading">
+              <div>
+                <p class="eyebrow">DIAGNOSTIC DES FORMULES</p>
+                <h2>Causes racines des dérives</h2>
+              </div>
+              <span class="tag">Année 2026</span>
+            </div>
+            <div id="fiab-causes-breakdown"></div>
+            <div id="fiab-biases-top" class="top-biases-wrap"></div>
+          </section>
+        </div>
+
+        <section class="card">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">TABLEAU DES ARTICLES ÉVALUÉS</p>
+              <h2>Précision de l'algorithme par article</h2>
+            </div>
+            <label class="search-box inline-search">
+              <span aria-hidden="true">⌕</span>
+              <input id="fiab-search" type="search" placeholder="Rechercher un article évalué…">
+            </label>
+          </div>
+          <div id="fiab-table" class="table-wrap"></div>
+        </section>
+      </section>
+
+      <!-- 6. ANALYSE DES VENTES (EXPLORATEUR) -->
+      <section id="sales" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">EXPLORER LES VENTES DU RAYON</p><h1>Analyse des ventes.</h1><p class="subtitle">Par produit, famille et année. Choisissez votre périmètre et comparez les périodes.</p></div></div>
+        <div id="sales-workspace"></div>
+      </section>
+
+      <!-- 7. ENQUÊTE PRODUIT -->
+      <section id="products" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">UNE ENQUÊTE, TOUTES LES INFORMATIONS</p><h1>Au plus près du produit.</h1><p class="subtitle">Comprenez son parcours et précisez ce que vous voyez en rayon.</p></div></div>
+        <div class="investigation-layout"><section class="card product-browser"><label class="search-box"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Nom, code ou famille…" aria-label="Rechercher un article"><kbd>/</kbd></label><div class="list-meta" id="list-meta"></div><div id="product-list" class="product-list"></div></section><section id="product-detail" class="product-detail"><div class="empty card">Sélectionnez un article pour ouvrir sa fiche.</div></section></div>
+      </section>
+
+      <!-- 8. CONSIGNES TERRAIN -->
+      <section id="instructions" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">LA MÉMOIRE DE VOTRE RAYON</p><h1>Vos consignes terrain.</h1><p class="subtitle">Mises en avant, maturité et réimplantations : chaque consigne a sa durée.</p></div><button class="primary" data-view="products">+ Ajouter une consigne</button></div>
+        <div class="instruction-summary" id="instruction-summary"></div>
+        <section class="card"><div class="card-heading"><h2>Le carnet de suivi</h2><label class="inline-label">Afficher <select id="context-filter"><option value="courantes">Actives et planifiées</option><option value="toutes">Toutes les consignes</option></select></label></div><div id="instruction-table" class="table-wrap"></div></section>
+        <section class="card pcb-card"><div class="card-heading"><div><p class="eyebrow">DÉCISIONS DU RAYON</p><h2>Colisages personnalisés</h2></div></div><div id="pcb-table" class="table-wrap"></div></section>
+      </section>
+
+      <!-- 9. JOURNAL PHOTO -->
+      <section id="photos" class="view" hidden>
+        <div class="page-heading"><div><p class="eyebrow">LA MÉMOIRE VISUELLE DU MAGASIN</p><h1>Votre rayon, au fil des jours.</h1><p class="subtitle">Une photo, une date, vos observations. Retrouvez ce qui a changé et quand.</p></div><button id="photo-new" class="primary">+ Ajouter une photo</button></div>
+        <div class="photo-workspace"><section><div class="photo-filters"><label class="field"><span>Emplacement</span><select id="photo-zone-filter"><option value="">Tout le rayon</option><option value="rayon">Rayon</option><option value="tg">Têtes de gondole</option><option value="ilot">Îlots</option><option value="produit">Produits</option><option value="reserve">Réserve</option></select></label><label class="field"><span>Article</span><select id="photo-article-filter"><option value="">Tous les articles</option></select></label><label class="field"><span>À partir du</span><input type="date" id="photo-date-filter"></label></div><p class="source-line" id="photo-count"></p><div class="photo-grid" id="photo-gallery"><div class="empty card">Chargement du journal photo…</div></div></section><section class="card photo-editor" id="photo-editor"></section></div>
+      </section>
+
+      <footer class="workspace-footer"><span>COCKPIT F&L <b>·</b> CARMAUX</span><span>Poste de pilotage & d'arbitrage de fin de journée.</span></footer>
+    </main>
+  </div>
+  <dialog id="confirm-dialog"><form method="dialog"><p class="eyebrow">VÉRIFIER AVANT D’ENREGISTRER</p><h2 id="confirm-title">Confirmer la saisie</h2><p id="confirm-text"></p><div class="dialog-actions"><button value="cancel" class="secondary">Revenir</button><button value="ok" class="primary">Confirmer l’enregistrement</button></div></form></dialog>
+  <dialog id="photo-viewer"><button class="icon-button" id="photo-close" aria-label="Fermer la photo">×</button><img id="photo-large" alt=""><p id="photo-large-caption"></p></dialog>
+</body>
+</html>

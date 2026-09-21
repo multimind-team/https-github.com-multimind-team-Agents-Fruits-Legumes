@@ -1,0 +1,41 @@
+{
+  "pertes": {
+    "taux": 1.0,
+    "vendu": 0.0,
+    "perdu": 10.0,
+    "erreur": "ZeroDivisionError: division by zero"
+  },
+  "fuseaux": {
+    "local": {
+      "phase": "soir",
+      "position": 10
+    },
+    "utc": {
+      "phase": "matin",
+      "position": 6
+    }
+  },
+  "source_ignored": {
+    "same_signature": true,
+    "morning_first": {
+      "position": 6,
+      "duplicates": 1
+    },
+    "evening_first": {
+      "position": 10,
+      "duplicates": 1
+    }
+  },
+  "dimanche_0": {
+    "date_commande": "2026-09-19",
+    "date_livraison": "2026-09-21",
+    "demande": 20.0,
+    "colis": 20.0
+  },
+  "dimanche_100": {
+    "date_commande": "2026-09-19",
+    "date_livraison": "2026-09-21",
+    "demande": 20.0,
+    "colis": 20.0
+  }
+}

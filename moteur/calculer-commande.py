@@ -128,12 +128,17 @@ def construire_moyennes(jusqua=None):
                 saison.append(0.0)
                 fiable.append(0)
         vendu, perdu = total_vente[article], total_pertes.get(article, 0.0)
+        if vendu > 0 and (vendu + perdu) > 0:
+            taux_calc = perdu / (vendu + perdu)
+            taux_perte = min(taux_calc, 0.50) if taux_calc >= 0.90 else taux_calc
+        else:
+            taux_perte = TAUX_PERTE_DEFAUT
         resultat[article] = {
             "saison": saison,
             "saisonFiable": fiable,
             "totalVente": round(vendu, 2),
             "totalPertes": round(perdu, 2),
-            "tauxPerte": (perdu / (vendu + perdu)) if (vendu + perdu) > 0 else TAUX_PERTE_DEFAUT,
+            "tauxPerte": taux_perte,
         }
     return resultat
 

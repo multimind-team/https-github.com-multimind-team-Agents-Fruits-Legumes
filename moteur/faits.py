@@ -10,6 +10,9 @@ from pathlib import Path
 
 def signature(fait):
     contenu = {k: v for k, v in fait.items() if k != 'source'}
+    saisi_le = (fait.get('source') or {}).get('saisi_le')
+    if saisi_le:
+        contenu['__saisi_le'] = saisi_le
     return json.dumps(contenu, sort_keys=True, ensure_ascii=False, allow_nan=False)
 
 

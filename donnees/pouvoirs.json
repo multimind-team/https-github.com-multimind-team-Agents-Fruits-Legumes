@@ -26,7 +26,8 @@
       "peut_seul": [
         "conditionnement",
         "fournisseur",
-        "demasquer"
+        "demasquer",
+        "unite"
       ],
       "doit_demander": [
         "rapprocher",
@@ -45,7 +46,8 @@
       "peut_seul": [
         "conditionnement",
         "fournisseur",
-        "demasquer"
+        "demasquer",
+        "unite"
       ],
       "doit_demander": [
         "rapprocher",
@@ -66,7 +68,8 @@
         "demasquer",
         "masquer",
         "promotion",
-        "rapprocher"
+        "rapprocher",
+        "unite"
       ],
       "doit_demander": [],
       "plafond_par_jour": 15,

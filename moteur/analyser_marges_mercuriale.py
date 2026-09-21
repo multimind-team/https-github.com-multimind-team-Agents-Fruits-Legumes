@@ -26,6 +26,8 @@ DONNEES = RACINE / "donnees"
 FICHIER_CADENCIER = DONNEES / "cadencier-du-jour.json"
 FICHIER_HISTO_PRIX = DONNEES / "historique-prix-achat.json"
 FICHIER_ALERTES = DONNEES / "alertes-marges.json"
+FICHIER_AGREGATS = DONNEES / "agregats.json"
+FICHIER_PROMOTIONS = DONNEES / "promotions.json"
 
 sys.path.insert(0, str(RACINE / "moteur"))
 import catalogue
@@ -46,14 +48,51 @@ def charger_historique_prix():
     return {}
 
 
+def charger_agregats_articles():
+    if FICHIER_AGREGATS.exists():
+        try:
+            return json.loads(FICHIER_AGREGATS.read_text(encoding="utf-8")).get("articles", {})
+        except Exception:
+            pass
+    return {}
+
+
+def charger_promotions():
+    if FICHIER_PROMOTIONS.exists():
+        try:
+            return json.loads(FICHIER_PROMOTIONS.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
 @operation_donnees(lambda: DONNEES)
-def analyser_cadencier(cadencier=None, historique=None):
+def analyser_cadencier(cadencier=None, historique=None, agregats_articles=None, promotions=None):
     if cadencier is None:
         cadencier = json.loads(FICHIER_CADENCIER.read_text(encoding="utf-8")) if FICHIER_CADENCIER.exists() else {}
     historique = historique if historique is not None else charger_historique_prix()
+    if agregats_articles is None:
+        agregats_articles = charger_agregats_articles()
+    if promotions is None:
+        promotions = charger_promotions()
 
     date_cadencier = cadencier.get("date_cadencier") or date.today().isoformat()
     articles_cadencier = cadencier.get("articles", [])
+
+    promos_par_itm8 = {}
+    if isinstance(promotions, dict):
+        for o in promotions.get("offres", []):
+            debut = o.get("debut")
+            fin = o.get("fin")
+            nom_offre = o.get("nom", "")
+            for c in o.get("correspondances", []):
+                code_c = c.get("itm8")
+                if code_c:
+                    promos_par_itm8[str(code_c)] = {
+                        "nom": nom_offre,
+                        "debut": debut,
+                        "fin": fin,
+                    }
 
     alertes = []
     prix_a_jour = deepcopy(historique.get("prix_par_article", {}))
@@ -73,17 +112,48 @@ def analyser_cadencier(cadencier=None, historique=None):
             continue
         pa = round(float(pa), 3)
 
-        # Prix de vente de référence (PVC du cadencier ou prix catalogue)
+        # Détermination du prix de vente selon la hiérarchie officielle :
+        # 1. Priorité au prix réel magasin en caisse :
+        #    - Prix catalogue magasin (catalogue.json)
+        #    - Dernier prix de vente constaté dans les ventes quotidiennes (agregats.json)
+        # 2. Repli : Prix de vente conseillé (PVC) Scafruit uniquement si aucun prix réel magasin n'est disponible
         pv = None
-        if pvc is not None and float(pvc) > 0:
-            pv = round(float(pvc), 2)
-        else:
-            pv_cat = catalogue.prix(itm8)
-            if pv_cat:
-                try:
-                    pv = round(float(pv_cat), 2)
-                except (ValueError, TypeError):
-                    pass
+        source_pv = None
+
+        pv_cat = catalogue.prix(itm8) if hasattr(catalogue, "prix") else None
+        if pv_cat is not None:
+            try:
+                v = float(pv_cat)
+                if v > 0:
+                    pv = round(v, 2)
+                    source_pv = "catalogue"
+            except (ValueError, TypeError):
+                pv = None
+
+        pv_reel = agregats_articles.get(str(itm8), {}).get("dernierPrixVente") if agregats_articles else None
+        if pv_reel is not None:
+            try:
+                v = float(pv_reel)
+                if v > 0:
+                    if pv is None:
+                        pv = round(v, 2)
+                        source_pv = "ventes_reelles"
+                    elif round(v, 2) > pv:
+                        # Si le prix en caisse a augmenté au-delà du catalogue, on prend la hausse constatée
+                        pv = round(v, 2)
+                        source_pv = "ventes_reelles"
+            except (ValueError, TypeError):
+                pass
+
+        # Repli : PVC Scafruit si aucun prix réel magasin n'a pu être obtenu
+        if pv is None and pvc is not None:
+            try:
+                v = float(pvc)
+                if v > 0:
+                    pv = round(v, 2)
+                    source_pv = "pvc_conseille"
+            except (ValueError, TypeError):
+                pv = None
 
         # Historique de cet article
         histo_art = prix_a_jour.get(str(itm8), [])
@@ -109,25 +179,49 @@ def analyser_cadencier(cadencier=None, historique=None):
         motifs = []
         gravite = "info"
 
-        if hausse_pct is not None and hausse_pct >= SEUIL_HAUSSE_ALERTE:
+        # Contexte promotionnel / fin de promotion :
+        # Détecte si le produit sort d'une offre promo (tarif précommande bas qui remonte brutalement)
+        info_promo = promos_par_itm8.get(str(itm8))
+        est_fin_promo = False
+        marge_promo_realisee = None
+        if dernier_pa and pv and dernier_pa < pv and (pa > pv or (taux_marge is not None and taux_marge < SEUIL_MARGE_MINIMALE)):
+            marge_promo_realisee = round(((pv - dernier_pa) / pv) * 100.0, 1)
+            if info_promo is not None:
+                est_fin_promo = True
+            elif hausse_pct is not None and hausse_pct >= SEUIL_HAUSSE_ALERTE:
+                est_fin_promo = True
+
+        if est_fin_promo:
             est_alerte = True
             gravite = "avertissement"
-            motifs.append(f"Hausse d'achat de +{hausse_pct:.1f}% ({pa:.2f} € vs {dernier_pa:.2f} € le {date_dernier})")
-
-        if pv and pa > pv:
-            est_alerte = True
-            gravite = "critique"
-            motifs.append(f"Vente à perte potentielle (Achat {pa:.2f} € > Vente {pv:.2f} €)")
-        elif taux_marge is not None and taux_marge < SEUIL_MARGE_MINIMALE:
-            est_alerte = True
-            if gravite != "critique":
+            nom_offre_txt = f" ({info_promo['nom']})" if info_promo and info_promo.get("nom") else ""
+            motifs.append(f"Fin d'offre promo{nom_offre_txt} : le PA cadencier repasse au tarif standard ({pa:.2f} € vs {dernier_pa:.2f} € en promo, marge réalisée : +{marge_promo_realisee:.1f}%).")
+            if pv and pa > pv:
+                motifs.append(f"Risque de vente à perte sur réassort : le prix caisse actuel ({pv:.2f} €) reste au tarif promo.")
+            else:
+                motifs.append(f"Marge sur réassort comprimée ({taux_marge:.1f}%) si le prix caisse n'est pas réaligné.")
+            recommandation = f"Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +{marge_promo_realisee:.1f}%)."
+        else:
+            if hausse_pct is not None and hausse_pct >= SEUIL_HAUSSE_ALERTE:
+                est_alerte = True
                 gravite = "avertissement"
-            motifs.append(f"Marge brute faible ({taux_marge:.1f}% < seuil {SEUIL_MARGE_MINIMALE}%)")
+                motifs.append(f"Hausse d'achat de +{hausse_pct:.1f}% ({pa:.2f} € vs {dernier_pa:.2f} € le {date_dernier})")
 
-        if est_alerte:
+            if pv and pa > pv:
+                est_alerte = True
+                gravite = "critique"
+                motifs.append(f"Vente à perte potentielle (Achat {pa:.2f} € > Vente {pv:.2f} €)")
+            elif taux_marge is not None and taux_marge < SEUIL_MARGE_MINIMALE:
+                est_alerte = True
+                if gravite != "critique":
+                    gravite = "avertissement"
+                motifs.append(f"Marge brute faible ({taux_marge:.1f}% < seuil {SEUIL_MARGE_MINIMALE}%)")
+
             recommandation = "Ajuster le prix de vente en caisse pour protéger la marge."
             if pv and pa > pv:
                 recommandation = "URGENT : Rehausser immédiatement le prix de vente en caisse."
+
+        if est_alerte:
             alertes.append({
                 "itm8": itm8,
                 "nom": nom,
@@ -136,8 +230,13 @@ def analyser_cadencier(cadencier=None, historique=None):
                 "date_prix_precedent": date_dernier,
                 "hausse_pct": hausse_pct,
                 "prix_vente": pv,
+                "source_prix_vente": source_pv,
                 "taux_marge": taux_marge,
                 "gravite": gravite,
+                "type_alerte": "fin_promo" if est_fin_promo else "standard",
+                "contexte_promo": est_fin_promo,
+                "marge_promo_realisee": marge_promo_realisee,
+                "nom_promo": info_promo.get("nom") if info_promo else None,
                 "motifs": motifs,
                 "recommandation": recommandation
             })

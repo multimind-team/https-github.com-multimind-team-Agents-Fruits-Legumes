@@ -10,6 +10,7 @@ import math
 import os
 import re
 import tempfile
+import time
 from contextlib import contextmanager
 from datetime import date
 from decimal import Decimal, InvalidOperation
@@ -135,14 +136,29 @@ def valider_facture(donnees, correspondances):
 
 
 def choisir_classeur(racine, date_reception, chemin=None):
-    """Sélectionne un classeur mensuel existant, jamais un faux modèle neuf."""
+    """Sélectionne le classeur de marge de travail, jamais un faux modèle neuf.
+
+    Le travail s'effectue sur 'Calcul marge Pomona.xlsx', copié depuis
+    'Calcul marge Pomona - Original.xlsx' (qui ne doit jamais être modifié).
+    """
+    import shutil
+    dossier = Path(racine) / "documents-partages" / "calcul-marge-pomona"
     mois = date.fromisoformat(date_reception).strftime("%m%y")
-    cible = (Path(chemin) if chemin is not None else
-             Path(racine) / "documents-partages" / "calcul-marge-pomona" /
-             f"{mois} Calcul marge Pomona.xlsx")
-    if not cible.name.startswith(f"{mois} "):
-        raise FactureInvalide(f"Classeur incompatible avec le mois {mois} de la facture")
-    if not cible.is_file():
+    if chemin is not None:
+        cible = Path(chemin)
+        if cible.name == "Calcul marge Pomona - Original.xlsx":
+            raise FactureInvalide("Interdiction de modifier 'Calcul marge Pomona - Original.xlsx'. "
+                                  "Travailler sur la copie 'Calcul marge Pomona.xlsx'.")
+        if not (cible.name == "Calcul marge Pomona.xlsx" or cible.name.startswith(f"{mois} ")):
+            raise FactureInvalide(f"Classeur incompatible avec le mois {mois} de la facture")
+    else:
+        cible = dossier / "Calcul marge Pomona.xlsx"
+        if not cible.is_file():
+            original = dossier / "Calcul marge Pomona - Original.xlsx"
+            if not original.is_file():
+                cible = dossier / f"{mois} Calcul marge Pomona.xlsx"
+    original = cible.parent / "Calcul marge Pomona - Original.xlsx"
+    if not cible.is_file() and not original.is_file():
         raise FactureInvalide(f"Classeur du mois {mois} absent : {cible}")
     return cible
 
@@ -187,20 +203,44 @@ def _trace_ligne(facture, ligne):
 def preparer_marge(chemin_classeur, jour, facture):
     """Vérifie et prépare en mémoire : aucune sauvegarde, même temporaire."""
     chemin_classeur = Path(chemin_classeur)
+    if not chemin_classeur.is_file():
+        original = chemin_classeur.parent / "Calcul marge Pomona - Original.xlsx"
+        if original.is_file():
+            chemin_source = original
+        else:
+            raise FactureInvalide(f"Le classeur de marge est absent : {chemin_classeur}")
+    else:
+        chemin_source = chemin_classeur
     try:
-        with open(chemin_classeur, "rb") as source_classeur:
+        with open(chemin_source, "rb") as source_classeur:
             classeur = load_workbook(source_classeur, data_only=False)
     except (BadZipFile, KeyError, ValueError, ParseError) as erreur:
         raise FactureInvalide(f"Le classeur de marge est illisible : {erreur}") from None
-    if "Vierge" not in classeur.sheetnames:
-        raise FactureInvalide("La feuille Vierge est absente du classeur de marge")
-    if jour not in classeur.sheetnames:
+    date_iso = str(facture.get("date_reception", ""))
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso):
+        a_s, m_s, j_s = date_iso.split("-")
+        date_fr = f"{j_s}-{m_s}-{a_s}"
+    else:
+        date_fr = str(jour)
+
+    if "Date du jour" in classeur.sheetnames:
+        if "Vierge" not in classeur.sheetnames:
+            vierge = classeur.copy_worksheet(classeur["Date du jour"])
+            vierge.title = "Vierge"
+            _copier_mise_en_forme_conditionnelle(classeur["Date du jour"], vierge)
+        feuille = classeur["Date du jour"]
+        feuille.title = date_fr
+    elif date_fr in classeur.sheetnames:
+        feuille = classeur[date_fr]
+    elif str(jour) in classeur.sheetnames:
+        feuille = classeur[str(jour)]
+    elif "Vierge" in classeur.sheetnames:
         source = classeur["Vierge"]
         feuille = classeur.copy_worksheet(source)
-        feuille.title = jour
+        feuille.title = str(jour)
         _copier_mise_en_forme_conditionnelle(source, feuille)
     else:
-        feuille = classeur[jour]
+        raise FactureInvalide("La feuille 'Date du jour' ou 'Vierge' est absente du classeur de marge")
 
     traces = {_trace_ligne(facture, entree)["id"]: _trace_ligne(facture, entree)
               for entree in facture["lignes"]}
@@ -288,7 +328,20 @@ def ajouter_marge(chemin_classeur, jour, facture):
         return 0
     temporaire = _stager_marge(classeur, chemin_classeur)
     try:
-        os.replace(temporaire, chemin_classeur)
+        for essai in range(6):
+            try:
+                os.replace(temporaire, chemin_classeur)
+                break
+            except (PermissionError, OSError):
+                if essai == 5:
+                    # Dernier recours sur Windows : tenter un unlink puis rename
+                    try:
+                        Path(chemin_classeur).unlink(missing_ok=True)
+                        os.replace(temporaire, chemin_classeur)
+                        break
+                    except Exception:
+                        raise
+                time.sleep(0.25)
     finally:
         temporaire.unlink(missing_ok=True)
 
@@ -399,6 +452,12 @@ def importer_facture(racine, chemin_classeur, facture, simuler=False, *, classeu
         return _importer_facture(racine, chemin_classeur, facture, simuler=True,
                                  classeur_seul=classeur_seul)
     with _verrou_import(racine):
+        cible = Path(chemin_classeur)
+        if not cible.is_file() and cible.name == "Calcul marge Pomona.xlsx":
+            original = cible.parent / "Calcul marge Pomona - Original.xlsx"
+            if original.is_file():
+                import shutil
+                shutil.copy2(original, cible)
         return _importer_facture(racine, chemin_classeur, facture, classeur_seul=classeur_seul)
 
 

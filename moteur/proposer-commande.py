@@ -49,7 +49,7 @@ JOURS_FERIES_FERMETURE = {"01-01", "05-01", "12-25"}
 SEUIL_LIVRAISON_RECENTE = 7      # jours
 # Au-dela, un comptage est trop vieux pour justifier a lui seul une position
 # tres negative : on redemande au responsable de rayon de recompter plutot que de commander.
-FRAICHEUR_COMPTAGE_JOURS = 7
+FRAICHEUR_COMPTAGE_JOURS = 2
 PLANCHER_POSITION_COLIS = -10    # seuil inclus ; affichage distinct de l'exception de mesure fraîche
 
 
@@ -97,7 +97,7 @@ def facteur_jour_semaine(iso, profil, correction):
 
 
 def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_livraisons,
-             profil, facteurs_meteo, correction=None, feries=(), *, conditionnements=None):
+             profil, facteurs_meteo, correction=None, feries=(), *, conditionnements=None, contextes=None):
     """Rend la quantité à commander pour chaque article, en unités et en colis.
 
     `conditionnements` vient de conditionnements.charger : {code: sélection}.
@@ -108,6 +108,14 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
     date_livraison = prochain_jour_valide(date_commande, feries)
     jour_cmd = calc.jour_de_lannee(date_commande) - 1
     jour_liv = calc.jour_de_lannee(date_livraison) - 1
+
+    # Jours d'ouverture intermédiaires entre commande et livraison (ex: dimanche matin pour commande samedi -> livraison lundi)
+    jours_intermediaires = []
+    courant = ajouter_jours(date_commande, 1)
+    while courant < date_livraison:
+        if courant[5:] not in JOURS_FERIES_FERMETURE and courant not in feries:
+            jours_intermediaires.append(courant)
+        courant = ajouter_jours(courant, 1)
 
     f_meteo = facteurs_meteo.get("meteo", 1) or 1
     f_meteo_cmd = facteurs_meteo.get("meteo_cmd", f_meteo) or 1
@@ -128,6 +136,8 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
         if donnees is None:
             continue
         surcharge = overrides.get(itm8, {})
+        from contexte_terrain import actif as contexte_actif, coefficient as coefficient_terrain, effectif as contexte_effectif
+        contexte = (contextes or {}).get(itm8, {})
 
         if conditionnements is None:
             try:
@@ -157,9 +167,25 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
         f_m_cmd = art_meteo.get("f_meteo_cmd", f_meteo_cmd)
         f_m_liv = art_meteo.get("f_meteo_liv", f_meteo_liv)
 
-        demande_cmd = moy_cmd * f_m_cmd * f_ferie_cmd * f_vacances_cmd * f_js_cmd
-        demande_liv = moy_liv * f_m_liv * f_ferie_liv * f_vacances_liv * f_js_liv
-        demande = (demande_cmd + demande_liv) / (1 - taux_perte)
+        coeff_cmd = coefficient_terrain(contexte, date_commande)
+        coeff_liv = coefficient_terrain(contexte, date_livraison)
+        demande_cmd = moy_cmd * f_m_cmd * f_ferie_cmd * f_vacances_cmd * f_js_cmd * coeff_cmd
+        demande_liv = moy_liv * f_m_liv * f_ferie_liv * f_vacances_liv * f_js_liv * coeff_liv
+        previsions_journalieres = {date_commande: demande_cmd, date_livraison: demande_liv}
+
+        demande_inter = 0.0
+        for d_inter in jours_intermediaires:
+            j_inter = calc.jour_de_lannee(d_inter) - 1
+            moy_inter = donnees["saison"][j_inter]
+            f_js_inter = facteur_jour_semaine(d_inter, profil, correction)
+            f_m_inter = art_meteo.get("f_meteo_liv", f_meteo_liv)
+            prev_inter = (moy_inter * f_m_inter * f_ferie_liv * f_vacances_liv * f_js_inter
+                          * coefficient_terrain(contexte, d_inter))
+            demande_inter += prev_inter
+            previsions_journalieres[d_inter] = prev_inter
+
+        diviseur = max(0.1, 1.0 - min(float(taux_perte), 0.90))
+        demande = (demande_cmd + demande_inter + demande_liv) / diviseur
 
         position = positions.get(itm8, {}).get("position")
         position_connue = position is not None
@@ -173,29 +199,39 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
 
         # Position tres negative : ce n'est plus une mesure, c'est le signe
         # qu'on a perdu le fil. On n'affiche pas de chiffre et on ne commande pas.
-        #
-        # SAUF si le responsable de rayon vient de compter cet article : une valeur qu'il a
-        # mesuree lui-meme fait foi, aussi basse soit-elle. Ce cas
-        # etait reconnu au champ "stock" de la configuration (une saisie
-        # manuelle) ; ce champ n'existe plus depuis que preparation-commande reconstitue
-        # ses reglages, on regarde donc la date du comptage, ce qui est plus
-        # juste : ce n'est pas la saisie qui compte, c'est sa fraicheur.
         mesure = positions.get(itm8, {})
-        comptee_recemment = (mesure.get("mesuree_le") or "") >= decaler(date_commande,
-                                                                       -FRAICHEUR_COMPTAGE_JOURS)
-        position_bloquee = (not comptee_recemment) and \
-            position / conditionnement <= PLANCHER_POSITION_COLIS
+        date_mesure = (mesure.get("mesuree_le") or "")
+        pos_colis = position / conditionnement
+        comptee_recemment = date_mesure >= decaler(date_commande, -FRAICHEUR_COMPTAGE_JOURS)
+        if pos_colis <= -15.0:
+            # Position aberrante (<= -15 colis) : un comptage ancien ne suffit pas,
+            # il faut un comptage physique du jour même pour débloquer.
+            position_bloquee = date_mesure < date_commande
+        else:
+            position_bloquee = (not comptee_recemment) and pos_colis <= PLANCHER_POSITION_COLIS
 
-        brute = 0.0 if (promotion or position_bloquee) else max(0.0, demande - position)
+        contexte_liv = contexte_effectif(contexte, date_livraison)
+        applique_liv = contexte_actif(contexte_liv, date_livraison)
+        arret_terrain = applique_liv and contexte_liv.get("statut") in {"fin-saison", "rupture-fournisseur"}
+        # Le minimum vise le stock restant après l'horizon. Il ne fabrique pas
+        # de ventes pour une réimplantation ; sa date cible doit être atteinte.
+        minimum = float(contexte_liv.get("stock_min_colis", 0)) if applique_liv else 0.0
+        if contexte_liv.get("statut") == "reimplantation" and (contexte_liv.get("date_cible") or "9999") > date_livraison:
+            minimum = 0.0
+        bloquee = promotion or position_bloquee or arret_terrain
+        brute = 0.0 if bloquee else max(0.0, demande + minimum * conditionnement - position)
 
         derniere = dernieres_livraisons.get(itm8)
         pas_livre_recemment = (not derniere) or jours_entre(derniere, date_commande) > SEUIL_LIVRAISON_RECENTE
-        if promotion or position_bloquee:
+        if bloquee:
             quantite = 0.0
         elif pas_livre_recemment and brute > 0:
             quantite = -(-brute // conditionnement) * conditionnement      # arrondi au colis SUPERIEUR
         else:
             quantite = round(brute / conditionnement) * conditionnement    # arrondi au colis LE PLUS PROCHE
+        if minimum > 0 and not bloquee:
+            # Un arrondi au plus proche ne doit pas casser le plancher humain.
+            quantite = max(quantite, -(-brute // conditionnement) * conditionnement)
 
         lignes[itm8] = {
             "libelle": (reference.get("LIBELLE") or "").strip(),
@@ -204,10 +240,19 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
             "conditionnement": conditionnement,
             "position_unites": round(position, 2) if position_connue else None,
             "demande": round(demande, 3),
+            # Ventes attendues par date, avant pertes et avant déduction du
+            # stock ; seul cet objet peut alimenter les comparaisons futures.
+            "previsions_journalieres": {j: round(v, 3) for j, v in sorted(previsions_journalieres.items())},
             "vente_moyenne_jour": moy_liv,
             "taux_perte": round(taux_perte, 3),
             "promotion": promotion,
             "position_bloquee": position_bloquee,
+            "contexte_terrain": ({"id": contexte_liv.get("id"), "revision": contexte_liv.get("revision"),
+                                 "coefficient_commande": coeff_cmd, "coefficient_livraison": coeff_liv,
+                                 "stock_min_colis": minimum, "arret_commande": arret_terrain,
+                                 "statut": contexte_liv.get("statut"), "maturite": contexte_liv.get("maturite"),
+                                 "debut": contexte_liv.get("debut"), "fin": contexte_liv.get("fin")}
+                                if contexte else None),
         }
     return {"date_commande": date_commande, "date_livraison": date_livraison,
             "facteurs": {"meteo": f_meteo, "ferie": f_ferie, "vacances": f_vacances,

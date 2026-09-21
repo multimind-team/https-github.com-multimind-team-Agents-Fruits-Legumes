@@ -1,42 +1,48 @@
 {
  "_lisez_moi": "Ce que les chiffres montrent, sans interpretation. C'est l'agent tendances qui explique et alerte.",
- "calcule_le": "2026-09-11T21:59:22",
+ "calcule_le": "2026-09-19T05:27:25",
  "periode": {
-  "du": "2026-09-04",
-  "au": "2026-09-10",
+  "du": "2026-09-12",
+  "au": "2026-09-18",
   "jours": 7,
   "jours_ouvres": 6
  },
  "rayon": {
-  "vendu": 14643.2,
-  "attendu": 14935.6,
-  "ecart_pourcent": -2.0
+  "vendu": 13553.0,
+  "attendu": 14911.5,
+  "ecart_pourcent": -9.1
  },
- "meteo_passee": [],
- "meteo_a_venir": [
-  {
-   "date": "2026-09-11",
-   "temperature_max": 25.1,
-   "pluie_mm": 0.0
-  },
+ "meteo_passee": [
   {
    "date": "2026-09-12",
-   "temperature_max": 27.2,
+   "temperature_max": 26.7,
+   "pluie_mm": 0.0
+  }
+ ],
+ "meteo_a_venir": [
+  {
+   "date": "2026-09-19",
+   "temperature_max": 26.1,
    "pluie_mm": 0.0
   },
   {
-   "date": "2026-09-13",
-   "temperature_max": 29.1,
+   "date": "2026-09-20",
+   "temperature_max": 30.0,
    "pluie_mm": 0.0
   },
   {
-   "date": "2026-09-14",
-   "temperature_max": 31.7,
+   "date": "2026-09-21",
+   "temperature_max": 30.0,
    "pluie_mm": 0.0
   },
   {
-   "date": "2026-09-15",
-   "temperature_max": 32.1,
+   "date": "2026-09-22",
+   "temperature_max": 30.1,
+   "pluie_mm": 0.0
+  },
+  {
+   "date": "2026-09-23",
+   "temperature_max": 29.8,
    "pluie_mm": 0.0
   }
  ],
@@ -44,246 +50,246 @@
  "calendrier_a_venir": [],
  "hausses": [
   {
-   "article": "0000087004763",
-   "nom": "PATATE DOUCE VRAC",
-   "vendu": 196.7,
-   "attendu": 67.2,
-   "ecart_pourcent": 192.6,
-   "position": -131.91
-  },
-  {
-   "article": "0000087755006",
-   "nom": "ENDIVE SACHET 1KG",
-   "vendu": 305.9,
-   "attendu": 151.1,
-   "ecart_pourcent": 102.5,
-   "position": 75.87
-  },
-  {
-   "article": "0000087755079",
-   "nom": "LAITUE COEUR DE ROMAINE X2 SAC",
-   "vendu": 82.0,
-   "attendu": 40.9,
-   "ecart_pourcent": 100.3,
-   "position": -5.6
-  },
-  {
-   "article": "0000087004636",
-   "nom": "RAISIN ROSE VRAC",
-   "vendu": 224.6,
-   "attendu": 122.0,
-   "ecart_pourcent": 84.0,
-   "position": -24.47
-  },
-  {
-   "article": "0000087010504",
-   "nom": "TOMATE CERISE 250G PETIT PRIX",
-   "vendu": 523.7,
-   "attendu": 290.8,
-   "ecart_pourcent": 80.1,
-   "position": 40.6
-  },
-  {
-   "article": "0000087880001",
-   "nom": "BROCOLI 500G",
-   "vendu": 78.0,
-   "attendu": 46.7,
-   "ecart_pourcent": 67.2,
-   "position": -8.0
-  },
-  {
-   "article": "0000087004312",
-   "nom": "MANGUE AVION PIECE",
-   "vendu": 138.0,
-   "attendu": 82.8,
-   "ecart_pourcent": 66.7,
-   "position": -62.0
-  },
-  {
    "article": "0000087004808",
    "nom": "TOMATE COTELEE NOIRE VRAC",
-   "vendu": 87.9,
-   "attendu": 53.4,
-   "ecart_pourcent": 64.5,
-   "position": -2.77
-  },
-  {
-   "article": "0000087430010",
-   "nom": "BANANE PIECE ANTILLES FRAN",
-   "vendu": 1075.0,
-   "attendu": 657.2,
-   "ecart_pourcent": 63.6,
-   "position": 230.0
-  },
-  {
-   "article": "0000087004807",
-   "nom": "TOMATE COTELEE ROUGE VRAC",
-   "vendu": 138.8,
-   "attendu": 85.1,
-   "ecart_pourcent": 63.1,
-   "position": -35.41
-  },
-  {
-   "article": "0000087755102",
-   "nom": "SALADE MACHE BARQUETTE 125G",
-   "vendu": 190.0,
-   "attendu": 116.8,
-   "ecart_pourcent": 62.7,
-   "position": -7.0
-  },
-  {
-   "article": "0000087535005",
-   "nom": "AVOCAT BIO BARQUETTE 2 FRUITS",
-   "vendu": 75.0,
-   "attendu": 46.3,
-   "ecart_pourcent": 62.0,
-   "position": 3.0
-  },
-  {
-   "article": "0000087555025",
-   "nom": "POIRE BARQUETTE 1KG PETIT PRIX",
-   "vendu": 41.0,
-   "attendu": 25.5,
-   "ecart_pourcent": 60.8,
-   "position": 1.0
-  },
-  {
-   "article": "0000087003049",
-   "nom": "HARICOT VERT VRAC",
-   "vendu": 63.6,
-   "attendu": 40.0,
-   "ecart_pourcent": 59.0,
-   "position": -19.94
-  },
-  {
-   "article": "0000087545283",
-   "nom": "POMME BICOLORE 2KG PETIT PRIX",
-   "vendu": 75.0,
-   "attendu": 47.9,
-   "ecart_pourcent": 56.7,
-   "position": 10.8
-  }
- ],
- "baisses": [
-  {
-   "article": "0000087004386",
-   "nom": "ORANGE PETIT CALIBRE MACHINE A",
-   "vendu": 0,
-   "attendu": 58.4,
-   "ecart_pourcent": -100.0,
-   "position": -79.8
-  },
-  {
-   "article": "0000087004409",
-   "nom": "POIRE WILLIAM VERTE VRAC",
-   "vendu": 0,
-   "attendu": 36.0,
-   "ecart_pourcent": -100.0,
-   "position": -7
-  },
-  {
-   "article": "0000087635017",
-   "nom": "FRAISE MARA DES BOIS BQ 250G",
-   "vendu": 0,
-   "attendu": 30.2,
-   "ecart_pourcent": -100.0,
-   "position": -8
-  },
-  {
-   "article": "0000087200135",
-   "nom": "POMME BICOLORE X6 BIO MMP",
-   "vendu": 0,
-   "attendu": 26.8,
-   "ecart_pourcent": -100.0,
-   "position": -12
-  },
-  {
-   "article": "0000087775008",
-   "nom": "AUBERGINE FILET 500G PETIT PRI",
-   "vendu": 0,
-   "attendu": 26.0,
-   "ecart_pourcent": -100.0,
-   "position": -16
-  },
-  {
-   "article": "0000087004218",
-   "nom": "ABRICOT VRAC",
-   "vendu": 0.4,
-   "attendu": 32.9,
-   "ecart_pourcent": -98.9,
-   "position": -18.6
-  },
-  {
-   "article": "0000087010619",
-   "nom": "PDT NR VAPEUR BLONDE 2KG ITM",
-   "vendu": 7.0,
-   "attendu": 86.9,
-   "ecart_pourcent": -91.9,
-   "position": -47.0
-  },
-  {
-   "article": "0000087010622",
-   "nom": "PDT VAPEUR ROUGE 2.5KG ITM",
-   "vendu": 2.0,
-   "attendu": 21.8,
-   "ecart_pourcent": -90.8,
-   "position": 16.0
-  },
-  {
-   "article": "0000087695048",
-   "nom": "CAROTTE BIO 1KG",
-   "vendu": 5.0,
-   "attendu": 35.0,
-   "ecart_pourcent": -85.7,
-   "position": -8.8
-  },
-  {
-   "article": "0000087004012",
-   "nom": "ORANGE DESSERT VRAC",
-   "vendu": 11.5,
-   "attendu": 46.5,
-   "ecart_pourcent": -75.3,
-   "position": -6.8
-  },
-  {
-   "article": "0000087004011",
-   "nom": "BANANE VRAC",
-   "vendu": 200.7,
-   "attendu": 567.8,
-   "ecart_pourcent": -64.7,
-   "position": 18.0
+   "vendu": 190.2,
+   "attendu": 59.1,
+   "ecart_pourcent": 222.0,
+   "position": -58.91
   },
   {
    "article": "0000087004778",
    "nom": "TOMATE COTELEE JAUNE VRAC",
-   "vendu": 15.0,
-   "attendu": 38.8,
-   "ecart_pourcent": -61.4,
-   "position": -8.55
+   "vendu": 132.7,
+   "attendu": 41.6,
+   "ecart_pourcent": 218.6,
+   "position": -57.11
   },
   {
-   "article": "0000087004083",
-   "nom": "PDT BLONDE CONSO VRAC",
-   "vendu": 26.8,
-   "attendu": 60.8,
-   "ecart_pourcent": -55.9,
-   "position": -34.49
+   "article": "0000087004807",
+   "nom": "TOMATE COTELEE ROUGE VRAC",
+   "vendu": 284.5,
+   "attendu": 91.2,
+   "ecart_pourcent": 212.0,
+   "position": -159.97
   },
   {
-   "article": "0000087940025",
-   "nom": "ECHALOTE TRADI 500G PETIT PRIX",
+   "article": "0000087004029",
+   "nom": "ANANAS PIECE",
+   "vendu": 63.0,
+   "attendu": 21.2,
+   "ecart_pourcent": 197.3,
+   "position": 101.0
+  },
+  {
+   "article": "0000087765016",
+   "nom": "COURGETTE FILET 1KG PETIT PRIX",
+   "vendu": 121.0,
+   "attendu": 59.0,
+   "ecart_pourcent": 105.1,
+   "position": -193.0
+  },
+  {
+   "article": "0000087004593",
+   "nom": "CONCOMBRE PIECE",
+   "vendu": 690.0,
+   "attendu": 392.0,
+   "ecart_pourcent": 76.0,
+   "position": 822.0
+  },
+  {
+   "article": "0000087760025",
+   "nom": "TOMATE CERISE RONDE 250G SOUVE",
+   "vendu": 101.0,
+   "attendu": 58.8,
+   "ecart_pourcent": 71.6,
+   "position": -38.0
+  },
+  {
+   "article": "0000087004018",
+   "nom": "POMME GRANNY VRAC",
+   "vendu": 28.9,
+   "attendu": 17.1,
+   "ecart_pourcent": 69.7,
+   "position": -32.07
+  },
+  {
+   "article": "0000087545283",
+   "nom": "POMME BICOLORE 2KG PETIT PRIX",
+   "vendu": 83.0,
+   "attendu": 50.1,
+   "ecart_pourcent": 65.7,
+   "position": 12.8
+  },
+  {
+   "article": "0000087955034",
+   "nom": "PDT FOUR PUREE POTAGE 2,5KG (N",
+   "vendu": 275.0,
+   "attendu": 174.1,
+   "ecart_pourcent": 58.0,
+   "position": 138.0
+  },
+  {
+   "article": "0000087004957",
+   "nom": "RAISIN NOIR MUSCAT VRAC",
+   "vendu": 135.2,
+   "attendu": 87.6,
+   "ecart_pourcent": 54.4,
+   "position": -93.98
+  },
+  {
+   "article": "0000087004763",
+   "nom": "PATATE DOUCE VRAC",
+   "vendu": 128.6,
+   "attendu": 83.4,
+   "ecart_pourcent": 54.2,
+   "position": -19.83
+  },
+  {
+   "article": "0000087004562",
+   "nom": "CAROTTE NON LAVEE VRAC",
+   "vendu": 57.2,
+   "attendu": 37.8,
+   "ecart_pourcent": 51.2,
+   "position": -32.98
+  },
+  {
+   "article": "0000087430008",
+   "nom": "BANANE RUBAN 5 FRUITS BIO",
+   "vendu": 284.9,
+   "attendu": 188.8,
+   "ecart_pourcent": 50.9,
+   "position": 127.5
+  },
+  {
+   "article": "0000087010623",
+   "nom": "PDT FRITE 2.5KG ITM",
+   "vendu": 213.2,
+   "attendu": 147.2,
+   "ecart_pourcent": 44.9,
+   "position": 107.78
+  }
+ ],
+ "baisses": [
+  {
+   "article": "0000087004218",
+   "nom": "ABRICOT VRAC",
+   "vendu": 0,
+   "attendu": 21.1,
+   "ecart_pourcent": -100.0,
+   "position": -6.0
+  },
+  {
+   "article": "0000087635002",
+   "nom": "FRAISE FRANCE BARQUETTE 500G",
+   "vendu": 0,
+   "attendu": 39.6,
+   "ecart_pourcent": -100.0,
+   "position": -10.0
+  },
+  {
+   "article": "0000087010177",
+   "nom": "PDT NOUVELLE CHAIR TENDRE 2KG",
+   "vendu": 0,
+   "attendu": 23.3,
+   "ecart_pourcent": -100.0,
+   "position": -1.0
+  },
+  {
+   "article": "0000087004386",
+   "nom": "ORANGE PETIT CALIBRE MACHINE A",
+   "vendu": 0,
+   "attendu": 59.2,
+   "ecart_pourcent": -100.0,
+   "position": -120.8
+  },
+  {
+   "article": "0000087010619",
+   "nom": "PDT NR VAPEUR BLONDE 2KG ITM",
+   "vendu": 0,
+   "attendu": 54.8,
+   "ecart_pourcent": -100.0,
+   "position": -51.0
+  },
+  {
+   "article": "0000087010652",
+   "nom": "CAROTTE SACHET 1KG ITM",
+   "vendu": 2.0,
+   "attendu": 62.3,
+   "ecart_pourcent": -96.8,
+   "position": -20.28
+  },
+  {
+   "article": "0000087004409",
+   "nom": "POIRE WILLIAM VERTE VRAC",
+   "vendu": 2.1,
+   "attendu": 42.5,
+   "ecart_pourcent": -94.9,
+   "position": -9.15
+  },
+  {
+   "article": "0000087010624",
+   "nom": "PDT NR FRITE 2KG ITM",
    "vendu": 11.0,
-   "attendu": 23.5,
-   "ecart_pourcent": -53.2,
-   "position": 13.0
+   "attendu": 77.4,
+   "ecart_pourcent": -85.8,
+   "position": -10.0
   },
   {
-   "article": "0000087755042",
-   "nom": "LAITUE SUCRINE X3 BARQUETTE",
-   "vendu": 130.0,
-   "attendu": 277.9,
-   "ecart_pourcent": -53.2,
-   "position": 29.0
+   "article": "0000087004129",
+   "nom": "POMME FUJI VRAC",
+   "vendu": 3.3,
+   "attendu": 22.2,
+   "ecart_pourcent": -85.1,
+   "position": -20.51
+  },
+  {
+   "article": "0000087010741",
+   "nom": "CONCOMBRE PIECE BIO ITM",
+   "vendu": 5.0,
+   "attendu": 24.6,
+   "ecart_pourcent": -79.7,
+   "position": 2.0
+  },
+  {
+   "article": "0000087695048",
+   "nom": "CAROTTE BIO 1KG",
+   "vendu": 7.0,
+   "attendu": 31.4,
+   "ecart_pourcent": -77.7,
+   "position": -16.8
+  },
+  {
+   "article": "0000087950042",
+   "nom": "PDT PRINCESSE AMANDINE 2KG",
+   "vendu": 29.0,
+   "attendu": 117.4,
+   "ecart_pourcent": -75.3,
+   "position": -10.0
+  },
+  {
+   "article": "0000087010661",
+   "nom": "OIGNON ROUGE TUBE 500G ITM",
+   "vendu": 9.0,
+   "attendu": 27.4,
+   "ecart_pourcent": -67.1,
+   "position": -4.0
+  },
+  {
+   "article": "0000087010603",
+   "nom": "CAROTTE SACHET 1.5KG ITM",
+   "vendu": 46.0,
+   "attendu": 135.0,
+   "ecart_pourcent": -65.9,
+   "position": 43.0
+  },
+  {
+   "article": "0000087635005",
+   "nom": "FRAISE FRANCE BARQUETTE 250G",
+   "vendu": 8.0,
+   "attendu": 22.0,
+   "ecart_pourcent": -63.6,
+   "position": -10.0
   }
  ],
  "arrets": [
@@ -291,136 +297,88 @@
    "article": "0000087200052",
    "nom": "COURGETTE 1KG BIO MMP",
    "derniere_vente": "2025-09-20",
-   "jours_sans_vente": 355
+   "jours_sans_vente": 363
   },
   {
    "article": "0000087935043",
    "nom": "AIL BLANC FILET 3 TETES",
    "derniere_vente": "2025-10-20",
-   "jours_sans_vente": 325
+   "jours_sans_vente": 333
   },
   {
    "article": "0000087004764",
    "nom": "POTIMARRON PIECE",
    "derniere_vente": "2026-04-10",
-   "jours_sans_vente": 153
-  },
-  {
-   "article": "0000087003320",
-   "nom": "CHOU ROMANESCO PIECE",
-   "derniere_vente": "2026-04-14",
-   "jours_sans_vente": 149
+   "jours_sans_vente": 161
   },
   {
    "article": "0000087695257",
    "nom": "TOMATE CERISE ALLONG BIO 250G",
    "derniere_vente": "2026-04-16",
-   "jours_sans_vente": 147
-  },
-  {
-   "article": "0000087875002",
-   "nom": "BUTTERNUT PIECE PE",
-   "derniere_vente": "2026-04-18",
-   "jours_sans_vente": 145
+   "jours_sans_vente": 155
   },
   {
    "article": "0000087760059",
    "nom": "TOMATE CERISE 250G ZRP",
    "derniere_vente": "2026-04-25",
-   "jours_sans_vente": 138
+   "jours_sans_vente": 146
   },
   {
-   "article": "0000087880010",
-   "nom": "CHOU DE BRUXELLE SACHET 500G",
-   "derniere_vente": "2026-06-01",
-   "jours_sans_vente": 101
+   "article": "0000087003003",
+   "nom": "POMME CHANTECLER VRAC",
+   "derniere_vente": "2026-07-11",
+   "jours_sans_vente": 69
   },
   {
-   "article": "0000087200190",
-   "nom": "ENDIVE APERITIVE 6 PIECES ITM",
-   "derniere_vente": "2026-06-14",
-   "jours_sans_vente": 88
+   "article": "0000087010080",
+   "nom": "PDT PRIMEUR FILET 2KG",
+   "derniere_vente": "2026-08-01",
+   "jours_sans_vente": 48
   },
   {
-   "article": "0000087004084",
-   "nom": "ARTICHAUT BLANC PIECE",
-   "derniere_vente": "2026-06-20",
-   "jours_sans_vente": 82
+   "article": "0000087003357",
+   "nom": "CERISE VRAC",
+   "derniere_vente": "2026-08-03",
+   "jours_sans_vente": 46
+  },
+  {
+   "article": "0000087925009",
+   "nom": "BLANC POIREAU 500G",
+   "derniere_vente": "2026-08-05",
+   "jours_sans_vente": 44
+  },
+  {
+   "article": "0000087005019",
+   "nom": "POMME CHANTECLER VRAC",
+   "derniere_vente": "2026-08-07",
+   "jours_sans_vente": 42
   }
  ],
  "demarrages": [],
  "ventes_vs_livraisons": {
-  "journees_isolees_sans_action": 59,
-  "surcommandes_recurrentes": 9,
+  "journees_isolees_sans_action": 31,
+  "surcommandes_recurrentes": 3,
   "anomalies_recurrentes": [
    {
-    "itm8": "0000087003119",
-    "libelle": "POIVRON DOUX VERT VRAC",
-    "motif": "Sur-stockage récurrent (3 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle de 1 colis maintenue : la vitesse de vente nécessite un tampon de sécurité de 1 colis pour garantir zéro rupture.",
+    "itm8": "0000087004032",
+    "libelle": "PASTEQUE TIGREE PIECE",
+    "motif": "Commande maintenue : contexte non vérifié (météo absente ou incomplète). Aucune baisse proposée.",
     "ajustement": null,
-    "statut": "recurrent_protege_anti_rupture"
+    "statut": "recurrent_contexte_incomplet"
    },
    {
-    "itm8": "0000087004740",
-    "libelle": "RADIS ROSE BOTTE",
-    "motif": "Sur-stockage récurrent (3 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle de 2 colis maintenue : la vitesse de vente nécessite un tampon de sécurité de 2 colis pour garantir zéro rupture.",
+    "itm8": "0000087004065",
+    "libelle": "POIVRON DOUX ROUGE VRAC",
+    "motif": "Commande maintenue : contexte non vérifié (météo absente ou incomplète). Aucune baisse proposée.",
     "ajustement": null,
-    "statut": "recurrent_protege_anti_rupture"
+    "statut": "recurrent_contexte_incomplet"
    },
    {
-    "itm8": "0000087003082",
-    "libelle": "BROCOLI VRAC",
-    "motif": "Sur-stockage récurrent (2 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle de 4 colis maintenue : la vitesse de vente nécessite un tampon de sécurité de 5 colis pour garantir zéro rupture.",
+    "itm8": "0000087955044",
+    "libelle": "PDT 5KG 1ER PRIX",
+    "motif": "Commande maintenue : contexte non vérifié (météo absente ou incomplète). Aucune baisse proposée.",
     "ajustement": null,
-    "statut": "recurrent_protege_anti_rupture"
-   },
-   {
-    "itm8": "0000087003169",
-    "libelle": "LAITUE BATAVIA BLONDE PIECE",
-    "motif": "Sur-stockage récurrent (2 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle de 7 colis maintenue : la vitesse de vente nécessite un tampon de sécurité de 9 colis pour garantir zéro rupture.",
-    "ajustement": null,
-    "statut": "recurrent_protege_anti_rupture"
-   },
-   {
-    "itm8": "0000087004059",
-    "libelle": "KIWI JAUNE PIECE",
-    "motif": "Sur-stockage récurrent (2 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle de 1 colis maintenue : la vitesse de vente nécessite un tampon de sécurité de 2 colis pour garantir zéro rupture.",
-    "ajustement": null,
-    "statut": "recurrent_protege_anti_rupture"
-   },
-   {
-    "itm8": "0000087004339",
-    "libelle": "MELON VERT PIECE",
-    "motif": "Sur-stockage récurrent (2 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle : 2 colis. Une baisse d'au moins 1 colis dépasserait le plafond d'ajustement autorisé de 30 % pour l'analyste. Arbitrage manuel recommandé pour le responsable de rayon.",
-    "ajustement": null,
-    "statut": "recurrent_plafonne"
-   },
-   {
-    "itm8": "0000087010603",
-    "libelle": "CAROTTE SACHET 1.5KG ITM",
-    "motif": "Sur-stockage récurrent (2 livraisons consécutives où les ventes restent sous 50 % des réceptions). Ajustement proposé de 9 à 7 colis (-22 %, marge anti-rupture de 1 colis incluse).",
-    "ajustement": {
-     "avant": 9.0,
-     "apres": 7,
-     "baisse_colis": 2.0,
-     "baisse_pourcent": 22.2,
-     "buffer_anti_rupture": 1.0
-    },
-    "statut": "recurrent"
-   },
-   {
-    "itm8": "0000087010623",
-    "libelle": "PDT FRITE 2.5KG ITM",
-    "motif": "Sur-stockage récurrent (2 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle de 1 colis maintenue : la vitesse de vente nécessite un tampon de sécurité de 3 colis pour garantir zéro rupture.",
-    "ajustement": null,
-    "statut": "recurrent_protege_anti_rupture"
-   },
-   {
-    "itm8": "0000087540007",
-    "libelle": "KIWI BARQUETTE 1KG",
-    "motif": "Sur-stockage récurrent (2 livraisons consécutives où les ventes restent sous 50 % des réceptions). Commande actuelle de 1 colis maintenue : la vitesse de vente nécessite un tampon de sécurité de 1 colis pour garantir zéro rupture.",
-    "ajustement": null,
-    "statut": "recurrent_protege_anti_rupture"
+    "statut": "recurrent_contexte_incomplet"
    }
   ]
  }

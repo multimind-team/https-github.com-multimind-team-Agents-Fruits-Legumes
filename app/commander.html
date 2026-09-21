@@ -884,7 +884,9 @@ document.getElementById("liste").addEventListener("click", (e) => {
     basculerMasque(ligne, e.target.closest("[data-role]"));
   } else if (role === "plus" || role === "moins") {
     const q = Math.max(0, quantite(ligne) + (role === "plus" ? 1 : -1));
-    if (memoriser(CLE_AJUSTEMENTS, itm8, q === ligne.propose_colis ? null : q)) afficher();
+    const agent = agentAjustements[itm8];
+    const defaut = (agent && agent.applique) ? agent.apres : ligne.propose_colis;
+    if (memoriser(CLE_AJUSTEMENTS, itm8, q === defaut ? null : q)) afficher();
   } else if (role === "detail") {
     montrerDetail(ligne);
   }
@@ -951,11 +953,26 @@ function afficherStock(l) {
           bouton.disabled = false;
           return;
         }
+        try {
+          const CLE_DU_JOUR = "preparation_commande_comptages_du_jour";
+          const memoire = JSON.parse(localStorage.getItem(CLE_DU_JOUR) || "{}");
+          const par_art = (memoire.date === jour) ? (memoire.par_article || {}) : {};
+          par_art[l.itm8] = {
+            colis: colis,
+            conditionnement: l.conditionnement,
+            unite: l.unite,
+            unites: comptage.unites,
+            heure: comptage.saisi_le.slice(11, 16),
+            saisi_le: comptage.saisi_le,
+          };
+          localStorage.setItem(CLE_DU_JOUR, JSON.stringify({ date: jour, par_article: par_art }));
+        } catch (e) { /* ignore */ }
+
         etat.textContent = "✓ enregistré — recalcul en cours…";
         // Le recalcul (position, puis toute la proposition) tourne en
         // arrière-plan côté serveur : on relit jusqu'à voir un fichier plus
         // récent que l'envoi, plutôt que de deviner un délai fixe.
-        const avant = proposition.genere_le;
+        const avant = proposition.genere_le || "";
         const debut = Date.now();
         let actualisee = false;
         while (Date.now() - debut < 8000) {
@@ -964,7 +981,7 @@ function afficherStock(l) {
             const fraiche = await fetch("../donnees/proposition.json?t=" + Date.now(), { cache: "no-store" });
             if (!fraiche.ok) throw new Error("proposition indisponible");
             const candidate = await fraiche.json();
-            if (candidate.genere_le && candidate.genere_le !== avant) {
+            if (candidate.genere_le && candidate.genere_le > avant && (!proposition.genere_le || candidate.genere_le >= proposition.genere_le)) {
               proposition = candidate;
               actualisee = true;
               break;

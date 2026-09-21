@@ -207,6 +207,7 @@ def ligne_connue(itm8, calcul, mercalys, config, etat, article, offre, agr=None,
         "position_mesuree_le": etat["articles"].get(itm8, {}).get("mesuree_le"),
         "position_unites": calcul["position_unites"],
         "demande": calcul["demande"],
+        "previsions_journalieres": calcul.get("previsions_journalieres", {}),
         "vente_moyenne_jour": calcul["vente_moyenne_jour"],
         "taux_perte": calcul["taux_perte"],
         "prix_achat": achat,
@@ -218,6 +219,7 @@ def ligne_connue(itm8, calcul, mercalys, config, etat, article, offre, agr=None,
         "motif_fin_promotion": motif_fin_promo,
         "alerte_marge": alerte_marge,
         "position_bloquee": calcul["position_bloquee"],
+        "contexte_terrain": calcul.get("contexte_terrain"),
         "connu": True,
     }
 
@@ -396,6 +398,8 @@ def main():
         aggregats.get("dernieres_livraisons", {}), profils_meteo)
     etat_affichage = {**etat, "articles": positions}
 
+    from contexte_terrain import charger as charger_contextes
+    contextes = charger_contextes(RACINE / "donnees")["articles"]
     resultat = prop.proposer(
         date_calcul, moyennes, positions, config, mercalys,
         dernieres_livraisons, aggregats.get("profil_hebdomadaire"),
@@ -411,7 +415,7 @@ def main():
             "vacances_cmd": f_vacances_cmd,
             "vacances_liv": f_vacances_liv,
         },
-        CORRECTION_JS, feries=feries_fermees, conditionnements=selections)
+        CORRECTION_JS, feries=feries_fermees, conditionnements=selections, contextes=contextes)
 
     # LA LISTE VIENT DU CADENCIER DU JOUR, pas de ce que le magasin connaît.
     # Le responsable de rayon, le 2026-09-03 : « le cadencier Webtelevente référence ce que je
@@ -446,7 +450,8 @@ def main():
                 calcul = resultat["lignes"][itm8]
                 porteur = porteurs.get(principal)
                 if principal in porteurs and (porteur is None or index != porteur[0]):
-                    calcul = {**calcul, "propose_colis": 0.0, "propose_unites": 0.0}
+                    calcul = {**calcul, "propose_colis": 0.0, "propose_unites": 0.0,
+                              "previsions_journalieres": {}}
                 ligne = ligne_connue(itm8, calcul, mercalys,
                                      config, etat_affichage, article, offre,
                                      aggregats.get("articles", {}).get(principal),
@@ -465,6 +470,10 @@ def main():
             ligne["source_conditionnement"] = selection["source_conditionnement"]
             ligne["avertissements_conditionnement"] = selection["avertissements"]
             ligne["masque"] = est_masque
+            if not ligne.get("connu") and ligne["itm8"] in contextes and not contextes[ligne["itm8"]].get("annuler"):
+                ligne["avertissement_contexte"] = (
+                    "Consigne enregistrée ; aucun calcul automatique disponible pour cet article sans profil de ventes. "
+                    "Renseigne la quantité de commande après vérification du stock.")
             if itm8 and (itm8 in vers_principal or itm8 in config.get("groupes", {})):
                 ligne["article_stock"] = principal
                 porteur = porteurs.get(principal)
@@ -481,6 +490,11 @@ def main():
                         f"Même stock et mêmes ventes que {nom_porteur} ({porteur[1]}). "
                         "Le besoin automatique est proposé une seule fois sur cette autre ligne. "
                         "Vérifiez le total du groupe si vous changez une quantité manuellement.")
+                    if itm8 in contextes and not contextes[itm8].get("annuler"):
+                        ligne["avertissement_contexte"] = (
+                            f"La consigne terrain est portée par cette offre secondaire. "
+                            f"Le besoin est calculé sur {porteur[1]} : reporte la consigne sur cette fiche "
+                            "si elle concerne le stock commun.")
             lignes.append(ligne)
         for l in lignes:
             if l["masque"]:
@@ -585,6 +599,14 @@ def main():
         "lignes": lignes,
     }
     ecrire_json(RACINE / "donnees" / "proposition.json", sortie)
+    # Une prévision n'est comparable qu'archivée avant le jour observé. Ce
+    # carnet commence aux prochains calculs, sans reconstituer artificiellement
+    # des prévisions pour les ventes déjà connues.
+    from previsions_archivees import archiver
+    # ecrire_json ajoute l'identifiant du lot à sa copie. Relire la publication
+    # atomique sous le verrou pour archiver sa provenance exacte.
+    publiee = json.loads((RACINE / "donnees" / "proposition.json").read_text(encoding="utf-8"))
+    archiver(RACINE / "donnees", publiee)
 
     t = sortie["totaux"]
     print(f"Proposition du {date_commande} (livraison le {date_livraison})")

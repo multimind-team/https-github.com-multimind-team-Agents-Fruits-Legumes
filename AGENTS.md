@@ -13,11 +13,11 @@ C:\Users\user\Desktop\preparation-commande-dev
 
 ---
 
-## 📚 Documentation de référence (23 chapitres)
+## 📚 Documentation pour IA (24 chapitres)
 
-Pour toute question métier, algorithmique, technique ou déontologique, réfère-toi impérativement à la documentation officielle complète de l'application :
+Pour toute question métier, algorithmique, technique ou déontologique, réfère-toi impérativement à la Documentation pour IA officielle complète de l'application :
 👉 Documents/Documentation de l'application/index.html
-Elle regroupe 23 chapitres et 48 fiches de référence avec des liens vers les sources vérifiables. Une fiche ne remplace pas la vérification du code et des données du périmètre traité.
+Elle regroupe 24 chapitres et 50 fiches de référence avec des liens vers les sources vérifiables. Une fiche ne remplace pas la vérification du code et des données du périmètre traité.
 
 ## Mission
 

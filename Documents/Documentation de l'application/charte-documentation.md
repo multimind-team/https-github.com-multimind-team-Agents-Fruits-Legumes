@@ -1,4 +1,4 @@
-# Charte et entretien de la documentation
+# Charte et entretien de la Documentation pour IA
 
 Ce fichier conserve les repères de présentation du portail documentaire. Les règles d’action des agents viennent uniquement de `AGENTS.md` ; ce document ne crée aucun rôle, pouvoir, validation obligatoire ou étape d’envoi.
 
@@ -7,13 +7,13 @@ Ce fichier conserve les repères de présentation du portail documentaire. Les r
 - Vérifier les affirmations contre le code et les procédures actuels.
 - Distinguer fonctions présentes, limites et exemples fictifs.
 - Ne pas publier de taux de performance ou de garantie commerciale sans preuve mesurée.
-- Conserver les 23 chapitres et 48 fiches reliés depuis `index.html` ; actualiser ensemble le contenu et le sommaire.
+- Conserver les 24 chapitres et 51 fiches numérotées reliés depuis `index.html` ; actualiser ensemble le contenu et le sommaire.
 - Les références de code restent locales au dépôt ; le serveur métier ne publie pas ce dossier.
 - Les détails métier et autorisations restent décrits dans `reference/`, `procedures/` et `AGENTS.md`.
 
 ## Présentation
 
-- Nom du portail : « Agents Fruits & Légumes ».
+- Nom du portail : « Agents Fruits & Légumes — Documentation pour IA ».
 - Logo : `assets/logo.webp`, avec repli `assets/logo.gif`. Le master vidéo conservé est `assets/logo.mp4` dans ce même dossier.
 - Feuille de style : `assets/style.css`, commune aux fiches.
 - Préserver navigation, recherche du sommaire et impression navigateur.
@@ -23,3 +23,9 @@ Ce fichier conserve les repères de présentation du portail documentaire. Les r
 ## Vérifications avant livraison
 
 Relire les modifications, vérifier les chemins et le JavaScript, puis contrôler le rendu sur ordinateur et téléphone. Les tests de l’application s’exécutent en copie isolée selon `tests/lancer_tests_isoles.py`. Une mise à jour documentaire ne déclenche ni sauvegarde GitHub ni envoi de commande.
+
+## Roadmap et contrats pour IA
+
+- La fiche `cockpit-pc.html` et `reference/cockpit-pc.md` décrivent le fonctionnement actuel. Le chapitre 24 distingue ambitions, dépendances et critères de livraison.
+- La fiche 24.3 porte les contrats futurs du cockpit et les lots CP-01 à CP-10. Chaque passage à « vérifié » doit citer le code, la recette et les limites réelles.
+- Un chiffre d’inventaire doit porter une date et un périmètre ; une proposition de schéma ou de route doit rester explicitement marquée non implémentée.

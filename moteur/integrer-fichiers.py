@@ -132,6 +132,33 @@ def nombre(valeur):
         return None          # None = illisible, ce n'est pas zéro
 
 
+def nettoyer_code_article(valeur):
+    """Normalise un code article provenant d'Excel sous forme numérique ou texte.
+    Rend (code_normalise, est_ligne_total).
+    """
+    if valeur in ("", None) or isinstance(valeur, bool):
+        return None, True
+    if isinstance(valeur, (int, float)):
+        if not math.isfinite(valeur) or valeur < 0 or int(valeur) != valeur:
+            return None, False
+        valeur = str(int(valeur))
+    brut = str(valeur).strip()
+    if not brut:
+        return None, True
+    if brut.endswith(".0"):
+        partie = brut[:-2].strip()
+        if partie.isdigit():
+            brut = partie
+    if re.fullmatch(r"\d{8,13}", brut):
+        return brut, False
+    if re.fullmatch(r"\d{1,7}", brut):
+        return brut.zfill(13), False
+    texte_lower = brut.lower()
+    if any(mot in texte_lower for mot in ("total", "nombre", "lignes", "sous-total", "cumul")):
+        return None, True
+    return None, False
+
+
 def lire_tableau(chemin):
     """Rend (colonnes, lignes). Les fichiers du magasin ont un en-tête de
     plusieurs lignes avant le vrai tableau : on cherche la ligne des titres au
@@ -304,9 +331,14 @@ def convertir(chemin, vers_principal, noms_catalogue, signaler, colisages_vrac=N
             colisages_vrac = charger_colisages_vrac()
 
         for n, ligne in enumerate(lignes):
-            brut = str(ligne[i_code] or "").strip()
-            if not brut or not re.fullmatch(r"\d{8,13}", brut):
-                continue          # ligne de total ou de sous-total
+            code, est_total = nettoyer_code_article(ligne[i_code])
+            if est_total:
+                continue
+            if not code:
+                signaler("code-invalide", str(ligne[i_code]),
+                         f"{chemin.name} ligne {n + 2} : code article invalide « {ligne[i_code]} ».")
+                continue
+            brut = code
             colis = nombre(ligne[i_colis])
             if colis is None:
                 signaler("quantite-illisible", brut,
@@ -395,15 +427,14 @@ def convertir(chemin, vers_principal, noms_catalogue, signaler, colisages_vrac=N
             date_commune = periode[0]
 
         for n, ligne in enumerate(lignes):
-            brut = str(ligne[i_code] or "").strip()
-            if not brut:
+            code, est_total = nettoyer_code_article(ligne[i_code])
+            if est_total:
                 continue
-            # Le fichier se termine par une ligne de total (« Nombre de Lignes :
-            # 161 ») qui n'est pas un mouvement. On la reconnaît et on passe,
-            # sans la signaler : une fausse alerte tous les jours finirait par
-            # faire ignorer les vraies.
-            if not re.fullmatch(r"\d{8,13}", brut):
+            if not code:
+                signaler("code-invalide", str(ligne[i_code]),
+                         f"{chemin.name} ligne {n + 2} : code article invalide « {ligne[i_code]} ».")
                 continue
+            brut = code
             jour = date_commune if i_date is None else vers_iso(ligne[i_date])
             if not jour:
                 signaler("date-illisible", brut,

@@ -6,16 +6,12 @@ vérifié par le responsable, aucun taux de marge n'est validé.
 
 ---
 
-## Le fichier
+## Les fichiers et la procédure
 
-`0926 Calcul marge Pomona.xlsx` — le nom porte le mois : **09** = septembre, **26** = 2026.
-**Un nouveau fichier chaque mois**, créé séparément à partir du modèle « Vierge ».
-Ne pas vider ou écraser le classeur d'un mois existant. Avant toute intervention, conserver une
-copie datée vérifiée sans remplacer une archive antérieure.
-
-- **Vierge** — le squelette, jamais rempli directement. C'est elle qu'on copie. Il ne faut jamais modifier cette feuille.
-- **01**, **02**, **04**… — une feuille par jour de livraison. Un jour sans livraison saute son
-  numéro.
+- **`Calcul marge Pomona - Original.xlsx`** : le classeur de référence original. **INTERDICTION FORMELLE DE MODIFIER CE FICHIER**.
+- **`Calcul marge Pomona.xlsx`** : la copie de travail officielle. L'agent effectue une copie de `Calcul marge Pomona - Original.xlsx` renommée `Calcul marge Pomona.xlsx`. Tout le travail est effectué exclusivement sur ce fichier.
+- **Vierge** : l'onglet modèle du classeur, jamais rempli directement.
+- **Feuille du jour** : la feuille « Date du jour » (ou une copie de l'onglet Vierge) est renommée avec la vraie date du jour de livraison indiqué sur la facture (ex: `18`, `19`).
 
 ---
 
@@ -104,19 +100,19 @@ Le serveur liste les fichiers remplis dans `GET /api/marges-pomona`. Transmettre
 le lien `url` retourné et vérifier son téléchargement. L'accueil ne comporte pas de bouton
 « Marge Pomona ». Cette liste ne constitue pas une validation des prix ou des marges.
 
-Noms reconnus dans ce dossier : `MMYY Calcul marge Pomona.xlsx` et
-`MMYY Calcul marge Pomona - livraison JJ-MM-AAAA.xlsx`, par exemple
-`0926 Calcul marge Pomona.xlsx`. Pour apparaître, le classeur doit contenir une feuille nommée
+Noms reconnus dans ce dossier : `Calcul marge Pomona.xlsx` (classeur de travail courant), `MMYY Calcul marge Pomona.xlsx` et
+`MMYY Calcul marge Pomona - livraison JJ-MM-AAAA.xlsx`. Pour apparaître, le classeur doit contenir une feuille nommée
 sur deux chiffres correspondant à un jour valide du mois : à partir de la ligne 4, au moins une
 ligne doit avoir un produit textuel en A et une quantité numérique strictement positive en F.
 Le modèle « Vierge » seul n'est pas proposé. Vérifier séparément les cellules A/C/F, les formules,
 les saisies manuelles et le fichier téléchargé.
 
-Un courriel séparé n'est envoyé que si la demande courante fournit explicitement le destinataire :
+Pour l'envoi par courriel :
+- L'adresse officielle du magasin est **`PDV11768@mousquetaires.com`**.
+- Commande d'envoi :
 
 ```text
-py -3.14 moteur/envoyer-classeur-marge.py --destinataire "<adresse-explicite>" --classeur "<classeur-du-mois>"
+py -3.14 moteur/envoyer-classeur-marge.py --destinataire "PDV11768@mousquetaires.com" --classeur "documents-partages/calcul-marge-pomona/Calcul marge Pomona.xlsx"
 ```
 
-Lire le JSON : `smtp_accepte: true` prouve la remise SMTP, pas la réception. L'absence de demande
-d'envoi ou de destinataire ne bloque pas la mise à disposition du document par son lien.
+Lire le JSON : `smtp_accepte: true` prouve la remise SMTP, pas la réception. Dès que le courriel est envoyé avec succès, le fichier de travail temporaire `Calcul marge Pomona.xlsx` est automatiquement supprimé, tandis que `Calcul marge Pomona - Original.xlsx` reste préservé intact. L'absence de demande d'envoi ou de destinataire ne bloque pas la mise à disposition du document par son lien.

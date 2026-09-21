@@ -68,7 +68,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("action", choices=["rapprocher", "demasquer", "masquer", "promotion",
-                                      "conditionnement", "fournisseur"])
+                                      "conditionnement", "fournisseur", "unite"])
     p.add_argument("article")
     p.add_argument("valeur", nargs="?")
     p.add_argument("--motif", required=True,
@@ -183,6 +183,15 @@ def executer(args):
         changements.append({"itm8": args.article, "champ": "fournisseur",
                             "avant": avant, "apres": args.valeur})
         resume = f"{nom} : fournisseur {args.valeur}"
+
+    elif args.action == "unite":
+        if not args.valeur:
+            sys.exit("Il faut l'unité de vente (ex: barquette, kg, pièce).")
+        avant = surcharge.get("unite")
+        decider("unite", args.article, valeur=str(args.valeur))
+        changements.append({"itm8": args.article, "champ": "unite",
+                            "avant": avant, "apres": str(args.valeur)})
+        resume = f"{nom} : unité {args.valeur}"
 
     if args.simuler:
         print("SIMULATION — rien n'a été écrit\n")

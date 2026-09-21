@@ -9,7 +9,7 @@ from pathlib import Path
 import sys
 import unittest
 
-RACINE = Path(__file__).resolve().parents[1]
+RACINE = Path(os.environ.get("PREPARATION_TEST_ORIGINAL", Path(__file__).resolve().parents[1])).resolve()
 
 
 def garde(event, args):

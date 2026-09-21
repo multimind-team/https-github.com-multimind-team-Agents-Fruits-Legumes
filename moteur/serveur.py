@@ -19,7 +19,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from io import BytesIO
 from contextlib import nullcontext
 from pathlib import Path
-from urllib.parse import quote, unquote, urlparse
+from urllib.parse import parse_qs, quote, unquote, urlparse
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from verrou_donnees import append_jsonl, environnement_verrou, verrou_donnees
 from ecriture_derivee import publier_etat_calcul
@@ -30,19 +30,23 @@ DOSSIER_FAITS = DONNEES / "faits"
 JOURNAL = DONNEES / "journal.jsonl"
 HOTE_TAILSCALE = "desktop-11kv59v.tail44b4ba.ts.net"
 MAX_CORPS_JSON = 1024 * 1024
+MAX_CORPS_PHOTO = 12 * 1024 * 1024
 DONNEES_PUBLIQUES = {
     "articles.json", "ajustements.jsonl", "decisions.jsonl", "etat.json", "fraicheur.json",
     "journal.jsonl", "messages.jsonl", "note-du-matin.json", "promotions.json",
     "proposition.json", "reponses.jsonl", "photos.json",
     "analyse-ventes-annuelle-saisonniere.json", "profils-produits-sensibilites.json",
     "alertes-marges.json", "recalcul.json", "recommandations-saisonnieres.json",
+    "fiabilite.json",
 }
 APP_PUBLIQUE = {
     "/app/index.html", "/app/commander.html", "/app/compter.html",
     "/app/promo.html", "/app/maintenance.html",
-    "/app/analyse-historique.html",
+    "/app/analyse-historique.html", "/app/fiabilite.html",
     "/app/manifest.json", "/app/css/charte.css", "/app/img/favicon.ico",
     "/app/js/photos-produits.js",
+    "/app/cockpit.html", "/app/css/cockpit.css", "/app/js/cockpit.js",
+    "/app/js/cockpit-photos.js", "/app/js/cockpit-ventes.js",
     "/app/img/icone-192.png", "/app/img/icone-512.png",
 }
 
@@ -78,10 +82,18 @@ def marges_pomona_disponibles():
     dossier = RACINE / "documents-partages" / "calcul-marge-pomona"
     fichiers, indisponibles = [], 0
     for cible in dossier.glob("*.xlsx"):
+        if cible.name == "Calcul marge Pomona - Original.xlsx" or cible.resolve() != cible.absolute() or not cible.is_file():
+            continue
         nom = re.fullmatch(
             r"(0[1-9]|1[0-2])([0-9]{2}) Calcul marge Pomona"
             r"(?: - livraison [0-9]{2}-[0-9]{2}-[0-9]{4})?\.xlsx", cible.name)
-        if not nom or cible.resolve() != cible.absolute() or not cible.is_file():
+        if nom:
+            annee = 2000 + int(nom[2])
+            mois_num = int(nom[1])
+        elif cible.name == "Calcul marge Pomona.xlsx":
+            annee = date.today().year
+            mois_num = date.today().month
+        else:
             continue
         try:
             jours = []
@@ -92,7 +104,7 @@ def marges_pomona_disponibles():
                         if not re.fullmatch(r"[0-9]{2}", feuille.title):
                             continue
                         try:
-                            jour = date(2000 + int(nom[2]), int(nom[1]), int(feuille.title))
+                            jour = date(annee, mois_num, int(feuille.title))
                         except ValueError:
                             continue
                         if any(isinstance(ligne[0], str) and ligne[0].strip()
@@ -348,6 +360,14 @@ def normaliser_comptage(recu, articles):
             raise ValueError
     except ValueError as exc:
         raise ValueError("L'heure de saisie du comptage est invalide ou ne correspond pas au jour compté.") from exc
+    motif_perso = recu.get("motif") or recu.get("commentaire")
+    motif = str(motif_perso).strip()[:300] if (motif_perso and str(motif_perso).strip()) else "Position relevée en chambre froide, rayon déjà rempli."
+    commentaire = ""
+    if "commentaire" in recu:
+        from contexte_terrain import texte
+        commentaire = texte(recu["commentaire"], "Commentaire du comptage", 2000)
+    origine = str(recu.get("origine") or "app/compter.html").strip()[:100]
+
     return {
         # L'ancien ID client article/jour reste accepté, mais l'identité
         # durable distingue les instants physiques sans dépendre de la valeur.
@@ -365,8 +385,10 @@ def normaliser_comptage(recu, articles):
         "unite": str(article.get("unite") or "inconnue"),
         "libelle": str(article.get("libelle") or ""),
         "horodatage": saisi_le.isoformat(),
-        "motif": "Position relevée en chambre froide, rayon déjà rempli.",
-        "source": {"origine": "app/compter.html", "saisi_le": horodatage or None},
+        "motif": motif,
+        "commentaire": commentaire,
+        "source": {"origine": origine, "saisi_le": horodatage or None, "motif": motif if motif != "Position relevée en chambre froide, rayon déjà rempli." else None,
+                   "commentaire": commentaire},
         "enregistre_le": datetime.now().isoformat(timespec="seconds"),
     }
 
@@ -551,6 +573,48 @@ class Gestionnaire(SimpleHTTPRequestHandler):
                     or any(p in ("", ".", "..") or p.endswith((" ", ".")) for p in parties)):
                 raise ValueError
             statut_absent = chemin == "/donnees/recalcul.json" and not (DONNEES / "recalcul.json").is_file()
+            if chemin in {"/api/contexte", "/api/pilotage", "/api/photos-contexte", "/api/analyse-ventes"}:
+                try:
+                    import contexte_terrain
+                    with verrou_donnees(DONNEES):
+                        if chemin == "/api/analyse-ventes":
+                            import analyse_ventes
+                            params = parse_qs(url.query, keep_blank_values=True)
+                            if any(k not in {"debut", "fin", "comparaison"} or len(v) != 1 for k, v in params.items()):
+                                raise ValueError("Paramètres attendus : debut, fin et comparaison, une seule fois chacun.")
+                            charge = analyse_ventes.construire(DONNEES,
+                                debut=params.get("debut", [None])[0], fin=params.get("fin", [None])[0],
+                                comparaison=params.get("comparaison", ["precedente"])[0])
+                        elif chemin == "/api/photos-contexte":
+                            import photos_contexte
+                            params = parse_qs(url.query)
+                            charge = photos_contexte.charger(RACINE, article=params.get("article", [None])[0])
+                        elif chemin == "/api/contexte":
+                            charge = contexte_terrain.charger(DONNEES)
+                        else:
+                            import pilotage
+                            params = parse_qs(url.query)
+                            charge = pilotage.construire(DONNEES, horizon=params.get("horizon", ["14"])[0],
+                                                        article=params.get("article", [None])[0])
+                            contextes = contexte_terrain.charger(DONNEES)["articles"]
+                            for article in charge.get("articles", []):
+                                article["contexte"] = contextes.get(article.get("itm8"))
+                            if charge.get("article"):
+                                charge["article"]["contexte"] = contextes.get(charge["article"].get("itm8"))
+                    statut = 200
+                except ValueError as exc:
+                    charge, statut = {"ok": False, "erreur": str(exc)}, 400
+                except (OSError, KeyError, TypeError):
+                    charge, statut = {"ok": False, "erreur": "Les données de pilotage sont illisibles. Fais vérifier les sources."}, 500
+                contenu = json.dumps(charge, ensure_ascii=False, allow_nan=False).encode("utf-8")
+                self.send_response(statut)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(contenu)))
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                if self.command != "HEAD":
+                    self.wfile.write(contenu)
+                return None
             if chemin in {"/api/marges-pomona", "/api/carnets/resume"} or statut_absent:
                 if statut_absent:
                     charge = {"etat": "absent"}
@@ -578,6 +642,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
                 or (chemin.startswith("/donnees/") and chemin[9:] in DONNEES_PUBLIQUES)
                 or re.fullmatch(r"/donnees/faits/[0-9]{4}\.jsonl", chemin)
                 or re.fullmatch(r"/app/img/produits/[a-f0-9]{64}-(?:96|240)\.webp", chemin)
+                or re.fullmatch(r"/app/img/contexte/[a-f0-9]{64}-(?:320|1600)\.jpg", chemin)
                 or (chemin.startswith("/Documents/Promo intermarche/")
                     and chemin.lower().endswith((".pdf", ".png"))))
             cible = RACINE.joinpath(*chemin.split("/")[1:])
@@ -611,11 +676,18 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         if not self._verifier_provenance(ecriture=True):
             return
         chemin = self.path.split("?")[0]
-        if chemin not in {"/api/comptages", "/api/messages", "/api/masquer", "/api/fournisseur", "/api/conditionnement"}:
+        if chemin not in {"/api/comptages", "/api/messages", "/api/masquer", "/api/fournisseur", "/api/conditionnement", "/api/contexte", "/api/photos-contexte"}:
             self.send_error(404)
             return
-        self._charge_json = self._lire_json()
+        self._charge_json = self._lire_json(limite=MAX_CORPS_PHOTO if chemin == "/api/photos-contexte" else MAX_CORPS_JSON)
         if self._charge_json is None:
+            return
+        if chemin == "/api/photos-contexte":
+            self._recevoir_photo_contexte()
+            return
+        if chemin == "/api/contexte":
+            with _recalcul_en_cours, verrou_donnees(DONNEES):
+                self._changer_contexte()
             return
         if chemin == "/api/comptages":
             with verrou_donnees(DONNEES):
@@ -641,7 +713,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             return
         self.send_error(404)
 
-    def _lire_json(self):
+    def _lire_json(self, limite=MAX_CORPS_JSON):
         def refuser(message, code=400):
             self.close_connection = True
             self._repondre({"ok": False, "erreur": message}, code)
@@ -653,8 +725,9 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             return refuser("La taille de l'envoi est manquante.", 411)
         if not re.fullmatch(r"[0-9]+", longueurs[0]):
             return refuser("La taille de l'envoi est invalide.")
-        if len(longueurs[0]) > 7 or int(longueurs[0]) > MAX_CORPS_JSON:
-            return refuser("Envoi trop volumineux. Envoie moins de relevés à la fois.", 413)
+        if len(longueurs[0]) > len(str(limite)) or int(longueurs[0]) > limite:
+            return refuser("Envoi trop volumineux. La photo doit peser au maximum 8 Mo." if limite == MAX_CORPS_PHOTO
+                           else "Envoi trop volumineux. Envoie moins de relevés à la fois.", 413)
         longueur = int(longueurs[0])
         types = self.headers.get_all("Content-Type", [])
         if len(types) != 1 or types[0].split(";", 1)[0].strip().lower() != "application/json":
@@ -930,6 +1003,47 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         except Exception as e:
             self._repondre({"ok": False, "erreur": str(e)})
 
+    def _recevoir_photo_contexte(self):
+        import photos_contexte
+        try:
+            articles = {code: a.get("libelle", code) for code, a in charger_articles_comptables().items()}
+            fichier_catalogue = DONNEES / "catalogue.json"
+            if fichier_catalogue.exists():
+                catalogue = json.loads(fichier_catalogue.read_text(encoding="utf-8")).get("articles", {})
+                if isinstance(catalogue, dict):
+                    for code, article in catalogue.items():
+                        if isinstance(article, dict):
+                            articles.setdefault(str(code), str(article.get("LIBELLE") or article.get("libelle") or code))
+            resultat = photos_contexte.enregistrer(RACINE, self._charge_json, articles)
+        except photos_contexte.ConflitPhoto as exc:
+            return self._repondre({"ok": False, "erreur": str(exc)}, 409)
+        except ValueError as exc:
+            return self._repondre({"ok": False, "erreur": str(exc)}, 400)
+        except (OSError, KeyError, TypeError, OverflowError):
+            return self._repondre({"ok": False, "erreur": "La photo n'a pas pu être confirmée. Vérifie les fichiers et l'espace disponible sur ce PC."}, 500)
+        return self._repondre(resultat)
+
+    def _changer_contexte(self):
+        import contexte_terrain
+        try:
+            # Identité issue de la proposition publiée, jamais du libellé client.
+            itm8, _ = article_de_decision(self._charge_json)
+            resultat = contexte_terrain.enregistrer(DONNEES, self._charge_json, {itm8})
+        except contexte_terrain.ConflitContexte as exc:
+            return self._repondre({"ok": False, "erreur": str(exc)}, 409)
+        except ValueError as exc:
+            return self._repondre({"ok": False, "erreur": str(exc)}, 400)
+        except (OSError, KeyError, TypeError):
+            return self._repondre({"ok": False, "erreur": "La consigne n'a pas pu être confirmée dans le carnet."}, 500)
+        if resultat.get("annotation_seule"):
+            return self._repondre({**resultat, "recalcul": "non_necessaire"})
+        try:
+            recalculer_en_arriere_plan()
+        except Exception:
+            return self._repondre({**resultat, "ok": False,
+                                  "erreur": "Consigne enregistrée, mais le recalcul n'a pas démarré. Réessaie pour le relancer."}, 500)
+        return self._repondre({**resultat, "recalcul": "en_cours"})
+
     def _changer_conditionnement(self):
         """Action directe confirmée par l'humain, pas une délégation d'agent.
 
@@ -941,6 +1055,10 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             valeur = nombre_conditionnement(recu.get("conditionnement"))
             ancien = nombre_conditionnement(recu.get("ancien_conditionnement"))
             itm8, libelle, publie = article_de_decision(recu, avec_conditionnement=True)
+            motif_personnalise = None
+            if "motif" in recu:
+                from contexte_terrain import texte
+                motif_personnalise = texte(recu["motif"], "Motif du colisage", 500, True)
         except ValueError as exc:
             return self._repondre({"ok": False, "erreur": str(exc)}, 400)
         decision = decision_conditionnement_effective(itm8)
@@ -953,6 +1071,8 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         motif = (f"Le responsable de rayon confirme depuis la fiche de commande le colisage "
                  f"de \"{libelle}\" : {ancien} vers {valeur}. "
                  "Recalculer la commande sans modifier les comptages historiques.")
+        if motif_personnalise:
+            motif += " Motif terrain : " + motif_personnalise
         erreur_cli, statut_cli = None, 502
         try:
             resultat = subprocess.run(

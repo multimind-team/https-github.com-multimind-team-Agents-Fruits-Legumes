@@ -82,9 +82,12 @@ vente par le nombre de journées distinctes observées pour l'article.
 - Un article totalement absent des ventes n'a pas de profil exploitable. Il peut
   rester affiché dans le cadencier, avec zéro proposé et le statut non connu.
 - `tauxPerte = (casse + dons) / (ventes + casse + dons)` lorsque le dénominateur
-  est positif. Si le total est nul, le repli technique est 5 %. En présence de
-  ventes et sans casse/don enregistré, le taux calculé est zéro. Casse et dons
-  restent des flux facultatifs : leur absence ne prouve pas une absence de pertes.
+  est positif et que les ventes sont strictement positives. Si les ventes sont nulles
+  ou négatives, le repli technique de sécurité est 5 % (`TAUX_PERTE_DEFAUT`). Si le taux
+  brut dépasse 90 %, il est écrêté à 50 % (`TAUX_PERTE_MAX_BRUT = 0.50`) dans le profil
+  annuel pour éviter toute inflation divergente. En présence de ventes et sans
+  casse/don enregistré, le taux calculé est zéro. Casse et dons restent des flux
+  facultatifs : leur absence ne prouve pas une absence de pertes.
 
 ## 4. Besoin et arrondi
 
@@ -93,15 +96,22 @@ Pour chaque article disposant d'un profil et d'un référentiel :
 ```text
 demande_commande = moyenne[jour_commande] × météo_commande × férié_commande
                   × vacances_commande × profil_semaine_commande
+demande_intermédiaire = ∑ (moyenne[j] × météo[j] × férié[j] × vacances[j] × profil_semaine[j])
+                        pour chaque jour intermédiaire entre commande et livraison (ex: dimanche)
 demande_livraison = moyenne[jour_livraison] × météo_livraison × férié_livraison
                   × vacances_livraison × profil_semaine_livraison
-besoin_unites = max(0, (demande_commande + demande_livraison) / (1 − tauxPerte)
-                      − position_unites)
+
+diviseur_perte = max(0.10, 1 − min(tauxPerte, 0.90))
+demande_totale = (demande_commande + demande_intermédiaire + demande_livraison) / diviseur_perte
+besoin_unites = max(0, demande_totale − position_unites)
 ```
 
 La demande du jour de commande représente la consommation avant réception de la
-commande préparée. Exemple sans pertes ni modulation : position 2 colis, demande
-3 colis le jour de commande et 3 à la livraison → besoin `3 + 3 − 2 = 4 colis`.
+commande préparée. Les jours intermédiaires (comme le dimanche entre la commande du
+samedi matin et la livraison du lundi matin) sont systématiquement inclus dans le besoin.
+Pour le dimanche, l'ouverture restreinte au matin (8h30–12h15) est fidèlement restituée
+par le profil hebdomadaire du magasin (`profil_hebdomadaire[6]` ≈ 580 unités vs ≈ 2 300
+les jours ouvrés complets, soit naturellement 25 % d'une journée pleine).
 Une position négative augmente le besoin, tant qu'elle n'est pas bloquée.
 
 **Limite actuelle explicite :** si la position est inconnue, `proposer-commande.py`
@@ -157,10 +167,15 @@ Deux notions de promotion ne doivent pas être confondues :
 
 ## 7. Position perdue et dates de préparation
 
-Une position à **−10 colis ou moins** est affichée comme perdue (`--`). Le calcul
-la bloque à zéro proposé si le comptage est antérieur aux 7 derniers jours de la
-commande. Une mesure récente bénéficie de l'exception existante de calcul ; son
-âge ne modifie pas celui des statistiques de ventes.
+Une position à **−10 colis ou moins** est affichée comme perdue (`--`).
+Le seuil de fraîcheur d'un comptage autorisant un besoin positif sur stock négatif est
+strictement fixé à **2 jours** (`FRAICHEUR_COMPTAGE_JOURS = 2`, contre 7 auparavant).
+Si le comptage est antérieur aux 2 derniers jours, la proposition automatique est bloquée à zéro.
+De surcroît, un garde-fou bloque toute commande automatique si la position estimée est
+**aberrante** (**≤ −15 colis**) : elle est alors gelée à 0 colis proposé (`bloque = True`),
+à moins qu'un comptage physique n'ait été réalisé **le jour même de la commande**
+(`date_mesure >= date_commande`). Cela protège le magasin contre des surcommandes
+catastrophiques déclenchées par un décalage d'export ou une anomalie de saisie.
 
 `calculer-position.py` déduit une `date_base_commande` des faits : un événement
 matinal de J donne la base J−1 ; un comptage du soir donne J. Le générateur utilise

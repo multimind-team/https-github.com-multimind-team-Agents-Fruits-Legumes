@@ -1,40 +1,678 @@
 {
- "calcule_le": "2026-09-17T06:10:39.550669",
- "date_cadencier": "2026-09-17",
- "nombre_articles_analyses": 434,
- "nombre_alertes": 2,
+ "calcule_le": "2026-09-21T10:55:37.099329",
+ "date_cadencier": "2026-09-19",
+ "nombre_articles_analyses": 328,
+ "nombre_alertes": 33,
  "alertes": [
   {
-   "itm8": "0000087400039",
-   "nom": "ORANGE FILET 1,5KG PETIT PRIX",
-   "prix_achat_actuel": 2.29,
-   "prix_achat_precedent": 1.63,
-   "date_prix_precedent": "2026-09-16",
-   "hausse_pct": 40.5,
-   "prix_vente": 2.79,
-   "taux_marge": 17.9,
-   "gravite": "avertissement",
+   "itm8": "0000087004770",
+   "nom": "AVOCAT AFFINE GROS CALIBRE PIECE",
+   "prix_achat_actuel": 1.39,
+   "prix_achat_precedent": 1.39,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 1.19,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -16.8,
+   "gravite": "critique",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
    "motifs": [
-    "Hausse d'achat de +40.5% (2.29 € vs 1.63 € le 2026-09-16)",
-    "Marge brute faible (17.9% < seuil 20.0%)"
+    "Vente à perte potentielle (Achat 1.39 € > Vente 1.19 €)"
+   ],
+   "recommandation": "URGENT : Rehausser immédiatement le prix de vente en caisse."
+  },
+  {
+   "itm8": "0000087003359",
+   "nom": "RAISIN BLANC CHASSELAS VRAC",
+   "prix_achat_actuel": 3.49,
+   "prix_achat_precedent": 3.49,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 2.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -16.7,
+   "gravite": "critique",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Vente à perte potentielle (Achat 3.49 € > Vente 2.99 €)"
+   ],
+   "recommandation": "URGENT : Rehausser immédiatement le prix de vente en caisse."
+  },
+  {
+   "itm8": "0000087004084",
+   "nom": "ARTICHAUT BLANC PIECE",
+   "prix_achat_actuel": 1.89,
+   "prix_achat_precedent": 1.89,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 1.69,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -11.8,
+   "gravite": "critique",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Vente à perte potentielle (Achat 1.89 € > Vente 1.69 €)"
+   ],
+   "recommandation": "URGENT : Rehausser immédiatement le prix de vente en caisse."
+  },
+  {
+   "itm8": "0000087875009",
+   "nom": "COURGE SPAGHETTI PIECE",
+   "prix_achat_actuel": 1.79,
+   "prix_achat_precedent": 1.79,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 1.69,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -5.9,
+   "gravite": "critique",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Vente à perte potentielle (Achat 1.79 € > Vente 1.69 €)"
+   ],
+   "recommandation": "URGENT : Rehausser immédiatement le prix de vente en caisse."
+  },
+  {
+   "itm8": "0000087955004",
+   "nom": "PDT CONSO LAVEE 10KG",
+   "prix_achat_actuel": 6.79,
+   "prix_achat_precedent": 6.79,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 4.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -36.1,
+   "gravite": "critique",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Vente à perte potentielle (Achat 6.79 € > Vente 4.99 €)"
+   ],
+   "recommandation": "URGENT : Rehausser immédiatement le prix de vente en caisse."
+  },
+  {
+   "itm8": "0000087645001",
+   "nom": "MURE BARQUETTE 125G",
+   "prix_achat_actuel": 2.79,
+   "prix_achat_precedent": 2.79,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 2.29,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -21.8,
+   "gravite": "critique",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Vente à perte potentielle (Achat 2.79 € > Vente 2.29 €)"
+   ],
+   "recommandation": "URGENT : Rehausser immédiatement le prix de vente en caisse."
+  },
+  {
+   "itm8": "0000087010609",
+   "nom": "PDT FOUR PUREE POTAGE 2.5KG ITM",
+   "prix_achat_actuel": 2.55,
+   "prix_achat_precedent": 1.71,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 49.1,
+   "prix_vente": 2.49,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -2.4,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 31.3,
+   "nom_promo": "Pomme de terre de consommation Intermarché Terroirs",
+   "motifs": [
+    "Fin d'offre promo (Pomme de terre de consommation Intermarché Terroirs) : le PA cadencier repasse au tarif standard (2.55 € vs 1.71 € en promo, marge réalisée : +31.3%).",
+    "Risque de vente à perte sur réassort : le prix caisse actuel (2.49 €) reste au tarif promo."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +31.3%)."
+  },
+  {
+   "itm8": "0000087010623",
+   "nom": "PDT FRITE 2.5KG ITM",
+   "prix_achat_actuel": 2.55,
+   "prix_achat_precedent": 1.71,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 49.1,
+   "prix_vente": 2.54,
+   "source_prix_vente": "ventes_reelles",
+   "taux_marge": -0.4,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 32.7,
+   "nom_promo": "Pomme de terre de consommation Intermarché Terroirs",
+   "motifs": [
+    "Fin d'offre promo (Pomme de terre de consommation Intermarché Terroirs) : le PA cadencier repasse au tarif standard (2.55 € vs 1.71 € en promo, marge réalisée : +32.7%).",
+    "Risque de vente à perte sur réassort : le prix caisse actuel (2.54 €) reste au tarif promo."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +32.7%)."
+  },
+  {
+   "itm8": "0000087004778",
+   "nom": "TOMATE COTELEE JAUNE VRAC",
+   "prix_achat_actuel": 3.29,
+   "prix_achat_precedent": 2.25,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 46.2,
+   "prix_vente": 2.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -10.0,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 24.7,
+   "nom_promo": "Tomate côtelée rouge, noire et/ou jaune",
+   "motifs": [
+    "Fin d'offre promo (Tomate côtelée rouge, noire et/ou jaune) : le PA cadencier repasse au tarif standard (3.29 € vs 2.25 € en promo, marge réalisée : +24.7%).",
+    "Risque de vente à perte sur réassort : le prix caisse actuel (2.99 €) reste au tarif promo."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +24.7%)."
+  },
+  {
+   "itm8": "0000087004011",
+   "nom": "BANANE VRAC",
+   "prix_achat_actuel": 1.29,
+   "prix_achat_precedent": 0.9,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 43.3,
+   "prix_vente": 0.99,
+   "source_prix_vente": "ventes_reelles",
+   "taux_marge": -30.3,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 9.1,
+   "nom_promo": "Banane Cavendish",
+   "motifs": [
+    "Fin d'offre promo (Banane Cavendish) : le PA cadencier repasse au tarif standard (1.29 € vs 0.90 € en promo, marge réalisée : +9.1%).",
+    "Risque de vente à perte sur réassort : le prix caisse actuel (0.99 €) reste au tarif promo."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +9.1%)."
+  },
+  {
+   "itm8": "0000087004629",
+   "nom": "POIREAU VRAC",
+   "prix_achat_actuel": 2.4,
+   "prix_achat_precedent": 1.77,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 35.6,
+   "prix_vente": 3.49,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 31.2,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Hausse d'achat de +35.6% (2.40 € vs 1.77 € le 2026-09-18)"
    ],
    "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
   },
   {
-   "itm8": "0000087004566",
-   "nom": "CHOU FLEUR PIECE",
-   "prix_achat_actuel": 2.05,
-   "prix_achat_precedent": 1.7,
-   "date_prix_precedent": "2026-09-16",
-   "hausse_pct": 20.6,
-   "prix_vente": 3.19,
-   "taux_marge": 35.7,
+   "itm8": "0000087004808",
+   "nom": "TOMATE COTELEE NOIRE VRAC",
+   "prix_achat_actuel": 2.99,
+   "prix_achat_precedent": 2.25,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 32.9,
+   "prix_vente": 2.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 0.0,
    "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 24.7,
+   "nom_promo": "Tomate côtelée rouge, noire et/ou jaune",
    "motifs": [
-    "Hausse d'achat de +20.6% (2.05 € vs 1.70 € le 2026-09-16)"
+    "Fin d'offre promo (Tomate côtelée rouge, noire et/ou jaune) : le PA cadencier repasse au tarif standard (2.99 € vs 2.25 € en promo, marge réalisée : +24.7%).",
+    "Marge sur réassort comprimée (0.0%) si le prix caisse n'est pas réaligné."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +24.7%)."
+  },
+  {
+   "itm8": "0000087004807",
+   "nom": "TOMATE COTELEE ROUGE VRAC",
+   "prix_achat_actuel": 2.99,
+   "prix_achat_precedent": 2.25,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 32.9,
+   "prix_vente": 2.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 0.0,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 24.7,
+   "nom_promo": "Tomate côtelée rouge, noire et/ou jaune",
+   "motifs": [
+    "Fin d'offre promo (Tomate côtelée rouge, noire et/ou jaune) : le PA cadencier repasse au tarif standard (2.99 € vs 2.25 € en promo, marge réalisée : +24.7%).",
+    "Marge sur réassort comprimée (0.0%) si le prix caisse n'est pas réaligné."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +24.7%)."
+  },
+  {
+   "itm8": "0000087635005",
+   "nom": "FRAISE FRANCE BARQUETTE 250G",
+   "prix_achat_actuel": 2.1,
+   "prix_achat_precedent": 1.69,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 24.3,
+   "prix_vente": 2.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 29.8,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Hausse d'achat de +24.3% (2.10 € vs 1.69 € le 2026-09-18)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087004957",
+   "nom": "RAISIN NOIR MUSCAT VRAC",
+   "prix_achat_actuel": 2.79,
+   "prix_achat_precedent": 2.29,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 21.8,
+   "prix_vente": 2.59,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -7.7,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 11.6,
+   "nom_promo": null,
+   "motifs": [
+    "Fin d'offre promo : le PA cadencier repasse au tarif standard (2.79 € vs 2.29 € en promo, marge réalisée : +11.6%).",
+    "Risque de vente à perte sur réassort : le prix caisse actuel (2.59 €) reste au tarif promo."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +11.6%)."
+  },
+  {
+   "itm8": "0000087004031",
+   "nom": "PASTEQUE NOIRE SANS PEPINS PIECE",
+   "prix_achat_actuel": 3.79,
+   "prix_achat_precedent": 3.29,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 15.2,
+   "prix_vente": 5.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 36.7,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Hausse d'achat de +15.2% (3.79 € vs 3.29 € le 2026-09-18)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087761001",
+   "nom": "TOMATE CERISE ALLONGEE 500G ZRP",
+   "prix_achat_actuel": 2.7,
+   "prix_achat_precedent": 2.35,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 14.9,
+   "prix_vente": 2.49,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -8.4,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 5.6,
+   "nom_promo": "Tomate cerise allongée et/ou ronde",
+   "motifs": [
+    "Fin d'offre promo (Tomate cerise allongée et/ou ronde) : le PA cadencier repasse au tarif standard (2.70 € vs 2.35 € en promo, marge réalisée : +5.6%).",
+    "Risque de vente à perte sur réassort : le prix caisse actuel (2.49 €) reste au tarif promo."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +5.6%)."
+  },
+  {
+   "itm8": "0000087004029",
+   "nom": "ANANAS PIECE",
+   "prix_achat_actuel": 1.62,
+   "prix_achat_precedent": 1.47,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 10.2,
+   "prix_vente": 1.59,
+   "source_prix_vente": "catalogue",
+   "taux_marge": -1.9,
+   "gravite": "avertissement",
+   "type_alerte": "fin_promo",
+   "contexte_promo": true,
+   "marge_promo_realisee": 7.5,
+   "nom_promo": "Ananas Extra Sweet",
+   "motifs": [
+    "Fin d'offre promo (Ananas Extra Sweet) : le PA cadencier repasse au tarif standard (1.62 € vs 1.47 € en promo, marge réalisée : +7.5%).",
+    "Risque de vente à perte sur réassort : le prix caisse actuel (1.59 €) reste au tarif promo."
+   ],
+   "recommandation": "Fin de promo : réaligner le prix de vente en caisse au tarif standard pour les prochains arrivages (marge réalisée en promo : +7.5%)."
+  },
+  {
+   "itm8": "0000087004059",
+   "nom": "KIWI JAUNE PIECE",
+   "prix_achat_actuel": 0.83,
+   "prix_achat_precedent": 0.8,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 3.7,
+   "prix_vente": 0.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 16.2,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 19.2,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (16.2% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087760025",
+   "nom": "TOMATE CERISE RONDE 250G SOUVERAINE",
+   "prix_achat_actuel": 1.047,
+   "prix_achat_precedent": 1.046,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.1,
+   "prix_vente": 1.29,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 18.8,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 18.9,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (18.8% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087004927",
+   "nom": "MARRON VRAC",
+   "prix_achat_actuel": 6.49,
+   "prix_achat_precedent": 6.49,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 6.95,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 6.6,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 6.6,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (6.6% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087004647",
+   "nom": "CHAMPIGNON PLEUROTE VRAC",
+   "prix_achat_actuel": 5.99,
+   "prix_achat_precedent": 5.99,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 6.95,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 13.8,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 13.8,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (13.8% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087004764",
+   "nom": "POTIMARRON PIECE",
+   "prix_achat_actuel": 1.99,
+   "prix_achat_precedent": 1.99,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 2.19,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 9.1,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 9.1,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (9.1% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087004064",
+   "nom": "TOMATE RONDE NOIRE VRAC",
+   "prix_achat_actuel": 3.65,
+   "prix_achat_precedent": 3.65,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 3.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 8.5,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 8.5,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (8.5% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087003151",
+   "nom": "TOMATE RONDE VRAC",
+   "prix_achat_actuel": 2.89,
+   "prix_achat_precedent": 2.89,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 3.5,
+   "source_prix_vente": "ventes_reelles",
+   "taux_marge": 17.4,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 17.4,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (17.4% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087760041",
+   "nom": "TOMATE CERISE ALLONGEE 1KG",
+   "prix_achat_actuel": 5.49,
+   "prix_achat_precedent": 5.49,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 6.49,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 15.4,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 15.4,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (15.4% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087760022",
+   "nom": "TOMATE CERISE PANACHEE 1KG",
+   "prix_achat_actuel": 5.49,
+   "prix_achat_precedent": 5.49,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 5.49,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 0.0,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (0.0% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087760031",
+   "nom": "TOMATE COCKTAIL GRAPPE 500G ITM",
+   "prix_achat_actuel": 3.0,
+   "prix_achat_precedent": 3.0,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 3.69,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 18.7,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 18.7,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (18.7% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087003053",
+   "nom": "PANAIS VRAC",
+   "prix_achat_actuel": 2.49,
+   "prix_achat_precedent": 2.49,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 2.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 16.7,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 16.7,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (16.7% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087695257",
+   "nom": "TOMATE CERISE ALLONG BIO 250G",
+   "prix_achat_actuel": 2.39,
+   "prix_achat_precedent": 2.39,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 2.49,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 4.0,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 4.0,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (4.0% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087004236",
+   "nom": "BANANE ROSE VRAC",
+   "prix_achat_actuel": 3.29,
+   "prix_achat_precedent": 3.29,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 3.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 17.5,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 17.5,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (17.5% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087010760",
+   "nom": "TOMATE RONDE GRAPPE 500G BIO ITM",
+   "prix_achat_actuel": 3.19,
+   "prix_achat_precedent": 3.19,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": 0.0,
+   "prix_vente": 3.49,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 8.6,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": 8.6,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (8.6% < seuil 20.0%)"
+   ],
+   "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
+  },
+  {
+   "itm8": "0000087400039",
+   "nom": "ORANGE FILET 1,5KG PETIT PRIX",
+   "prix_achat_actuel": 1.74,
+   "prix_achat_precedent": 2.29,
+   "date_prix_precedent": "2026-09-18",
+   "hausse_pct": -24.0,
+   "prix_vente": 1.99,
+   "source_prix_vente": "catalogue",
+   "taux_marge": 12.6,
+   "gravite": "avertissement",
+   "type_alerte": "standard",
+   "contexte_promo": false,
+   "marge_promo_realisee": null,
+   "nom_promo": null,
+   "motifs": [
+    "Marge brute faible (12.6% < seuil 20.0%)"
    ],
    "recommandation": "Ajuster le prix de vente en caisse pour protéger la marge."
   }
  ],
- "_operation_id": "313baa02abd0480b85e3624b8c35f9c5"
+ "_operation_id": "bc5ddc69f0b540df8b99d848caee5a85"
 }

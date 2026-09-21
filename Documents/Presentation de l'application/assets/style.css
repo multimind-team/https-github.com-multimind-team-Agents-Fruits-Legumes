@@ -1239,3 +1239,310 @@ img, video {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   NOUVEAUX BLOCS MÉTIER : CAS CONCRET, ROI, LIMITES & SÉCURITÉ
+   ========================================================================== */
+
+/* Cas concret produit */
+.case-study-box {
+  background: #FFFFFF;
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  margin-top: 24px;
+}
+
+.case-study-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--brand-light-grey);
+}
+
+.case-item-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--brand-dark);
+}
+
+.case-item-tag {
+  background: var(--brand-red-light);
+  color: var(--brand-red);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid rgba(226, 0, 26, 0.2);
+}
+
+.case-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.case-step-card {
+  background: var(--brand-light-grey);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  border-left: 4px solid var(--brand-grey);
+}
+
+.case-step-card.ai {
+  border-left-color: var(--accent-blue);
+  background: #F0F7FF;
+}
+
+.case-step-card.human {
+  border-left-color: var(--accent-green);
+  background: #F0FDF4;
+}
+
+.case-step-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--brand-grey);
+  margin-bottom: 6px;
+}
+
+.case-step-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--brand-dark);
+  margin-bottom: 4px;
+}
+
+.case-step-desc {
+  font-size: 13px;
+  color: var(--brand-grey);
+  line-height: 1.4;
+}
+
+.case-conclusion-box {
+  background: linear-gradient(135deg, #1D1D1B 0%, #2A2A27 100%);
+  color: #FFFFFF;
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.case-conclusion-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.case-conclusion-text {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #E2E4E8;
+}
+
+/* Grille ROI chiffré */
+.roi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.roi-card {
+  background: #FFFFFF;
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-top: 4px solid var(--brand-red);
+}
+
+.roi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.roi-metric {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--brand-red);
+  margin-bottom: 8px;
+}
+
+.roi-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--brand-dark);
+  margin-bottom: 8px;
+}
+
+.roi-desc {
+  font-size: 13.5px;
+  color: var(--brand-grey);
+  line-height: 1.5;
+}
+
+/* Limites assumées */
+.limits-box {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-top: 36px;
+}
+
+.limits-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #92400E;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.limits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.limit-item {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: #78350F;
+  line-height: 1.5;
+}
+
+.limit-icon {
+  color: #DC2626;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Sécurité locale vs cloud */
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.security-card {
+  background: #FFFFFF;
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+}
+
+.security-card-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--brand-dark);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   CARTES COMPARATIVES « AVANT VS AVEC L'APPLICATION » (6 CARTES TERRAIN)
+   ========================================================================== */
+.comparatif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.comparatif-card {
+  background: #FFFFFF;
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-top: 4px solid var(--brand-dark);
+}
+
+.comparatif-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-top-color: var(--brand-red);
+}
+
+.comparatif-card-title {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: var(--brand-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.comparatif-card-title span.badge-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--brand-red);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.comparatif-block-before {
+  background: #FEF2F2;
+  border-left: 3px solid #EF4444;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #991B1B;
+  line-height: 1.45;
+}
+
+.comparatif-block-after {
+  background: #ECFDF5;
+  border-left: 3px solid #10B981;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #065F46;
+  line-height: 1.45;
+}
+
+.comparatif-label {
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comparatif-label.before {
+  color: #DC2626;
+}
+
+.comparatif-label.after {
+  color: #059669;
+}

@@ -168,6 +168,7 @@ def auditer_un_comptage(comptage, faits_article, catalogue_articles, heures_mail
         "physique": {"colis": colis_physique, "unites": quantite_physique},
         "theorique": {"colis": stock_theorique_colis, "unites": stock_theorique_unites},
         "ecart": {"colis": ecart_colis, "unites": ecart_unites},
+        "motif": comptage.get("motif"),
         "statut": "conforme",
         "causes_identifiees": [],
         "explication_responsable": "",
@@ -183,6 +184,15 @@ def auditer_un_comptage(comptage, faits_article, catalogue_articles, heures_mail
 
     diagnostic["statut"] = "ecart_detecte"
     causes = []
+
+    motif_decl = comptage.get("motif")
+    if motif_decl and motif_decl != "Position relevée en chambre froide, rayon déjà rempli.":
+        causes.append({
+            "type": "motif_declare_responsable",
+            "gravite": "information",
+            "titre": "Contexte terrain déclaré",
+            "details": f"Motif renseigné : « {motif_decl} ».",
+        })
 
     livraisons_du_jour = [m for m in mouvements if m.get("date_effet") == date_comptage and m["type"] == "livraison"]
     q_livree_jour = sum(float(m.get("quantite") or 0.0) for m in livraisons_du_jour)

@@ -293,7 +293,12 @@ function comptagesDuJour() {
   const comptes = (tout.date === aujourdhui()) ? (tout.par_article || {}) : {};
   // La file durable fait foi même si le cache du jour n'a pas pu être écrit.
   for (const c of lire(CLE_COMPTAGES, [])) {
-    if (c.date === aujourdhui()) comptes[c.itm8] = { colis: c.colis, unites: c.unites, conditionnement: c.conditionnement, unite: c.unite, heure: (c.saisi_le || "").slice(11, 16) };
+    if (c.date === aujourdhui()) {
+      const existant = comptes[c.itm8];
+      if (!existant || !existant.saisi_le || (c.saisi_le && c.saisi_le >= existant.saisi_le)) {
+        comptes[c.itm8] = { colis: c.colis, unites: c.unites, conditionnement: c.conditionnement, unite: c.unite, heure: (c.saisi_le || "").slice(11, 16), saisi_le: c.saisi_le };
+      }
+    }
   }
   return comptes;
 }
@@ -301,8 +306,9 @@ function comptagesDuJour() {
 function memoriserComptage(article, colis) {
   const tout = lire(CLE_DU_JOUR, {});
   const par_article = (tout.date === aujourdhui()) ? (tout.par_article || {}) : {};
+  const maintenant = maintenantLocal();
   par_article[article.itm8] = { colis, conditionnement: article.conditionnement, unite: article.unite,
-    unites: Math.round(colis * article.conditionnement * 1000) / 1000, heure: new Date().toTimeString().slice(0, 5) };
+    unites: Math.round(colis * article.conditionnement * 1000) / 1000, heure: maintenant.slice(11, 16), saisi_le: maintenant };
   return ecrire(CLE_DU_JOUR, { date: aujourdhui(), par_article: par_article });
 }
 
@@ -573,6 +579,24 @@ async function envoyerComptages(bouton) {
   const liste = lire(CLE_COMPTAGES, []);
   if (liste.length === 0) { afficherResultat("", "Rien à envoyer."); return; }
 
+  const auj = aujourdhui();
+  const perimes = liste.filter(c => c.date && c.date !== auj);
+  const aEnvoyer = liste.filter(c => !c.date || c.date === auj);
+
+  if (aEnvoyer.length === 0 && perimes.length > 0) {
+    const pluriel = perimes.length > 1;
+    afficherResultat("rate", (pluriel ? perimes.length + " comptages datent" : "1 comptage date")
+      + " d'un jour antérieur et ne " + (pluriel ? "peuvent" : "peut") + " plus être envoyé"
+      + (pluriel ? "s" : "") + " aujourd'hui. "
+      + '<button type="button" class="bouton" id="btn-purger-perimes" style="margin-left:6px;padding:3px 8px;font-size:12px;background:var(--warn);color:#fff;border:none;border-radius:4px;cursor:pointer;">Purger</button>', true);
+    document.getElementById("btn-purger-perimes")?.addEventListener("click", () => {
+      ecrire(CLE_COMPTAGES, []);
+      majAttente();
+      afficherResultat("", "Anciens comptages purgés de la mémoire du téléphone.");
+    });
+    return;
+  }
+
   envoiEnCours = true;
   document.querySelectorAll(".envoyer-comptages").forEach(b => { b.disabled = true; });
   afficherResultat("", "Envoi en cours…");
@@ -582,7 +606,7 @@ async function envoyerComptages(bouton) {
     const reponse = await fetch("/api/comptages", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comptages: liste }),
+      body: JSON.stringify({ comptages: aEnvoyer }),
       signal: controleur.signal,
     });
     if (!reponse.ok) throw new Error("réponse " + reponse.status);
@@ -590,19 +614,28 @@ async function envoyerComptages(bouton) {
     if (!retour.ok) throw new Error(retour.erreur || "refus du serveur");
     // Ne retirer que les versions réellement acquittées : un recomptage du
     // même article ou un nouveau relevé pendant fetch doit rester à envoyer.
-    const acquittes = new Set(liste.map(c => JSON.stringify(c)));
+    const acquittes = new Set(aEnvoyer.map(c => JSON.stringify(c)));
     const reste = lire(CLE_COMPTAGES, []).filter(c => !acquittes.has(JSON.stringify(c)));
     const memoire = comptagesDuJour();
-    if (!ecrire(CLE_DU_JOUR, {date: aujourdhui(), par_article: memoire}) || !ecrire(CLE_COMPTAGES, reste)) {
+    if (!ecrire(CLE_DU_JOUR, {date: auj, par_article: memoire}) || !ecrire(CLE_COMPTAGES, reste)) {
       afficherResultat("rate", "Envoi confirmé, mais stockage local indisponible. Les comptages restent sur le téléphone ; libère de la place avant de réessayer.");
     } else {
-      afficherResultat("ok", "✓ " + liste.length + (liste.length > 1 ? " comptages envoyés." : " comptage envoyé.")
-        + (reste.length ? " " + reste.length + " encore en attente." : ""));
+      let msg = "✓ " + aEnvoyer.length + (aEnvoyer.length > 1 ? " comptages envoyés." : " comptage envoyé.");
+      if (reste.length) {
+        msg += " (" + reste.length + " ancien" + (reste.length > 1 ? "s" : "") + " relevé" + (reste.length > 1 ? "s" : "") + " en attente. "
+          + '<button type="button" class="bouton" id="btn-purger-perimes-apres" style="margin-left:6px;padding:3px 8px;font-size:12px;background:var(--warn);color:#fff;border:none;border-radius:4px;cursor:pointer;">Purger</button>)';
+      }
+      afficherResultat("ok", msg, reste.length > 0);
+      document.getElementById("btn-purger-perimes-apres")?.addEventListener("click", () => {
+        ecrire(CLE_COMPTAGES, []);
+        majAttente();
+        afficherResultat("ok", "✓ " + aEnvoyer.length + " comptages envoyés. Anciens relevés purgés.");
+      });
     }
   } catch (e) {
-    const pluriel = liste.length > 1;
+    const pluriel = aEnvoyer.length > 1;
     afficherResultat("rate", "Envoi non confirmé (réseau ou refus du serveur). "
-      + (pluriel ? "Tes " : "Ton ") + liste.length + (pluriel ? " comptages sont" : " comptage est")
+      + (pluriel ? "Tes " : "Ton ") + aEnvoyer.length + (pluriel ? " comptages sont" : " comptage est")
       + " toujours gardé" + (pluriel ? "s" : "") + " sur le téléphone. Réessaie devant la porte.");
   } finally {
     clearTimeout(minuteur);
