@@ -1,43 +1,43 @@
 {
  "_lisez_moi": "Analyse Ventes vs Livraisons avec garde-fou anti-rupture pour l'agent-tendances.",
- "genere_le": "2026-09-21",
+ "genere_le": "2026-09-23",
  "periode": {
-  "debut": "2026-09-12",
-  "fin": "2026-09-18",
+  "debut": "2026-09-16",
+  "fin": "2026-09-22",
   "jours": 7
  },
  "synthese": {
-  "articles_evalues": 155,
-  "journees_isolees_sans_action": 31,
-  "surcommandes_recurrentes_detectees": 3,
+  "articles_evalues": 114,
+  "journees_isolees_sans_action": 26,
+  "surcommandes_recurrentes_detectees": 2,
   "recurrentes_causes_externes_sans_baisse": 0,
   "recurrentes_propositions_baisse": 0
  },
  "anomalies_recurrentes": [
   {
-   "itm8": "0000087004032",
-   "libelle": "PASTEQUE TIGREE PIECE",
-   "colisage": 6.0,
+   "itm8": "0000087935051",
+   "libelle": "AIL BLANC FILET 250G PETIT PRI",
+   "colisage": 20.0,
    "propose_colis": 1.0,
-   "total_livre_unites": 24.0,
-   "total_vendu_unites": 15.0,
-   "vitesse_vente_jour_colis": 0.36,
-   "receptions_observees": 4,
+   "total_livre_unites": 60.0,
+   "total_vendu_unites": 40.0,
+   "vitesse_vente_jour_colis": 0.29,
+   "receptions_observees": 3,
    "consecutive_faibles": 2,
    "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
      "météo absente ou incomplète"
     ],
-    "quantite_livree": 6.0,
+    "quantite_livree": 20.0,
     "colis_livres": 1.0,
-    "quantite_vendue": 2.0,
-    "colis_vendus": 0.3,
-    "taux_ecoulement": 0.33,
-    "reliquat_colis": 0.7,
+    "quantite_vendue": 8.0,
+    "colis_vendus": 0.4,
+    "taux_ecoulement": 0.4,
+    "reliquat_colis": 0.6,
     "sous_ecoulement": true,
     "causes_externes": []
    },
@@ -50,64 +50,29 @@
    "motif_analyse": "Commande maintenue : contexte non vérifié (météo absente ou incomplète). Aucune baisse proposée."
   },
   {
-   "itm8": "0000087004065",
-   "libelle": "POIVRON DOUX ROUGE VRAC",
-   "colisage": 5.0,
-   "propose_colis": 9.0,
-   "total_livre_unites": 185.0,
-   "total_vendu_unites": 40.8,
-   "vitesse_vente_jour_colis": 1.49,
-   "receptions_observees": 2,
+   "itm8": "0000087945061",
+   "libelle": "OIGNON JAUNE 1,5KG PETIT PRIX",
+   "colisage": 7.0,
+   "propose_colis": 1.0,
+   "total_livre_unites": 63.0,
+   "total_vendu_unites": 66.0,
+   "vitesse_vente_jour_colis": 1.57,
+   "receptions_observees": 5,
    "consecutive_faibles": 2,
    "derniere_reception": {
-    "date": "2026-09-15",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
      "météo absente ou incomplète"
     ],
-    "quantite_livree": 165.0,
-    "colis_livres": 33.0,
-    "quantite_vendue": 34.36,
-    "colis_vendus": 6.9,
-    "taux_ecoulement": 0.21,
-    "reliquat_colis": 26.1,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "recurrent_contexte_incomplet",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "verifications_manquantes": [
-    "météo absente ou incomplète"
-   ],
-   "motif_analyse": "Commande maintenue : contexte non vérifié (météo absente ou incomplète). Aucune baisse proposée."
-  },
-  {
-   "itm8": "0000087955044",
-   "libelle": "PDT 5KG 1ER PRIX",
-   "colisage": 1.0,
-   "propose_colis": 5.0,
-   "total_livre_unites": 39.0,
-   "total_vendu_unites": 26.0,
-   "vitesse_vente_jour_colis": 3.71,
-   "receptions_observees": 4,
-   "consecutive_faibles": 2,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 15.0,
-    "colis_livres": 15.0,
-    "quantite_vendue": 5.0,
-    "colis_vendus": 5.0,
-    "taux_ecoulement": 0.33,
-    "reliquat_colis": 10.0,
+    "quantite_livree": 14.0,
+    "colis_livres": 2.0,
+    "quantite_vendue": 4.0,
+    "colis_vendus": 0.6,
+    "taux_ecoulement": 0.29,
+    "reliquat_colis": 1.4,
     "sous_ecoulement": true,
     "causes_externes": []
    },
@@ -122,104 +87,68 @@
  ],
  "anomalies_isolees": [
   {
-   "itm8": "0000087003365",
-   "libelle": "MANGUE AFFINEE PIECE",
-   "colisage": 9.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 135.0,
-   "total_vendu_unites": 15.7,
-   "vitesse_vente_jour_colis": 0.35,
-   "receptions_observees": 1,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-12",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 135.0,
-    "colis_livres": 15.0,
-    "quantite_vendue": 15.7,
-    "colis_vendus": 1.7,
-    "taux_ecoulement": 0.12,
-    "reliquat_colis": 13.3,
-    "sous_ecoulement": true,
-    "causes_externes": [
-     "2026-09-13 : Magasin fermé (dimanche)"
-    ]
-   },
-   "statut": "isole",
-   "causes_externes": [
-    "2026-09-13 : Magasin fermé (dimanche)"
-   ],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-12 (15.0 colis reçus, seulement 1.7 vendus, expliquée par cause(s) externe(s) : 2026-09-13 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087004593",
-   "libelle": "CONCOMBRE PIECE",
-   "colisage": 24.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 1212.0,
-   "total_vendu_unites": 690.0,
-   "vitesse_vente_jour_colis": 4.11,
-   "receptions_observees": 6,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 288.0,
-    "colis_livres": 12.0,
-    "quantite_vendue": 120.0,
-    "colis_vendus": 5.0,
-    "taux_ecoulement": 0.42,
-    "reliquat_colis": 7.0,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (12.0 colis reçus, seulement 5.0 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087755078",
-   "libelle": "LAITUE ICEBERG EMBALLEE PIECE",
-   "colisage": 10.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 210.0,
-   "total_vendu_unites": 196.0,
-   "vitesse_vente_jour_colis": 4.9,
+   "itm8": "0000087010504",
+   "libelle": "TOMATE CERISE 250G PETIT PRIX",
+   "colisage": 16.0,
+   "propose_colis": 8.0,
+   "total_livre_unites": 352.0,
+   "total_vendu_unites": 259.0,
+   "vitesse_vente_jour_colis": 2.83,
    "receptions_observees": 3,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
      "météo absente ou incomplète"
     ],
-    "quantite_livree": 100.0,
+    "quantite_livree": 160.0,
     "colis_livres": 10.0,
-    "quantite_vendue": 39.0,
-    "colis_vendus": 3.9,
-    "taux_ecoulement": 0.39,
-    "reliquat_colis": 6.1,
+    "quantite_vendue": 55.0,
+    "colis_vendus": 3.4,
+    "taux_ecoulement": 0.34,
+    "reliquat_colis": 6.6,
     "sous_ecoulement": true,
     "causes_externes": []
    },
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (10.0 colis reçus, seulement 3.9 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (10.0 colis reçus, seulement 3.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087755042",
+   "libelle": "LAITUE SUCRINE X3 BARQUETTE",
+   "colisage": 12.0,
+   "propose_colis": 14.0,
+   "total_livre_unites": 288.0,
+   "total_vendu_unites": 234.0,
+   "vitesse_vente_jour_colis": 5.12,
+   "receptions_observees": 3,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 120.0,
+    "colis_livres": 10.0,
+    "quantite_vendue": 50.0,
+    "colis_vendus": 4.2,
+    "taux_ecoulement": 0.42,
+    "reliquat_colis": 5.8,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (10.0 colis reçus, seulement 4.2 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
    "itm8": "0000099031536",
@@ -228,12 +157,12 @@
    "propose_colis": 0.0,
    "total_livre_unites": 8.0,
    "total_vendu_unites": 2.0,
-   "vitesse_vente_jour_colis": 1.25,
+   "vitesse_vente_jour_colis": 1.5,
    "receptions_observees": 1,
    "consecutive_faibles": 1,
    "derniere_reception": {
     "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -246,108 +175,16 @@
     "taux_ecoulement": 0.25,
     "reliquat_colis": 6.0,
     "sous_ecoulement": true,
-    "causes_externes": []
+    "causes_externes": [
+     "2026-09-20 : Magasin fermé (dimanche)"
+    ]
    },
    "statut": "isole",
-   "causes_externes": [],
+   "causes_externes": [
+    "2026-09-20 : Magasin fermé (dimanche)"
+   ],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (8.0 colis reçus, seulement 2.0 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087430008",
-   "libelle": "BANANE RUBAN 5 FRUITS BIO",
-   "colisage": 22.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 330.0,
-   "total_vendu_unites": 284.9,
-   "vitesse_vente_jour_colis": 1.85,
-   "receptions_observees": 4,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 132.0,
-    "colis_livres": 6.0,
-    "quantite_vendue": 47.9,
-    "colis_vendus": 2.2,
-    "taux_ecoulement": 0.36,
-    "reliquat_colis": 3.8,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (6.0 colis reçus, seulement 2.2 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087004029",
-   "libelle": "ANANAS PIECE",
-   "colisage": 8.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 112.0,
-   "total_vendu_unites": 63.0,
-   "vitesse_vente_jour_colis": 1.31,
-   "receptions_observees": 5,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 40.0,
-    "colis_livres": 5.0,
-    "quantite_vendue": 14.0,
-    "colis_vendus": 1.8,
-    "taux_ecoulement": 0.35,
-    "reliquat_colis": 3.2,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (5.0 colis reçus, seulement 1.8 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087010621",
-   "libelle": "PDT VAPEUR BLONDE 2.5KG ITM",
-   "colisage": 6.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 90.0,
-   "total_vendu_unites": 45.0,
-   "vitesse_vente_jour_colis": 1.25,
-   "receptions_observees": 4,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 30.0,
-    "colis_livres": 5.0,
-    "quantite_vendue": 8.0,
-    "colis_vendus": 1.3,
-    "taux_ecoulement": 0.27,
-    "reliquat_colis": 3.7,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (5.0 colis reçus, seulement 1.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (8.0 colis reçus, seulement 2.0 vendus, expliquée par cause(s) externe(s) : 2026-09-20 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
    "itm8": "0000099017426",
@@ -355,13 +192,13 @@
    "colisage": 6.0,
    "propose_colis": 0.0,
    "total_livre_unites": 24.0,
-   "total_vendu_unites": 4.0,
-   "vitesse_vente_jour_colis": 0.3,
+   "total_vendu_unites": 5.0,
+   "vitesse_vente_jour_colis": 0.29,
    "receptions_observees": 1,
    "consecutive_faibles": 1,
    "derniere_reception": {
     "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -369,159 +206,35 @@
     ],
     "quantite_livree": 24.0,
     "colis_livres": 4.0,
-    "quantite_vendue": 4.0,
-    "colis_vendus": 0.7,
-    "taux_ecoulement": 0.17,
-    "reliquat_colis": 3.3,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (4.0 colis reçus, seulement 0.7 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087650000",
-   "libelle": "FRAMBOISE BARQUETTE 125G",
-   "colisage": 12.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 84.0,
-   "total_vendu_unites": 50.0,
-   "vitesse_vente_jour_colis": 0.6,
-   "receptions_observees": 3,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 36.0,
-    "colis_livres": 3.0,
-    "quantite_vendue": 9.0,
+    "quantite_vendue": 5.0,
     "colis_vendus": 0.8,
-    "taux_ecoulement": 0.25,
-    "reliquat_colis": 2.2,
+    "taux_ecoulement": 0.21,
+    "reliquat_colis": 3.2,
     "sous_ecoulement": true,
-    "causes_externes": []
+    "causes_externes": [
+     "2026-09-20 : Magasin fermé (dimanche)"
+    ]
    },
    "statut": "isole",
-   "causes_externes": [],
+   "causes_externes": [
+    "2026-09-20 : Magasin fermé (dimanche)"
+   ],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (3.0 colis reçus, seulement 0.8 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (4.0 colis reçus, seulement 0.8 vendus, expliquée par cause(s) externe(s) : 2026-09-20 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000087920035",
-   "libelle": "CAROTTE SACHET 2KG PETIT PRIX",
-   "colisage": 5.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 90.0,
-   "total_vendu_unites": 68.0,
-   "vitesse_vente_jour_colis": 1.94,
-   "receptions_observees": 6,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 15.0,
-    "colis_livres": 3.0,
-    "quantite_vendue": 7.0,
-    "colis_vendus": 1.4,
-    "taux_ecoulement": 0.47,
-    "reliquat_colis": 1.6,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (3.0 colis reçus, seulement 1.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087004135",
-   "libelle": "POMME GALA VRAC",
-   "colisage": 50.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 100.0,
-   "total_vendu_unites": 35.71,
-   "vitesse_vente_jour_colis": 0.27,
-   "receptions_observees": 1,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 100.0,
-    "colis_livres": 2.0,
-    "quantite_vendue": 35.71,
-    "colis_vendus": 0.7,
-    "taux_ecoulement": 0.36,
-    "reliquat_colis": 1.3,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (2.0 colis reçus, seulement 0.7 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087004702",
-   "libelle": "PIMENT ROUGE VRAC",
-   "colisage": 1.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 2.0,
-   "total_vendu_unites": 0.0,
-   "vitesse_vente_jour_colis": 0.0,
-   "receptions_observees": 1,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-14",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 2.0,
-    "colis_livres": 2.0,
-    "quantite_vendue": 0.0,
-    "colis_vendus": 0.0,
-    "taux_ecoulement": 0.0,
-    "reliquat_colis": 2.0,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-14 (2.0 colis reçus, seulement 0.0 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087004739",
-   "libelle": "RADIS NOIR PIECE",
+   "itm8": "0000087695050",
+   "libelle": "OIGNON JAUNE BIO FILET 1KG",
    "colisage": 10.0,
-   "propose_colis": 1.0,
-   "total_livre_unites": 20.0,
-   "total_vendu_unites": 7.0,
-   "vitesse_vente_jour_colis": 0.14,
-   "receptions_observees": 1,
+   "propose_colis": 0.0,
+   "total_livre_unites": 30.0,
+   "total_vendu_unites": 23.0,
+   "vitesse_vente_jour_colis": 0.48,
+   "receptions_observees": 2,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-12",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -534,48 +247,44 @@
     "taux_ecoulement": 0.35,
     "reliquat_colis": 1.3,
     "sous_ecoulement": true,
-    "causes_externes": [
-     "2026-09-13 : Magasin fermé (dimanche)"
-    ]
+    "causes_externes": []
    },
    "statut": "isole",
-   "causes_externes": [
-    "2026-09-13 : Magasin fermé (dimanche)"
-   ],
+   "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-12 (2.0 colis reçus, seulement 0.7 vendus, expliquée par cause(s) externe(s) : 2026-09-13 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (2.0 colis reçus, seulement 0.7 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000087950009",
-   "libelle": "PDT PRINCESSE AMANDINE 1KG",
-   "colisage": 12.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 24.0,
-   "total_vendu_unites": 6.0,
-   "vitesse_vente_jour_colis": 0.17,
-   "receptions_observees": 1,
+   "itm8": "0000087770008",
+   "libelle": "POIVRON DOUX TRICOLORE 500G",
+   "colisage": 10.0,
+   "propose_colis": 4.0,
+   "total_livre_unites": 70.0,
+   "total_vendu_unites": 58.0,
+   "vitesse_vente_jour_colis": 0.9,
+   "receptions_observees": 3,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-15",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
      "météo absente ou incomplète"
     ],
-    "quantite_livree": 24.0,
+    "quantite_livree": 20.0,
     "colis_livres": 2.0,
-    "quantite_vendue": 6.0,
-    "colis_vendus": 0.5,
-    "taux_ecoulement": 0.25,
-    "reliquat_colis": 1.5,
+    "quantite_vendue": 8.0,
+    "colis_vendus": 0.8,
+    "taux_ecoulement": 0.4,
+    "reliquat_colis": 1.2,
     "sous_ecoulement": true,
     "causes_externes": []
    },
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-15 (2.0 colis reçus, seulement 0.5 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (2.0 colis reçus, seulement 0.8 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
    "itm8": "0000099017424",
@@ -583,13 +292,13 @@
    "colisage": 6.0,
    "propose_colis": 0.0,
    "total_livre_unites": 12.0,
-   "total_vendu_unites": 3.0,
-   "vitesse_vente_jour_colis": 0.25,
+   "total_vendu_unites": 4.0,
+   "vitesse_vente_jour_colis": 0.22,
    "receptions_observees": 1,
    "consecutive_faibles": 1,
    "derniere_reception": {
     "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -597,17 +306,21 @@
     ],
     "quantite_livree": 12.0,
     "colis_livres": 2.0,
-    "quantite_vendue": 3.0,
-    "colis_vendus": 0.5,
-    "taux_ecoulement": 0.25,
-    "reliquat_colis": 1.5,
+    "quantite_vendue": 4.0,
+    "colis_vendus": 0.7,
+    "taux_ecoulement": 0.33,
+    "reliquat_colis": 1.3,
     "sous_ecoulement": true,
-    "causes_externes": []
+    "causes_externes": [
+     "2026-09-20 : Magasin fermé (dimanche)"
+    ]
    },
    "statut": "isole",
-   "causes_externes": [],
+   "causes_externes": [
+    "2026-09-20 : Magasin fermé (dimanche)"
+   ],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (2.0 colis reçus, seulement 0.5 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (2.0 colis reçus, seulement 0.7 vendus, expliquée par cause(s) externe(s) : 2026-09-20 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
    "itm8": "0000099017425",
@@ -615,13 +328,13 @@
    "colisage": 6.0,
    "propose_colis": 0.0,
    "total_livre_unites": 12.0,
-   "total_vendu_unites": 2.0,
-   "vitesse_vente_jour_colis": 0.33,
+   "total_vendu_unites": 5.0,
+   "vitesse_vente_jour_colis": 0.2,
    "receptions_observees": 1,
    "consecutive_faibles": 1,
    "derniere_reception": {
     "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -629,31 +342,259 @@
     ],
     "quantite_livree": 12.0,
     "colis_livres": 2.0,
-    "quantite_vendue": 2.0,
+    "quantite_vendue": 5.0,
+    "colis_vendus": 0.8,
+    "taux_ecoulement": 0.42,
+    "reliquat_colis": 1.2,
+    "sous_ecoulement": true,
+    "causes_externes": [
+     "2026-09-20 : Magasin fermé (dimanche)"
+    ]
+   },
+   "statut": "isole",
+   "causes_externes": [
+    "2026-09-20 : Magasin fermé (dimanche)"
+   ],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (2.0 colis reçus, seulement 0.8 vendus, expliquée par cause(s) externe(s) : 2026-09-20 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087004282",
+   "libelle": "POMELO ROUGE PIECE",
+   "colisage": 45.0,
+   "propose_colis": 0.0,
+   "total_livre_unites": 50.0,
+   "total_vendu_unites": 15.0,
+   "vitesse_vente_jour_colis": 0.14,
+   "receptions_observees": 1,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 50.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 15.0,
     "colis_vendus": 0.3,
-    "taux_ecoulement": 0.17,
-    "reliquat_colis": 1.7,
+    "taux_ecoulement": 0.3,
+    "reliquat_colis": 0.7,
     "sous_ecoulement": true,
     "causes_externes": []
    },
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (2.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000087003321",
-   "libelle": "CELERI RAVE FANE PIECE",
-   "colisage": 10.0,
+   "itm8": "0000087004317",
+   "libelle": "MELON JAUNE PIECE",
+   "colisage": 8.0,
+   "propose_colis": 1.0,
+   "total_livre_unites": 16.0,
+   "total_vendu_unites": 10.0,
+   "vitesse_vente_jour_colis": 0.31,
+   "receptions_observees": 2,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 8.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 3.0,
+    "colis_vendus": 0.4,
+    "taux_ecoulement": 0.38,
+    "reliquat_colis": 0.6,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087004513",
+   "libelle": "CONCOMBRE NOA PIECE",
+   "colisage": 20.0,
    "propose_colis": 0.0,
-   "total_livre_unites": 10.0,
-   "total_vendu_unites": 4.0,
-   "vitesse_vente_jour_colis": 0.17,
+   "total_livre_unites": 20.0,
+   "total_vendu_unites": 0.0,
+   "vitesse_vente_jour_colis": 0.0,
    "receptions_observees": 1,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 20.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 0.0,
+    "colis_vendus": 0.0,
+    "taux_ecoulement": 0.0,
+    "reliquat_colis": 1.0,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.0 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087004564",
+   "libelle": "CAROTTE FANE BOTTE",
+   "colisage": 12.0,
+   "propose_colis": 1.0,
+   "total_livre_unites": 12.0,
+   "total_vendu_unites": 5.0,
+   "vitesse_vente_jour_colis": 0.15,
+   "receptions_observees": 1,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 12.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 5.0,
+    "colis_vendus": 0.4,
+    "taux_ecoulement": 0.42,
+    "reliquat_colis": 0.6,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087010603",
+   "libelle": "CAROTTE SACHET 1.5KG ITM",
+   "colisage": 70.0,
+   "propose_colis": 0.0,
+   "total_livre_unites": 110.0,
+   "total_vendu_unites": 59.0,
+   "vitesse_vente_jour_colis": 0.17,
+   "receptions_observees": 5,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 70.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 20.0,
+    "colis_vendus": 0.3,
+    "taux_ecoulement": 0.29,
+    "reliquat_colis": 0.7,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (1.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087010631",
+   "libelle": "TOMATE COCKTAIL GRAPPE 500G IT",
+   "colisage": 10.0,
+   "propose_colis": 0.0,
+   "total_livre_unites": 10.0,
+   "total_vendu_unites": 2.0,
+   "vitesse_vente_jour_colis": 0.2,
+   "receptions_observees": 1,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 10.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 2.0,
+    "colis_vendus": 0.2,
+    "taux_ecoulement": 0.2,
+    "reliquat_colis": 0.8,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.2 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087010655",
+   "libelle": "AIL ROSE LAUTREC LR IGP 3 TETE",
+   "colisage": 20.0,
+   "propose_colis": 0.0,
+   "total_livre_unites": 20.0,
+   "total_vendu_unites": 1.0,
+   "vitesse_vente_jour_colis": 0.15,
+   "receptions_observees": 1,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 20.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 1.0,
+    "colis_vendus": 0.1,
+    "taux_ecoulement": 0.05,
+    "reliquat_colis": 0.9,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (1.0 colis reçus, seulement 0.1 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087010664",
+   "libelle": "OIGNON ECHALION FILET 500G ITM",
+   "colisage": 10.0,
+   "propose_colis": 1.0,
+   "total_livre_unites": 20.0,
+   "total_vendu_unites": 24.0,
+   "vitesse_vente_jour_colis": 0.43,
+   "receptions_observees": 2,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -671,223 +612,31 @@
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000087003397",
-   "libelle": "CHOU CHOUDOU PIECE",
-   "colisage": 8.0,
+   "itm8": "0000087400022",
+   "libelle": "ORANGE DESSERT FILET 2KG",
+   "colisage": 90.0,
    "propose_colis": 0.0,
-   "total_livre_unites": 8.0,
-   "total_vendu_unites": 1.0,
-   "vitesse_vente_jour_colis": 0.21,
+   "total_livre_unites": 90.0,
+   "total_vendu_unites": 27.0,
+   "vitesse_vente_jour_colis": 0.09,
    "receptions_observees": 1,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
      "météo absente ou incomplète"
     ],
-    "quantite_livree": 8.0,
+    "quantite_livree": 90.0,
     "colis_livres": 1.0,
-    "quantite_vendue": 1.0,
-    "colis_vendus": 0.1,
-    "taux_ecoulement": 0.12,
-    "reliquat_colis": 0.9,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.1 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087004230",
-   "libelle": "BANANE PLANTAIN VRAC",
-   "colisage": 10.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 10.0,
-   "total_vendu_unites": 1.56,
-   "vitesse_vente_jour_colis": 0.08,
-   "receptions_observees": 1,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-14",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 10.0,
-    "colis_livres": 1.0,
-    "quantite_vendue": 1.56,
-    "colis_vendus": 0.2,
-    "taux_ecoulement": 0.16,
-    "reliquat_colis": 0.8,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-14 (1.0 colis reçus, seulement 0.2 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087004317",
-   "libelle": "MELON JAUNE PIECE",
-   "colisage": 8.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 24.0,
-   "total_vendu_unites": 16.0,
-   "vitesse_vente_jour_colis": 0.5,
-   "receptions_observees": 3,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 8.0,
-    "colis_livres": 1.0,
-    "quantite_vendue": 3.0,
-    "colis_vendus": 0.4,
-    "taux_ecoulement": 0.38,
-    "reliquat_colis": 0.6,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087200010",
-   "libelle": "BASILIC POT BIO MMP",
-   "colisage": 6.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 12.0,
-   "total_vendu_unites": 4.0,
-   "vitesse_vente_jour_colis": 0.22,
-   "receptions_observees": 2,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-16",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 6.0,
-    "colis_livres": 1.0,
-    "quantite_vendue": 1.0,
-    "colis_vendus": 0.2,
-    "taux_ecoulement": 0.17,
-    "reliquat_colis": 0.8,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-16 (1.0 colis reçus, seulement 0.2 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087540009",
-   "libelle": "KIWI JAUNE BARQUETTE 4 FRUITS",
-   "colisage": 10.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 10.0,
-   "total_vendu_unites": 0.0,
-   "vitesse_vente_jour_colis": 0.0,
-   "receptions_observees": 1,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 10.0,
-    "colis_livres": 1.0,
-    "quantite_vendue": 0.0,
-    "colis_vendus": 0.0,
-    "taux_ecoulement": 0.0,
-    "reliquat_colis": 1.0,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (1.0 colis reçus, seulement 0.0 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087685005",
-   "libelle": "NOIX SACHET 750G",
-   "colisage": 14.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 14.0,
-   "total_vendu_unites": 1.0,
-   "vitesse_vente_jour_colis": 0.12,
-   "receptions_observees": 1,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 14.0,
-    "colis_livres": 1.0,
-    "quantite_vendue": 1.0,
-    "colis_vendus": 0.1,
-    "taux_ecoulement": 0.07,
-    "reliquat_colis": 0.9,
-    "sous_ecoulement": true,
-    "causes_externes": []
-   },
-   "statut": "isole",
-   "causes_externes": [],
-   "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (1.0 colis reçus, seulement 0.1 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
-  },
-  {
-   "itm8": "0000087695052",
-   "libelle": "TOMATE CERISE RONDE BIO 250G",
-   "colisage": 9.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 9.0,
-   "total_vendu_unites": 3.0,
-   "vitesse_vente_jour_colis": 0.11,
-   "receptions_observees": 1,
-   "consecutive_faibles": 1,
-   "derniere_reception": {
-    "date": "2026-09-16",
-    "fin_periode": "2026-09-18",
-    "ventes_completes": true,
-    "contexte_verifie": false,
-    "verifications_manquantes": [
-     "météo absente ou incomplète"
-    ],
-    "quantite_livree": 9.0,
-    "colis_livres": 1.0,
-    "quantite_vendue": 3.0,
+    "quantite_vendue": 27.0,
     "colis_vendus": 0.3,
-    "taux_ecoulement": 0.33,
+    "taux_ecoulement": 0.3,
     "reliquat_colis": 0.7,
     "sous_ecoulement": true,
     "causes_externes": []
@@ -895,21 +644,21 @@
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-16 (1.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (1.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000087695092",
-   "libelle": "AUBERGINE BIO 2 FRUITS",
+   "itm8": "0000087545020",
+   "libelle": "POMME GOLDEN SACHET 2KG",
    "colisage": 8.0,
    "propose_colis": 0.0,
-   "total_livre_unites": 16.0,
-   "total_vendu_unites": 14.0,
-   "vitesse_vente_jour_colis": 0.4,
-   "receptions_observees": 2,
+   "total_livre_unites": 32.0,
+   "total_vendu_unites": 24.0,
+   "vitesse_vente_jour_colis": 0.5,
+   "receptions_observees": 3,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -927,21 +676,21 @@
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
    "itm8": "0000087695227",
    "libelle": "PDT BIO FOUR PUREE POTAGE 1,5K",
    "colisage": 10.0,
-   "propose_colis": 0.0,
+   "propose_colis": 1.0,
    "total_livre_unites": 20.0,
-   "total_vendu_unites": 11.61,
-   "vitesse_vente_jour_colis": 0.21,
+   "total_vendu_unites": 12.61,
+   "vitesse_vente_jour_colis": 0.24,
    "receptions_observees": 2,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -949,31 +698,31 @@
     ],
     "quantite_livree": 10.0,
     "colis_livres": 1.0,
-    "quantite_vendue": 4.61,
-    "colis_vendus": 0.5,
-    "taux_ecoulement": 0.46,
-    "reliquat_colis": 0.5,
+    "quantite_vendue": 4.0,
+    "colis_vendus": 0.4,
+    "taux_ecoulement": 0.4,
+    "reliquat_colis": 0.6,
     "sous_ecoulement": true,
     "causes_externes": []
    },
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.5 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000087795003",
-   "libelle": "CONCOMBRE BIO PIECE PE",
+   "itm8": "0000087800000",
+   "libelle": "POIS GOURMAND BARQUETTE 250G",
    "colisage": 12.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 12.0,
-   "total_vendu_unites": 0.0,
-   "vitesse_vente_jour_colis": 0.0,
-   "receptions_observees": 1,
+   "propose_colis": 1.0,
+   "total_livre_unites": 24.0,
+   "total_vendu_unites": 19.0,
+   "vitesse_vente_jour_colis": 0.26,
+   "receptions_observees": 2,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-18",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -981,73 +730,73 @@
     ],
     "quantite_livree": 12.0,
     "colis_livres": 1.0,
-    "quantite_vendue": 0.0,
-    "colis_vendus": 0.0,
-    "taux_ecoulement": 0.0,
-    "reliquat_colis": 1.0,
+    "quantite_vendue": 3.0,
+    "colis_vendus": 0.2,
+    "taux_ecoulement": 0.25,
+    "reliquat_colis": 0.8,
     "sous_ecoulement": true,
     "causes_externes": []
    },
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-18 (1.0 colis reçus, seulement 0.0 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.2 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000099017427",
-   "libelle": "JUS POMMES RAISINS 1L",
-   "colisage": 6.0,
-   "propose_colis": 0.0,
-   "total_livre_unites": 6.0,
-   "total_vendu_unites": 0.0,
-   "vitesse_vente_jour_colis": 0.0,
-   "receptions_observees": 1,
+   "itm8": "0000087855000",
+   "libelle": "CHAMPIGNON PARIS BLANC EMINCE",
+   "colisage": 8.0,
+   "propose_colis": 1.0,
+   "total_livre_unites": 16.0,
+   "total_vendu_unites": 11.0,
+   "vitesse_vente_jour_colis": 0.35,
+   "receptions_observees": 2,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
      "météo absente ou incomplète"
     ],
-    "quantite_livree": 6.0,
+    "quantite_livree": 8.0,
     "colis_livres": 1.0,
-    "quantite_vendue": 0.0,
-    "colis_vendus": 0.0,
-    "taux_ecoulement": 0.0,
-    "reliquat_colis": 1.0,
+    "quantite_vendue": 3.0,
+    "colis_vendus": 0.4,
+    "taux_ecoulement": 0.38,
+    "reliquat_colis": 0.6,
     "sous_ecoulement": true,
     "causes_externes": []
    },
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.0 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000099017428",
-   "libelle": "JUS DE POMME TRADITIONNEL",
-   "colisage": 6.0,
+   "itm8": "0000087940025",
+   "libelle": "ECHALOTE TRADI 500G PETIT PRIX",
+   "colisage": 20.0,
    "propose_colis": 0.0,
-   "total_livre_unites": 6.0,
-   "total_vendu_unites": 2.0,
-   "vitesse_vente_jour_colis": 0.27,
+   "total_livre_unites": 20.0,
+   "total_vendu_unites": 7.0,
+   "vitesse_vente_jour_colis": 0.15,
    "receptions_observees": 1,
    "consecutive_faibles": 1,
    "derniere_reception": {
-    "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
      "météo absente ou incomplète"
     ],
-    "quantite_livree": 6.0,
+    "quantite_livree": 20.0,
     "colis_livres": 1.0,
-    "quantite_vendue": 2.0,
+    "quantite_vendue": 7.0,
     "colis_vendus": 0.3,
-    "taux_ecoulement": 0.33,
+    "taux_ecoulement": 0.35,
     "reliquat_colis": 0.7,
     "sous_ecoulement": true,
     "causes_externes": []
@@ -1055,11 +804,75 @@
    "statut": "isole",
    "causes_externes": [],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (1.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
-   "itm8": "0000099029036",
-   "libelle": "JUS DE POMME CANELLE 1L",
+   "itm8": "0000087950041",
+   "libelle": "PDT GRENAILLE MICRO ONDE 500G",
+   "colisage": 8.0,
+   "propose_colis": 2.0,
+   "total_livre_unites": 16.0,
+   "total_vendu_unites": 15.0,
+   "vitesse_vente_jour_colis": 0.33,
+   "receptions_observees": 2,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-21",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 8.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 3.0,
+    "colis_vendus": 0.4,
+    "taux_ecoulement": 0.38,
+    "reliquat_colis": 0.6,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-21 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000087950042",
+   "libelle": "PDT PRINCESSE AMANDINE 2KG",
+   "colisage": 65.0,
+   "propose_colis": 0.0,
+   "total_livre_unites": 65.0,
+   "total_vendu_unites": 23.0,
+   "vitesse_vente_jour_colis": 0.11,
+   "receptions_observees": 1,
+   "consecutive_faibles": 1,
+   "derniere_reception": {
+    "date": "2026-09-22",
+    "fin_periode": "2026-09-22",
+    "ventes_completes": true,
+    "contexte_verifie": false,
+    "verifications_manquantes": [
+     "météo absente ou incomplète"
+    ],
+    "quantite_livree": 65.0,
+    "colis_livres": 1.0,
+    "quantite_vendue": 23.0,
+    "colis_vendus": 0.4,
+    "taux_ecoulement": 0.35,
+    "reliquat_colis": 0.6,
+    "sous_ecoulement": true,
+    "causes_externes": []
+   },
+   "statut": "isole",
+   "causes_externes": [],
+   "ajustement_propose": null,
+   "motif_analyse": "Mévente ponctuelle le 2026-09-22 (1.0 colis reçus, seulement 0.4 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+  },
+  {
+   "itm8": "0000099017427",
+   "libelle": "JUS POMMES RAISINS 1L",
    "colisage": 6.0,
    "propose_colis": 0.0,
    "total_livre_unites": 6.0,
@@ -1069,7 +882,7 @@
    "consecutive_faibles": 1,
    "derniere_reception": {
     "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -1082,12 +895,16 @@
     "taux_ecoulement": 0.33,
     "reliquat_colis": 0.7,
     "sous_ecoulement": true,
-    "causes_externes": []
+    "causes_externes": [
+     "2026-09-20 : Magasin fermé (dimanche)"
+    ]
    },
    "statut": "isole",
-   "causes_externes": [],
+   "causes_externes": [
+    "2026-09-20 : Magasin fermé (dimanche)"
+   ],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.3 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.3 vendus, expliquée par cause(s) externe(s) : 2026-09-20 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   },
   {
    "itm8": "0000099029037",
@@ -1101,7 +918,7 @@
    "consecutive_faibles": 1,
    "derniere_reception": {
     "date": "2026-09-17",
-    "fin_periode": "2026-09-18",
+    "fin_periode": "2026-09-22",
     "ventes_completes": true,
     "contexte_verifie": false,
     "verifications_manquantes": [
@@ -1114,13 +931,17 @@
     "taux_ecoulement": 0.17,
     "reliquat_colis": 0.8,
     "sous_ecoulement": true,
-    "causes_externes": []
+    "causes_externes": [
+     "2026-09-20 : Magasin fermé (dimanche)"
+    ]
    },
    "statut": "isole",
-   "causes_externes": [],
+   "causes_externes": [
+    "2026-09-20 : Magasin fermé (dimanche)"
+   ],
    "ajustement_propose": null,
-   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.2 vendus). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
+   "motif_analyse": "Mévente ponctuelle le 2026-09-17 (1.0 colis reçus, seulement 0.2 vendus, expliquée par cause(s) externe(s) : 2026-09-20 : Magasin fermé (dimanche)). Classé en journée atypique : AUCUNE réduction de commande n'est proposée pour protéger le rayon contre toute rupture en cas de retour à la normale."
   }
  ],
- "_operation_id": "867f0968efab4c0d86c6c92753082743"
+ "_operation_id": "0b03d10ba81d43af885c24add72e341b"
 }

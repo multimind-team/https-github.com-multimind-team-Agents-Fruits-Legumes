@@ -41,6 +41,30 @@ def actions_a_executer(classes, nouveaux):
     return actions
 
 
+def est_catalogue_mercalys(fichier):
+    chemin = Path(fichier)
+    nom = nom_piece_jointe(chemin.name)
+    if re.match(r"^cadencier[-_ ]+(?:mercalys|mecalys)", nom, re.I):
+        return True
+    if chemin.suffix.lower() == ".xlsx" and "cadencier" in nom.lower():
+        if chemin.is_file():
+            try:
+                import openpyxl
+                wb = openpyxl.load_workbook(chemin, read_only=True)
+                return "Mercalys" in wb.sheetnames
+            except Exception:
+                pass
+        return True
+    return False
+
+
+def est_cadencier_webtelevente(fichier):
+    if est_catalogue_mercalys(fichier):
+        return False
+    nom = nom_piece_jointe(Path(fichier).name)
+    return bool(re.match(r"^cadencier[-_ ]+webtelevente", nom, re.I))
+
+
 def commandes_a_lancer(racine, dossier, actions, *, fichiers=None):
     """Construit les commandes autorisées, sans jamais lancer une facture directe."""
     racine = Path(racine)
@@ -48,10 +72,8 @@ def commandes_a_lancer(racine, dossier, actions, *, fichiers=None):
     outils = racine / "moteur"
     commandes = []
     fichiers = list(map(Path, fichiers or []))
-    mercalys = [f for f in fichiers if re.match(r"^cadencier[-_ ]+(?:mercalys|mecalys)",
-                                               nom_piece_jointe(f.name), re.I)]
-    webtelevente = [f for f in fichiers if re.match(r"^cadencier[-_ ]+webtelevente",
-                                                  nom_piece_jointe(f.name), re.I)]
+    mercalys = [f for f in fichiers if est_catalogue_mercalys(f)]
+    webtelevente = [f for f in fichiers if est_cadencier_webtelevente(f)]
     if "cadencier" in actions and mercalys:
         commandes.append(["py", "-3.14", str(outils / "importer-catalogue-mercalys.py"),
                           *map(str, mercalys), "--agent", "agent-donnees", "--json"])

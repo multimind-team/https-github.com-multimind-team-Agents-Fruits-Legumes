@@ -34,7 +34,7 @@ def _dans(jour, periode):
 def construire(donnees, debut=None, fin=None, comparaison="precedente", aujourd_hui=None):
     """Une ligne par code commercial canonique et date, sans zéro inventé.
 
-    Les sommes physiques du cockpit sont préservées. Cette vue réutilise le
+    Les sommes physiques du pilotage sont préservées. Cette vue réutilise le
     second agrégat commercial du même lecteur de faits, avant conversion jus.
     """
     if comparaison not in ("precedente", "annee_precedente", "aucune"):

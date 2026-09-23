@@ -1,43 +1,43 @@
 {
- "date": "2026-09-18",
- "ecrite_le": "2026-09-19T05:27:51",
+ "date": "2026-09-22",
+ "ecrite_le": "2026-09-23T21:41:43",
  "ecrite_par": "constats automatiques (le Leader n'a pas encore relu)",
  "entrees": [
   {
-   "heure": "05h27",
-   "texte": "**2 article(s) masqués ont reçu une livraison** : PACK CHOI EMBALLE (2 colis), PECHE PLATE BARQUETTE 500G (1 colis).",
+   "heure": "21h41",
+   "texte": "**Risque de vente à perte** sur 6 article(s) : TOMATE CERISE PANACHEE 1KG (Achat 5.65 € > Vente 5.49 €), AVOCAT AFFINE GROS CALIBRE PIECE (Achat 1.39 € > Vente 1.19 €). Rehausser le prix de vente en caisse.",
+   "gravite": "grave"
+  },
+  {
+   "heure": "21h41",
+   "texte": "**4 article(s) masqués ont reçu une livraison** : NECTARINE JAUNE 1KG PETIT PRIX (2 colis), NECTARINE BLANCHE 1KG PETIT PR (2 colis), CHOU DE BRUXELLE SACHET 500G (1 colis) et 1 autre(s).",
    "gravite": "attention"
   },
   {
-   "heure": "05h27",
-   "texte": "12 article(s) ont une position trop basse pour être crédible (TOMATE COTELEE ROUGE VRAC, TOMATE RONDE EN GRAPPE VRAC FR, BANANE VRAC, COURGETTE FILET 1KG PETIT PRIX…). Un comptage les remettrait d'aplomb.",
+   "heure": "21h41",
+   "texte": "4 article(s) ont une position trop basse pour être crédible (RAISIN BLANC ITALIA VRAC, TOMATE RONDE EN GRAPPE VRAC FR, nom:BUTTERNUT PIECE, nom:POMME GALA SACHET 1,5KG). Un comptage les remettrait d'aplomb.",
    "gravite": "attention"
   },
   {
-   "heure": "05h27",
-   "texte": "5 article(s) actifs n'ont aucune position mesurée : CONCOMBRE BIO PIECE PE, KIWI JAUNE BARQUETTE 4 FRUITS, LAITUE SUCRINE X6 BARQUETTE, PIMENT ROUGE VRAC, TOMATE CERISE RONDE BIO 250G. Leur commande part d'une estimation.",
+   "heure": "21h41",
+   "texte": "**Hausse brutale du prix d'achat** sur 3 article(s) ce matin : TOMATE RONDE VRAC (+131%), PETIT POIS VRAC (+31%), CONCOMBRE NOA PIECE (+16%). Vérifier le prix de vente en caisse.",
    "gravite": "attention"
   },
   {
-   "heure": "05h27",
-   "texte": "**Hausse brutale du prix d'achat** sur 10 article(s) ce matin : PDT FOUR PUREE POTAGE 2.5KG ITM (+49%), PDT FRITE 2.5KG ITM (+49%), TOMATE COTELEE JAUNE VRAC (+46%). Vérifier le prix de vente en caisse.",
+   "heure": "21h41",
+   "texte": "**Transition saisonnière — Produits à remettre en vente (démasquer)** : **Dès maintenant (mi-septembre)** : BUTTERNUT PIECE PE (+73%), CAROTTE SACHET 1,5KG BIO MMP (+25%), POIRE BIO BARQUETTE 4 FRUITS (+22%) et 6 autre(s) — **D'ici fin septembre (semaine 40)** : LEGUMES POT AU FEU 1KG MMP (+100%), CLEMENTINE FILET 1,5 KG (+100%), NOIX VRAC (+56%) et 11 autre(s) — **Début novembre (semaine 44)** : CLEMENTINE FEUILLE VRAC (+287%), PDT CONSO LAVEE 10KG (+4314%), CLEMENTINE CORSE 1KG (+300%) et 4 autre(s). À réactiver sur la console de commande (onglet Masqués) pour capter la demande d'automne.",
    "gravite": "attention"
   },
   {
-   "heure": "05h27",
-   "texte": "**Transition saisonnière — Produits à remettre en vente (démasquer)** : **Dès maintenant (mi-septembre)** : BUTTERNUT PIECE PE (+73%), CAROTTE SACHET 1,5KG BIO MMP (+25%), POIRE BIO BARQUETTE 4 FRUITS (+22%) et 5 autre(s) — **D'ici fin septembre (semaine 39)** : LEGUMES POT AU FEU 1KG MMP (+100%), CLEMENTINE FILET 1,5 KG (+100%), POIRE WILLIAM ROUGE VRAC (+54%) et 11 autre(s) — **Début novembre (semaine 44)** : CLEMENTINE FEUILLE VRAC (+287%), PDT CONSO LAVEE 10KG (+4314%), CLEMENTINE CORSE 1KG (+300%) et 5 autre(s). À réactiver sur la console de commande (onglet Masqués) pour capter la demande d'automne.",
+   "heure": "21h41",
+   "texte": "**Fin de saison estivale — Produits à arrêter (masquer)** : **Dès maintenant (semaine 39)** : PDT FILET 1KG PETIT PRIX (-100%), TOMATE CERISE MELANGEE 350G IT (-100%), AVOCAT MUR A POINT 2 FRUITS (-100%) et 9 autre(s) — **D'ici fin septembre (semaine 40)** : PASTEQUE TIGREE PIECE (-59%), TOMATE COTELEE JAUNE VRAC (-65%), TOMATE RONDE CHARNUE VRAC (-82%) et 1 autre(s) — **Début octobre (semaine 40)** : CONCOMBRE PIECE (-52%), OIGNON BLANC BOTTE (-45%), TOMATE ALLONGEE VRAC (-53%) et 4 autre(s). À masquer sur la console de commande pour éviter les invendus et la casse.",
    "gravite": "attention"
   },
   {
-   "heure": "05h27",
-   "texte": "**Fin de saison estivale — Produits à arrêter (masquer)** : **Dès maintenant (semaine 38)** : PECHE PLATE VRAC (-100%), PECHE BLANCHE VRAC (-100%), PDT FILET 1KG PETIT PRIX (-100%) et 9 autre(s) — **D'ici fin septembre (semaine 39)** : TOMATE COTELEE JAUNE VRAC (-65%), HARICOT VERT VRAC (-69%), PIMENT VERT VRAC (-36%) et 1 autre(s) — **Début octobre (semaine 40)** : CONCOMBRE PIECE (-52%), OIGNON BLANC BOTTE (-45%), TOMATE ALLONGEE VRAC (-53%) et 5 autre(s). À masquer sur la console de commande pour éviter les invendus et la casse.",
-   "gravite": "attention"
-  },
-  {
-   "heure": "05h27",
-   "texte": "Données du 18/09 intégrées : les ventes (183 lignes), la livraison (46 lignes), la casse (17 lignes).",
+   "heure": "21h41",
+   "texte": "Données du 22/09 intégrées : les ventes (176 lignes), la livraison (41 lignes), la casse (10 lignes), les dons (15 lignes).",
    "gravite": "info"
   }
  ],
- "_operation_id": "8570064a0b844c76b8be255900b470b4"
+ "_operation_id": "cec2d057089142dda996c5caa9f12cdb"
 }

@@ -51,6 +51,7 @@
     "107981": {"itm8": "0000087003119", "libelle_magasin": "POIVRON DOUX VERT VRAC", "verifie_le": "2026-09-17", "source": "Bordereau TerreAzur 7835387231 du 17/09/2026 (meme produit que le code 149462, calibre NL)"},
     "297814": {"itm8": "0000087004059", "libelle_magasin": "KIWI JAUNE PIECE", "verifie_le": "2026-09-17", "source": "Bordereau TerreAzur 7835387231 du 17/09/2026 (meme produit que le code 297831, calibre 52F)"},
     "333569": {"itm8": "0000087003089", "libelle_magasin": "AUBERGINE VIOLETTE VRAC", "verifie_le": "2026-09-17", "source": "Bordereau TerreAzur 7835387231 du 17/09/2026 (meme produit que le code 132009, calibre Sacfel)"},
-    "333288": {"itm8": "0000087003089", "libelle_magasin": "AUBERGINE VIOLETTE VRAC", "verifie_le": "2026-09-18", "source": "Bordereau TerreAzur 7835388057 du 18/09/2026 (meme produit que le code 333569, calibre 300/400 Sacfel)"}
+    "333288": {"itm8": "0000087003089", "libelle_magasin": "AUBERGINE VIOLETTE VRAC", "verifie_le": "2026-09-18", "source": "Bordereau TerreAzur 7835388057 du 18/09/2026 (meme produit que le code 333569, calibre 300/400 Sacfel)"},
+    "122418": {"itm8": "0000087004222", "libelle_magasin": "AVOCAT AFFINE PIECE", "verifie_le": "2026-09-21", "source": "Bordereau TerreAzur 7835389273 du 21/09/2026 (meme produit que le code 122430, calibre 203/243g pad 18F)"}
   }
 }

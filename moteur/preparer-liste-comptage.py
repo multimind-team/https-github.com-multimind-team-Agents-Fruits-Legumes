@@ -127,6 +127,58 @@ def position_est_perdue(position_unites, conditionnement):
     """Au-delà du seuil, une position négative n'est plus exploitable."""
     return position_unites is not None and (position_unites / conditionnement) <= SEUIL_POSITION_PERDUE_COLIS
 
+def charger_ca_recent(dossier_faits, date_reference, aggregats_articles):
+    """Calcule le chiffre d'affaires récent (7 jours et 14 jours) par article.
+
+    Permet de classer les articles de la chambre froide selon leur importance
+    économique actuelle (fin de saison, pics météo), plutôt que sur le total
+    annuel cumulé historique qui favorise indûment les produits d'été (ex: melon).
+    """
+    from datetime import date as _d, timedelta as _td
+    if not date_reference:
+        return {}, {}
+    try:
+        a_ref, m_ref, j_ref = (int(x) for x in date_reference.split("-"))
+        ref_dt = _d(a_ref, m_ref, j_ref)
+    except Exception:
+        return {}, {}
+
+    d14 = (ref_dt - _td(days=14)).isoformat()
+    d7 = (ref_dt - _td(days=7)).isoformat()
+
+    ca7 = {}
+    ca14 = {}
+    annees = {str((ref_dt - _td(days=i)).year) for i in range(15)}
+
+    for annee in sorted(annees):
+        f = dossier_faits / f"{annee}.jsonl"
+        if not f.exists():
+            continue
+        try:
+            with open(f, "r", encoding="utf-8") as fic:
+                for ligne in fic:
+                    if '"type": "vente"' not in ligne and '"type":"vente"' not in ligne:
+                        continue
+                    fait = json.loads(ligne)
+                    if fait.get("type") != "vente":
+                        continue
+                    d = fait.get("date_source") or ""
+                    if d >= d14:
+                        art = fait.get("article")
+                        q = fait.get("quantite") or 0.0
+                        p = fait.get("prix_vente_unitaire")
+                        if not p:
+                            art_info = aggregats_articles.get(art, {})
+                            p = art_info.get("dernierPrixVente") or catalogue.prix(art) or 1.0
+                        montant = q * p
+                        ca14[art] = ca14.get(art, 0.0) + montant
+                        if d >= d7:
+                            ca7[art] = ca7.get(art, 0.0) + montant
+        except Exception:
+            continue
+    return ca7, ca14
+
+
 
 @operation_donnees(lambda: RACINE / "donnees")
 def main():
@@ -135,6 +187,15 @@ def main():
     etat_path = RACINE / "donnees" / "etat.json"
     etat = json.loads(etat_path.read_text(encoding="utf-8"))["articles"] if etat_path.exists() else {}
     estimation, jours_estimes = ventes_estimees_des_jours_manquants(aggregats, etat)
+
+    ca_7, ca_14 = charger_ca_recent(RACINE / "donnees" / "faits", aggregats.get("date_reference"), aggregats["articles"])
+    jour_annee = 1
+    if aggregats.get("date_reference"):
+        try:
+            a_r, m_r, j_r = (int(x) for x in aggregats["date_reference"].split("-"))
+            jour_annee = date(a_r, m_r, j_r).timetuple().tm_yday
+        except Exception:
+            pass
 
     overrides = config.get("overrides", {})
     masques = {k for k, v in overrides.items() if v.get("masque")}
@@ -186,7 +247,10 @@ def main():
             "ventes_estimees_retirees": round(vendu_estime, 2) if vendu_estime else 0,
             "mesuree_le": position.get("mesuree_le"),
             "motif": position.get("motif"),
-            "ca": donnees.get("totalCA") or 0,
+            "ca": (ca_7.get(code, 0.0) if ca_7.get(code, 0.0) > 0
+                   else (ca_14.get(code, 0.0) / 2.0 * 0.5) if ca_14.get(code, 0.0) > 0
+                   else (donnees.get("saison", [0.0]*366)[jour_annee - 1] * 7.0 * (donnees.get("dernierPrixVente") or catalogue.prix(code) or 1.0) * 0.1) if (donnees.get("saison") and donnees.get("saison", [0.0]*366)[jour_annee - 1] > 0)
+                   else (donnees.get("totalCA", 0) * 0.001)),
         })
 
     # --- Part du chiffre d'affaires couverte au fil du comptage -----------

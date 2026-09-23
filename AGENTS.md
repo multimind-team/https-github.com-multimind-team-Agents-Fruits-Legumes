@@ -28,6 +28,11 @@ specialises, tu relis leurs resultats, puis tu arbitres.
 
 La commande part avant 9h30. Il n'y a pas de rattrapage.
 
+### 🛡️ Règle d'or : Vérité du terrain & Intégrité des données
+- **Aucune donnée ne doit être inventée** : interdiction formelle d'extrapoler, d'estimer arbitrairement, de simuler ou de fabriquer des données de complaisance.
+- Toutes les données traitées, calculées et restituées doivent être **strictement réelles et vérifiées** à partir des flux sources du magasin.
+- Si une donnée est manquante, le système doit la traiter comme telle sans jamais chercher à la masquer par des chiffres factices.
+
 ---
 
 ## ⚡ Prise de poste et démarrage (« Analyse le projet et lance les serveurs »)
@@ -37,17 +42,16 @@ Quand l'utilisateur demande d'analyser le projet, de prendre ton poste ou de lan
 2. **Pour analyser le projet (rapide et efficace)** :
    - Consulter `donnees/dernier-import.json` et `donnees/etat.json` (état du stock et de la commande).
    - Consulter `Documents/Documentation de l'application/index.html` pour toute question métier ou technique.
-3. **Pour lancer le serveur local et sa surveillance de processus** :
-   - Utiliser le gestionnaire du projet, qui évite les instances concurrentes :
+3. **Pour lancer le serveur local et la Tri-Sentinelle** :
+   - Lancer le serveur de l'application mobile :
      ```text
-     py -3.14 -B moteur/gerer-serveur.py demarrer
+     py -3.14 -B moteur/serveur.py 8751
      ```
-     Vérifier `py -3.14 -B moteur/gerer-serveur.py etat` et la réponse de `http://127.0.0.1:8751/app/index.html`. Le HTTP local ne prouve pas l'accès téléphone : vérifier séparément l'URL mobile configurée et Tailscale Serve. Un redémarrage est une action distincte (`demarrer --redemarrer`).
-   - La surveillance du serveur n'est pas la veille des mails/messages/comptages. Si cette veille est demandée et qu'un superviseur est disponible, lancer la Tri-Sentinelle dans un processus séparé :
+     Vérifier la réponse de `http://127.0.0.1:8751/app/index.html`.
+   - Lancer la Tri-Sentinelle en tâche de fond pour la veille des mails/messages/comptages :
      ```text
-     python moteur/surveille-mail-message-comptage.py
+     py -3.14 -B moteur/surveille-mail-message-comptage.py
      ```
-     (Elle attend sans appel à un modèle et signale les événements non acquittés. Le réveil d'un agent nécessite un superviseur externe ; le script seul ne le déclenche pas.)
 
 ---
 

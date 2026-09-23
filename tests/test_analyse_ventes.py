@@ -126,7 +126,7 @@ class AnalyseVentesTests(unittest.TestCase):
         self.assertEqual(r["couverture"]["doublons_ignores"], 1)
         self.assertEqual(r["articles"][0]["codes_regroupes"], ["A", "C"])
 
-    def test_jus_conserve_ventes_commerciales_ca_et_cockpit_physique(self):
+    def test_jus_conserve_ventes_commerciales_ca_et_pilotage_physique(self):
         jus, orange = "0000000008112", "0000087004386"
         self.ecrire("proposition.json", {"lignes": [
             {"itm8": jus, "conditionnement": 6, "unite": "piece", "libelle": "Jus 1L"},

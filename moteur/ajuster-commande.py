@@ -45,6 +45,7 @@ import argparse
 import json
 import math
 import sys
+import uuid
 from datetime import date, datetime
 from pathlib import Path
 
@@ -235,6 +236,56 @@ def main():
     }
     FICHIER.parent.mkdir(parents=True, exist_ok=True)
     append_jsonl(FICHIER, [enregistrement])
+
+    try:
+        import enregistrer_modifications_commande as emc
+        emc.archiver_proposition_base(DONNEES)
+        ecart_colis = round(apres - avant, 2)
+        ratio_ia = round(apres / avant, 4) if avant > 0 else (None if apres == 0 else 999.0)
+        type_ajust = "annulation" if (avant > 0 and apres == 0) else ("baisse" if apres < avant else ("hausse" if apres > avant else "maintien"))
+        entree_entrainement = {
+            "schema": 1,
+            "id": f"entrainement:{jour}:{args.article}:{datetime.now().strftime('%Y%m%dT%H%M%S')}:{uuid.uuid4().hex[:6]}",
+            "horodatage": datetime.now().isoformat(timespec="seconds"),
+            "date_commande": jour,
+            "date_livraison": prop.get("date_livraison") or jour,
+            "date_reference_ventes": prop.get("date_reference") or "",
+            "article": args.article,
+            "article_stock": ligne.get("article_stock") or args.article,
+            "libelle": ligne.get("libelle") or args.article,
+            "famille": ligne.get("groupe") or "inconnu",
+            "fournisseur": ligne.get("fournisseur") or "inconnu",
+            "conditionnement": float(ligne.get("conditionnement") or 1.0),
+            "unite": str(ligne.get("unite") or "colis"),
+            "position_stock_colis": ligne.get("position_colis"),
+            "position_stock_unites": ligne.get("position_unites"),
+            "vente_moyenne_jour": ligne.get("vente_moyenne_jour"),
+            "taux_perte": ligne.get("taux_perte"),
+            "demande_calculee_moteur": ligne.get("demande"),
+            "previsions_journalieres": ligne.get("previsions_journalieres") or {},
+            "propose_ia_colis": avant,
+            "choix_humain_colis": apres,
+            "ecart_colis": ecart_colis,
+            "ratio_humain_ia": ratio_ia,
+            "type_ajustement": type_ajust,
+            "prix_achat": ligne.get("prix_achat"),
+            "prix_vente": ligne.get("prix_vente"),
+            "marge_pct": ligne.get("marge_pct"),
+            "promotion": bool(ligne.get("promotion")),
+            "fin_promotion": bool(ligne.get("fin_promotion")),
+            "motif_fin_promotion": ligne.get("motif_fin_promotion"),
+            "alerte_marge": ligne.get("alerte_marge"),
+            "alerte_fusion": ligne.get("alerte_fusion"),
+            "meteo_livraison": prop.get("meteo_livraison") or {},
+            "facteurs_moteur": prop.get("facteurs") or {},
+            "motif": args.motif.strip(),
+            "auteur": args.agent,
+            "action": numero,
+            "source": "cli:ajuster-commande",
+        }
+        append_jsonl(DONNEES / "entrainement-ajustements.jsonl", [entree_entrainement])
+    except Exception:
+        pass
 
     journal_agents.enregistrer(
         agent=args.agent, action=numero,

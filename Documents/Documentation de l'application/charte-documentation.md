@@ -26,6 +26,6 @@ Relire les modifications, vérifier les chemins et le JavaScript, puis contrôle
 
 ## Roadmap et contrats pour IA
 
-- La fiche `cockpit-pc.html` et `reference/cockpit-pc.md` décrivent le fonctionnement actuel. Le chapitre 24 distingue ambitions, dépendances et critères de livraison.
+- Le cockpit PC est un projet autonome distinct (port 8752). Le chapitre 24 distingue ambitions, dépendances et critères de livraison.
 - La fiche 24.3 porte les contrats futurs du cockpit et les lots CP-01 à CP-10. Chaque passage à « vérifié » doit citer le code, la recette et les limites réelles.
 - Un chiffre d’inventaire doit porter une date et un périmètre ; une proposition de schéma ou de route doit rester explicitement marquée non implémentée.

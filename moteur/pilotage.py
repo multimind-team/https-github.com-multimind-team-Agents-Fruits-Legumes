@@ -1,4 +1,4 @@
-"""Cockpit PC : lecture des faits et des sorties existantes, sans recalcul publié.
+"""Module de pilotage : lecture des faits et des sorties existantes, sans recalcul publié.
 
 Les volumes du rayon sont des équivalents de colis au PCB ACTUEL, non des
 colis historiques réceptionnés. Une absence de fait reste inconnue. Les
@@ -507,9 +507,12 @@ def construire(donnees, horizon="14", article=None, aujourd_hui=None):
     photos = _photos_contextuelles(dossier)
     groupes = _groupes(decisions)
     pcb_decisions = {}
+    unite_decisions = {}
     for decision in decisions:
         if decision.get("type") == "conditionnement" and decision.get("article"):
             pcb_decisions[decision["article"]] = decision
+        elif decision.get("type") == "unite" and decision.get("article"):
+            unite_decisions[decision["article"]] = decision
     # Les lignes d'offre portent explicitement le code du stock partagé.
     groupes.update({code: ligne["article_stock"] for code, ligne in prop.items()
                     if ligne.get("article_stock") and ligne["article_stock"] != code})
@@ -539,10 +542,22 @@ def construire(donnees, horizon="14", article=None, aujourd_hui=None):
         catalogue_article = cat.get(code, {})
         detail_fia = fia.get(canonical, {})
         pcb = _nombre(fiche.get("conditionnement", agr.get(code, {}).get("conditionnement")))
+        if pcb is None:
+            pcb = _nombre(catalogue_article.get("CONDIT.BASE"))
+        if code in pcb_decisions:
+            pcb_dec = _nombre(pcb_decisions[code].get("valeur"))
+            if pcb_dec is not None and pcb_dec > 0:
+                pcb = pcb_dec
         if pcb is not None and pcb <= 0:
             pcb = None
         libelle = fiche.get("libelle") or agr.get(code, {}).get("libelle") or catalogue_article.get("LIBELLE") or noms_faits.get(code) or code
-        unite = fiche.get("unite") or detail_fia.get("unite") or catalogue_article.get("UNITE MESURE") or unites_faits.get(code) or "unité inconnue"
+        unite = (unite_decisions.get(code, {}).get("valeur")
+                 or unite_decisions.get(canonical, {}).get("valeur")
+                 or fiche.get("unite")
+                 or detail_fia.get("unite")
+                 or catalogue_article.get("UNITE MESURE")
+                 or unites_faits.get(code)
+                 or "unité inconnue")
         if isinstance(unite, str) and unite[:1].isdigit() and " " in unite:
             unite = unite.split(" ", 1)[1]
         prevus = {iso: snap["quantite"] for iso, snap in archives_par_code[canonical].items()
@@ -571,10 +586,10 @@ def construire(donnees, horizon="14", article=None, aujourd_hui=None):
                  "stock_mesure_le": position.get("mesuree_le") or fiche.get("position_mesuree_le"),
                  "stock_motif": position.get("motif") or "",
                  "propose_colis": _nombre(fiche.get("propose_colis")),
-                 "comptable": code in comptages or code in prop,
-                 "conditionnement_editable": (occurrences_prop[code] == 1 and bool(pcb)
-                    and isinstance(fiche.get("libelle"), str) and bool(fiche["libelle"].strip())
-                    and not any(ord(c) < 32 or ord(c) == 127 for c in fiche["libelle"])),
+                 "comptable": code in comptages or code in prop or (bool(pcb) and (code in cat or code in positions or code in agr)),
+                 "conditionnement_editable": (occurrences_prop.get(code, 0) <= 1 and bool(pcb)
+                    and isinstance(libelle, str) and bool(libelle.strip())
+                    and not any(ord(c) < 32 or ord(c) == 127 for c in libelle)),
                  "commande_groupe_portee_par": fiche.get("commande_groupe_portee_par"),
                  "commande_groupe_ambigue": bool(fiche.get("commande_groupe_ambigue")),
                  "avertissement_contexte": fiche.get("avertissement_contexte"),
@@ -644,7 +659,7 @@ def construire(donnees, horizon="14", article=None, aujourd_hui=None):
             if jour in prevus:
                 global_jours[jour]["previsions"].append(prevus[jour] / pcb)
     if article is not None and str(article) not in codes:
-        raise ValueError("Article inconnu dans le cockpit.")
+        raise ValueError("Article inconnu dans le module de pilotage.")
     canoniques = [l for l in lignes if l["itm8"] == l["article_stock"]]
     total_ventes, total_livraisons = _somme(totaux_flux["ventes"]), _somme(totaux_flux["livraisons"])
     kpis = {"articles": len(lignes), "articles_stock_distincts": len(canoniques),

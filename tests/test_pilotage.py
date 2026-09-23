@@ -1,4 +1,4 @@
-"""Contrat du cockpit sur fixtures temporaires ; aucune donnée métier réelle."""
+"""Contrat du module de pilotage sur fixtures temporaires ; aucune donnée métier réelle."""
 from datetime import date
 import json
 from pathlib import Path

@@ -1,19 +1,120 @@
 {
- "statut": "ok",
- "quand": "2026-09-19T05:23:48",
+ "statut": "a-verifier",
+ "quand": "2026-09-23T21:38:06",
  "simulation": false,
  "fichiers": [
   {
-   "fichier": "vente 19.09.2026.xlsx",
-   "mouvements": 183,
-   "type": "vente"
+   "fichier": "Livraison 23.09.2026.xlsx",
+   "mouvements": 41,
+   "type": "livraison"
   }
  ],
- "mouvements_nouveaux": 183,
+ "mouvements_nouveaux": 41,
  "mouvements_deja_connus": 0,
  "jours_couverts": [
-  "2026-09-18"
+  "2026-09-22"
  ],
- "a_verifier": [],
- "_operation_id": "be8e6d903def4fce9dd48e9554de00c3"
+ "a_verifier": [
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087003021",
+   "message": "Livraison 23.09.2026.xlsx ligne 2 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087003359",
+   "message": "Livraison 23.09.2026.xlsx ligne 3 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004011",
+   "message": "Livraison 23.09.2026.xlsx ligne 4 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004048",
+   "message": "Livraison 23.09.2026.xlsx ligne 5 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004129",
+   "message": "Livraison 23.09.2026.xlsx ligne 6 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004136",
+   "message": "Livraison 23.09.2026.xlsx ligne 7 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004274",
+   "message": "Livraison 23.09.2026.xlsx ligne 8 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004442",
+   "message": "Livraison 23.09.2026.xlsx ligne 10 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004612",
+   "message": "Livraison 23.09.2026.xlsx ligne 11 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004636",
+   "message": "Livraison 23.09.2026.xlsx ligne 12 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004928",
+   "message": "Livraison 23.09.2026.xlsx ligne 13 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004957",
+   "message": "Livraison 23.09.2026.xlsx ligne 14 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087005028",
+   "message": "Livraison 23.09.2026.xlsx ligne 15 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087003049",
+   "message": "Livraison 23.09.2026.xlsx ligne 30 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087003145",
+   "message": "Livraison 23.09.2026.xlsx ligne 31 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004085",
+   "message": "Livraison 23.09.2026.xlsx ligne 33 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004543",
+   "message": "Livraison 23.09.2026.xlsx ligne 34 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004583",
+   "message": "Livraison 23.09.2026.xlsx ligne 35 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004664",
+   "message": "Livraison 23.09.2026.xlsx ligne 36 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  },
+  {
+   "genre": "conversion-non-prouvee",
+   "sujet": "0000087004799",
+   "message": "Livraison 23.09.2026.xlsx ligne 38 : poids livré par colis non attesté (base absente ou égale à 1). Livraison non intégrée ; le colisage habituel ne prouve pas le colis livré."
+  }
+ ],
+ "_operation_id": "ea7aa9f73cf34ce7bcd1f3925b1f59da"
 }

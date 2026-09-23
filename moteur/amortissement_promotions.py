@@ -48,6 +48,9 @@ def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
 
     Retourne :
     {
+
+    Retourne :
+    {
         "en_fin_promo": bool,
         "phase": "dernier_jour" | "post_promo" | "en_cours" | "hors_promo",
         "facteur_amortissement": 1.0,
@@ -70,7 +73,8 @@ def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
             "nom_offre": None
         }
 
-    if info["statut_corresp"] != "confirme":
+    statut = str(info.get("statut_corresp", "")).lower().strip()
+    if statut not in ("confirme", "confirmee", "confirmé", "confirmée"):
         return {"en_fin_promo": False, "phase": "a_confirmer",
                 "facteur_amortissement": 1.0, "motif": None,
                 "fin_promo": info["fin"], "nom_offre": info["nom_offre"]}
@@ -79,13 +83,21 @@ def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
     fin = info["fin"]
     nom = info["nom_offre"]
 
-    # Cas 1 : Livraison après la fin de promo (commande passée le dernier jour ou juste après)
-    if date_commande == fin or (date_livraison > fin and date_commande <= fin):
+    from datetime import date
+    try:
+        d_cmd = date.fromisoformat(date_commande)
+        d_fin = date.fromisoformat(fin)
+        jours_apres_fin = (d_cmd - d_fin).days
+    except Exception:
+        jours_apres_fin = 999
+
+    # Cas 1 : Livraison après la fin de promo ou dans la fenêtre de sortie de promo (jusqu'à 7 jours post-promo)
+    if date_commande == fin or (date_livraison > fin and date_commande <= fin) or (1 <= jours_apres_fin <= 7):
         return {
             "en_fin_promo": True,
             "phase": "post_promo",
             "facteur_amortissement": 1.0,
-            "motif": f"Fin de promo le {fin} ({nom}). Quantité maintenue ; toute baisse nécessite une suggestion contrôlée puis votre validation.",
+            "motif": f"Offre {nom} terminée le {fin}. Prévision calée sur les ventes de référence hors-promo (semaine S-1 pré-prospectus) pour éviter les à-coups et la sur-commande post-promo.",
             "fin_promo": fin,
             "nom_offre": nom
         }
@@ -96,7 +108,7 @@ def evaluer_amortissement(itm8, date_commande, date_livraison, offres=None):
             "en_fin_promo": True,
             "phase": "dernier_jour",
             "facteur_amortissement": 1.0,
-            "motif": f"Dernier jour promo ({fin}). Quantité maintenue ; vérifier l'écoulement avant toute suggestion de baisse.",
+            "motif": f"Dernier jour de promotion ({fin}, {nom}). Quantité de transition maintenue ; retour aux ventes normales S-1 dès la prochaine livraison.",
             "fin_promo": fin,
             "nom_offre": nom
         }

@@ -495,6 +495,29 @@ def main():
                             f"La consigne terrain est portée par cette offre secondaire. "
                             f"Le besoin est calculé sur {porteur[1]} : reporte la consigne sur cette fiche "
                             "si elle concerne le stock commun.")
+                membres_grp = config.get("groupes", {}).get(principal, [])
+                if membres_grp and porteur and index == porteur[0]:
+                    details_membres = []
+                    pb_marge = []
+                    pa_p = ligne.get("prix_achat")
+                    pv_p = ligne.get("prix_vente")
+                    for m in membres_grp:
+                        ref_m = mercalys.get(m, {})
+                        pv_m = ref_m.get("PRIX VENTE") or ref_m.get("PVC")
+                        nom_m = ref_m.get("LIBELLE", m)
+                        pv_txt = f"PV caisse {pv_m:.2f} €" if pv_m is not None else "PV caisse non renseigné"
+                        details_membres.append(f"{nom_m} ({m}, {pv_txt})")
+                        if pv_m is not None and pa_p and pv_m <= pa_p:
+                            pb_marge.append(f"Risque de vente à perte ! Le prix en caisse de {nom_m} ({pv_m:.2f} €) est inférieur ou égal au prix d'achat cadencier ({pa_p:.2f} €).")
+                        elif pv_m is not None and pv_p and abs(pv_m - pv_p) > 0.05:
+                            pb_marge.append(f"Écart de prix : {pv_m:.2f} € en caisse vs {pv_p:.2f} € au catalogue.")
+                    alerte_txt = (
+                        f"Rapprochement de codes jumeaux : les ventes en caisse passent sous {', '.join(details_membres)}, "
+                        f"alors que la commande s'effectue sous {ligne['libelle']} ({principal})."
+                    )
+                    if pb_marge:
+                        alerte_txt += " ⚠️ " + " ".join(pb_marge) + " À contrôler d'urgence en rayon/caisse."
+                    ligne["alerte_fusion"] = alerte_txt
             lignes.append(ligne)
         for l in lignes:
             if l["masque"]:

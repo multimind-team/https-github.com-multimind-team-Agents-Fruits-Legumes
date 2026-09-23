@@ -44,7 +44,7 @@ class TestAmortissementPromotions(unittest.TestCase):
         self.assertTrue(res["en_fin_promo"])
         self.assertEqual(res["phase"], "dernier_jour")
         self.assertEqual(res["facteur_amortissement"], 1.0)
-        self.assertIn("Dernier jour promo", res["motif"])
+        self.assertIn("Dernier jour", res["motif"])
 
     def test_post_promo(self):
         # Commande le 19 (dernier jour de promo) pour livraison le 21 (lundi hors promo)
@@ -52,7 +52,7 @@ class TestAmortissementPromotions(unittest.TestCase):
         self.assertTrue(res["en_fin_promo"])
         self.assertEqual(res["phase"], "post_promo")
         self.assertEqual(res["facteur_amortissement"], 1.0)
-        self.assertIn("Fin de promo", res["motif"])
+        self.assertIn("terminée le", res["motif"])
 
     def test_article_inconnu(self):
         res = ap.evaluer_amortissement("9999999999999", "2026-09-19", "2026-09-21", self.fausses_offres)
@@ -63,9 +63,19 @@ class TestAmortissementPromotions(unittest.TestCase):
     def test_correspondance_non_confirmee_sans_effet(self):
         for statut in (None, "a_confirmer", "refuse"):
             with self.subTest(statut=statut):
-                self.fausses_offres[0]["correspondances"][0]["statut"] = statut
-                res = ap.evaluer_amortissement("0000087004011", "2026-09-19", "2026-09-21", self.fausses_offres)
+                offres = [
+                    {
+                        "nom": "Banane Cavendish",
+                        "debut": "2026-09-15",
+                        "fin": "2026-09-19",
+                        "correspondances": [
+                            {"itm8": "0000087004011", "libelle": "BANANE VRAC", "statut": statut}
+                        ]
+                    }
+                ]
+                res = ap.evaluer_amortissement("0000087004011", "2026-09-19", "2026-09-21", offres)
                 self.assertFalse(res["en_fin_promo"])
+                self.assertEqual(res["phase"], "a_confirmer")
                 self.assertEqual(res["facteur_amortissement"], 1.0)
 
 

@@ -37,7 +37,7 @@ DONNEES_PUBLIQUES = {
     "proposition.json", "reponses.jsonl", "photos.json",
     "analyse-ventes-annuelle-saisonniere.json", "profils-produits-sensibilites.json",
     "alertes-marges.json", "recalcul.json", "recommandations-saisonnieres.json",
-    "fiabilite.json",
+    "fiabilite.json", "audit-comptages.json", "entrainement-ajustements.jsonl",
 }
 APP_PUBLIQUE = {
     "/app/index.html", "/app/commander.html", "/app/compter.html",
@@ -45,8 +45,6 @@ APP_PUBLIQUE = {
     "/app/analyse-historique.html", "/app/fiabilite.html",
     "/app/manifest.json", "/app/css/charte.css", "/app/img/favicon.ico",
     "/app/js/photos-produits.js",
-    "/app/cockpit.html", "/app/css/cockpit.css", "/app/js/cockpit.js",
-    "/app/js/cockpit-photos.js", "/app/js/cockpit-ventes.js",
     "/app/img/icone-192.png", "/app/img/icone-512.png",
 }
 
@@ -212,6 +210,44 @@ def charger_articles_comptables():
                     }
         except Exception:
             pass
+    chemin_cat = DONNEES / "catalogue.json"
+    if chemin_cat.exists():
+        try:
+            cat = json.loads(chemin_cat.read_text(encoding="utf-8")).get("articles", {})
+            for code, fiche in cat.items():
+                code_str = str(code).strip()
+                if code_str and code_str not in articles:
+                    try:
+                        cond = float(fiche.get("CONDIT.BASE") or 1.0)
+                    except (TypeError, ValueError):
+                        cond = 1.0
+                    if cond <= 0 or not math.isfinite(cond):
+                        cond = 1.0
+                    unite_raw = str(fiche.get("UNITE MESURE") or "").lower()
+                    unite = "kg" if "kg" in unite_raw else ("barquette" if "barquette" in unite_raw else "colis")
+                    articles[code_str] = {
+                        "itm8": code_str,
+                        "libelle": str(fiche.get("LIBELLE") or fiche.get("LIBELLE CAISSE") or code_str),
+                        "conditionnement": cond,
+                        "unite": unite,
+                    }
+        except Exception:
+            pass
+    chemin_etat = DONNEES / "etat.json"
+    if chemin_etat.exists():
+        try:
+            etat = json.loads(chemin_etat.read_text(encoding="utf-8")).get("articles", {})
+            for code, fiche in etat.items():
+                code_str = str(code).strip()
+                if code_str and code_str not in articles:
+                    articles[code_str] = {
+                        "itm8": code_str,
+                        "libelle": str(fiche.get("libelle") or code_str),
+                        "conditionnement": 1.0,
+                        "unite": "colis",
+                    }
+        except Exception:
+            pass
     return articles
 
 
@@ -235,7 +271,21 @@ def article_de_decision(recu, avec_conditionnement=False):
     articles = [a for a in proposition.get("lignes", []) if a.get("itm8") == itm8]
     article = articles[0] if articles else None
     if article is None:
-        raise ValueError("Cet article est inconnu de la proposition. Recharge la page.")
+        fichier_art = DONNEES / "articles.json"
+        if fichier_art.exists():
+            art_data = json.loads(fichier_art.read_text(encoding="utf-8"))
+            articles = [a for a in art_data.get("articles", []) if a.get("itm8") == itm8]
+            article = articles[0] if articles else None
+    if article is None:
+        fichier_cat = DONNEES / "catalogue.json"
+        if fichier_cat.exists():
+            cat_data = json.loads(fichier_cat.read_text(encoding="utf-8"))
+            if itm8 in cat_data.get("articles", {}):
+                cat_art = cat_data["articles"][itm8]
+                article = {"itm8": itm8, "libelle": cat_art.get("LIBELLE"), "conditionnement": cat_art.get("CONDIT.BASE")}
+                articles = [article]
+    if article is None:
+        raise ValueError("Cet article est inconnu du référentiel magasin. Recharge la page.")
     if avec_conditionnement:
         if len(articles) != 1:
             raise ValueError("Cet article apparaît plusieurs fois : colisage ambigu. Fais vérifier la proposition.")
@@ -497,6 +547,13 @@ def recalculer_en_arriere_plan():
                                     "Le recalcul complet doit être relancé.",
                                     {"erreur": (resultat.stderr or "")[-400:]})
                         return
+                try:
+                    subprocess.run(
+                        [sys.executable, str(RACINE / "moteur" / "analyser-ecarts-comptage.py")],
+                        capture_output=True, text=True, timeout=60,
+                        env=environnement_verrou(DONNEES))
+                except Exception:
+                    pass
                 publier_etat_calcul(DONNEES, "termine", "serveur")
                 journaliser("serveur", "Positions recalculées après réception des comptages",
                             "Les positions, la proposition et la liste de comptage sont recalculées ensemble.")
@@ -542,10 +599,30 @@ class Gestionnaire(SimpleHTTPRequestHandler):
     def log_message(self, format, *args):
         pass   # pas de bruit dans la console
 
+    def do_OPTIONS(self):
+        origine = self.headers.get("Origin", "")
+        if origine in ("http://127.0.0.1:8752", "http://localhost:8752"):
+            self.send_response(204)
+            self.send_header("Access-Control-Allow-Origin", origine)
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.send_header("Access-Control-Max-Age", "86400")
+            super().end_headers()
+        else:
+            self.send_response(403)
+            super().end_headers()
+
     def do_GET(self):
         return super().do_GET()
 
     def end_headers(self):
+        # Support CORS pour le Cockpit PC autonome (port 8752)
+        origine = self.headers.get("Origin", "")
+        if origine in ("http://127.0.0.1:8752", "http://localhost:8752"):
+            self.send_header("Access-Control-Allow-Origin", origine)
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+
         # Les URL CSS/JS sont versionnées dans le HTML : celui-ci doit être
         # revalidé, y compris après un 304. Ne touche pas au stockage des saisies.
         if (self.command in ("GET", "HEAD")
@@ -615,6 +692,23 @@ class Gestionnaire(SimpleHTTPRequestHandler):
                 if self.command != "HEAD":
                     self.wfile.write(contenu)
                 return None
+            if chemin == "/api/audit-colisages":
+                fichier_audit = DONNEES / "audit-colisages.json"
+                if fichier_audit.exists():
+                    charge = json.loads(fichier_audit.read_text(encoding="utf-8"))
+                else:
+                    import audit_colisages_unites
+                    charge = audit_colisages_unites.auditer(DONNEES)
+                    audit_colisages_unites.sauvegarder_rapport(charge, DONNEES)
+                contenu = json.dumps(charge, ensure_ascii=False).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Length", str(len(contenu)))
+                self.send_header("Cache-Control", "no-store")
+                self.end_headers()
+                if self.command != "HEAD":
+                    self.wfile.write(contenu)
+                return None
             if chemin in {"/api/marges-pomona", "/api/carnets/resume"} or statut_absent:
                 if statut_absent:
                     charge = {"etat": "absent"}
@@ -676,11 +770,24 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         if not self._verifier_provenance(ecriture=True):
             return
         chemin = self.path.split("?")[0]
-        if chemin not in {"/api/comptages", "/api/messages", "/api/masquer", "/api/fournisseur", "/api/conditionnement", "/api/contexte", "/api/photos-contexte"}:
+        if chemin not in {"/api/comptages", "/api/messages", "/api/masquer", "/api/fournisseur", "/api/conditionnement", "/api/contexte", "/api/photos-contexte", "/api/lancer-audit-stock", "/api/lancer-audit-colisages", "/api/appliquer-corrections-colisages", "/api/ajustements-commande"}:
             self.send_error(404)
+            return
+        if chemin == "/api/lancer-audit-stock":
+            self._lancer_audit_stock()
+            return
+        if chemin == "/api/lancer-audit-colisages":
+            self._lancer_audit_colisages()
+            return
+        if chemin == "/api/appliquer-corrections-colisages":
+            self._appliquer_corrections_colisages()
             return
         self._charge_json = self._lire_json(limite=MAX_CORPS_PHOTO if chemin == "/api/photos-contexte" else MAX_CORPS_JSON)
         if self._charge_json is None:
+            return
+        if chemin == "/api/ajustements-commande":
+            with _recalcul_en_cours, verrou_donnees(DONNEES):
+                self._recevoir_ajustements_commande()
             return
         if chemin == "/api/photos-contexte":
             self._recevoir_photo_contexte()
@@ -752,11 +859,12 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         autorise = hote in locaux | distants
         if ecriture:
             origines = self.headers.get_all("Origin", [])
-            attendues = {"http://" + hote} if hote in locaux else {
+            origines_cockpit = {"http://127.0.0.1:8752", "http://localhost:8752"}
+            attendues = ({"http://" + hote} | origines_cockpit) if hote in locaux else {
                 "https://" + HOTE_TAILSCALE, "https://" + HOTE_TAILSCALE + ":443"}
             fetch = self.headers.get_all("Sec-Fetch-Site", [])
             autorise = (autorise and len(origines) == 1 and origines[0] in attendues
-                        and (not fetch or fetch == ["same-origin"]))
+                        and (not fetch or fetch == ["same-origin"] or (origines[0] in origines_cockpit and fetch[0] in ("same-site", "cross-site"))))
         if not autorise:
             self.close_connection = True
             self._repondre({"ok": False, "erreur": "Accès refusé. Ouvre l'application depuis son adresse habituelle."}, 403)
@@ -1155,6 +1263,95 @@ class Gestionnaire(SimpleHTTPRequestHandler):
             recalculer_en_arriere_plan()
         except Exception as e:
             self._repondre({"ok": False, "erreur": str(e)})
+
+    def _recevoir_ajustements_commande(self):
+        """Enregistre un ajustement de commande du responsable de rayon et
+        alimente le dataset d'entraînement IA (CP-04 / Documentation IA 24.3)."""
+        import enregistrer_modifications_commande as emc
+        try:
+            recu = self._charge_json
+            if not isinstance(recu, dict):
+                return self._repondre({"ok": False, "erreur": "Corps JSON invalide."}, 400)
+
+            if "ajustements" in recu and isinstance(recu["ajustements"], list):
+                resultats = emc.enregistrer_lot_ajustements(
+                    recu["ajustements"], agent="responsable-rayon",
+                    source="app/commander.html", dossier_donnees=DONNEES)
+                return self._repondre({"ok": True, "ajustements": resultats})
+
+            itm8 = recu.get("itm8")
+            if not itm8 or not isinstance(itm8, str):
+                return self._repondre({"ok": False, "erreur": "Code article (itm8) requis."}, 400)
+
+            if type(recu.get("colis")) not in (int, float):
+                return self._repondre({"ok": False, "erreur": "Quantité en colis requise et numérique."}, 400)
+            colis = float(recu["colis"])
+            if not math.isfinite(colis) or colis < 0:
+                return self._repondre({"ok": False, "erreur": "La quantité en colis doit être un nombre fini positif ou nul."}, 400)
+
+            motif = recu.get("motif")
+            res = emc.enregistrer_modification(
+                itm8, colis, motif=motif, agent="responsable-rayon",
+                source="app/commander.html", dossier_donnees=DONNEES)
+            return self._repondre(res)
+        except Exception as e:
+            return self._repondre({"ok": False, "erreur": str(e)}, 500)
+
+    def _lancer_audit_stock(self):
+        """Déclenche l'analyse des écarts de comptage par l'agent audit stock."""
+        try:
+            res = subprocess.run(
+                [sys.executable, str(RACINE / "moteur" / "analyser-ecarts-comptage.py")],
+                capture_output=True, text=True, timeout=60,
+                env=environnement_verrou(DONNEES))
+            fichier_audit = DONNEES / "audit-comptages.json"
+            donnees_audit = json.loads(fichier_audit.read_text(encoding="utf-8")) if fichier_audit.exists() else {}
+            # Acquitter les comptages en attente dans la sentinelle avec la preuve d'audit
+            reg_sentinelle = DONNEES / ".sentinelle-evenements.json"
+            if reg_sentinelle.exists():
+                try:
+                    sent = json.loads(reg_sentinelle.read_text(encoding="utf-8"))
+                    for k, ev in list(sent.get("en_attente", {}).items()):
+                        if ev.get("type") == "COMPTAGE":
+                            subprocess.run([sys.executable, str(RACINE / "moteur" / "surveille-mail-message-comptage.py"),
+                                            "--acquitter", "COMPTAGE", ev["id"], "--preuve", f"audit-comptages.json:{donnees_audit.get('date_analysee', 'direct')}"],
+                                           capture_output=True, text=True, timeout=15)
+                except Exception:
+                    pass
+            self._repondre({"ok": True, "synthese": donnees_audit.get("synthese", {}), "date": donnees_audit.get("date_analysee")})
+        except Exception as exc:
+            self._repondre({"ok": False, "erreur": str(exc)}, 500)
+
+    def _lancer_audit_colisages(self):
+        """Déclenche l'audit des colisages et unités par l'agent données."""
+        try:
+            import audit_colisages_unites
+            rapport = audit_colisages_unites.auditer(DONNEES)
+            audit_colisages_unites.sauvegarder_rapport(rapport, DONNEES)
+            self._repondre({"ok": True, "synthese": rapport.get("synthese", {}), "date": rapport.get("date_audit"), "anomalies": rapport.get("anomalies", [])})
+        except Exception as exc:
+            self._repondre({"ok": False, "erreur": str(exc)}, 500)
+
+    def _appliquer_corrections_colisages(self):
+        """Applique les corrections validées de colisages et unités."""
+        try:
+            import audit_colisages_unites
+            if self._charge_json is None:
+                self._charge_json = self._lire_json()
+            charge = self._charge_json or {}
+            anomalies = charge.get("anomalies")
+            if not anomalies:
+                rapport = audit_colisages_unites.auditer(DONNEES)
+                anomalies = rapport.get("anomalies", [])
+            nb, action = audit_colisages_unites.appliquer_corrections(anomalies, dossier=DONNEES)
+            subprocess.run([sys.executable, str(RACINE / "moteur" / "preparer-liste-comptage.py")],
+                           capture_output=True, timeout=30)
+            nouveau_rapport = audit_colisages_unites.auditer(DONNEES)
+            audit_colisages_unites.sauvegarder_rapport(nouveau_rapport, DONNEES)
+            recalculer_en_arriere_plan()
+            self._repondre({"ok": True, "decisions_appliquees": nb, "action": action, "nouveau_rapport": nouveau_rapport})
+        except Exception as exc:
+            self._repondre({"ok": False, "erreur": str(exc)}, 500)
 
 
 class ServeurHTTP(ThreadingHTTPServer):

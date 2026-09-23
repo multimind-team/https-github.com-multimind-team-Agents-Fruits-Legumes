@@ -396,6 +396,7 @@
     <div class="entete-infos">
       <div class="dates" id="dates">Chargement…</div>
       <div class="totaux" id="totaux"></div>
+      <div id="statut-sync-ia" style="display:none;font-size:12px;margin-top:3px;font-weight:600"></div>
     </div>
     <button class="bouton-theme" id="bouton-theme" title="Changer de thème">🌗</button>
   </div>
@@ -769,28 +770,32 @@ function majTotaux() {
 // en suggère une autre. Dans les deux cas la raison est affichée — sans raison,
 // le responsable de rayon n'a aucun moyen de juger en dix secondes.
 function motAgent(l) {
+  const encarts = [];
+  if (l.fin_promotion && l.motif_fin_promotion) {
+    encarts.push('<div class="mot-agent" style="background:rgba(230,81,0,0.09);border:1px solid rgba(230,81,0,0.35);border-left:4px solid #e65100;border-radius:6px;padding:7px 10px;margin-top:5px;font-size:13px;line-height:1.35"><strong style="color:#e65100;display:flex;align-items:center;gap:5px;margin-bottom:2px">🏷️ Sortie de promotion</strong><span>' + texteSecurise(l.motif_fin_promotion) + '</span></div>');
+  }
   const a = agentAjustements[l.itm8];
   if (a) {
     const sien = memoireDuJour(CLE_AJUSTEMENTS)[l.itm8] !== undefined;
     if (a.applique) {
-      return '<div class="mot-agent' + (sien ? " efface" : "") + '">'
+      encarts.push('<div class="mot-agent' + (sien ? " efface" : "") + '">'
         + "<b>" + (sien ? "l'analyste avait mis " : "ajusté par l'analyste : ")
-        + fr(a.apres) + " au lieu de " + fr(a.avant) + "</b> " + texteSecurise(a.motif) + "</div>";
+        + fr(a.apres) + " au lieu de " + fr(a.avant) + "</b> " + texteSecurise(a.motif) + "</div>");
+    } else {
+      encarts.push('<div class="mot-agent suggestion">'
+        + "<b>l'analyste suggère " + fr(a.apres) + " colis</b> " + texteSecurise(a.motif)
+        + '<button class="btn-agent" data-role="suivre">Suivre</button></div>');
     }
-    return '<div class="mot-agent suggestion">'
-      + "<b>l'analyste suggère " + fr(a.apres) + " colis</b> " + texteSecurise(a.motif)
-      + '<button class="btn-agent" data-role="suivre">Suivre</button></div>';
-  }
-  if (l.fin_promotion && l.motif_fin_promotion) {
-    return '<div class="mot-agent" style="background:rgba(224,102,102,0.12);border-color:#e06666">'
-      + "<b>Fin de promotion :</b> " + texteSecurise(l.motif_fin_promotion) + "</div>";
   }
   if (l.alerte_marge && l.alerte_marge.motifs) {
-    return '<div class="mot-agent" style="background:rgba(241,194,50,0.15);border-color:#f1c232">'
+    encarts.push('<div class="mot-agent" style="background:rgba(241,194,50,0.15);border-color:#f1c232">'
       + "<b>Alerte Prix/Marge :</b> " + texteSecurise(l.alerte_marge.motifs.join(" · "))
-      + " <span style='font-size:12px;opacity:0.85'>(" + texteSecurise(l.alerte_marge.recommandation || "") + ")</span></div>";
+      + " <span style='font-size:12px;opacity:0.85'>(" + texteSecurise(l.alerte_marge.recommandation || "") + ")</span></div>");
   }
-  return "";
+  if (l.alerte_fusion) {
+    encarts.push('<div class="mot-agent" style="background:rgba(211,47,47,0.09);border:1px solid rgba(211,47,47,0.35);border-left:4px solid #d32f2f;border-radius:6px;padding:7px 10px;margin-top:5px;font-size:13px;line-height:1.35"><strong style="color:#d32f2f;display:flex;align-items:center;gap:5px;margin-bottom:2px">⚠️ Codes jumeaux & Alerte Prix</strong><span>' + texteSecurise(l.alerte_fusion) + '</span></div>');
+  }
+  return encarts.join("");
 }
 
 function afficher() {
@@ -814,7 +819,8 @@ function afficher() {
     const pos = l.position_colis === null ? "position inconnue" : "position " + fr(l.position_colis) + " colis";
     const promo = promotionsParItm8[l.itm8];
     const etiquettePromo = promo ? '<div class="badge-promo">PROMO</div>' : "";
-    const etiquetteFinPromo = l.fin_promotion ? '<div class="badge-promo" style="background:#e06666;border-color:#cc0000">FIN PROMO</div>' : "";
+    const etiquetteFinPromo = l.fin_promotion ? '<div class="badge-promo" style="background:#e65100;border-color:#bf360c;color:#fff">🏷️ SORTIE PROMO</div>' : "";
+    const etiquetteFusion = l.alerte_fusion ? '<div class="badge-promo" style="background:#c62828;border-color:#b71c1c;color:#fff">⚠️ CODE JUMEAU</div>' : "";
     const etiquetteAlerteMarge = l.alerte_marge ? '<div class="badge-promo" style="background:#f1c232;color:#222;font-weight:700">⚠ MARGE</div>' : "";
     let etiquetteSaison = "";
     if (l.masque && recDemasquerParItm8[l.itm8]) {
@@ -825,7 +831,7 @@ function afficher() {
       etiquetteSaison = '<div class="badge-promo" style="background:#0277bd;border-color:#01579b;color:#fff" title="' + texteSecurise(rec.motif) + '">❄ FIN SAISON (à masquer ' + texteSecurise(rec.quand) + ')</div>';
     }
     return '<div class="article' + (l.masque ? " faite" : "") + (promo ? " promo" : "") + '" data-itm8="' + texteSecurise(l.itm8) + '">'
-      + '<div class="identite">' + etiquettePromo + etiquetteFinPromo + etiquetteAlerteMarge + etiquetteSaison + '<div class="nom" data-role="detail" role="button" tabindex="0">'
+      + '<div class="identite">' + etiquettePromo + etiquetteFinPromo + etiquetteFusion + etiquetteAlerteMarge + etiquetteSaison + '<div class="nom" data-role="detail" role="button" tabindex="0">'
       + (window.PhotosProduits ? PhotosProduits.image(l.itm8, "liste") : "") + texteSecurise(l.libelle) + "</div>"
       + '<div class="sous">' + pos + " · colis de " + fr(l.conditionnement) + " " + texteSecurise(l.unite)
       + " · marge " + fr(l.marge_pct) + " %"
@@ -868,6 +874,44 @@ async function basculerMasque(l, bouton) {
   }
 }
 
+let timersSyncAjustements = {};
+function indiquerStatutSync(message, type) {
+  const el = document.getElementById("statut-sync-ia");
+  if (!el) return;
+  el.style.display = "block";
+  el.textContent = message;
+  if (type === "succes") {
+    el.style.color = "var(--accent)";
+    setTimeout(() => { if (el.textContent === message) el.style.display = "none"; }, 4000);
+  } else if (type === "erreur") {
+    el.style.color = "var(--mousq-rouge)";
+  } else {
+    el.style.color = "var(--warn)";
+  }
+}
+
+function synchroniserAjustementServeur(itm8, q, motif) {
+  clearTimeout(timersSyncAjustements[itm8]);
+  indiquerStatutSync("Enregistrement IA…", "info");
+  timersSyncAjustements[itm8] = setTimeout(async () => {
+    try {
+      const rep = await fetch("/api/ajustements-commande", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ itm8: itm8, colis: q, motif: motif })
+      });
+      const data = await rep.json();
+      if (rep.ok && data.ok) {
+        indiquerStatutSync("✓ Enregistré pour l'IA (" + fr(q) + " colis)", "succes");
+      } else {
+        indiquerStatutSync("⚠ Sync IA : " + (data.erreur || "refus serveur"), "erreur");
+      }
+    } catch (e) {
+      indiquerStatutSync("⚠ Enregistré localement (serveur indisponible)", "warn");
+    }
+  }, 600);
+}
+
 document.getElementById("liste").addEventListener("click", (e) => {
   const bloc = e.target.closest(".article");
   if (!bloc) return;
@@ -877,7 +921,10 @@ document.getElementById("liste").addEventListener("click", (e) => {
 
   if (role === "suivre") {
     const a = agentAjustements[itm8];
-    if (a && memoriser(CLE_AJUSTEMENTS, itm8, a.apres)) afficher();
+    if (a && memoriser(CLE_AJUSTEMENTS, itm8, a.apres)) {
+      afficher();
+      synchroniserAjustementServeur(itm8, a.apres, "Suggestion suivie par le responsable : " + a.motif);
+    }
     return;
   }
   if (role === "masquer") {
@@ -886,7 +933,10 @@ document.getElementById("liste").addEventListener("click", (e) => {
     const q = Math.max(0, quantite(ligne) + (role === "plus" ? 1 : -1));
     const agent = agentAjustements[itm8];
     const defaut = (agent && agent.applique) ? agent.apres : ligne.propose_colis;
-    if (memoriser(CLE_AJUSTEMENTS, itm8, q === defaut ? null : q)) afficher();
+    if (memoriser(CLE_AJUSTEMENTS, itm8, q === defaut ? null : q)) {
+      afficher();
+      synchroniserAjustementServeur(itm8, q, "Ajustement manuel responsable de rayon");
+    }
   } else if (role === "detail") {
     montrerDetail(ligne);
   }
@@ -1203,6 +1253,22 @@ function montrerDetail(l) {
     + fr(l.propose_colis) + " colis</span></div>";
   if (quantite(l) !== l.propose_colis) ajoute("Quantité retenue après ajustement", fr(quantite(l)) + " colis");
   if (l.promotion) lignes += '<p class="sous-titre">En promotion : précommandé par le chef de rayon, rien à commander en quotidien.</p>';
+  if (l.fin_promotion) {
+    lignes += '<div style="background:rgba(230,81,0,0.08);border:1px solid rgba(230,81,0,0.35);border-left:4px solid #e65100;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13.5px;line-height:1.4">'
+      + '<strong style="color:#e65100;display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:14px">🏷️ Sortie de promotion (Règle S-1)</strong>'
+      + '<p style="margin:0 0 6px 0;color:var(--text)">' + texteSecurise(l.motif_fin_promotion || "Produit récemment sorti du prospectus.") + '</p>'
+      + '<div style="font-size:12px;color:var(--text-dim);background:var(--bg-panel-alt);padding:6px 8px;border-radius:4px;border:1px solid var(--border)">'
+      + "💡 <b>Principe métier :</b> En sortie de prospectus, le volume de vente retombe à son niveau naturel. La prévision automatique est adoucie sur la base de la semaine pré-promo (S-1) pour protéger la marge et éviter l'accumulation de stock en réserve."
+      + '</div></div>';
+  }
+  if (l.alerte_fusion) {
+    lignes += '<div style="background:rgba(211,47,47,0.08);border:1px solid rgba(211,47,47,0.35);border-left:4px solid #d32f2f;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13.5px;line-height:1.4">'
+      + '<strong style="color:#d32f2f;display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:14px">⚠️ Rapprochement de codes jumeaux & Alerte Prix</strong>'
+      + '<p style="margin:0 0 6px 0;color:var(--text)">' + texteSecurise(l.alerte_fusion) + '</p>'
+      + '<div style="font-size:12px;color:var(--text-dim);background:var(--bg-panel-alt);padding:6px 8px;border-radius:4px;border:1px solid var(--border)">'
+      + "💡 <b>Vérification requise :</b> Les ventes en caisse et les livraisons s'effectuent sous deux codes différents avec des prix divergents. Contrôler le prix affiché en rayon et le code-barres scanné au meuble caisse pour éviter toute perte de marge."
+      + '</div></div>';
+  }
   if (l.position_bloquee) lignes += '<p class="sous-titre">Position trop basse pour être crédible — un comptage est nécessaire.</p>';
   if (l.motif_commande_groupe) lignes += '<p class="sous-titre">' + texteSecurise(l.motif_commande_groupe) + '</p>';
   document.getElementById("detail-calcul").innerHTML = "<h2>Pourquoi ce chiffre</h2>" + lignes;

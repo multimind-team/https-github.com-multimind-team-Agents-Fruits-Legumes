@@ -224,8 +224,8 @@ def dernier_cadencier(dossier_courrier=None):
     """Trouve le dernier cadencier Webtelevente, quel que soit son séparateur."""
     dossier_courrier = Path(dossier_courrier or DONNEES / "courrier")
     fichiers = [
-        fichier for fichier in dossier_courrier.rglob("*.xls*")
-        if re.match(r"^cadencier[-_ ]+webtelevente(?:[-_ ]|$)", fichier.name, re.IGNORECASE)
+        fichier for fichier in dossier_courrier.rglob("*.xls")
+        if fichier.suffix.lower() == ".xls" and re.match(r"^cadencier[-_ ]+webtelevente(?:[-_ ]|$)", fichier.name, re.IGNORECASE)
     ]
     if not fichiers:
         sys.exit("Aucun cadencier Webtelevente reçu. Le Leader doit d'abord relever les mails "
