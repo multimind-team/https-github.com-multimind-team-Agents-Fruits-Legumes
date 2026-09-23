@@ -616,7 +616,7 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def end_headers(self):
-        # Support CORS pour le Cockpit PC autonome (port 8752)
+        # Support CORS pour les outils locaux autonomes (port 8752)
         origine = self.headers.get("Origin", "")
         if origine in ("http://127.0.0.1:8752", "http://localhost:8752"):
             self.send_header("Access-Control-Allow-Origin", origine)
@@ -859,12 +859,12 @@ class Gestionnaire(SimpleHTTPRequestHandler):
         autorise = hote in locaux | distants
         if ecriture:
             origines = self.headers.get_all("Origin", [])
-            origines_cockpit = {"http://127.0.0.1:8752", "http://localhost:8752"}
-            attendues = ({"http://" + hote} | origines_cockpit) if hote in locaux else {
+            origines_externes_locales = {"http://127.0.0.1:8752", "http://localhost:8752"}
+            attendues = ({"http://" + hote} | origines_externes_locales) if hote in locaux else {
                 "https://" + HOTE_TAILSCALE, "https://" + HOTE_TAILSCALE + ":443"}
             fetch = self.headers.get_all("Sec-Fetch-Site", [])
             autorise = (autorise and len(origines) == 1 and origines[0] in attendues
-                        and (not fetch or fetch == ["same-origin"] or (origines[0] in origines_cockpit and fetch[0] in ("same-site", "cross-site"))))
+                        and (not fetch or fetch == ["same-origin"] or (origines[0] in origines_externes_locales and fetch[0] in ("same-site", "cross-site"))))
         if not autorise:
             self.close_connection = True
             self._repondre({"ok": False, "erreur": "Accès refusé. Ouvre l'application depuis son adresse habituelle."}, 403)

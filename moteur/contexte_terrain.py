@@ -269,7 +269,7 @@ def _enregistrer_observations(donnees, recu, articles):
         decision = {"id": "contexte:" + uuid.uuid4().hex, "type": "contexte-terrain",
                     "article": requete["itm8"], "valeur": valeur, "revision": revision + 1,
                     "motif": requete["motif"], "auteur": "responsable-rayon",
-                    "origine": "cockpit-rayon", "enregistre_le": datetime.now().isoformat(timespec="seconds"),
+                    "origine": "interface-rayon", "enregistre_le": datetime.now().isoformat(timespec="seconds"),
                     "requete_id": requete["requete_id"], "requete": requete, "annotation_seule": True}
         append_jsonl(Path(donnees) / "decisions.jsonl", [decision])
         return {"ok": True, "enregistre": True, "deja_enregistre": False, "annotation_seule": True,
@@ -321,7 +321,7 @@ def enregistrer(donnees, recu, articles):
         decision = {"id": "contexte:" + uuid.uuid4().hex, "type": "contexte-terrain",
                     "article": requete["itm8"], "valeur": valeur, "revision": revision + 1,
                     "motif": requete["motif"], "auteur": "responsable-rayon",
-                    "origine": "cockpit-rayon", "enregistre_le": datetime.now().isoformat(timespec="seconds"),
+                    "origine": "interface-rayon", "enregistre_le": datetime.now().isoformat(timespec="seconds"),
                     "requete_id": requete["requete_id"], "requete": requete,
                     "annotation_seule": annotation_seule}
         append_jsonl(Path(donnees) / "decisions.jsonl", [decision])

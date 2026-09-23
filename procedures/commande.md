@@ -36,6 +36,12 @@ py -3.14 moteur/filet-de-securite.py --forcer
    - la fraîcheur par article et les alertes ; une position perdue commence à -10 colis inclus.
 5. Lis aussi `donnees/fraicheur.json`, y compris les calculs en échec et sa référence `proposition_generee_le`, puis `donnees/recalcul.json`. La référence doit correspondre à la proposition examinée et le recalcul être terminé. Une modification récente du fichier ou un code 0 ne prouve ni la couverture métier ni la réussite de toutes les étapes.
 6. Signale au responsable ce qui peut changer sa décision ; publie les anomalies dans le chat.
+7. **Archivage de la proposition de base et entraînement IA (Contrat CP-04) :**
+   - La proposition initiale calculée par le moteur est automatiquement archivée de manière immuable sous `donnees/propositions/proposition-AAAA-MM-JJ.json` via `moteur/enregistrer_modifications_commande.py`. Ce point de référence fige le calcul algorithmique avant toute intervention humaine.
+   - Dès que le responsable modifie une quantité sur l'écran de commande (`app/commander.html`), celle-ci est synchronisée en temps réel via `POST /api/ajustements-commande` (ou via `moteur/ajuster-commande.py` en ligne de commande).
+   - L'enregistrement alimente simultanément :
+     1. `donnees/ajustements.jsonl` : historique opérationnel des ajustements pour affichage et calcul.
+     2. `donnees/entrainement-ajustements.jsonl` : carnet d'apprentissage supervisé capturant le contexte complet de décision (quantité proposée, quantité retenue, delta, stock physique projeté, demande brute, facteurs d'amplification, météo observée et prévue, PCB, prix d'achat, prix de vente, marge % et motifs saisis).
 
 Consulter aussi les avis et anomalies du circuit `procedures/controle-stock.md`. Une fraîcheur
 « à jour » ou un bandeau absent ne prouve ni que toutes les livraisons ont été intégrées, ni que

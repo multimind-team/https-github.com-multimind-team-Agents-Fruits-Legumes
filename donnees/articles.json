@@ -84,7 +84,7 @@
    "libelle": "TOMATE COTELEE ROUGE VRAC",
    "fournisseur": "POMONA",
    "conditionnement": 3.5,
-   "source_conditionnement": "decision_cockpit",
+   "source_conditionnement": "decision_responsable",
    "avertissements_conditionnement": [],
    "unite": "kg",
    "derniere_position_unites": -3.5,
@@ -96,7 +96,7 @@
    "motif": "Vérification colisage",
    "rang": 5,
    "part_ca_cumulee": 15.6,
-   "commentaire": "Cockpit : Pesée directe plateau 3.5 kg net"
+   "commentaire": "Pesée directe plateau 3.5 kg net"
   },
   {
    "itm8": "0000087004593",

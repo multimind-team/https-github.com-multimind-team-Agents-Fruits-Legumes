@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>24.3 Apprentissage local et entraînement des modèles d'IA — Documentation pour IA</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .content-body{max-width:1200px} .table-scroll{overflow-x:auto;margin:16px 0} .table-scroll table{min-width:640px}
+    code{overflow-wrap:anywhere} pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:18px;background:#f4f4f2;border:1px solid #ddd}
+    .local-toc{columns:2;column-gap:28px}.local-toc li{break-inside:avoid} section{scroll-margin-top:85px}
+    @media(max-width:760px){.sidebar{display:none}.main-wrapper{margin-left:0;min-width:0}.content-body{padding:26px 18px}.top-bar{height:auto;min-height:54px;padding:12px 18px;flex-wrap:wrap;gap:8px}.doc-top-red-line{left:-18px;right:-18px;top:-26px}.local-toc{columns:1}.doc-main-title{font-size:23px}.page-nav-bar{flex-wrap:wrap;gap:12px}p{text-align:left}}
+    @media print{.table-scroll{overflow:visible}.table-scroll table{min-width:0}pre{font-size:8pt}}
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header"><a href="../index.html"><picture><source srcset="../assets/logo.webp" type="image/webp"><img class="sidebar-brand-img" src="../assets/logo.gif" alt="Agents Fruits et Légumes"></picture></a><div class="project-tag">Documentation pour IA</div><div class="project-name-display">Apprentissage local & IA</div></div>
+    <nav class="sidebar-nav" aria-label="Navigation documentaire"><ul class="nav-list">
+      <li class="nav-item"><a href="../index.html">Sommaire général</a></li>
+      <li class="nav-item"><a href="./24.1 - Roadmap des chantiers techniques et donnees manquantes.html">24.1 Roadmap des chantiers</a></li>
+      <li class="nav-item"><a href="./24.2 - Innovations algorithmiques et vision prospective du rayon.html">24.2 Innovations et évaluation</a></li>
+      <li class="nav-item active"><a href="#mandat">24.3 Apprentissage local & IA</a></li>
+      <li class="nav-item"><a href="#lots">Lots et critères de fin</a></li>
+      <li class="nav-item"><a href="#sources">Sources vérifiables</a></li>
+    </ul></nav>
+  </aside>
+  <main class="main-wrapper">
+    <header class="top-bar"><div class="breadcrumb"><a href="../index.html">Documentation pour IA</a> / Chapitre 24 / 24.3</div><button class="btn-action" onclick="window.print()">Imprimer / PDF</button></header>
+    <div class="content-body">
+      <div class="doc-page-header"><div class="doc-top-red-line"></div><span class="doc-badge-chapter">DOC-ITM-24.3 · Architecture d'apprentissage</span><h1 class="doc-main-title">Apprentissage local et entraînement des modèles d'IA</h1><p class="doc-subtitle-text">Spécification formelle de la capture des décisions de commande, de la constitution du jeu d'entraînement et des protocoles d'évaluation prospective. Révision du 23 septembre 2026.</p></div>
+      <section id="mandat"><h2>1. Mandat et principes directeurs</h2>
+        <p>Demande explicite du responsable de rayon : enregistrer la proposition de commande habituelle et capturer systématiquement l'ensemble de ses arbitrages manuels avec le maximum de variables de contexte (météo, stock, demande, prix, marges, motifs), afin de constituer une base d'exemples qualifiée pour l'entraînement de futurs modèles d'IA locaux.</p>
+        <div class="callout-box"><strong>Règle d'or de l'apprentissage local.</strong> Aucune donnée n'est envoyée vers un service cloud ou une IA externe. L'ensemble des carnets (<code>donnees/propositions/</code> et <code>donnees/entrainement-ajustements.jsonl</code>) reste strictement local sur la machine du magasin. L'apprentissage supervisé s'effectue hors du chemin critique du matin pour préserver l'impératif de 9 h 30.</div>
+        <ol class="local-toc"><li><a href="#existant">État opérationnel vérifié</a></li><li><a href="#donnees">Dictionnaire des données capturées</a></li><li><a href="#contrats">Contrats temporels et sans fuite</a></li><li><a href="#api">Architecture d'acquisition</a></li><li><a href="#apprentissage">Protocole d'évaluation des modèles</a></li><li><a href="#lots">Lots de développement</a></li><li><a href="#sources">Sources vérifiables</a></li></ol>
+      </section>
+      <section id="existant"><h2>2. État opérationnel vérifié (au 23 septembre 2026)</h2>
+        <div class="table-scroll"><table><thead><tr><th>Composant</th><th>Statut</th><th>Rôle et implémentation</th></tr></thead><tbody>
+          <tr><td>Archivage de proposition de base</td><td>Vérifié en production</td><td><code>donnees/propositions/proposition-AAAA-MM-JJ.json</code> : capture immuable de la proposition algorithmique originale avant tout arbitrage humain, avec facteurs météo, couvertures et demandes.</td></tr>
+          <tr><td>Synchronisation temps réel</td><td>Vérifié en production</td><td><code>POST /api/ajustements-commande</code> dans <code>moteur/serveur.py</code> : réception asynchrone débouncée des ajustements saisis sur l'écran <code>app/commander.html</code> avec voyant visuel d'état.</td></tr>
+          <tr><td>Carnet d'entraînement IA</td><td>Vérifié en production</td><td><code>donnees/entrainement-ajustements.jsonl</code> : structure enrichie ligne par ligne reliant l'état algorithmique, le choix humain final, le delta et l'environnement complet de décision.</td></tr>
+          <tr><td>Module de traitement</td><td>Vérifié en production</td><td><code>moteur/enregistrer_modifications_commande.py</code> : fonctions <code>archiver_proposition_base()</code> et <code>enregistrer_modification()</code>, validé par la suite de tests isolés <code>tests/test_enregistrer_modifications_commande.py</code>.</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="donnees"><h2>3. Dictionnaire des données capturées pour l'IA</h2>
+        <p>Chaque ligne de <code>donnees/entrainement-ajustements.jsonl</code> forme un exemple d'apprentissage supervisé complet, associant les variables explicatives (features) au label de décision humaine (target) :</p>
+        <div class="table-scroll"><table><thead><tr><th>Rubrique</th><th>Champ</th><th>Type</th><th>Description et provenance</th></tr></thead><tbody>
+          <tr><td>Clés d'identité</td><td><code>id</code>, <code>date_commande</code>, <code>date_livraison</code>, <code>article</code></td><td>Chaînes</td><td>Identifiant unique de l'événement, dates du cycle de réapprovisionnement et code ITM8 du produit.</td></tr>
+          <tr><td>Cibles (Targets)</td><td><code>quantite_proposee</code>, <code>quantite_retenue</code>, <code>delta_colis</code></td><td>Nombres</td><td>Recommandation initiale de l'algorithme, choix final du responsable et écart algébrique en nombre de colis.</td></tr>
+          <tr><td>Stocks &amp; Besoins</td><td><code>stock_physique_colis</code>, <code>demande_calculee</code>, <code>facteur_meteo</code>, <code>facteur_saisonnier</code></td><td>Nombres</td><td>Position physique de départ, demande brute estimée et coefficients multiplicateurs appliqués par le moteur.</td></tr>
+          <tr><td>Conditionnement</td><td><code>conditionnement</code>, <code>unite</code></td><td>Nombre / Chaîne</td><td>PCB (pièces/poids par colis) et unité métier (kg, pièce, barquette, sachet).</td></tr>
+          <tr><td>Économie du rayon</td><td><code>prix_achat</code>, <code>prix_vente</code>, <code>marge_pct</code></td><td>Nombres</td><td>Prix d'achat unitaire, prix de vente affiché et taux de marge théorique associé.</td></tr>
+          <tr><td>Météo locale</td><td><code>meteo_jour</code>, <code>meteo_livraison</code></td><td>Objets</td><td>Températures min/max, précipitations (mm), vitesse du vent et code WMO observés le jour de commande et prévus le jour de livraison.</td></tr>
+          <tr><td>Supervision humaine</td><td><code>motif</code>, <code>auteur</code>, <code>horodatage</code></td><td>Chaînes</td><td>Motif explicite renseigné par le responsable de rayon (ex: météo défavorable, surstock, qualité), rôle et instant ISO de la saisie.</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="contrats"><h2>4. Contrats temporels et étanchéité de l'information</h2>
+        <ul>
+          <li><strong>Zéro fuite temporelle (Data Leakage) :</strong> Les variables d'entrée d'un exemple d'entraînement ne contiennent que les informations attestées et disponibles à l'instant précis où la commande a été passée (avant 9 h 30). Aucune vente ultérieure ou météo observée après coup n'est injectée dans les entrées explicatives du modèle.</li>
+          <li><strong>Immutabilité des faits :</strong> La proposition algorithmique initiale archivée dans <code>donnees/propositions/</code> n'est jamais écrasée. Elle sert d'ancrage permanent pour comparer objectivement les performances de l'algorithme historique et les intuitions du terrain.</li>
+          <li><strong>Séparation carnet opérationnel / carnet IA :</strong> <code>donnees/ajustements.jsonl</code> conserve la trace légère pour l'affichage de l'écran mobile ; <code>donnees/entrainement-ajustements.jsonl</code> conserve le contexte vectoriel enrichi pour le machine learning.</li>
+        </ul>
+      </section>
+      <section id="api"><h2>5. Architecture d'acquisition</h2>
+        <p>L'acquisition s'exécute à travers un pipeline asynchrone non bloquant :</p>
+        <pre><code>[app/commander.html]
+       │
+       ▼ (Fetch POST debouncé 400ms)
+[POST /api/ajustements-commande]
+       │
+       ▼ (moteur/enregistrer_modifications_commande.py)
+ ┌─────┴───────────────────────────────────────────────────────┐
+ │ 1. Archiver la proposition de base si absente              │
+ │    --> donnees/propositions/proposition-AAAA-MM-JJ.json     │
+ │ 2. Enregistrer l'ajustement opérationnel                     │
+ │    --> donnees/ajustements.jsonl                            │
+ │ 3. Croiser météo, catalogue, position et enrichir           │
+ │    --> donnees/entrainement-ajustements.jsonl               │
+ └─────────────────────────────────────────────────────────────┘</code></pre>
+      </section>
+      <section id="apprentissage"><h2>6. Protocole d'évaluation des futurs modèles</h2>
+        <ol>
+          <li><strong>Validation à origine glissante (Rolling-Origin Backtesting) :</strong> L'entraînement s'effectue sur les semaines passées, l'ajustement des hyperparamètres sur la semaine suivante, et le test sur les journées les plus récentes sans jamais mélanger les périodes.</li>
+          <li><strong>Métriques de performance :</strong> Mesure de l'erreur absolue (MAE en colis), du biais directionnel (sur-commande vs sous-commande), et du taux d'alignement avec les choix du responsable de rayon.</li>
+          <li><strong>Arbitrage anti-casse et anti-rupture :</strong> Les modèles candidats sont évalués sur leur capacité à reproduire les corrections d'anticipation du responsable (par exemple, baisser les commandes de melon en cas de dégradation météo pluvieuse).</li>
+        </ol>
+      </section>
+      <section id="lots"><h2>7. Lots de développement de l'apprentissage local</h2>
+        <div class="table-scroll"><table><thead><tr><th>Lot et référence</th><th>Description du livrable</th><th>Statut de validation</th></tr></thead><tbody>
+          <tr><td>AL-01 · Capture et constitution du dataset</td><td>Archivage de proposition initiale (<code>donnees/propositions/</code>), route API <code>POST /api/ajustements-commande</code>, carnet enrichi <code>donnees/entrainement-ajustements.jsonl</code>.</td><td><strong>Validé et vérifié le 23/09/2026</strong>. Tests unitaires 100% passants dans <code>tests/test_enregistrer_modifications_commande.py</code>.</td></tr>
+          <tr><td>AL-02 · Pipeline d'extraction tabulaire</td><td>Script d'export local convertissant les JSONL en matrices d'apprentissage normalisées (parquet/csv local) avec encodage des motifs et variables calendaires.</td><td>À développer (P1)</td></tr>
+          <tr><td>AL-03 · Modèle prédictif d'ajustement</td><td>Modèle local (arbre de décision/régression régularisée) suggérant des corrections de commande basées sur l'historique des arbitrages humains.</td><td>À développer (P2)</td></tr>
+          <tr><td>AL-04 · Évaluation comparative continue</td><td>Tableau comparatif des écarts proposition algorithmique brute vs modèle enrichi vs commande finale réelle.</td><td>À développer (P2)</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="sources"><h2>8. Sources vérifiables</h2>
+        <ul>
+          <li><a href="../../../moteur/enregistrer_modifications_commande.py">moteur/enregistrer_modifications_commande.py</a> : Moteur de capture et d'enrichissement.</li>
+          <li><a href="../../../moteur/serveur.py">moteur/serveur.py</a> : Route API <code>/api/ajustements-commande</code>.</li>
+          <li><a href="../../../app/commander.html">app/commander.html</a> : Interface de commande et synchronisation temps réel.</li>
+          <li><a href="../../../tests/test_enregistrer_modifications_commande.py">tests/test_enregistrer_modifications_commande.py</a> : Suite de tests de validation unitaire.</li>
+          <li><a href="../../../reference/contrat-echange.md">reference/contrat-echange.md</a> : Spécification des carnets JSONL.</li>
+        </ul>
+      </section>
+      <div class="page-nav-bar"><a class="btn-action" href="./24.2 - Innovations algorithmiques et vision prospective du rayon.html">← 24.2 Innovations</a><a class="btn-action" href="../index.html">Sommaire général</a></div>
+    </div>
+  </main>
+</body>
+</html>

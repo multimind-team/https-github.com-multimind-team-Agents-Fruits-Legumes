@@ -19,6 +19,8 @@ Les chemins de ce tableau sont relatifs à `donnees/`.
 | `journaux/<rôle>.jsonl` | ce que chaque rôle a fait, avec l'avant et l'après | jamais | le rôle |
 | `journaux/tout.jsonl` | les mêmes actions, tous rôles, dans l'ordre | jamais | tous |
 | `ajustements.jsonl` | les ajustements de commande | jamais | auteurs habilités selon `pouvoirs.json` et validation de la demande |
+| `entrainement-ajustements.jsonl` | carnet d'entraînement IA (CP-04) capturant le contexte complet lors des ajustements | jamais | `moteur/enregistrer_modifications_commande.py` (via `POST /api/ajustements-commande` ou `ajuster-commande.py`) |
+| `propositions/proposition-AAAA-MM-JJ.json` | archive figée de la proposition algorithmique initiale du jour | jamais | `moteur/enregistrer_modifications_commande.py` |
 | `agregats.json` | statistiques et profils saisonniers des articles | régénérable | `moteur/agregats.py`, avec les calculs de `moteur/calculer-commande.py` |
 | `analyse-ventes-annuelle-saisonniere.json` | analyse des années, mois et saisons disponibles | régénérable | `moteur/analyser-historique-complet.py` |
 | `proposition.json`, `articles.json` | proposition et aide au comptage | régénérables | producteurs du moteur |
@@ -202,8 +204,11 @@ ventes estimées du repère de comptage, sans ajouter de faits de vente.
 
 Les plafonds et actions viennent de `pouvoirs.json`. `appliquer-decision.py` et `annuler.py`
 contrôlent le rôle déclaré, les actions permises et les plafonds via `journal_agents.py` ;
-`ajuster-commande.py` contrôle les droits et limites propres aux ajustements. Ces plafonds
-d'actions ne sont pas un quota de lignes de ventes dans un import.
+`ajuster-commande.py` contrôle les droits et limites propres aux ajustements. Pour les ajustements
+de commande du responsable et la capture de référence des propositions, `moteur/enregistrer_modifications_commande.py`
+(via `POST /api/ajustements-commande` ou `ajuster-commande.py`) archive immuablement la proposition de base
+(`donnees/propositions/`) et alimente simultanément `ajustements.jsonl` et le carnet d'entraînement IA
+`entrainement-ajustements.jsonl`. Ces plafonds d'actions ne sont pas un quota de lignes de ventes dans un import.
 
 Il n'existe pas de contrôle universel des pouvoirs autour de toute écriture de fichier : les
 importeurs restent soumis aux mandats et à `procedures/controle-stock.md`. Les outils ne
@@ -232,8 +237,11 @@ nom d'un script ou de son code retour.
 
 ## Ce que les carnets ne contiennent pas
 
-- **La proposition de commande** — un calcul refait à neuf à chaque fois
-  (`proposition.json`, écrasé). Ce qu'un rôle en *dit* est un événement (`ajustements.jsonl`).
+- **La proposition de commande active** — un calcul refait à neuf à chaque fois
+  (`proposition.json`, écrasé). En revanche, la proposition algorithmique initiale de chaque jour
+  est archivée de façon immuable dans `donnees/propositions/proposition-AAAA-MM-JJ.json`.
+  Ce qu'un rôle ou le responsable en *dit* est un événement tracé dans `ajustements.jsonl`
+  et enrichi dans `entrainement-ajustements.jsonl`.
 - **Les cadenciers** — des catalogues, pas des mouvements.
 - **La météo et les jours fériés** — des ingrédients du calcul.
 

@@ -46,7 +46,9 @@ Pour un agent, lancer le serveur avec `py -3.14 -B moteur/gerer-serveur.py demar
 1. L’agent courrier lit les sources et conserve leur provenance.
 2. L’agent données simule le lot ; un agent contrôle distinct vérifie les lignes et la chronologie.
 3. Après contrôles et autorisations applicables, les importeurs ajoutent les faits puis le filet de sécurité recalcule les sorties.
-4. Le responsable consulte et ajuste la proposition, puis la recopie sur la tablette officielle. Aucun export EDI ni envoi automatique de commande n’est implémenté.
+4. La proposition algorithmique initiale du jour est archivée immuablement dans `donnees/propositions/proposition-AAAA-MM-JJ.json`.
+5. Le responsable consulte et ajuste la proposition sur l'écran `app/commander.html`. Ses modifications sont synchronisées en temps réel vers `POST /api/ajustements-commande` et enregistrées dans `donnees/ajustements.jsonl` ainsi que dans le carnet d'entraînement pour les futures IA `donnees/entrainement-ajustements.jsonl` (Contrat CP-04) avec le contexte décisionnel complet (météo, stock, demande, PCB, marges, motifs).
+6. Le responsable recopie la commande finale sur la tablette officielle du magasin. Aucun export EDI ni envoi automatique de commande n’est implémenté.
 
 Les factures directes nécessitent une validation explicite ligne par ligne avant import de stock. La préparation du classeur Pomona peut se faire seule avec `--classeur-seul`. Son téléchargement est disponible dans l’application ; un courriel séparé exige un destinataire explicitement demandé.
 
@@ -56,9 +58,11 @@ Les factures directes nécessitent une validation explicite ligne par ligne avan
 |---|---|
 | [AGENTS.md](AGENTS.md) | Consigne canonique et autorisations |
 | `agents/`, `procedures/`, `reference/` | Missions, procédures, contrats métier |
-| `moteur/` | Importeurs, calculs, serveur et surveillance |
+| `moteur/` | Importeurs, calculs, serveur, surveillance et enregistrement d'ajustements (`enregistrer_modifications_commande.py`) |
 | `app/` | Accueil, commande, comptage, promotions et maintenance |
 | `donnees/` | Sources et sorties métier ; les carnets JSONL se corrigent par ajout |
+| `donnees/propositions/` | Archives immuables des propositions algorithmiques de base (`proposition-AAAA-MM-JJ.json`) |
+| `donnees/entrainement-ajustements.jsonl` | Exemples d'entraînement supervisé pour les futures IA (Contrat CP-04) |
 | `documents-partages/` | Classeurs et documents proposés au téléchargement |
 | `tests/` | Contrôles syntaxiques, métier et navigateur |
 

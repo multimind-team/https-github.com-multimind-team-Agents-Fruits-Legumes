@@ -147,6 +147,7 @@
       <ul class="nav-list">
         <li class="nav-item active"><a href="./24.1 - Roadmap des chantiers techniques et donnees manquantes.html">24.1 - Roadmap technique &amp; Données manquantes</a></li>
         <li class="nav-item"><a href="./24.2 - Innovations algorithmiques et vision prospective du rayon.html">24.2 - Innovations algorithmiques &amp; Vision</a></li>
+        <li class="nav-item"><a href="./24.3 - Apprentissage local et entrainement des modeles d'IA.html">24.3 - Apprentissage local &amp; IA</a></li>
       </ul>
     </nav>
 
@@ -190,13 +191,13 @@
 
       <h2>1. Statut de cette feuille de route</h2>
       <p><strong>Révision documentaire du 20 septembre 2026.</strong> Cette fiche sépare les capacités présentes dans le code, les limites de leurs données et les développements proposés. Une fonction écrite ne prouve ni la complétude des imports ni un gain commercial. Cette roadmap n'active aucun apprentissage, aucune collecte externe, aucune écriture métier ni aucun envoi de commande.</p>
-      <p>Les besoins restent ouverts aux observations du responsable. Le cockpit de pilotage est désormais une application autonome dédiée (port 8752) ; le <a href="24.3 - Contrat de developpement du cockpit et apprentissage local.html">contrat de développement et d'apprentissage local</a> détaille les exigences de données, de validation et de livraison.</p>
+      <p>Les besoins restent ouverts aux observations du responsable. Le <a href="24.3 - Apprentissage local et entrainement des modeles d'IA.html">contrat d'apprentissage local et d'entraînement IA</a> détaille les exigences de données, de validation et de livraison.</p>
 
       <h2>2. Socle déjà livré et limites à conserver</h2>
       <table class="subchap-table">
         <thead><tr><th>Capacité présente</th><th>Portée réelle</th><th>Limite pour la suite</th></tr></thead>
         <tbody>
-          <tr><td><strong>Cockpit PC</strong></td><td>Application autonome dédiée sur le port 8752 avec son propre lanceur Bureau.</td><td>Aucun nouveau service cloud, modèle d'apprentissage ou superviseur d'agents permanent.</td></tr>
+          <tr><td><strong>Application mobile &amp; magasin</strong></td><td>Préparation de commande et pointage mobile sur le port 8751.</td><td>Aucun nouveau service cloud, modèle d'apprentissage distant ou superviseur externe permanent.</td></tr>
           <tr><td><strong>Pilotage</strong></td><td><code>GET /api/pilotage</code> : horizons 3, 7, 14, 30 jours et année ; détail d'article, profils hebdomadaires, graphiques de flux sur 14 jours et couvertures explicites.</td><td>Le graphique de flux reste sur 14 jours. Un jour sans fait n'est pas une vente nulle. Les colis équivalents utilisent le PCB actuel et ne remplacent pas les unités sources.</td></tr>
           <tr><td><strong>Contexte terrain</strong></td><td><code>GET/POST /api/contexte</code>, versions en ajout seul dans <code>donnees/decisions.jsonl</code> de type <code>contexte-terrain</code> ; dates, emplacement, minimum de présentation, statut, maturité et notes.</td><td>TG ×1,5 et îlot ×2 sont des règles fixes déclarées, pas des effets commerciaux appris ou démontrés. La maturité et les notes ne retirent aucun stock.</td></tr>
           <tr><td><strong>Promotions</strong></td><td>Dates, prix et unité renseignés, précommande observée, objectif, commentaire, rupture déclarée et bilan ; comparaisons descriptives aux jours documentés.</td><td>Une précommande observée n'est ni un engagement confirmé ni une réception. Aucun volume de précommande future n'est calculé. Le contexte promo ne crée pas le drapeau historique de promotion précommandée.</td></tr>
@@ -235,7 +236,7 @@
       <p><strong>Validation requise :</strong> scénarios en copie couvrant comptage avant/après livraison, réception partielle, retard, annulation, doublon, substitution, changement d'unité et stocks communs à plusieurs codes. Vérifier les reliquats et les échéances avec les documents d'origine ; un écart ne déclenche aucun message fournisseur automatique.</p>
 
       <h2>5. Préremplissage Webtelevente : intégration future séparée</h2>
-      <p>Réduire la double saisie est un objectif à mesurer, sans promettre un temps gagné. Aucun connecteur d'envoi fournisseur n'est livré par le cockpit. L'existence d'une API, d'un format EDI ou d'un accès automatisable doit être vérifiée auprès du système concerné, avec le périmètre d'accès autorisé.</p>
+      <p>Réduire la double saisie est un objectif à mesurer, sans promettre un temps gagné. Aucun connecteur d'envoi automatique de commande n'est activé. L'existence d'une API, d'un format EDI ou d'un accès automatisable doit être vérifiée auprès du système concerné, avec le périmètre d'accès autorisé.</p>
       <p><strong>Dépendances :</strong> correspondances de codes prouvées, panier exact relu par le responsable, unités et échéances explicites, environnement de test, identifiant de requête et protocole de reprise après réponse incertaine. Le préremplissage et la soumission finale sont deux actions distinctes ; la roadmap n'autorise pas l'envoi.</p>
       <p><strong>Validation :</strong> aucune ligne ajoutée ou perdue, aucun double envoi lors d'une reprise, rapprochement avec l'accusé de réception et le numéro de commande réel. Ce numéro appartient à un futur journal d'ordres et d'accusés, <strong>jamais à un fait de stock dans <code>donnees/faits/AAAA.jsonl</code></strong>. Seule une réception physique attestée peut alimenter le processus normal de stock.</p>
 
@@ -258,7 +259,7 @@
         <li><strong>Apprentissage local en mode miroir :</strong> prévisions archivées avant résultat, horizons distincts, validation chronologique et comparaison aux règles simples et au moteur actuel ; aucune modification automatique de commande.</li>
       </ol>
       <p>Chaque lot dispose d'un mandat, d'un état initial, d'une liste de fichiers, de critères d'acceptation et d'un contrôle indépendant. Les huit rôles existants restent ceux d'<a href="../../../AGENTS.md">AGENTS.md</a> ; cette fiche ne modifie pas <code>donnees/pouvoirs.json</code>. La sentinelle détecte des événements mais ne réveille pas seule un agent : une supervision externe serait à installer et vérifier séparément.</p>
-      <p>Pour les hypothèses algorithmiques et leurs limites, voir <a href="24.2 - Innovations algorithmiques et vision prospective du rayon.html">24.2</a>. Pour les exigences de développement détaillées, voir <a href="24.3 - Contrat de developpement du cockpit et apprentissage local.html">24.3</a> et la <a href="../../../reference/cockpit-pc.md">référence technique du cockpit</a>.</p>
+      <p>Pour les hypothèses algorithmiques et leurs limites, voir <a href="24.2 - Innovations algorithmiques et vision prospective du rayon.html">24.2</a>. Pour les exigences de développement détaillées, voir <a href="24.3 - Apprentissage local et entrainement des modeles d'IA.html">24.3 Apprentissage local et entraînement IA</a>.</p>
 
       <div class="page-nav-bar" style="margin-top: 40px;">
         <div>

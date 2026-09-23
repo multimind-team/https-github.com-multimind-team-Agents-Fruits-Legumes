@@ -1,15 +1,606 @@
 {
  "_lisez_moi": "Audit des écarts de stock (agent-audit-stock) lors de la réception d'un comptage.",
- "genere_le": "2026-09-23T21:55:27",
+ "genere_le": "2026-09-23T22:33:05",
  "date_analysee": "2026-09-23",
- "total_comptages": 1,
+ "total_comptages": 20,
  "synthese": {
-  "conformes": 0,
-  "ecarts_detectes": 1,
-  "inconnus": 0,
-  "justifies": 0
+  "conformes": 10,
+  "ecarts_detectes": 10,
+  "inconnus": 0
  },
  "resultats": [
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790156276-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:37:56",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790156572",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:42:52",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790156572-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:42:52",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790156587",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:43:07",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790156587-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:43:07",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790156603",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:43:23",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790156603-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:43:23",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157555",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:59:15",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157555-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T11:59:15",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157603",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T12:00:03",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157603-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T12:00:03",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157727",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T12:02:07",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157727-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T12:02:07",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157776",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T12:02:56",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790157776-1",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T12:02:56",
+   "moment": "matin",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
   {
    "comptage_id": "comptage:2026-09-23:0000087005028:mesure:2026-09-23T21:54:33",
    "article": "0000087005028",
@@ -53,7 +644,169 @@
     }
    ],
    "explication_responsable": "Article CITRON JAUNE VRAC : stock mesuré à 0.0 colis (attendu : -0.9 colis, écart : +0.9 colis).\n- Risque d'inversion en caisse avec PUR JUS DE POMMES/CITRON : Article jumeau identifié : PUR JUS DE POMMES/CITRON (0000099037827). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec CITRON JAUNE VRAC MMP : Article jumeau identifié : CITRON JAUNE VRAC MMP (0000087004958). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec CITRON 4 FRUITS ZRP MMP : Article jumeau identifié : CITRON 4 FRUITS ZRP MMP (0000087200240). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790195006:325233",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T22:23:26",
+   "moment": "soir",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790195006:338433",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T22:23:26",
+   "moment": "soir",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790195114:3799",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T22:25:14",
+   "moment": "soir",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -6.6,
+    "unites": -23.1
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": -5.6,
+    "unites": -19.6
+   },
+   "motif": "Vérification test intégrité",
+   "statut": "ecart_detecte",
+   "causes_identifiees": [
+    {
+     "type": "motif_declare_responsable",
+     "gravite": "information",
+     "titre": "Contexte terrain déclaré",
+     "details": "Motif renseigné : « Vérification test intégrité »."
+    },
+    {
+     "type": "casse_non_enregistree",
+     "gravite": "forte_suspicion",
+     "titre": "Suspicion de casse / pourrissement non saisi",
+     "details": "Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    },
+    {
+     "type": "code_jumeau_caisse",
+     "gravite": "piste_serieuse",
+     "titre": "Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC",
+     "details": "Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+    }
+   ],
+   "explication_responsable": "Article TOMATE COTELEE ROUGE VRAC : stock mesuré à -6.6 colis (attendu : -1.0 colis, écart : -5.6 colis).\n- Contexte terrain déclaré : Motif renseigné : « Vérification test intégrité ».\n- Suspicion de casse / pourrissement non saisi : Déficit de 5.6 colis (19.6 kg). Aucun enregistrement de casse n'a été fait sur cet article périssable récemment. Vérifier une éventuelle casse non saisie ; cette absence ne prouve pas qu’une marchandise a été jetée.\n- Risque d'inversion en caisse avec TOMATE COTELEE JAUNE VRAC : Article jumeau identifié : TOMATE COTELEE JAUNE VRAC (0000087004778). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE AUMONIERE VRAC : Article jumeau identifié : TOMATE COTELEE AUMONIERE VRAC (0000087004803). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté.\n- Risque d'inversion en caisse avec TOMATE COTELEE NOIRE VRAC : Article jumeau identifié : TOMATE COTELEE NOIRE VRAC (0000087004808). Les passages en caisse ont pu être scannés ou pesés sous ce code jumeau au lieu de l'article compté."
+  },
+  {
+   "comptage_id": "comptage:2026-09-23:0000087004807:cockpit:1790195114:14440",
+   "article": "0000087004807",
+   "libelle": "TOMATE COTELEE ROUGE VRAC",
+   "date": "2026-09-23",
+   "horodatage": "2026-09-23T22:25:14",
+   "moment": "soir",
+   "colisage": 3.5,
+   "physique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "theorique": {
+    "colis": -1.0,
+    "unites": -3.5
+   },
+   "ecart": {
+    "colis": 0.0,
+    "unites": 0.0
+   },
+   "motif": "Rupture constatée",
+   "statut": "conforme",
+   "causes_identifiees": [],
+   "explication_responsable": "Stock physique conforme au stock attendu (-1.0 colis comptés vs -1.0 attendus, écart négligeable de +0.0 colis)."
   }
  ],
- "_operation_id": "c06fc291f4fa44df9670f59cbe49afa0"
+ "_operation_id": "6f535e99ba2b4420a14eb957ee5b59d1"
 }
