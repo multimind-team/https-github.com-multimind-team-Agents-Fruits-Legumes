@@ -132,6 +132,9 @@ def construire(jusqua=None):
             "totalVente": base.get("totalVente", 0.0),
             "totalPertes": base.get("totalPertes", 0.0),
             "tauxPerte": base.get("tauxPerte", commande.TAUX_PERTE_DEFAUT),
+            "ventes_14j": base.get("ventes_14j", 0.0),
+            "moyenne_14j": base.get("moyenne_14j", 0.0),
+            "jours_actifs_14j": base.get("jours_actifs_14j", 0),
             "totalCA": round(ca.get(code, 0.0), 2),
             "derniereDateVente": derniere_vente.get(code),
             "derniereLivraison": livraison[0] or None,
@@ -206,6 +209,7 @@ if __name__ == "__main__":
             print(f"\n{code}  {a['libelle']}")
             print(f"  vente attendue aujourd'hui : {vente_attendue(code, jour, agr)}")
             print(f"  vendu en tout              : {a['totalVente']}  ({a['totalCA']} €)")
+            print(f"  ventes 14 derniers jours   : {a.get('ventes_14j', 0.0)} ({a.get('moyenne_14j', 0.0)}/j sur {a.get('jours_actifs_14j', 0)} j)")
             print(f"  taux de perte              : {a['tauxPerte']:.1%}")
             print(f"  dernière vente             : {a['derniereDateVente']}")
             print(f"  dernière livraison         : {a['derniereLivraison']} "

@@ -793,7 +793,7 @@ function motAgent(l) {
       + " <span style='font-size:12px;opacity:0.85'>(" + texteSecurise(l.alerte_marge.recommandation || "") + ")</span></div>");
   }
   if (l.alerte_fusion) {
-    encarts.push('<div class="mot-agent" style="background:rgba(211,47,47,0.09);border:1px solid rgba(211,47,47,0.35);border-left:4px solid #d32f2f;border-radius:6px;padding:7px 10px;margin-top:5px;font-size:13px;line-height:1.35"><strong style="color:#d32f2f;display:flex;align-items:center;gap:5px;margin-bottom:2px">⚠️ Codes jumeaux & Alerte Prix</strong><span>' + texteSecurise(l.alerte_fusion) + '</span></div>');
+    encarts.push('<div class="mot-agent" style="background:rgba(211,47,47,0.09);border:1px solid rgba(211,47,47,0.35);border-left:4px solid #d32f2f;border-radius:6px;padding:7px 10px;margin-top:5px;font-size:13px;line-height:1.35"><strong style="color:#d32f2f;display:flex;align-items:center;gap:5px;margin-bottom:2px">⚠️ Vigilance Prix & Marge (Multi-références)</strong><span>' + texteSecurise(l.alerte_fusion) + '</span></div>');
   }
   return encarts.join("");
 }
@@ -820,7 +820,7 @@ function afficher() {
     const promo = promotionsParItm8[l.itm8];
     const etiquettePromo = promo ? '<div class="badge-promo">PROMO</div>' : "";
     const etiquetteFinPromo = l.fin_promotion ? '<div class="badge-promo" style="background:#e65100;border-color:#bf360c;color:#fff">🏷️ SORTIE PROMO</div>' : "";
-    const etiquetteFusion = l.alerte_fusion ? '<div class="badge-promo" style="background:#c62828;border-color:#b71c1c;color:#fff">⚠️ CODE JUMEAU</div>' : "";
+    const etiquetteFusion = "";
     const etiquetteAlerteMarge = l.alerte_marge ? '<div class="badge-promo" style="background:#f1c232;color:#222;font-weight:700">⚠ MARGE</div>' : "";
     let etiquetteSaison = "";
     if (l.masque && recDemasquerParItm8[l.itm8]) {
@@ -1240,7 +1240,14 @@ function montrerDetail(l) {
 
   let lignes = "";
   const ajoute = (texte, valeur) => { lignes += '<div class="ligne-calcul"><span>' + texte + "</span><span>" + valeur + "</span></div>"; };
-  ajoute("Vente moyenne à cette période", fr(moy) + " " + texteSecurise(l.unite) + " / jour");
+  if (l.ponderation_14j > 0 && Number.isFinite(l.vente_moyenne_saison) && Number.isFinite(l.vente_moyenne_14j)) {
+    ajoute("Historique saisonnier (±21j)", fr(l.vente_moyenne_saison) + " " + texteSecurise(l.unite) + " / j");
+    ajoute("Ventes réelles 14 derniers jours", fr(l.vente_moyenne_14j) + " " + texteSecurise(l.unite) + " / j");
+    ajoute("Pondération 14j appliquée", fr(l.ponderation_14j * 100) + " % récent / " + fr((1 - l.ponderation_14j) * 100) + " % saison");
+    ajoute("Vente moyenne retenue", fr(moy) + " " + texteSecurise(l.unite) + " / j");
+  } else {
+    ajoute("Vente moyenne à cette période", fr(moy) + " " + texteSecurise(l.unite) + " / jour");
+  }
   if (Number.isFinite(f.jour_semaine_livraison)) ajoute("Effet jour de livraison", "×" + fr(f.jour_semaine_livraison));
   if (Number.isFinite(f.meteo) && f.meteo !== 1) ajoute("Effet météo", "×" + fr(f.meteo));
   if (Number.isFinite(f.ferie) && f.ferie !== 1) ajoute("Effet jour férié", "×" + fr(f.ferie));
@@ -1263,7 +1270,7 @@ function montrerDetail(l) {
   }
   if (l.alerte_fusion) {
     lignes += '<div style="background:rgba(211,47,47,0.08);border:1px solid rgba(211,47,47,0.35);border-left:4px solid #d32f2f;border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13.5px;line-height:1.4">'
-      + '<strong style="color:#d32f2f;display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:14px">⚠️ Rapprochement de codes jumeaux & Alerte Prix</strong>'
+      + '<strong style="color:#d32f2f;display:flex;align-items:center;gap:6px;margin-bottom:4px;font-size:14px">⚠️ Rapprochement de références & Alerte Prix</strong>'
       + '<p style="margin:0 0 6px 0;color:var(--text)">' + texteSecurise(l.alerte_fusion) + '</p>'
       + '<div style="font-size:12px;color:var(--text-dim);background:var(--bg-panel-alt);padding:6px 8px;border-radius:4px;border:1px solid var(--border)">'
       + "💡 <b>Vérification requise :</b> Les ventes en caisse et les livraisons s'effectuent sous deux codes différents avec des prix divergents. Contrôler le prix affiché en rayon et le code-barres scanné au meuble caisse pour éviter toute perte de marge."

@@ -184,8 +184,15 @@
       </div>
 
 
-      <h2>Besoin net exécuté</h2>
+      <h2>Besoin net exécuté et pondération dynamique</h2>
 <p>Le besoin couvre les demandes calculées pour le jour de commande et celui de livraison, corrigées des pertes, puis retire la position disponible. Le résultat est borné à zéro et arrondi en colis selon l’ancienneté de livraison. Une position inconnue reste signalée, même lorsque le besoin provisoire utilise zéro comme disponibilité.</p>
+
+<h3>Pondération sur les 14 derniers jours réels (w = 0,50)</h3>
+<p>Pour prévenir les surcommandes en fin de saison (décrochage saisonnier par rapport aux historiques des années antérieures), la demande journalière retenue combine l’historique saisonnier pluriannuel (±21j) et les ventes réelles constatées sur les 14 derniers jours calendaires :</p>
+<pre style="background:var(--bg-panel-alt, #f8f9fa);padding:10px 14px;border-radius:6px;border-left:4px solid var(--accent, #e2001a);font-family:monospace;font-size:13px;overflow-x:auto;">
+Moyenne_ajustée = (1 - w) × Moyenne_saison + w × Moyenne_14j   (avec w = 0,50 par défaut)
+</pre>
+<p><strong>Protection anti-rupture des démarrages de saison :</strong> Si un produit n'a aucune vente sur les 14 derniers jours (<code>Moyenne_14j == 0</code>) mais possède un profil de saison (<code>Moyenne_saison > 0</code>), le coefficient w est neutralisé à 0 afin de conserver 100 % de la moyenne saisonnière (ex: clémentines, agrumes d'hiver, courges). L'approvisionnement des lancements est ainsi garanti sans risque de commande nulle.</p>
 <h2>Références vérifiables</h2>
 <ul><li><a href="../../../moteur/proposer-commande.py">moteur/proposer-commande.py</a></li><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li></ul>
 <p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>

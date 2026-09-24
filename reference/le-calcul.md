@@ -88,8 +88,35 @@ vente par le nombre de journées distinctes observées pour l'article.
   annuel pour éviter toute inflation divergente. En présence de ventes et sans
   casse/don enregistré, le taux calculé est zéro. Casse et dons restent des flux
   facultatifs : leur absence ne prouve pas une absence de pertes.
+- **Ventes réelles sur 14 jours (`ventes_14j` et `moyenne_14j`) :** Pour chaque article,
+  `calculer-commande.py` cumule les ventes sur les **14 derniers jours calendaires** observés
+  (exactement 2 cycles complets de 7 jours consécutifs, neutralisant l'effet du jour de la semaine).
+  La moyenne journalière récente est calculée par `moyenne_14j = ventes_14j / 14.0`.
+  Cette métrique mesure la vitesse d'écoulement réelle actuelle du rayon sans subir
+  l'inertie des historiques des années antérieures.
 
 ## 4. Besoin et arrondi
+
+### Pondération sur les 14 derniers jours réels (`POIDS_VENTES_14J = 0.50`)
+
+Pour empêcher les surcommandes en fin de saison (ex: melons, fruits d'été, pastèques en fin septembre)
+lorsque la météo ou les habitudes de consommation changent brutalement par rapport aux années passées,
+le moteur combine l'historique saisonnier à long terme avec la réalité observée sur les 14 derniers jours :
+
+- **Formule d'ajustement :**
+  $$\text{moyenne\_ajustée} = (1 - w) \times \text{moyenne\_saison} + w \times \text{moyenne\_14j}$$
+  avec $w = 0{,}50$ par défaut (paramétrable via `poids_ventes_14j` dans `regles.json`).
+- **Protection absolue des démarrages de saison :** Si un article n'a aucune vente sur les
+  14 derniers jours (`moyenne_14j == 0`) mais possède un historique saisonnier (`moyenne_saison > 0`)
+  (cas des clémentines, courges, potimarrons en début d'automne), la pondération s'annule
+  automatiquement ($w = 0$) pour conserver **100 % de la prévision saisonnière**. Aucune rupture
+  ne peut donc être provoquée par l'absence de vente préalable.
+- **Nouveaux articles :** Si l'article n'a aucun historique saisonnier (`moyenne_saison == 0`)
+  mais a été vendu sur les 14 derniers jours (`moyenne_14j > 0`), le moteur retient `moyenne_14j`.
+- **Traçabilité totale :** L'objet `proposition.json` expose pour chaque ligne `vente_moyenne_jour`
+  (la moyenne retenue), `vente_moyenne_saison` (l'historique brut), `vente_moyenne_14j` (la moyenne
+  récente) et `ponderation_14j` (le poids appliqué). L'écran de commande détaille cette décomposition
+  dans le panneau de calcul (« Pourquoi ce chiffre »).
 
 Pour chaque article disposant d'un profil et d'un référentiel :
 

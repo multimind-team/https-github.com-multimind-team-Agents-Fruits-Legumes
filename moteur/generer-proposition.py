@@ -209,6 +209,9 @@ def ligne_connue(itm8, calcul, mercalys, config, etat, article, offre, agr=None,
         "demande": calcul["demande"],
         "previsions_journalieres": calcul.get("previsions_journalieres", {}),
         "vente_moyenne_jour": calcul["vente_moyenne_jour"],
+        "vente_moyenne_saison": calcul.get("vente_moyenne_saison", calcul["vente_moyenne_jour"]),
+        "vente_moyenne_14j": calcul.get("vente_moyenne_14j"),
+        "ponderation_14j": calcul.get("ponderation_14j", 0.0),
         "taux_perte": calcul["taux_perte"],
         "prix_achat": achat,
         "prix_vente": vente,
@@ -266,6 +269,9 @@ def ligne_inconnue(article, offre, alerte_marge=None, etat=None):
         "position_colis": pos_colis,
         "position_mesuree_le": pos_date,
         "vente_moyenne_jour": 0.0,
+        "vente_moyenne_saison": 0.0,
+        "vente_moyenne_14j": None,
+        "ponderation_14j": 0.0,
         "taux_perte": 0.0,
         "prix_achat": achat,
         "prix_vente": vente,
@@ -512,7 +518,7 @@ def main():
                         elif pv_m is not None and pv_p and abs(pv_m - pv_p) > 0.05:
                             pb_marge.append(f"Écart de prix : {pv_m:.2f} € en caisse vs {pv_p:.2f} € au catalogue.")
                     alerte_txt = (
-                        f"Rapprochement de codes jumeaux : les ventes en caisse passent sous {', '.join(details_membres)}, "
+                        f"Rapprochement de références : les ventes en caisse passent sous {', '.join(details_membres)}, "
                         f"alors que la commande s'effectue sous {ligne['libelle']} ({principal})."
                     )
                     if pb_marge:

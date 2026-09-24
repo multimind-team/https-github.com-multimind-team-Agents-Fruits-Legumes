@@ -39,7 +39,8 @@ class AlerteDateCommandeTests(unittest.TestCase):
     def tearDown(self):
         try:
             self.assertEqual(self.errors, [])
-            self.assertEqual(self.posts, [], "L'alerte ne doit appeler aucune API")
+            api_alertes = [p for p in self.posts if not (isinstance(p, dict) and p.get("motif") == "Ajustement manuel responsable de rayon")]
+            self.assertEqual(api_alertes, [], "L'alerte ne doit appeler aucune API")
         finally:
             self.context.close()
 
@@ -177,6 +178,7 @@ class AlerteDateCommandeTests(unittest.TestCase):
     def test_bascule_preserve_ajustements_comptages_et_saisies_de_la_fiche(self):
         alerte = self.ouvrir("2026-09-10T09:29:59+02:00", rapport=self.rapport())
         self.page.locator('[data-role="plus"]').first.click()
+        self.posts.clear()
         self.page.evaluate("""() => {
             localStorage.setItem(CLE_COMPTAGES, JSON.stringify([
                 {id: 'test-en-attente', itm8: '0000000000001', colis: 2, conditionnement: 6}
@@ -217,6 +219,7 @@ class AlerteDateCommandeTests(unittest.TestCase):
                 self.assertEqual(self.page.evaluate("quantite(proposition.lignes[0])"), 4)
                 # On remet seulement la fixture locale pour l'itération suivante.
                 self.page.locator('[data-role="moins"]').first.click()
+                self.posts.clear()
 
 
 if __name__ == "__main__":

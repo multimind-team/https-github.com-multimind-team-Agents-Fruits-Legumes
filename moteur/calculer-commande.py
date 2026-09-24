@@ -14,7 +14,7 @@ LECTURE SEULE : ce programme ne modifie aucun carnet.
 import json
 import sys
 from collections import defaultdict
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -46,6 +46,11 @@ def jour_de_lannee(date_iso):
     return date(a, m, j).timetuple().tm_yday
 
 
+def decaler_jours(date_iso, n):
+    a, m, j = (int(x) for x in date_iso.split("-"))
+    return (date(a, m, j) + timedelta(days=n)).isoformat()
+
+
 def lire_faits(bilan=None):
     yield from faits.lire(DOSSIER_FAITS, bilan=bilan)
 
@@ -75,6 +80,8 @@ def construire_moyennes(jusqua=None):
     vus_par_jour = defaultdict(set)
     total_vente = defaultdict(float)
     total_pertes = defaultdict(float)
+    ventes_par_article_date = defaultdict(lambda: defaultdict(float))
+    tous_jours_ventes = set()
 
     config = regles.charger()
     vers_principal = {m: p for p, membres in config.get("groupes", {}).items() for m in membres}
@@ -91,6 +98,8 @@ def construire_moyennes(jusqua=None):
             index = jour_de_lannee(jour) - 1
             quantites[article][index] += fait["quantite"]
             total_vente[article] += fait["quantite"]
+            ventes_par_article_date[article][jour] += fait["quantite"]
+            tous_jours_ventes.add(jour)
             if article not in vus_par_jour[jour]:
                 journees[article][index] += 1
                 vus_par_jour[jour].add(article)
@@ -104,6 +113,7 @@ def construire_moyennes(jusqua=None):
             if equivalent_kg_orange:
                 quantites[ORANGE_MACHINE_A_JUS][index] += fait["quantite"] * equivalent_kg_orange
                 total_vente[ORANGE_MACHINE_A_JUS] += fait["quantite"] * equivalent_kg_orange
+                ventes_par_article_date[ORANGE_MACHINE_A_JUS][jour] += fait["quantite"] * equivalent_kg_orange
                 if ORANGE_MACHINE_A_JUS not in vus_par_jour[jour]:
                     journees[ORANGE_MACHINE_A_JUS][index] += 1
                     vus_par_jour[jour].add(ORANGE_MACHINE_A_JUS)
@@ -112,6 +122,13 @@ def construire_moyennes(jusqua=None):
             # etre vendue. L'une est jetee, l'autre donnee aux Restos du Coeur.
             # Les deux comptent pareil dans le taux de perte (le responsable de rayon, 2026-09-02).
             total_pertes[article] += fait["quantite"]
+
+    if tous_jours_ventes:
+        date_fin_14j = max(tous_jours_ventes)
+        fenetre_14j = {decaler_jours(date_fin_14j, -i) for i in range(14)}
+    else:
+        date_fin_14j = None
+        fenetre_14j = set()
 
     resultat = {}
     for article, qte_jours in quantites.items():
@@ -133,12 +150,20 @@ def construire_moyennes(jusqua=None):
             taux_perte = min(taux_calc, 0.50) if taux_calc >= 0.90 else taux_calc
         else:
             taux_perte = TAUX_PERTE_DEFAUT
+
+        ventes_14j = sum(ventes_par_article_date[article].get(j, 0.0) for j in fenetre_14j)
+        jours_actifs_14j = sum(1 for j in fenetre_14j if ventes_par_article_date[article].get(j, 0.0) > 0)
+        moyenne_14j = round(ventes_14j / 14.0, 3)
+
         resultat[article] = {
             "saison": saison,
             "saisonFiable": fiable,
             "totalVente": round(vendu, 2),
             "totalPertes": round(perdu, 2),
             "tauxPerte": taux_perte,
+            "ventes_14j": round(ventes_14j, 2),
+            "moyenne_14j": moyenne_14j,
+            "jours_actifs_14j": jours_actifs_14j,
         }
     return resultat
 

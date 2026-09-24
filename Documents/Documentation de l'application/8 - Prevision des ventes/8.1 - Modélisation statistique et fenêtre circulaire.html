@@ -184,8 +184,11 @@
       </div>
 
 
-      <h2>Fenêtre saisonnière circulaire</h2>
-<p>calculer-commande.py construit une moyenne sur ±21 jours autour du jour de l’année, toutes années disponibles, en comptant les journées distinctes observées. La fenêtre boucle autour du nouvel an. Avec moins de cinq jours de vente dans cette fenêtre, la prévision vaut zéro : aucun repli sur la moyenne annuelle ou la famille produit n’est implémenté.</p>
+      <h2>Fenêtre saisonnière circulaire et mesure court terme (14 jours)</h2>
+<p><code>calculer-commande.py</code> construit une moyenne sur ±21 jours autour du jour de l’année, toutes années disponibles, en comptant les journées distinctes observées. La fenêtre boucle autour du nouvel an. Avec moins de cinq jours de vente dans cette fenêtre, la prévision vaut zéro : aucun repli sur la moyenne annuelle ou la famille produit n’est implémenté.</p>
+
+<h3>Vitesse d'écoulement récente sur 14 jours calendaires</h3>
+<p>En parallèle de la fenêtre annuelle pluriannuelle, le moteur calcule les ventes réelles sur les 14 derniers jours calendaires observés (soit 2 cycles complets de 7 jours consécutifs, neutralisant le profil intra-semaine) : <code>Moyenne_14j = Ventes_14j / 14.0</code>. Cette métrique capte immédiatement les variations conjoncturelles et l'atterrissage des ventes en fin de campagne.</p>
 <h2>Références vérifiables</h2>
 <ul><li><a href="../../../moteur/calculer-commande.py">moteur/calculer-commande.py</a></li><li><a href="../../../reference/le-calcul.md">reference/le-calcul.md</a></li></ul>
 <p class="doc-subtitle-text">Fiche alignée sur l’application locale le 15 septembre 2026. Les règles détaillées et les limites sont précisées dans les références ci-dessus.</p>

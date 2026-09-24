@@ -243,7 +243,8 @@ def diagnostiquer_causes_racines(itm8, libelle, reel_an, prevu_an, ecart_pct, ec
         badge_dom = "🟡 Vigilance normale"
 
     # 6. Recommandation personnalisée et contexte de la commande du jour
-    propose_actuel = float(fiche_prop.get("propose_colis") or 0.0) if fiche_prop else 0.0
+    est_masque = bool(fiche_prop.get("masque")) if fiche_prop else False
+    propose_actuel = 0.0 if est_masque else (float(fiche_prop.get("propose_colis") or 0.0) if fiche_prop else 0.0)
     demande_actuelle = float(fiche_prop.get("demande") or 0.0) if fiche_prop else 0.0
 
     if saison_festive:
@@ -545,9 +546,8 @@ def calculer_fiabilite(annee="2026", jours_recents=30):
         fiche_cat = cat_articles.get(itm8, {})
         fiche_prop = lignes_prop.get(itm8, {})
 
-        if fiche_agr.get("masque"):
-            continue
-
+        # Ne pas exclure les articles masqués de l'évaluation de fiabilité
+        # s'ils ont été vendus en 2026 (le masquage n'efface pas l'historique des prévisions)
         libelle = (fiche_agr.get("libelle") or fiche_cat.get("LIBELLE") or f"Article {itm8}").strip()
         famille = determiner_famille(libelle, fiche_cat.get("NOMENCLATURE", ""))
         surcharges_article = config_regles.get(itm8, {})

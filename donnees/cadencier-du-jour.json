@@ -2,7 +2,7 @@
  "_lisez_moi": "Ce qu'on peut commander AUJOURD'HUI, dans l'ordre de la tablette. Refait a chaque cadencier recu : un article absent aujourd'hui peut revenir demain, il n'est jamais masque pour autant.",
  "date_cadencier": "2026-09-23",
  "fichier": "Cadencier Webtelevente 23.09.2026.xls",
- "lu_le": "2026-09-23T21:56:44",
+ "lu_le": "2026-09-24T10:23:26",
  "rapprochement": {
   "surs": 245,
   "ambigus": 1,
@@ -6612,5 +6612,5 @@
   }
  ],
  "indisponibles": [],
- "_operation_id": "f78f8a9412bf47a18b972a3c7710c395"
+ "_operation_id": "15050e9d252444e1ba2d6ab998b13ab4"
 }

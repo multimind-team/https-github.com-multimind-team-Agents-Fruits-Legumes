@@ -329,7 +329,7 @@
    "article_stock": "0000087430010",
    "commande_groupe_portee_par": "0000087430010",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous BANANE 3 FRUITS ANTILLES FRANC (0000087430013, PV caisse 1.50 €), BANANE 5 FRUITS ANTILLES FRANC (0000087430015, PV caisse 2.45 €), BANANE 6 FRUITS ANTILLES FRANC (0000087430016, PV caisse 2.95 €), BANANE ANTILLAISE 4F (0000099034238, PV caisse 1.95 €), alors que la commande s'effectue sous BANANE PIECE ANTILLES FRAN (0000087430010). ⚠️ Écart de prix : 1.50 € en caisse vs 0.49 € au catalogue. Écart de prix : 2.45 € en caisse vs 0.49 € au catalogue. Écart de prix : 2.95 € en caisse vs 0.49 € au catalogue. Écart de prix : 1.95 € en caisse vs 0.49 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous BANANE 3 FRUITS ANTILLES FRANC (0000087430013, PV caisse 1.50 €), BANANE 5 FRUITS ANTILLES FRANC (0000087430015, PV caisse 2.45 €), BANANE 6 FRUITS ANTILLES FRANC (0000087430016, PV caisse 2.95 €), BANANE ANTILLAISE 4F (0000099034238, PV caisse 1.95 €), alors que la commande s'effectue sous BANANE PIECE ANTILLES FRAN (0000087430010). ⚠️ Écart de prix : 1.50 € en caisse vs 0.49 € au catalogue. Écart de prix : 2.45 € en caisse vs 0.49 € au catalogue. Écart de prix : 2.95 € en caisse vs 0.49 € au catalogue. Écart de prix : 1.95 € en caisse vs 0.49 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -473,7 +473,7 @@
    "article_stock": "0000087004958",
    "commande_groupe_portee_par": "0000087005028",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous CITRON JAUNE VRAC (0000087005028, PV caisse 3.69 €), alors que la commande s'effectue sous CITRON JAUNE VRAC (0000087004958). ⚠️ Écart de prix : 3.69 € en caisse vs 4.00 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous CITRON JAUNE VRAC (0000087005028, PV caisse 3.69 €), alors que la commande s'effectue sous CITRON JAUNE VRAC (0000087004958). ⚠️ Écart de prix : 3.69 € en caisse vs 4.00 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-23"
   },
   {
@@ -1449,7 +1449,7 @@
    "article_stock": "0000087003306",
    "commande_groupe_portee_par": "0000087003034",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous MELON GROS CALIBRE PIECE (0000087003034, PV caisse 3.99 €), alors que la commande s'effectue sous MELON GROS CALIBRE PIECE (0000087003306).",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous MELON GROS CALIBRE PIECE (0000087003034, PV caisse 3.99 €), alors que la commande s'effectue sous MELON GROS CALIBRE PIECE (0000087003306).",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -2542,7 +2542,7 @@
    "article_stock": "0000087004135",
    "commande_groupe_portee_par": "0000087004135",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous POMME JOYA VRAC (0000087003010, PV caisse 2.79 €), alors que la commande s'effectue sous POMME GALA VRAC (0000087004135). ⚠️ Écart de prix : 2.79 € en caisse vs 2.69 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous POMME JOYA VRAC (0000087003010, PV caisse 2.79 €), alors que la commande s'effectue sous POMME GALA VRAC (0000087004135). ⚠️ Écart de prix : 2.79 € en caisse vs 2.69 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -3089,7 +3089,7 @@
    "article_stock": "0000087004274",
    "commande_groupe_portee_par": "0000087004274",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous RAISIN BLANC IMPORT VRAC (0000087003043, PV caisse 1.79 €), alors que la commande s'effectue sous RAISIN BLANC ITALIA VRAC (0000087004274).",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous RAISIN BLANC IMPORT VRAC (0000087003043, PV caisse 1.79 €), alors que la commande s'effectue sous RAISIN BLANC ITALIA VRAC (0000087004274).",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -5609,7 +5609,7 @@
    "article_stock": "0000087003321",
    "commande_groupe_portee_par": "0000087004576",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous CELERI RAVE PIECE (0000087004576, PV caisse 2.79 €), alors que la commande s'effectue sous CELERI RAVE PIECE (0000087003321). ⚠️ Écart de prix : 2.79 € en caisse vs 2.99 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous CELERI RAVE PIECE (0000087004576, PV caisse 2.79 €), alors que la commande s'effectue sous CELERI RAVE PIECE (0000087003321). ⚠️ Écart de prix : 2.79 € en caisse vs 2.99 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -6490,7 +6490,7 @@
    "article_stock": "0000087765013",
    "commande_groupe_portee_par": "0000087765013",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous COURGETTE FILET 1KG PETIT PRIX (0000087765016, PV caisse 1.89 €), alors que la commande s'effectue sous COURGETTE FILET 1KG (0000087765013).",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous COURGETTE FILET 1KG PETIT PRIX (0000087765016, PV caisse 1.89 €), alors que la commande s'effectue sous COURGETTE FILET 1KG (0000087765013).",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -7593,7 +7593,7 @@
    "article_stock": "0000087004529",
    "commande_groupe_portee_par": "0000087004529",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous HARICOT COCO PAIMPOLAIS FILET (0000087815002, PV caisse 30.00 €), HARICOT COCO PAIMPOLAIS (0000099803723, PV caisse 30.00 €), alors que la commande s'effectue sous HARICOT COCO PAIMPOLAIS VRAC (0000087004529). ⚠️ Écart de prix : 30.00 € en caisse vs 4.48 € au catalogue. Écart de prix : 30.00 € en caisse vs 4.48 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous HARICOT COCO PAIMPOLAIS FILET (0000087815002, PV caisse 30.00 €), HARICOT COCO PAIMPOLAIS (0000099803723, PV caisse 30.00 €), alors que la commande s'effectue sous HARICOT COCO PAIMPOLAIS VRAC (0000087004529). ⚠️ Écart de prix : 30.00 € en caisse vs 4.48 € au catalogue. Écart de prix : 30.00 € en caisse vs 4.48 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -8287,7 +8287,7 @@
    "article_stock": "0000087955034",
    "commande_groupe_portee_par": "0000087010609",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous PDT FOUR PUREE POTAGE 2.5KG IT (0000087010609, PV caisse 2.99 €), PDT NR FOUR PUREE POTAGE 2KG I (0000087010613, PV caisse 3.19 €), alors que la commande s'effectue sous PDT FOUR PUREE POTAGE 2.5KG ITM (0000087955034). ⚠️ Écart de prix : 3.19 € en caisse vs 2.99 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous PDT FOUR PUREE POTAGE 2.5KG IT (0000087010609, PV caisse 2.99 €), PDT NR FOUR PUREE POTAGE 2KG I (0000087010613, PV caisse 3.19 €), alors que la commande s'effectue sous PDT FOUR PUREE POTAGE 2.5KG ITM (0000087955034). ⚠️ Écart de prix : 3.19 € en caisse vs 2.99 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -8608,7 +8608,7 @@
    "article_stock": "0000087010621",
    "commande_groupe_portee_par": "0000087010621",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous PDT CHAIR FERME BLONDE 2KG CQL (0000087010806, PV caisse 3.22 €), alors que la commande s'effectue sous PDT VAPEUR BLONDE 2.5KG ITM (0000087010621). ⚠️ Écart de prix : 3.22 € en caisse vs 3.99 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous PDT CHAIR FERME BLONDE 2KG CQL (0000087010806, PV caisse 3.22 €), alors que la commande s'effectue sous PDT VAPEUR BLONDE 2.5KG ITM (0000087010621). ⚠️ Écart de prix : 3.22 € en caisse vs 3.99 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -8851,7 +8851,7 @@
    "article_stock": "0000087835003",
    "commande_groupe_portee_par": "0000087835003",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous RADIS ROUGE SACHET 250G ITM (0000087010629, PV caisse 0.99 €), RADIS ROUGE SACHET 250G MMP (0000087200166, PV caisse 0.99 €), RADIS ROSE SACHET 200G (0000087835002, PV caisse 0.99 €), RADIS ROUGE SACHET 250G + 10% (0000087835006, PV caisse 0.99 €), alors que la commande s'effectue sous RADIS ROUGE SACHET 250G (0000087835003).",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous RADIS ROUGE SACHET 250G ITM (0000087010629, PV caisse 0.99 €), RADIS ROUGE SACHET 250G MMP (0000087200166, PV caisse 0.99 €), RADIS ROSE SACHET 200G (0000087835002, PV caisse 0.99 €), RADIS ROUGE SACHET 250G + 10% (0000087835006, PV caisse 0.99 €), alors que la commande s'effectue sous RADIS ROUGE SACHET 250G (0000087835003).",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -9189,7 +9189,7 @@
    "article_stock": "0000087004631",
    "commande_groupe_portee_par": "0000087005049",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous CHICOREE SCAROLE PIECE (0000087004633, PV caisse 3.29 €), MIX CHICOREE FRISEE/SCAROLE (0000087005049, PV caisse 3.39 €), CHICOREE FRISEE FINE PIECE EMB (0000087755035, PV caisse 1.99 €), alors que la commande s'effectue sous MIX CHICOREE FRISEE/SCAROLE (0000087004631). ⚠️ Écart de prix : 3.39 € en caisse vs 3.29 € au catalogue. Risque de vente à perte ! Le prix en caisse de CHICOREE FRISEE FINE PIECE EMB (1.99 €) est inférieur ou égal au prix d'achat cadencier (2.25 €). À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous CHICOREE SCAROLE PIECE (0000087004633, PV caisse 3.29 €), MIX CHICOREE FRISEE/SCAROLE (0000087005049, PV caisse 3.39 €), CHICOREE FRISEE FINE PIECE EMB (0000087755035, PV caisse 1.99 €), alors que la commande s'effectue sous MIX CHICOREE FRISEE/SCAROLE (0000087004631). ⚠️ Écart de prix : 3.39 € en caisse vs 3.29 € au catalogue. Risque de vente à perte ! Le prix en caisse de CHICOREE FRISEE FINE PIECE EMB (1.99 €) est inférieur ou égal au prix d'achat cadencier (2.25 €). À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -12624,7 +12624,7 @@
    "article_stock": "0000087430008",
    "commande_groupe_portee_par": "0000087430008",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous BANANE RUBAN 5 FRUITS BIO MMP (0000087200198, PV caisse 1.99 €), alors que la commande s'effectue sous BANANE RUBAN 5 FRUITS BIO (0000087430008). ⚠️ Écart de prix : 1.99 € en caisse vs 2.19 € au catalogue. À contrôler d'urgence en rayon/caisse.",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous BANANE RUBAN 5 FRUITS BIO MMP (0000087200198, PV caisse 1.99 €), alors que la commande s'effectue sous BANANE RUBAN 5 FRUITS BIO (0000087430008). ⚠️ Écart de prix : 1.99 € en caisse vs 2.19 € au catalogue. À contrôler d'urgence en rayon/caisse.",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -13178,7 +13178,7 @@
    "article_stock": "0000087695227",
    "commande_groupe_portee_par": "0000087695227",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous PDT BIO FOUR PUREE POTAGE 1,5K (0000087695230, PV caisse 3.79 €), alors que la commande s'effectue sous PDT BIO FOUR PUREE POTAGE 1,5KG (0000087695227).",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous PDT BIO FOUR PUREE POTAGE 1,5K (0000087695230, PV caisse 3.79 €), alors que la commande s'effectue sous PDT BIO FOUR PUREE POTAGE 1,5KG (0000087695227).",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {
@@ -13636,7 +13636,7 @@
    "article_stock": "0000087200010",
    "commande_groupe_portee_par": "0000087010746",
    "commande_groupe_ambigue": false,
-   "alerte_fusion": "Rapprochement de codes jumeaux : les ventes en caisse passent sous BASILIC POT BIO ITM (0000087010746, PV caisse 1.99 €), alors que la commande s'effectue sous BASILIC POT BIO ITM (0000087200010).",
+   "alerte_fusion": "Rapprochement de références : les ventes en caisse passent sous BASILIC POT BIO ITM (0000087010746, PV caisse 1.99 €), alors que la commande s'effectue sous BASILIC POT BIO ITM (0000087200010).",
    "sorties_couvertes_jusquau": "2026-09-22"
   },
   {

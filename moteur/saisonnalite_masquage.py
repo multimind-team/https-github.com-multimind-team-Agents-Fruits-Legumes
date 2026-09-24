@@ -110,8 +110,8 @@ def analyser_recommandations(racine=None):
 
         # Condition de démasquage : pleine saison imminente ou hausse marquée sur le mois suivant
         if pleine in mois_horizon and (tendance in ["pleine_saison", "forte_hausse", "hausse"] or (evo is not None and evo >= 15.0)):
-            val_sem_act = hebdo[semaine_ref - 1] if len(hebdo) >= semaine_ref else 0
-            val_sem_suiv = hebdo[semaine_ref] if len(hebdo) > semaine_ref else 0
+            val_sem_act = (hebdo[semaine_ref - 1] or 0) if len(hebdo) >= semaine_ref else 0
+            val_sem_suiv = (hebdo[semaine_ref] or 0) if len(hebdo) > semaine_ref else 0
 
             if pleine == nom_mois_actuel or val_sem_act >= 2.0:
                 quand = f"Dès maintenant (mi-{nom_mois_actuel.lower()})"
@@ -161,14 +161,23 @@ def analyser_recommandations(racine=None):
         if vol_tot < 20:
             continue
 
+        # Exclusion des produits permanents (ventes régulières en hiver : ex. avocats, bananes, pdt)
+        v_mois = art.get("ventes_par_mois", {})
+        vol_hiver = (v_mois.get("1", {}).get("volume", 0) or 0) + (v_mois.get("2", {}).get("volume", 0) or 0)
+        part_hiver = (vol_hiver / vol_tot) if vol_tot > 0 else 0
+        est_permanent = part_hiver >= 0.05
+
         # Pleine saison passée (ex: produits d'été pour l'automne)
-        est_produit_ete = pleine in ["Mai", "Juin", "Juillet", "Août"]
+        est_produit_ete = (pleine in ["Mai", "Juin", "Juillet", "Août"]) and not est_permanent
         decrochage = (tendance == "fin_saison") or (evo is not None and evo <= -35.0)
 
-        if est_produit_ete and decrochage:
-            val_sem_act = hebdo[semaine_ref - 1] if len(hebdo) >= semaine_ref else 0
-            val_sem_suiv = hebdo[semaine_ref] if len(hebdo) > semaine_ref else 0
-            val_sem_suiv2 = hebdo[semaine_ref + 1] if len(hebdo) > semaine_ref + 1 else 0
+        # Vérifier qu'il y a bien une observation historique pour le mois suivant
+        a_observation_mois_suivant = bool(v_mois.get(str(mois_suivant_idx), {}).get("jours", 0) > 0)
+
+        if est_produit_ete and decrochage and a_observation_mois_suivant:
+            val_sem_act = (hebdo[semaine_ref - 1] or 0) if len(hebdo) >= semaine_ref else 0
+            val_sem_suiv = (hebdo[semaine_ref] or 0) if len(hebdo) > semaine_ref else 0
+            val_sem_suiv2 = (hebdo[semaine_ref + 1] or 0) if len(hebdo) > semaine_ref + 1 else 0
 
             if val_sem_act <= 1.0 or (evo is not None and evo <= -85.0):
                 quand = f"Dès maintenant (semaine {semaine_ref})"

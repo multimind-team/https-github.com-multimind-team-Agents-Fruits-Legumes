@@ -51,6 +51,7 @@ SEUIL_LIVRAISON_RECENTE = 7      # jours
 # tres negative : on redemande au responsable de rayon de recompter plutot que de commander.
 FRAICHEUR_COMPTAGE_JOURS = 2
 PLANCHER_POSITION_COLIS = -10    # seuil inclus ; affichage distinct de l'exception de mesure fraîche
+POIDS_VENTES_14J = 0.50
 
 
 def est_dimanche(iso):
@@ -129,6 +130,7 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
     f_js_cmd = facteur_jour_semaine(date_commande, profil, correction)
     f_js_liv = facteur_jour_semaine(date_livraison, profil, correction)
 
+    poids_14j_config = float(config.get("poids_ventes_14j", POIDS_VENTES_14J))
     overrides = config.get("overrides", {})
     lignes = {}
     for itm8, reference in mercalys.items():
@@ -161,6 +163,20 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
         taux_perte = donnees["tauxPerte"]
         moy_cmd = donnees["saison"][jour_cmd]
         moy_liv = donnees["saison"][jour_liv]
+        moy_14j = donnees.get("moyenne_14j")
+
+        # Pondération sur les 14 derniers jours réels
+        poids_14j_effectif = poids_14j_config if (moy_14j is not None and moy_14j > 0) else 0.0
+
+        def ajuster_moyenne(moy_saison):
+            if poids_14j_effectif > 0:
+                if moy_saison > 0:
+                    return (1.0 - poids_14j_effectif) * moy_saison + poids_14j_effectif * moy_14j
+                return moy_14j
+            return moy_saison
+
+        moy_cmd_pond = ajuster_moyenne(moy_cmd)
+        moy_liv_pond = ajuster_moyenne(moy_liv)
 
         # Modulation météo par profil article si disponible
         art_meteo = (facteurs_meteo.get("profils_articles") or {}).get(itm8, {})
@@ -169,17 +185,18 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
 
         coeff_cmd = coefficient_terrain(contexte, date_commande)
         coeff_liv = coefficient_terrain(contexte, date_livraison)
-        demande_cmd = moy_cmd * f_m_cmd * f_ferie_cmd * f_vacances_cmd * f_js_cmd * coeff_cmd
-        demande_liv = moy_liv * f_m_liv * f_ferie_liv * f_vacances_liv * f_js_liv * coeff_liv
+        demande_cmd = moy_cmd_pond * f_m_cmd * f_ferie_cmd * f_vacances_cmd * f_js_cmd * coeff_cmd
+        demande_liv = moy_liv_pond * f_m_liv * f_ferie_liv * f_vacances_liv * f_js_liv * coeff_liv
         previsions_journalieres = {date_commande: demande_cmd, date_livraison: demande_liv}
 
         demande_inter = 0.0
         for d_inter in jours_intermediaires:
             j_inter = calc.jour_de_lannee(d_inter) - 1
             moy_inter = donnees["saison"][j_inter]
+            moy_inter_pond = ajuster_moyenne(moy_inter)
             f_js_inter = facteur_jour_semaine(d_inter, profil, correction)
             f_m_inter = art_meteo.get("f_meteo_liv", f_meteo_liv)
-            prev_inter = (moy_inter * f_m_inter * f_ferie_liv * f_vacances_liv * f_js_inter
+            prev_inter = (moy_inter_pond * f_m_inter * f_ferie_liv * f_vacances_liv * f_js_inter
                           * coefficient_terrain(contexte, d_inter))
             demande_inter += prev_inter
             previsions_journalieres[d_inter] = prev_inter
@@ -243,7 +260,10 @@ def proposer(date_reference, moyennes, positions, config, mercalys, dernieres_li
             # Ventes attendues par date, avant pertes et avant déduction du
             # stock ; seul cet objet peut alimenter les comparaisons futures.
             "previsions_journalieres": {j: round(v, 3) for j, v in sorted(previsions_journalieres.items())},
-            "vente_moyenne_jour": moy_liv,
+            "vente_moyenne_jour": round(moy_liv_pond, 2),
+            "vente_moyenne_saison": round(moy_liv, 2),
+            "vente_moyenne_14j": round(moy_14j, 2) if moy_14j is not None else None,
+            "ponderation_14j": round(poids_14j_effectif, 2),
             "taux_perte": round(taux_perte, 3),
             "promotion": promotion,
             "position_bloquee": position_bloquee,
