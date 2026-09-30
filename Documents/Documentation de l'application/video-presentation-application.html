@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Présentation de l'Application · Rayon Fruits &amp; Légumes</title>
+  <style>
+    :root {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f7f6ef;
+      color: #19362f;
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    .shell { max-width: 1100px; margin: auto; padding: 28px 28px 40px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 14px; }
+    a { color: inherit; text-underline-offset: 4px; }
+    .brand { font-weight: 750; color: #17634b; }
+    nav { display: flex; gap: 20px; }
+    h1 { font-size: clamp(30px, 5vw, 48px); letter-spacing: -1.5px; margin: 33px 0 10px; line-height: 1.08; }
+    .intro { color: #5b6b61; line-height: 1.65; margin: 0 0 22px; font-size: 16px; }
+    .banner-link {
+      display: block; padding: 13px 16px; border-radius: 12px; background: #dfedac; line-height: 1.5; margin-bottom: 24px; text-decoration: none;
+    }
+    .banner-link strong { color: #17634b; }
+    video {
+      display: block; width: 100%; aspect-ratio: 16/9; border-radius: 20px; background: #19362f; box-shadow: 0 14px 35px #19362f12;
+    }
+    video:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 3px solid #c87842; outline-offset: 4px;
+    }
+    .under {
+      display: flex; justify-content: space-between; align-items: center; gap: 15px; font-size: 13px; color: #5b6b61; padding: 15px 1px;
+    }
+    .under p { margin: 0; }
+    h2 { font-size: 21px; margin: 23px 0 13px; }
+    .chapters {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    }
+    .chapters button {
+      font: inherit; display: flex; gap: 12px; align-items: flex-start; text-align: left;
+      border: 1px solid #dce2d3; background: white; border-radius: 12px; padding: 12px;
+      color: #19362f; cursor: pointer; min-height: 67px; font-size: 14px; line-height: 1.4;
+    }
+    .chapters span {
+      font-variant-numeric: tabular-nums; color: #17634b; font-size: 12px; padding-top: 2px;
+    }
+    .chapters button:hover { background: #eef2e7; }
+    .chapters button[aria-current="true"] { border-color: #17634b; background: #dfedac; }
+    details { margin-top: 25px; border-top: 1px solid #d7dfcd; padding: 20px 0; }
+    summary { cursor: pointer; font-size: 15px; font-weight: 650; width: fit-content; }
+    .verification-note { max-width: 800px; line-height: 1.8; color: #526456; }
+    .transcript { max-width: 800px; line-height: 1.8; }
+    .transcript h3 { font-size: 17px; margin-bottom: 5px; color: #17634b; }
+    .transcript p { margin-top: 0; color: #526456; }
+    footer { border-top: 1px solid #d7dfcd; padding-top: 18px; color: #6b7b67; font-size: 12px; line-height: 1.6; }
+    @media(max-width: 650px) {
+      .shell { padding: 20px 14px 30px; }
+      header { font-size: 12px; }
+      nav { gap: 10px; }
+      nav a:first-child { display: none; }
+      h1 { margin-top: 27px; }
+      .intro { font-size: 15px; }
+      video { border-radius: 12px; }
+      .chapters { grid-template-columns: 1fr 1fr; }
+      .chapters button { font-size: 13px; padding: 10px; min-height: 77px; }
+      .under { align-items: flex-start; line-height: 1.5; }
+      .under p { max-width: 62%; }
+    }
+    @media(max-width: 360px) {
+      .chapters { grid-template-columns: 1fr; }
+      .chapters button { min-height: 45px; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header>
+    <span class="brand">RAYON FRUITS &amp; LÉGUMES · APPLICATION</span>
+    <nav>
+      <a href="index.html">Documentation</a>
+      <a href="video-interactions-agents.html">Film 1 : Les Agents ↗</a>
+      <a href="schema-fonctionnement.html">Vue d'ensemble ↗</a>
+    </nav>
+  </header>
+
+  <h1>Découverte de l'application sur tablette</h1>
+  <p class="intro">Visite guidée complète des interfaces réelles : tableau de bord, assistant de rayon, pointage tactile en chambre froide, console de commande cadencier, ajustements, graphiques de saisonnalité et promotions.</p>
+
+  <a class="banner-link" href="video-interactions-agents.html">
+    <strong>▶ Voir également le Film 1 : Les interactions entre agents</strong><br>
+    Découvrez les coulisses de la brigade numérique, les doubles contrôles et les protocoles de sécurité.
+  </a>
+
+  <main>
+    <video id="film" controls playsinline preload="metadata" poster="assets/video-application/affiche.jpg" aria-label="Vidéo présentant l'application mobile Rayon F&amp;L">
+      <source src="assets/video-application/presentation-application.mp4?v=8b07b14daca7" type="video/mp4">
+      <track src="assets/video-application/sous-titres.vtt" kind="subtitles" srclang="fr" label="Français" default>
+      Votre navigateur ne peut pas lire la vidéo. <a href="assets/video-application/presentation-application.mp4">Télécharger le film</a>.
+    </video>
+
+    <div class="under">
+      <p>Appuyez sur Lecture. Les vraies captures de l'application sont présentées en grand format sur la tablette.</p>
+      <a href="assets/video-application/presentation-application.mp4" download>Télécharger le MP4 (Full HD) ↓</a>
+    </div>
+
+    <h2>Parcourir les écrans</h2>
+    <div class="chapters" aria-label="Chapitres de la démonstration">
+<button type="button" data-time="0.0" aria-label="Aller à 0:00 : La tablette au quotidien"><span>0:00</span>La tablette au quotidien</button>
+<button type="button" data-time="15.125" aria-label="Aller à 0:15 : L'accueil et la note du matin"><span>0:15</span>L'accueil et la note du matin</button>
+<button type="button" data-time="28.167" aria-label="Aller à 0:28 : Parler à l'assistant de rayon"><span>0:28</span>Parler à l'assistant de rayon</button>
+<button type="button" data-time="44.875" aria-label="Aller à 0:44 : Le pointage mobile en réserve"><span>0:44</span>Le pointage mobile en réserve</button>
+<button type="button" data-time="59.042" aria-label="Aller à 0:59 : Pavé numérique et fractions de colis"><span>0:59</span>Pavé numérique et fractions de colis</button>
+<button type="button" data-time="73.625" aria-label="Aller à 1:13 : La console de commande"><span>1:13</span>La console de commande</button>
+<button type="button" data-time="89.75" aria-label="Aller à 1:29 : Les explications des agents"><span>1:29</span>Les explications des agents</button>
+<button type="button" data-time="110.792" aria-label="Aller à 1:50 : L'historique et la fiche produit"><span>1:50</span>L'historique et la fiche produit</button>
+<button type="button" data-time="124.583" aria-label="Aller à 2:04 : Les promotions et prospectus"><span>2:04</span>Les promotions et prospectus</button>
+<button type="button" data-time="138.625" aria-label="Aller à 2:18 : Vous gardez le contrôle"><span>2:18</span>Vous gardez le contrôle</button>
+    </div>
+
+    <details>
+      <summary>Fiche technique et méthodologie</summary>
+      <div class="verification-note">
+        <p><strong>Visuels 100% réels :</strong> Toutes les interfaces montrées dans la vidéo proviennent directement des écrans réels de l'application en cours d'exécution (<code>index.html</code>, <code>compter.html</code>, <code>commander.html</code>, <code>promo.html</code>, et moteur de saisonnalité).</p>
+        <p><strong>Design et ergonomie terrain :</strong> L'application est optimisée pour une tablette tactile en magasin et en chambre froide, garantissant la règle fondamentale du <em>Human-in-the-Loop</em> : l'intelligence artificielle calcule et propose, le responsable de rayon décide et valide.</p>
+        <p><strong>Voix neuronales :</strong> Narration incarnée par le Responsable de rayon et l'Agent de Rayon, avec sous-titrage synchronisé mot à mot.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Lire le script intégral des 10 scènes</summary>
+      <div class="transcript">
+<h3>1. La tablette au quotidien (Prise en main)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Application Rayon F&L</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Bienvenue dans mon rayon ! Découvrons ensemble l'application sur ma tablette. »</em></p>
+<p><strong>Explication :</strong> Bienvenue au rayon fruits et légumes ! Chaque matin, cette tablette est mon outil de travail indispensable. Simple, intuitive et connectée à notre brigade d'agents numériques, l'application me fait gagner un temps précieux en sécurisant toutes mes commandes !</p>
+<h3>2. L'accueil et la note du matin (Tableau de bord)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Accueil (index.html)</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Première étape à 9h15 : je consulte la commande du jour et la note de la nuit. »</em></p>
+<p><strong>Explication :</strong> Dès mon arrivée, l'écran d'accueil me donne la météo de la journée : le résumé chiffré de la commande préparée, les alertes prioritaires et la note du matin rédigée par le Leader pour savoir exactement ce qui s'est passé cette nuit.</p>
+<h3>3. Parler à l'assistant de rayon (Dialogue de terrain)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Agent de Rayon</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « J'ai mis les melons en tête de gondole. L'assistant adapte immédiatement les prévisions. »</em></p>
+<p><strong>Explication :</strong> Un changement d'implantation ou une remarque sur le terrain ? Pas besoin d'aller au bureau : j'écris directement à mon assistant sur la tablette. Il me répond en français simple et tient compte de mes remarques pour recalculer les besoins !</p>
+<h3>4. Le pointage mobile en réserve (Chambre froide)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Pointage (compter.html)</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Direction la chambre froide : les articles prioritaires s'affichent en grand format. »</em></p>
+<p><strong>Explication :</strong> Direction la chambre froide pour l'inventaire rapide. L'écran de comptage m'affiche les articles prioritaires par ordre d'importance. Pas de perte de temps : les gros volumes de vente apparaissent en premier pour cibler l'essentiel !</p>
+<h3>5. Pavé numérique et fractions de colis (Saisie tactile)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Pavé tactile intégré</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Une demi-cagette entamée ? La virgule et le plus-moins gèrent 1,5 colis en un geste. »</em></p>
+<p><strong>Explication :</strong> Le grand atout sur le terrain, c'est ce pavé tactile géant intégré : il ne bloque pas l'écran et permet de saisir facilement des fractions de cagettes, comme un virgule deux ou deux virgule cinq colis. Un clic sur 'Valider et suivant', et le tour est joué !</p>
+<h3>6. La console de commande (Cadencier)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Console (commander.html)</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Tous mes articles rangés par famille : Fruits, Légumes et Bio dans l'ordre de la centrale. »</em></p>
+<p><strong>Explication :</strong> Voici le cœur du réacteur : la console de commande. Les articles sont parfaitement ordonnés selon le cadencier officiel : fruits, légumes, puis bio. Pour chaque produit, les agents ont déjà calculé une proposition idéale selon les ventes et la météo !</p>
+<h3>7. Les explications des agents (Ajustements)</h3>
+<p><strong>Interlocuteur :</strong> Agent de Rayon → Responsable du rayon</p>
+<p><strong>Dialogue :</strong> <em>Agent de Rayon : « Ventes prévues : 4 colis. Météo ensoleillée. Besoin calculé : 3 colis après déduction du stock. »</em></p>
+<p><strong>Explication :</strong> Sous chaque article, un encadré clair m'explique le calcul : les ventes moyennes, l'impact du beau temps et le stock déjà présent. Si je veux modifier, de simples boutons plus et moins me permettent d'ajuster la quantité au colis près en une seconde !</p>
+<h3>8. L'historique et la fiche produit (Détail article)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Fiche détail tactile</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Un doute sur un produit ? J'ouvre la fiche pour voir la courbe des ventes de l'an dernier. »</em></p>
+<p><strong>Explication :</strong> En touchant le nom d'un article, une fiche complète s'ouvre : j'y retrouve le conditionnement exact, le prix d'achat, et un graphique comparant mes ventes actuelles à celles de l'année dernière sur la même semaine. Tout est transparent et vérifiable !</p>
+<h3>9. Les promotions et prospectus (Catalogue)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Promotions (promo.html)</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Les offres prospectus sont détectées automatiquement pour prévoir les volumes sans risquer la rupture. »</em></p>
+<p><strong>Explication :</strong> L'écran Promotions intègre automatiquement les prospectus nationaux Intermarché. Les offres à venir sont détectées à l'avance, ce qui me permet d'anticiper les volumes promotionnels et de mettre en place le bon réassort sans jamais me faire déborder !</p>
+<h3>10. Vous gardez le contrôle (Validation)</h3>
+<p><strong>Interlocuteur :</strong> Responsable du rayon → Recopie sur Webtélévente</p>
+<p><strong>Dialogue :</strong> <em>Responsable du rayon : « Les agents préparent tout, mais c'est moi qui décide ! Je recopie la proposition sur Webtélévente et j'envoie. »</em></p>
+<p><strong>Explication :</strong> Et voici la règle d'or : l'application et les agents préparent tout le travail, mais c'est toujours moi, responsable de rayon, qui décide et garde la main. À la fin, je n'ai plus qu'à recopier la proposition de commande sur l'application Webtélévente et envoyer la commande en toute sérénité !</p>
+      </div>
+    </details>
+  </main>
+
+  <footer>
+    Démonstration officielle de l'application · Rayon Fruits &amp; Légumes Carmaux · Intermarché.<br>
+    <a href="index.html">Retourner au portail de documentation générale →</a>
+  </footer>
+</div>
+
+<script>
+'use strict';
+const film = document.getElementById('film');
+const buttons = Array.from(document.querySelectorAll('[data-time]'));
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    film.currentTime = Number(button.dataset.time);
+    film.play().catch(() => {});
+  });
+});
+
+function markChapter() {
+  let active = 0;
+  buttons.forEach((button, i) => {
+    if (film.currentTime >= Number(button.dataset.time)) active = i;
+  });
+  buttons.forEach((button, i) => {
+    if (i === active) button.setAttribute('aria-current', 'true');
+    else button.removeAttribute('aria-current');
+  });
+}
+
+film.addEventListener('timeupdate', markChapter);
+markChapter();
+</script>
+</body>
+</html>

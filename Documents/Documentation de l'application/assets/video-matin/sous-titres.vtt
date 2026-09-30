@@ -1,0 +1,262 @@
+WEBVTT
+
+00:00:00.050 --> 00:00:05.975
+Bonjour, voici les ventes, la casse, les dons, la livraison et les cadenciers Webtélévente et Mercalys.
+
+00:00:05.975 --> 00:00:09.012
+Je vous les envoie ensemble pour préparer la commande de ce matin.
+
+00:00:09.917 --> 00:00:13.342
+Le mail est signalé par l’agent sentinelle, le programme de veille.
+
+00:00:13.342 --> 00:00:16.904
+Un logiciel configuré pour suivre cette tâche me transmet le signal.
+
+00:00:16.904 --> 00:00:18.542
+Je répartis le travail.
+
+00:00:18.542 --> 00:00:23.054
+Nous sommes tous visibles pour expliquer nos rôles ; les spécialistes interviennent seulement au besoin.
+
+00:00:23.983 --> 00:00:27.483
+Agent courrier, examine le message et chaque pièce jointe.
+
+00:00:27.483 --> 00:00:29.546
+Je te confie ces six fichiers précis.
+
+00:00:29.546 --> 00:00:34.708
+Rapporte les dates, les unités, ce qui manque et les points douteux, sans modifier les stocks.
+
+00:00:35.583 --> 00:00:37.458
+Je vérifie les lignes et leurs dates.
+
+00:00:37.458 --> 00:00:42.771
+Habituellement, les ventes, la casse et les dons concernent hier ; la livraison concerne aujourd’hui.
+
+00:00:42.771 --> 00:00:45.496
+Mais les documents et la réception attestée font foi.
+
+00:00:45.496 --> 00:00:47.171
+La date du mail ne suffit pas.
+
+00:00:48.117 --> 00:00:51.267
+Ventes, casse et dons décrivent trois sorties différentes.
+
+00:00:51.267 --> 00:00:54.304
+Je vérifie les codes, les unités et les quantités.
+
+00:00:54.304 --> 00:00:58.704
+Une même sortie ne doit jamais être retirée deux fois, même si un fichier est renvoyé.
+
+00:00:59.583 --> 00:01:01.883
+La livraison décrit les marchandises reçues.
+
+00:01:01.883 --> 00:01:04.846
+Je compare sa date au dernier comptage de chaque article.
+
+00:01:04.846 --> 00:01:09.258
+Si elle était déjà comprise dans la mesure, je ne dois pas l’ajouter une seconde fois à la position.
+
+00:01:10.183 --> 00:01:15.696
+Mercalys met à jour les fiches des articles : codes, unités, conditionnements et prix de référence.
+
+00:01:15.696 --> 00:01:17.808
+Cela nous aide à comprendre les produits.
+
+00:01:17.808 --> 00:01:21.758
+Ce cadencier ne prouve aucune livraison et n’ajoute aucune marchandise au stock.
+
+00:01:22.650 --> 00:01:27.650
+Webtélévente présente les articles et les offres commandables aujourd’hui, avec leur ordre de présentation.
+
+00:01:27.650 --> 00:01:30.425
+Je respecte cet ordre dans les groupes de l’application.
+
+00:01:30.425 --> 00:01:34.188
+Une indisponibilité aujourd’hui ne masque pas définitivement l’article.
+
+00:01:35.117 --> 00:01:37.992
+Agent données, simule les effets des six fichiers.
+
+00:01:37.992 --> 00:01:40.942
+Compare-les aux mouvements déjà enregistrés et aux comptages.
+
+00:01:40.942 --> 00:01:44.542
+Nous voulons connaître le résultat attendu avant de modifier les stocks réels.
+
+00:01:45.450 --> 00:01:48.437
+Je te transmets ma simulation et un doute sur la livraison.
+
+00:01:48.437 --> 00:01:51.812
+Le document reçu semble ne pas correspondre à la livraison annoncée.
+
+00:01:51.812 --> 00:01:55.600
+Il faut comparer l’original aux informations de réception avant de continuer.
+
+00:01:56.450 --> 00:01:59.312
+Je reprends les originaux et la simulation de mon côté.
+
+00:01:59.312 --> 00:02:02.400
+Ici, la livraison annoncée ne correspond pas au document.
+
+00:02:02.400 --> 00:02:03.925
+Je bloque ce fichier.
+
+00:02:03.925 --> 00:02:06.488
+Je ne change pas sa date pour le rendre acceptable.
+
+00:02:07.383 --> 00:02:11.008
+Dans cet exemple, je suspends le lot avant toute intégration réelle.
+
+00:02:11.008 --> 00:02:15.383
+Agent rayon, explique le problème dans le fil et demande le bon fichier de livraison.
+
+00:02:15.383 --> 00:02:19.008
+La réussite des autres vérifications ne fait pas disparaître ce doute.
+
+00:02:19.983 --> 00:02:23.096
+Le fichier de livraison ne correspond pas à la livraison annoncée.
+
+00:02:23.096 --> 00:02:25.196
+Pouvez-vous renvoyer le bon export ?
+
+00:02:25.196 --> 00:02:27.483
+Les stocks n’ont pas été modifiés par ce lot.
+
+00:02:27.483 --> 00:02:30.596
+Je publie cette demande et vérifie qu’elle apparaît dans le fil.
+
+00:02:31.517 --> 00:02:33.079
+J’ai vérifié au magasin.
+
+00:02:33.079 --> 00:02:35.029
+Voici le bon fichier de livraison.
+
+00:02:35.029 --> 00:02:37.742
+Il remplace celui que j’ai envoyé dans mon premier mail.
+
+00:02:37.742 --> 00:02:39.642
+Les autres pièces restent les mêmes.
+
+00:02:40.583 --> 00:02:42.758
+Je lis ce nouveau mail et le bon export.
+
+00:02:42.758 --> 00:02:46.833
+Je vérifie ses dates et sa provenance, puis j’identifie la pièce qu’il remplace.
+
+00:02:46.833 --> 00:02:49.746
+Je conserve les deux sources pour expliquer la reprise.
+
+00:02:49.746 --> 00:02:52.383
+Classer les mails ne signifie pas les avoir traités.
+
+00:02:53.250 --> 00:02:56.900
+Si tu me confies un code ou un colisage douteux, je recherche une preuve.
+
+00:02:56.900 --> 00:02:59.875
+Deux noms ressemblants ne suffisent pas pour fusionner des produits.
+
+00:02:59.875 --> 00:03:03.112
+Si nécessaire, je précise ce qu’il faut relever au magasin.
+
+00:03:04.050 --> 00:03:07.325
+Agent données, reprends le lot avec cette livraison corrigée.
+
+00:03:07.325 --> 00:03:09.838
+Vérifie d’abord ce qui est réellement enregistré.
+
+00:03:09.838 --> 00:03:13.888
+Si des fichiers avaient déjà été intégrés, ils ne devraient pas être comptés à nouveau.
+
+00:03:13.888 --> 00:03:16.425
+Refais la simulation sur les sources retenues.
+
+00:03:17.317 --> 00:03:21.029
+Si un comptage arrive, le serveur l’enregistre et lance le recalcul.
+
+00:03:21.029 --> 00:03:25.567
+Quand tu me confies le relevé précis, j’examine l’écart et distingue les preuves des hypothèses.
+
+00:03:25.567 --> 00:03:29.754
+Ce nouveau comptage impose aussi de revoir les contrôles qui utilisaient l’ancienne position.
+
+00:03:30.717 --> 00:03:34.592
+Voici la nouvelle simulation, les fichiers exacts et les comptages utilisés.
+
+00:03:34.592 --> 00:03:38.142
+Je distingue ce qui complète l’historique de ce qui change la position.
+
+00:03:38.142 --> 00:03:42.392
+Les sorties ou livraisons déjà comprises dans un comptage ne sont pas appliquées une seconde fois.
+
+00:03:43.317 --> 00:03:46.142
+Je compare à nouveau les originaux et les effets attendus.
+
+00:03:46.142 --> 00:03:50.779
+Dans notre exemple corrigé, le périmètre examiné est sûr sous les conditions précisées.
+
+00:03:50.779 --> 00:03:54.992
+Mon avis ne crée aucun droit : l’autorisation d’intégrer doit aussi être vérifiée.
+
+00:03:55.917 --> 00:03:59.454
+Les exports habituels bénéficient de l’autorisation permanente.
+
+00:03:59.454 --> 00:04:02.404
+Tu peux intégrer le périmètre contrôlé et autorisé.
+
+00:04:02.404 --> 00:04:08.154
+Vérifie juste avant d’agir que les sources et les comptages n’ont pas changé ; sinon, nous renouvelons le contrôle concerné.
+
+00:04:09.050 --> 00:04:13.625
+J’intègre les fichiers retenus, puis je relance le calcul des positions et de la proposition.
+
+00:04:13.625 --> 00:04:18.400
+Je te transmets les écritures réellement faites, les refus éventuels et le résultat du recalcul.
+
+00:04:18.400 --> 00:04:20.788
+Un simple message de réussite ne suffit pas.
+
+00:04:21.717 --> 00:04:24.042
+Je compare les résultats aux effets attendus.
+
+00:04:24.042 --> 00:04:27.954
+Je vérifie les positions, les fichiers produits et la fin du recalcul.
+
+00:04:27.954 --> 00:04:30.354
+Je regarde aussi le signalement initial.
+
+00:04:30.354 --> 00:04:33.879
+Seules les anomalies effectivement résolues peuvent être annoncées comme levées.
+
+00:04:34.783 --> 00:04:38.758
+Si tu me sollicites, j’étudie les ventes et les livraisons avec leur contexte.
+
+00:04:38.758 --> 00:04:40.946
+Je peux proposer un ajustement prudent.
+
+00:04:40.946 --> 00:04:43.946
+Une mauvaise journée isolée ne suffit pas pour baisser la commande.
+
+00:04:43.946 --> 00:04:46.258
+Le responsable garde la décision.
+
+00:04:47.183 --> 00:04:51.296
+Dans cet exemple, le bon fichier est intégré et son résultat a été contrôlé.
+
+00:04:51.296 --> 00:04:55.821
+Je confirme la résolution dans le même fil, avec les éventuels points restant à vérifier.
+
+00:04:55.821 --> 00:04:58.271
+Je ne cache pas une autre erreur encore présente.
+
+00:04:59.183 --> 00:05:01.196
+Je relis le bilan et les réponses.
+
+00:05:01.196 --> 00:05:05.283
+Seuls les événements réellement terminés sont marqués comme traités, avec leurs preuves.
+
+00:05:05.283 --> 00:05:07.421
+L’écoute reprend sauf demande d’arrêt.
+
+00:05:07.421 --> 00:05:11.821
+Vous choisissez ensuite votre commande et l’envoyez dans l’outil habituel, avant neuf heures trente.

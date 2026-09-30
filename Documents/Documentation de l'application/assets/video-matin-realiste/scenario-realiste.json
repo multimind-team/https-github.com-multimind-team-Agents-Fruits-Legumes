@@ -1,0 +1,268 @@
+[
+  {
+    "id": 1,
+    "chapter": "1. L'envoi matinal",
+    "speaker": "Responsable de rayon",
+    "role": "Humain · Responsable Rayon Fruits & Légumes",
+    "voice": "fr-FR-RemyMultilingualNeural",
+    "image": "manager_mail",
+    "zoom": [
+      1.0,
+      1.08
+    ],
+    "text": "6 heures 45. J'expédie les six exports du matin : ventes d'hier, casse, dons, le bon de livraison de ce matin, et les deux cadenciers Mercalys et Webtélévente. Envoi groupé à la brigade.",
+    "note": "6 fichiers joints : ventes J-1, casse J-1, dons J-1, livraison J, cadencier Mercalys, cadencier Webtélévente"
+  },
+  {
+    "id": 2,
+    "chapter": "2. Détection à la porte",
+    "speaker": "Agent Sentinelle",
+    "role": "Robot Humanoïde Tactique · Garde & Veille",
+    "voice": "fr-BE-GerardNeural",
+    "image": "sentinel_door",
+    "zoom": [
+      1.06,
+      1.0
+    ],
+    "text": "Alerte transmission. Signal courriel externe intercepté à la porte. Expéditeur certifié : Responsable Rayon. Six pièces jointes détectées. Je transfère l'événement au Leader.",
+    "note": "Filtrage et veille autonome à l'entrée sans toucher aux bases de données"
+  },
+  {
+    "id": 3,
+    "chapter": "2. Détection à la porte",
+    "speaker": "Leader",
+    "role": "Robot Humanoïde · Coordination & Arbitrage",
+    "voice": "fr-FR-HenriNeural",
+    "image": "room_dispatch",
+    "zoom": [
+      1.0,
+      1.05
+    ],
+    "text": "Signal bien reçu, Sentinelle. Brigade, à vos postes. Le lot matinal arrive. Ne modifiez aucun stock réel tant que tout n'est pas audité.",
+    "note": "Règle absolue : zéro écriture directe sur le stock sans validation préalable"
+  },
+  {
+    "id": 4,
+    "chapter": "3. Inventaire & Simulation",
+    "speaker": "Leader",
+    "role": "Robot Humanoïde · Coordination & Arbitrage",
+    "voice": "fr-FR-HenriNeural",
+    "image": "room_dispatch",
+    "zoom": [
+      1.05,
+      1.08
+    ],
+    "text": "Agent Courrier, dresse l'inventaire formel des pièces. Agent Données, prépare la simulation à blanc sans toucher aux stocks.",
+    "note": "Délégation stricte des compétences selon les habilitations"
+  },
+  {
+    "id": 5,
+    "chapter": "3. Inventaire & Simulation",
+    "speaker": "Agent Courrier",
+    "role": "Robot Humanoïde · Certification des Sources",
+    "voice": "fr-CA-AntoineNeural",
+    "image": "room_dispatch",
+    "zoom": [
+      1.08,
+      1.02
+    ],
+    "text": "Fichiers réceptionnés. Ventes, casse, dons et cadenciers sont conformes. Cependant, le fichier de livraison présente une incohérence de date et un en-tête altéré.",
+    "note": "Détection précoce d'une anomalie sur le format du fichier de livraison"
+  },
+  {
+    "id": 6,
+    "chapter": "4. Détection de l'erreur",
+    "speaker": "Agent Données",
+    "role": "Robot Humanoïde · Calculs & Gestion des Stocks",
+    "voice": "fr-CH-FabriceNeural",
+    "image": "anomaly_veto",
+    "zoom": [
+      1.0,
+      1.06
+    ],
+    "text": "Simulation lancée en mémoire protégée. Les sorties s'articulent bien avec les comptages, mais la livraison bloque : trois références sont rejetées au test à blanc.",
+    "note": "Test à blanc révélateur : le fichier est incompatible avec les stocks du jour"
+  },
+  {
+    "id": 7,
+    "chapter": "4. Détection de l'erreur",
+    "speaker": "Agent Contrôle",
+    "role": "Robot Humanoïde · Qualité & Droit de Veto",
+    "voice": "fr-FR-DeniseNeural",
+    "image": "anomaly_veto",
+    "zoom": [
+      1.06,
+      1.12
+    ],
+    "text": "Veto de conformité. Le bon de livraison reçu ne concorde pas avec les réceptions effectives du jour. Je verrouille l'intégration de ce fichier. Risque d'erreur de stock critique.",
+    "note": "Veto immédiat et inconditionnel de l'Agent Contrôle pour protéger l'intégrité"
+  },
+  {
+    "id": 8,
+    "chapter": "5. Relais vers le magasin",
+    "speaker": "Leader",
+    "role": "Robot Humanoïde · Coordination & Arbitrage",
+    "voice": "fr-FR-HenriNeural",
+    "image": "anomaly_veto",
+    "zoom": [
+      1.12,
+      1.04
+    ],
+    "text": "Veto approuvé. Zéro écriture sur le stock réel. Agent Rayon, alerte immédiatement le responsable sur son application. Message clair, sans jargon technique.",
+    "note": "Communication explicite et directe avec le responsable humain"
+  },
+  {
+    "id": 9,
+    "chapter": "5. Relais vers le magasin",
+    "speaker": "Agent Rayon",
+    "role": "Robot Humanoïde · Interface Terrain & Tablette",
+    "voice": "fr-FR-EloiseNeural",
+    "image": "manager_mobile",
+    "zoom": [
+      1.0,
+      1.07
+    ],
+    "text": "C'est fait. Message envoyé sur son mobile : Le fichier de livraison présente une discordance. Merci de renvoyer le bon export. Les autres flux restent en attente sécurisée.",
+    "note": "Notification instantanée sur smartphone : problème circonscrit et expliqué"
+  },
+  {
+    "id": 10,
+    "chapter": "6. Renvoi du fichier corrigé",
+    "speaker": "Responsable de rayon",
+    "role": "Humain · Responsable Rayon Fruits & Légumes",
+    "voice": "fr-FR-RemyMultilingualNeural",
+    "image": "manager_mobile",
+    "zoom": [
+      1.07,
+      1.02
+    ],
+    "text": "Oups, mauvais export sélectionné dans l'urgence. Je viens de renvoyer la bonne version avec les réceptions validées à quai.",
+    "note": "Réaction humaine immédiate : renvoi du fichier certifié conforme"
+  },
+  {
+    "id": 11,
+    "chapter": "6. Renvoi du fichier corrigé",
+    "speaker": "Agent Sentinelle",
+    "role": "Robot Humanoïde Tactique · Garde & Veille",
+    "voice": "fr-BE-GerardNeural",
+    "image": "sentinel_door",
+    "zoom": [
+      1.02,
+      1.08
+    ],
+    "text": "Nouvel événement courriel à la porte. Pièce rectifiée détectée : livraison du jour corrigée. Transfert prioritaire au Leader.",
+    "note": "La Sentinelle réveille la brigade dès l'arrivée du correctif"
+  },
+  {
+    "id": 12,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Agent Courrier",
+    "role": "Robot Humanoïde · Certification des Sources",
+    "voice": "fr-CA-AntoineNeural",
+    "image": "team_success",
+    "zoom": [
+      1.0,
+      1.05
+    ],
+    "text": "Document certifié conforme. Il remplace la version erronée. Preuve horodatée conservée dans le registre.",
+    "note": "Traçabilité intégrale de la substitution sans perte d'historique"
+  },
+  {
+    "id": 13,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Agent Données",
+    "role": "Robot Humanoïde · Calculs & Gestion des Stocks",
+    "voice": "fr-CH-FabriceNeural",
+    "image": "team_success",
+    "zoom": [
+      1.05,
+      1.09
+    ],
+    "text": "Rejeu de la simulation avec le filet de sécurité forcé. Zéro doublon sur les ventes et la casse. La livraison s'aligne parfaitement sur les positions de stock.",
+    "note": "Filet de sécurité avec option forcer : purge de l'ancien état d'échec"
+  },
+  {
+    "id": 14,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Agent Contrôle",
+    "role": "Robot Humanoïde · Qualité & Droit de Veto",
+    "voice": "fr-FR-DeniseNeural",
+    "image": "team_success",
+    "zoom": [
+      1.09,
+      1.03
+    ],
+    "text": "Audit complet validé. Les six flux sont intègres et cohérents. Feu vert accordé pour l'intégration réelle.",
+    "note": "Feu vert unanime : sécurité garantie avant toute modification du système"
+  },
+  {
+    "id": 15,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Leader",
+    "role": "Robot Humanoïde · Coordination & Arbitrage",
+    "voice": "fr-FR-HenriNeural",
+    "image": "team_success",
+    "zoom": [
+      1.03,
+      1.08
+    ],
+    "text": "Autorisation d'intégration accordée. Données, applique le recalcul complet. Rayon, publie la Note du Matin et lève l'alerte sur le smartphone.",
+    "note": "Ordre d'exécution finale sous délégation permanente"
+  },
+  {
+    "id": 16,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Agent Données",
+    "role": "Robot Humanoïde · Calculs & Gestion des Stocks",
+    "voice": "fr-CH-FabriceNeural",
+    "image": "team_success",
+    "zoom": [
+      1.08,
+      1.12
+    ],
+    "text": "Intégration achevée. Recalcul général du cadencier terminé avec succès. La proposition de commande est à jour pour 7 heures 30.",
+    "note": "Recalcul complet : les quantités à commander sont prêtes avant l'heure limite"
+  },
+  {
+    "id": 17,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Agent Rayon",
+    "role": "Robot Humanoïde · Interface Terrain & Tablette",
+    "voice": "fr-FR-EloiseNeural",
+    "image": "team_success",
+    "zoom": [
+      1.12,
+      1.05
+    ],
+    "text": "Note du matin publiée. L'alerte d'erreur est effacée de l'écran mobile. Le responsable peut commander en toute sérénité.",
+    "note": "Effacement de l'erreur mobile : retour à un état sain et lisible"
+  },
+  {
+    "id": 18,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Leader",
+    "role": "Robot Humanoïde · Coordination & Arbitrage",
+    "voice": "fr-FR-HenriNeural",
+    "image": "team_success",
+    "zoom": [
+      1.05,
+      1.0
+    ],
+    "text": "Mission accomplie. Sentinelle, reprends la surveillance de la porte pour les flux de la journée.",
+    "note": "Le cycle matinal se termine, la surveillance continue reprend"
+  },
+  {
+    "id": 19,
+    "chapter": "7. Rejeu & Validation finale",
+    "speaker": "Agent Sentinelle",
+    "role": "Robot Humanoïde Tactique · Garde & Veille",
+    "voice": "fr-BE-GerardNeural",
+    "image": "sentinel_door",
+    "zoom": [
+      1.0,
+      1.05
+    ],
+    "text": "Surveillance active réarmée. Porte sécurisée. Brigade prête.",
+    "note": "Périmètre sécurisé en continu pour les futurs messages et comptages"
+  }
+]

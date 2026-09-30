@@ -1,0 +1,55 @@
+{
+  "duration": 169.292,
+  "chapters": [
+    {
+      "title": "La tablette au quotidien",
+      "start": 0.0,
+      "duration": 16.667
+    },
+    {
+      "title": "L'accueil et la note du matin",
+      "start": 16.667,
+      "duration": 14.417
+    },
+    {
+      "title": "Parler à l'assistant de rayon",
+      "start": 31.083,
+      "duration": 17.875
+    },
+    {
+      "title": "Le pointage mobile en réserve",
+      "start": 48.958,
+      "duration": 15.417
+    },
+    {
+      "title": "Pavé numérique et fractions de colis",
+      "start": 64.375,
+      "duration": 15.708
+    },
+    {
+      "title": "La console de commande",
+      "start": 80.083,
+      "duration": 17.917
+    },
+    {
+      "title": "Les explications des agents",
+      "start": 98.0,
+      "duration": 22.417
+    },
+    {
+      "title": "L'historique et la fiche produit",
+      "start": 120.417,
+      "duration": 15.25
+    },
+    {
+      "title": "Les promotions et prospectus",
+      "start": 135.667,
+      "duration": 15.25
+    },
+    {
+      "title": "Vous gardez le contrôle",
+      "start": 150.917,
+      "duration": 18.375
+    }
+  ]
+}

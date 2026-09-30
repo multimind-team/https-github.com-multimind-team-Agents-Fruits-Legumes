@@ -1,0 +1,17 @@
+{
+  "docs_html": 58,
+  "source_snapshots": 0,
+  "rewritten_links": {
+    "presentation": 2,
+    "snapshots": 0,
+    "data_removed": 4,
+    "local_references": 369
+  },
+  "excluded": [
+    "donnees/*",
+    "source code and generation scripts",
+    "secrets",
+    "Git history",
+    "production workbooks and mail"
+  ]
+}

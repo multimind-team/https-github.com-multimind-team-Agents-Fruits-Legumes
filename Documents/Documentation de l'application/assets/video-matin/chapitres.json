@@ -1,0 +1,135 @@
+{
+  "duration": 312.667,
+  "chapters": [
+    {
+      "title": "Vous envoyez les six fichiers",
+      "start": 0,
+      "duration": 9.867
+    },
+    {
+      "title": "Le signal arrive à la réunion",
+      "start": 9.867,
+      "duration": 14.067
+    },
+    {
+      "title": "Le Leader distribue la lecture",
+      "start": 23.933,
+      "duration": 11.6
+    },
+    {
+      "title": "Les dates viennent des documents",
+      "start": 35.533,
+      "duration": 12.533
+    },
+    {
+      "title": "Trois façons de sortir du stock",
+      "start": 48.067,
+      "duration": 11.467
+    },
+    {
+      "title": "La livraison et le dernier comptage",
+      "start": 59.533,
+      "duration": 10.6
+    },
+    {
+      "title": "Mercalys décrit les articles",
+      "start": 70.133,
+      "duration": 12.467
+    },
+    {
+      "title": "Webtélévente décrit l’offre du jour",
+      "start": 82.6,
+      "duration": 12.467
+    },
+    {
+      "title": "Essayer avant de modifier",
+      "start": 95.067,
+      "duration": 10.333
+    },
+    {
+      "title": "La livraison pose problème",
+      "start": 105.4,
+      "duration": 11.0
+    },
+    {
+      "title": "L’agent contrôle bloque le fichier douteux",
+      "start": 116.4,
+      "duration": 10.933
+    },
+    {
+      "title": "Le Leader organise la résolution",
+      "start": 127.333,
+      "duration": 12.6
+    },
+    {
+      "title": "Une demande simple au magasin",
+      "start": 139.933,
+      "duration": 11.533
+    },
+    {
+      "title": "Vous renvoyez le bon export",
+      "start": 151.467,
+      "duration": 9.067
+    },
+    {
+      "title": "L’agent courrier relit la nouvelle source",
+      "start": 160.533,
+      "duration": 12.667
+    },
+    {
+      "title": "Si un produit reste ambigu",
+      "start": 173.2,
+      "duration": 10.8
+    },
+    {
+      "title": "Le Leader redonne un mandat précis",
+      "start": 184.0,
+      "duration": 13.267
+    },
+    {
+      "title": "Si un comptage arrive entre-temps",
+      "start": 197.267,
+      "duration": 13.4
+    },
+    {
+      "title": "Les effets attendus sont transmis",
+      "start": 210.667,
+      "duration": 12.6
+    },
+    {
+      "title": "L’agent contrôle rend un nouvel avis",
+      "start": 223.267,
+      "duration": 12.6
+    },
+    {
+      "title": "Le Leader confie l’intégration",
+      "start": 235.867,
+      "duration": 13.133
+    },
+    {
+      "title": "L’agent données importe puis recalcule",
+      "start": 249.0,
+      "duration": 12.667
+    },
+    {
+      "title": "L’agent contrôle vérifie le résultat réel",
+      "start": 261.667,
+      "duration": 13.067
+    },
+    {
+      "title": "Si une tendance mérite une étude",
+      "start": 274.733,
+      "duration": 12.4
+    },
+    {
+      "title": "Le magasin reçoit la résolution",
+      "start": 287.133,
+      "duration": 12.0
+    },
+    {
+      "title": "Le Leader clôt les seuls événements terminés",
+      "start": 299.133,
+      "duration": 13.533
+    }
+  ]
+}
