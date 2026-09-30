@@ -27,6 +27,8 @@ Ce fichier conserve les repères de présentation du portail documentaire. Les r
 
 Relire les modifications, vérifier les chemins et le JavaScript, puis contrôler le rendu sur ordinateur et téléphone. Les tests de l’application s’exécutent en copie isolée selon `tests/lancer_tests_isoles.py`. Une mise à jour documentaire ne déclenche ni sauvegarde locale ni envoi de commande.
 
+Pour une publication sur le site partageable, utiliser `moteur/preparer_documentation_publique.py` avec un dossier externe neuf, puis relire son manifeste et son rendu. Cet export conserve les pages et médias nécessaires ; les références au code et aux données deviennent des noms de sources locales sans contenu publié. La publication reste une opération distincte de l'application métier.
+
 ## Roadmap et contrats pour IA
 
 - Le chapitre 24 distingue ambitions, dépendances et critères de livraison pour les évolutions futures.
